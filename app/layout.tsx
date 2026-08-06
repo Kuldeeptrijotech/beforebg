@@ -1,13 +1,17 @@
-import "./globals.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+﻿import "./globals.css";
+import PublicChrome from "./components/PublicChrome";
+import ContentRuntime from "./components/ContentRuntime";
+import { readSiteContent } from "./lib/content-store";
 
 export const metadata = {
   title: "Trijotech | SAP Solutions",
   description: "SAP implementation, support, and business technology solutions.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export const dynamic = "force-dynamic";
+
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const content = await readSiteContent();
   return (
     <html lang="en">
       <head>
@@ -15,12 +19,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" />
       </head>
       <body>
-        <Header />
-        {children}
-        <Footer />
-        <a href="https://wa.me/917982531976" className="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
-          <i className="fa fa-whatsapp" aria-hidden="true" />
-        </a>
+        <ContentRuntime content={content} />
+        <PublicChrome>{children}</PublicChrome>
       </body>
     </html>
   );

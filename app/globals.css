@@ -5092,3 +5092,7 @@ a.filled-button[href="/contact"]:hover{background-color:#d88c13;color:#fff}
     line-height: 20px;
   }
 }
+
+/* Visual content selection is active only inside the authenticated admin preview. */
+.admin-preview-mode body * { cursor: crosshair !important; }
+.admin-preview-mode body *:hover { outline: 2px solid #ee9e1e !important; outline-offset: 2px; }
