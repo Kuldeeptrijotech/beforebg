@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import heroImage from "../assets/new_/industry1.png";
 import pharma from "../assets/new_/L0601.jpg";
 import manufacturing from "../assets/new_/L0602.jpg";
 import fintech from "../assets/new_/L0603.jpg";
@@ -30,7 +29,7 @@ export default function IndustryPage() {
   return (
     <main className="industry-page industry-source-page">
       
-      <PageHero title="Industry" backgroundImage={heroImage.src} className="header-text p-h-img-industry">
+      <PageHero title="Industry" backgroundImage="/assets/heroes/industry-blue.png" className="header-text p-h-img-industry">
         <Link href="/contact" className="filled-button mt-3">Consult Our Experts &rarr;</Link>
       </PageHero>
 

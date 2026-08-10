@@ -33,7 +33,7 @@ export default function Page() {
   return (
     <main className="sap-implementation-source-page">
       
-      <PageHero title="SAP Implementation Services" subtitle="Transforming Businesses with Expert SAP Solutions" className="sap-implementation-hero">
+      <PageHero title="SAP Implementation Services" subtitle="Transforming Businesses with Expert SAP Solutions" backgroundImage="/assets/heroes/sap-implementation-blue.png" className="sap-implementation-hero">
         <Link href="/contact" className="filled-button">Consult Our Expert</Link>
       </PageHero>
 

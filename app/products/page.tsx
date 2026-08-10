@@ -4,7 +4,6 @@ import ContactCta from "../components/common/ContactCta";
 import CardGrid from "../components/common/CardGrid";
 import Link from "next/link";
 import ProductCarousel from "./ProductCarousel";
-import heroImage from "../assets/new_/product1.png";
 import back1 from "../assets/new_/back1.png";
 import product4 from "../assets/new_/Product_4.png";
 import product3 from "../assets/new_/Product_3.jpg";
@@ -194,7 +193,7 @@ export default function ProductsPage() {
   return (
     <main className="products-page">
       
-      <PageHero title="Products" backgroundImage={heroImage.src} className="p-h-img-product">
+      <PageHero title="Products" backgroundImage="/assets/heroes/products-blue.png" className="p-h-img-product">
         <Link href="/contact" className="filled-button mt-3">Consult Our Experts &rarr;</Link>
       </PageHero>
       

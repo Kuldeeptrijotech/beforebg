@@ -40,6 +40,63 @@ export interface Blog {
   date: string;
 }
 
+export type BlogPost = {
+  id: string;
+  title: string;
+  slug: string;
+  shortDescription: string;
+  content: string;
+  contentImages: Array<{ id: string; src: string; alt: string; caption: string }>;
+  contentBlocks: Array<{
+    id: string;
+    type: "heading" | "subheading" | "content" | "image" | "quote" | "bulletList" | "numberedList" | "callout" | "divider" | "link";
+    value: string;
+    imageSrc: string;
+    imageAlt: string;
+    caption: string;
+    linkUrl: string;
+    headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+    style: {
+      textAlign: "left" | "center" | "right";
+      fontSize: "small" | "medium" | "large" | "xlarge";
+      textColor: string;
+      backgroundColor: string;
+      spacing: "compact" | "normal" | "spacious";
+      imageWidth: "25" | "50" | "75" | "100";
+      imageAlign: "left" | "center" | "right";
+      borderRadius: "0" | "8" | "16" | "24";
+      fontWeight?: "400" | "500" | "600" | "700";
+      fontStyle?: "normal" | "italic";
+      textDecoration?: "none" | "underline";
+      lineHeight?: "compact" | "normal" | "relaxed";
+      textTransform?: "none" | "uppercase" | "capitalize";
+      padding?: "0" | "12" | "20" | "32";
+      blockRadius?: "0" | "8" | "16" | "24";
+      borderColor?: string;
+      imageMaxHeight?: "320" | "480" | "640" | "auto";
+      imageObjectFit?: "contain" | "cover";
+      imageShadow?: "none" | "soft" | "strong";
+    };
+  }>;
+  featuredImage: string;
+  featuredImageStyle: {
+    width: "50" | "75" | "100";
+    align: "left" | "center" | "right";
+    maxHeight: "320" | "480" | "640" | "auto";
+    objectFit: "contain" | "cover";
+    borderRadius: "0" | "8" | "16" | "24";
+  };
+  imageAlt: string;
+  author: string;
+  category: string;
+  tags: string[];
+  publishedAt: string | null;
+  updatedAt: string;
+  status: "draft" | "published";
+  seoTitle: string;
+  seoDescription: string;
+};
+
 export const blogs: Blog[] = [
   {
     title: "E-Invoicing Pro: Simplifying Invoicing for Modern Businesses",
@@ -273,3 +330,31 @@ export const blogs: Blog[] = [
     date: "July 2022"
   }
 ];
+
+export function legacyBlogPosts(): BlogPost[] {
+  return blogs.map((blog, index) => {
+    const slug = blog.link.replace(/^\/blogs\//, "");
+    const parsedDate = new Date(`1 ${blog.date.replace(/[^a-zA-Z0-9 ]/g, "")}`);
+    const publishedAt = Number.isNaN(parsedDate.getTime()) ? null : parsedDate.toISOString();
+    return {
+      id: `legacy-${index + 1}`,
+      title: blog.title,
+      slug,
+      shortDescription: blog.description,
+      content: "",
+      contentImages: [],
+      contentBlocks: [],
+      featuredImage: blog.image,
+      featuredImageStyle: { width: "100", align: "center", maxHeight: "640", objectFit: "contain", borderRadius: "16" },
+      imageAlt: blog.title,
+      author: "Trijotech",
+      category: "SAP Insights",
+      tags: [],
+      publishedAt,
+      updatedAt: publishedAt || new Date(0).toISOString(),
+      status: "published",
+      seoTitle: blog.title,
+      seoDescription: blog.description,
+    };
+  });
+}

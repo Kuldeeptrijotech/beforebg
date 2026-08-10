@@ -1,4 +1,6 @@
 ﻿import "./globals.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import PublicChrome from "./components/PublicChrome";
 import ContentRuntime from "./components/ContentRuntime";
 import { readSiteContent } from "./lib/content-store";

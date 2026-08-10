@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +16,7 @@ const navigation = [
     { href: "/services/sap-data-integration", label: "SAP Data Integration" },
     { href: "/services/sap-ai-ml", label: "SAP AI & ML" },
   ]},
-  { href: "/products", label: "Products" },
+  { href: "/about-us", label: "About Us" },
   { href: "/industry", label: "Industry" },
   { href: "/blogs", label: "Insights", children: [
     { href: "/blogs", label: "Blogs" },
@@ -51,9 +51,10 @@ export default function Header() {
 
   const closeMenus = () => { setMenuOpen(false); setOpenMenu(null); };
   const headerState = `home-${homeHeaderState}`;
+  const pageState = pathname === "/" ? "is-home-page" : "is-inner-page";
 
   return (
-    <header className={`site-header ${headerState}`}>
+    <header className={`site-header ${headerState} ${pageState}`}>
       <div className="header-inner">
         <Link href="/" className="brand" onClick={closeMenus} aria-label="Trijotech home">
           <Image src={lightLogo} alt="Trijotech" width={150} height={80} priority className="brand-logo brand-logo-light" />
@@ -89,4 +90,3 @@ export default function Header() {
     </header>
   );
 }
-

@@ -2,24 +2,23 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { blogs } from "../data/blogs";
-import heroImage from "../assets/new_/Blogs1.png";
+import type { Blog } from "../data/blogs";
 import BlogCard from "../components/common/BlogCard";
 import PageHero from "../components/common/PageHero";
 import ContactCta from "../components/common/ContactCta";
 
-export default function BlogsListing() {
+export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const matches = useMemo(() => {
     const value = query.trim().toLowerCase();
     return value ? blogs.filter((blog) => blog.title.toLowerCase().includes(value)) : [];
-  }, [query]);
+  }, [query, blogs]);
 
   return (
     <main className="blogs-page blogs-source-page">
       
-      <PageHero title="Our Blogs" backgroundImage={heroImage.src} className="blogs-page-heading" />
+      <PageHero title="Our Blogs" backgroundImage="/assets/heroes/blogs-blue.png" className="blogs-page-heading" />
 
       <section className="services blogs-listing-section">
         <div className="container">

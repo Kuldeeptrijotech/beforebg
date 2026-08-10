@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import heroImage from "../assets/new_/Implimentationimg.png";
 import implementationImage from "../assets/image/S0201.jpg";
 import supportImage from "../assets/image/S0202.jpg";
 import btpImage from "../assets/image/S0203.jpg";
@@ -30,7 +29,7 @@ const reasons = [
 export default function ServicesPage() {
   return <main className="services-page">
     
-      <PageHero title="Our Services" backgroundImage={heroImage.src} className="services-page-heading"><Link href="/contact" className="filled-button mt-3">Consult Our Experts &rarr;</Link></PageHero>
+      <PageHero title="Our Services" backgroundImage="/assets/heroes/services-blue.png" className="services-page-heading"><Link href="/contact" className="filled-button mt-3">Consult Our Experts &rarr;</Link></PageHero>
     <section className="services-wrapper">
       
       {services.map(service=><MediaTextRow key={service.href} className="service-source-row" title={service.title} description={service.description} image={service.image.src} imageAlt="" href={service.href} bullets={service.bullets}/>) }
