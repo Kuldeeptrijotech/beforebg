@@ -6,6 +6,8 @@ import ManagedBlogPage from "../../components/ManagedBlogPage";
 import { legacyBlogPages } from "../../data/legacyPages";
 import { hasPersistentBlogStore, readBlogPosts } from "@/app/lib/blog-store";
 import { SESSION_COOKIE, verifySessionToken } from "@/app/lib/admin-auth";
+import PlaceholderPage from "@/components/common/PlaceholderPage";
+import { featuredBlogs } from "@/lib/site-data";
 
 type Slug = keyof typeof legacyBlogPages;
 const asciiSlug = (slug: string) => slug.replace(/[–—]/g, "-");
@@ -29,6 +31,10 @@ export default async function Page({ params, searchParams }: PageProps<"/blogs/[
   if (managed && hasManagedContent && (managed.status === "published" || adminPreview)) return <ManagedBlogPage post={managed} preview={managed.status === "draft"} />;
   if (managed?.status === "draft") notFound();
   const legacy = getLegacyPage(slug);
+  const featured = featuredBlogs.find((blog) => blog.href === `/blogs/${slug}`);
+  if (!managed && !legacy && featured) {
+    return <PlaceholderPage eyebrow="Trijotech Insights" title={featured.title} description={featured.description} />;
+  }
   if ((!managed && persistent) || !legacy) notFound();
   return <LegacyHtmlPage title={legacy.title} description={legacy.description} blocks={legacy.blocks} className="legacy-content-page legacy-blog-page" />;
 }

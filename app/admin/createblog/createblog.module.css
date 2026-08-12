@@ -23,10 +23,10 @@
 }
 
 .routeHeader > div { text-align: center; }
-.routeHeader span { color: #f2ae32; font-size: 10px; font-weight: 800; letter-spacing: .15em; }
+.routeHeader span { color: #f2ae32; font-size:var(--font-micro); font-weight: 800; letter-spacing: .15em; }
 .routeHeader h1 { margin: 5px 0 3px; color: #fff; font-size: clamp(24px, 2.4vw, 36px); line-height: 1.2; }
-.routeHeader p { margin: 0; color: rgba(255,255,255,.72); font-size: 11px; }
-.backLink,.viewBlogs { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; padding: 0 14px; border: 1px solid rgba(255,255,255,.24); border-radius: 10px; color: #fff; font-size: 11px; font-weight: 700; }
+.routeHeader p { margin: 0; color: rgba(255,255,255,.72); font-size:var(--font-xs); }
+.backLink,.viewBlogs { display: inline-flex; min-height: 40px; align-items: center; justify-content: center; padding: 0 14px; border: 1px solid rgba(255,255,255,.24); border-radius: 10px; color: #fff; font-size:var(--font-xs); font-weight: 700; }
 .viewBlogs { justify-self: end; }
 
 .createBlogPage :global(.admin-blog-manager) { max-width: 1880px; margin: 0 auto; padding: 0; }
@@ -38,7 +38,7 @@
 .createBlogPage :global(.admin-form-section-content) { grid-column: 1 / -1; padding: 18px; background: #e9eef2; }
 .createBlogPage :global(.admin-form-section-heading) { margin-bottom: 16px; padding-bottom: 14px; }
 .createBlogPage :global(.admin-form-section-heading > span) { background: #17233d; color: #fff; }
-.createBlogPage :global(.admin-form-section-heading h3) { font-size: 17px; }
+.createBlogPage :global(.admin-form-section-heading h3) { font-size:var(--font-md); }
 .createBlogPage :global(.admin-field input),
 .createBlogPage :global(.admin-field textarea),
 .createBlogPage :global(.admin-field select) { border-color: #d5dde4; background: #fbfcfd; }

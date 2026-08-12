@@ -226,7 +226,7 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
       <header className="admin-topbar">
         <div><span className="admin-logo">T</span><div><strong>Trijotech Admin</strong><small>Website content manager</small></div></div>
         <nav className="admin-tool-tabs" aria-label="Admin tools"><button type="button" className={mode === "content" ? "is-active" : ""} onClick={() => setMode("content")}>Page Content</button><button type="button" className={mode === "blogs" ? "is-active" : ""} onClick={() => setMode("blogs")}>Blog Management</button></nav>
-        <div className="admin-top-actions">{mode === "content" && <button type="button" className="admin-primary-button admin-save-changes" onClick={save} disabled={saving || !selection}>{saving ? "Saving..." : "Save Changes"}</button>}<a className="admin-secondary-button" href="/admin/chatbot">Chatbot KB</a><button type="button" className="admin-secondary-button" onClick={logout}>Sign out</button></div>
+        <div className="admin-top-actions">{mode === "content" && <button type="button" className="admin-primary-button admin-save-changes" onClick={save} disabled={saving || !selection}>{saving ? "Saving..." : "Save Changes"}</button>}<a className="admin-secondary-button" href="/admin/chatbot">Trijotech Chatbot</a><button type="button" className="admin-secondary-button" onClick={logout}>Sign out</button></div>
       </header>
 
       {notice && <div className={`admin-notice ${notice.type}`} role="status"><span>{notice.text}</span><button type="button" onClick={() => setNotice(null)} aria-label="Dismiss notification">×</button></div>}

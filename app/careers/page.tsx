@@ -11,7 +11,7 @@ export default function CareersPage() {
   return (
     <main className="careers-page">
       
-      <PageHero title="Careers" backgroundImage="/assets/heroes/careers-blue.png" className="header-text p-h-img-carrer" />
+      <PageHero title="Careers" backgroundImage="/assets/heroes/careers-generated-v2.png" className="header-text p-h-img-carrer" />
 
 
       <section className="services careers-intro-section">

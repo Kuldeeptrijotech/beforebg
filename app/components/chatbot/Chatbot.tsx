@@ -22,6 +22,7 @@ export default function Chatbot() {
   const [open, setOpen] = useState(false); const [state, setState] = useState<{ id: string; messages: UiMessage[] } | null>(null); const [input, setInput] = useState(""); const [loading, setLoading] = useState(false); const [unread, setUnread] = useState(0);
   const [settings, setSettings] = useState<Pick<ChatbotSettings, "enabled" | "assistantName" | "welcomeMessage" | "suggestedQuestions" | "contactButton" | "maximumMessageLength"> | null>(null); const [suggestions, setSuggestions] = useState<string[]>([]);
   const inputRef = useRef<HTMLTextAreaElement>(null); const endRef = useRef<HTMLDivElement>(null); const abortRef = useRef<AbortController | null>(null); const lastFailed = useRef<string>("");
+  const chatRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let active = true;
     const hydrate = async () => {
@@ -57,6 +58,14 @@ export default function Chatbot() {
   }, [state?.messages, loading]);
   useEffect(() => { const key = (event: KeyboardEvent) => { if (event.key === "Escape" && open) setOpen(false); }; document.addEventListener("keydown", key); return () => document.removeEventListener("keydown", key); }, [open]);
   useEffect(() => {
+    if (!open) return;
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (chatRef.current && !chatRef.current.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    return () => document.removeEventListener("pointerdown", closeOnOutsideClick);
+  }, [open]);
+  useEffect(() => {
     return () => {
       abortRef.current?.abort();
     };
@@ -77,7 +86,7 @@ export default function Chatbot() {
   }
   function clear() { abortRef.current?.abort(); setState(newConversation(settings?.welcomeMessage)); setSuggestions(settings?.suggestedQuestions || []); setInput(""); setLoading(false); }
   if (!state || !settings?.enabled) return null;
-  return <div className={`trijo-chat ${open ? "is-open" : ""}`}>
+  return <div ref={chatRef} className={`trijo-chat ${open ? "is-open" : ""}`}>
     {open && <section className="trijo-chat-window" role="dialog" aria-modal="false" aria-label="Trijotech AI assistant">
       <header><div className="trijo-chat-avatar" aria-hidden="true">T</div><div><strong>{settings.assistantName}</strong><span><i /> Online assistant</span></div><button type="button" onClick={clear} aria-label="Clear chat" title="Clear chat">↻</button><button type="button" onClick={() => setOpen(false)} aria-label="Close chatbot">×</button></header>
       <div className="trijo-chat-messages" aria-live="polite">{state.messages.map((message) => <div key={message.id} className={`trijo-message ${message.role} ${message.error ? "error" : ""}`}><div><SafeText text={message.content} />{message.sources?.length ? <small>Sources: {message.sources.map((source, index) => <span key={source.id}>{index > 0 && " · "}{source.url ? <a href={source.url}>{source.title}</a> : source.title}</span>)}</small> : null}{message.error && lastFailed.current && <button type="button" onClick={() => send(lastFailed.current)}>Retry</button>}</div></div>)}{loading && <div className="trijo-message assistant is-typing"><div className="trijo-typing" aria-label="Assistant is typing"><i /><i /><i /></div><span className="trijo-typing-label">Trijotech is typing…</span></div>}<div ref={endRef} /></div>

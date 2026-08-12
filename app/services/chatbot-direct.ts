@@ -66,10 +66,10 @@ export function directKnowledgeAnswer(message: string, entries: KnowledgeEntry[]
     const items = entries.filter((item) => item.category === "services" && item.id !== "service-application-support");
     return items.length ? { message: items.map((item) => `- [${item.title}](${item.url})`).join("\n"), intent: "SERVICE", sources: items.map(sourceOf) } : null;
   }
-  if (intent === "PRODUCT_INFORMATION") return { message: "- [E-Invoicing Pro](/products)\n- [HauptBuch Consolidation](/products)\n- [Profitability Pro](/products)", intent: "PRODUCT", sources: [{ id: "products-page", title: "Trijotech Products", category: "products", url: "/products" }] };
+  if (intent === "PRODUCT_INFORMATION") return { message: "- [E-Invoicing Pro](/solutions)\n- [HauptBuch Consolidation](/solutions)\n- [Profitability Pro](/solutions)", intent: "PRODUCT", sources: [{ id: "products-page", title: "Trijotech Solutions", category: "products", url: "/solutions" }] };
   if (intent === "SPECIFIC_PRODUCT") {
     const name = /hauptbuch/i.test(message) ? "HauptBuch Consolidation" : /profitability/i.test(message) ? "Profitability Pro" : "E-Invoicing Pro";
-    return { message: `**${name}** is a Trijotech product. For verified feature, fit, demonstration, or pricing details, contact [sales@trijotech.com](mailto:sales@trijotech.com) or +91 120-3506433.`, intent: "PRODUCT", sources: [{ id: "products-page", title: "Trijotech Products", category: "products", url: "/products" }] };
+    return { message: `**${name}** is a Trijotech product. For verified feature, fit, demonstration, or pricing details, contact [sales@trijotech.com](mailto:sales@trijotech.com) or +91 120-3506433.`, intent: "PRODUCT", sources: [{ id: "products-page", title: "Trijotech Solutions", category: "products", url: "/solutions" }] };
   }
   if (intent === "BLOGS") return { message: "Trijotech publishes insights on SAP, technology, transformation, analytics, and advisory topics. [View Trijotech blogs](/blogs).", intent: "BLOG", sources: [{ id: "general-blogs", title: "Blogs and insights", category: "general", url: "/blogs" }] };
   if (intent === "CAREERS") return { message: "Applications are accepted for SAP Functional Consultant, SAP Technical Consultant, SAP Developer, Business Analyst, and other relevant roles. [View careers and apply](/careers).", intent: "CAREER", sources: [{ id: "careers-page", title: "Careers at Trijotech", category: "careers", url: "/careers" }] };

@@ -36,8 +36,8 @@ const leadership = [
     description: "Rakesh leads with accountability, business ownership, and a practical focus on SAP transformation that delivers measurable value.",
   },
   {
-    name: "Anjali Patel",
-    role: "CEO & Co-Founder",
+    name: "Rakesh Shah ",
+    role: "Managing Director",
     image: "/assets/images/team_02.jpg",
     description: "Anjali builds trusted partnerships and ensures every engagement balances strategy, delivery, and lasting adoption.",
   },
@@ -63,9 +63,6 @@ export default function AboutUsPage() {
         />
         <div className="about-hero-overlay" />
         <div className="container about-hero-content">
-          <span className="about-eyebrow">About Trijotech</span>
-          <h1>Technology expertise.<br /><em>Business ownership.</em></h1>
-          <p>We help ambitious organizations make SAP transformation simpler, faster, and more valuable—without losing sight of the people who use it.</p>
           <Link href="/contact" className="filled-button">Talk to Our Team</Link>
         </div>
       </section>
@@ -88,21 +85,24 @@ export default function AboutUsPage() {
       <section className="about-purpose">
         <div className="container">
           <div className="section-heading">
-            <h2>Our Vision, <em>Mission &amp; Values</em></h2>
+            <h2>Our Vision, <em>Mission &amp; Goals</em></h2>
             <p>The principles that guide every engagement and long-term client partnership.</p>
           </div>
           <div className="about-purpose-grid">
             <div className="about-purpose-card">
               <span className="about-eyebrow">Our Vision</span>
-              <h2>To be a trusted partner in digital transformation, delivering intelligent solutions that create long-term value.</h2>
+              <h2>Become the trusted partner every organization relies on.</h2>
+              <p>We aspire to be the partner organizations depend on for simpler, smarter SAP and data transformation that delivers real, lasting value.</p>
             </div>
             <div className="about-purpose-card about-purpose-card-accent">
               <span className="about-eyebrow">Our Mission</span>
-              <h2>We empower businesses with innovative SAP solutions and financial expertise to drive efficiency, transparency and growth.</h2>
+              <h2>Make transformation feel achievable.</h2>
+              <p>We bring clarity to complex programs, design around real business needs, and deliver technology that creates lasting value.</p>
             </div>
             <div className="about-purpose-card">
-              <span className="about-eyebrow">Our Values</span>
-              <h2>Integrity, excellence, collaboration, innovation and customer success.</h2>
+              <span className="about-eyebrow">Our Goals</span>
+              <h2>Deliver measurable value, build lasting partnerships.</h2>
+              <p>We focus on measurable outcomes, long-term client success, and continuous innovation on every engagement.</p>
             </div>
           </div>
         </div>

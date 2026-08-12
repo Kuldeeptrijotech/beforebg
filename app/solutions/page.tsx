@@ -185,15 +185,15 @@ const products = [
 const hauptImages = [haupt2, haupt3, haupt4, haupt5, haupt6, haupt7, haupt8];
 
 export const metadata: Metadata = {
-  title: "Products",
-  description: "Explore Trijotech in-house SAP products including E-Invoicing Pro, HauptBuch Consolidation, and Profitability Pro.",
+  title: "Solutions",
+  description: "Explore Trijotech in-house SAP solutions including E-Invoicing Pro, HauptBuch Consolidation, and Profitability Pro.",
 };
 
 export default function ProductsPage() {
   return (
     <main className="products-page">
       
-      <PageHero title="Products" backgroundImage="/assets/heroes/products-blue.png" className="p-h-img-product">
+      <PageHero title="Solutions" backgroundImage="/assets/heroes/products-blue.png" className="p-h-img-product">
         <Link href="/contact" className="filled-button mt-3">Consult Our Experts &rarr;</Link>
       </PageHero>
       
@@ -324,7 +324,7 @@ export default function ProductsPage() {
 
             {eInvoicingWhy.map((item) => (
               <div className="col-md-4" key={item.title}>
-                <a href="/services" style={{ textDecoration: "none", color: "inherit" }}>
+                <Link href="/services" style={{ textDecoration: "none", color: "inherit" }}>
                   <div className="service-item1 e-invoicing-why-card">
                     <img src={item.image.src} alt="" />
                     <div className="service-title1">
@@ -333,7 +333,7 @@ export default function ProductsPage() {
                       {item.subtitle}
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
 
@@ -347,7 +347,7 @@ export default function ProductsPage() {
 
             {eInvoicingStandOut.map((item) => (
               <div className="col-md-3 e-invoicing-standout-column" key={item.title}>
-                <a href="/services" style={{ textDecoration: "none", color: "inherit" }}>
+                <Link href="/services" style={{ textDecoration: "none", color: "inherit" }}>
                   <div className="service-item1 e-invoicing-why-card">
                     <img src={item.image.src} alt="" />
                     <div className="service-title1">
@@ -356,7 +356,7 @@ export default function ProductsPage() {
                       {item.subtitle}
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -548,7 +548,7 @@ export default function ProductsPage() {
             <div className="col-md-12">
               <div className="section-heading">
                 <h2>
-                  Our <em>Products</em>
+                  Our <em>Solutions</em>
                 </h2>
               </div>
             </div>
