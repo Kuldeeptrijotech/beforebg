@@ -36,7 +36,7 @@ export default function CaseStudiesPage() {
   return (
     <main className="case-studies-page">
       
-      <PageHero title="Our Case Studies" className="case-studies-hero" />
+      <PageHero title="Our Case Studies" backgroundImage="/assets/heroes/case-studies-blue.png" className="case-studies-hero" />
 
 
       {studies.map((study, index) => (

@@ -10,10 +10,16 @@ export default function CountUp({ end, suffix = "+", duration = 1500 }) {
     useEffect(() => {
         const el = ref.current;
         if (!el) return;
+        let animationFrame = null;
 
         const animate = () => {
             if (started.current) return;
             started.current = true;
+
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                setValue(end);
+                return;
+            }
 
             const startTime = performance.now();
             const tick = (now) => {
@@ -21,10 +27,10 @@ export default function CountUp({ end, suffix = "+", duration = 1500 }) {
                 const eased = 1 - Math.pow(1 - progress, 3);
                 setValue(Math.round(eased * end));
                 if (progress < 1) {
-                    requestAnimationFrame(tick);
+                    animationFrame = requestAnimationFrame(tick);
                 }
             };
-            requestAnimationFrame(tick);
+            animationFrame = requestAnimationFrame(tick);
         };
         const observer = new IntersectionObserver(
             (entries) => {
@@ -37,11 +43,10 @@ export default function CountUp({ end, suffix = "+", duration = 1500 }) {
         );
 
         observer.observe(el);
-        const fallback = window.setTimeout(animate, 800);
 
         return () => {
             observer.disconnect();
-            window.clearTimeout(fallback);
+            if (animationFrame) cancelAnimationFrame(animationFrame);
         };
     }, [end, duration]);
 

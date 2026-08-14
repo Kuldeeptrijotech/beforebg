@@ -1,1 +1,20 @@
-import type {Metadata} from "next";import LegacyHtmlPage from "../components/LegacyHtmlPage";import {privacyPolicyPage as page} from "../data/legacyPages";export const metadata:Metadata={title:page.title,description:page.description||"Trijotech privacy policy"};export default function PrivacyPolicyPage(){return <LegacyHtmlPage title={page.title} description={page.description} blocks={page.blocks} className="legacy-content-page privacy-policy-page"/>}
+import type { Metadata } from "next";
+import LegacyHtmlPage from "../components/LegacyHtmlPage";
+import { privacyPolicyPage as page } from "../data/legacyPages";
+
+export const metadata: Metadata = {
+  title: page.title,
+  description: page.description || "Trijotech privacy policy",
+};
+
+export default function PrivacyPolicyPage() {
+  return (
+    <LegacyHtmlPage
+      title={page.title}
+      description={page.description}
+      blocks={page.blocks}
+      className="legacy-content-page privacy-policy-page"
+      heroImage="/assets/heroes/privacy-blue.png"
+    />
+  );
+}

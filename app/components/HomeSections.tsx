@@ -17,9 +17,6 @@ import L0408 from "../assets/image/L0408.png";
 import L0409 from "../assets/image/L0409.png";
 import L0410 from "../assets/image/L0410.png";
 import L0411 from "../assets/image/L0411.png";
-import L0503 from "../assets/image/L0503.png";
-import L0504 from "../assets/image/L0504.png";
-import L0505 from "../assets/image/L0505.png";
 import L0601 from "../assets/image/L0601.jpg";
 import L0602 from "../assets/image/L0602.jpg";
 import L0603 from "../assets/image/L0603.jpg";
@@ -69,27 +66,6 @@ const coreServices = [
     { title: "Planning Budgeting Forecasting", image: L0409 },
     { title: "Other Associated Areas", image: L0410 },
     { title: "See All Services", image: L0411 },
-];
-
-const products = [
-    {
-        title: "E-invoicing Pro",
-        description:
-            "We enable seamless compliance through direct integration with government portals, reducing manual effort and errors. Compatible with S/4HANA Public and Private Cloud, the solution is secure, scalable, and built on SAP standards. Real-time tracking ensures full visibility into the invoicing process.",
-        image: L0503,
-    },
-    {
-        title: "HauptBuch Consolidation",
-        description:
-            "We automate legal and financial consolidations across entities and jurisdictions, reducing manual work and ensuring accuracy. Built on SAP BTP with Work Zone integration, the solution supports Multi-GAAP and IFRS compliance. Real-time dashboards offer a unified view, helping speed up financial close and eliminate reliance on spreadsheets.",
-        image: L0504,
-    },
-    {
-        title: "Profitability Pro",
-        description:
-            "We provide real-time profitability insights at both product and customer levels. By automating allocations for COGS, Net Sales, and Gross Sales, reporting becomes faster and more accurate. Dynamic driver mapping ensures precise cost distribution, helping businesses improve margin control and act early on underperforming areas.",
-        image: L0505,
-    },
 ];
 
 const industries = [L0601, L0602, L0603, L0604, L0605, L0606];
@@ -154,7 +130,6 @@ export default function HomeSections() {
                                 <h4>
                                     We pride ourselves on our agility, innovative accelerators, and the long-term partnerships we build — helping organizations unlock value, drive performance, and achieve sustainable growth.
                                 </h4>
-                                <Link href="/contact" className="filled-button">Read More</Link>
                             </div>
                         </div>
                         <div className="col-md-6 align-self-center">
@@ -231,30 +206,6 @@ export default function HomeSections() {
                                 </div>
                             );
                         })}
-                    </div>
-                </div>
-            </section>
-
-            <section className="services products-section">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="section-heading">
-                                <h2>Our <em>Products</em></h2>
-                            </div>
-                        </div>
-                        {products.map((item) => (
-                            <div className="col-md-4" key={item.title}>
-                                <div className="service-item">
-                                    <Image src={item.image} alt={item.title} className="home-section-image" />
-                                    <div className="down-content">
-                                        <h4>{item.title}</h4>
-                                        <p>{item.description}</p>
-                                        <button type="button" onClick={() => router.push("/products")} className="filled-button">Read More</button>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>

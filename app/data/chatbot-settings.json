@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "assistantName": "Trijotech AI Assistant",
+  "welcomeMessage": "Hi! Welcome to Trijotech — it’s lovely to have you here. I can help you explore our company, services, solutions, technologies, careers, and contact options. What would you like to know?",
+  "fallbackMessage": "Thanks for asking. I couldn’t find enough verified information to give you a reliable answer, but our Trijotech team would be happy to help.",
+  "suggestedQuestions": ["Our Services", "About Trijotech", "Career Opportunities", "Contact Our Team", "How Can Trijotech Help My Business?"],
+  "contactButton": true,
+  "maximumMessageLength": 2000
+}

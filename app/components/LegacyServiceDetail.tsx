@@ -7,13 +7,20 @@ import SectionHeading from "./common/SectionHeading";
 export type ServiceCard={title:string;description:string};
 export type ImpactCard={title:string;description:string;image:string};
 
+const generatedServiceHeroes: Record<string, string> = {
+  "SAP Support & Application Management Services": "/assets/heroes/sap-support-blue.png",
+  "SAP Data Integration": "/assets/heroes/sap-data-integration-blue.png",
+  "SAP Full-Stack Applications on BTP": "/assets/heroes/sap-btp-full-stack-blue.png",
+  "SAP AI & ML Data Integration": "/assets/heroes/sap-ai-ml-blue.png",
+};
+
 const resultCards=[
   {title:"Streamlining Financial Operations for a Global Manufacturer",description:"“A global manufacturing company struggled with delayed financial closings and inconsistent reporting. Trijotech implemented SAP S/4HANA with Group Reporting, enabling faster consolidations, improved accuracy, and greater visibility across entities.”"},
   {title:"Retail Transformation Through Real-Time Analytics",description:"“A growing retail chain struggled with delayed and inconsistent reporting across departments. Trijotech implemented SAP Analytics Cloud to unify data and deliver real-time dashboards for sales, finance, and operations. The leadership team now makes faster, data-driven decisions with clear visibility into key business metrics.”"},
 ];
 
 export function ServiceHero({title,image}:{title:string;image:string}){
-  return <PageHero title={title} backgroundImage={image} className="legacy-service-hero"><Link href="/contact" className="filled-button">Consult Our Experts</Link></PageHero>
+  return <PageHero title={title} backgroundImage={generatedServiceHeroes[title] ?? image} className="legacy-service-hero"><Link href="/contact" className="filled-button">Consult Our Experts</Link></PageHero>
 }
 
 export function ContactButton(){return <ContactCta className="legacy-service-contact industry-source-page"/>}

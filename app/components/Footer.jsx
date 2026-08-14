@@ -82,7 +82,7 @@ export default function Footer() {
             <h4>Corporate Address:</h4>
             <p className="icon-text">
               <Icon name="map-marker" />
-              C-414, Tower-C 4th Floor Noida One, Plot No-8 Block-B Sector 62, Noida, Gautam Buddha Nagar, Uttar Pradesh, 201301
+              C56A, Infinity Tecnopark, 501, 16, C Block, Phase 2, Sector 62, Noida, Uttar Pradesh 201309
             </p>
             <p className="icon-text">
               <Icon name="envelope" />
