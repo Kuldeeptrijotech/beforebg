@@ -135,7 +135,7 @@ export default function HomeSections() {
                         <div className="col-md-6 align-self-center">
                             <div className="row">
                                 <div className="col-md-6">
-                                    <div className="count-area-content"><CountUp end={8} suffix="+" /><div className="count-title">Years in SAP Implementation &amp; Support</div></div>
+                                    <div className="count-area-content"><CountUp end={9} suffix="+" /><div className="count-title">Years in SAP Implementation &amp; Support</div></div>
                                 </div>
                                 <div className="col-md-6">
                                     <div className="count-area-content"><CountUp end={100} suffix="+" /><div className="count-title">Projects</div></div>

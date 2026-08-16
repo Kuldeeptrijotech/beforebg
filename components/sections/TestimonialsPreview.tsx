@@ -51,45 +51,46 @@ export default function TestimonialsPreview() {
   if (!visibleTestimonials.length) return null;
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-24 text-white sm:py-28">
-      <div aria-hidden className="absolute inset-0 -z-20 tri-hex-grid" />
+    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-45" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-50" />
       <div aria-hidden className="tri-blob -z-10 h-72 w-72 animate-float-slow" style={{ left: "-8%", top: "20%", background: "radial-gradient(circle, rgba(41,171,135,0.2), transparent 70%)" }} />
 
       <Container className="relative">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <span className="tri-overline">Testimonials</span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Trusted by teams{" "}
               <span className="tri-gradient-text">modernizing with SAP.</span>
             </h2>
-            <p className="mt-5 text-base leading-7 text-slate-400 sm:text-lg">
+            <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
               Hear from clients who rely on Trijotech for practical delivery, clear communication,
               and measurable business outcomes.
             </p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2.5">
             <button
               type="button"
               onClick={goPrevious}
               aria-label="Previous testimonial"
-              className="tri-focus flex size-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(41,171,135,0.6)] hover:bg-white/[0.12]"
+              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(41,171,135,0.6)] hover:bg-white/[0.12]"
             >
-              <ArrowLeft className="size-5" />
+              <ArrowLeft className="size-4" />
             </button>
             <button
               type="button"
               onClick={goNext}
               aria-label="Next testimonial"
-              className="tri-focus flex size-11 items-center justify-center rounded-full bg-[linear-gradient(120deg,#29ab87,#117a4b)] text-white shadow-lg shadow-[rgba(41,171,135,0.4)] transition hover:-translate-y-0.5"
+              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full bg-[linear-gradient(120deg,#29ab87,#117a4b)] text-white shadow-lg shadow-[rgba(41,171,135,0.4)] transition hover:-translate-y-0.5"
             >
-              <ArrowRight className="size-5" />
+              <ArrowRight className="size-4" />
             </button>
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-7 sm:mt-8 grid gap-5 lg:grid-cols-3 items-stretch">
           <AnimatePresence mode="popLayout">
             {visibleCards.map((testimonial) => (
               <motion.article
@@ -99,13 +100,13 @@ export default function TestimonialsPreview() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -24, scale: 0.97 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="tri-glass-card tri-border-gradient flex h-full flex-col rounded-3xl p-6 sm:p-7"
+                className="tri-glass-card tri-border-gradient flex h-full flex-col rounded-2xl p-5 sm:p-6"
               >
                 <div className="flex items-center justify-between">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[linear-gradient(160deg,rgba(41,171,135,0.3),rgba(17,122,75,0.3))]">
-                    <Quote className="size-5 text-[#7edcc2]" />
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(160deg,rgba(41,171,135,0.3),rgba(17,122,75,0.3))]">
+                    <Quote className="size-4 text-[#7edcc2]" />
                   </span>
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#f5a623]">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#f5a623]">
                     {testimonial.companyName}
                   </span>
                 </div>
@@ -114,34 +115,36 @@ export default function TestimonialsPreview() {
                   {testimonial.testimonial}
                 </p>
 
-                <button
-                  type="button"
-                  onClick={() => setSelectedTestimonial(testimonial)}
-                  className="tri-focus mt-5 w-fit text-sm font-semibold text-[#7edcc2] transition hover:text-[#f5a623]"
-                >
-                  Read more
-                </button>
+                <div className="mt-auto pt-4">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedTestimonial(testimonial)}
+                    className="tri-focus w-fit text-sm font-semibold text-[#7edcc2] transition hover:text-[#f5a623]"
+                  >
+                    Read more
+                  </button>
 
-                <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-5">
-                  {testimonial.image ? (
-                    <div className="relative size-12 overflow-hidden rounded-full bg-slate-700">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.imageAlt ?? testimonial.writerName}
-                        fill
-                        sizes="48px"
-                        className="object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className="flex size-12 items-center justify-center rounded-full bg-[linear-gradient(160deg,#29ab87,#117a4b)] text-sm font-bold text-white">
-                      {getInitials(testimonial.writerName)}
-                    </div>
-                  )}
+                  <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-5">
+                    {testimonial.image ? (
+                      <div className="relative size-12 overflow-hidden rounded-full bg-slate-700">
+                        <Image
+                          src={testimonial.image}
+                          alt={testimonial.imageAlt ?? testimonial.writerName}
+                          fill
+                          sizes="48px"
+                          className="object-cover"
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex size-12 items-center justify-center rounded-full bg-[linear-gradient(160deg,#29ab87,#117a4b)] text-sm font-bold text-white">
+                        {getInitials(testimonial.writerName)}
+                      </div>
+                    )}
 
-                  <div className="min-w-0">
-                    <p className="truncate font-semibold text-white">{testimonial.writerName}</p>
-                    <p className="truncate text-sm text-slate-400">{testimonial.designation}</p>
+                    <div className="min-w-0">
+                      <p className="truncate font-semibold text-white">{testimonial.writerName}</p>
+                      <p className="truncate text-sm text-slate-400">{testimonial.designation}</p>
+                    </div>
                   </div>
                 </div>
               </motion.article>

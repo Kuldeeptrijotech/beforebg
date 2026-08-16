@@ -26,42 +26,40 @@ const capabilities = [
 
 export default function SAPCapabilities() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#030713] py-24 text-white sm:py-28">
-      <div aria-hidden className="absolute inset-0 -z-20 tri-mesh tri-hex-grid" />
+    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-45" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-50" />
 
-      <Container className="relative grid items-center gap-14 lg:grid-cols-2">
+      <Container className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
           <Reveal>
-            <SectionHeading
-              eyebrow="SAP Ecosystem"
-              dark
-              title={
-                <>
-                  One connected ecosystem across the{" "}
-                  <span className="tri-gradient-text">SAP landscape.</span>
-                </>
-              }
-              description="Trijotech works across the SAP stack — core ERP, analytics, finance, platform services, and managed support — so your systems stay connected and your teams keep full visibility."
-            />
+            <span className="tri-overline">SAP Ecosystem</span>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+              One connected ecosystem across the{" "}
+              <span className="tri-gradient-text">SAP landscape.</span>
+            </h2>
+            <p className="mt-2.5 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
+              Trijotech works across the SAP stack — core ERP, analytics, finance, platform services, and managed support — so your systems stay connected and your teams keep full visibility.
+            </p>
           </Reveal>
 
-          <StaggerReveal className="mt-9 space-y-4" stagger={0.08}>
+          <StaggerReveal className="mt-5 space-y-2.5" stagger={0.06}>
             {capabilities.map((capability) => (
               <StaggerRevealItem key={capability}>
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#29ab87,#117a4b)] text-white">
-                    <DatabaseZap className="h-4 w-4" strokeWidth={2} />
+                <div className="flex items-center gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#29ab87,#117a4b)] text-white shadow-sm">
+                    <DatabaseZap className="h-3.5 w-3.5" strokeWidth={2.2} />
                   </span>
-                  <p className="text-base leading-7 text-slate-300">{capability}</p>
+                  <p className="text-xs font-medium leading-snug text-slate-200 sm:text-sm">{capability}</p>
                 </div>
               </StaggerRevealItem>
             ))}
           </StaggerReveal>
 
-          <Reveal delay={0.2}>
-            <div className="mt-10">
-              <GradientButton href="/services" size="lg">
-                Explore our services <ArrowRight className="h-5 w-5" />
+          <Reveal delay={0.15}>
+            <div className="mt-6">
+              <GradientButton href="/services" size="md">
+                Explore our services <ArrowRight className="h-4 w-4" />
               </GradientButton>
             </div>
           </Reveal>

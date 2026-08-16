@@ -22,9 +22,9 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** SAP-inspired blue technology foundation + Trijotech accents. */
 export const SAP = {
-  ink: "#050817",
-  navy: "#0b1d33",
-  deep: "#0a2540",
+  ink: "#121927",
+  navy: "#1a2336",
+  deep: "#162032",
   blue: "#0a6ed1",
   blueBright: "#2f8fff",
   azure: "#38bdf8",
@@ -123,7 +123,7 @@ export type GlassVariant = "frosted" | "transparent" | "dark" | "light";
 const GLASS: Record<GlassVariant, string> = {
   frosted: "bg-white/[0.07] backdrop-blur-xl border border-white/15",
   transparent: "bg-white/[0.03] backdrop-blur-sm border border-white/10",
-  dark: "bg-[#0a1a30]/70 backdrop-blur-xl border border-white/10",
+  dark: "bg-[#162032]/80 backdrop-blur-xl border border-white/12",
   light: "bg-white/85 backdrop-blur-xl border border-[#cfe4f5]",
 };
 
@@ -183,8 +183,8 @@ export function Metric({
   sub?: string;
 }) {
   return (
-    <div className="relative">
-      <p className={`text-4xl font-extrabold tracking-tight sm:text-5xl ${accent}`}>
+    <div className="relative h-full">
+      <p className={`flex h-10 items-end whitespace-nowrap text-4xl font-extrabold tracking-tight sm:h-12 sm:text-5xl ${accent}`}>
         <AnimatedCounter to={to} prefix={prefix} suffix={suffix} />
       </p>
       <p className="mt-2 text-sm font-semibold text-white/85">{label}</p>
@@ -231,7 +231,7 @@ export function ServiceCta({
 }) {
   const palette = CTA_ACCENT[accent];
   return (
-    <section className="relative overflow-hidden bg-[#050817] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+    <section className="relative overflow-hidden bg-[#121927] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
       <div aria-hidden className="absolute inset-0 tri-hex-grid" />
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_0%,rgba(10,110,209,0.22),transparent_60%),radial-gradient(50%_50%_at_85%_100%,rgba(34,211,238,0.14),transparent_60%)]" />
       <div aria-hidden className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: `radial-gradient(circle, ${palette.orbs[0]}, transparent 70%)` }} />

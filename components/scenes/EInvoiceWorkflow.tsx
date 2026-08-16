@@ -1,191 +1,460 @@
 "use client";
-import type { ReactNode } from "react";
-import { FlowLink, Packet, PulseDot, SceneCanvas, TRI } from "./scene-ui";
 
-const hex = (cx: number, cy: number, r: number) =>
-  Array.from({ length: 6 }, (_, i) => {
-    const a = (Math.PI / 3) * i - Math.PI / 2;
-    return `${(cx + r * Math.cos(a)).toFixed(1)},${(cy + r * Math.sin(a)).toFixed(1)}`;
-  }).join(" ");
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  Activity,
+  ArrowRight,
+  Award,
+  CheckCircle2,
+  Cpu,
+  FileCheck2,
+  FileCode2,
+  FileText,
+  Globe2,
+  Lock,
+  QrCode,
+  RefreshCw,
+  Scale,
+  Send,
+  Server,
+  ShieldCheck,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
-const SNAKE =
-  "M120 105 L504 105 Q540 105 540 141 L540 254 Q540 290 504 290 L156 290 Q120 290 120 326 L120 424 Q120 460 156 460 L300 460";
+/* ─────────────────────────────────────────────────────────────
+   E-INVOICING PRO — REAL-TIME STATUTORY CLEARANCE ENGINE
+   Interactive Multi-Jurisdiction E-Invoice & Peppol Clearance Deck
+   ───────────────────────────────────────────────────────────── */
 
-type Node = {
-  x: number;
-  y: number;
-  label: string;
-  sub: string;
-  fill: string;
-  stroke: string;
-  glyph: ReactNode;
-  labelFill: string;
+type ClearanceStage = {
+  id: string;
+  step: string;
+  name: string;
+  desc: string;
+  protocol: string;
+  color: string;
+  status: string;
+  metrics: { label: string; value: string };
+  checks: string[];
 };
 
-function NodeShape({ node, r = 26 }: { node: Node; r?: number }) {
-  const { x, y } = node;
-  return (
-    <g>
-      <polygon points={hex(x, y, r + 7)} fill="none" stroke={node.stroke} strokeWidth="1" opacity="0.22" className="tri-pulse" />
-      <polygon points={hex(x, y, r)} fill={node.fill} stroke={node.stroke} strokeWidth="1.4" />
-      <g transform={`translate(${x},${y})`}>{node.glyph}</g>
-      <text x={x} y={y + r + 20} textAnchor="middle" fontSize="12.5" fontWeight={700} fill={node.labelFill} style={{ fontFamily: "Poppins, sans-serif" }}>
-        {node.label}
-      </text>
-      <text x={x} y={y + r + 34} textAnchor="middle" fontSize="9.5" fill="rgba(191,232,216,0.55)" style={{ fontFamily: "Poppins, sans-serif" }}>
-        {node.sub}
-      </text>
-    </g>
-  );
-}
-
-const GLYPH = {
-  server: (
-    <g>
-      <rect x="-7" y="-9" width="14" height="4" rx="1" fill="#7edcc2" opacity="0.9" />
-      <rect x="-7" y="-3" width="14" height="4" rx="1" fill="rgba(191,232,216,0.55)" />
-      <rect x="-7" y="3" width="14" height="4" rx="1" fill="rgba(191,232,216,0.35)" />
-      <circle cx="5" cy="-7" r="1.5" fill="#050817" />
-    </g>
-  ),
-  doc: (
-    <g>
-      <rect x="-6" y="-8" width="12" height="16" rx="1.5" fill="none" stroke="#7edcc2" strokeWidth="1.3" />
-      <path d="M2 -8 L2 -3 L7 -3 Z" fill="#7edcc2" />
-      <rect x="-3.5" y="-2" width="7" height="1.2" fill="rgba(191,232,216,0.6)" />
-      <rect x="-3.5" y="1" width="7" height="1.2" fill="rgba(191,232,216,0.6)" />
-      <rect x="-3.5" y="4" width="4.5" height="1.2" fill="rgba(191,232,216,0.6)" />
-    </g>
-  ),
-  check: (
-    <path d="M-5 0 L-1.5 3.5 L6 -4" fill="none" stroke="#7edcc2" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-  ),
-  bolt: <path d="M1 -9 L-5 1 L0 1 L-1 9 L5 -1 L0 -1 Z" fill="#7edcc2" />,
-  landmark: (
-    <g>
-      <path d="M-8 2 L8 2" stroke="#f5a623" strokeWidth="2" strokeLinecap="round" />
-      <rect x="-5" y="-5" width="3" height="7" fill="rgba(245,166,35,0.75)" />
-      <rect x="1" y="-5" width="3" height="7" fill="rgba(245,166,35,0.75)" />
-      <path d="M-7 6 L7 6 L6 9 L-6 9 Z" fill="#f5a623" opacity="0.85" />
-    </g>
-  ),
-  scale: (
-    <g>
-      <path d="M0 -8 L-7 3 L7 3 Z" fill="none" stroke="#f5a623" strokeWidth="1.6" />
-      <path d="M-9 3 L9 3" stroke="#f5a623" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M-7 3 L-9.5 6.5 M7 3 L9.5 6.5" stroke="#f5a623" strokeWidth="1.3" strokeLinecap="round" />
-    </g>
-  ),
-  checkBig: (
-    <g>
-      <circle r="11" fill="none" stroke="#7edcc2" strokeWidth="1.4" opacity="0.55" />
-      <path d="M-4.5 0.5 L-1 4 L5 -3.5" fill="none" stroke="#7edcc2" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-    </g>
-  ),
+type Jurisdiction = {
+  id: string;
+  name: string;
+  region: string;
+  format: string;
+  color: string;
+  irnExample: string;
+  taxAuthority: string;
 };
 
-const NODES: Node[] = [
-  { x: 120, y: 105, label: "SAP", sub: "Source system", fill: "linear-gradient(160deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03))", stroke: "rgba(72,101,127,0.9)", glyph: GLYPH.server, labelFill: "rgba(191,232,216,0.85)" },
-  { x: 330, y: 105, label: "Invoice Generated", sub: "FI / AR document", fill: "linear-gradient(160deg,rgba(41,171,135,0.22),rgba(17,122,75,0.32))", stroke: "rgba(126,220,194,0.7)", glyph: GLYPH.doc, labelFill: "rgba(191,232,216,0.9)" },
-  { x: 540, y: 105, label: "Validation", sub: "Checks & tax rules", fill: "linear-gradient(160deg,rgba(41,171,135,0.22),rgba(17,122,75,0.32))", stroke: "rgba(126,220,194,0.7)", glyph: GLYPH.check, labelFill: "rgba(191,232,216,0.9)" },
-  { x: 540, y: 290, label: "E-Invoice Processing", sub: "PEPPOL / XML format", fill: "linear-gradient(160deg,rgba(41,171,135,0.22),rgba(17,122,75,0.32))", stroke: "rgba(126,220,194,0.7)", glyph: GLYPH.bolt, labelFill: "rgba(191,232,216,0.9)" },
-  { x: 330, y: 290, label: "Government / External", sub: "Clearance portal", fill: "linear-gradient(160deg,#f5a623,#f29e16)", stroke: "rgba(245,166,35,0.95)", glyph: GLYPH.landmark, labelFill: "#fff" },
-  { x: 120, y: 290, label: "Approval / Rejection", sub: "Vendor decision", fill: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)", stroke: "rgba(245,166,35,0.8)", glyph: GLYPH.scale, labelFill: "rgba(191,232,216,0.9)" },
-  { x: 330, y: 460, label: "Approved · Returned to SAP", sub: "Real-time status sync", fill: "linear-gradient(160deg,#29ab87,#117a4b)", stroke: "rgba(126,220,194,0.95)", glyph: GLYPH.checkBig, labelFill: "#fff" },
+const JURISDICTIONS: Jurisdiction[] = [
+  {
+    id: "gst",
+    name: "India GST e-Invoice",
+    region: "NIC / IRP Portal",
+    format: "JSON Schema V1.1 · Signed QR",
+    color: "#29ab87",
+    irnExample: "a8f3e1...99c4d2",
+    taxAuthority: "Goods & Services Tax Network (GSTN)",
+  },
+  {
+    id: "peppol",
+    name: "PEPPOL BIS 3.0",
+    region: "Europe & Global",
+    format: "UBL 2.1 XML · AS4 Network",
+    color: "#38bdf8",
+    irnExample: "urn:peppol:bis:billing:3@0",
+    taxAuthority: "OpenPeppol International AISBL",
+  },
+  {
+    id: "zatca",
+    name: "Saudi ZATCA Phase 2",
+    region: "Fatoora Portal",
+    format: "Cryptographic Stamp · ECDSA",
+    color: "#f5a623",
+    irnExample: "zatca-uuid-48f1-98ac",
+    taxAuthority: "Zakat, Tax & Customs Authority",
+  },
+  {
+    id: "ksef",
+    name: "Poland KSeF / SDI",
+    region: "European Mandatory",
+    format: "FA_VAT XML Structured File",
+    color: "#8b7cf6",
+    irnExample: "ksef-pl-20260816-0042",
+    taxAuthority: "National e-Invoice System (KSeF)",
+  },
 ];
 
-const CHEVRONS: Array<{ d: string }> = [
-  { d: "M316 99 L328 105 L316 111" },
-  { d: "M534 184 L540 197 L546 184" },
-  { d: "M344 284 L332 290 L344 296" },
-  { d: "M114 362 L120 375 L126 362" },
-  { d: "M168 454 L180 460 L168 466" },
+const STAGES: ClearanceStage[] = [
+  {
+    id: "extract",
+    step: "01",
+    name: "SAP ERP Data Extraction",
+    desc: "Seamless real-time capture from SAP SD billing & FI-AR accounting documents.",
+    protocol: "OData V4 / IDoc Native Bridge",
+    color: "#38bdf8",
+    status: "EXTRACTED",
+    metrics: { label: "Extraction Latency", value: "< 85 ms" },
+    checks: ["Automated line-item tax calculation", "Customer GSTIN/Tax ID verification", "Clean Core Zero-Modification SAP bridge"],
+  },
+  {
+    id: "validate",
+    step: "02",
+    name: "Pre-Clearance Validation",
+    desc: "140+ real-time tax validation rules preventing government portal rejection.",
+    protocol: "Rules Engine · 100% Tax Accuracy",
+    color: "#22d3ee",
+    status: "VALIDATED",
+    metrics: { label: "Pre-Validation Accuracy", value: "99.99%" },
+    checks: ["HSN/SAC code & rate match", "Calculated tax vs. ledger reconciliation", "Mandatory schema fields assertion"],
+  },
+  {
+    id: "clearance",
+    step: "03",
+    name: "Government Portal Handshake",
+    desc: "Direct cryptographic connection to government tax server with sub-second signing.",
+    protocol: "TLS 1.3 / HMAC-SHA256 Sign",
+    color: "#f5a623",
+    status: "IRN GENERATED",
+    metrics: { label: "Clearance Speed", value: "< 340 ms" },
+    checks: ["Official IRN hash generated & registered", "Digital signature affixed to payload", "Signed B2B / B2G QR code payload returned"],
+  },
+  {
+    id: "sync",
+    step: "04",
+    name: "SAP Sync & Buyer Dispatch",
+    desc: "Real-time update of SAP billing document with IRN, QR code, and automated dispatch.",
+    protocol: "Instant B2B PDF/XML Dispatch",
+    color: "#29ab87",
+    status: "DISPATCHED",
+    metrics: { label: "Auto-Reconciliation", value: "Instant 100%" },
+    checks: ["SAP invoice status set to Cleared", "Signed PDF invoice generated with QR", "Automated email/portal dispatch to buyer"],
+  },
 ];
-
-const DOC_BARS = [
-  { x: -11, w: 1.3, o: 0.85 },
-  { x: -7.2, w: 2.1, o: 0.7 },
-  { x: -3.4, w: 1.3, o: 0.85 },
-  { x: 0.4, w: 2.1, o: 0.6 },
-  { x: 4.2, w: 1.3, o: 0.8 },
-  { x: 7.6, w: 1.8, o: 0.65 },
-];
-
-function FloatBadge({ x, y, rotate, color, title, sub, big = false }: { x: number; y: number; rotate: number; color: string; title: string; sub?: string; big?: boolean }) {
-  const w = big ? 88 : 68;
-  const h = big ? 30 : 24;
-  return (
-    <g transform={`translate(${x},${y}) rotate(${rotate})`} className="tri-pulse">
-      <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={h / 2} fill="rgba(4,12,24,0.55)" stroke={color} strokeWidth={big ? 1.8 : 1.3} />
-      <text y={big ? 2 : 3.5} textAnchor="middle" fontSize={big ? 10.5 : 9} fontWeight={800} fill={color} letterSpacing={big ? 2 : 1.4} style={{ fontFamily: "Poppins, sans-serif" }}>
-        {title}
-      </text>
-      {sub ? (
-        <text y={big ? 12.5 : 13} textAnchor="middle" fontSize={big ? 5.5 : 5} fontWeight={700} fill="#7edcc2" letterSpacing={1.2} style={{ fontFamily: "Poppins, sans-serif" }}>
-          {sub}
-        </text>
-      ) : null}
-    </g>
-  );
-}
 
 export default function EInvoiceWorkflow() {
+  const reduce = useReducedMotion();
+  const [activeJur, setActiveJur] = useState(0);
+  const [activeStage, setActiveStage] = useState(2); // Default to Step 3 (IRN Clearance)
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [invoiceCounter, setInvoiceCounter] = useState(1489240);
+
+  const jur = JURISDICTIONS[activeJur];
+  const stage = STAGES[activeStage];
+
+  // Increment counter in real-time
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setInvoiceCounter((prev) => prev + Math.floor(Math.random() * 12) + 3);
+    }, 1800);
+    return () => clearInterval(timer);
+  }, []);
+
+  const triggerSimulatedClearance = () => {
+    setIsProcessing(true);
+    setTimeout(() => {
+      setIsProcessing(false);
+      setActiveStage((prev) => (prev + 1) % STAGES.length);
+    }, 800);
+  };
+
   return (
-    <SceneCanvas bleed className="h-full w-full">
-      <div className="absolute right-6 top-5 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1">
-        <span className="h-1.5 w-1.5 rounded-full bg-tri-2 tri-pulse" />
-        <p className="text-[10px] font-semibold text-tri-2">LIVE · 7 / 7</p>
+    <div className="relative isolate h-full min-h-full w-full overflow-hidden select-none bg-[#030713] px-3 sm:px-6 lg:px-10 py-3 flex flex-col justify-between">
+      {/* ── Glowing Mesh & Cyber Grid Background ── */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at center, rgba(41,171,135,0.18) 1px, transparent 1px),
+              linear-gradient(to right, rgba(56,189,248,0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: "36px 36px, 72px 72px",
+          }}
+        />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[420px] w-[700px] rounded-full bg-[radial-gradient(ellipse,rgba(41,171,135,0.16)_0%,transparent_70%)] blur-3xl" />
       </div>
 
-      <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 640 540" preserveAspectRatio="xMidYMid meet" fill="none">
-        <defs>
-          <linearGradient id="scanGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="rgba(126,220,194,0)" />
-            <stop offset="0.5" stopColor="rgba(126,220,194,0.95)" />
-            <stop offset="1" stopColor="rgba(126,220,194,0)" />
-          </linearGradient>
-        </defs>
+      {/* ── Top Header Controls & Jurisdiction Switcher ── */}
+      <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87] shadow-[0_0_15px_rgba(41,171,135,0.4)]">
+            <FileCheck2 className="h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
+          </span>
+          <div>
+            <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
+              E-INVOICING PRO · STATUTORY CLEARANCE ENGINE
+            </h2>
+            <p className="text-[8px] sm:text-[9px] font-mono text-[#7edcc2]">
+              GLOBAL PEPPOL NETWORK · ZATCA · GST IRP · 100% AUDIT-PROOF
+            </p>
+          </div>
+        </div>
 
-        <FlowLink d={SNAKE} color="rgba(41,171,135,0.4)" width={1.6} dash />
-
-        <Packet d={SNAKE} dur={16} delay={0} color={TRI.mint} r={3.5} />
-        <Packet d={SNAKE} dur={16} delay={5.3} color={TRI.amber} r={3} />
-        <Packet d={SNAKE} dur={16} delay={10.6} color={TRI.mint} r={3} />
-
-        {CHEVRONS.map((c, i) => (
-          <path key={i} d={c.d} stroke="rgba(126,220,194,0.8)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="tri-pulse" />
-        ))}
-
-        {NODES.map((n, i) => (
-          <NodeShape key={i} node={n} r={i === NODES.length - 1 ? 30 : 26} />
-        ))}
-        {NODES.map((n, i) => (
-          <PulseDot key={i} cx={n.x} cy={n.y} color={i === 0 ? "#48657f" : i === NODES.length - 1 ? TRI.amber : TRI.green} r={3} dur={2.6} />
-        ))}
-
-        <g>
-          <animateMotion dur="16s" begin="-4s" repeatCount="indefinite" path={SNAKE} />
-          <rect x="-17" y="-23" width="34" height="46" rx="3.5" fill="rgba(4,12,24,0.88)" stroke="#7edcc2" strokeWidth="1.4" />
-          <path d="M6 -23 L6 -8 L21 -8 Z" fill="rgba(126,220,194,0.16)" stroke="#7edcc2" strokeWidth="1.2" strokeLinejoin="round" />
-          <rect x="-11" y="-14" width="16" height="1.6" rx="0.8" fill="rgba(191,232,216,0.85)" />
-          <rect x="-11" y="-9.5" width="22" height="1.6" rx="0.8" fill="rgba(191,232,216,0.5)" />
-          <rect x="-11" y="-5" width="13" height="1.6" rx="0.8" fill="rgba(191,232,216,0.5)" />
-          <text x="-11" y="6" fontSize="7.5" fontWeight={700} fill="#7edcc2" textAnchor="start" style={{ fontFamily: "Poppins, sans-serif" }}>
-            € 1,240.00
-          </text>
-          {DOC_BARS.map((b, i) => (
-            <rect key={i} x={b.x} y="10" width={b.w} height="5" rx="0.5" fill="rgba(191,232,216,0.7)" opacity={b.o} />
+        {/* Global Mandate Selector Pills */}
+        <div className="flex items-center gap-1 overflow-x-auto max-w-full rounded-xl bg-black/60 border border-white/10 p-1 backdrop-blur-md no-scrollbar">
+          {JURISDICTIONS.map((j, idx) => (
+            <button
+              key={j.id}
+              onClick={() => setActiveJur(idx)}
+              className={`whitespace-nowrap rounded-lg px-2 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-mono font-bold transition-all duration-300 ${
+                activeJur === idx
+                  ? "bg-white text-slate-950 shadow-md shadow-white/20 scale-105"
+                  : "text-white/60 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              {j.name.split(" ")[0]} {j.name.split(" ")[1]}
+            </button>
           ))}
-        </g>
+        </div>
+      </div>
 
-        <rect x="505" y="262" width="70" height="3" rx="1.5" fill="url(#scanGrad)" opacity="0.9">
-          <animate attributeName="y" values="262;318" dur="2.2s" repeatCount="indefinite" />
-        </rect>
+      {/* ── Main Interactive Clearance Stage ── */}
+      <div className="relative z-20 flex-1 min-h-0 my-auto py-2 sm:py-3 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-6 items-center overflow-y-auto lg:overflow-visible">
+        
+        {/* ── LEFT / CENTER COLUMN (6 Cols): Live Glowing Digital Tax Invoice Card ── */}
+        <div className="lg:col-span-6 flex flex-col items-center">
+          <motion.div
+            key={jur.id}
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="w-full max-w-md rounded-2xl sm:rounded-3xl border border-white/15 bg-gradient-to-b from-[#0e1828]/95 via-[#08101d]/95 to-[#040812]/95 p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl relative overflow-hidden"
+            style={{
+              boxShadow: `0 20px 50px -15px ${jur.color}40, 0 0 0 1px rgba(255,255,255,0.1)`,
+            }}
+          >
+            {/* Dynamic Laser Scanning Beam */}
+            <motion.div
+              animate={{ y: [0, 220, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-x-0 h-1 pointer-events-none z-10 opacity-70"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${jur.color}, transparent)`,
+                boxShadow: `0 0 15px ${jur.color}`,
+              }}
+            />
 
-        <FloatBadge x={254} y={128} rotate={-6} color="#7edcc2" title="VALID" />
-        <FloatBadge x={298} y={196} rotate={-3} color="#f5a623" title="SUBMITTED" />
-        <FloatBadge x={452} y={452} rotate={6} color="#f5a623" title="APPROVED" sub="RETURNED TO SAP" big />
-      </svg>
-    </SceneCanvas>
+            {/* Invoice Card Top Header */}
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div className="flex items-center gap-2">
+                <span
+                  className="flex h-8 w-8 items-center justify-center rounded-xl text-white shadow-md font-mono text-xs font-black"
+                  style={{ background: jur.color }}
+                >
+                  <FileText className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-[9px] font-mono text-white/50 uppercase">{jur.taxAuthority}</p>
+                  <p className="text-xs sm:text-sm font-mono font-extrabold text-white">INV-2026-084920</p>
+                </div>
+              </div>
+
+              {/* Status Badge */}
+              <div className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[9px] sm:text-[10px] font-mono font-bold bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#7edcc2] shadow-[0_0_10px_rgba(41,171,135,0.3)]">
+                <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#29ab87]" />
+                <span>IRN CLEARED</span>
+              </div>
+            </div>
+
+            {/* Invoice Core Details Grid */}
+            <div className="mt-3 grid grid-cols-2 gap-2 text-[10px] sm:text-[11px] font-mono">
+              <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2.5">
+                <p className="text-[8px] sm:text-[9px] text-white/40 uppercase">SELLER / SUPPLIER</p>
+                <p className="font-bold text-white mt-0.5 truncate">TRIJOTECH GLOBAL LTD</p>
+                <p className="text-[8px] text-[#38bdf8]">SAP S/4HANA CLOUD</p>
+              </div>
+
+              <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2.5">
+                <p className="text-[8px] sm:text-[9px] text-white/40 uppercase">BUYER / RECIPIENT</p>
+                <p className="font-bold text-white mt-0.5 truncate">ENTERPRISE CORP AG</p>
+                <p className="text-[8px] text-[#f5a623]">PEPPOL ID: 0088:492</p>
+              </div>
+            </div>
+
+            {/* Cryptographic IRN / Hash Stamp Box */}
+            <div className="mt-2.5 rounded-xl bg-black/60 border border-white/10 p-2.5 flex items-center justify-between gap-2">
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 text-[8px] sm:text-[9px] font-mono text-white/50">
+                  <Lock className="h-3 w-3 text-[#29ab87]" />
+                  <span>CRYPTOGRAPHIC IRN HASH</span>
+                </div>
+                <p className="mt-0.5 text-[10px] sm:text-xs font-mono font-extrabold text-[#7edcc2] truncate">
+                  {jur.irnExample} · SIGNED_OK
+                </p>
+              </div>
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 border border-white/20 text-[#38bdf8]">
+                <QrCode className="h-5 w-5" />
+              </div>
+            </div>
+
+            {/* Invoice Line & Total */}
+            <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between">
+              <div>
+                <p className="text-[8px] font-mono text-white/40 uppercase">TOTAL TAXABLE + STATUTORY TAX</p>
+                <p className="text-xs font-mono text-white/70">18.00% Integrated IGST / VAT</p>
+              </div>
+              <div className="text-right">
+                <p className="text-base sm:text-lg font-mono font-extrabold text-white">
+                  $128,450.00 <span className="text-[10px] text-[#29ab87]">USD</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Test Clearance Action Button */}
+            <div className="mt-3 pt-2 border-t border-white/10">
+              <button
+                onClick={triggerSimulatedClearance}
+                disabled={isProcessing}
+                className="w-full flex items-center justify-center gap-2 rounded-xl py-2 px-3 text-xs font-mono font-bold text-slate-950 transition-all duration-300 shadow-lg active:scale-95"
+                style={{
+                  background: isProcessing ? "#fff" : `linear-gradient(135deg, ${jur.color}, #ffffff)`,
+                  boxShadow: `0 0 20px ${jur.color}60`,
+                }}
+              >
+                {isProcessing ? (
+                  <>
+                    <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+                    <span>Signing Cryptographic Payload...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="h-3.5 w-3.5" />
+                    <span>Test Instant Government Clearance Handshake</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ── RIGHT COLUMN (6 Cols): 4-Step Clearance Workflow Deck & Telemetry HUD ── */}
+        <div className="lg:col-span-6 flex flex-col gap-2.5 sm:gap-3">
+          
+          {/* Interactive Step Switcher Tabs */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
+            {STAGES.map((s, idx) => {
+              const isSelected = activeStage === idx;
+
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => setActiveStage(idx)}
+                  className={`flex flex-col items-start p-2 sm:p-2.5 rounded-xl border text-left transition-all duration-300 backdrop-blur-xl ${
+                    isSelected
+                      ? "bg-[#030713]/95 shadow-md scale-[1.02]"
+                      : "bg-[#030713]/60 hover:bg-[#030713]/80"
+                  }`}
+                  style={{
+                    borderColor: isSelected ? s.color : "rgba(255,255,255,0.1)",
+                    boxShadow: isSelected ? `0 0 15px ${s.color}40` : "none",
+                  }}
+                >
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-[8px] font-mono font-extrabold" style={{ color: s.color }}>
+                      STEP {s.step}
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: s.color }} />
+                  </div>
+                  <p className="mt-0.5 text-[10px] sm:text-[11px] font-bold text-white truncate w-full">
+                    {s.name.split(" ")[0]}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Stage Breakdown Card */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={stage.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl sm:rounded-3xl border border-white/12 bg-[#030713]/95 p-4 sm:p-5 shadow-2xl backdrop-blur-2xl"
+              style={{
+                boxShadow: `0 20px 45px -15px ${stage.color}40, 0 0 0 1px rgba(255,255,255,0.08)`,
+              }}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+                <div>
+                  <span className="text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-wider text-white/50">
+                    Step {stage.step} of 04 · Architecture Protocol
+                  </span>
+                  <h3 className="text-xs sm:text-sm lg:text-base font-bold text-white leading-snug">
+                    {stage.name}
+                  </h3>
+                </div>
+                <span
+                  className="rounded-full px-2.5 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold"
+                  style={{ background: `${stage.color}20`, color: stage.color, border: `1px solid ${stage.color}40` }}
+                >
+                  {stage.metrics.value}
+                </span>
+              </div>
+
+              <p className="mt-2 text-xs text-slate-300 leading-relaxed">
+                {stage.desc}
+              </p>
+
+              {/* Checks Checklist */}
+              <div className="mt-3 space-y-1.5 pt-2.5 border-t border-white/10">
+                <p className="text-[8px] sm:text-[9px] font-mono uppercase tracking-wider text-white/40">
+                  Compliance Automation Checks
+                </p>
+                {stage.checks.map((chk) => (
+                  <div key={chk} className="flex items-start gap-1.5 text-[10px] sm:text-xs text-white/85">
+                    <CheckCircle2 className="h-3.5 w-3.5 shrink-0 mt-0.5" style={{ color: stage.color }} />
+                    <span>{chk}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom Telemetry Metrics */}
+              <div className="mt-3 grid grid-cols-3 gap-1.5 pt-2.5 border-t border-white/10 text-center">
+                <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
+                  <p className="text-[7px] sm:text-[8px] font-mono text-white/40">CLEARANCE TIME</p>
+                  <p className="text-[11px] sm:text-xs font-mono font-bold text-[#29ab87]">&lt; 340 ms</p>
+                </div>
+                <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
+                  <p className="text-[7px] sm:text-[8px] font-mono text-white/40">ERROR RATE</p>
+                  <p className="text-[11px] sm:text-xs font-mono font-bold text-[#38bdf8]">0.00%</p>
+                </div>
+                <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
+                  <p className="text-[7px] sm:text-[8px] font-mono text-white/40">ERP INTEGRITY</p>
+                  <p className="text-[11px] sm:text-xs font-mono font-bold text-[#f5a623]">100% Clean</p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Live Invoices Cleared Counter Bar */}
+          <div className="flex items-center justify-between rounded-xl bg-white/[0.03] border border-white/10 px-3 py-1.5 text-[9px] sm:text-[10px] font-mono">
+            <span className="text-white/60 flex items-center gap-1.5">
+              <Activity className="h-3 w-3 text-[#29ab87] animate-pulse" />
+              Live Invoices Cleared This Fiscal Year:
+            </span>
+            <span className="font-extrabold text-[#7edcc2]" suppressHydrationWarning>
+              {invoiceCounter.toLocaleString("en-US")} docs
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Bottom Ribbon: Certified Integration Matrix ── */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
+        <span className="flex items-center gap-1.5 text-[#29ab87]">
+          <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP CERTIFIED INTEGRATION FOR S/4HANA & ECC 6.0
+        </span>
+        <span className="hidden sm:inline">MULTI-COUNTRY STATUTORY CLEARANCE (PEPPOL, ZATCA, GSTN, SDI)</span>
+        <span className="text-[#38bdf8]">100% AUDIT & PENALTY PROTECTION</span>
+      </div>
+    </div>
   );
 }

@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import fs from "fs";
-import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -14,8 +12,12 @@ import {
   Layers3,
 } from "lucide-react";
 import { getIndustry, industries } from "@/lib/industries-data";
-import IndustryVideoScene from "@/components/scenes/IndustryVideoScene";
-import IndustryVideoHero, { type IndustryVideoHeroKpi } from "@/components/scenes/IndustryVideoHero";
+import PharmaAnimation from "@/components/industries/animations/PharmaAnimation";
+import ManufacturingAnimation from "@/components/industries/animations/ManufacturingAnimation";
+import FintechAnimation from "@/components/industries/animations/FintechAnimation";
+import SteelAnimation from "@/components/industries/animations/SteelAnimation";
+import TelecomAnimation from "@/components/industries/animations/TelecomAnimation";
+import EntertainmentAnimation from "@/components/industries/animations/EntertainmentAnimation";
 
 type Props = { params: Promise<{ slug?: string[] }> };
 
@@ -42,112 +44,18 @@ const cardTones = [
   { color: "#f5a623", soft: "rgba(245,166,35,0.16)" },
 ];
 
-const TRI = { deep: "#117a4b", mint: "#29ab87", amber: "#f5a623" } as const;
-
-/* Industry hero videos — same integration as Retail & Supply Chain, unique clip per industry.
-   Files are dropped into /public/videos/ with these exact names; the hero activates
-   automatically once a file exists and gracefully keeps the animated scene otherwise. */
-interface VideoHeroConfig {
-  videoSrc: string;
-  poster: string;
-  objectPosition: string;
-  caption: string;
-  sub: string;
-  kpis: IndustryVideoHeroKpi[];
-}
-
-const videoHeroes: Record<string, VideoHeroConfig> = {
-  "pharmaceuticals-life-sciences": {
-    videoSrc: "/videos/pharmaceuticals-sap.mp4",
-    poster: "/videos/pharmaceuticals-sap-poster.jpg",
-    objectPosition: "50% 50%",
-    caption: "SAP unifies pharma operations end to end",
-    sub: "R&D · production · distribution on one system",
-    kpis: [
-      { value: "100%", label: "FDA compliance", color: TRI.deep },
-      { value: "99.99%", label: "Unit traceability", color: TRI.mint },
-      { value: "98.9%", label: "Batch yield", color: TRI.amber },
-    ],
-  },
-  manufacturing: {
-    videoSrc: "/videos/manufacturing-sap.mp4",
-    poster: "/videos/manufacturing-sap-poster.jpg",
-    objectPosition: "50% 42%",
-    caption: "SAP connects finance to the shop floor",
-    sub: "planning · production · quality on one system",
-    kpis: [
-      { value: "93.4%", label: "Overall OEE", color: TRI.deep },
-      { value: "99.98%", label: "Process uptime", color: TRI.mint },
-      { value: "-6.8%", label: "Scrap rate", color: TRI.amber },
-    ],
-  },
-  fintech: {
-    videoSrc: "/videos/fintech-sap.mp4",
-    poster: "/videos/fintech-sap-poster.jpg",
-    objectPosition: "50% 42%",
-    caption: "SAP automates the fintech financial core",
-    sub: "payments · ledgers · risk on one secure platform",
-    kpis: [
-      { value: "0.18s", label: "Reconciliation", color: TRI.deep },
-      { value: "4.8M", label: "Transactions / day", color: TRI.mint },
-      { value: "0.01%", label: "Fraud rate", color: TRI.amber },
-    ],
-  },
-  entertainment: {
-    videoSrc: "/videos/entertainment-sap.mp4",
-    poster: "/videos/entertainment-sap-poster.jpg",
-    objectPosition: "50% 42%",
-    caption: "SAP centralises media & entertainment finance",
-    sub: "content · rights · distribution on one system",
-    kpis: [
-      { value: "100%", label: "Royalty accuracy", color: TRI.deep },
-      { value: "1.4M", label: "Stream concurrency", color: TRI.mint },
-      { value: "99.2%", label: "CDN hit rate", color: TRI.amber },
-    ],
-  },
-  "steel-manufacturing": {
-    videoSrc: "/videos/steel-manufacturing-sap.mp4",
-    poster: "/videos/steel-manufacturing-sap-poster.jpg",
-    objectPosition: "50% 50%",
-    caption: "SAP links steel production to profitability",
-    sub: "melting · casting · logistics on one system",
-    kpis: [
-      { value: "94.6%", label: "Melting efficiency", color: TRI.deep },
-      { value: "99.98%", label: "Steel purity", color: TRI.mint },
-      { value: "0 LTI", label: "Safety record", color: TRI.amber },
-    ],
-  },
-  telecommunications: {
-    videoSrc: "/videos/telecommunications-sap.mp4",
-    poster: "/videos/telecommunications-sap-poster.jpg",
-    objectPosition: "68% 42%",
-    caption: "SAP unifies telecom operations end to end",
-    sub: "network · billing · subscribers on one platform",
-    kpis: [
-      { value: "4.2ms", label: "Data latency", color: TRI.deep },
-      { value: "120k/s", label: "CDR ingestion", color: TRI.mint },
-      { value: "1.4Gbps", label: "Throughput", color: TRI.amber },
-    ],
-  },
-};
-
 export default async function IndustryDetailPage({ params }: Props) {
-  const slug = (await params).slug?.[0];
-  const industry = slug ? getIndustry(slug) : undefined;
+  const rawSlug = (await params).slug?.[0];
+  const industry = rawSlug ? getIndustry(rawSlug) : undefined;
   if (!industry) notFound();
 
-  const videoHeroConfig = slug ? videoHeroes[slug] : undefined;
-  const videoHero =
-    videoHeroConfig &&
-    fs.existsSync(path.join(process.cwd(), "public", "videos", path.basename(videoHeroConfig.videoSrc)))
-      ? videoHeroConfig
-      : null;
+  const canonicalSlug = industry.slug;
 
   return (
     <main className="overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero — full-bleed video animation ───────── */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817]">
-        {/* tri-color ambient backdrop */}
+      {/* ── Hero Section ───────────────────────────── */}
+      <section className="relative isolate flex h-screen min-h-[640px] w-full flex-col overflow-hidden bg-[#050817]">
+        {/* Tri-color ambient backdrop */}
         <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
         <div aria-hidden className="absolute inset-0 -z-10 tri-grid-bg" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-40" />
@@ -155,8 +63,8 @@ export default async function IndustryDetailPage({ params }: Props) {
         <div aria-hidden className="pointer-events-none absolute bottom-[16%] left-[6%] -z-10 h-48 w-48 rounded-full bg-[rgba(245,166,35,0.16)] blur-3xl tri-pulse" style={{ animationDelay: "1.5s" }} />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-56 bg-[radial-gradient(45%_100%_at_50%_0%,rgba(41,171,135,0.1),transparent_70%)]" />
 
-        {/* Retail hero — plays the actual retail supply-chain film at full opacity */}
-        {slug === "retail-supply-chain" ? (
+        {/* ── Retail & Supply Chain — EXACT reference implementation untouched ── */}
+        {canonicalSlug === "retail-supply-chain" ? (
           <>
             <div aria-hidden className="absolute inset-0 z-0 overflow-hidden">
               <video
@@ -207,22 +115,25 @@ export default async function IndustryDetailPage({ params }: Props) {
               </div>
             </div>
           </>
-        ) : videoHero ? (
-          /* Full-bleed industry video hero — same integration as Retail & Supply Chain */
-          <IndustryVideoHero
-            videoSrc={videoHero.videoSrc}
-            poster={videoHero.poster}
-            objectPosition={videoHero.objectPosition}
-            caption={videoHero.caption}
-            sub={videoHero.sub}
-            kpis={videoHero.kpis}
-          />
-        ) : (
-          /* The video story — tells how SAP integrates into this sector */
-          <div className="absolute inset-0 z-10">
-            <IndustryVideoScene slug={industry.slug} />
-          </div>
-        )}
+        ) : canonicalSlug === "pharmaceuticals-life-sciences" ? (
+          /* ── Pharmaceuticals & Life Sciences ── */
+          <PharmaAnimation />
+        ) : canonicalSlug === "manufacturing" ? (
+          /* ── Smart Manufacturing ── */
+          <ManufacturingAnimation />
+        ) : canonicalSlug === "fintech" ? (
+          /* ── Fintech & Real-Time Finance ── */
+          <FintechAnimation />
+        ) : canonicalSlug === "steel-manufacturing" ? (
+          /* ── Steel Manufacturing & Heavy Industry ── */
+          <SteelAnimation />
+        ) : canonicalSlug === "telecommunications" ? (
+          /* ── Telecommunications & 5G Networks ── */
+          <TelecomAnimation />
+        ) : canonicalSlug === "entertainment" ? (
+          /* ── Media & Entertainment ── */
+          <EntertainmentAnimation />
+        ) : null}
 
         {/* Clean bottom boundary */}
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
@@ -262,7 +173,9 @@ export default async function IndustryDetailPage({ params }: Props) {
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
               <span className="tri-gradient-text">Capabilities built for your industry</span>
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-400">Practical technology capabilities that connect teams, data, and decisions across your organization.</p>
+            <p className="mt-5 text-lg leading-8 text-slate-400">
+              Practical technology capabilities that connect teams, data, and decisions across your organization.
+            </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -272,7 +185,7 @@ export default async function IndustryDetailPage({ params }: Props) {
               return (
                 <article
                   key={service}
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-7 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-7 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-white/20"
                   style={{ "--card-tone": tone.color, "--card-soft": tone.soft } as CSSProperties}
                 >
                   {/* tri-color top hairline */}
@@ -295,7 +208,9 @@ export default async function IndustryDetailPage({ params }: Props) {
                     <Icon className="h-6 w-6" style={{ color: `var(--card-tone)` }} aria-hidden="true" />
                   </div>
                   <h3 className="relative mt-7 text-xl font-bold text-white">{service}</h3>
-                  <p className="relative mt-3 leading-7 text-slate-400">Designed to improve visibility, simplify work, and support informed decisions.</p>
+                  <p className="relative mt-3 leading-7 text-slate-400">
+                    Designed to improve visibility, simplify work, and support informed decisions.
+                  </p>
                   <span
                     aria-hidden
                     className="pointer-events-none absolute -bottom-16 -right-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-30"
@@ -310,59 +225,80 @@ export default async function IndustryDetailPage({ params }: Props) {
 
       {/* ── Business Outcomes ────────────────── */}
       <section className="bg-[#050817] py-20 sm:py-24 border-b border-white/5">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:px-12">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] bg-slate-950 border border-white/10 shadow-2xl">
-            <Image src={industry.heroImage} alt={`${industry.title} business outcomes`} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition duration-700 hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-            <div aria-hidden className="absolute inset-0 opacity-30 tri-hex-grid" />
-            <div className="absolute bottom-0 p-7 sm:p-10">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">Built for lasting value</p>
-              <p className="tri-gradient-text mt-3 max-w-md text-2xl font-bold leading-snug">Better data. Clearer decisions. Stronger operations.</p>
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-12">
+          <div className="flex flex-col gap-8">
+            <div>
+              <p className="tri-overline">Business value</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-5xl">
+                <span className="tri-gradient-text">Outcomes you can build on</span>
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-slate-400">
+                Our solutions focus on measurable improvements in performance, efficiency, and decision-making.
+              </p>
+            </div>
+
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] bg-slate-950 border border-white/10 shadow-2xl">
+              <Image
+                src={industry.heroImage}
+                alt={`${industry.title} business outcomes`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+              <div aria-hidden className="absolute inset-0 opacity-30 tri-hex-grid" />
+              <div className="absolute bottom-0 p-7 sm:p-10">
+                <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">Built for lasting value</p>
+                <p className="tri-gradient-text mt-3 max-w-md text-2xl font-bold leading-snug">
+                  Better data. Clearer decisions. Stronger operations.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="lg:pl-8">
-            <p className="tri-overline">Business value</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
-              <span className="tri-gradient-text">Outcomes you can build on</span>
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-400">Our solutions focus on measurable improvements in performance, efficiency, and decision-making.</p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {industry.benefits.map((benefit, index) => {
-                const tone = cardTones[index % cardTones.length];
-                return (
-                  <div
-                    key={benefit}
-                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-5 transition-colors duration-300"
-                    style={{ "--benefit-tone": tone.color, "--benefit-soft": tone.soft } as CSSProperties}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {industry.benefits.map((benefit, index) => {
+              const tone = cardTones[index % cardTones.length];
+              return (
+                <div
+                  key={benefit}
+                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.02] p-5 shadow-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.04]"
+                  style={{ "--benefit-tone": tone.color, "--benefit-soft": tone.soft } as CSSProperties}
+                >
+                  <span
+                    className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+                    style={{ background: "var(--benefit-soft)", color: "var(--benefit-tone)" }}
                   >
-                    <span
-                      className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
-                      style={{ background: "var(--benefit-soft)", color: "var(--benefit-tone)" }}
-                    >
-                      <Check className="h-4 w-4" />
-                    </span>
-                    <p className="font-semibold leading-7 text-white">{benefit}</p>
-                  </div>
-                );
-              })}
-            </div>
+                    <Check className="h-4 w-4" />
+                  </span>
+                  <p className="font-semibold leading-7 text-white">{benefit}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="bg-[#030713] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 px-6 py-14 text-center shadow-2xl sm:px-12 sm:py-20" style={{ background: "linear-gradient(135deg, #117a4b 0%, #0b1d33 50%, #7a4a08 100%)" }}>
+      <section className="bg-[#030713] px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
+        <div
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 px-6 py-8 text-center shadow-2xl sm:px-12 sm:py-10"
+          style={{ background: "linear-gradient(135deg, #117a4b 0%, #0b1d33 50%, #7a4a08 100%)" }}
+        >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5" />
           <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-[rgba(245,166,35,0.14)] blur-2xl" />
           <div className="relative mx-auto max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">Let&apos;s work together</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
               <span className="tri-gradient-text">Ready to transform your {industry.title} operations?</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-350">Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.</p>
-            <Link href="/contact" className="mt-9 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] px-7 py-3.5 font-semibold text-white shadow-lg border border-white/10 transition-all duration-300 hover:opacity-90">
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-350 sm:text-base">
+              Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] px-6 py-3 font-semibold text-white shadow-lg border border-white/10 transition-all duration-300 hover:opacity-90 hover:scale-105"
+            >
               Start a conversation <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

@@ -1,270 +1,395 @@
 "use client";
 
-import { motion, MotionConfig, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  BarChart3,
-  Boxes,
-  Cloud,
+  Activity,
+  Check,
+  ChevronRight,
+  Code2,
+  Compass,
   Cpu,
   Database,
-  FileText,
-  HardDrive,
-  Landmark,
-  MonitorSmartphone,
-  Package,
+  Layers,
+  Maximize2,
+  Play,
+  Rocket,
+  Ruler,
+  Scan,
   Server,
-  Settings2,
-  Users,
+  Sparkles,
+  Target,
+  Terminal,
   Workflow,
+  Zap,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { useRef, useState } from "react";
-import { HEX_CLIP } from "./scene-ui";
-import { usePointerRotate } from "@/components/services/service-ui";
+import { useEffect, useRef, useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────
-   SAP Implementation — 3D ASSEMBLY / TRANSFORMATION
-   Fragmented legacy blocks → blueprint scan → modules align →
-   SAP architecture snaps together → data flows → success pulse.
+   SAP IMPLEMENTATION — ARCHITECTURAL CAD BLUEPRINT &
+   LASER GANTRY SCANNING SYSTEM
    ───────────────────────────────────────────────────────────── */
 
-const LOOP = 8;
-
-type Module = {
-  label: string;
-  icon: LucideIcon;
-  ax: number;
-  ay: number;
-  sx: number;
-  sy: number;
-  sr: number;
+type StepData = {
+  step: string;
+  name: string;
+  desc: string;
+  coords: string;
+  color: string;
+  modules: string[];
+  metrics: { label: string; val: string };
 };
 
-const MODULES: Module[] = [
-  { label: "Finance", icon: Landmark, ax: 18, ay: 24, sx: -150, sy: -80, sr: -8 },
-  { label: "CRM", icon: Users, ax: 72, ay: 22, sx: 170, sy: -90, sr: 7 },
-  { label: "Automation", icon: Settings2, ax: 47, ay: 10, sx: 60, sy: -150, sr: 5 },
-  { label: "Procurement", icon: Package, ax: 20, ay: 54, sx: -160, sy: 100, sr: 9 },
-  { label: "Analytics", icon: BarChart3, ax: 70, ay: 52, sx: 150, sy: 100, sr: -6 },
-  { label: "Fiori / UX", icon: MonitorSmartphone, ax: 86, ay: 34, sx: 215, sy: 10, sr: 6 },
-  { label: "Integration", icon: Workflow, ax: 14, ay: 38, sx: -210, sy: -10, sr: -7 },
-  { label: "Data Core", icon: Database, ax: 50, ay: 62, sx: 0, sy: 170, sr: 4 },
+const BLUEPRINT_STEPS: StepData[] = [
+  {
+    step: "01",
+    name: "Architectural Scope & Fit-to-Standard",
+    desc: "Laser mapping enterprise business processes to standard SAP best practices with zero core modifications.",
+    coords: "LAT 42.88° N · GRID A-01",
+    color: "#38bdf8",
+    modules: ["Process Hierarchy", "Clean-Core Scope", "Security Roles", "Target Architecture"],
+    metrics: { label: "Standard Fit Score", val: "100% GxP/ISO Ready" },
+  },
+  {
+    step: "02",
+    name: "Clean Core Baseline Configuration",
+    desc: "Constructing modular S/4HANA enterprise ledgers, procurement engines, and side-by-side BTP extension points.",
+    coords: "LAT 54.12° N · GRID B-04",
+    color: "#22d3ee",
+    modules: ["FI/CO Universal Ledger", "Order-to-Cash (SD)", "Procure-to-Pay (MM)", "BTP Microservices"],
+    metrics: { label: "Configuration Build", val: "340+ Best Practices" },
+  },
+  {
+    step: "03",
+    name: "Automated Migration Cockpit & UAT",
+    desc: "Executing automated dual-run simulations, data cleansing pipelines, and end-to-end dress rehearsal testing.",
+    coords: "LAT 68.45° N · GRID C-08",
+    color: "#8b7cf6",
+    modules: ["Data Cleansing", "Automated Cutover", "Regression CI/CD", "Security Hardening"],
+    metrics: { label: "Migration Accuracy", val: "99.99% Validated" },
+  },
+  {
+    step: "04",
+    name: "Zero-Downtime Production Go-Live",
+    desc: "Switching active transaction streams over to the high-availability S/4HANA production cluster.",
+    coords: "LAT 82.30° N · GRID D-12",
+    color: "#29ab87",
+    modules: ["Production Switchover", "Hypercare 24/7", "User Enablement", "Value Realization"],
+    metrics: { label: "Go-Live Downtime", val: "Zero Disruption" },
+  },
 ];
-
-type Fragment = {
-  label: string;
-  icon: LucideIcon;
-  x: number;
-  y: number;
-  sr: number;
-};
-
-const FRAGMENTS: Fragment[] = [
-  { label: "Legacy core", icon: Server, x: 6, y: 16, sr: -10 },
-  { label: "Paper flows", icon: FileText, x: 12, y: 42, sr: 8 },
-  { label: "Scattered cloud", icon: Cloud, x: 3, y: 64, sr: -5 },
-  { label: "Custom apps", icon: Boxes, x: 92, y: 14, sr: 9 },
-  { label: "Siloed files", icon: HardDrive, x: 96, y: 50, sr: -8 },
-  { label: "Siloed data", icon: Database, x: 88, y: 72, sr: 6 },
-];
-
-const SVG = (m: Module) => {
-  const x = m.ax * 10;
-  const y = m.ay * 6;
-  return `M${x} ${y} C ${(x + 500) / 2} ${(y + 240) / 2 - 30}, ${(x + 500) / 2 + 20} ${(y + 240) / 2}, 498 238`;
-};
 
 export default function ImplementationAssembly() {
-  const { bind, reset, grabStart, grabEnd, rotateX, rotateY } = usePointerRotate(5);
-  const [active, setActive] = useState<number | null>(null);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const fade = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
+  const reduce = useReducedMotion();
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isScanning, setIsScanning] = useState(true);
+  const [scanPos, setScanPos] = useState(25);
 
-  const moduleMotion = (i: number, m: Module) => ({
-    x: [m.sx, 0, 0, m.sx] as number[],
-    y: [m.sy, 0, 0, m.sy] as number[],
-    opacity: [0, 1, 1, 0] as number[],
-    scale: [0.55, 1, 1, 0.55] as number[],
-    rotate: [m.sr, 0, 0, m.sr] as number[],
-  });
+  const active = BLUEPRINT_STEPS[currentStep];
 
-  const transition = (i: number) => ({
-    duration: LOOP,
-    repeat: Infinity,
-    ease: "easeInOut" as const,
-    times: [0, 0.45, 0.88, 1] as number[],
-    delay: -i * 0.45,
-  });
+  useEffect(() => {
+    if (!isScanning) return;
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % BLUEPRINT_STEPS.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isScanning]);
+
+  useEffect(() => {
+    setScanPos((currentStep + 1) * 25);
+  }, [currentStep]);
 
   return (
-    <div
-      ref={ref}
-      className="absolute inset-0 overflow-hidden"
-      style={{ perspective: 1500, cursor: "grab" }}
-      onPointerMove={bind}
-      onPointerDown={grabStart}
-      onPointerUp={grabEnd}
-      onPointerLeave={reset}
-      aria-hidden
-    >
-      <MotionConfig reducedMotion="user">
-        <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d", opacity: fade }} className="relative h-full w-full">
-          {/* blueprint grid floor */}
-          <div
-            className="pointer-events-none absolute inset-x-[-20%] bottom-[-18%] h-[70%] opacity-60"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(56,189,248,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.14) 1px, transparent 1px)",
-              backgroundSize: "44px 44px",
-              transform: "rotateX(58deg)",
-              maskImage: "radial-gradient(ellipse 60% 70% at 50% 40%, black 30%, transparent 78%)",
-              WebkitMaskImage: "radial-gradient(ellipse 60% 70% at 50% 40%, black 30%, transparent 78%)",
-            }}
-          />
+    <div className="relative isolate h-full min-h-[600px] w-full overflow-hidden select-none bg-[#030713]">
+      {/* ── CAD Blueprint Grid Background with Crosshairs ── */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none opacity-40">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(56,189,248,0.08) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(56,189,248,0.08) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(41,171,135,0.15) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(41,171,135,0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: "200px 200px",
+          }}
+        />
+      </div>
 
-          {/* blueprint connectors (draw-in during architecture) */}
-          <svg className="pointer-events-none absolute inset-0 hidden h-full w-full md:block" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
-            {MODULES.map((m, i) => (
-              <g key={m.label}>
-                <motion.path
-                  d={SVG(m)}
-                  stroke={active === i ? "#7ec8f7" : "rgba(56,189,248,0.4)"}
-                  strokeWidth={active === i ? 2 : 1.2}
-                  strokeDasharray="5 7"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: [0, 0, 1, 1, 0] }}
-                  transition={{ duration: LOOP, repeat: Infinity, times: [0, 0.3, 0.48, 0.9, 1], delay: -i * 0.45 }}
-                  opacity={active === i ? 1 : 0.5}
-                />
-                {/* data packets once connected */}
-                <circle r="4" fill="#67e8f9" opacity={0.85}>
-                  <animateMotion dur={`${4.5 + i * 0.3}s`} begin={`-${i * 0.8}s`} repeatCount="indefinite" path={SVG(m)} />
-                </circle>
-                <circle r="8" fill="#38bdf8" opacity={0.12}>
-                  <animateMotion dur={`${4.5 + i * 0.3}s`} begin={`-${i * 0.8}s`} repeatCount="indefinite" path={SVG(m)} />
-                </circle>
-              </g>
-            ))}
-          </svg>
+      {/* ── Top CAD Engineering Status Bar ── */}
+      <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-2 sm:pb-3 px-3 sm:px-6 pt-2 sm:pt-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#38bdf8]/15 border border-[#38bdf8]/40 text-[#38bdf8]">
+            <Compass className="h-4 w-4 animate-[spin_12s_linear_infinite]" />
+          </span>
+          <div>
+            <p className="text-[11px] sm:text-xs font-mono font-bold text-white tracking-wider">
+              SAP S/4HANA ARCHITECTURE BLUEPRINT SCANNER
+            </p>
+            <p className="text-[8px] sm:text-[9px] font-mono text-[#38bdf8]/80">{active.coords} · MODE: CLEAN_CORE_V4</p>
+          </div>
+        </div>
 
-          {/* scanning blueprint line */}
-          <motion.div
-            className="pointer-events-none absolute inset-x-[-6%] hidden h-10 md:block"
-            style={{
-              background: "linear-gradient(180deg, transparent, rgba(56,189,248,0.16), transparent)",
-            }}
-            animate={{ top: ["-5%", "-5%", "88%", "88%"], opacity: [0, 0.9, 0.9, 0] }}
-            transition={{ duration: LOOP, repeat: Infinity, times: [0, 0.18, 0.42, 0.55], ease: "easeInOut" }}
-          />
-          <motion.div
-            className="pointer-events-none absolute left-1/2 hidden h-px w-40 -translate-x-1/2 md:block"
-            style={{ background: "linear-gradient(90deg, transparent, #38bdf8, transparent)" }}
-            animate={{ top: ["-5%", "-5%", "88%", "88%"], opacity: [0, 1, 1, 0] }}
-            transition={{ duration: LOOP, repeat: Infinity, times: [0, 0.18, 0.42, 0.55], ease: "easeInOut" }}
-          />
-
-          {/* full-width data currents — edge to edge */}
-          <svg className="pointer-events-none absolute inset-x-0 bottom-1 hidden h-10 w-full md:block" viewBox="0 0 1000 40" preserveAspectRatio="none" fill="none">
-            <path d="M0 20 C 120 8, 240 32, 360 18 S 620 8, 740 24 S 900 12, 1000 18" stroke="rgba(56,189,248,0.22)" strokeWidth={1} strokeDasharray="6 8" />
-            <circle r="3" fill="#38bdf8" opacity={0.75}>
-              <animateMotion dur="9s" repeatCount="indefinite" path="M0 20 C 120 8, 240 32, 360 18 S 620 8, 740 24 S 900 12, 1000 18" />
-            </circle>
-            <circle r="2.4" fill="#22d3ee" opacity={0.7}>
-              <animateMotion dur="11s" begin="4s" repeatCount="indefinite" path="M0 20 C 120 8, 240 32, 360 18 S 620 8, 740 24 S 900 12, 1000 18" />
-            </circle>
-          </svg>
-
-          {/* SAP core node */}
-          <div className="absolute" style={{ left: "50%", top: "40%", transform: "translate(-50%,-50%)" }}>
-            <motion.div
-              animate={{ scale: [0, 1, 1, 0], opacity: [0, 1, 1, 0] }}
-              transition={{ duration: LOOP, repeat: Infinity, times: [0, 0.45, 0.9, 1], delay: -0.45 }}
-              className="relative flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20"
+        {/* Step Trigger Buttons */}
+        <div className="flex items-center gap-1 overflow-x-auto max-w-full rounded-xl bg-black/60 border border-white/10 p-1 backdrop-blur-md no-scrollbar">
+          {BLUEPRINT_STEPS.map((s, idx) => (
+            <button
+              key={s.step}
+              onClick={() => {
+                setCurrentStep(idx);
+                setIsScanning(false);
+              }}
+              className={`flex items-center gap-1 whitespace-nowrap rounded-lg px-2 sm:px-2.5 py-1 text-[9px] sm:text-[10px] font-mono font-bold transition-all duration-300 ${
+                currentStep === idx
+                  ? "bg-[#38bdf8] text-slate-950 shadow-md shadow-[#38bdf8]/30 scale-105"
+                  : "text-white/60 hover:text-white hover:bg-white/10"
+              }`}
             >
-              <span aria-hidden className="absolute inset-0 blur-lg" style={{ clipPath: HEX_CLIP, background: "rgba(47,143,255,0.5)", transform: "scale(1.4)" }} />
-              <span className="relative flex h-full w-full items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#2f8fff,#0a6ed1)" }}>
-                <Cpu className="h-7 w-7 text-white sm:h-8 sm:w-8" strokeWidth={1.6} />
-              </span>
-            </motion.div>
-          </div>
-
-          {/* success pulse through the completed architecture */}
-          {[0, 0.5].map((delay) => (
-            <motion.div
-              key={delay}
-              className="pointer-events-none absolute hidden h-40 w-40 rounded-full border border-[#67e8f9]/70 md:block"
-              style={{ left: "50%", top: "40%", margin: "-5rem 0 0 -5rem" }}
-              animate={{ scale: [0.3, 0.3, 1.7, 2.1], opacity: [0, 0, 0.7, 0] }}
-              transition={{ duration: LOOP, repeat: Infinity, times: [0, 0.9, 0.96, 1], delay, ease: "easeOut" }}
-            />
+              <span>{s.step}</span>
+              <span className="hidden sm:inline">{s.name.split(" ")[0]}</span>
+            </button>
           ))}
+        </div>
+      </div>
 
-          {/* legacy fragments — fade away as the landscape is assembled */}
-          {FRAGMENTS.map((f, j) => {
-            const Icon = f.icon;
-            return (
-              <div key={f.label} className="absolute hidden md:block" style={{ left: `${f.x}%`, top: `${f.y}%` }}>
-                <motion.div
-                  animate={{
-                    x: [0, (50 - f.x) * 3.2, (50 - f.x) * 3.2, 0],
-                    y: [0, (40 - f.y) * 3.2, (40 - f.y) * 3.2, 0],
-                    opacity: [0.7, 0, 0, 0.7],
-                    scale: [1, 0.5, 0.5, 1],
-                    rotate: [f.sr, 0, 0, f.sr],
-                  }}
-                  transition={{ duration: LOOP, repeat: Infinity, ease: "easeInOut", times: [0, 0.42, 0.6, 1], delay: -j * 0.3 }}
-                  className="flex -translate-x-1/2 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1.5 backdrop-blur-sm"
-                >
-                  <Icon className="h-3.5 w-3.5 text-white/40" strokeWidth={1.6} />
-                  <span className="text-[10px] font-medium text-white/35">{f.label}</span>
-                </motion.div>
-              </div>
-            );
-          })}
+      {/* ── Main Canvas: CAD Wireframe Schematic & Laser Scanner Gantry ── */}
+      <div className="relative z-20 flex min-h-0 w-full flex-1 flex-col justify-between py-2 sm:py-4 px-2 sm:px-6 lg:px-10 overflow-y-auto lg:overflow-visible">
+        {/* Center Blueprint Interactive Canvas */}
+        <div className="relative w-full flex-1 min-h-[180px] sm:min-h-[220px] lg:min-h-[360px] flex items-center justify-center">
+          {/* Animated SVG Schematic Drawing */}
+          <svg
+            className="w-full h-full max-h-[380px]"
+            viewBox="0 0 1200 650"
+            preserveAspectRatio="xMidYMid meet"
+            fill="none"
+          >
+            <defs>
+              <linearGradient id="gantryLaser" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0" />
+                <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#29ab87" stopOpacity="0" />
+              </linearGradient>
+              <filter id="cadGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-          {/* SAP modules assembling into position */}
-          {MODULES.map((m, i) => {
-            const Icon = m.icon;
-            return (
-              <div key={m.label} className="absolute" style={{ left: `${m.ax}%`, top: `${m.ay}%` }}>
-                <motion.div
-                  animate={moduleMotion(i, m)}
-                  transition={transition(i)}
-                  className="pointer-events-auto"
-                >
-                  <motion.div
-                    animate={{ y: active === i ? -8 : 0, scale: active === i ? 1.08 : 1, z: active === i ? 40 : 0 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    onMouseEnter={() => setActive(i)}
-                    onMouseLeave={() => setActive(null)}
-                    className="flex -translate-x-1/2 -translate-y-1/2 cursor-default items-center gap-2 rounded-xl border border-white/15 bg-white/[0.07] px-2.5 py-2 shadow-[0_18px_40px_-18px_rgba(3,7,19,0.8)] backdrop-blur-md sm:gap-2.5 sm:px-3.5 sm:py-2.5"
-                    style={{ transformStyle: "preserve-3d" }}
-                  >
-                    <span
-                      aria-hidden
-                      className="relative inline-flex h-7 w-7 shrink-0 items-center justify-center sm:h-9 sm:w-9"
-                      style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#38bdf8,#0a6ed1)" }}
-                    >
-                      <Icon className="h-3.5 w-3.5 text-white sm:h-[17px] sm:w-[17px]" strokeWidth={1.8} />
-                      {active === i && <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-[#67e8f9] shadow-[0_0_10px_#67e8f9]" />}
-                    </span>
-                    <span className="text-[11px] font-semibold text-white/85 sm:text-[12px]">{m.label}</span>
-                  </motion.div>
-                </motion.div>
-              </div>
-            );
-          })}
+            {/* Blueprint Outer Framing Box */}
+            <rect x="80" y="70" width="1040" height="510" rx="20" stroke="rgba(56,189,248,0.25)" strokeWidth="1.5" strokeDasharray="8 8" />
+            <circle cx="80" cy="70" r="4" fill="#38bdf8" />
+            <circle cx="1120" cy="70" r="4" fill="#38bdf8" />
+            <circle cx="80" cy="580" r="4" fill="#38bdf8" />
+            <circle cx="1120" cy="580" r="4" fill="#38bdf8" />
 
-          {/* stage caption — tiny, floating, part of the story */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-2 hidden items-center justify-center gap-3 sm:flex">
-            <span className="flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#38bdf8", boxShadow: "0 0 8px #38bdf8" }} />
-              Assembly in progress
-            </span>
+            {/* Central Isometric Architectural Enterprise Cube Matrix */}
+            <g transform="translate(600, 310)" filter="url(#cadGlow)">
+              {/* Isometric Cube Faces */}
+              <polygon points="0,-120 120,-50 0,20 -120,-50" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" strokeWidth="2" />
+              <polygon points="0,20 120,-50 120,90 0,160" fill="rgba(41,171,135,0.15)" stroke="#29ab87" strokeWidth="2" />
+              <polygon points="0,20 -120,-50 -120,90 0,160" fill="rgba(139,124,246,0.12)" stroke="#8b7cf6" strokeWidth="2" />
+
+              {/* Inner Core Pulsing Circuit Node */}
+              <circle cx="0" cy="20" r="28" fill="rgba(41,171,135,0.4)" stroke="#29ab87" strokeWidth="2">
+                <animate attributeName="r" values="24;32;24" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <text x="0" y="24" textAnchor="middle" fill="#ffffff" fontSize="10" fontFamily="monospace" fontWeight="bold">
+                S/4 CORE
+              </text>
+
+              {/* Radial Architecture Lines */}
+              {[-120, -50, 20, 90, 160].map((y, i) => (
+                <line key={i} x1="-240" y1={y} x2="240" y2={y} stroke="rgba(56,189,248,0.2)" strokeWidth="1" strokeDasharray="4 4" />
+              ))}
+            </g>
+
+            {/* Dimension Indicators & Crosshair Lines */}
+            <line x1="80" y1="310" x2="360" y2="310" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" />
+            <line x1="840" y1="310" x2="1120" y2="310" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" />
+
+            {/* Laser Gantry Scanning Beam sweeping across canvas */}
+            <motion.g
+              animate={{ x: [120, 1080, 120] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <line x1="0" y1="80" x2="0" y2="570" stroke="url(#gantryLaser)" strokeWidth="3" filter="url(#cadGlow)" />
+              <circle cx="0" cy="80" r="4" fill="#38bdf8" />
+              <circle cx="0" cy="570" r="4" fill="#29ab87" />
+            </motion.g>
+          </svg>
+
+          {/* Desktop Flanking Left Card */}
+          <div className="hidden lg:block absolute left-4 xl:left-8 top-1/2 -translate-y-1/2 w-[300px] xl:w-[330px] z-20">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.step}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl border border-white/15 bg-[#030713]/90 p-4 sm:p-5 shadow-2xl backdrop-blur-xl"
+              >
+                <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+                  <span className="rounded bg-[#38bdf8]/20 border border-[#38bdf8]/40 px-2 py-0.5 text-[9px] font-mono font-bold text-[#38bdf8]">
+                    STAGE {active.step} OF 04
+                  </span>
+                  <span className="flex items-center gap-1 text-[9px] font-mono text-white/50">
+                    <Ruler className="h-3 w-3 text-[#38bdf8]" /> SCALE 1:1
+                  </span>
+                </div>
+
+                <h3 className="mt-2.5 text-sm sm:text-base font-bold text-white leading-snug">
+                  {active.name}
+                </h3>
+                <p className="mt-1 text-xs text-slate-300 leading-relaxed">
+                  {active.desc}
+                </p>
+
+                <div className="mt-3 space-y-1 pt-2.5 border-t border-white/10">
+                  <p className="text-[8px] font-mono uppercase tracking-wider text-white/50">
+                    Blueprint Verification Checks
+                  </p>
+                  {active.modules.map((m) => (
+                    <div key={m} className="flex items-center gap-1.5 text-[10px] font-mono text-white/80">
+                      <Check className="h-3 w-3 text-[#29ab87]" />
+                      <span>{m}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
-        </motion.div>
-      </MotionConfig>
+
+          {/* Desktop Flanking Right Card */}
+          <div className="hidden lg:block absolute right-4 xl:right-8 top-1/2 -translate-y-1/2 w-[300px] xl:w-[330px] z-20">
+            <div className="rounded-2xl border border-white/15 bg-[#030713]/90 p-4 sm:p-5 shadow-2xl backdrop-blur-xl">
+              <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
+                <span className="flex items-center gap-1.5 text-xs font-mono font-bold text-white">
+                  <Scan className="h-4 w-4 text-[#29ab87] animate-pulse" /> Precision Verification
+                </span>
+                <span className="h-2 w-2 rounded-full bg-[#29ab87] animate-ping" />
+              </div>
+
+              <div className="mt-2.5 space-y-2">
+                <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2">
+                  <p className="text-[8px] font-mono text-white/50">{active.metrics.label}</p>
+                  <p className="text-xs sm:text-sm font-mono font-extrabold text-[#29ab87]" suppressHydrationWarning>
+                    {active.metrics.val}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 text-center">
+                  <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
+                    <p className="text-[7px] font-mono text-white/40">CUTOVER SCRIPTS</p>
+                    <p className="text-[11px] font-mono font-bold text-[#38bdf8]">1,420 / 1,420</p>
+                  </div>
+                  <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
+                    <p className="text-[7px] font-mono text-white/40">RISK DEVIATION</p>
+                    <p className="text-[11px] font-mono font-bold text-[#29ab87]">0.00%</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-2.5 rounded-lg bg-[#29ab87]/15 border border-[#29ab87]/30 p-1.5 text-center text-[9px] font-mono font-bold text-[#7edcc2]">
+                ✓ SAP Activate Milestone Validated
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Mobile & Tablet Non-Overlapping Responsive Deck (< 1024px) ── */}
+        <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-3xl mx-auto z-20 my-2 px-1">
+          {/* Card 1: Active Stage Breakdown */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.step}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-xl sm:rounded-2xl border border-white/15 bg-[#030713]/95 p-3.5 sm:p-4 shadow-xl backdrop-blur-xl"
+            >
+              <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                <span className="rounded bg-[#38bdf8]/20 border border-[#38bdf8]/40 px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold text-[#38bdf8]">
+                  STAGE {active.step} OF 04
+                </span>
+                <span className="flex items-center gap-1 text-[8px] sm:text-[9px] font-mono text-white/50">
+                  <Ruler className="h-3 w-3 text-[#38bdf8]" /> SCALE 1:1
+                </span>
+              </div>
+
+              <h3 className="mt-2 text-xs sm:text-sm font-bold text-white leading-snug">
+                {active.name}
+              </h3>
+              <p className="mt-1 text-[11px] sm:text-xs text-slate-300 leading-relaxed line-clamp-2">
+                {active.desc}
+              </p>
+
+              <div className="mt-2.5 flex flex-wrap gap-1.5 pt-2 border-t border-white/10">
+                {active.modules.map((m) => (
+                  <span key={m} className="inline-flex items-center gap-1 rounded bg-white/[0.04] border border-white/8 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-mono text-white/80">
+                    <Check className="h-2.5 w-2.5 text-[#29ab87]" />
+                    {m}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Card 2: Precision Verification */}
+          <div className="rounded-xl sm:rounded-2xl border border-white/15 bg-[#030713]/95 p-3.5 sm:p-4 shadow-xl backdrop-blur-xl">
+            <div className="flex items-center justify-between border-b border-white/10 pb-2">
+              <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-white">
+                <Scan className="h-3.5 w-3.5 text-[#29ab87] animate-pulse" /> Precision Verification
+              </span>
+              <span className="rounded bg-[#29ab87]/15 px-2 py-0.5 text-[8px] font-mono font-bold text-[#7edcc2]">
+                Validated
+              </span>
+            </div>
+
+            <div className="mt-2 grid grid-cols-2 gap-2 text-center">
+              <div className="rounded-lg bg-white/[0.03] border border-white/8 p-2">
+                <p className="text-[8px] font-mono text-white/50">{active.metrics.label}</p>
+                <p className="text-xs font-mono font-extrabold text-[#29ab87]" suppressHydrationWarning>
+                  {active.metrics.val}
+                </p>
+              </div>
+              <div className="rounded-lg bg-white/[0.03] border border-white/8 p-2">
+                <p className="text-[8px] font-mono text-white/50">CUTOVER SCRIPTS</p>
+                <p className="text-xs font-mono font-bold text-[#38bdf8]">1,420 / 1,420</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Bottom Gantry Progress Bar ── */}
+        <div className="relative z-20 mt-1 sm:mt-2 mx-auto w-full max-w-4xl px-3">
+          <div className="flex items-center justify-between text-[8px] sm:text-[9px] font-mono text-white/60 mb-1">
+            <span>DISCOVERY (0%)</span>
+            <span>CONFIG (33%)</span>
+            <span>MIGRATION (66%)</span>
+            <span>GO-LIVE (100%)</span>
+          </div>
+          <div className="relative h-1.5 sm:h-2 w-full rounded-full bg-white/10 overflow-hidden">
+            <motion.div
+              className="h-full bg-gradient-to-r from-[#38bdf8] via-[#22d3ee] to-[#29ab87]"
+              animate={{ width: `${scanPos}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

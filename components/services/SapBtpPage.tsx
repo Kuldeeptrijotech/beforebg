@@ -45,15 +45,10 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[linear-gradient(180deg,#0b1d33,#0a2540_45%,#050817)]"
+        bgClass="bg-[#030713]"
         glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
         scene={<BtpExplodedLayers />}
-        fadeTo="#050817"
-        heading={
-          <h1 className={heroH1}>
-            BTP <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">Full Stack</span>
-          </h1>
-        }
+        fadeTo="#030713"
       />
 
       {/* WHAT WE BUILD + HERO TAIL */}
@@ -121,7 +116,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
       </section>
 
       {/* CAPABILITIES */}
-      <section className="relative bg-gradient-to-b from-[#050817] to-[#080c1d] py-20 sm:py-24">
+      <section className="relative bg-gradient-to-b from-[#162032] to-[#121927] py-20 sm:py-24">
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>
@@ -153,8 +148,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
         </Container>
       </section>
 
-      {/* APP ARCHITECTURE (DARK) */}
-      <section className="relative overflow-hidden bg-[#050817] py-20 text-white sm:py-28">
+      {/* APP ARCHITECTURE (DARK / GLOWING GREY - HEX GRID PRESERVED) */}
+      <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_80%_15%,rgba(41,171,135,0.2),transparent_60%)]" />
         <Container className="relative">
@@ -187,7 +182,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
 
             <div>
               <Reveal delay={0.15}>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1a30]/80 p-8 backdrop-blur-md">
+                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Layer by layer</p>
                   <div className="mt-6 space-y-3">
                     {LAYERS.map((l, i) => (
@@ -225,7 +220,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
       </section>
 
       {/* INTEGRATION · DATA · AI */}
-      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+      <section className="relative bg-[#162032] py-20 sm:py-24">
         <Container>
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionLabel className="justify-center">Connected by default</SectionLabel>

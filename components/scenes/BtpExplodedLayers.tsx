@@ -1,469 +1,470 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
+  Activity,
+  ArrowDown,
+  ArrowUp,
   Blocks,
   Braces,
-  Building2,
+  Brain,
+  CheckCircle2,
+  ChevronRight,
+  Code2,
   Cpu,
   Database,
+  Layers,
+  LayoutDashboard,
+  Lock,
   MonitorSmartphone,
-  Workflow,
+  Network,
+  Plug,
+  Puzzle,
+  Radio,
+  Server,
+  ShieldCheck,
   Sparkles,
-  CheckCircle,
+  Workflow,
+  Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────
-   SAP BTP — 3D CONSTELLATION ORBIT SYSTEM
+   SAP BTP FULL STACK — 3D ISOMETRIC ARCHITECTURAL TOWER &
+   NEURAL CLOUD DATA RIVER ENGINE
    ───────────────────────────────────────────────────────────── */
 
-type Layer = {
-  label: string;
-  sub: string;
+type BtpLayer = {
+  id: string;
+  name: string;
+  category: string;
+  tagline: string;
   icon: LucideIcon;
-  tint: string;
-  edge: string;
+  color: string;
   glow: string;
+  bgGrad: string;
+  tech: string[];
+  specs: string[];
+  metrics: { label: string; value: string };
 };
 
-const LAYERS: Layer[] = [
-  { label: "User Experience / Fiori", sub: "Launchpad · responsive UX · mobile", icon: MonitorSmartphone, tint: "rgba(34,211,238,0.14)", edge: "#22d3ee", glow: "rgba(34,211,238,0.35)" },
-  { label: "Application Layer", sub: "UI5 · web components · workflows", icon: Blocks, tint: "rgba(47,143,255,0.15)", edge: "#38bdf8", glow: "rgba(47,143,255,0.35)" },
-  { label: "CAP / Services", sub: "Domain services · business logic", icon: Braces, tint: "rgba(10,110,209,0.2)", edge: "#2f8fff", glow: "rgba(47,143,255,0.4)" },
-  { label: "SAP BTP Core", sub: "Runtime · extensibility · security", icon: Cpu, tint: "rgba(0,112,242,0.26)", edge: "#0a6ed1", glow: "rgba(10,110,209,0.5)" },
-  { label: "Integration Suite", sub: "APIs · events · connectors", icon: Workflow, tint: "rgba(139,124,246,0.18)", edge: "#8b7cf6", glow: "rgba(139,124,246,0.35)" },
-  { label: "HANA / Data", sub: "Database · data lake · analytics", icon: Database, tint: "rgba(103,232,249,0.15)", edge: "#67e8f9", glow: "rgba(103,232,249,0.35)" },
-  { label: "SAP / External Systems", sub: "S/4HANA · third-party · cloud", icon: Building2, tint: "rgba(255,255,255,0.05)", edge: "rgba(255,255,255,0.4)", glow: "rgba(255,255,255,0.2)" },
+const BTP_LAYERS: BtpLayer[] = [
+  {
+    id: "layer-fiori",
+    name: "Experience & UI Layer",
+    category: "Presentation Tier",
+    tagline: "SAP Fiori · UI5 · Modern Web & Mobile",
+    icon: MonitorSmartphone,
+    color: "#38bdf8",
+    glow: "rgba(56,189,248,0.5)",
+    bgGrad: "linear-gradient(135deg, rgba(56,189,248,0.18) 0%, rgba(3,7,19,0.85) 100%)",
+    tech: ["Fiori Elements", "OpenUI5 / TS", "SAP Build Workzone", "Mobile SDK"],
+    specs: [
+      "Role-based responsive Fiori launchpads",
+      "Dynamic analytical cards, tables & KPIs",
+      "Offline-first mobile apps for iOS & Android",
+      "Zero-latency client-side state caching",
+    ],
+    metrics: { label: "Client Rendering", value: "< 16ms (60 FPS)" },
+  },
+  {
+    id: "layer-cap-rap",
+    name: "Application & Service Layer",
+    category: "Logic & Framework Tier",
+    tagline: "CAP (Node.js/Java) · RAP (ABAP) · CDS",
+    icon: Braces,
+    color: "#22d3ee",
+    glow: "rgba(34,211,238,0.5)",
+    bgGrad: "linear-gradient(135deg, rgba(34,211,238,0.18) 0%, rgba(3,7,19,0.85) 100%)",
+    tech: ["SAP Cloud App Model", "Core Data Services", "OData V4 / GraphQL", "ABAP RESTful Model"],
+    specs: [
+      "Declarative business logic with CDS schemas",
+      "Enterprise OData V4 services & GraphQL endpoints",
+      "Built-in transactional draft handling",
+      "Event-driven microservice orchestration",
+    ],
+    metrics: { label: "Service Throughput", value: "24,000 req/s" },
+  },
+  {
+    id: "layer-btp-core",
+    name: "Cloud Platform & Runtime",
+    category: "Execution & Security Tier",
+    tagline: "Cloud Foundry · Kyma (Kubernetes) · IAS",
+    icon: Cpu,
+    color: "#2f8fff",
+    glow: "rgba(47,143,255,0.5)",
+    bgGrad: "linear-gradient(135deg, rgba(47,143,255,0.18) 0%, rgba(3,7,19,0.85) 100%)",
+    tech: ["Cloud Foundry Runtime", "Kyma Containers", "SAP Cloud Identity (IAS)", "Autoscaler"],
+    specs: [
+      "Containerized microservices & serverless functions",
+      "Enterprise SSO with OAuth 2.0 / SAML 2.0",
+      "Zero-trust principal propagation security",
+      "Elastic auto-scaling with high availability",
+    ],
+    metrics: { label: "Runtime Uptime", value: "99.999% SLA" },
+  },
+  {
+    id: "layer-integration",
+    name: "Integration & Connectivity",
+    category: "Integration Tier",
+    tagline: "Integration Suite · Event Mesh · APIs",
+    icon: Workflow,
+    color: "#8b7cf6",
+    glow: "rgba(139,124,246,0.5)",
+    bgGrad: "linear-gradient(135deg, rgba(139,124,246,0.18) 0%, rgba(3,7,19,0.85) 100%)",
+    tech: ["Cloud Integration (CPI)", "SAP Event Mesh", "API Management", "Open Connectors"],
+    specs: [
+      "3,000+ prebuilt SAP & 3rd-party connectors",
+      "Asynchronous pub/sub event mesh messaging",
+      "Governed REST/SOAP API rate-limiting & policies",
+      "Real-time B2B & government electronic compliance",
+    ],
+    metrics: { label: "Event Ingestion", value: "45,000 events/s" },
+  },
+  {
+    id: "layer-hana-core",
+    name: "Data & Clean Core S/4HANA",
+    category: "Foundation Tier",
+    tagline: "SAP HANA Cloud · Datasphere · S/4 Clean Core",
+    icon: Database,
+    color: "#29ab87",
+    glow: "rgba(41,171,135,0.5)",
+    bgGrad: "linear-gradient(135deg, rgba(41,171,135,0.18) 0%, rgba(3,7,19,0.85) 100%)",
+    tech: ["HANA Cloud DB", "SAP Datasphere", "S/4HANA Clean Core", "Analytics Cloud (SAC)"],
+    specs: [
+      "In-memory columnar database speeds",
+      "Clean-core side-by-side extension model",
+      "Federated multi-cloud data virtualization",
+      "Zero-disruption cloud upgrade readiness",
+    ],
+    metrics: { label: "Core Decoupling", value: "100% Upgrade-Safe" },
+  },
 ];
-
-const LAYER_SPECS = [
-  {
-    tech: "UI5 · Fiori Elements · TypeScript",
-    points: [
-      "Role-based Fiori launchpad experiences",
-      "Dynamic cards, charts, and table elements",
-      "Offline-capable mobile apps with Swift/Kotlin",
-      "Standard and custom CSS variables styling"
-    ]
-  },
-  {
-    tech: "Business Application Studio · BAS Workflows",
-    points: [
-      "Cross-service workflow orchestrations",
-      "Custom task approvals and inbox integrations",
-      "Low-code cloud apps via SAP Build Apps",
-      "Pro-code full stack developer tooling"
-    ]
-  },
-  {
-    tech: "CAP (Node.js/Java) · RAP (ABAP) · CDS",
-    points: [
-      "Clean OData V4 and GraphQL service layers",
-      "Schema-based Core Data Services models",
-      "Built-in draft handling and transaction loops",
-      "Extensible business event handlers"
-    ]
-  },
-  {
-    tech: "Cloud Foundry · Kyma (Kubernetes) · IAS",
-    points: [
-      "Secure enterprise identity integrations (IAS/IPS)",
-      "Kyma serverless and containerized services",
-      "Scalable multi-tenant subscription runtimes",
-      "Autoscaling based on load and memory profiles"
-    ]
-  },
-  {
-    tech: "Cloud Integration (CPI) · Event Mesh · APIs",
-    points: [
-      "Prebuilt integration packs for SAP S/4HANA",
-      "Asynchronous event handling with Event Mesh",
-      "Comprehensive REST/SOAP API management",
-      "Secure B2B and government connectivity adapters"
-    ]
-  },
-  {
-    tech: "HANA Cloud · Data Sphere · Analytics Cloud (SAC)",
-    points: [
-      "In-memory column database speeds",
-      "Federated views across cloud and on-premise",
-      "Unified story reporting directly inside apps",
-      "Advanced predictive and planning modeling"
-    ]
-  },
-  {
-    tech: "S/4HANA Cloud · SuccessFactors · External APIs",
-    points: [
-      "Clean-core side-by-side extensions",
-      "Real-time eventing via enterprise hooks",
-      "Secure principal propagation via connectivity",
-      "RFC and BAPI standard integration endpoints"
-    ]
-  }
-];
-
-const ORBIT_RADII = [160, 200, 240, 0, 280, 320, 360];
-const ORBIT_SPEEDS = [0.015, -0.012, 0.010, 0, -0.008, 0.007, -0.006];
-const ORBIT_PHASES = [0, 1.2, 2.4, 0, 3.6, 4.8, 5.5];
-const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
 export default function BtpExplodedLayers() {
+  const reduce = useReducedMotion();
+  const [selectedLayer, setSelectedLayer] = useState<number>(0);
+  const [hoveredLayer, setHoveredLayer] = useState<number | null>(null);
+  const [autoRotate, setAutoRotate] = useState<boolean>(true);
+
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [selected, setSelected] = useState<number | null>(null);
+  const activeIndex = hoveredLayer !== null ? hoveredLayer : selectedLayer;
+  const current = BTP_LAYERS[activeIndex];
 
-  const angleX = useRef(-0.5);
-  const angleY = useRef(0.6);
-  const isDragging = useRef(false);
-  const startPointer = useRef({ x: 0, y: 0 });
-  const targetRotation = useRef({ x: -0.5, y: 0.6 });
-
-  const [coords, setCoords] = useState<{ x: number; y: number; scale: number; z: number }[]>(
-    LAYERS.map(() => ({ x: 0, y: 0, scale: 1, z: 0 }))
-  );
-
-  const activeIndex = selected !== null ? selected : hovered;
-  const isLocked = selected !== null;
-
+  // Auto-cycle through layers if user isn't interacting
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    if (!autoRotate) return;
+    const interval = setInterval(() => {
+      setSelectedLayer((prev) => (prev + 1) % BTP_LAYERS.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [autoRotate]);
 
-    let animId: number;
-    let time = 0;
-
-    const resize = () => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      canvas.width = rect?.width || 800;
-      canvas.height = rect?.height || 600;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const particles: { x: number; y: number; z: number; progress: number; speed: number; layer: number }[] = [];
-
-    const loop = () => {
-      time += 0.01;
-      animId = requestAnimationFrame(loop);
-
-      const width = canvas.width;
-      const height = canvas.height;
-      const centerX = width / 2;
-      const centerY = height / 2;
-
-      ctx.clearRect(0, 0, width, height);
-
-      if (!isDragging.current) {
-        targetRotation.current.y += 0.001;
-      }
-      angleX.current += (targetRotation.current.x - angleX.current) * 0.1;
-      angleY.current += (targetRotation.current.y - angleY.current) * 0.1;
-
-      const cosX = Math.cos(angleX.current);
-      const sinX = Math.sin(angleX.current);
-      const cosY = Math.cos(angleY.current);
-      const sinY = Math.sin(angleY.current);
-
-      const rotate3D = (px: number, py: number, pz: number) => {
-        const x1 = px * cosY - pz * sinY;
-        const z1 = px * sinY + pz * cosY;
-        const y2 = py * cosX - z1 * sinX;
-        const z2 = py * sinX + pz * cosX;
-        return { x: x1, y: y2, z: z2 };
-      };
-
-      const perspective = 800;
-      const newCoords = LAYERS.map((_, i) => {
-        if (i === 3) {
-          const rot = rotate3D(0, 0, 0);
-          const scale = perspective / (perspective + rot.z);
-          return {
-            x: centerX + rot.x * scale,
-            y: centerY + rot.y * scale,
-            scale,
-            z: rot.z,
-          };
-        }
-
-        const rad = ORBIT_RADII[i];
-        const theta = time * ORBIT_SPEEDS[i] * 60 + ORBIT_PHASES[i];
-        const ox = Math.cos(theta) * rad;
-        const oz = Math.sin(theta) * rad;
-        const oy = Math.sin(theta * 1.5) * (rad * 0.15);
-
-        const rot = rotate3D(ox, oy, oz);
-        const scale = perspective / (perspective + rot.z);
-
-        return {
-          x: centerX + rot.x * scale,
-          y: centerY + rot.y * scale,
-          scale,
-          z: rot.z,
-        };
-      });
-
-      setCoords(newCoords);
-
-      ctx.lineWidth = 1;
-      LAYERS.forEach((_, i) => {
-        if (i === 3) return;
-        const rad = ORBIT_RADII[i];
-        ctx.beginPath();
-        const segments = 60;
-        for (let j = 0; j <= segments; j++) {
-          const theta = (j / segments) * Math.PI * 2;
-          const ox = Math.cos(theta) * rad;
-          const oz = Math.sin(theta) * rad;
-          const oy = Math.sin(theta * 1.5) * (rad * 0.15);
-
-          const rot = rotate3D(ox, oy, oz);
-          const scale = perspective / (perspective + rot.z);
-          const sx = centerX + rot.x * scale;
-          const sy = centerY + rot.y * scale;
-
-          if (j === 0) ctx.moveTo(sx, sy);
-          else ctx.lineTo(sx, sy);
-        }
-        ctx.strokeStyle = activeIndex === i ? "rgba(41,171,135,0.22)" : "rgba(255,255,255,0.04)";
-        ctx.stroke();
-      });
-
-      const core = newCoords[3];
-      newCoords.forEach((node, i) => {
-        if (i === 3) return;
-        ctx.beginPath();
-        ctx.moveTo(core.x, core.y);
-        ctx.lineTo(node.x, node.y);
-        ctx.strokeStyle = activeIndex === i
-          ? `rgba(41, 171, 135, ${0.12 + Math.max(0, 1 - node.z / 600) * 0.28})`
-          : "rgba(255,255,255,0.03)";
-        ctx.lineWidth = activeIndex === i ? 2 : 1;
-        ctx.stroke();
-      });
-
-      if (Math.random() < 0.08) {
-        const targetLayer = Math.floor(Math.random() * LAYERS.length);
-        if (targetLayer !== 3) {
-          particles.push({
-            x: 0,
-            y: 0,
-            z: 0,
-            progress: 0,
-            speed: 0.015 + Math.random() * 0.01,
-            layer: targetLayer,
-          });
-        }
-      }
-
-      ctx.lineWidth = 1;
-      for (let j = particles.length - 1; j >= 0; j--) {
-        const p = particles[j];
-        p.progress += p.speed;
-
-        if (p.progress >= 1) {
-          particles.splice(j, 1);
-          continue;
-        }
-
-        const targetRadius = ORBIT_RADII[p.layer];
-        const theta = time * ORBIT_SPEEDS[p.layer] * 60 + ORBIT_PHASES[p.layer];
-        const targetX = Math.cos(theta) * targetRadius * p.progress;
-        const targetZ = Math.sin(theta) * targetRadius * p.progress;
-        const targetY = Math.sin(theta * 1.5) * (targetRadius * 0.15) * p.progress;
-
-        const rot = rotate3D(targetX, targetY, targetZ);
-        const scale = perspective / (perspective + rot.z);
-        const sx = centerX + rot.x * scale;
-        const sy = centerY + rot.y * scale;
-
-        const color = LAYERS[p.layer].edge;
-        ctx.beginPath();
-        ctx.arc(sx, sy, 3.5 * scale, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = color;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-    };
-
-    loop();
-
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", resize);
-    };
-  }, [activeIndex]);
-
-  const handlePointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    isDragging.current = true;
-    startPointer.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handlePointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!isDragging.current) return;
-    const dx = e.clientX - startPointer.current.x;
-    const dy = e.clientY - startPointer.current.y;
-    targetRotation.current.y = angleY.current + dx * 0.005;
-    targetRotation.current.x = Math.max(-1.2, Math.min(1.2, angleX.current + dy * 0.005));
-    startPointer.current = { x: e.clientX, y: e.clientY };
-  };
-
-  const handlePointerUp = () => {
-    isDragging.current = false;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current || reduce) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMousePos({ x: x * 14, y: y * -14 });
   };
 
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 z-0 bg-transparent"
-      style={{ userSelect: "none" }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setAutoRotate(false)}
+      onMouseLeave={() => {
+        setMousePos({ x: 0, y: 0 });
+        setAutoRotate(true);
+      }}
+      className="relative isolate h-full min-h-[600px] w-full overflow-hidden select-none"
     >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-10 lg:-translate-x-[16%]"
-        onPointerDown={handlePointerDown}
-        onPointerMove={handlePointerMove}
-        onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerUp}
-        style={{ cursor: "grab" }}
-      />
-
-      <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden lg:-translate-x-[16%]">
-        {LAYERS.map((layer, i) => {
-          const Icon = layer.icon;
-          const coord = coords[i] || { x: 0, y: 0, scale: 1, z: 0 };
-          const lifted = activeIndex === i;
-
-          return (
-            <div
-              key={layer.label}
-              className="absolute pointer-events-auto"
-              style={{
-                left: coord.x,
-                top: coord.y,
-                transform: `translate(-50%, -50%) scale(${coord.scale})`,
-                zIndex: Math.round(1000 - coord.z),
-              }}
-            >
-              <button
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelected(selected === i ? null : i);
-                }}
-                className={`relative flex items-center justify-center rounded-2xl border transition-all duration-300 ${
-                  i === 3 ? "p-4 sm:p-5" : "p-3 sm:p-3.5"
-                }`}
-                style={{
-                  borderColor: lifted ? `${layer.edge}aa` : `${layer.edge}38`,
-                  background: lifted
-                    ? `radial-gradient(circle at center, ${layer.tint}, rgba(10,26,48,0.72))`
-                    : `radial-gradient(circle at center, ${layer.tint}, rgba(10,26,48,0.5))`,
-                  boxShadow: lifted
-                    ? `0 14px 44px -10px rgba(3,7,19,0.9), 0 0 0 1px ${layer.edge}24, 0 0 28px ${layer.glow}66`
-                    : `0 8px 24px -10px rgba(3,7,19,0.7), 0 0 0 1px ${layer.edge}08`,
-                }}
-              >
-                <span
-                  className="absolute inset-0 rounded-2xl opacity-10 animate-border-shimmer"
-                  style={{ border: `1.5px solid ${layer.edge}` }}
-                />
-                <Icon
-                  className="size-5 sm:size-6"
-                  strokeWidth={1.8}
-                  style={{
-                    color: layer.edge,
-                    filter: lifted ? `drop-shadow(0 0 8px ${layer.glow})` : "none",
-                  }}
-                />
-                {i === 3 && (
-                  <span className="absolute -top-6 left-1/2 -translate-x-1/2 rounded bg-[#0a6ed1] px-1.5 py-0.5 text-[8px] font-black uppercase tracking-widest text-white shadow-md">
-                    CORE
-                  </span>
-                )}
-              </button>
-            </div>
-          );
-        })}
+      {/* ── Background Cyber-Grid & Volumetric Aura ── */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute left-1/3 top-1/4 h-96 w-96 rounded-full blur-[130px] opacity-25 transition-colors duration-700"
+          style={{ background: current.color }}
+        />
+        <div className="absolute right-10 bottom-10 h-80 w-80 rounded-full bg-[#117a4b]/20 blur-[120px]" />
       </div>
 
-      {/* Floating Specs Inspector Panel */}
-      <div
-        className="pointer-events-auto absolute bottom-4 left-4 right-4 z-30 flex flex-col justify-end lg:bottom-auto lg:right-[6%] lg:top-[28%] lg:left-auto lg:w-[380px] lg:justify-center"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <AnimatePresence mode="wait">
-          {activeIndex !== null ? (
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 15, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.97 }}
-              transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-              className="tri-glass-card rounded-[2rem] border border-white/[0.08] bg-slate-950/45 p-6 backdrop-blur-xl shadow-[0_34px_80px_-24px_rgba(3,7,19,0.85)]"
+      {/* ── Top Floating Navigation Filters ── */}
+      <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 px-3 sm:px-6 pt-2 sm:pt-4">
+        <div className="flex items-center gap-2">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+            <Layers className="h-4 w-4" />
+          </span>
+          <div>
+            <p className="text-xs font-bold text-white tracking-tight">SAP BTP Full-Stack Architecture</p>
+            <p className="text-[9px] text-white/50">Clean Core · Side-by-Side Extensibility</p>
+          </div>
+        </div>
+
+        {/* Layer Pill Switchers (Responsive scroll on mobile) */}
+        <div className="flex items-center gap-1 overflow-x-auto max-w-full rounded-full border border-white/10 bg-black/60 p-1 backdrop-blur-xl shadow-lg no-scrollbar">
+          {BTP_LAYERS.map((layer, idx) => (
+            <button
+              key={layer.id}
+              onClick={() => {
+                setSelectedLayer(idx);
+                setAutoRotate(false);
+              }}
+              className={`whitespace-nowrap rounded-full px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-bold transition-all duration-300 ${
+                activeIndex === idx
+                  ? "bg-white text-slate-950 shadow-md scale-105"
+                  : "text-white/60 hover:text-white hover:bg-white/10"
+              }`}
             >
-              {/* Header Tone Line */}
-              <div
-                className="h-1 w-14 rounded-full mb-5"
-                style={{
-                  background: `linear-gradient(90deg, ${LAYERS[activeIndex].edge}, #f5a623)`,
-                  boxShadow: `0 0 10px ${LAYERS[activeIndex].glow}`,
-                }}
-              />
+              {layer.name.split(" ")[0]}
+            </button>
+          ))}
+        </div>
+      </div>
 
-              <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">
-                Layer {String(activeIndex + 1).padStart(2, "0")} Inspector
-              </span>
+      {/* ── Main Interactive Stage (Isometric 3D Tower + Inspector HUD) ── */}
+      <div className="relative z-20 flex min-h-0 w-full flex-1 flex-col lg:flex-row items-center justify-center lg:justify-between gap-4 sm:gap-6 lg:gap-10 px-3 sm:px-6 lg:px-12 py-3 lg:py-6 overflow-y-auto lg:overflow-visible">
+        {/* ── Left / Center: 3D Isometric Exploded Glass Stack ── */}
+        <div
+          className="relative flex-1 h-[260px] sm:h-[340px] md:h-[400px] lg:h-[500px] w-full flex items-center justify-center"
+          style={{ perspective: "1200px" }}
+        >
+          {/* Central Vertical Data Column Laser Beam */}
+          <svg
+            aria-hidden
+            className="absolute inset-0 h-full w-full pointer-events-none z-0 opacity-70"
+            viewBox="0 0 800 600"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              <linearGradient id="verticalDataBeam" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.8" />
+                <stop offset="25%" stopColor="#22d3ee" stopOpacity="1" />
+                <stop offset="50%" stopColor="#2f8fff" stopOpacity="1" />
+                <stop offset="75%" stopColor="#8b7cf6" stopOpacity="1" />
+                <stop offset="100%" stopColor="#29ab87" stopOpacity="0.9" />
+              </linearGradient>
+              <filter id="beamGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-              <h4 className="mt-2 text-xl font-bold leading-snug text-white">
-                {LAYERS[activeIndex].label}
-              </h4>
+            {/* Vertical Flow Spine */}
+            <line
+              x1="400"
+              y1="90"
+              x2="400"
+              y2="510"
+              stroke="url(#verticalDataBeam)"
+              strokeWidth="4"
+              filter="url(#beamGlow)"
+              strokeDasharray="8 6"
+            />
 
-              <p className="mt-2.5 text-xs font-semibold text-[#7edcc2] uppercase tracking-wider">
-                {LAYER_SPECS[activeIndex].tech}
-              </p>
+            {/* Moving Bi-Directional Request Packets */}
+            <circle cx="400" r="6" fill="#38bdf8" filter="url(#beamGlow)">
+              <animate attributeName="cy" values="90;510;90" dur="4.5s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="400" r="5" fill="#29ab87" filter="url(#beamGlow)">
+              <animate attributeName="cy" values="510;90;510" dur="4.5s" repeatCount="indefinite" />
+            </circle>
+          </svg>
 
-              <ul className="mt-5 space-y-3.5 border-t border-white/[0.07] pt-5">
-                {LAYER_SPECS[activeIndex].points.map((pt, idx) => (
-                  <motion.li
-                    initial={{ opacity: 0, x: -6 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.08 }}
-                    key={idx}
-                    className="flex items-start gap-3 text-xs leading-[1.6] text-slate-300"
-                  >
-                    <CheckCircle
-                      className="mt-0.5 size-4 shrink-0"
-                      style={{ color: LAYERS[activeIndex].edge }}
-                    />
-                    <span>{pt}</span>
-                  </motion.li>
-                ))}
-              </ul>
+          {/* 3D Isometric Stack Container */}
+          <motion.div
+            animate={{
+              rotateX: 52 + mousePos.y,
+              rotateZ: -30 + mousePos.x,
+            }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            className="relative w-[260px] sm:w-[320px] md:w-[360px] lg:w-[410px] h-[220px] sm:h-[280px] lg:h-[340px] flex flex-col justify-between items-center"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            {BTP_LAYERS.map((layer, idx) => {
+              const isLayerActive = activeIndex === idx;
+              const Icon = layer.icon;
 
-              <div className="mt-6 flex items-center justify-between text-[10px] font-bold text-slate-500 border-t border-white/[0.05] pt-4">
-                <span className="flex items-center gap-1.5">
-                  <Sparkles className="size-3.5" style={{ color: LAYERS[activeIndex].edge }} />
-                  Interactive specs catalog
-                </span>
-                <button
-                  onClick={() => setSelected(null)}
-                  className="cursor-pointer text-[#7edcc2] hover:text-white transition-colors"
+              return (
+                <motion.div
+                  key={layer.id}
+                  onClick={() => {
+                    setSelectedLayer(idx);
+                    setAutoRotate(false);
+                  }}
+                  onMouseEnter={() => setHoveredLayer(idx)}
+                  onMouseLeave={() => setHoveredLayer(null)}
+                  animate={{
+                    z: isLayerActive ? (4 - idx) * 38 + 28 : (4 - idx) * 38,
+                    scale: isLayerActive ? 1.04 : 1,
+                  }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="relative w-full h-[46px] sm:h-[56px] lg:h-[64px] cursor-pointer rounded-xl sm:rounded-2xl border transition-all duration-300"
+                  style={{
+                    transformStyle: "preserve-3d",
+                    background: layer.bgGrad,
+                    borderColor: isLayerActive ? layer.color : "rgba(255,255,255,0.12)",
+                    boxShadow: isLayerActive
+                      ? `0 16px 40px -10px ${layer.glow}, 0 0 28px ${layer.glow}, inset 0 1px 0 rgba(255,255,255,0.3)`
+                      : "0 8px 20px -5px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)",
+                  }}
                 >
-                  {isLocked ? "Unlock Panel" : "Lock Mode"}
-                </button>
+                  {/* Layer Surface Grid Pattern */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-20 pointer-events-none"
+                    style={{
+                      backgroundImage: `radial-gradient(circle at center, ${layer.color} 1px, transparent 1px)`,
+                      backgroundSize: "16px 16px",
+                    }}
+                  />
+
+                  {/* Layer Content */}
+                  <div className="relative h-full w-full flex items-center justify-between px-3 sm:px-5">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div
+                        className="flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-lg sm:rounded-xl text-white shadow-md transition-transform duration-300"
+                        style={{
+                          background: `linear-gradient(135deg, ${layer.color}, #030713)`,
+                          border: `1px solid ${layer.color}80`,
+                        }}
+                      >
+                        <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] sm:text-xs lg:text-sm font-extrabold text-white tracking-tight leading-tight">
+                          {layer.name}
+                        </p>
+                        <p className="text-[8px] sm:text-[9px] lg:text-[10px] font-semibold truncate max-w-[140px] sm:max-w-none" style={{ color: layer.color }}>
+                          {layer.tagline}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Active State Indicator */}
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      {isLayerActive && (
+                        <span
+                          className="hidden md:inline-block rounded-full px-2 py-0.5 text-[7px] lg:text-[8px] font-mono font-extrabold uppercase tracking-wider text-white shadow-md animate-pulse"
+                          style={{ background: layer.color }}
+                        >
+                          ACTIVE
+                        </span>
+                      )}
+                      <span
+                        className="h-2 w-2 rounded-full"
+                        style={{
+                          background: layer.color,
+                          boxShadow: isLayerActive ? `0 0 10px ${layer.color}` : "none",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Corner Accent Screws / Tech Marks */}
+                  <span className="absolute top-1 left-1 h-0.5 w-0.5 rounded-full bg-white/40" />
+                  <span className="absolute top-1 right-1 h-0.5 w-0.5 rounded-full bg-white/40" />
+                  <span className="absolute bottom-1 left-1 h-0.5 w-0.5 rounded-full bg-white/40" />
+                  <span className="absolute bottom-1 right-1 h-0.5 w-0.5 rounded-full bg-white/40" />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+
+        {/* ── Right Side: Real-Time BTP Architecture Inspector HUD ── */}
+        <div className="w-full lg:w-[380px] xl:w-[410px] z-20 shrink-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 15, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.97 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-2xl sm:rounded-3xl border border-white/12 bg-[#030713]/95 p-4 sm:p-5 lg:p-6 shadow-[0_30px_70px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
+              style={{
+                boxShadow: `0 20px 50px -20px ${current.glow}, 0 0 0 1px rgba(255,255,255,0.08)`,
+              }}
+            >
+              {/* Header Badge */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-3 sm:pb-4">
+                <div className="flex items-center gap-2 sm:gap-2.5">
+                  <span
+                    className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl text-white shadow-lg"
+                    style={{ background: current.color }}
+                  >
+                    <current.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </span>
+                  <div>
+                    <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-widest text-white/50">
+                      Tier 0{activeIndex + 1} · {current.category}
+                    </span>
+                    <h3 className="text-sm sm:text-base lg:text-lg font-bold text-white leading-snug">
+                      {current.name}
+                    </h3>
+                  </div>
+                </div>
+                <span
+                  className="rounded-full px-2 py-0.5 sm:px-2.5 sm:py-1 text-[8px] sm:text-[9px] font-mono font-bold"
+                  style={{ background: `${current.color}20`, color: current.color, border: `1px solid ${current.color}40` }}
+                >
+                  {current.metrics.value}
+                </span>
+              </div>
+
+              {/* Technologies / Frameworks Badges */}
+              <div className="mt-3 sm:mt-4">
+                <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white/40 mb-1.5 sm:mb-2">
+                  Engineered With
+                </p>
+                <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                  {current.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-lg border border-white/10 bg-white/[0.04] px-2 py-0.5 sm:px-2.5 sm:py-1 text-[9px] sm:text-[10px] font-mono text-white/85 shadow-sm"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Core Capabilities Checklist */}
+              <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-white/10">
+                <p className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-white/40 mb-2">
+                  Full-Stack Architecture Capabilities
+                </p>
+                <ul className="space-y-1.5 sm:space-y-2">
+                  {current.specs.map((spec) => (
+                    <li key={spec} className="flex items-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-white/80 leading-relaxed">
+                      <CheckCircle2
+                        className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0 mt-0.5"
+                        style={{ color: current.color }}
+                      />
+                      <span>{spec}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Bottom Quick Metric Telemetry */}
+              <div className="mt-3 sm:mt-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/8 p-2.5 sm:p-3 flex items-center justify-between">
+                <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-white/70">
+                  <Activity className="h-3.5 w-3.5 sm:h-4 sm:w-4" style={{ color: current.color }} />
+                  <span>{current.metrics.label}</span>
+                </div>
+                <span className="font-mono font-bold text-[11px] sm:text-xs" style={{ color: current.color }}>
+                  {current.metrics.value}
+                </span>
               </div>
             </motion.div>
-          ) : null}
-        </AnimatePresence>
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );

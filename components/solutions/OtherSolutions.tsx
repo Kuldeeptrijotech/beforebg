@@ -8,10 +8,12 @@ export default function OtherSolutions({ currentSlug }: { currentSlug: string })
   if (others.length === 0) return null;
 
   return (
-    <section className="bg-[#030713] py-16 sm:py-20 border-t border-white/5">
+    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-t border-white/5">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">More from Trijotech</p>
-        <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">More from Trijotech</p>
+        <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
           Explore Other Solutions
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -47,19 +47,14 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[linear-gradient(180deg,#0a2540,#0b1d33_45%,#050817)]"
+        bgClass="bg-[#030713]"
         glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
         scene={<IntegrationDataRiver />}
-        fadeTo="#050817"
-        heading={
-          <h1 className={heroH1}>
-            Data <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">Integration</span>
-          </h1>
-        }
+        fadeTo="#030713"
       />
 
       {/* SOURCE SYSTEMS + HERO TAIL */}
-      <section className="relative bg-[#050817]">
+      <section className="relative bg-[#162032]">
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="flex h-16 flex-col items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#29ab87] shadow-[0_0_10px_#29ab87]" />
@@ -74,7 +69,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
               <h2 className={`mt-5 ${introLead} text-white`}>
                 Every system, <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">one trusted flow</span>
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
                 Our integration services unify SAP and non-SAP landscapes through scalable APIs, cloud integration,
                 migration, and enterprise connectivity — supporting seamless operations and real-time insight.
               </p>
@@ -123,7 +118,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
       </section>
 
       {/* JOURNEY */}
-      <section className="relative bg-gradient-to-b from-[#050817] to-[#080c1d] py-20 sm:py-24">
+      <section className="relative bg-gradient-to-b from-[#162032] to-[#121927] py-20 sm:py-24">
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>Integration journey</SectionLabel>
@@ -141,7 +136,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                   <StaggerRevealItem key={s.label} variant="scale" className="relative pl-16 lg:pl-0 lg:pt-10">
                     <span className="absolute left-6 top-0 -translate-x-1/2 lg:left-0 lg:top-8 lg:translate-x-0 lg:-translate-y-1/2">
                       <motion.span
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#080c1d] text-[#29ab87] shadow-lg shadow-cyan-950/10"
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-[#29ab87] shadow-lg shadow-cyan-950/10"
                         animate={{ scale: [1, 1.12, 1] }}
                         transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.45, ease: "easeInOut" }}
                       >
@@ -151,7 +146,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                     <Glass variant="frosted" tone="green" className="p-5">
                       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#29ab87]">{String(i + 1).padStart(2, "0")}</p>
                       <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
-                      <p className="mt-2 text-sm leading-6 text-slate-400">{s.desc}</p>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">{s.desc}</p>
                     </Glass>
                   </StaggerRevealItem>
                 );
@@ -161,8 +156,8 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
         </Container>
       </section>
 
-      {/* MAPPING & TRANSFORMATION (DARK) */}
-      <section className="relative overflow-hidden bg-[#050817] py-20 text-white sm:py-28">
+      {/* MAPPING & TRANSFORMATION (DARK / GLOWING GREY - HEX GRID PRESERVED) */}
+      <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_15%_20%,rgba(41,171,135,0.16),transparent_60%)]" />
         <Container className="relative">
@@ -194,7 +189,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
             </div>
 
             <Reveal delay={0.15}>
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1a30]/80 p-8 backdrop-blur-md">
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
                 <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Mapping in motion</p>
                 <div className="mt-6 space-y-3">
                   {[
@@ -235,7 +230,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
       </section>
 
       {/* CAPABILITIES */}
-      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+      <section className="relative bg-[#162032] py-20 sm:py-24">
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>

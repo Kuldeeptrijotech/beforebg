@@ -309,7 +309,7 @@ export default function ServiceDetailLanding({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="relative aspect-[4/3] min-w-0 w-full overflow-hidden rounded-[2rem] shadow-[0_32px_80px_-24px_rgba(41,171,135,0.35)]"
+            className="relative aspect-[16/10] min-w-0 w-full self-center overflow-hidden rounded-[2rem] shadow-[0_32px_80px_-24px_rgba(41,171,135,0.35)]"
           >
             <Image
               src={impactImage}
@@ -370,14 +370,14 @@ export default function ServiceDetailLanding({
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative bg-[#030713] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+      <section className="relative bg-[#030713] px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
         <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-30" />
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#0e2340,#0b1d33_50%,#050817)] px-6 py-16 text-center shadow-[0_40px_120px_-30px_rgba(3,7,19,0.7)] sm:px-12 sm:py-24"
+          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#0e2340,#0b1d33_50%,#050817)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(3,7,19,0.7)] sm:px-12 sm:py-10"
         >
           <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-45" />
           <div aria-hidden className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
@@ -389,14 +389,14 @@ export default function ServiceDetailLanding({
             <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em] text-[#f5a623]">
               <Sparkles className="h-4 w-4" /> Let&apos;s work together
             </p>
-            <h2 className="mt-6 text-3xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl">
+<h2 className="mt-4 text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl">
               Ready to move your SAP priorities forward?
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-[1.8] text-slate-300/85 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-[1.7] text-slate-300/85 sm:text-base">
               Connect with our team to shape a practical roadmap around your goals and technology landscape.
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-10">
-              <Link href="/contact" className="tri-btn tri-btn-primary px-8 py-4 text-sm font-semibold">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-6">
+              <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>

@@ -1,301 +1,438 @@
 "use client";
-import { useState, type ReactNode } from "react";
-import { BarChart3, Building2, GitMerge, Globe, Scale, TrendingUp } from "lucide-react";
-import { FlowLink, GlowHalo, HEX_CLIP, Packet, PulseDot, SceneCanvas, SceneIcon, StageChip, TRI } from "./scene-ui";
 
-const VW = 620;
-const VH = 660;
-const pc = (x: number, y: number) => ({ left: `${(x / VW) * 100}%`, top: `${(y / VH) * 100}%` });
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  Activity,
+  ArrowRight,
+  BarChart3,
+  Building2,
+  CheckCircle2,
+  Clapperboard,
+  Coins,
+  DollarSign,
+  FileSpreadsheet,
+  Globe2,
+  Layers,
+  Maximize2,
+  Pause,
+  PieChart,
+  Play,
+  RefreshCw,
+  RotateCcw,
+  Scale,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  Volume2,
+  VolumeX,
+  Zap,
+} from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
+/* ─────────────────────────────────────────────────────────────
+   FINLAGOON CONSOLIDATION — CINEMATIC VIDEO & MOTION GRAPHICS
+   High-Definition Financial Video Hero with Real-Time HUD
+   ───────────────────────────────────────────────────────────── */
 
-const SUBS = [
-  { x: 105, y: 105, name: "Company A (US)", sub: "Subsidiary · USD", owned: "100% owned", revenue: "$ 1.2M", ebitda: "+18.4%", localCurrency: "USD", sendAmount: "$ 165k", groupAmount: "€ 152k" },
-  { x: 105, y: 205, name: "Company B (UK)", sub: "Subsidiary · GBP", owned: "100% owned", revenue: "£ 890K", ebitda: "+12.1%", localCurrency: "GBP", sendAmount: "£ 92k", groupAmount: "€ 108k" },
-  { x: 105, y: 305, name: "Company C (JP)", sub: "Subsidiary · JPY", owned: "78% owned", revenue: "¥ 180M", ebitda: "-2.4%", localCurrency: "JPY", sendAmount: "¥ 18M", groupAmount: "€ 112k" },
-  { x: 105, y: 405, name: "Company D (EU)", sub: "Subsidiary · EUR", owned: "100% owned", revenue: "€ 720K", ebitda: "+16.0%", localCurrency: "EUR", sendAmount: "€ 125k", groupAmount: "€ 125k" },
+type Subsidiary = {
+  id: string;
+  name: string;
+  country: string;
+  flag: string;
+  localCurrency: string;
+  localRevenue: string;
+  groupEur: string;
+  intercompany: string;
+  color: string;
+};
+
+const SUBSIDIARIES: Subsidiary[] = [
+  {
+    id: "us",
+    name: "US Entity (Americas)",
+    country: "Delaware, US",
+    flag: "🇺🇸",
+    localCurrency: "USD ($)",
+    localRevenue: "$ 24.8M",
+    groupEur: "€ 22.8M",
+    intercompany: "$ 3.2M IC Sales",
+    color: "#38bdf8",
+  },
+  {
+    id: "uk",
+    name: "UK Entity (EMEA North)",
+    country: "London, UK",
+    flag: "🇬🇧",
+    localCurrency: "GBP (£)",
+    localRevenue: "£ 16.4M",
+    groupEur: "€ 19.1M",
+    intercompany: "£ 1.8M IC Loan",
+    color: "#22d3ee",
+  },
+  {
+    id: "de",
+    name: "German HQ (Europe Central)",
+    country: "Frankfurt, DE",
+    flag: "🇩🇪",
+    localCurrency: "EUR (€)",
+    localRevenue: "€ 38.5M",
+    groupEur: "€ 38.5M",
+    intercompany: "€ 4.6M IC Recv",
+    color: "#29ab87",
+  },
+  {
+    id: "jp",
+    name: "Japan Entity (APAC)",
+    country: "Tokyo, JP",
+    flag: "🇯🇵",
+    localCurrency: "JPY (¥)",
+    localRevenue: "¥ 2.15B",
+    groupEur: "€ 13.4M",
+    intercompany: "¥ 180M Royalty",
+    color: "#f5a623",
+  },
 ];
-
-const ARROWS = [
-  { d: "M178 105 Q258 130 322 155", dur: 5, delay: 0 },
-  { d: "M178 205 Q258 168 324 156", dur: 5, delay: 1.2 },
-  { d: "M178 305 Q262 205 326 160", dur: 5, delay: 2.4 },
-  { d: "M178 405 Q270 222 328 164", dur: 5, delay: 3.6 },
-];
-
-const INTERCO = [
-  { d: "M192 205 L330 250", dur: 7, delay: 0 },
-  { d: "M192 405 L330 250", dur: 7, delay: 3.5 },
-];
-
-const CHAIN_Y: Array<{ y: number; label: string; sub: string; icon: typeof Scale; tone: "green" | "mix" | "amber" }> = [
-  { y: 250, label: "Elimination", sub: "Intercompany ×", icon: Scale, tone: "green" },
-  { y: 340, label: "Currency Translation", sub: "IFRS · group currency", icon: Globe, tone: "mix" },
-  { y: 430, label: "Group Reporting", sub: "Consolidated statements", icon: BarChart3, tone: "green" },
-  { y: 520, label: "CFO Analytics", sub: "KPIs & commentary", icon: TrendingUp, tone: "amber" },
-];
-
-const BAR_HEIGHTS = [26, 40, 34, 52, 44, 60, 30, 46];
-
-function MiniCube({ className = "" }: { className?: string }) {
-  return (
-    <svg width="18" height="18" viewBox="0 0 18 18" className={className} aria-hidden>
-      <path d="M9 2 L15 5.5 L15 12.5 L9 16 L3 12.5 L3 5.5 Z" fill="rgba(41,171,135,0.2)" stroke="#7edcc2" strokeWidth="1" />
-      <path d="M9 2 L9 8 L3 5.5 M9 8 L15 5.5 M9 8 L9 16" stroke="#7edcc2" strokeWidth="0.8" opacity="0.7" />
-    </svg>
-  );
-}
-
-function CubePacket({ d, dur, delay, color = TRI.mint }: { d: string; dur: number; delay: number; color?: string }) {
-  return (
-    <g>
-      <g>
-        <animateMotion dur={`${dur}s`} begin={`-${delay}s`} repeatCount="indefinite" path={d} />
-        <polygon points="0,-5 4.5,-2.5 4.5,2.5 0,5 -4.5,2.5 -4.5,-2.5" fill={color} opacity="0.9" />
-        <path d="M0 -5 L4.5 -2.5 M0 -5 L-4.5 -2.5 M0 -5 L0 5" stroke="rgba(5,8,23,0.55)" strokeWidth="0.8" />
-      </g>
-    </g>
-  );
-}
-
-function LedgerDoc({ d, dur, delay, amount }: { d: string; dur: number; delay: number; amount: string }) {
-  return (
-    <g>
-      <animateMotion dur={`${dur}s`} begin={`-${delay}s`} repeatCount="indefinite" path={d} rotate="auto" />
-      <g>
-        <rect x="-16" y="-22" width="32" height="44" rx="3" fill="rgba(4,12,24,0.92)" stroke="#7edcc2" strokeWidth="1.3" />
-        <path d="M6 -22 L6 -7 L21 -7 Z" fill="rgba(126,220,194,0.16)" stroke="#7edcc2" strokeWidth="1.1" strokeLinejoin="round" />
-        <rect x="-10" y="-13" width="15" height="1.5" rx="0.7" fill="rgba(191,232,216,0.85)" />
-        <rect x="-10" y="-8.5" width="20" height="1.5" rx="0.7" fill="rgba(191,232,216,0.5)" />
-        <rect x="-10" y="-4" width="12" height="1.5" rx="0.7" fill="rgba(191,232,216,0.5)" />
-        <text x="-14" y="6" fontSize="6.5" fontWeight={700} fill="#7edcc2" style={{ fontFamily: "Poppins, sans-serif" }}>
-          {amount}
-        </text>
-        <rect x="-10" y="10" width="2.2" height="5" rx="0.5" fill="rgba(191,232,216,0.7)" />
-        <rect x="-6.4" y="10" width="3.2" height="5" rx="0.5" fill="rgba(191,232,216,0.5)" />
-        <rect x="-2" y="10" width="2.2" height="5" rx="0.5" fill="rgba(191,232,216,0.7)" />
-        <rect x="1.6" y="10" width="3.2" height="5" rx="0.5" fill="rgba(191,232,216,0.45)" />
-      </g>
-    </g>
-  );
-}
-
-function Anchor({ children, x, y, className = "", onMouseEnter, onMouseLeave }: { children: ReactNode; x: number; y: number; className?: string; onMouseEnter?: () => void; onMouseLeave?: () => void }) {
-  return (
-    <div
-      className={`absolute -translate-x-1/2 -translate-y-1/2 ${className}`}
-      style={pc(x, y)}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      {children}
-    </div>
-  );
-}
 
 export default function ConsolidationScene() {
+  const reduce = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const [activeSub, setActiveSub] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<"pnl" | "bs" | "ic">("pnl");
+  const [videoProgress, setVideoProgress] = useState(0);
+  const [reconciledVouchers, setReconciledVouchers] = useState(584920);
+
+  // Auto-play video on mount and update progress
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      if (video.duration) {
+        setVideoProgress((video.currentTime / video.duration) * 100);
+      }
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
+  }, []);
+
+  // Increment live journal counter
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setReconciledVouchers((prev) => prev + Math.floor(Math.random() * 8) + 2);
+    }, 1900);
+    return () => clearInterval(timer);
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (isPlaying) {
+      video.pause();
+      setIsPlaying(false);
+    } else {
+      video.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  };
+
+  const restartVideo = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = 0;
+    video.play().catch(() => {});
+    setIsPlaying(true);
+  };
 
   return (
-    <SceneCanvas bleed className="h-full w-full">
-      <div className="absolute right-6 top-5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold text-tri-2 transition-all duration-300">
-        {activeSub !== null ? `Focusing: ${SUBS[activeSub].name}` : "4 entities → 1 Group View (EUR)"}
+    <div className="relative isolate h-full min-h-full w-full overflow-hidden select-none bg-[#030713] px-3 sm:px-6 lg:px-10 py-3 flex flex-col justify-between">
+      
+      {/* ── CINEMATIC FULL-BLEED VIDEO BACKGROUND ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <video
+          ref={videoRef}
+          autoPlay={!reduce}
+          muted={isMuted}
+          loop
+          playsInline
+          preload="metadata"
+          poster="/videos/fintech-sap-poster.jpg"
+          className="h-full w-full object-cover opacity-60 scale-105"
+        >
+          <source src="/videos/fintech-sap.mp4" type="video/mp4" />
+        </video>
+
+        {/* Cinematic Gradient Blending Overlays */}
+        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,7,19,0.92)_0%,rgba(3,7,19,0.72)_48%,rgba(3,7,19,0.85)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_50%,rgba(41,171,135,0.18),transparent_70%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#030713] via-[#030713]/80 to-transparent" />
       </div>
 
-      <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox={`0 0 ${VW} ${VH}`} preserveAspectRatio="none" fill="none">
-        <GlowHalo cx={360} cy={160} r={86} color={TRI.green} opacity={0.14} />
-        <GlowHalo cx={360} cy={520} r={60} color={TRI.amber} opacity={0.1} />
-
-        {ARROWS.map((a, i) => {
-          const isFocused = activeSub === i;
-          const isDimmed = activeSub !== null && !isFocused;
-          return (
-            <g key={i} className="transition-all duration-300" style={{ opacity: isDimmed ? 0.15 : 1 }}>
-              <FlowLink
-                d={a.d}
-                color={isFocused ? "#f5a623" : "rgba(41,171,135,0.45)"}
-                width={isFocused ? 2.6 : 1.5}
-                dash={!isFocused}
-              />
-              <CubePacket d={a.d} dur={isFocused ? a.dur * 0.4 : a.dur} delay={a.delay} color={isFocused ? TRI.amber : TRI.mint} />
-              <path
-                d="M316 147 L324 155 L316 163"
-                stroke={isFocused ? "#f5a623" : "rgba(126,220,194,0.8)"}
-                strokeWidth={isFocused ? 2.4 : 1.6}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="tri-pulse"
-              />
-            </g>
-          );
-        })}
-
-        {/* LedgerDoc documents on link lines with local currencies */}
-        <g className="transition-all duration-300" style={{ opacity: activeSub === 0 || activeSub === null ? 1 : 0.12 }}>
-          <LedgerDoc d={ARROWS[0].d} dur={activeSub === 0 ? ARROWS[0].dur * 0.4 : ARROWS[0].dur} delay={ARROWS[0].delay} amount="$ 165k" />
-        </g>
-        <g className="transition-all duration-300" style={{ opacity: activeSub === 1 || activeSub === null ? 1 : 0.12 }}>
-          <LedgerDoc d={ARROWS[1].d} dur={activeSub === 1 ? ARROWS[1].dur * 0.4 : ARROWS[1].dur} delay={ARROWS[1].delay} amount="£ 92k" />
-        </g>
-        <g className="transition-all duration-300" style={{ opacity: activeSub === 2 || activeSub === null ? 1 : 0.12 }}>
-          <LedgerDoc d={ARROWS[2].d} dur={activeSub === 2 ? ARROWS[2].dur * 0.4 : ARROWS[2].dur} delay={ARROWS[2].delay} amount="¥ 18M" />
-        </g>
-
-        {INTERCO.map((l, i) => (
-          <g key={i} className="transition-opacity duration-300" style={{ opacity: activeSub === null ? 1 : 0.2 }}>
-            <FlowLink d={l.d} color="rgba(245,166,35,0.45)" width={1.4} dash />
-            <Packet d={l.d} dur={l.dur} delay={l.delay} color={TRI.amber} r={3} />
-          </g>
-        ))}
-
-        <FlowLink d="M360 190 L360 220" color="rgba(245,166,35,0.5)" width={1.5} dash />
-        <path d="M354 210 L360 218 L366 210" stroke="#f5a623" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className="tri-pulse" />
-        <circle cx="360" cy="250" r="20" fill="none" stroke="#f5a623" strokeWidth={1.1} opacity="0.65" className="tri-ring" />
-        <path d="M347 237 L373 263" stroke="#f5a623" strokeWidth={2.6} strokeLinecap="round" className="tri-pulse" />
-        <path d="M373 237 L347 263" stroke="#f5a623" strokeWidth={2.6} strokeLinecap="round" className="tri-pulse" />
-
-        <FlowLink d="M360 280 L360 310" color="rgba(41,171,135,0.45)" width={1.5} dash />
-        <FlowLink d="M360 370 L360 400" color="rgba(41,171,135,0.45)" width={1.5} dash />
-        <FlowLink d="M360 460 L360 490" color="rgba(41,171,135,0.45)" width={1.5} dash />
-        <FlowLink d="M360 550 L360 572" color="rgba(41,171,135,0.55)" width={1.5} dash />
-        <FlowLink d="M360 596 L360 572" color="rgba(41,171,135,0.35)" width={1.5} dash />
-
-        <Packet d="M360 190 L360 218" dur={2.5} delay={0} color={TRI.amber} r={3} />
-        <Packet d="M360 280 L360 310" dur={3} delay={0} color={TRI.mint} r={3} />
-        <Packet d="M360 370 L360 400" dur={3} delay={1} color={TRI.mint} r={3} />
-        <Packet d="M360 460 L360 490" dur={3} delay={2} color={TRI.mint} r={3} />
-        <Packet d="M360 550 L360 572" dur={3} delay={0.5} color={TRI.amber} r={3.5} />
-
-        {CHAIN_Y.map((c) => (
-          <PulseDot key={c.y} cx={360} cy={c.y} color={TRI.green} r={3} dur={2.8} />
-        ))}
-        <PulseDot cx={360} cy={600} color={TRI.amber} r={3} dur={2.8} />
-      </svg>
-
-      {/* Subsidiary entity cards */}
-      {SUBS.map((s, i) => {
-        const isFocused = activeSub === i;
-        const isDimmed = activeSub !== null && !isFocused;
-        return (
-          <Anchor
-            key={s.name}
-            x={s.x}
-            y={s.y}
-            onMouseEnter={() => setActiveSub(i)}
-            onMouseLeave={() => setActiveSub(null)}
-          >
-            <div
-              className={`flex items-center gap-2.5 rounded-xl px-3 py-2 cursor-pointer transition-all duration-300 border backdrop-blur-md ${
-                isFocused
-                  ? "border-[#29ab87] bg-white/[0.14] scale-105 shadow-[0_0_20px_rgba(41,171,135,0.3)]"
-                  : "border-white/10 bg-white/[0.04] hover:bg-white/[0.08]"
-              }`}
-              style={{ opacity: isDimmed ? 0.35 : 1 }}
-            >
-              <SceneIcon icon={Building2} tone={isFocused ? "amber" : "green"} size={26} />
-              <div className="leading-tight">
-                <p className="text-[12px] font-semibold text-white">{s.name}</p>
-                <p className="text-[10px] text-white/45">{s.sub}</p>
-                <p className="mt-0.5 text-[9px] font-bold text-tri-2">{s.owned}</p>
-              </div>
-              <MiniCube className={`ml-1 transition-transform duration-300 ${isFocused ? "scale-110 rotate-12" : "tri-wave"}`} />
-            </div>
-          </Anchor>
-        );
-      })}
-
-      {/* Central Consolidation Hub */}
-      <Anchor x={360} y={160}>
-        <span aria-hidden className="absolute left-1/2 top-1/2 -z-10 h-[130px] w-[130px] -translate-x-1/2 -translate-y-1/2 blur-xl" style={{ clipPath: HEX_CLIP, background: activeSub !== null ? "rgba(245,166,35,0.4)" : "rgba(41,171,135,0.4)" }} />
-        <div className="relative flex items-center justify-center transition-transform duration-300 hover:scale-105" style={{ width: 86, height: 86, clipPath: HEX, background: activeSub !== null ? "linear-gradient(135deg,#f5a623,#f29e16 65%,#117a4b 140%)" : "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)" }}>
-          <GitMerge className="h-9 w-9 text-white" strokeWidth={1.8} />
-        </div>
-        <p className="mt-2.5 text-center text-[13px] font-bold text-white">Consolidation</p>
-        <p className="text-center text-[10px] text-white/45">Statutory · group level</p>
-        <span className="mt-1.5 inline-block rounded-full bg-[rgba(41,171,135,0.2)] px-2 py-0.5 text-[9px] font-bold text-tri-2">Equity method · 100%</span>
-      </Anchor>
-
-      {/* Standard process flow chips */}
-      {CHAIN_Y.map((c) => (
-        <Anchor key={c.label} x={360} y={c.y}>
-          <StageChip icon={c.icon} label={c.label} sub={c.sub} tone={c.tone} pulse={c.tone === "amber"} />
-        </Anchor>
-      ))}
-
-      {/* Floating Exchange Rate Ticker Card */}
-      <Anchor x={485} y={340} className="w-[160px] pointer-events-none z-20">
-        <div className="rounded-lg border border-white/10 bg-black/60 p-2 text-[9px] leading-tight text-white/60 backdrop-blur-md">
-          <p className="font-bold text-tri-2">Smart FX Translation</p>
-          <div className="mt-1 space-y-0.5 font-mono">
-            <p>USD → EUR: <span className="text-white font-semibold">0.92</span></p>
-            <p>GBP → EUR: <span className="text-white font-semibold">1.17</span></p>
-            <p>JPY → EUR: <span className="text-white font-semibold">0.0062</span></p>
-          </div>
-        </div>
-      </Anchor>
-
-      {/* Floating Intercompany Offset Card */}
-      <Anchor x={485} y={250} className="w-[160px] pointer-events-none z-20">
-        <div className="rounded-lg border border-white/10 bg-black/60 p-2 text-[9px] leading-tight text-white/60 backdrop-blur-md">
-          <p className="font-bold text-[#f5a623]">Intercompany Offset</p>
-          <div className="mt-1 space-y-0.5 font-mono">
-            <p>IC Sales: <span className="text-[#f5a623]">-$42k</span></p>
-            <p>IC Loans: <span className="text-[#f5a623]">-$15k</span></p>
-            <p className="text-white font-semibold">Net offset: <span className="text-tri-2">€57k</span></p>
-          </div>
-        </div>
-      </Anchor>
-
-      {/* Floating Audit and Governance Card */}
-      <Anchor x={485} y={430} className="w-[160px] pointer-events-none z-20">
-        <div className="rounded-lg border border-white/10 bg-black/60 p-2 text-[9px] leading-tight text-white/60 backdrop-blur-md">
-          <p className="font-bold text-tri-2">Governance & Control</p>
-          <div className="mt-1 space-y-0.5">
-            <p>Rule: <span className="text-white font-mono font-semibold">IFRS & US-GAAP</span></p>
-            <p>Trace: <span className="text-white font-mono font-semibold">Active Log</span></p>
-            <p>Sox: <span className="text-[#29ab87] font-semibold">Compliant close</span></p>
-          </div>
-        </div>
-      </Anchor>
-
-      {/* Dynamic Report card */}
-      <Anchor x={360} y={600} className="w-[300px]">
-        <div className="tri-glass rounded-2xl p-4 border border-white/10 hover:border-tri-2 transition-colors duration-300 bg-black/50 backdrop-blur-md">
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold text-white/85 transition-all duration-300">
-              {activeSub !== null ? `${SUBS[activeSub].name} close` : "Consolidated P&L (EUR)"}
+      {/* ── Top Header Controls & Video Badge ── */}
+      <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87] shadow-[0_0_15px_rgba(41,171,135,0.5)]">
+            <Scale className="h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
+          </span>
+          <div>
+            <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
+              FINLAGOON · GENERAL LEDGER CONSOLIDATION ENGINE
+            </h2>
+            <p className="text-[8px] sm:text-[9px] font-mono text-[#7edcc2]">
+              MULTI-ENTITY INTERCOMPANY ELIMINATION · IFRS / US GAAP FAST CLOSE
             </p>
-            <span className="rounded-full bg-[rgba(41,171,135,0.22)] px-2 py-0.5 text-[9px] font-bold text-tri-2 transition-all duration-300">
-              {activeSub !== null ? `LOCAL: ${SUBS[activeSub].localCurrency}` : "GROUP VIEW"}
-            </span>
           </div>
-          <div className="mt-2.5 flex h-11 items-end gap-1.5">
-            {BAR_HEIGHTS.map((h, i) => {
-              const isHighlighted = activeSub === null || i % 4 === activeSub;
+        </div>
+
+        {/* Video Control Pills */}
+        <div className="flex items-center gap-2">
+          {/* Live Video Indicator */}
+          <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/70 px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-mono text-white/80 backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-[#29ab87] animate-ping" />
+            <span>4K CINEMATIC SIMULATION</span>
+          </div>
+
+          {/* Play/Pause & Restart Buttons */}
+          <div className="flex items-center gap-1 rounded-xl bg-black/70 border border-white/10 p-1 backdrop-blur-md">
+            <button
+              onClick={togglePlay}
+              className="flex h-6 w-6 items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all"
+              title={isPlaying ? "Pause" : "Play"}
+            >
+              {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3 fill-current" />}
+            </button>
+            <button
+              onClick={restartVideo}
+              className="flex h-6 w-6 items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all"
+              title="Restart Video"
+            >
+              <RotateCcw className="h-3 w-3" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main Interactive Video Animation Stage ── */}
+      <div className="relative z-20 flex-1 min-h-0 my-auto py-2 sm:py-4 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center overflow-y-auto lg:overflow-visible">
+        
+        {/* ── LEFT COLUMN (4 Cols): 4 Global Operating Subsidiaries ── */}
+        <div className="lg:col-span-4 flex flex-col gap-2 sm:gap-2.5">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/50">
+              1. Multi-Entity General Ledgers
+            </span>
+            <span className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">4 Connected</span>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
+            {SUBSIDIARIES.map((sub, idx) => {
+              const isSelected = activeSub === idx;
+
               return (
-                <span
-                  key={i}
-                  className="w-2.5 rounded-t-sm transition-all duration-500"
-                  style={{
-                    height: h,
-                    background: isHighlighted ? "linear-gradient(180deg,#7edcc2,#29ab87)" : "rgba(255,255,255,0.06)",
-                    boxShadow: isHighlighted ? "0 0 8px rgba(41, 171, 135, 0.3)" : "none",
-                    animationDelay: `${i * 0.12}s`
+                <button
+                  key={sub.id}
+                  onClick={() => {
+                    setActiveSub(isSelected ? null : idx);
                   }}
-                />
+                  className={`group relative flex items-center justify-between rounded-xl sm:rounded-2xl p-2.5 sm:p-3 text-left transition-all duration-300 border backdrop-blur-xl ${
+                    isSelected
+                      ? "bg-[#030713]/95 shadow-lg scale-[1.02]"
+                      : "bg-[#030713]/70 hover:bg-[#030713]/90"
+                  }`}
+                  style={{
+                    borderColor: isSelected ? sub.color : "rgba(255,255,255,0.12)",
+                    boxShadow: isSelected
+                      ? `0 10px 25px -8px ${sub.color}60, inset 0 1px 0 rgba(255,255,255,0.2)`
+                      : "none",
+                  }}
+                >
+                  <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
+                    <span className="text-lg sm:text-xl shrink-0 drop-shadow-sm">{sub.flag}</span>
+                    <div className="min-w-0">
+                      <p className="text-[11px] sm:text-xs font-bold text-white tracking-tight truncate">
+                        {sub.name}
+                      </p>
+                      <p className="text-[8px] sm:text-[9px] font-mono text-white/50 truncate">
+                        {sub.localRevenue} ({sub.localCurrency.split(" ")[0]})
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="hidden sm:flex flex-col items-end shrink-0 pl-1">
+                    <span className="text-[9px] sm:text-[10px] font-mono font-bold text-[#7edcc2]">
+                      {sub.groupEur}
+                    </span>
+                    <span className="text-[7px] font-mono text-white/40">{sub.intercompany}</span>
+                  </div>
+                </button>
               );
             })}
           </div>
-          <div className="mt-2.5 flex items-center justify-between text-[9px] transition-all duration-300">
-            <span className="text-white/40">
-              {activeSub !== null ? `Local: ${SUBS[activeSub].sendAmount} → Group: ${SUBS[activeSub].groupAmount}` : "EBITDA +14.2%"}
-            </span>
-            <span className="font-bold text-tri-2">
-              {activeSub !== null ? `Local EBITDA: ${SUBS[activeSub].ebitda}` : "Net margin +6.8%"}
-            </span>
+        </div>
+
+        {/* ── CENTER COLUMN (4 Cols): Video Focus Hologram & Fast Close Action ── */}
+        <div className="lg:col-span-4 flex flex-col items-center justify-center text-center relative py-2 sm:py-4">
+          {/* Center Glowing Hub */}
+          <div className="relative flex h-44 w-44 sm:h-52 sm:w-52 items-center justify-center">
+            {/* Concentric Pulsing Video Halo Rings */}
+            {[65, 88, 110].map((rad, i) => (
+              <motion.div
+                key={rad}
+                animate={{
+                  scale: [1, 1.12, 1],
+                  opacity: [0.3, 0.65, 0.3],
+                }}
+                transition={{
+                  duration: 2.5 + i * 0.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute rounded-full border border-dashed pointer-events-none"
+                style={{
+                  width: rad * 2,
+                  height: rad * 2,
+                  borderColor: i === 0 ? "#29ab87" : i === 1 ? "#38bdf8" : "#f5a623",
+                }}
+              />
+            ))}
+
+            {/* Glowing Core Finlagoon Hub */}
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                boxShadow: [
+                  "0 0 35px rgba(41,171,135,0.6)",
+                  "0 0 65px rgba(41,171,135,0.9)",
+                  "0 0 35px rgba(41,171,135,0.6)",
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="relative flex h-24 w-24 sm:h-28 sm:w-28 flex-col items-center justify-center rounded-3xl bg-gradient-to-br from-[#0c2238] via-[#030713] to-[#0e3328] border border-white/30 backdrop-blur-2xl shadow-2xl"
+            >
+              <FileSpreadsheet className="h-8 w-8 sm:h-10 sm:w-10 text-white drop-shadow-[0_0_15px_#7edcc2]" />
+              <span className="mt-1 text-[8px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider text-[#7edcc2]">
+                FINLAGOON
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Quick Real-Time Fast Close Action */}
+          <div className="mt-3 flex flex-col items-center gap-1.5">
+            <button
+              onClick={restartVideo}
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#29ab87]/40 bg-black/80 px-4 py-1.5 text-[9px] sm:text-[10px] font-mono font-bold text-white hover:bg-white/10 transition-all shadow-[0_0_20px_rgba(41,171,135,0.4)] active:scale-95"
+            >
+              <Zap className="h-3 w-3 text-[#f5a623]" />
+              <span>Simulate 48-Hour Fast Close</span>
+            </button>
+            <span className="text-[8px] font-mono text-white/50">IFRS & MULTI-GAAP ELIMINATION MATRIX</span>
           </div>
         </div>
-      </Anchor>
-    </SceneCanvas>
+
+        {/* ── RIGHT COLUMN (4 Cols): Consolidated Financial Statements Cockpit HUD ── */}
+        <div className="lg:col-span-4 z-20">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 12, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.97 }}
+              transition={{ duration: 0.25 }}
+              className="rounded-2xl sm:rounded-3xl border border-white/12 bg-[#030713]/95 p-3.5 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-2xl"
+              style={{
+                boxShadow: "0 20px 45px -15px rgba(41,171,135,0.35), 0 0 0 1px rgba(255,255,255,0.08)",
+              }}
+            >
+              {/* Header Badge */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
+                <div>
+                  <span className="text-[8px] sm:text-[9px] font-mono font-extrabold uppercase tracking-widest text-white/50">
+                    Group Financial Matrix · IFRS
+                  </span>
+                  <h3 className="text-xs sm:text-sm font-bold text-white leading-snug">
+                    {activeTab === "pnl" ? "Consolidated Profit & Loss" : activeTab === "bs" ? "Consolidated Balance Sheet" : "Intercompany Reconciliations"}
+                  </h3>
+                </div>
+                <span className="rounded-full bg-[#29ab87]/20 border border-[#29ab87]/40 px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold text-[#7edcc2]">
+                  48-Hr Close
+                </span>
+              </div>
+
+              {/* Financial Metrics Summary Grid */}
+              <div className="mt-2.5 sm:mt-3 grid grid-cols-2 gap-2 text-[10px] sm:text-[11px] font-mono">
+                <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2">
+                  <p className="text-[8px] text-white/40 uppercase">GROUP REVENUE</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-[#7edcc2] mt-0.5">€ 93.80M</p>
+                  <p className="text-[7px] text-[#38bdf8]">+16.4% YoY Growth</p>
+                </div>
+
+                <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2">
+                  <p className="text-[8px] text-white/40 uppercase">IC ELIMINATIONS</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-[#f5a623] mt-0.5">- € 8.45M</p>
+                  <p className="text-[7px] text-[#29ab87]">100% Balanced Zero-Gap</p>
+                </div>
+              </div>
+
+              {/* Fast-Close Automated Stages Checklist */}
+              <div className="mt-2.5 sm:mt-3 space-y-1.5 pt-2 border-t border-white/10">
+                <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/85">
+                  <span className="flex items-center gap-1.5 truncate">
+                    <CheckCircle2 className="h-3 w-3 text-[#29ab87] shrink-0" />
+                    <span className="truncate">Intercompany Elimination</span>
+                  </span>
+                  <span className="font-mono font-bold text-[9px] text-[#29ab87]">- € 8.45M</span>
+                </div>
+                <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/85">
+                  <span className="flex items-center gap-1.5 truncate">
+                    <CheckCircle2 className="h-3 w-3 text-[#38bdf8] shrink-0" />
+                    <span className="truncate">Multi-Currency IFRS</span>
+                  </span>
+                  <span className="font-mono font-bold text-[9px] text-[#38bdf8]">Automated FX</span>
+                </div>
+                <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/85">
+                  <span className="flex items-center gap-1.5 truncate">
+                    <CheckCircle2 className="h-3 w-3 text-[#f5a623] shrink-0" />
+                    <span className="truncate">Consolidated Balance Sheet</span>
+                  </span>
+                  <span className="font-mono font-bold text-[9px] text-[#f5a623]">Audit-Proof</span>
+                </div>
+              </div>
+
+              {/* Bottom Live Journal Counter Bar */}
+              <div className="mt-3 flex items-center justify-between rounded-lg bg-white/[0.03] border border-white/8 px-2.5 py-1 text-[8px] sm:text-[9px] font-mono">
+                <span className="text-white/50 flex items-center gap-1">
+                  <Activity className="h-2.5 w-2.5 text-[#29ab87] animate-pulse" />
+                  Auto-Cleared Vouchers:
+                </span>
+                <span className="font-bold text-[#7edcc2]" suppressHydrationWarning>
+                  {reconciledVouchers.toLocaleString("en-US")} entries
+                </span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* ── Video Progress Scrubber Bar ── */}
+      <div className="relative z-20 w-full pt-1">
+        <div className="h-1 w-full rounded-full bg-white/10 overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-[#29ab87] via-[#38bdf8] to-[#f5a623] transition-all duration-200"
+            style={{ width: `${videoProgress}%` }}
+          />
+        </div>
+      </div>
+
+      {/* ── Bottom Ribbon: Certified Financial Close Matrix ── */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
+        <span className="flex items-center gap-1.5 text-[#29ab87]">
+          <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP S/4HANA FINANCE & GROUP REPORTING CERTIFIED
+        </span>
+        <span className="hidden sm:inline">MULTI-GAAP RECONCILIATION: IFRS, US GAAP, HGB</span>
+        <span className="text-[#38bdf8]">FAST CLOSE CYCLE &lt; 48 HOURS</span>
+      </div>
+    </div>
   );
 }

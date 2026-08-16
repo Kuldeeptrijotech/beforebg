@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, Search, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
+import BlogsThoughtAuroras from "@/components/ui/hero-animations/BlogsThoughtAuroras";
 import type { Blog } from "../data/blogs";
 
 export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
@@ -23,7 +24,8 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
   );
 
   return (
-    <main className="overflow-hidden bg-[#e8f2fb] text-slate-900">
+    <main className="overflow-hidden bg-[#121927] text-white">
+      {/* ── Hero (Untouched) ─────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-20">
         <Image
           src="/assets/heroes/blogs-blue.png"
@@ -31,10 +33,13 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-center"
+          className="-z-20 object-cover object-center opacity-95"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/95 via-cyan-950/75 to-cyan-900/20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/70 via-transparent to-slate-950/20" />
+        {/* Slow drifting thought particles & connections */}
+        <BlogsThoughtAuroras />
+
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/85 via-cyan-950/45 to-cyan-900/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/50 via-transparent to-slate-950/10" />
         {/* Floating orbs */}
         <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
         <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
@@ -87,23 +92,28 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
             </motion.div>
           </div>
         </div>
+
+        {/* Clean bottom separator */}
+        <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
+      {/* ── Explore Blogs ────────────────────── */}
       <section
         id="explore-blogs"
-        className="relative bg-gradient-to-b from-[#d5eafa] to-[#e8f2fb] py-20 sm:py-24"
+        className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5"
       >
-        <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-100/70 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+          <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-700">
+              <p className="tri-overline">
                 Explore
               </p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
                 Insights shaped by experience
               </h2>
-              <p className="mt-5 text-lg leading-8 text-slate-600">
+              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
                 Stay current with expert thinking, implementation guidance, and
                 technology updates from the Trijotech team.
               </p>
@@ -111,7 +121,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
             <label className="relative block">
               <span className="sr-only">Search blogs</span>
               <Search
-                className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-cyan-700"
+                className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#29ab87]"
                 aria-hidden="true"
               />
               <input
@@ -119,13 +129,13 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search articles..."
-                className="h-14 w-full rounded-full border border-blue-200 bg-[#f5faff] pl-13 pr-5 text-slate-900 shadow-sm outline-none transition placeholder:text-slate-500 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10"
+                className="h-11 w-full rounded-full border border-white/10 bg-white/[0.05] pl-11 pr-4 text-xs sm:text-sm text-white placeholder:text-slate-400 shadow-sm outline-none transition backdrop-blur-md focus:border-[#29ab87] focus:ring-2 focus:ring-[#29ab87]/20"
               />
             </label>
           </div>
 
           {visibleBlogs.length ? (
-            <div className="mt-12 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-7 sm:mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3 items-stretch">
               {visibleBlogs.map((blog, i) => (
                 <motion.article
                   key={blog.link}
@@ -133,13 +143,12 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.55, delay: (i % 3) * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                  className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-white/80 bg-white/90 shadow-[0_12px_35px_rgba(8,47,73,0.08)] ring-1 ring-blue-200/70 transition-shadow duration-300 hover:border-cyan-200 hover:shadow-[0_22px_50px_rgba(8,47,73,0.16)] hover:ring-cyan-300/70"
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
                 >
-                  <div className="absolute inset-x-8 top-0 z-10 h-1 rounded-b-full bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <Link
                     href={blog.link}
-                    className="relative m-3 mb-0 block aspect-[16/10] overflow-hidden rounded-[1.25rem] bg-slate-100"
+                    className="relative m-2.5 mb-0 block aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-slate-900"
                   >
                     <Image
                       src={blog.image}
@@ -148,41 +157,43 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                       className="object-cover transition duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/55 via-cyan-950/5 to-transparent" />
-                    <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-cyan-950/75 px-3.5 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
-                      <CalendarDays className="h-3.5 w-3.5 text-cyan-200" aria-hidden="true" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md">
+                      <CalendarDays className="h-3 w-3 text-[#f5a623]" aria-hidden="true" />
                       {blog.date}
                     </span>
-                    <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-1 items-center justify-center rounded-full bg-white/90 text-cyan-800 opacity-0 shadow-lg backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <ArrowRight className="h-4 w-4 -rotate-45" aria-hidden="true" />
+                    <span className="absolute right-3 top-3 flex h-8 w-8 translate-y-1 items-center justify-center rounded-full bg-white/90 text-slate-950 opacity-0 shadow-lg backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                      <ArrowRight className="h-3.5 w-3.5 -rotate-45" aria-hidden="true" />
                     </span>
                   </Link>
-                  <div className="flex flex-1 flex-col px-6 pb-6 pt-6 sm:px-7 sm:pb-7">
+                  <div className="flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
                     <Link href={blog.link} className="group/title">
-                      <h3 className="text-xl font-bold leading-snug text-slate-900 transition-colors group-hover/title:text-cyan-700 sm:text-2xl">
+                      <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover/title:text-[#7edcc2]">
                         {blog.title}
                       </h3>
                     </Link>
-                    <p className="mt-4 line-clamp-3 flex-1 leading-7 text-slate-600">
+                    <p className="mt-2 line-clamp-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">
                       {blog.description}
                     </p>
-                    <div className="mt-6 h-px bg-gradient-to-r from-blue-200 via-blue-100 to-transparent" />
-                    <Link
-                      href={blog.link}
-                      className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-cyan-50 px-4 py-2.5 font-semibold text-cyan-800 transition group-hover:bg-cyan-700 group-hover:px-5 group-hover:text-white"
-                    >
-                      Read article <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
+                    <div className="mt-4 h-px bg-white/10" />
+                    <div className="mt-auto pt-3.5">
+                      <Link
+                        href={blog.link}
+                        className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-bold text-[#7edcc2] transition-all duration-200 hover:text-[#f5a623]"
+                      >
+                        Read article <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                      </Link>
+                    </div>
                   </div>
                 </motion.article>
               ))}
             </div>
           ) : (
-            <div className="mt-12 rounded-3xl border border-blue-200 bg-[#f5faff] px-6 py-16 text-center shadow-sm">
-              <h3 className="text-2xl font-bold text-slate-900">
+            <div className="mt-14 rounded-3xl border border-white/10 bg-white/[0.04] px-6 py-16 text-center shadow-xl backdrop-blur-xl">
+              <h3 className="text-2xl font-bold text-white">
                 No articles found
               </h3>
-              <p className="mt-3 text-slate-600">
+              <p className="mt-3 text-slate-300">
                 Try a different keyword to explore our insights.
               </p>
             </div>
@@ -190,31 +201,34 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
         </div>
       </section>
 
-      <section className="bg-[#ccdfef] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
+      {/* ── CTA Banner ────────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-cyan-700 to-cyan-950 px-6 py-14 text-center shadow-2xl shadow-cyan-950/15 sm:px-12 sm:py-20"
+          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 animate-spin-slow" />
-          <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-300/10 blur-2xl animate-float-slow" />
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-200">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
               Let&apos;s work together
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               Ready to turn insight into measurable progress?
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-cyan-50/80">
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               Connect with our team to explore the right SAP, data, and
               automation path for your business.
             </p>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-cyan-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-50 hover:shadow-xl"
+                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </Link>

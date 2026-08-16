@@ -73,11 +73,11 @@ export default function Hero() {
             fill
             priority={activeIndex === 0}
             sizes="100vw"
-            className="object-cover object-center opacity-50"
+            className="object-cover object-center opacity-85"
           />
           {/* rich cinematic gradient overlay */}
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,7,19,0.97)_0%,rgba(3,7,19,0.82)_45%,rgba(3,7,19,0.38)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.3)_0%,transparent_35%,rgba(3,7,19,0.55)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,7,19,0.88)_0%,rgba(3,7,19,0.52)_50%,rgba(3,7,19,0.18)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.2)_0%,transparent_35%,rgba(3,7,19,0.35)_100%)]" />
           <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.12),transparent_70%)]" />
         </motion.div>
       </AnimatePresence>
@@ -87,8 +87,8 @@ export default function Hero() {
       <div aria-hidden className="tri-blob -z-10 h-80 w-80 animate-float-reverse" style={{ right: "-8%", bottom: "8%", background: "radial-gradient(circle, rgba(245,166,35,0.18), transparent 70%)" }} />
       <div aria-hidden className="tri-blob -z-10 h-64 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(17,122,75,0.14), transparent 65%)", animationDelay: "-3s" }} />
 
-      <Container className="relative z-10 grid min-h-[100svh] items-center gap-12 pb-20 pt-28 lg:grid-cols-[1.1fr_0.9fr] lg:pt-32">
-        <div className="max-w-2xl">
+      <Container className="relative z-10 grid min-h-[100svh] items-center gap-10 py-14 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:py-20">
+        <div className="mx-auto w-full max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSlide.id}
@@ -102,7 +102,7 @@ export default function Hero() {
               <motion.span
                 custom={0}
                 variants={childVariants}
-                className="mb-7 inline-flex w-fit items-center gap-2.5 rounded-full border border-white/14 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#7edcc2] backdrop-blur-xl"
+                className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7edcc2] backdrop-blur-xl"
               >
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tri-2 opacity-75" />
@@ -115,7 +115,7 @@ export default function Hero() {
               <motion.h1
                 custom={1}
                 variants={childVariants}
-                className="max-w-[15ch] text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[4.5rem] lg:leading-[1.04]"
+                className="max-w-[18ch] text-2xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[3.4rem] lg:leading-[1.06]"
               >
                 {activeSlide.title}
               </motion.h1>
@@ -124,17 +124,17 @@ export default function Hero() {
               <motion.p
                 custom={2}
                 variants={childVariants}
-                className="mt-7 max-w-xl text-[1.05rem] font-medium leading-[1.75] text-slate-300/90 sm:text-xl"
+                className="mt-5 max-w-xl text-sm font-medium leading-[1.7] text-slate-300/90 sm:text-base"
               >
                 {activeSlide.description}
               </motion.p>
 
               {/* CTAs */}
-              <motion.div custom={3} variants={childVariants} className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <GradientButton href={activeSlide.primaryCta.href} size="lg">
-                  {activeSlide.primaryCta.label} <ArrowRight className="h-5 w-5" />
+              <motion.div custom={3} variants={childVariants} className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <GradientButton href={activeSlide.primaryCta.href} size="md">
+                  {activeSlide.primaryCta.label} <ArrowRight className="h-4 w-4" />
                 </GradientButton>
-                <GradientButton href={activeSlide.secondaryCta.href} variant="ghost" size="lg">
+                <GradientButton href={activeSlide.secondaryCta.href} variant="ghost" size="md">
                   {activeSlide.secondaryCta.label}
                 </GradientButton>
               </motion.div>
@@ -142,7 +142,7 @@ export default function Hero() {
           </AnimatePresence>
 
           {/* Slide indicators */}
-          <div className="mt-12 flex items-center gap-3">
+          <div className="mt-8 flex items-center gap-3">
             {heroSlides.map((slide, index) => {
               const isActive = index === activeIndex;
               return (
@@ -168,12 +168,12 @@ export default function Hero() {
 
         {/* 3D hexagon scene */}
         <motion.div
-          className="hidden lg:block"
+          className="mx-auto w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[520px]"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.0, delay: 0.3, ease: EASE_OUT_EXPO }}
         >
-          <HexScene className="mx-auto aspect-square w-full max-w-[560px]" />
+          <HexScene className="aspect-square w-full" />
         </motion.div>
       </Container>
     </section>

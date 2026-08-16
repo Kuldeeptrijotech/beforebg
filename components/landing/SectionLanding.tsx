@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Sparkles, Wrench } from "lucide-react";
 import CardsCarousel from "./CardsCarousel";
 import { motion } from "framer-motion";
+import ServicesConduitStream from "@/components/ui/hero-animations/ServicesConduitStream";
 import { Reveal } from "@/components/motion/Reveal";
 import { BlurReveal } from "@/components/motion/Reveal";
 
@@ -55,9 +56,24 @@ export default function SectionLanding({
         <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
         <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-55" />
 
+        {/* Hero image with laser bullet stream */}
+        {heroImage && (
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="absolute inset-0 -z-20 object-cover object-center opacity-95"
+          />
+        )}
+
+        {/* Slow glowing circuit conduits animation */}
+        <ServicesConduitStream />
+
         {/* Gradient overlays — side-only, NO bottom cloud */}
-        <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(3,7,19,0.96)_0%,rgba(3,7,19,0.80)_48%,rgba(3,7,19,0.25)_100%)]" />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,7,19,0.35)_0%,transparent_30%,transparent_75%,rgba(3,7,19,0.18)_100%)]" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(3,7,19,0.85)_0%,rgba(3,7,19,0.50)_50%,rgba(3,7,19,0.15)_100%)]" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,7,19,0.25)_0%,transparent_30%,transparent_75%,rgba(3,7,19,0.15)_100%)]" />
         <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_12%_55%,rgba(41,171,135,0.13),transparent_68%)]" />
 
         {/* Ambient glow orbs — kept away from the bottom edge */}
@@ -108,22 +124,23 @@ export default function SectionLanding({
       {/* ── Cards Section ─────────────────────── */}
       <section
         id="explore"
-        className={`relative bg-[#0a1628] ${cardLayout === "carousel" ? "flex min-h-[100svh] items-center py-20 sm:py-24" : "py-28 sm:py-36"}`}
+        className={`relative bg-[#0b1d33] ${cardLayout === "carousel" ? "flex min-h-[100svh] items-center py-12 sm:py-14" : "py-12 sm:py-14 lg:py-16"} border-t border-white/5`}
       >
-        {/* Section backgrounds */}
-        <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-35" />
-        <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-[rgba(41,171,135,0.09)] blur-[100px]" />
-        <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 rounded-full bg-[rgba(245,166,35,0.08)] blur-[90px]" />
-        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.4)] to-transparent" />
+        {/* Section backgrounds (Hexagons) */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 tri-mesh opacity-50" />
+        <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-[rgba(41,171,135,0.12)] blur-[100px]" />
+        <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] translate-x-1/3 rounded-full bg-[rgba(245,166,35,0.1)] blur-[90px]" />
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.45)] to-transparent" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <Reveal>
             <div className="max-w-3xl">
               <span className="tri-overline">Explore</span>
-              <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
                 {cardsTitle}
               </h2>
-              <p className="mt-5 text-base leading-[1.8] text-slate-400 sm:text-[1.05rem]">{cardsIntro}</p>
+              <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300">{cardsIntro}</p>
             </div>
           </Reveal>
 
@@ -133,8 +150,8 @@ export default function SectionLanding({
             <div
               className={
                 cardLayout === "rows"
-                  ? "mt-14 grid gap-7"
-                  : "mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  ? "mt-8 sm:mt-10 grid gap-6"
+                  : "mt-7 sm:mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3 items-stretch"
               }
             >
               {cards.map((card, i) => (
@@ -145,17 +162,17 @@ export default function SectionLanding({
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
                   whileHover={{ y: -5, transition: { duration: 0.25 } }}
-                  className={`group tri-glass-card min-w-0 overflow-hidden rounded-3xl ${
+                  className={`group tri-glass-card min-w-0 overflow-hidden rounded-2xl h-full border border-white/10 bg-white/[0.03] ${
                     cardLayout === "rows"
-                      ? "grid md:grid-cols-[1.15fr_.85fr] md:items-stretch"
+                      ? "grid md:grid-cols-[1.15fr_.85fr] md:items-center"
                       : "flex flex-col"
                   }`}
                 >
                   <Link
                     href={card.href}
-                    className={`relative block overflow-hidden bg-slate-900 ${
+                    className={`relative block w-full shrink-0 overflow-hidden bg-slate-900 ${
                       cardLayout === "rows"
-                        ? "order-2 min-h-[230px] md:min-h-[300px]"
+                        ? "order-2 min-h-[230px] md:min-h-[300px] h-full"
                         : "aspect-[16/10]"
                     }`}
                   >
@@ -166,43 +183,45 @@ export default function SectionLanding({
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(3,7,19,0.65)] to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,25,39,0.75)] to-transparent" />
                     <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.35),transparent_50%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="absolute inset-0 translate-x-[-105%] bg-gradient-to-r from-transparent via-white/8 to-transparent transition-transform duration-700 group-hover:translate-x-[105%]" />
                     {showCardIcons && (
-                      <span className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-lg shadow-[rgba(41,171,135,0.4)]">
-                        <Wrench className="h-5 w-5" aria-hidden="true" />
+                      <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-lg shadow-[rgba(41,171,135,0.4)]">
+                        <Wrench className="h-4.5 w-4.5" aria-hidden="true" />
                       </span>
                     )}
                   </Link>
 
                   <div
-                    className={`flex flex-1 flex-col p-7 sm:p-8 ${
-                      cardLayout === "rows" ? "order-1 justify-center md:p-9 lg:p-10" : ""
+                    className={`flex flex-1 flex-col p-5 sm:p-6 ${
+                      cardLayout === "rows" ? "order-1 justify-center md:p-8 lg:p-9" : ""
                     }`}
                   >
-                    <h3 className="text-xl font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2] sm:text-2xl">
+                    <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">
                       {card.title}
                     </h3>
-                    <p className="mt-4 flex-1 text-sm leading-[1.8] text-slate-400">{card.description}</p>
+                    <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{card.description}</p>
                     {card.capabilities?.length ? (
-                      <ul className="mt-6 space-y-2.5 border-t border-white/[0.08] pt-5">
+                      <ul className="mt-4 space-y-2 border-t border-white/[0.08] pt-3.5">
                         {card.capabilities.slice(0, 4).map((item) => (
-                          <li key={item} className="flex items-start gap-2.5 text-sm font-medium text-slate-300">
-                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#29ab87,#117a4b)]">
-                              <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
+                          <li key={item} className="flex items-start gap-2 text-xs sm:text-sm font-medium text-slate-200">
+                            <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#29ab87,#117a4b)]">
+                              <Check className="h-2 w-2 text-white" strokeWidth={3} />
                             </span>
                             {item}
                           </li>
                         ))}
                       </ul>
                     ) : null}
-                    <Link
-                      href={card.href}
-                      className="mt-auto inline-flex items-center gap-2 pt-7 text-sm font-bold text-[#7edcc2] transition-all duration-200 group-hover:gap-3 group-hover:text-[#f5a623]"
-                    >
-                      {card.cta ?? "Explore"} <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    <div className="mt-auto pt-4">
+                      <Link
+                        href={card.href}
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#7edcc2] transition-all duration-200 group-hover:gap-2.5 group-hover:text-[#f5a623]"
+                      >
+                        {card.cta ?? "Explore"} <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
                   </div>
                 </motion.article>
               ))}
@@ -212,14 +231,15 @@ export default function SectionLanding({
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative bg-[#030713] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-        <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-30" />
+      <section className="relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#0e2340,#0b1d33_50%,#050817)] px-6 py-16 text-center shadow-[0_40px_120px_-30px_rgba(3,7,19,0.7)] sm:px-12 sm:py-24"
+          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-45" />
           <div aria-hidden className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
@@ -231,11 +251,11 @@ export default function SectionLanding({
             <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em] text-[#f5a623]">
               <Sparkles className="h-4 w-4" /> Trijotech
             </p>
-            <h2 className="mt-6 text-3xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-5xl">
+<h2 className="mt-4 text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl">
               Let&apos;s turn your next priority into measurable progress.
             </h2>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-10">
-              <Link href="/contact" className="tri-btn tri-btn-primary px-8 py-4 text-sm font-semibold">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-6">
+              <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">
                 Talk to our team <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>

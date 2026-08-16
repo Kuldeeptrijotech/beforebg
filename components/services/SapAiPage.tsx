@@ -51,19 +51,16 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[linear-gradient(180deg,#0b1d33,#0a2540_45%,#050817)]"
+        bgClass="bg-[#030713]"
         glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
         scene={<AiPredictionField />}
-        fadeTo="#050817"
-        heading={
-          <h1 className={heroH1}>
-            AI & <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">Data Insights</span>
-          </h1>
-        }
+        fadeTo="#030713"
       />
 
       {/* BUSINESS DATA + HERO TAIL */}
-      <section className="relative bg-[#050817]">
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] border-t border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="flex h-16 flex-col items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#29ab87] shadow-[0_0_10px_#29ab87]" />
@@ -78,7 +75,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
               <h2 className={`mt-5 ${introLead} text-white`}>
                 Intelligence works when <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">data is connected</span>
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
                 We combine SAP data integration with AI, machine learning, and automation to surface timely insights,
                 simplify decisions, and build an adaptable data foundation.
               </p>
@@ -127,7 +124,9 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
       </section>
 
       {/* AI PROCESS */}
-      <section className="relative bg-gradient-to-b from-[#050817] to-[#080c1d] py-20 sm:py-24">
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 border-t border-white/10">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>How intelligence flows</SectionLabel>
@@ -145,7 +144,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                   <StaggerRevealItem key={s.label} variant="scale" className="relative pl-16 lg:pl-0 lg:pt-10">
                     <span className="absolute left-6 top-0 -translate-x-1/2 lg:left-0 lg:top-8 lg:translate-x-0 lg:-translate-y-1/2">
                       <motion.span
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#080c1d] text-[#29ab87] shadow-lg shadow-violet-950/10"
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-[#29ab87] shadow-lg shadow-violet-950/10"
                         animate={{ scale: [1, 1.12, 1] }}
                         transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.45, ease: "easeInOut" }}
                       >
@@ -155,7 +154,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                     <Glass variant="frosted" tone="green" className="p-5">
                       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#29ab87]">{String(i + 1).padStart(2, "0")}</p>
                       <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
-                      <p className="mt-2 text-sm leading-6 text-slate-400">{s.desc}</p>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">{s.desc}</p>
                     </Glass>
                   </StaggerRevealItem>
                 );
@@ -166,7 +165,9 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
       </section>
 
       {/* USE CASES */}
-      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-16 sm:py-20 border-t border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>In practice</SectionLabel>
@@ -200,89 +201,10 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
         </Container>
       </section>
 
-      {/* FROM DATA TO DECISION (DARK) */}
-      <section className="relative overflow-hidden bg-[#050817] py-20 text-white sm:py-28">
-        <div aria-hidden className="absolute inset-0 tri-grid-bg opacity-40" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_15%,rgba(41,171,135,0.22),transparent_60%)]" />
-        <Container className="relative">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <Reveal>
-                <SectionLabel dark>Real impact</SectionLabel>
-                <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
-                  From data to <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">decision</span>
-                </h2>
-                <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
-                  Predictions and recommendations that reach people where they act — grounded in governed, connected
-                  information.
-                </p>
-              </Reveal>
-              <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
-                {impacts.map((i) => (
-                  <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#29ab87]" />
-                      <div>
-                        <p className="font-bold text-white">{i.title}</p>
-                        <p className="mt-1 text-xs leading-5 text-slate-300">{i.description}</p>
-                      </div>
-                    </div>
-                  </StaggerRevealItem>
-                ))}
-              </StaggerReveal>
-            </div>
-
-            <Reveal delay={0.15}>
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1a30]/80 p-8 backdrop-blur-md">
-                <div className="flex items-center justify-between">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Insight surface</p>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#29ab87]/15 px-2.5 py-1 text-[10px] font-bold text-[#29ab87]">
-                    <Sparkles className="h-3 w-3" /> Live prediction
-                  </span>
-                </div>
-
-                <div className="mt-6 flex h-40 items-end gap-2">
-                  {[42, 58, 36, 66, 48, 74, 55, 82, 64, 92].map((h, i) => (
-                    <motion.div
-                      key={i}
-                      className="flex-1 rounded-t-md"
-                      style={{ background: i >= 8 ? "linear-gradient(180deg,#f5a623,#f29e16)" : "linear-gradient(180deg,#29ab87,#117a4b)", opacity: i >= 8 ? 1 : 0.6 }}
-                      initial={{ height: 0 }}
-                      whileInView={{ height: `${h}%` }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{ duration: 0.6, delay: i * 0.06 }}
-                    />
-                  ))}
-                </div>
-
-                <div className="mt-6 grid grid-cols-3 gap-3">
-                  {[
-                    { label: "Revenue risk", value: "Low", tone: "#29ab87" },
-                    { label: "Forecast", value: "+8.4%", tone: "#f5a623" },
-                    { label: "Confidence", value: "94%", tone: "#29ab87" },
-                  ].map((m) => (
-                    <div key={m.label} className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-3 text-center">
-                      <p className="text-[10px] uppercase tracking-wider text-slate-400">{m.label}</p>
-                      <p className="mt-1 text-lg font-extrabold" style={{ color: m.tone }}>{m.value}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 flex items-center justify-center gap-3 rounded-xl border border-[#29ab87]/25 bg-[#29ab87]/[0.08] px-4 py-3">
-                  <Lightbulb className="h-5 w-5 shrink-0 text-[#29ab87]" />
-                  <p className="text-sm text-slate-200">
-                    <span className="font-bold text-white">Contextual insight</span> — surfaced inside the workflows
-                    your teams already use.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
       {/* CAPABILITIES */}
-      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 border-t border-white/10">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>

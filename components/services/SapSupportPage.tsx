@@ -41,19 +41,14 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[linear-gradient(180deg,#0a2540,#0b1d33_45%,#050817)]"
+        bgClass="bg-[#030713]"
         glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
         scene={<SupportCommandCenter />}
-        fadeTo="#050817"
-        heading={
-          <h1 className={heroH1}>
-            <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">Support</span>
-          </h1>
-        }
+        fadeTo="#030713"
       />
 
       {/* SUPPORT MODEL + HERO TAIL */}
-      <section className="relative bg-[#050817]">
+      <section className="relative bg-[#162032]">
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="flex h-16 flex-col items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[#29ab87] shadow-[0_0_10px_#29ab87]" />
@@ -68,7 +63,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
               <h2 className={`mt-5 ${introLead} text-white`}>
                 Stable operations, <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">flexible service</span>
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
                 Our SAP Support and AMS services deliver operational continuity, performance assurance, structured
                 change, and ongoing value through flexible models aligned with your business.
               </p>
@@ -83,7 +78,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                         <Icon className="h-5 w-5" strokeWidth={1.9} />
                       </span>
                       <h3 className="mt-4 font-bold text-white">{p.label}</h3>
-                      <p className="mt-1.5 text-sm leading-6 text-slate-400">{p.desc}</p>
+                      <p className="mt-1.5 text-sm leading-6 text-slate-300">{p.desc}</p>
                     </Glass>
                   </StaggerRevealItem>
                 );
@@ -117,14 +112,14 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
       </section>
 
       {/* CAPABILITIES */}
-      <section className="relative bg-gradient-to-b from-[#050817] to-[#080c1d] py-20 sm:py-24">
+      <section className="relative bg-gradient-to-b from-[#162032] to-[#121927] py-20 sm:py-24">
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
               Capabilities that keep you <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">operational</span>
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-400">
+            <p className="mt-5 text-lg leading-8 text-slate-300">
               From incident response to release governance — every capability maps to a real operational need.
             </p>
           </Reveal>
@@ -149,8 +144,8 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
         </Container>
       </section>
 
-      {/* 24/7 MONITORING (DARK) */}
-      <section className="relative overflow-hidden bg-[#050817] py-20 text-white sm:py-28">
+      {/* 24/7 MONITORING (DARK / GLOWING GREY) */}
+      <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
         <div aria-hidden className="absolute inset-0 tri-grid-bg opacity-40" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(55%_60%_at_15%_20%,rgba(41,171,135,0.16),transparent_60%)]" />
         <Container className="relative">
@@ -182,7 +177,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
             </div>
 
             <Reveal delay={0.15}>
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1a30]/80 p-6 backdrop-blur-md sm:p-8">
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-6 backdrop-blur-md sm:p-8">
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Live operations feed</p>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#29ab87]/10 px-2.5 py-1 text-[10px] font-bold text-[#29ab87]">
@@ -224,7 +219,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
       </section>
 
       {/* INCIDENT PROCESS */}
-      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+      <section className="relative bg-[#162032] py-20 sm:py-24">
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel>How we resolve</SectionLabel>

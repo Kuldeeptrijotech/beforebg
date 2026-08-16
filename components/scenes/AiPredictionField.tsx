@@ -1,246 +1,279 @@
 "use client";
 
-import { motion, MotionConfig, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
-  Boxes,
-  Landmark,
-  PackageSearch,
-  Users,
+  Activity,
+  Bot,
+  Brain,
+  CheckCircle2,
+  Cpu,
+  FileCode,
+  LineChart,
+  MessageSquare,
+  Network,
+  Send,
+  Sparkles,
+  Terminal,
+  TrendingUp,
   Workflow,
+  Zap,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { useRef, useState } from "react";
-import { HEX_CLIP } from "./scene-ui";
-import { usePointerRotate } from "@/components/services/service-ui";
+import { useEffect, useRef, useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────
-   SAP AI & Data Insights — ORGANIC 3D INTELLIGENCE FIELD
-   Fragmented business data streams into a fluid intelligence
-   field. Patterns emerge, similar data clusters, prediction
-   paths branch outward — most fade, one strong path becomes the
-   highlighted insight surface.
+   SAP AI & MACHINE LEARNING — 3D NEURAL WAVEFORM ORB &
+   LIVE JOULE COPILOT COPILOT CONSOLE
    ───────────────────────────────────────────────────────────── */
 
-type Domain = {
-  label: string;
-  icon: LucideIcon;
-  x: number;
-  y: number;
-  cx: number;
-  cy: number;
+type CopilotQuery = {
+  id: string;
+  prompt: string;
+  category: string;
+  response: string;
+  tokens: string;
+  confidence: string;
+  latency: string;
   color: string;
 };
 
-const DOMAINS: Domain[] = [
-  { label: "Finance", icon: Landmark, x: 150, y: 80, cx: 398, cy: 248, color: "#38bdf8" },
-  { label: "Sales", icon: PackageSearch, x: 150, y: 200, cx: 492, cy: 252, color: "#22d3ee" },
-  { label: "Customer", icon: Users, x: 150, y: 320, cx: 402, cy: 336, color: "#8b7cf6" },
-  { label: "Operations", icon: Workflow, x: 150, y: 440, cx: 488, cy: 340, color: "#67e8f9" },
-  { label: "Supply Chain", icon: Boxes, x: 520, y: 70, cx: 450, cy: 278, color: "#a78bfa" },
+const QUERIES: CopilotQuery[] = [
+  {
+    id: "q-cash",
+    prompt: "Forecast Q4 working capital across all 14 subsidiaries",
+    category: "Predictive Treasury LSTM",
+    response: "Analyzed universal ledger records. Working capital projected to expand by +14.2% YoY ($18.4M liquid reserves). Invoice delinquency risk scored at low 0.02%.",
+    tokens: "142 tokens/s",
+    confidence: "98.7% Confidence",
+    latency: "6.2ms",
+    color: "#38bdf8",
+  },
+  {
+    id: "q-cap",
+    prompt: "Joule: Generate CDS schema and draft service handlers",
+    category: "Generative Business Copilot",
+    response: "Generated clean-core CAP service model in TypeScript with OData V4 draft handling, authorization restrictions, and automated Jest test suite.",
+    tokens: "185 tokens/s",
+    confidence: "100% Syntax Valid",
+    latency: "8.4ms",
+    color: "#29ab87",
+  },
+  {
+    id: "q-fraud",
+    prompt: "Run anomaly heuristic scan across 5,000 vendor invoices",
+    category: "AI Fraud Defense Shield",
+    response: "Scanned 5,000 invoices in 0.18s. Zero duplicate billings or split-PO threshold violations found. Compliance integrity rated at 100%.",
+    tokens: "210 tokens/s",
+    confidence: "99.9% F1-Score",
+    latency: "4.1ms",
+    color: "#f5a623",
+  },
+  {
+    id: "q-supply",
+    prompt: "Predict supplier delivery risks under current weather disruptions",
+    category: "Time-Series Supply Transformer",
+    response: "Detected potential 3-day lead time variance for Supplier #4802. Autonomous safety stock reorder triggered in S/4HANA MM to eliminate stockouts.",
+    tokens: "135 tokens/s",
+    confidence: "97.8% Accuracy",
+    latency: "7.9ms",
+    color: "#8b7cf6",
+  },
 ];
-
-const pTo = (x: number, y: number, cx: number, cy: number) =>
-  `M${x} ${y} C ${(x + cx) / 2} ${y}, ${(x + cx) / 2 + 10} ${cy - 14}, ${cx} ${cy}`;
-
-const FIELDC = { x: 450, y: 300 };
-
-const BRANCHES = [
-  { d: "M505 292 C 600 210, 660 200, 735 190", color: "rgba(56,189,248,0.35)", strong: false },
-  { d: "M505 308 C 620 372, 690 388, 742 402", color: "rgba(139,124,246,0.35)", strong: false },
-  { d: "M505 300 C 620 300, 680 300, 742 300", color: "#2f8fff", strong: true },
-  { d: "M505 296 C 580 150, 640 140, 720 140", color: "rgba(103,232,249,0.3)", strong: false },
-];
-
-const INSIGHT_LINE = "M736 384 L 764 336 L 792 356 L 822 292 L 852 314 L 882 246 L 912 268 L 936 238";
-
-function Flow({ path, count, color, dur, offset = 0 }: { path: string; count: number; color: string; dur: number; offset?: number }) {
-  return (
-    <>
-      {Array.from({ length: count }).map((_, i) => (
-        <circle key={i} r={3} fill={color} opacity={0.8}>
-          <animateMotion dur={`${dur}s`} begin={`-${(offset + i * (dur / count)) % dur}s`} repeatCount="indefinite" path={path} />
-        </circle>
-      ))}
-    </>
-  );
-}
 
 export default function AiPredictionField() {
-  const { bind, reset, grabStart, grabEnd, rotateX, rotateY } = usePointerRotate(5);
-  const [active, setActive] = useState<number | null>(null);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const fade = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
+  const reduce = useReducedMotion();
+  const [activeQuery, setActiveQuery] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+
+  const query = QUERIES[activeQuery];
+
+  // Typewriter effect for live AI response
+  useEffect(() => {
+    setIsTyping(true);
+    setDisplayText("");
+    const fullText = query.response;
+    let index = 0;
+
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setDisplayText((prev) => prev + fullText.charAt(index));
+        index++;
+      } else {
+        setIsTyping(false);
+        clearInterval(timer);
+      }
+    }, 18);
+
+    return () => clearInterval(timer);
+  }, [activeQuery, query.response]);
+
+  useEffect(() => {
+    const cycleTimer = setInterval(() => {
+      setActiveQuery((prev) => (prev + 1) % QUERIES.length);
+    }, 6000);
+    return () => clearInterval(cycleTimer);
+  }, []);
 
   return (
-    <div
-      ref={ref}
-      className="absolute inset-0 overflow-hidden"
-      style={{ perspective: 1500, cursor: "grab" }}
-      onPointerMove={bind}
-      onPointerDown={grabStart}
-      onPointerUp={grabEnd}
-      onPointerLeave={reset}
-      aria-hidden
-    >
-      <MotionConfig reducedMotion="user">
-        <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d", opacity: fade }} className="relative h-full w-full">
-          {/* organic field backdrop */}
-          <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ background: "radial-gradient(circle, rgba(47,143,255,0.18), rgba(139,124,246,0.1) 40%, transparent 68%)" }} />
-          <div
-            className="pointer-events-none absolute inset-x-[-20%] bottom-[-16%] h-[64%] opacity-35"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(139,124,246,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(139,124,246,0.14) 1px, transparent 1px)",
-              backgroundSize: "44px 44px",
-              transform: "rotateX(62deg)",
-              maskImage: "radial-gradient(ellipse 60% 70% at 50% 42%, black 26%, transparent 78%)",
-              WebkitMaskImage: "radial-gradient(ellipse 60% 70% at 50% 42%, black 26%, transparent 78%)",
-            }}
-          />
+    <div className="relative isolate h-full min-h-full w-full overflow-hidden select-none bg-[#030713] px-3 sm:px-6 lg:px-10 py-2 flex flex-col justify-between">
+      {/* ── Background Neural Ambient Aura ── */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#29ab87]/25 blur-[140px]" />
+        <div className="absolute right-1/4 top-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#8b7cf6]/20 blur-[140px]" />
+      </div>
 
-          {/* ambient field particles */}
-          {[
-            { x: 30, y: 44 }, { x: 38, y: 56 }, { x: 46, y: 36 }, { x: 52, y: 60 }, { x: 42, y: 64 },
-            { x: 36, y: 40 }, { x: 55, y: 46 }, { x: 48, y: 52 },
-          ].map((p, i) => (
-            <motion.span
-              key={i}
-              className="pointer-events-none absolute h-1 w-1 rounded-full"
-              style={{ left: `${p.x}%`, top: `${p.y}%`, background: i % 2 ? "#22d3ee" : "#8b7cf6", boxShadow: `0 0 6px ${i % 2 ? "#22d3ee" : "#8b7cf6"}` }}
-              animate={{ opacity: [0.2, 0.9, 0.2], scale: [1, 1.6, 1], y: [0, -10, 0] }}
-              transition={{ duration: 4 + (i % 4), repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-            />
-          ))}
+      {/* ── Top Header Controls ── */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+            <Brain className="h-4 w-4 sm:h-5 sm:w-5" />
+          </span>
+          <div>
+            <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
+              SAP BUSINESS AI · JOULE COPILOT NEURAL ENGINE
+            </h2>
+            <p className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">
+              GENERATIVE AI · PREDICTIVE ANALYTICS · ZERO-SHOT CONTEXT EMBEDDING
+            </p>
+          </div>
+        </div>
 
-          <svg className="pointer-events-none absolute inset-0 hidden h-full w-full md:block" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
-            {/* data streaming into the intelligence field */}
-            {DOMAINS.map((d, i) => {
-              const dim = active !== null && active !== i;
-              return (
-                <g key={d.label} opacity={dim ? 0.2 : 0.95} style={{ transition: "opacity 0.3s" }}>
-                  <path d={pTo(d.x, d.y, d.cx, d.cy)} stroke={d.color} strokeOpacity={dim ? 0.08 : 0.24} strokeWidth={dim ? 1 : 1.4} strokeDasharray="4 6" />
-                  <Flow path={pTo(d.x, d.y, d.cx, d.cy)} count={4} color={d.color} dur={6 + i * 0.5} offset={i * 1.1} />
-                  <Flow path={pTo(d.x, d.y, d.cx, d.cy)} count={2} color="#a78bfa" dur={7} offset={i * 0.6} />
-                </g>
-              );
-            })}
+        {/* Live Status Pill */}
+        <div className="flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-black/60 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-mono text-white/80 backdrop-blur-md">
+          <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#29ab87] animate-ping" />
+          <span>INFERENCE: {query.latency}</span>
+        </div>
+      </div>
 
-            {/* intelligence field */}
-            <ellipse cx={FIELDC.x} cy={FIELDC.y} rx={150} ry={110} fill="rgba(47,143,255,0.06)" />
-            <ellipse cx={FIELDC.x} cy={FIELDC.y} rx={150} ry={110} fill="none" stroke="rgba(47,143,255,0.4)" strokeWidth={1}>
-              <animate attributeName="rx" values="150;182" dur="4s" repeatCount="indefinite" />
-              <animate attributeName="ry" values="110;134" dur="4s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.7;0" dur="4s" repeatCount="indefinite" />
-            </ellipse>
-            <ellipse cx={FIELDC.x} cy={FIELDC.y} rx={150} ry={110} fill="none" stroke="rgba(139,124,246,0.35)" strokeWidth={1}>
-              <animate attributeName="rx" values="150;182" dur="4s" begin="2s" repeatCount="indefinite" />
-              <animate attributeName="ry" values="110;134" dur="4s" begin="2s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.7;0" dur="4s" begin="2s" repeatCount="indefinite" />
-            </ellipse>
-
-            {/* prediction branches — most fade, one stays strong */}
-            {BRANCHES.map((b, i) => (
-              <g key={i}>
-                <motion.path
-                  d={b.d}
-                  stroke={b.strong ? "#2f8fff" : b.color}
-                  strokeWidth={b.strong ? 2 : 1}
-                  strokeDasharray={b.strong ? "none" : "4 7"}
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: [0, 1, 1, 0] }}
-                  transition={{ duration: 9, repeat: Infinity, times: [0, 0.5, 0.9, 1], delay: i * 0.4 }}
-                  opacity={b.strong ? 1 : 0.6}
-                />
-                {b.strong && (
-                  <>
-                    <motion.path
-                      d={b.d}
-                      stroke="#67e8f9"
-                      strokeWidth={1}
-                      strokeDasharray="2 6"
-                      opacity={0.9}
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: [0, 1, 1, 0] }}
-                      transition={{ duration: 9, repeat: Infinity, times: [0, 0.5, 0.9, 1], ease: "easeInOut" }}
-                    />
-                    <circle r="4" fill="#67e8f9">
-                      <animateMotion dur="5s" begin="-1s" repeatCount="indefinite" path={b.d} />
-                    </circle>
-                    <circle r="8" fill="#2f8fff" opacity={0.14}>
-                      <animateMotion dur="5s" begin="-1s" repeatCount="indefinite" path={b.d} />
-                    </circle>
-                  </>
-                )}
-              </g>
+      {/* ── Main Neural Laboratory Stage (Left Orb + Right Copilot Console) ── */}
+      <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 my-auto py-2 items-center overflow-y-auto lg:overflow-visible">
+        {/* LEFT COLUMN (5 Cols): 3D Generative AI Neural Waveform Orb */}
+        <div className="lg:col-span-5 flex flex-col items-center justify-center text-center">
+          <div className="relative flex h-36 w-36 sm:h-48 sm:w-48 lg:h-56 lg:w-56 items-center justify-center">
+            {/* Concentric Pulsing Sound Waveform Rings */}
+            {[50, 70, 90].map((r, i) => (
+              <motion.div
+                key={r}
+                animate={{
+                  scale: [1, 1.14, 1],
+                  opacity: [0.35, 0.7, 0.35],
+                }}
+                transition={{
+                  duration: 2.4 + i * 0.4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute rounded-full border border-dashed pointer-events-none"
+                style={{
+                  width: r * 2,
+                  height: r * 2,
+                  borderColor: i === 0 ? "#29ab87" : i === 1 ? "#38bdf8" : "#8b7cf6",
+                }}
+              />
             ))}
 
-            {/* insight surface */}
-            <rect x={720} y={200} width={250} height={210} rx={18} fill="rgba(10,26,48,0.78)" stroke="rgba(139,124,246,0.4)" strokeWidth={1.2} />
-            <text x={845} y={228} textAnchor="middle" fontSize={12} fontWeight={700} fill="#cdd8f8" style={{ fontFamily: "Poppins, sans-serif" }}>
-              Predictive Insight
-            </text>
-            <circle cx={920} cy={214} r={3} fill="#22d3ee">
-              <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" />
-            </circle>
-            {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
-              <rect key={i} x={736 + i * 26} y={404} width={16} rx={3} fill="#38bdf8">
-                <animate attributeName="height" values="0;40;0" dur="4s" begin={`${i * 0.35}s`} repeatCount="indefinite" />
-                <animate attributeName="y" values="404;364;404" dur="4s" begin={`${i * 0.35}s`} repeatCount="indefinite" />
-              </rect>
+            {/* Glowing Center Neural Core */}
+            <motion.div
+              animate={{
+                scale: [1, 1.06, 1],
+                boxShadow: [
+                  "0 0 30px rgba(41,171,135,0.6)",
+                  "0 0 55px rgba(41,171,135,0.9)",
+                  "0 0 30px rgba(41,171,135,0.6)",
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="relative flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#117a4b] via-[#030713] to-[#29ab87] border border-white/30 backdrop-blur-xl"
+            >
+              <Bot className="h-9 w-9 sm:h-11 sm:w-11 text-white drop-shadow-[0_0_12px_#7edcc2]" />
+            </motion.div>
+          </div>
+
+          {/* Quick AI Prompts Capsules */}
+          <div className="mt-2 flex flex-wrap justify-center gap-1 sm:gap-1.5 max-w-sm px-2">
+            {QUERIES.map((q, idx) => (
+              <button
+                key={q.id}
+                onClick={() => setActiveQuery(idx)}
+                className={`rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-mono font-bold transition-all duration-300 border ${
+                  activeQuery === idx
+                    ? "bg-white text-slate-950 border-white shadow-lg scale-105"
+                    : "bg-black/60 text-white/70 border-white/10 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                ✦ {q.prompt.split(" ")[0]} {q.prompt.split(" ")[1]}
+              </button>
             ))}
-            <motion.path
-              d={INSIGHT_LINE}
-              stroke="#67e8f9"
-              strokeWidth={2}
-              strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: [0, 1, 1] }}
-              transition={{ duration: 3, repeat: Infinity, repeatDelay: 2.5, ease: "easeInOut" }}
-            />
-            <path d="M730 404 L 960 404" stroke="rgba(255,255,255,0.14)" strokeWidth={1} />
+          </div>
+        </div>
 
-            {/* prediction line flowing into the next section */}
-            <path d="M845 410 L 845 600" stroke="rgba(139,124,246,0.3)" strokeWidth={1.4} strokeDasharray="5 7" />
-            <Flow path="M845 410 L 845 600" count={2} color="#a78bfa" dur={4} />
-          </svg>
-
-          {/* domain labels */}
-          {DOMAINS.map((d, i) => {
-            const Icon = d.icon;
-            const on = active === i;
-            return (
-              <div key={d.label} className="absolute hidden md:block" style={{ left: `${(d.x / 1000) * 100}%`, top: `${(d.y / 600) * 100}%` }}>
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 4.5 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
-                  onMouseEnter={() => setActive(i)}
-                  onMouseLeave={() => setActive(null)}
-                  className="pointer-events-auto flex -translate-x-1/2 -translate-y-1/2 cursor-default items-center gap-2 rounded-lg border px-2.5 py-1.5 backdrop-blur-md"
-                  style={{
-                    borderColor: on ? `${d.color}88` : "rgba(255,255,255,0.1)",
-                    background: on ? `${d.color}22` : "rgba(0,0,0,0.4)",
-                    boxShadow: on ? `0 0 22px ${d.color}55` : "none",
-                  }}
-                >
-                  <span aria-hidden className="relative inline-flex h-7 w-7 items-center justify-center" style={{ clipPath: HEX_CLIP, background: `linear-gradient(160deg, ${d.color}, #0a6ed1)` }}>
-                    <Icon className="h-3.5 w-3.5 text-white" strokeWidth={1.8} />
-                  </span>
-                  <span className="text-[11px] font-semibold text-white/80">{d.label}</span>
-                </motion.div>
+        {/* RIGHT COLUMN (7 Cols): Live Joule Business Copilot Console */}
+        <div className="lg:col-span-7 rounded-2xl sm:rounded-3xl border border-white/12 bg-[#030713]/95 p-4 sm:p-5 lg:p-6 shadow-2xl backdrop-blur-2xl">
+          {/* Query Header */}
+          <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
+            <div className="flex items-center gap-2">
+              <span className="flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-lg bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+                <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              </span>
+              <div>
+                <p className="text-[8px] sm:text-[9px] font-mono uppercase text-white/50">{query.category}</p>
+                <p className="text-[11px] sm:text-xs font-mono font-bold text-white">SAP Joule Interactive Copilot</p>
               </div>
-            );
-          })}
-
-          {/* field caption */}
-          <div className="pointer-events-none absolute left-1/2 top-[86%] hidden -translate-x-1/2 md:block">
-            <span className="rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white/40 backdrop-blur-md">
-              <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#8b7cf6] align-middle shadow-[0_0_8px_#8b7cf6]" />
-              Data in · patterns · prediction
+            </div>
+            <span
+              className="rounded-full px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold"
+              style={{ background: `${query.color}20`, color: query.color, border: `1px solid ${query.color}40` }}
+            >
+              {query.confidence}
             </span>
           </div>
-        </motion.div>
-      </MotionConfig>
+
+          {/* User Prompt Bubble */}
+          <div className="mt-3 sm:mt-4 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 p-2.5 sm:p-3.5 flex items-start gap-2 sm:gap-2.5">
+            <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#38bdf8] shrink-0 mt-0.5" />
+            <p className="text-xs sm:text-sm font-mono font-bold text-white">
+              "{query.prompt}"
+            </p>
+          </div>
+
+          {/* Live Copilot AI Response Output */}
+          <div className="mt-2.5 sm:mt-3 rounded-xl sm:rounded-2xl bg-black/70 border border-white/8 p-3 sm:p-4 min-h-[75px] sm:min-h-[90px]">
+            <div className="flex items-center justify-between text-[8px] sm:text-[9px] font-mono text-white/40 mb-1 sm:mb-1.5">
+              <span>COPILOT INFERENCE GENERATION</span>
+              <span className="text-[#29ab87]">{query.tokens}</span>
+            </div>
+            <p className="text-[11px] sm:text-xs lg:text-sm font-mono text-slate-200 leading-relaxed">
+              {displayText}
+              {isTyping && <span className="inline-block h-2.5 sm:h-3 w-1 sm:w-1.5 bg-[#29ab87] ml-1 animate-ping" />}
+            </p>
+          </div>
+
+          {/* Performance Telemetry Grid */}
+          <div className="mt-3 sm:mt-4 grid grid-cols-3 gap-1.5 sm:gap-2 pt-2.5 sm:pt-3 border-t border-white/10 text-center">
+            <div className="rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 p-1.5 sm:p-2">
+              <p className="text-[7px] sm:text-[8px] font-mono text-white/40">INFERENCE SPEED</p>
+              <p className="text-[11px] sm:text-xs font-mono font-bold text-[#38bdf8]">{query.latency}</p>
+            </div>
+            <div className="rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 p-1.5 sm:p-2">
+              <p className="text-[7px] sm:text-[8px] font-mono text-white/40">MODEL ACCURACY</p>
+              <p className="text-[11px] sm:text-xs font-mono font-bold text-[#29ab87]">99.4% F1</p>
+            </div>
+            <div className="rounded-lg sm:rounded-xl bg-white/[0.02] border border-white/5 p-1.5 sm:p-2">
+              <p className="text-[7px] sm:text-[8px] font-mono text-white/40">DATA GOVERNANCE</p>
+              <p className="text-[11px] sm:text-xs font-mono font-bold text-[#f5a623]">EU AI Compliant</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Console Bottom Status Ribbon ── */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
+        <span className="flex items-center gap-1.5 text-[#29ab87]">
+          <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP JOULE EMBEDDED ARCHITECTURE
+        </span>
+        <span className="hidden sm:inline">ZERO-SHOT PREDICTIVE ENGINE</span>
+        <span className="text-[#38bdf8]">14,500+ DAILY AUTOMATED INSIGHTS</span>
+      </div>
     </div>
   );
 }

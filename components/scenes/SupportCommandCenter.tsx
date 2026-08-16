@@ -1,267 +1,273 @@
 "use client";
 
-import { motion, MotionConfig, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   Activity,
-  Blocks,
-  Bug,
-  Cloud,
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle2,
+  Clock,
+  Cpu,
   Database,
-  Gauge,
+  Globe2,
+  HeartPulse,
+  Laptop,
+  Play,
+  RefreshCw,
   Server,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
   Sparkles,
+  Terminal,
+  Zap,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import { useRef } from "react";
-import { HEX_CLIP } from "./scene-ui";
-import { usePointerRotate } from "@/components/services/service-ui";
+import { useEffect, useRef, useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────
-   SAP Support — 3D OPERATIONS COMMAND CENTER
-   A live SAP landscape around a support core. Systems pulse
-   healthy; in rotation each system takes an issue signal, gets
-   scanned, routes to the support core, and is optimised back to
-   healthy. Blue = system · cyan = monitoring · amber = warning ·
-   green = resolved.
+   SAP SUPPORT — 4-SCREEN CYBER MISSION CONTROL CONSOLE
+   SCREEN 1: Live Heartbeat Scope (99.999% SLA)
+   SCREEN 2: Automated Self-Healing CLI Terminal (Auto-Remediation)
+   SCREEN 3: High-Precision MTTR Performance Meter
+   SCREEN 4: Global Enterprise Multi-Region Node Array
    ───────────────────────────────────────────────────────────── */
 
-const WINDOW = 5.2;
-const TIMES = [0, 0.2, 0.45, 0.9, 1] as number[];
-
-type Node = {
-  label: string;
-  sub: string;
-  icon: LucideIcon;
-  x: number;
-  y: number;
-  px: number;
-  py: number;
+type LogEntry = {
+  id: number;
+  time: string;
+  type: "OK" | "HEAL" | "PATCH" | "SLA";
+  text: string;
 };
 
-const NODES: Node[] = [
-  { label: "S/4HANA", sub: "Digital core", icon: Database, x: 22, y: 24, px: 220, py: 150 },
-  { label: "ECC Suite", sub: "Legacy ERP", icon: Server, x: 78, y: 22, px: 780, py: 140 },
-  { label: "HANA Cloud", sub: "DB services", icon: Cloud, x: 20, y: 74, px: 200, py: 450 },
-  { label: "BTP Apps", sub: "Side-by-side", icon: Blocks, x: 78, y: 72, px: 780, py: 445 },
-];
-
-const HUB = { x: 50, y: 46, cx: 500, cy: 285 };
-
-const pathTo = (n: Node) => {
-  const cx = (n.px + HUB.cx) / 2;
-  const cy = (n.py + HUB.cy) / 2;
-  return `M${n.px} ${n.py} C ${cx} ${cy - 26}, ${cx + 6} ${cy + 18}, ${HUB.cx - 6} ${HUB.cy}`;
-};
-
-const pathBack = (n: Node) => {
-  const cx = (n.px + HUB.cx) / 2;
-  const cy = (n.py + HUB.cy) / 2;
-  return `M${HUB.cx + 8} ${HUB.cy} C ${cx + 6} ${cy + 18}, ${cx} ${cy - 26}, ${n.px} ${n.py}`;
-};
-
-const SUPPORT_MODULES: { icon: LucideIcon; label: string }[] = [
-  { icon: Bug, label: "Incidents" },
-  { icon: Gauge, label: "Performance" },
-  { icon: Sparkles, label: "Enhancements" },
+const INITIAL_LOGS: LogEntry[] = [
+  { id: 1, time: "14:20:02", type: "OK", text: "S/4HANA digital core heartbeat nominal (12ms)" },
+  { id: 2, time: "14:20:08", type: "HEAL", text: "Stuck IDoc queue #4820 cleared autonomously" },
+  { id: 3, time: "14:20:14", type: "PATCH", text: "BTP Kyma microservice auto-scaled +2 replicas" },
+  { id: 4, time: "14:20:19", type: "SLA", text: "Global SLA availability verified at 99.999%" },
 ];
 
 export default function SupportCommandCenter() {
-  const { bind, reset, grabStart, grabEnd, rotateX, rotateY } = usePointerRotate(4);
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const fade = useTransform(scrollYProgress, [0, 1], [1, 0.15]);
+  const reduce = useReducedMotion();
+  const [logs, setLogs] = useState<LogEntry[]>(INITIAL_LOGS);
+  const [isAlerting, setIsAlerting] = useState(false);
+  const [activeRegion, setActiveRegion] = useState(0);
+
+  const regions = [
+    { name: "Americas Region", uptime: "99.999%", latency: "14ms", status: "NOMINAL" },
+    { name: "EMEA Headquarters", uptime: "100.0%", latency: "9ms", status: "OPTIMAL" },
+    { name: "APAC Hub", uptime: "99.994%", latency: "18ms", status: "STABLE" },
+    { name: "Cloud Multi-Tenant", uptime: "99.999%", latency: "6ms", status: "ACTIVE" },
+  ];
+
+  // Auto-feed terminal logs periodically
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`;
+      const newLogs: LogEntry[] = [
+        { id: Date.now() + 1, time: timeStr, type: "OK", text: "Universal journal ledger synchronization verified" },
+        { id: Date.now() + 2, time: timeStr, type: "HEAL", text: "SAP CPI message retry buffer flushed [0 errors]" },
+        { id: Date.now() + 3, time: timeStr, type: "SLA", text: "P1 response SLA verified: < 15 min target met" },
+      ];
+      const randomLog = newLogs[Math.floor(Math.random() * newLogs.length)];
+      setLogs((prev) => [randomLog, ...prev.slice(0, 4)]);
+    }, 3800);
+    return () => clearInterval(timer);
+  }, []);
+
+  const triggerSimulatedAlert = () => {
+    setIsAlerting(true);
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}:${String(now.getSeconds()).padStart(2, "0")}`;
+    const alertLog: LogEntry = {
+      id: Date.now(),
+      time: timeStr,
+      type: "HEAL",
+      text: "⚡ Anomaly detected: Memory table peak auto-compacted in 1.4s",
+    };
+    setLogs((prev) => [alertLog, ...prev.slice(0, 4)]);
+    setTimeout(() => {
+      setIsAlerting(false);
+    }, 2000);
+  };
 
   return (
-    <div
-      ref={ref}
-      className="absolute inset-0 overflow-hidden"
-      style={{ perspective: 1400, cursor: "grab" }}
-      onPointerMove={bind}
-      onPointerDown={grabStart}
-      onPointerUp={grabEnd}
-      onPointerLeave={reset}
-      aria-hidden
-    >
-      <MotionConfig reducedMotion="user">
-        <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d", opacity: fade }} className="relative h-full w-full">
-          {/* monitoring sweep */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 opacity-50 tri-scan" />
+    <div className="relative isolate h-full min-h-full w-full overflow-hidden select-none bg-[#030713] px-3 sm:px-6 lg:px-10 py-2 flex flex-col justify-between">
+      {/* ── Console Ambient Backdrop ── */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#117a4b]/30 blur-[140px]" />
+        <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-[#38bdf8]/20 blur-[140px]" />
+      </div>
 
-          {/* grid floor */}
-          <div
-            className="pointer-events-none absolute inset-x-[-20%] bottom-[-20%] h-[68%] opacity-50"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(34,211,238,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.12) 1px, transparent 1px)",
-              backgroundSize: "42px 42px",
-              transform: "rotateX(60deg)",
-              maskImage: "radial-gradient(ellipse 62% 72% at 50% 45%, black 30%, transparent 78%)",
-              WebkitMaskImage: "radial-gradient(ellipse 62% 72% at 50% 45%, black 30%, transparent 78%)",
-            }}
-          />
+      {/* ── Top Mission Control Nav & Emergency Trigger ── */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+            <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5" />
+          </span>
+          <div>
+            <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
+              SAP MANAGED SERVICES · 24/7 COMMAND DECK
+            </h2>
+            <p className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">
+              AUTONOMOUS HEALING ENGINE · LEVEL 1-3 GLOBAL SUPPORT ACTIVE
+            </p>
+          </div>
+        </div>
 
-          {/* link layer */}
-          <svg className="pointer-events-none absolute inset-0 hidden h-full w-full md:block" viewBox="0 0 1000 600" preserveAspectRatio="none" fill="none">
-            {NODES.map((n, i) => (
-              <g key={n.label}>
-                <path d={pathTo(n)} stroke="rgba(56,189,248,0.22)" strokeWidth={1.2} strokeDasharray="5 7" />
-                <path d={pathBack(n)} stroke="rgba(56,189,248,0.22)" strokeWidth={1.2} strokeDasharray="5 7" />
+        {/* Action Controls */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={triggerSimulatedAlert}
+            className={`flex items-center gap-1.5 sm:gap-2 rounded-xl px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-mono font-bold transition-all duration-300 backdrop-blur-md border ${
+              isAlerting
+                ? "bg-[#f5a623] text-slate-950 border-[#f5a623] shadow-[0_0_20px_rgba(245,166,35,0.6)] animate-pulse"
+                : "bg-white/5 hover:bg-white/10 text-white border-white/15 active:scale-95"
+            }`}
+          >
+            <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#f5a623]" />
+            <span>{isAlerting ? "Intercepting Alert..." : "Test Anomaly Trigger"}</span>
+          </button>
+        </div>
+      </div>
 
-                {/* issue signal routed to support core */}
-                <motion.g
-                  animate={{ opacity: [0, 1, 1, 0, 0] }}
-                  transition={{ duration: WINDOW, repeat: Infinity, times: [0.12, 0.28, 0.4, 0.62, 1], delay: -i * WINDOW, ease: "easeInOut" }}
+      {/* ── 4-Screen Cyber Console Grid ── */}
+      <div className="relative z-20 grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3.5 lg:gap-4 my-auto py-2 overflow-y-auto lg:overflow-visible">
+        {/* SCREEN 1: Live System Heartbeat Scope */}
+        <div className="rounded-xl sm:rounded-2xl border border-white/12 bg-[#030713]/90 p-3 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-xl">
+          <div className="flex items-center justify-between border-b border-white/10 pb-2 sm:pb-3">
+            <span className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono font-bold text-white">
+              <HeartPulse className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#29ab87] animate-pulse" />
+              SCREEN 01: SYSTEM HEARTBEAT SCOPE
+            </span>
+            <span className="rounded-full bg-[#29ab87]/20 border border-[#29ab87]/40 px-2 py-0.5 text-[7px] sm:text-[8px] font-mono font-bold text-[#29ab87]">
+              99.999% NOMINAL
+            </span>
+          </div>
+
+          <div className="mt-2.5 sm:mt-3">
+            <div className="flex items-center justify-between text-[10px] sm:text-xs text-slate-300 font-mono mb-1.5 sm:mb-2">
+              <span>S/4HANA CORE CPU: 24.2%</span>
+              <span className="text-[#29ab87]">ZERO DISRUPTIONS</span>
+            </div>
+
+            {/* Continuous Pulse Waveform SVG */}
+            <div className="h-10 sm:h-12 lg:h-14 w-full rounded-lg sm:rounded-xl bg-black/60 border border-white/5 p-1.5 overflow-hidden flex items-center">
+              <svg className="h-full w-full" preserveAspectRatio="none" viewBox="0 0 500 50">
+                <path
+                  d="M 0 25 L 80 25 L 95 8 L 110 42 L 125 15 L 140 32 L 155 25 L 260 25 L 275 8 L 290 42 L 305 15 L 320 32 L 335 25 L 500 25"
+                  stroke="#29ab87"
+                  strokeWidth="2.5"
+                  fill="none"
                 >
-                  <circle r="5" fill="#f5a623" />
-                  <animateMotion dur={`${WINDOW}s`} begin={`-${i * WINDOW}s`} repeatCount="indefinite" path={pathTo(n)} keyPoints="0;1;1" keyTimes="0;0.28;1" calcMode="linear" />
-                </motion.g>
-
-                {/* optimisation signal returning to the system */}
-                <motion.g
-                  animate={{ opacity: [0, 0, 1, 1, 0] }}
-                  transition={{ duration: WINDOW, repeat: Infinity, times: [0, 0.5, 0.65, 0.9, 1], delay: -i * WINDOW, ease: "easeInOut" }}
-                >
-                  <circle r="5" fill="#29ab87" />
-                  <animateMotion dur={`${WINDOW}s`} begin={`-${i * WINDOW}s`} repeatCount="indefinite" path={pathBack(n)} keyPoints="0;0;1;1" keyTimes="0;0.5;0.72;1" calcMode="linear" />
-                </motion.g>
-              </g>
-            ))}
-
-            <circle cx={HUB.cx} cy={HUB.cy} r="90" fill="rgba(34,211,238,0.06)" />
-            <circle cx={HUB.cx} cy={HUB.cy} r="74" fill="none" stroke="rgba(34,211,238,0.5)" strokeWidth={1.2}>
-              <animate attributeName="r" values="74;112" dur="3.4s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.6;0" dur="3.4s" repeatCount="indefinite" />
-            </circle>
-            <circle cx={HUB.cx} cy={HUB.cy} r="74" fill="none" stroke="rgba(47,143,255,0.4)" strokeWidth={1}>
-              <animate attributeName="r" values="74;112" dur="3.4s" begin="1.7s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.6;0" dur="3.4s" begin="1.7s" repeatCount="indefinite" />
-            </circle>
-          </svg>
-
-          {/* support core */}
-          <div className="absolute" style={{ left: "50%", top: "46%", transform: "translate(-50%,-50%)" }}>
-            <motion.div
-              animate={{ scale: [1, 1.04, 1], opacity: [0.9, 1, 0.9] }}
-              transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative flex h-24 w-24 items-center justify-center sm:h-28 sm:w-28"
-            >
-              <span aria-hidden className="absolute inset-0 blur-lg" style={{ clipPath: HEX_CLIP, background: "rgba(34,211,238,0.4)", transform: "scale(1.45)" }} />
-              <span className="relative flex h-full w-full items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#0a6ed1,#0e2f52)" }}>
-                <Activity className="h-9 w-9 text-[#67e8f9] sm:h-11 sm:w-11" strokeWidth={1.6} />
-              </span>
-            </motion.div>
-            <div className="pointer-events-none absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.22em] text-[#7ec8f7] backdrop-blur-md">
-              Support Core · 24×7
+                  <animate attributeName="stroke-dashoffset" values="0;500" dur="3s" repeatCount="indefinite" />
+                </path>
+              </svg>
             </div>
           </div>
+        </div>
 
-          {/* support modules activate as issues route in */}
-          {SUPPORT_MODULES.map((mod, i) => {
-            const Icon = mod.icon;
-            const angle = ((360 / SUPPORT_MODULES.length) * i - 90) * (Math.PI / 180);
-            const x = 50 + (16.5 * Math.cos(angle)) / 2;
-            const y = 46 + (12 * Math.sin(angle)) / 2;
-            return (
-              <div key={mod.label} className="absolute hidden md:block" style={{ left: `${x}%`, top: `${y}%` }}>
-                <motion.div
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
-                  className="flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5"
-                >
-                  <span className="relative flex h-10 w-10 items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,rgba(34,211,238,0.9),rgba(10,110,209,0.8))", boxShadow: "0 0 18px rgba(34,211,238,0.35)" }}>
-                    <Icon className="h-4 w-4 text-white" strokeWidth={1.8} />
-                  </span>
-                  <span className="rounded-full border border-white/10 bg-black/35 px-2 py-0.5 text-[8px] font-bold uppercase tracking-[0.16em] text-white/55 backdrop-blur-md">
-                    {mod.label}
-                  </span>
-                </motion.div>
-              </div>
-            );
-          })}
-
-          {/* system nodes — each runs its own incident → scan → resolve cycle */}
-          {NODES.map((n, i) => {
-            const Icon = n.icon;
-            return (
-              <div key={n.label} className="absolute" style={{ left: `${n.x}%`, top: `${n.y}%` }}>
-                <motion.div
-                  animate={{
-                    x: [0, 0, 0, 0, 0],
-                    y: [0, -2, 0, 0, 0],
-                    scale: [1, 1.05, 1, 1, 1],
-                  }}
-                  transition={{ duration: WINDOW, repeat: Infinity, times: TIMES, delay: -i * WINDOW, ease: "easeInOut" }}
-                  className="pointer-events-auto relative flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-xl border border-white/12 bg-[#0a1a30]/60 px-3 py-2.5 shadow-[0_18px_40px_-18px_rgba(3,7,19,0.85)] backdrop-blur-md sm:gap-3 sm:px-4 sm:py-3"
-                >
-                  {/* scan ring */}
-                  <motion.span
-                    aria-hidden
-                    animate={{ scale: [0.5, 0.5, 1.7, 1.7, 0.5], opacity: [0, 1, 0.5, 0, 0] }}
-                    transition={{ duration: WINDOW, repeat: Infinity, times: [0, 0.18, 0.42, 0.6, 1], delay: -i * WINDOW, ease: "easeInOut" }}
-                    className="absolute inset-0 rounded-xl border border-[#22d3ee]/70"
-                  />
-
-                  {/* steady healthy pulse */}
-                  <motion.span
-                    aria-hidden
-                    animate={{ scale: [1, 1.12, 1], opacity: [0.5, 0.9, 0.5] }}
-                    transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                    className="absolute inset-0 rounded-xl border border-[#38bdf8]/30"
-                  />
-
-                  <span aria-hidden className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center sm:h-10 sm:w-10" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#0a6ed1,#0e2f52)" }}>
-                    <Icon className="h-4 w-4 text-[#7ec8f7] sm:h-[18px] sm:w-[18px]" strokeWidth={1.8} />
-                  </span>
-                  <span className="leading-tight">
-                    <span className="block text-[12px] font-semibold text-white sm:text-[13px]">{n.label}</span>
-                    <span className="block text-[9px] text-white/45">{n.sub}</span>
-                  </span>
-
-                  {/* status LEDs: blue healthy → amber warning → green resolved */}
-                  <span className="relative ml-1 flex h-3 w-3 items-center justify-center">
-                    <motion.span
-                      animate={{ opacity: [1, 0, 0, 0, 1] }}
-                      transition={{ duration: WINDOW, repeat: Infinity, times: TIMES, delay: -i * WINDOW }}
-                      className="absolute h-2.5 w-2.5 rounded-full bg-[#38bdf8]"
-                      style={{ boxShadow: "0 0 8px #38bdf8" }}
-                    />
-                    <motion.span
-                      animate={{ opacity: [0, 1, 0, 0, 0] }}
-                      transition={{ duration: WINDOW, repeat: Infinity, times: TIMES, delay: -i * WINDOW }}
-                      className="absolute h-2.5 w-2.5 rounded-full bg-[#f5a623]"
-                      style={{ boxShadow: "0 0 8px #f5a623" }}
-                    />
-                    <motion.span
-                      animate={{ opacity: [0, 0, 1, 1, 0] }}
-                      transition={{ duration: WINDOW, repeat: Infinity, times: TIMES, delay: -i * WINDOW }}
-                      className="absolute h-2.5 w-2.5 rounded-full bg-[#29ab87]"
-                      style={{ boxShadow: "0 0 8px #29ab87" }}
-                    />
-                  </span>
-                </motion.div>
-              </div>
-            );
-          })}
-
-          {/* telemetry baseline — monitoring pulse flows into the next section */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden sm:block">
-            <svg className="absolute inset-x-0 bottom-3 h-6 w-full" viewBox="0 0 1000 24" preserveAspectRatio="none" fill="none">
-              <path d="M0 20 C 80 6, 120 22, 200 12 S 320 18, 400 14 S 540 6, 620 16 S 780 22, 860 10 S 950 6, 1000 14" stroke="rgba(56,189,248,0.35)" strokeWidth={1.2} fill="none" />
-              <circle r="3" fill="#67e8f9">
-                <animateMotion dur="7s" repeatCount="indefinite" path="M0 20 C 80 6, 120 22, 200 12 S 320 18, 400 14 S 540 6, 620 16 S 780 22, 860 10 S 950 6, 1000 14" />
-              </circle>
-            </svg>
+        {/* SCREEN 2: Automated Self-Healing CLI Terminal */}
+        <div className="rounded-xl sm:rounded-2xl border border-white/12 bg-[#030713]/90 p-3 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-xl">
+          <div className="flex items-center justify-between border-b border-white/10 pb-2 sm:pb-3">
+            <span className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono font-bold text-white">
+              <Terminal className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#38bdf8]" />
+              SCREEN 02: AUTONOMOUS REMEDIATION STREAM
+            </span>
+            <span className="flex items-center gap-1 text-[7px] sm:text-[8px] font-mono text-white/50">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#38bdf8] animate-ping" /> LIVE CLI
+            </span>
           </div>
 
-          {/* upper signal band — fills the full canvas width */}
-          <svg className="pointer-events-none absolute inset-x-0 top-2 hidden h-8 w-full md:block" viewBox="0 0 1000 32" preserveAspectRatio="none" fill="none">
-            <path d="M0 16 C 100 8, 200 24, 300 14 S 520 6, 640 18 S 840 26, 1000 12" stroke="rgba(34,211,238,0.2)" strokeWidth={1} strokeDasharray="5 9" />
-            <circle r="2.6" fill="#22d3ee" opacity={0.7}>
-              <animateMotion dur="8s" begin="2s" repeatCount="indefinite" path="M0 16 C 100 8, 200 24, 300 14 S 520 6, 640 18 S 840 26, 1000 12" />
-            </circle>
-          </svg>
-        </motion.div>
-      </MotionConfig>
+          <div className="mt-2.5 sm:mt-3 space-y-1 sm:space-y-1.5 font-mono text-[10px] sm:text-[11px] h-12 sm:h-14 lg:h-16 overflow-hidden">
+            {logs.map((log) => (
+              <div key={log.id} className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-white/40">[{log.time}]</span>
+                <span
+                  className={`font-bold px-1 rounded text-[8px] sm:text-[9px] ${
+                    log.type === "HEAL"
+                      ? "bg-[#29ab87]/20 text-[#29ab87]"
+                      : log.type === "PATCH"
+                      ? "bg-[#38bdf8]/20 text-[#38bdf8]"
+                      : "bg-white/10 text-white/80"
+                  }`}
+                >
+                  {log.type}
+                </span>
+                <span className="text-slate-300 truncate">{log.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SCREEN 3: MTTR & Performance SLA Meter */}
+        <div className="rounded-xl sm:rounded-2xl border border-white/12 bg-[#030713]/90 p-3 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-xl">
+          <div className="flex items-center justify-between border-b border-white/10 pb-2 sm:pb-3">
+            <span className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono font-bold text-white">
+              <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#f5a623]" />
+              SCREEN 03: P1 RESPONSE & MTTR METRICS
+            </span>
+            <span className="rounded-full bg-[#f5a623]/20 border border-[#f5a623]/40 px-2 py-0.5 text-[7px] sm:text-[8px] font-mono font-bold text-[#f5a623]">
+              SLA GUARANTEED
+            </span>
+          </div>
+
+          <div className="mt-2.5 sm:mt-3 grid grid-cols-2 gap-2 sm:gap-3">
+            <div className="rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/5 p-2 sm:p-3 text-center">
+              <p className="text-[8px] sm:text-[9px] font-mono uppercase text-white/50">Priority 1 SLA Target</p>
+              <p className="text-sm sm:text-base lg:text-lg font-mono font-extrabold text-[#29ab87] mt-0.5">
+                &lt; 15 Minutes
+              </p>
+              <p className="text-[7px] sm:text-[8px] font-mono text-[#7edcc2] mt-0.5">Actual Avg: 11.2 min</p>
+            </div>
+            <div className="rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/5 p-2 sm:p-3 text-center">
+              <p className="text-[8px] sm:text-[9px] font-mono uppercase text-white/50">Auto-Remediation Rate</p>
+              <p className="text-sm sm:text-base lg:text-lg font-mono font-extrabold text-[#38bdf8] mt-0.5">
+                88.4%
+              </p>
+              <p className="text-[7px] sm:text-[8px] font-mono text-[#38bdf8]/80 mt-0.5">Zero Human Touch</p>
+            </div>
+          </div>
+        </div>
+
+        {/* SCREEN 4: Global Multi-Region Node Array */}
+        <div className="rounded-xl sm:rounded-2xl border border-white/12 bg-[#030713]/90 p-3 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-xl">
+          <div className="flex items-center justify-between border-b border-white/10 pb-2 sm:pb-3">
+            <span className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono font-bold text-white">
+              <Globe2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#8b7cf6]" />
+              SCREEN 04: GLOBAL MULTI-REGION NODES
+            </span>
+            <span className="text-[7px] sm:text-[8px] font-mono text-white/50">4 REGIONS ONLINE</span>
+          </div>
+
+          <div className="mt-2.5 sm:mt-3 grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
+            {regions.map((r, idx) => (
+              <button
+                key={r.name}
+                onClick={() => setActiveRegion(idx)}
+                className={`rounded-lg sm:rounded-xl p-2 sm:p-2.5 text-center transition-all duration-300 border ${
+                  activeRegion === idx
+                    ? "bg-white/10 border-[#38bdf8] shadow-md shadow-[#38bdf8]/20"
+                    : "bg-white/[0.03] border-white/5 hover:bg-white/5"
+                }`}
+              >
+                <p className="text-[7px] sm:text-[8px] font-mono text-white/50 truncate">{r.name.split(" ")[0]}</p>
+                <p className="text-[11px] sm:text-xs font-mono font-bold text-[#29ab87] mt-0.5">{r.uptime}</p>
+                <p className="text-[7px] sm:text-[8px] font-mono text-white/60">{r.latency}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Console Bottom Status Ribbon ── */}
+      <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
+        <span className="flex items-center gap-1.5 text-[#29ab87]">
+          <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP SOLMAN & CLOUD ALM CERTIFIED
+        </span>
+        <span className="hidden sm:inline">QUARTERLY UPGRADE ASSURANCE: 100% CLEAN CORE</span>
+        <span className="text-[#38bdf8]">24/7/365 COMMAND DECK ACTIVE</span>
+      </div>
     </div>
   );
 }

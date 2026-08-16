@@ -23,9 +23,9 @@ export default function SectionHeading({
   const alignCls = align === "center" ? "text-center items-center" : "text-left items-start";
   return (
     <div className={`flex flex-col ${alignCls} ${className}`}>
-      {eyebrow && <span className="tri-overline mb-1">{eyebrow}</span>}
+      {eyebrow && <span className="tri-overline mb-0.5">{eyebrow}</span>}
       <Tag
-        className={`mt-5 max-w-3xl text-3xl font-bold leading-[1.09] tracking-tight sm:text-4xl lg:text-[2.85rem] ${
+        className={`mt-2 max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight sm:text-3xl lg:text-4xl ${
           dark ? "text-white" : "text-slate-900"
         }`}
       >
@@ -33,8 +33,8 @@ export default function SectionHeading({
       </Tag>
       {description && (
         <p
-          className={`mt-6 max-w-2xl text-base leading-[1.8] sm:text-[1.05rem] ${
-            dark ? "text-slate-300/85" : "text-slate-600"
+          className={`mt-2.5 max-w-2xl text-xs leading-relaxed sm:text-sm sm:leading-6 ${
+            dark ? "text-slate-300" : "text-slate-600"
           } ${align === "center" ? "mx-auto" : ""}`}
         >
           {description}

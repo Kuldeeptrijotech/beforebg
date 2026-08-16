@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, Play, Sparkles } from "lucide-react";
 import { videos } from "@/app/data/videos";
 import { motion } from "framer-motion";
+import VideosBroadcastBeams from "@/components/ui/hero-animations/VideosBroadcastBeams";
 
 function getYoutubeId(embedUrl: string) {
   return embedUrl.match(/youtube\.com\/embed\/([^?&/]+)/)?.[1] ?? "";
@@ -17,23 +18,26 @@ function getYoutubeUrl(embedUrl: string) {
 
 export default function VideosPage() {
   return (
-    <main className="overflow-hidden bg-[#e8f2fb] text-slate-900">
+    <main className="overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-20">
         <Image
           src="/assets/heroes/videos-generated-v2.png"
-          alt=""
+          alt="Technical practitioner videos and architectural walkthroughs"
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-center"
+          className="-z-20 object-cover object-center opacity-95"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/95 via-cyan-950/75 to-cyan-900/20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/70 via-transparent to-slate-950/20" />
+        {/* Slow harmonic broadcast waves & luminous projector beams */}
+        <VideosBroadcastBeams />
+
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/85 via-cyan-950/45 to-cyan-900/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/50 via-transparent to-slate-950/10" />
 
         {/* Floating orbs */}
-        <div className="pointer-events-none absolute right-1/4 top-1/3 h-72 w-72 rounded-full bg-amber-400/8 blur-3xl animate-float-slow" />
-        <div className="pointer-events-none absolute bottom-1/3 left-1/4 h-56 w-56 rounded-full bg-cyan-400/8 blur-3xl animate-float-reverse" />
+        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
+        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
@@ -43,57 +47,53 @@ export default function VideosPage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
             >
-              <Sparkles className="h-4 w-4 text-cyan-200" aria-hidden="true" /> Video library
+              <Sparkles className="h-4 w-4 text-cyan-200" aria-hidden="true" /> Videos
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-7xl"
+              className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
             >
-              Expert ideas,{" "}
-              <span className="gradient-text-gold">made easy to watch</span>
+              Explore videos from{" "}
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+                our practitioners
+              </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.38 }}
-              className="mt-6 max-w-2xl text-xl font-medium leading-8 text-cyan-50 sm:text-2xl"
+              transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              className="mt-6 text-lg leading-8 text-cyan-50/90 sm:text-xl"
             >
-              Watch practical conversations about SAP, analytics, cloud strategy, compliance, and enterprise transformation.
+              Watch breakdowns, architectural deep dives, and product walkthroughs explaining modern enterprise IT.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.52 }}
-              className="mt-9 flex flex-wrap gap-4"
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
               <a
                 href="#explore-videos"
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg shadow-cyan-950/20 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl"
+                className="mt-9 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg shadow-cyan-950/20 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl"
               >
                 Explore videos <ArrowRight className="h-4 w-4" />
               </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20"
-              >
-                Contact Us
-              </Link>
             </motion.div>
           </div>
         </div>
 
+        {/* Clean bottom separator */}
+        <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      {/* ── Video Grid ───────────────────────── */}
-      <section id="explore-videos" className="relative bg-gradient-to-b from-[#d5eafa] to-[#e8f2fb] py-20 sm:py-24">
-        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-100/70 blur-3xl animate-float" />
-        <div className="pointer-events-none absolute right-0 bottom-0 h-48 w-48 translate-x-1/3 rounded-full bg-amber-100/50 blur-3xl animate-float-reverse" />
-
+      {/* ── Video Library ─────────────────────── */}
+      <section id="explore-videos" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -102,20 +102,19 @@ export default function VideosPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-cyan-700">
-              <span className="h-px w-5 bg-cyan-400" />
+            <p className="tri-overline">
               Watch and learn
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Insights from the{" "}
-              <span className="gradient-text">Trijotech team</span>
+              <span className="tri-gradient-text">Trijotech team</span>
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
               Explore concise, practical videos designed to turn complex enterprise technology topics into clear business direction.
             </p>
           </motion.div>
 
-          <div className="mt-12 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-7 sm:mt-9 grid gap-5 sm:grid-cols-2 xl:grid-cols-3 items-stretch">
             {videos.map((video, index) => {
               const youtubeId = getYoutubeId(video.embed);
               const youtubeUrl = getYoutubeUrl(video.embed);
@@ -125,62 +124,54 @@ export default function VideosPage() {
 
               return (
                 <motion.div
-                  key={`${video.title}-${index}`}
+                  key={video.title}
                   initial={{ opacity: 0, y: 32 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.55, delay: (index % 3) * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                  whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                  transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  className="h-full"
                 >
                   <a
                     href={youtubeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-blue-200 bg-[#f5faff] shadow-sm transition-shadow duration-300 hover:border-cyan-300 hover:shadow-xl hover:shadow-cyan-950/10"
-                    aria-label={`Watch ${video.title} on YouTube`}
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
                   >
-                    <div
-                      className="relative aspect-[16/10] overflow-hidden bg-slate-900"
-                    >
-                      {thumbnail && (
+                    <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-slate-900">
+                      {thumbnail ? (
                         <Image
                           src={thumbnail}
-                          alt={`${video.title} thumbnail`}
+                          alt={video.title}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                           className="object-cover transition duration-700 group-hover:scale-108"
                         />
+                      ) : (
+                        <div className="flex h-full items-center justify-center bg-slate-950 text-slate-500">
+                          Video preview unavailable
+                        </div>
                       )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/65 via-cyan-950/5 to-transparent" />
-
-                      {/* Play button with ring pulse */}
-                      <motion.span
-                        whileHover={{ scale: 1.15 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                      >
-                        <span className="relative flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-white/90 text-cyan-800 shadow-xl transition duration-300 group-hover:bg-cyan-100">
-                          {/* Pulse ring */}
-                          <span className="absolute inset-0 rounded-full border-2 border-white/40 animate-ping opacity-50" />
-                          <Play className="ml-1 h-6 w-6 fill-current" aria-hidden="true" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-xl shadow-[rgba(41,171,135,0.45)] transition-transform duration-300 group-hover:scale-115">
+                          <Play className="ml-1 h-5 w-5 fill-current" />
                         </span>
-                      </motion.span>
-
-                      <span className="absolute bottom-4 left-5 rounded-full border border-white/20 bg-cyan-950/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-                        YouTube
-                      </span>
+                      </div>
                     </div>
 
-                    <div className="flex flex-1 flex-col p-6 sm:p-7">
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-700">
-                        Trijotech video
+                    <div className="flex flex-1 flex-col p-5 sm:p-6">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f5a623]">
+                        Trijotech Video
                       </p>
-                      <h3 className="mt-3 flex-1 text-xl font-bold leading-snug text-slate-900 transition-colors group-hover:text-cyan-800 sm:text-2xl">
+                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">
                         {video.title}
                       </h3>
-                      <span className="mt-auto inline-flex items-center gap-2 pt-7 font-semibold text-cyan-700 transition-all duration-200 group-hover:gap-3 group-hover:text-cyan-600">
-                        Watch video <ExternalLink className="h-4 w-4" />
-                      </span>
+                      <div className="mt-auto pt-4">
+                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#7edcc2] transition-all duration-200 group-hover:gap-2.5 group-hover:text-[#f5a623]">
+                          Watch video <ExternalLink className="h-3.5 w-3.5" />
+                        </span>
+                      </div>
                     </div>
                   </a>
                 </motion.div>
@@ -191,30 +182,32 @@ export default function VideosPage() {
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="bg-[#ccdfef] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
+      <section className="relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-cyan-700 to-cyan-950 px-6 py-14 text-center shadow-2xl shadow-cyan-950/15 sm:px-12 sm:py-20"
+          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 animate-spin-slow" />
-          <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-300/10 blur-2xl animate-float-slow" />
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-200">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
               Let&apos;s work together
             </p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               Ready to put these ideas into action?
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-cyan-50/80">
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               Talk with our experts about applying SAP, data, cloud, and automation solutions to your priorities.
             </p>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-cyan-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-50 hover:shadow-xl"
+                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </Link>

@@ -74,19 +74,19 @@ export default function CareerGrowthScene() {
         </div>
       ))}
 
-      <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 border-t border-white/10 bg-black/30 px-6 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5">
-          <Users className="h-3.5 w-3.5 text-white/40" />
-          <span className="text-[11px] font-semibold text-white/45">Bring your ambition</span>
+      <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-center justify-between gap-2 border-t border-white/10 bg-black/40 px-3 sm:px-6 py-2 sm:py-3 backdrop-blur-md">
+        <div className="flex items-center gap-1.5 sm:gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 sm:px-3 py-1 sm:py-1.5">
+          <Users className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white/40" />
+          <span className="text-[10px] sm:text-[11px] font-semibold text-white/60">Bring your ambition</span>
         </div>
-        <div className="flex flex-1 items-center">
+        <div className="hidden md:flex flex-1 items-center">
           <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(245,166,35,0.6)_0,rgba(245,166,35,0.6)_6px,transparent_6px,transparent_12px)]" />
           <Code2 className="mx-2 h-4 w-4 text-tri-2 tri-pulse" />
           <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(41,171,135,0.7)_0,rgba(41,171,135,0.7)_6px,transparent_6px,transparent_12px)]" />
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-[linear-gradient(160deg,#29ab87,#117a4b)] px-3 py-1.5 shadow-lg shadow-[rgba(41,171,135,0.35)]">
-          <TrendingUp className="h-3.5 w-3.5 text-white" />
-          <span className="text-[11px] font-bold text-white">Grow with Trijotech</span>
+        <div className="flex items-center gap-1.5 sm:gap-2 rounded-lg bg-[linear-gradient(160deg,#29ab87,#117a4b)] px-2.5 sm:px-3 py-1 sm:py-1.5 shadow-lg shadow-[rgba(41,171,135,0.35)]">
+          <TrendingUp className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white" />
+          <span className="text-[10px] sm:text-[11px] font-bold text-white">Grow with Trijotech</span>
         </div>
       </div>
     </SceneCanvas>
