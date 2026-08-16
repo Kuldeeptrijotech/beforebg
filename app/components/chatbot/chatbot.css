@@ -1,0 +1,255 @@
+.trijo-chat {
+  position: fixed;
+  z-index: 60;
+  right: 24px;
+  bottom: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.trijo-chat-launcher {
+  position: relative;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid rgba(103, 232, 249, 0.35);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #111827, #071827 62%, #0891b2);
+  color: #cffafe;
+  box-shadow: 0 16px 38px rgba(3, 7, 19, 0.38), 0 0 0 5px rgba(34, 211, 238, 0.08);
+  cursor: pointer;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.trijo-chat-launcher:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: rgba(103, 232, 249, 0.7);
+  box-shadow: 0 20px 44px rgba(3, 7, 19, 0.5), 0 0 0 7px rgba(34, 211, 238, 0.1);
+}
+
+.trijo-chat-launcher span { font-size: 24px; line-height: 1; }
+.trijo-chat-launcher b {
+  position: absolute;
+  top: -4px;
+  right: -3px;
+  display: grid;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  place-items: center;
+  border: 2px solid #050817;
+  border-radius: 999px;
+  background: #22d3ee;
+  color: #030713;
+  font-size: 10px;
+}
+
+.trijo-chat-window {
+  position: absolute;
+  right: 0;
+  bottom: 74px;
+  display: flex;
+  width: min(390px, calc(100vw - 32px));
+  height: min(440px, calc(100vh - 180px));
+  overflow: hidden;
+  flex-direction: column;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 20px;
+  background: #0b1020;
+  color: #fff;
+  box-shadow: 0 28px 80px rgba(3, 7, 19, .56);
+  animation: trijo-chat-in .25s ease-out;
+}
+
+.trijo-chat-window > header {
+  display: flex;
+  min-height: 72px;
+  padding: 14px 15px;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  background: linear-gradient(120deg, #050817, #101827 70%, #083344);
+  color: #fff;
+}
+
+.trijo-chat-avatar {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border: 1px solid rgba(103,232,249,.34);
+  border-radius: 13px;
+  background: rgba(34,211,238,.12);
+  color: #a5f3fc;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.trijo-chat-window > header > div:nth-child(2) { flex: 1; }
+.trijo-chat-window header strong,
+.trijo-chat-window header span { display: block; }
+.trijo-chat-window header strong { font-size: 14px; }
+.trijo-chat-window header span { margin-top: 3px; color: rgba(255,255,255,.58); font-size: 10px; }
+.trijo-chat-window header span i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52,211,153,.65);
+}
+
+.trijo-chat-window header button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 9px;
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.75);
+  font-size: 17px;
+  cursor: pointer;
+}
+.trijo-chat-window header button:hover { background: rgba(255,255,255,.11); color: #fff; }
+
+.trijo-chat-messages {
+  flex: 1;
+  padding: 17px 14px;
+  overflow-y: auto;
+  background: radial-gradient(circle at 10% 0, rgba(34,211,238,.07), transparent 32%), #080d19;
+  scrollbar-color: rgba(103,232,249,.28) transparent;
+  scrollbar-width: thin;
+}
+
+.trijo-message { display: flex; margin-bottom: 11px; }
+.trijo-message.user { justify-content: flex-end; }
+.trijo-message > div {
+  max-width: 84%;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 14px 14px 14px 4px;
+  background: #141b2b;
+  color: rgba(255,255,255,.76);
+  box-shadow: 0 5px 16px rgba(0,0,0,.16);
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.trijo-message.user > div {
+  border-color: rgba(34,211,238,.24);
+  border-radius: 14px 14px 4px 14px;
+  background: linear-gradient(135deg, #0e7490, #155e75);
+  color: #ecfeff;
+}
+.trijo-message.assistant > div { font-size: 11px; }
+.trijo-message.error > div { border-color: rgba(248,113,113,.35); background: #29151b; color: #fecaca; }
+.trijo-message strong { color: #e6fbff; font-weight: 700; }
+.trijo-message a { color: #67e8f9; text-decoration: underline; text-underline-offset: 2px; }
+.trijo-message.user a { color: #fff; }
+.trijo-message small {
+  display: block;
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.45);
+  font-size: 9px;
+}
+.trijo-message button {
+  display: block;
+  margin-top: 7px;
+  padding: 5px 9px;
+  border: 1px solid rgba(248,113,113,.35);
+  border-radius: 7px;
+  background: rgba(255,255,255,.06);
+  color: #fecaca;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.trijo-typing { display: flex !important; gap: 4px; }
+.trijo-typing i { width: 6px; height: 6px; border-radius: 50%; background: #67e8f9; animation: trijo-dot 1s infinite; }
+.trijo-typing i:nth-child(2) { animation-delay: .15s; }
+.trijo-typing i:nth-child(3) { animation-delay: .3s; }
+.trijo-typing-label { align-self: center; margin-left: 7px; color: rgba(255,255,255,.38); font-size: 9px; }
+
+.trijo-starters {
+  display: flex;
+  padding: 9px 11px;
+  gap: 6px;
+  overflow-x: auto;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: #0b1020;
+}
+.trijo-starters button {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid rgba(103,232,249,.2);
+  border-radius: 999px;
+  background: rgba(34,211,238,.06);
+  color: #a5f3fc;
+  font-size: 10px;
+  cursor: pointer;
+}
+.trijo-starters button:hover { border-color: rgba(103,232,249,.4); background: rgba(34,211,238,.11); }
+
+.trijo-chat-window form {
+  display: flex;
+  padding: 11px 12px 7px;
+  align-items: flex-end;
+  gap: 8px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: #0b1020;
+}
+.trijo-chat-window textarea {
+  min-height: 40px;
+  max-height: 100px;
+  flex: 1;
+  resize: none;
+  padding: 10px 11px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 11px;
+  outline: none;
+  background: rgba(255,255,255,.05);
+  color: #f8fafc;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.trijo-chat-window textarea::placeholder { color: rgba(255,255,255,.34); }
+.trijo-chat-window textarea:focus { border-color: rgba(103,232,249,.5); box-shadow: 0 0 0 3px rgba(34,211,238,.08); }
+.trijo-chat-window form button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid rgba(103,232,249,.3);
+  border-radius: 11px;
+  background: #0891b2;
+  color: #fff;
+  cursor: pointer;
+}
+.trijo-chat-window form button:hover:not(:disabled) { background: #0e7490; }
+.trijo-chat-window form button:disabled { opacity: .38; cursor: not-allowed; }
+.trijo-chat-note { margin: 0; padding: 1px 12px 9px; background: #0b1020; color: rgba(255,255,255,.3); font-size: 9px; text-align: center; }
+
+.trijo-chat-launcher:focus-visible,
+.trijo-chat button:focus-visible,
+.trijo-chat textarea:focus-visible { outline: 2px solid #67e8f9; outline-offset: 2px; }
+
+@keyframes trijo-chat-in { from { opacity: 0; transform: translateY(12px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes trijo-dot { 0%,60%,100% { transform: none; opacity: .4; } 30% { transform: translateY(-3px); opacity: 1; } }
+
+@media (max-width: 520px) {
+  .trijo-chat { right: 12px; bottom: 12px; }
+  .trijo-chat-window { position: fixed; inset: 88px 8px max(8px, env(safe-area-inset-bottom)); width: auto; height: auto; max-height: calc(100dvh - 96px); border-radius: 18px; }
+  .trijo-chat.is-open .trijo-chat-launcher { display: none; }
+  .trijo-starters { flex-wrap: wrap; overflow-x: hidden; }
+  .trijo-starters button { min-width: calc(50% - 4px); flex: 1 1 auto; white-space: normal; }
+  .trijo-chat-window form { padding-bottom: max(7px, env(safe-area-inset-bottom)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trijo-chat * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}

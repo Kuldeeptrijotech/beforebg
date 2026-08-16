@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "updatedAt": "2026-08-14T05:32:28.356Z",
+  "global": {
+    "sections": {
+      "legacy-article-hero": {
+        "label": "legacy article hero",
+        "entries": [
+          {
+            "id": "content-1vcpr07",
+            "selector": "main.legacy-content-page.legacy-blog-page > article.legacy-article > header.legacy-article-hero > p",
+            "kind": "html",
+            "value": "Explore key data analytics challenges and solutions in a global FMCG company’s digital transformation—insights on strategy, governance, and scalabilitys",
+            "match": "Explore key data analytics challenges and solutions in a global FMCG company’s digital transformation—insights on strategy, governance, and scalability.",
+            "label": "Explore key data analytics challenges and solutions in a global FMCG company’s digital transformation—insights on strategy, governance, and scalability."
+          }
+        ]
+      }
+    }
+  },
+  "pages": {
+    "/": {
+      "label": "Trijotech | SAP Solutions",
+      "sections": {
+        "testimonials": {
+          "label": "testimonials",
+          "entries": [
+            {
+              "id": "content-es9b3h",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(5) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "src",
+              "value": "/assets/uploads/OIP-1786006107156-8e91ddd8.webp",
+              "match": "/_next/static/media/client-01.2s29b5c-j_8vd.png",
+              "label": "Head of IT URL"
+            },
+            {
+              "id": "content-sryrk",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(5) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "alt",
+              "value": "Head of IT",
+              "match": "Head of IT",
+              "label": "Head of IT alt text"
+            },
+            {
+              "id": "content-14opywy",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(2) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "src",
+              "value": "/assets/uploads/OIP-1786006133219-3ed90419.webp",
+              "match": "/_next/static/media/client-01.2s29b5c-j_8vd.png",
+              "label": "Global Manufacturing Company URL"
+            },
+            {
+              "id": "content-1025zrr",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(2) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "alt",
+              "value": "Global Manufacturing Company",
+              "match": "Global Manufacturing Company",
+              "label": "Global Manufacturing Company alt text"
+            },
+            {
+              "id": "content-1rodcqo",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(4) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "src",
+              "value": "/assets/uploads/OIP-1786006176252-3a4061c3.webp",
+              "match": "/_next/static/media/client-01.2s29b5c-j_8vd.png",
+              "label": "Leads & Strategy Director URL"
+            },
+            {
+              "id": "content-6qymox",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(4) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "alt",
+              "value": "Leads & Strategy Director",
+              "match": "Leads & Strategy Director",
+              "label": "Leads & Strategy Director alt text"
+            },
+            {
+              "id": "content-1xyxjxd",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(1) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "src",
+              "value": "/assets/uploads/OIP-1786006228510-40b46985.webp",
+              "match": "/_next/static/media/client-01.2s29b5c-j_8vd.png",
+              "label": "Large IT Company from Asia URL"
+            },
+            {
+              "id": "content-jj99ac",
+              "selector": "div.testimonial-carousel > div.testimonial-track:nth-of-type(1) > div.testimonial-slide:nth-of-type(1) > div.testimonial-item > div.testimonial-author:nth-of-type(3) > div.author-avatar:nth-of-type(1) > img",
+              "kind": "attribute",
+              "attribute": "alt",
+              "value": "Large IT Company from Asia",
+              "match": "Large IT Company from Asia",
+              "label": "Large IT Company from Asia alt text"
+            }
+          ]
+        },
+        "fun-facts": {
+          "label": "fun facts",
+          "entries": [
+            {
+              "id": "content-s37h9m",
+              "selector": "div.container > div.row > div.col-md-6.align-self-center:nth-of-type(2) > div.row > div.col-md-6:nth-of-type(1) > div.count-area-content > span.count-digit",
+              "kind": "html",
+              "value": "9<span class=\"count-plus\">+</span>",
+              "match": "8<span class=\"count-plus\">+</span>",
+              "label": "8+"
+            }
+          ]
+        },
+        "relative": {
+          "label": "relative",
+          "entries": [
+            {
+              "id": "content-1kqrjet",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.relative.min-h-\\[calc\\(100svh-4\\.5rem\\)\\]:nth-of-type(1) > div.mx-auto.w-full:nth-of-type(2) > div.max-w-3xl > div:nth-of-type(1) > p.mb-6.inline-flex:nth-of-type(1)",
+              "kind": "html",
+              "value": "SAP Data, AI &amp; Insights",
+              "match": "SAP Data, AI &amp; Insights",
+              "label": "SAP Data, AI & Insights"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

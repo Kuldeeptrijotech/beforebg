@@ -1,0 +1,323 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  CheckCircle2,
+  Code2,
+  Cog,
+  Database,
+  Layers,
+  Lock,
+  Rocket,
+  Server,
+  ShieldCheck,
+  Target,
+  Zap,
+} from "lucide-react";
+import ImplementationAssembly from "@/components/scenes/ImplementationAssembly";
+import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
+import ServiceHero from "@/components/services/ServiceHero";
+import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
+import Container from "@/components/ui/Container";
+import TiltCard from "@/components/ui/TiltCard";
+import { HEX_CLIP } from "@/components/scenes/scene-ui";
+
+type ServiceItem = { title: string; description: string };
+
+const STEPS = [
+  { n: "01", label: "Assess & plan", icon: Target },
+  { n: "02", label: "Configure", icon: Cog },
+  { n: "03", label: "Develop & test", icon: Code2 },
+  { n: "04", label: "Migrate data", icon: Database },
+  { n: "05", label: "Go-live & optimize", icon: Rocket },
+];
+
+const STACK = [
+  { label: "Strategy & Governance", desc: "Roadmaps, delivery models, and governance that keep transformation on track.", icon: ShieldCheck },
+  { label: "SAP Solutions", desc: "S/4HANA, consolidation, planning, and analytics built around your business.", icon: Server },
+  { label: "Platform & Clean Core", desc: "BTP extensions that keep the core standard, stable, and upgrade-ready.", icon: Layers },
+  { label: "Data & Foundation", desc: "A trusted data backbone that powers reporting and intelligent decisions.", icon: Database },
+];
+
+const EXTENSIONS = ["Consolidation", "Planning", "Analytics", "Automation", "Integrations", "Profitability"];
+
+export default function SapImplementationPage({ offerings, impacts }: { offerings: ServiceItem[]; impacts: ServiceItem[] }) {
+  return (
+    <main className="overflow-hidden bg-[#030713] text-white">
+      {/* HERO */}
+      <ServiceHero
+        bgClass="bg-[linear-gradient(180deg,#0a2540,#0b1d33_45%,#050817)]"
+        glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
+        scene={<ImplementationAssembly />}
+        fadeTo="#050817"
+        heading={
+          <h1 className={heroH1}>
+            <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">Implementation</span>
+          </h1>
+        }
+      />
+
+      {/* INTRODUCTION + HERO TAIL */}
+      <section className="relative bg-[#050817]">
+        <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
+          <div className="h-16 w-px bg-gradient-to-b from-[#29ab87]/70 to-transparent" />
+        </div>
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-12">
+          <div>
+            <SlideReveal direction="left">
+              <SectionLabel>Our approach</SectionLabel>
+              <h2 className={`mt-5 ${introLead} text-white`}>
+                Strategy, technology and data —{" "}
+                <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">one transformation</span>
+              </h2>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+                Whether you are starting fresh with SAP or modernizing an established landscape, we combine strategy,
+                technology, and industry knowledge to create measurable outcomes — and an enterprise ready for what
+                comes next.
+              </p>
+            </SlideReveal>
+            <StaggerReveal className="mt-10 grid max-w-xl gap-3" stagger={0.08}>
+              {impacts.slice(0, 2).map((i) => (
+                <StaggerRevealItem key={i.title} variant="fadeIn">
+                  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#29ab87]" />
+                    <div>
+                      <p className="font-bold text-white">{i.title}</p>
+                      <p className="mt-0.5 text-sm leading-6 text-slate-400">{i.description}</p>
+                    </div>
+                  </div>
+                </StaggerRevealItem>
+              ))}
+            </StaggerReveal>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <Reveal>
+              <Glass variant="frosted" tone="green" className="p-6">
+                <Metric to={25} suffix="+" label="Years of SAP expertise" accent="text-[#29ab87]" />
+              </Glass>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Glass variant="frosted" tone="cyan" className="p-6">
+                <Metric to={250} suffix="+" label="Projects delivered" accent="text-[#29ab87]" />
+              </Glass>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <Glass variant="frosted" tone="green" className="p-6">
+                <Metric to={98} suffix="%" label="Go-live success rate" accent="text-[#117a4b]" />
+              </Glass>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <Glass variant="frosted" tone="amber" className="p-6">
+                <Metric to={4.9} prefix="" suffix="/5" label="Client satisfaction" accent="text-[#f5a623]" />
+              </Glass>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* JOURNEY */}
+      <section className="relative bg-gradient-to-b from-[#050817] to-[#080c1d] py-20 sm:py-24">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <SectionLabel>Delivery journey</SectionLabel>
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+              From blueprint to <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">go-live</span>
+            </h2>
+          </Reveal>
+
+          <div className="relative mt-14">
+            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#29ab87]/70 via-[#117a4b]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
+            <div className="grid gap-6 lg:grid-cols-5">
+              {STEPS.map((s, i) => {
+                const Icon = s.icon;
+                return (
+                  <StaggerRevealItem key={s.n} variant="scale" className="relative pl-16 lg:pl-0 lg:pt-10">
+                    <span
+                      aria-hidden
+                      className="absolute left-6 top-0 flex -translate-x-1/2 items-center justify-center lg:left-0 lg:top-8 lg:-translate-y-1/2 lg:translate-x-0"
+                    >
+                      <motion.span
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#080c1d] text-[#29ab87] shadow-lg shadow-emerald-950/10"
+                        animate={{ scale: [1, 1.12, 1] }}
+                        transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
+                      >
+                        <Icon className="h-5 w-5" strokeWidth={1.9} />
+                      </motion.span>
+                    </span>
+                    <Glass variant="frosted" tone="green" className="p-5">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">{s.n}</p>
+                      <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-400">
+                        {i === 0 && "Prioritize goals, define scope, and build the transformation roadmap."}
+                        {i === 1 && "Configure core processes to fit your operating model and standards."}
+                        {i === 2 && "Build, integrate, and test end-to-end before anything goes live."}
+                        {i === 3 && "Move data with validation, reconciliation, and cutover planning."}
+                        {i === 4 && "Deploy, stabilize, and keep optimizing after launch."}
+                      </p>
+                    </Glass>
+                  </StaggerRevealItem>
+                );
+              })}
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* CAPABILITIES */}
+      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+            <Reveal>
+              <SectionLabel>What we deliver</SectionLabel>
+              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+                Capabilities built around <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">your priorities</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="max-w-xl text-lg leading-8 text-slate-400">
+                Flexible capabilities that connect strategy, technology, data, and day-to-day operations — delivered as
+                one coherent program.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {offerings.map((o, i) => (
+              <StaggerRevealItem key={o.title} variant="scale">
+                <TiltCard max={6} scale={1.02} className="h-full">
+                  <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="text-xl font-bold text-white">{o.title}</h3>
+                    </div>
+                    <p className="mt-4 leading-7 text-white/70">{o.description}</p>
+                  </Glass>
+                </TiltCard>
+              </StaggerRevealItem>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* SAP ARCHITECTURE (DARK) */}
+      <section className="relative overflow-hidden bg-[#050817] py-20 text-white sm:py-28">
+        <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_10%,rgba(41,171,135,0.2),transparent_60%)]" />
+        <Container className="relative">
+          <Reveal className="max-w-2xl">
+            <SectionLabel dark>How it comes together</SectionLabel>
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
+              A clean core with <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">flexible edges</span>
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-300">
+              We keep your SAP core standard and upgrade-ready, moving everything extensible to the platform layer
+              around it.
+            </p>
+          </Reveal>
+
+          <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="relative">
+              <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#29ab87]/60 to-[#f5a623]/20" />
+              {STACK.map((s, i) => {
+                const Icon = s.icon;
+                return (
+                  <Reveal key={s.label} delay={i * 0.1}>
+                    <div className="relative mb-5 pl-16 last:mb-0">
+                      <span className="absolute left-0 top-1 flex h-12 w-12 items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                        <Icon className="h-5 w-5 text-white" strokeWidth={1.9} />
+                      </span>
+                      <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm">
+                        <h3 className="text-lg font-bold text-white">{s.label}</h3>
+                        <p className="mt-1.5 text-sm leading-6 text-slate-300">{s.desc}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            <div>
+              <Reveal delay={0.15}>
+                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1a30]/80 p-8 backdrop-blur-md">
+                  <div className="flex items-center justify-between">
+                     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Clean core model</p>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#29ab87]/30 px-2.5 py-1 text-[10px] font-bold text-[#29ab87]">
+                      <Lock className="h-3 w-3" /> Standard & stable
+                    </span>
+                  </div>
+                  <div className="mt-8 flex justify-center">
+                    <div className="flex h-36 w-36 items-center justify-center text-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#29ab87,#f5a623)", boxShadow: "0 0 60px rgba(41,171,135,0.35)" }}>
+                      <div>
+                        <p className="text-sm font-extrabold text-white">SAP Core</p>
+                        <p className="mt-1 px-4 text-[10px] leading-4 text-white/75">S/4HANA standard, minimal custom code</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-8 grid grid-cols-3 gap-2.5">
+                    {EXTENSIONS.map((e) => (
+                      <div key={e} className="flex items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] px-2 py-2 text-center text-[10px] font-semibold text-slate-200">
+                        {e}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-5 text-center text-xs text-slate-400">
+                    Everything non-core lives outside — as governed extensions on BTP.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* WHY TRIJOTECH */}
+      <section className="relative bg-[#080c1d] py-20 sm:py-24">
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <Reveal>
+                <SectionLabel>Why Trijotech</SectionLabel>
+                <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+                  Outcomes you can <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">build on</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <div className="mt-8 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                    <Zap className="h-6 w-6" />
+                  </span>
+                  <div>
+                    <p className="text-2xl font-extrabold text-white">Practical delivery</p>
+                    <p className="text-sm text-slate-400">Structured governance, testing, migration, and adoption throughout.</p>
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+
+            <StaggerReveal className="grid gap-5 sm:grid-cols-2" stagger={0.1}>
+              {impacts.map((i, idx) => (
+                <StaggerRevealItem key={i.title} variant="slideRight">
+                  <Glass variant="frosted" tone={idx % 2 ? "cyan" : "amber"} className="h-full p-6">
+                    <CheckCircle2 className="h-6 w-6 text-[#29ab87]" />
+                    <h3 className="mt-4 text-xl font-bold text-white">{i.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{i.description}</p>
+                  </Glass>
+                </StaggerRevealItem>
+              ))}
+            </StaggerReveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* CTA */}
+      <ServiceCta
+        accent="violet"
+        title="Ready to transform your SAP landscape?"
+        description="Connect with our team to shape a practical implementation roadmap around your goals, data, and operating model."
+      />
+    </main>
+  );
+}
