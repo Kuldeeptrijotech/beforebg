@@ -38,5 +38,14 @@
     "priority": 6,
     "enabled": true,
     "url": "/blogs"
+  },
+  {
+    "id": "general-how-are-you",
+    "title": "How are you",
+    "category": "general",
+    "content": "I am good, what about you? Please let me know how can I help you.",
+    "keywords": ["how are you", "how are you doing", "how's it going", "how are you today", "greeting", "hello"],
+    "priority": 8,
+    "enabled": true
   }
 ]

@@ -2,7 +2,7 @@
   "brand": {
     "name": "Trijotech",
     "homeHref": "/",
-    "logoSrc": "/brand/Trijotech_Complete_white.svg",
+    "logoSrc": "/brand/trijotech-header-logo.png",
     "logoAlt": "Trijotech",
     "ariaLabel": "Trijotech home"
   },
@@ -20,8 +20,8 @@
       "description": "Explore Trijotech products built for modern business operations.\nFind tools that simplify compliance, finance, reporting, and performance management.",
       "items": [
         {
-          "name": "E-invoicing Pro",
-          "href": "/solutions/einvoicing-pro",
+          "name": "E-Invoicing Pro",
+          "href": "/solutions/e-invoicing-pro",
           "description": "Automate e-invoicing workflows with accuracy and compliance.\nStreamline invoice generation, validation, submission, and tracking for your business.",
           "hasImage": false,
           "imageUrl": ""

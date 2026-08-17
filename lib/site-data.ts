@@ -227,7 +227,7 @@ export type WhyChooseStatItem = {
 
 export const whyChooseStats = [
   {
-    value: "8+",
+    value: "9+",
     label: "Years in SAP implementation and support",
     summary:
       "Hands-on SAP delivery experience across implementation, stabilization, support, and continuous improvement.",

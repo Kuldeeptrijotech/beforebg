@@ -17,6 +17,7 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
   ].includes(pathname.toLowerCase());
   const usesStandaloneTailwind =
     pathname === "/services" ||
+    pathname === "/solutions" ||
     pathname.toLowerCase() === "/industry" ||
     pathname === "/insights" ||
     pathname === "/corporate" ||
@@ -27,10 +28,13 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
     pathname === "/careers" ||
     pathname === "/contact" ||
     pathname === "/about-us";
+  const usesModernDetailTheme =
+    pathname.startsWith("/services/") ||
+    pathname.startsWith("/solutions/");
   return (
     <>
       <Header />
-      {pathname === "/" ? children : usesStandaloneTailwind ? (
+      {pathname === "/" ? children : usesStandaloneTailwind || usesModernDetailTheme ? (
         <div className={isLandingPage ? "site-landing-theme" : "site-subpage-theme"}>{children}</div>
       ) : (
         <div className={`zip-inner-theme ${isLandingPage ? "site-landing-theme" : "site-subpage-theme"}`}>{children}</div>

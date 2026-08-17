@@ -1,10 +1,14 @@
-﻿import "./globals.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "./theme-overrides.css";
+﻿import { Poppins } from "next/font/google";
+import "./globals.css";
 import PublicChrome from "./components/PublicChrome";
 import ContentRuntime from "./components/ContentRuntime";
 import { readSiteContent } from "./lib/content-store";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Trijotech | SAP Solutions",
@@ -16,12 +20,8 @@ export const dynamic = "force-dynamic";
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const content = await readSiteContent();
   return (
-    <html lang="en">
-      <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" />
-      </head>
-      <body>
+    <html lang="en" className="w-full max-w-full overflow-x-clip">
+      <body className={`${poppins.className} w-full max-w-full overflow-x-clip bg-[#0b1d33] [text-rendering:optimizeLegibility] [-webkit-font-smoothing:auto]`}>
         <ContentRuntime content={content} />
         <PublicChrome>{children}</PublicChrome>
       </body>

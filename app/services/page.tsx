@@ -12,5 +12,5 @@ const services = [
 ];
 
 export default function ServicesPage() {
-  return <SectionLanding eyebrow="Services" title="SAP solutions designed to transform your business" description="Trijotech provides end-to-end SAP services across implementation, support, integration, analytics, cloud, and intelligent technologies." heroImage="/assets/heroes/services.png" cardsTitle="Expertise across your SAP journey" cardsIntro="Explore our current services, each built from practical delivery experience and linked to its full service detail." cards={services} />;
+  return <SectionLanding eyebrow="Services" title="SAP solutions designed to transform your business" description="Trijotech provides end-to-end SAP services across implementation, support, integration, analytics, cloud, and intelligent technologies." heroImage="/assets/heroes/services.png" cardsTitle="Expertise across your SAP journey" cardsIntro="Explore our current services, each built from practical delivery experience and linked to its full service detail." cards={services} showCardIcons cardLayout="carousel" />;
 }

@@ -5,7 +5,7 @@ import { ChevronDown, ChevronRight, Menu, Search, UserCircle, X } from "lucide-r
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import headerData from "@/lib/header-data.json";
 
@@ -23,6 +23,35 @@ type HeaderNavItem = {
   href: string;
   description: string;
   items?: HeaderDropdownItem[];
+};
+
+const dropdownHeroImages: Record<string, string> = {
+  "/solutions": "/assets/heroes/products.png",
+  "/solutions/e-invoicing-pro": "/assets/heroes/products-blue.png",
+  "/solutions/finlagoon-consolidation": "/assets/heroes/industry-blue.png",
+  "/solutions/profitability-pro": "/assets/image/Product_4.png",
+  "/services": "/assets/heroes/services.png",
+  "/services/sap-implementation": "/assets/heroes/sap-implementation-blue.png",
+  "/services/sap-support": "/assets/heroes/sap-support-blue.png",
+  "/services/sap-btp-full-stack": "/assets/heroes/sap-btp-full-stack-blue.png",
+  "/services/sap-data-integration": "/assets/heroes/sap-data-integration-blue.png",
+  "/services/sap-ai-ml": "/assets/heroes/sap-ai-ml-blue.png",
+  "/industry": "/assets/heroes/industry.png",
+  "/industries/retail-supply-chain": "/static/Retail_and_supply_chain_image.png",
+  "/industries/pharmaceuticals-life-sciences": "/static/Pharma.jpg",
+  "/industries/manufacturing": "/static/Manufacturing.jpg",
+  "/industries/fintech": "/static/FinTech.jpg",
+  "/industries/entertainment": "/static/Entertainment.jpg",
+  "/industries/steel-manufacturing": "/static/Steel_Manufacturing.jpg",
+  "/industries/telecommunications": "/static/Telecommunication.jpg",
+  "/insights": "/assets/heroes/blogs-blue.png",
+  "/blogs": "/assets/heroes/blogs-blue.png",
+  "/case-studies": "/assets/case-studies/financial-analysis-team.png",
+  "/videos": "/assets/heroes/videos-generated-v2.png",
+  "/corporate": "/assets/about/trijotech-team-collaboration-blue.png",
+  "/about-us": "/assets/about/trijotech-team-collaboration-blue.png",
+  "/careers": "/assets/heroes/careers-generated-v2.png",
+  "/contact": "/assets/heroes/contact-generated-v2.png",
 };
 
 function isActiveRoute(pathname: string, href: string) {
@@ -47,10 +76,6 @@ function isNavItemActive(pathname: string, item: HeaderNavItem) {
 
 function hasDropdownItems(item: HeaderNavItem) {
   return Boolean(item.items?.length);
-}
-
-function getFirstDropdownItem(item: HeaderNavItem) {
-  return item.items?.[0] ?? null;
 }
 
 function getDropdownItemByHref(item: HeaderNavItem, href?: string) {
@@ -81,6 +106,8 @@ function HeaderActionButton({
 
 export default function Header() {
   const pathname = usePathname();
+  const [isOverHero, setIsOverHero] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdownName, setOpenDropdownName] = useState<string | null>(null);
   const [openMobileDropdownName, setOpenMobileDropdownName] = useState<
@@ -91,6 +118,45 @@ export default function Header() {
   const [activeItemByMenu, setActiveItemByMenu] = useState<
     Record<string, string>
   >({});
+
+  useEffect(() => {
+    const hero = document.querySelector<HTMLElement>(
+      "main > section:first-child, .zip-theme > section:first-child",
+    );
+
+    if (!hero) {
+      const resetFrame = window.requestAnimationFrame(() => {
+        setIsOverHero(false);
+        setIsPastHero(false);
+      });
+      return () => window.cancelAnimationFrame(resetFrame);
+    }
+
+    const previousMinHeight = hero.style.minHeight;
+    hero.style.minHeight = "100svh";
+
+    let frame = 0;
+    const updateHeaderVisibility = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(() => {
+        const hasStartedScrolling = window.scrollY > 8;
+        const isHeroStillVisible = hero.getBoundingClientRect().bottom > 0;
+        setIsOverHero(hasStartedScrolling && isHeroStillVisible);
+        setIsPastHero(hasStartedScrolling && !isHeroStillVisible);
+      });
+    };
+
+    updateHeaderVisibility();
+    window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
+    window.addEventListener("resize", updateHeaderVisibility);
+
+    return () => {
+      hero.style.minHeight = previousMinHeight;
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", updateHeaderVisibility);
+      window.removeEventListener("resize", updateHeaderVisibility);
+    };
+  }, [pathname]);
 
   const { brand } = headerData;
   const configuredNavItems = headerData.navItems as HeaderNavItem[];
@@ -105,15 +171,11 @@ export default function Header() {
     : configuredNavItems;
 
   function openDropdown(item: HeaderNavItem) {
-    const firstItem = getFirstDropdownItem(item);
-
     setOpenDropdownName(item.name);
-    if (firstItem && !activeItemByMenu[item.name]) {
-      setActiveItemByMenu((current) => ({
-        ...current,
-        [item.name]: firstItem.href,
-      }));
-    }
+    setActiveItemByMenu((current) => ({
+      ...current,
+      [item.name]: item.href,
+    }));
   }
 
   function toggleDropdown(item: HeaderNavItem) {
@@ -126,10 +188,22 @@ export default function Header() {
   }
 
   function getActiveDropdownItem(item: HeaderNavItem) {
-    return (
-      getDropdownItemByHref(item, activeItemByMenu[item.name]) ??
-      getFirstDropdownItem(item)
-    );
+    const activeHref = activeItemByMenu[item.name] ?? item.href;
+    const child = getDropdownItemByHref(item, activeHref);
+
+    if (child) {
+      const imageUrl = dropdownHeroImages[child.href] ?? child.imageUrl;
+      return { ...child, hasImage: Boolean(imageUrl), imageUrl };
+    }
+
+    const imageUrl = dropdownHeroImages[item.href] ?? "";
+    return {
+      name: item.name,
+      href: item.href,
+      description: item.description,
+      hasImage: Boolean(imageUrl),
+      imageUrl,
+    };
   }
 
   function setActiveDropdownItem(menuName: string, itemHref: string) {
@@ -152,8 +226,18 @@ export default function Header() {
   }
 
   return (
-    <header className="site-modern-header sticky top-0 z-50 bg-[#030713] font-sans text-white">
-      <div className="relative border-b border-white/10 bg-[#050817]/95 backdrop-blur-xl">
+    <header
+      className={`site-modern-header fixed inset-x-0 top-0 z-50 bg-[#030713] font-sans text-white transition-[transform,opacity] duration-300 ease-out ${
+        isOverHero
+          ? "pointer-events-none -translate-y-full opacity-0"
+          : "translate-y-0 opacity-100"
+      }`}
+    >
+      <div className={`relative border-b backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-300 ${
+        isPastHero
+          ? "border-[rgba(41,171,135,0.28)] bg-[#050817]/90 shadow-lg shadow-black/25"
+          : "border-white/10 bg-[#050817]/95"
+      }`}>
         <div className="site-header-grid mx-auto grid h-18 grid-cols-[1fr_auto] items-center gap-4 px-3 sm:px-4 xl:grid-cols-[1fr_auto_1fr] xl:px-6">
           <Link
             href={brand.homeHref}
@@ -161,14 +245,17 @@ export default function Header() {
             aria-label={brand.ariaLabel}
             onClick={() => setIsMenuOpen(false)}
           >
-            <Image
-              src={brand.logoSrc}
-              alt={brand.logoAlt}
-              width={180}
-              height={48}
-              priority
-              className="h-11 w-auto"
-            />
+            <span className="relative block">
+              <Image src={brand.logoSrc} alt={brand.logoAlt} width={180} height={48} priority className="h-11 w-auto" />
+              <Image
+                src="/brand/trijotech-header-logo-sticky.png"
+                alt=""
+                width={180}
+                height={48}
+                aria-hidden="true"
+                className={`pointer-events-none absolute inset-0 h-11 w-auto transition-opacity duration-300 ${isPastHero ? "opacity-100" : "opacity-0"}`}
+              />
+            </span>
           </Link>
 
           <nav
@@ -178,7 +265,7 @@ export default function Header() {
             {navItems.map((item) => {
               const isActive = isNavItemActive(pathname, item);
               const hasDropdown = hasDropdownItems(item);
-              const parentNavigates = item.name !== "Solutions" && Boolean(item.href);
+const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.href === "/solutions";
               const isDropdownOpen = openDropdownName === item.name;
               const activeDropdownItem = getActiveDropdownItem(item);
               const navLinkClasses = `inline-flex h-8 items-center gap-1 rounded-full px-4 text-sm font-semibold transition ${isActive
@@ -261,8 +348,8 @@ export default function Header() {
                                     </span>
                                     <ChevronRight
                                       className={`h-4 w-4 shrink-0 transition ${isSelected
-                                        ? "translate-x-0.5 text-cyan-200"
-                                        : "text-white/25 group-hover/item:translate-x-0.5 group-hover/item:text-cyan-200"
+                                        ? "translate-x-0.5 text-[#7edcc2]"
+                                        : "text-white/25 group-hover/item:translate-x-0.5 group-hover/item:text-[#7edcc2]"
                                         }`}
                                     />
                                   </Link>
@@ -294,7 +381,7 @@ export default function Header() {
                                     >
                                       {!activeDropdownItem.hasImage ||
                                         !activeDropdownItem.imageUrl ? (
-                                        <div className="flex min-h-30 items-center justify-center bg-[linear-gradient(135deg,rgba(34,211,238,0.16),rgba(255,255,255,0.06))]">
+                                        <div className="flex min-h-30 items-center justify-center bg-[linear-gradient(135deg,rgba(41,171,135,0.22),rgba(17,122,75,0.14))]">
                                           <span className="text-5xl font-bold text-white/20">
                                             {activeDropdownItem.name.charAt(0)}
                                           </span>
@@ -314,7 +401,7 @@ export default function Header() {
 
                                     <Link
                                       href={activeDropdownItem.href}
-                                      className="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/7 px-3 py-1.5 text-sm font-semibold text-white/80 transition hover:border-cyan-300/30 hover:bg-white/10 hover:text-white"
+                                      className="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/7 px-3 py-1.5 text-sm font-semibold text-white/80 transition hover:border-[rgba(41,171,135,0.55)] hover:bg-white/10 hover:text-white"
                                     >
                                       Know More
                                       <ChevronRight className="h-4 w-4" />
@@ -364,6 +451,13 @@ export default function Header() {
           </button>
         </div>
 
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity duration-500 ${
+            isPastHero ? "opacity-100" : "opacity-0"
+          } bg-[linear-gradient(90deg,transparent,rgba(41,171,135,0.7),rgba(245,166,35,0.7),transparent)]`}
+        />
+
         <AnimatePresence>
           {isSearchOpen ? (
             <motion.div
@@ -380,14 +474,17 @@ export default function Header() {
                   aria-label={brand.ariaLabel}
                   onClick={closeSearch}
                 >
-                  <Image
-                    src={brand.logoSrc}
-                    alt={brand.logoAlt}
-                    width={180}
-                    height={48}
-                    priority
-                    className="h-11 w-auto"
-                  />
+                  <span className="relative block">
+                    <Image src={brand.logoSrc} alt={brand.logoAlt} width={180} height={48} priority className="h-11 w-auto" />
+                    <Image
+                      src="/brand/trijotech-header-logo-sticky.png"
+                      alt=""
+                      width={180}
+                      height={48}
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute inset-0 h-11 w-auto transition-opacity duration-300 ${isPastHero ? "opacity-100" : "opacity-0"}`}
+                    />
+                  </span>
                 </Link>
 
                 <div className="mx-auto flex h-11 w-full max-w-2xl items-center gap-3 rounded-full border border-white/10 bg-white/7 px-4">
@@ -435,7 +532,7 @@ export default function Header() {
                   {navItems.map((item) => {
                     const isActive = isNavItemActive(pathname, item);
                     const hasDropdown = hasDropdownItems(item);
-                    const parentNavigates = item.name !== "Solutions" && Boolean(item.href);
+const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.href === "/solutions";
                     const isMobileDropdownOpen =
                       openMobileDropdownName === item.name;
 

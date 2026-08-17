@@ -1,13 +1,14 @@
 import "server-only";
 import type { ChatIntent, ChatSource, KnowledgeEntry } from "@/app/types/chatbot";
 
-type DirectIntent = "CONTACT_DETAILS" | "EMAIL" | "PHONE" | "LOCATION" | "SERVICES" | "SOLUTIONS" | "SPECIFIC_SERVICE" | "ABOUT_COMPANY" | "ABOUT_COMPANY_DETAILED" | "WHY_TRIJOTECH" | "COMPANY_EXPERIENCE" | "PROJECT_COUNT" | "CLIENT_COUNT" | "COMPANY_INNOVATION" | "COMPANY_VISION" | "COMPANY_MISSION" | "COMPANY_GOALS" | "COMPANY_VALUES" | "CAREERS" | "BLOGS" | "PRODUCT_INFORMATION" | "SPECIFIC_PRODUCT" | "SUPPORT" | "PROCEDURE_REQUEST";
+type DirectIntent = "CONTACT_DETAILS" | "EMAIL" | "PHONE" | "LOCATION" | "SERVICES" | "SOLUTIONS" | "SPECIFIC_SERVICE" | "ABOUT_COMPANY" | "ABOUT_COMPANY_DETAILED" | "WHY_TRIJOTECH" | "COMPANY_EXPERIENCE" | "PROJECT_COUNT" | "CLIENT_COUNT" | "COMPANY_INNOVATION" | "COMPANY_VISION" | "COMPANY_MISSION" | "COMPANY_GOALS" | "COMPANY_VALUES" | "CAREERS" | "BLOGS" | "PRODUCT_INFORMATION" | "SPECIFIC_PRODUCT" | "SUPPORT" | "PROCEDURE_REQUEST" | "HOW_ARE_YOU";
 export type DirectAnswer = { message: string; intent: ChatIntent; sources: ChatSource[] };
 
 const contactSource: ChatSource = { id: "company-contact", title: "Contact Trijotech", category: "contact", url: "/contact" };
 const sourceOf = ({ id, title, category, url }: KnowledgeEntry): ChatSource => ({ id, title, category, url });
 
 function detect(message: string): DirectIntent | null {
+  if (/\bhow are you\b|\bhow('| a)?re you\b|\bhow('| i)?s it going\b|\bhow are you doing\b|\bhow are you today\b/i.test(message)) return "HOW_ARE_YOU";
   if (/\b(how do i|steps?|step-by-step|procedure|process|sop)\b/i.test(message) && /\b(apply|application|job|career)\b/i.test(message)) return "PROCEDURE_REQUEST";
   if (/\b(e-?mail|email address)\b/i.test(message)) return "EMAIL";
   if (/\b(phone|telephone|mobile|contact number|phone number|your number|call number)\b/i.test(message)) return "PHONE";
@@ -40,6 +41,7 @@ export function directKnowledgeAnswer(message: string, entries: KnowledgeEntry[]
   if (!intent) return null;
   const companyFacts = entries.find((item) => item.id === "about-company-about-company");
   const companySource = companyFacts ? sourceOf(companyFacts) : { id: "company-overview", title: "About Trijotech", category: "company", url: "/about-us" };
+  if (intent === "HOW_ARE_YOU") return { message: "I am good, what about you? Please let me know how can I help you.", intent: "GREETING", sources: [] };
   if (intent === "EMAIL") return { message: "[sales@trijotech.com](mailto:sales@trijotech.com)", intent: "CONTACT", sources: [contactSource] };
   if (intent === "PHONE") return { message: "+91 120-3506433\n+91 7982531976", intent: "CONTACT", sources: [contactSource] };
   if (intent === "CONTACT_DETAILS" || intent === "SUPPORT") return { message: "**Phone:**\n+91 120-3506433\n+91 7982531976\n\n**Email:**\n[sales@trijotech.com](mailto:sales@trijotech.com)", intent: intent === "SUPPORT" ? "SUPPORT" : "CONTACT", sources: [contactSource] };

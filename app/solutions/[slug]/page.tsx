@@ -1,25 +1,48 @@
-import PlaceholderPage from "@/components/common/PlaceholderPage";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import EInvoicingProPage from "@/components/solutions/pages/EInvoicingProPage";
+import FinlagoonConsolidationPage from "@/components/solutions/pages/FinlagoonConsolidationPage";
+import ProfitabilityProPage from "@/components/solutions/pages/ProfitabilityProPage";
+import {
+  getAllSolutionSlugs,
+  getSolutionBySlug,
+} from "@/lib/solutions-data";
 
-const products: Record<string, { title: string; description: string }> = {
-  "einvoicing-pro": {
-    title: "E-invoicing Pro",
-    description: "Automate invoice generation, validation, submission, and tracking with an SAP-integrated compliance workflow.",
-  },
-  "finlagoon-consolidation": {
-    title: "Finlagoon Consolidation",
-    description: "Simplify financial consolidation across entities and gain clearer visibility into group performance.",
-  },
-  "profitability-pro": {
-    title: "Profitability Pro",
-    description: "Analyze profitability across products, customers, regions, and business units with actionable insight.",
-  },
+type PageProps = {
+  params: Promise<{ slug: string }>;
 };
 
-export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
+const solutionPages = {
+  "e-invoicing-pro": EInvoicingProPage,
+  "einvoicing-pro": EInvoicingProPage,
+  "finlagoon-consolidation": FinlagoonConsolidationPage,
+  "profitability-pro": ProfitabilityProPage,
+} as const;
+
+export function generateStaticParams() {
+  return getAllSolutionSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const product = products[slug] ?? {
-    title: slug.split("-").map((word) => word[0]?.toUpperCase() + word.slice(1)).join(" "),
-    description: "A Trijotech enterprise product designed to simplify complex business operations.",
+  const solution = getSolutionBySlug(slug);
+  if (!solution) {
+    return { title: "Solution not found | Trijotech" };
+  }
+  return {
+    title: `${solution.title} | Trijotech`,
+    description: solution.shortDescription,
   };
-  return <PlaceholderPage eyebrow="Trijotech Product" title={product.title} description={product.description} />;
+}
+
+export default async function SolutionDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const solution = getSolutionBySlug(slug);
+  const Page = solutionPages[slug as keyof typeof solutionPages];
+
+  if (!solution || !Page) {
+    notFound();
+  }
+
+  return <Page solution={solution} />;
 }

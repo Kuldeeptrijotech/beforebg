@@ -1,581 +1,243 @@
-import type { Metadata } from "next";
-import PageHero from "../components/common/PageHero";
-import ContactCta from "../components/common/ContactCta";
-import CardGrid from "../components/common/CardGrid";
-import Link from "next/link";
-import ProductCarousel from "./ProductCarousel";
-import back1 from "../assets/new_/back1.png";
-import product4 from "../assets/new_/Product_4.png";
-import product3 from "../assets/new_/Product_3.jpg";
-import haupt1 from "../assets/new_/Haupt1.png";
-import haupt2 from "../assets/new_/Haupt2.jpg";
-import haupt3 from "../assets/new_/Haupt3.jpg";
-import haupt4 from "../assets/new_/Haupt4.jpg";
-import haupt5 from "../assets/new_/Haupt5.jpg";
-import haupt6 from "../assets/new_/Haupt6.jpg";
-import haupt7 from "../assets/new_/Haupt7.jpg";
-import haupt8 from "../assets/new_/Haupt8.jpg";
-import l0402 from "../assets/new_/L0402.png";
-import l0403 from "../assets/new_/L0403.png";
-import l0404 from "../assets/new_/L0404.png";
-import l0408 from "../assets/new_/L0408.png";
-import l0409 from "../assets/new_/L0409.png";
-import l0503 from "../assets/new_/L0503.png";
-import l0504 from "../assets/new_/L0504.png";
-import l0505 from "../assets/new_/L0505.png";
+"use client";
 
-const whyChooseItems = [
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
+import SolutionsHoloRays from "@/components/ui/hero-animations/SolutionsHoloRays";
+import { solutions } from "@/lib/solutions-data";
+
+const whyItems = [
   {
     title: "Tailored for Your Operations",
-    description:
-      "Every solution is customized to workflows, industry needs, and operational priorities.",
+    description: "Every solution is customized to workflows, industry needs, and operational priorities.",
+    accent: "from-cyan-400 to-sky-500",
   },
   {
     title: "Built on SAP Standards",
-    description:
-      "Seamless integration, high security, and future-ready scalability using SAP best practices.",
+    description: "Seamless integration, high security, and future-ready scalability using SAP best practices.",
+    accent: "from-indigo-400 to-violet-500",
   },
   {
     title: "Automated & Efficient",
-    description:
-      "Replace spreadsheets and manual processes with automated, end-to-end workflows.",
+    description: "Replace spreadsheets and manual processes with automated, end-to-end workflows.",
+    accent: "from-emerald-400 to-teal-500",
   },
   {
     title: "Scalable & Adaptable",
-    description:
-      "Solutions ready for growth, system upgrades, and changing business environments.",
+    description: "Solutions ready for growth, system upgrades, and changing business environments.",
+    accent: "from-amber-400 to-orange-500",
   },
 ];
 
-const eInvoicingWhy = [
-  {
-    image: l0402,
-    title: "Eliminate Expensive Licensing Fees",
-    subtitle: "Reduce costs significantly",
-  },
-  {
-    image: l0403,
-    title: "Seamless SAP S/4HANA Integration",
-    subtitle: "Hassle-free deployment",
-  },
-  {
-    image: l0404,
-    title: "Automated End-to-End Workflow",
-    subtitle: "From invoice submission to approval tracking",
-  },
-  {
-    image: l0408,
-    title: "No Hidden Costs",
-    subtitle: "High ROI with complete transparency",
-  },
-  {
-    image: l0409,
-    title: "User-Centric Design",
-    subtitle: "Minimal training required for quick adoption",
-  },
-];
-
-const eInvoicingStandOut = [
-  {
-    image: l0402,
-    title: "Direct Government Portal Integration",
-    subtitle: "Send invoices for approval seamlessly",
-  },
-  {
-    image: l0403,
-    title: "Instant Approval & Tracking",
-    subtitle: "Real-time status updates",
-  },
-  {
-    image: l0404,
-    title: "Mass Invoice Processing",
-    subtitle: "Effortlessly print or email invoices",
-  },
-  {
-    image: l0408,
-    title: "Regulatory Compliance",
-    subtitle: "Compliant with evolving tax regulations",
-  },
-];
-
-const hauptWhy = [
-  {
-    title: "Automated Reporting for Fast, Error-Free Closings",
-    description:
-      "Reduce manual efforts and close faster with automated reporting workflows.",
-  },
-  {
-    title: "Multi-Currency Support & Smart Currency Conversion",
-    description:
-      "Handle multiple currencies with built-in exchange rate application and reports in base and converted currencies.",
-  },
-  {
-    title: "Customizable Reporting Aligned to Business KPIs",
-    description:
-      "Tailor reports to internal metrics—adjust layouts, apply filters, and select key data fields.",
-  },
-  {
-    title: "Full Audit Trails & Role-Based Access Control",
-    description:
-      "Ensure secure, compliant operations with detailed audit trails and customizable access roles.",
-  },
-];
-
-const hauptFeatures = [
-  {
-    title: "Customizable Reports",
-    description:
-      "Design reports—adjust layouts, apply filters, and choose relevant fields to fit business needs.",
-  },
-  {
-    title: "Historical Comparison",
-    description:
-      "Track performance over time with built-in period comparisons for strategic insights.",
-  },
-  {
-    title: "Export & Integration",
-    description:
-      "Export in Excel or PDF, and integrate with BI tools for broader analysis and sharing.",
-  },
-];
-
-const profitabilityCore = [
-  {
-    title:
-      "Design reports your way—adjust layouts, apply filters, and choose relevant data fields to fit business needs.",
-  },
-  {
-    title: "Automates allocation of COGS, Net Sales, Gross Sales, and more.",
-  },
-  {
-    title: "Real-time P&L visibility for strategic clarity.",
-  },
-  {
-    title: "Dynamic driver-based cost allocations.",
-  },
-  {
-    title: "Helps identify and control unprofitable segments proactively.",
-  },
-  {
-    title: "What Makes E-Invoicing Pro Stand Out?",
-  },
-];
-
-const products = [
-  {
-    title: "E-invoicing Pro",
-    image: l0503,
-    description:
-      "We enable seamless compliance through direct integration with government portals, reducing manual effort and errors. Compatible with S/4HANA Public and Private Cloud, the solution is secure, scalable, and built on SAP standards. Real-time tracking ensures full visibility into the invoicing process.",
-  },
-  {
-    title: "HauptBuch Consolidation",
-    image: l0504,
-    description:
-      "We automate legal and financial consolidations across entities and jurisdictions, reducing manual work and ensuring accuracy. Built on SAP BTP with Work Zone integration, the solution supports Multi-GAAP and IFRS compliance. Real-time dashboards offer a unified view, helping speed up financial close and eliminate reliance on spreadsheets.",
-  },
-  {
-    title: "Profitability Pro",
-    image: l0505,
-    description:
-      "We provide real-time profitability insights at both product and customer levels. By automating allocations for COGS, Net Sales, and Gross Sales, reporting becomes faster and more accurate. Dynamic driver mapping ensures precise cost distribution, helping businesses improve margin control and act early on underperforming areas.",
-  },
-];
-
-const hauptImages = [haupt2, haupt3, haupt4, haupt5, haupt6, haupt7, haupt8];
-
-export const metadata: Metadata = {
-  title: "Solutions",
-  description: "Explore Trijotech in-house SAP solutions including E-Invoicing Pro, HauptBuch Consolidation, and Profitability Pro.",
-};
-
-export default function ProductsPage() {
+export default function SolutionsPage() {
   return (
-    <main className="products-page">
-      
-      <PageHero title="Solutions" backgroundImage="/assets/heroes/products-blue.png" className="p-h-img-product">
-        <Link href="/contact" className="filled-button mt-3">Consult Our Experts &rarr;</Link>
-      </PageHero>
-      
-      <div className="services">
-        <div className="container">
-          <div className="section-heading">
-            <p
-              style={{
-                marginTop: "30px",
-                marginBottom: "30px",
-                fontSize: "16px",
-                textAlign: "left",
-              }}
+    <main className="overflow-hidden bg-[#030713] text-white">
+      {/* ── Hero (Untouched) ─────────────────── */}
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-20">
+        <Image src="/assets/heroes/products.png" alt="" fill priority sizes="100vw" className="-z-20 object-cover object-center opacity-95" />
+        {/* Slow geometric holographic rays animation */}
+        <SolutionsHoloRays />
+
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/85 via-cyan-950/45 to-cyan-900/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/50 via-transparent to-slate-950/10" />
+
+        {/* Floating orbs */}
+        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
+        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
+
+        <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
+          <div className="max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-900/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-300 backdrop-blur-md"
             >
-              At Trijotech, we offer cutting-edge SAP solutions designed to
-              enhance business processes, improve operations, and foster growth.
-              With extensive experience and a wealth of industry knowledge, we
-              enable organizations to utilize SAP technologies to tackle
-              challenges and achieve their goals. Whether you need ERP
-              implementation, data analytics, or cloud solutions, we are here to
-              support you throughout the entire process. Our commitment is to
-              operational excellence, rethinking processes, and leveraging data
-              to ensure your success in the digital era. By choosing SAP, your
-              business can flourish—and with Trijotech&rsquo;s assistance, we
-              guarantee your success at every stage of the journey.
-            </p>
-          </div>
+              <Sparkles className="h-3.5 w-3.5" />
+              In-House SAP Solutions
+            </motion.div>
 
-          
-          <div
-            className="services products-why-section"
-            style={{
-              padding: "60px 0",
-              backgroundImage: `url(${back1.src})`,
-            }}
-          >
-            <div className="container">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="section-heading">
-                    <h2
-                      style={{
-                        textAlign: "left",
-                        fontSize: "32px",
-                        fontWeight: "700",
-                        color: "#000",
-                        marginBottom: "40px",
-                      }}
-                    >
-                      Why Choose <em>In-House SAP Solutions from Trijotech?</em>
-                    </h2>
-                  </div>
-                </div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+            >
+              Purpose-built platforms for <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">modern SAP enterprises</span>
+            </motion.h1>
 
-                <CardGrid cards={whyChooseItems} className="inhouse-card-grid" cardClassName="inhouse-card" />
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-6 text-lg leading-8 text-cyan-100/90 sm:text-xl"
+            >
+              Extend your SAP investment with specialized tools for statutory compliance, financial consolidation, and operational profitability.
+            </motion.p>
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div className="more-info">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="more-info-content">
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="left-image">
-                      <iframe
-                        width="100%"
-                        height="309"
-                        src="https://www.youtube.com/embed/sHlIfRtrMK0"
-                        title="E-Invoicing Pro: Simplifying Invoicing for Modern Businesses"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6 align-self-center">
-                    <div className="right-content">
-                      <h2>
-                        <em>E-invoicing Pro</em>
-                      </h2>
-                      <p>
-                        Keep up with government mandates and eliminate manual
-                        errors with our end-to-end e-invoicing solution. Whether
-                        you&rsquo;re on public or private cloud, E-invoicing Pro
-                        ensures seamless compliance and real-time invoice
-                        tracking.
-                      </p>
-                      <Link href="/contact" className="filled-button">
-                        Contact Us
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div
-        className="services"
-        style={{
-          padding: "60px 0",
-          backgroundImage: `url(${product4.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "#fff",
-        }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="section-heading">
-                <h2 style={{ textAlign: "left" }}>
-                  Why Choose<em> E-Invoicing Pro?</em>
-                </h2>
-              </div>
-            </div>
-
-            {eInvoicingWhy.map((item) => (
-              <div className="col-md-4" key={item.title}>
-                <Link href="/services" style={{ textDecoration: "none", color: "inherit" }}>
-                  <div className="service-item1 e-invoicing-why-card">
-                    <img src={item.image.src} alt="" />
-                    <div className="service-title1">
-                      {item.title}
-                      <br />
-                      {item.subtitle}
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-
-            <div className="col-md-12">
-              <div className="section-heading">
-                <h2 style={{ textAlign: "left" }}>
-                  What Makes<em> E-Invoicing Pro Stand Out?</em>
-                </h2>
-              </div>
-            </div>
-
-            {eInvoicingStandOut.map((item) => (
-              <div className="col-md-3 e-invoicing-standout-column" key={item.title}>
-                <Link href="/services" style={{ textDecoration: "none", color: "inherit" }}>
-                  <div className="service-item1 e-invoicing-why-card">
-                    <img src={item.image.src} alt="" />
-                    <div className="service-title1">
-                      {item.title}
-                      <br />
-                      {item.subtitle}
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      
-      <div className="services">
-        <div className="container my-5">
-          <div className="row align-items-center">
-            <div className="col-md-6">
-              <div className="d-flex align-items-start">
-                <img
-                  src={haupt1.src}
-                  alt="Logo"
-                  style={{ width: "60px", height: "auto", marginRight: "15px" }}
-                />
-                <div>
-                  <h2
-                    style={{
-                      textAlign: "left",
-                      color: "#000",
-                      fontWeight: "700",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    HauptBuch Consolidation
-                  </h2>
-                  <p
-                    style={{
-                      textAlign: "left",
-                      fontSize: "16px",
-                      lineHeight: "1.6",
-                      color: "#333",
-                    }}
-                  >
-                    Managing financial consolidation across multiple entities is
-                    complex, but it doesn&rsquo;t have to be.{" "}
-                    <b>HauptBuch Consolidation</b> is a single, intelligent
-                    platform built to streamline your financial close and
-                    reporting cycles. With robust automation, smart currency
-                    handling, and fully customizable reports, HauptBuch Consol
-                    brings speed, accuracy, and control to finance leaders
-                    handling multi-entity structures.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <ProductCarousel images={hauptImages} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      
-      <div
-        className="services hauptbuch-features-section"
-        style={{
-          padding: "60px 0",
-          backgroundImage: `url(${product4.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "#fff",
-        }}
-      >
-        <div className="container" style={{ minHeight: "320px" }}>
-          <div className="row">
-            <div className="col-md-12">
-              <div className="section-heading">
-                <h2
-                  style={{
-                    textAlign: "left",
-                    fontSize: "32px",
-                    fontWeight: "700",
-                    color: "#000",
-                    marginBottom: "40px",
-                  }}
-                >
-                  Why Choose<em> HauptBuch Consolidation?</em>
-                </h2>
-              </div>
-            </div>
-            <CardGrid cards={hauptWhy} className="hauptbuch-card-grid hauptbuch-card-grid-four" cardClassName="hauptbuch-card" />
-<div className="col-md-12">
-              <div className="section-heading" style={{ marginTop: "60px" }}>
-                <h2
-                  style={{
-                    textAlign: "left",
-                    fontSize: "32px",
-                    fontWeight: "700",
-                    color: "#000",
-                    marginBottom: "40px",
-                  }}
-                >
-                  Next-Level <em>Consolidation Features</em>
-                </h2>
-              </div>
-            </div>
-            <CardGrid cards={hauptFeatures} className="hauptbuch-card-grid hauptbuch-card-grid-three" cardClassName="hauptbuch-card" /></div>
-        </div>
-      </div>
-
-      
-      <div className="services">
-        <div className="container">
-          <div className="section-heading">
-            <h1 style={{ textAlign: "left", marginBottom: "30px" }}>
-              <em>Profitability Pro</em>
-            </h1>
-            <p style={{ textAlign: "left" }}>
-              With Profitability Pro, you get real-time visibility into
-              what&rsquo;s driving profits—and what&rsquo;s not. Automatically
-              allocate expenses, assess margins, and make data-backed decisions
-              to improve financial performance at every level.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      
-      <div
-        className="services"
-        style={{
-          padding: "60px 0",
-          backgroundImage: `url(${product3.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "#fff",
-        }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div
-                className="section-heading"
-                style={{ paddingTop: "40px", paddingBottom: "20px" }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-10 flex flex-wrap gap-4"
+            >
+              <a
+                href="#our-solutions"
+                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-7 py-3.5 text-sm font-semibold text-cyan-950 shadow-lg shadow-cyan-400/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-300 hover:shadow-xl hover:shadow-cyan-400/35"
               >
-                <h2
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: "700",
-                    color: "#fff",
-                    textAlign: "left",
-                    margin: "0",
-                  }}
-                >
-                  Next-Level <em>Profitability Analysis Features</em>
-                </h2>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            {profitabilityCore.map((item, i) => (
-              <div className="col-md-4 mb-4" key={i}>
-                <div
-                  className="down-content"
-                  style={{
-                    borderRadius: "12px",
-                    padding: "25px 20px",
-                    textAlign: "left",
-                    minHeight: "150px",
-                    backgroundColor: "rgba(255,255,255,0.85)",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "15px",
-                      color: "#000",
-                      lineHeight: "1.6",
-                      margin: "0",
-                    }}
-                  >
-                    {item.title}
-                  </p>
-                </div>
-              </div>
-            ))}
+                Explore Solutions <ArrowRight className="h-4 w-4" />
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
+              >
+                Schedule Demo
+              </Link>
+            </motion.div>
           </div>
         </div>
-      </div>
 
-      
-      <div className="services">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="section-heading">
-                <h2>
-                  Our <em>Solutions</em>
-                </h2>
-              </div>
-            </div>
-            {products.map((product) => (
-              <div className="col-md-4" key={product.title}>
-                <div className="service-item">
-                  <img src={product.image.src} alt={product.title} />
-                  <div className="down-content">
-                    <h4>{product.title}</h4>
-                    <p>{product.description}</p>
+        {/* Clean bottom separator */}
+        <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
+      </section>
+
+      {/* ── Solutions Grid ──────────────────── */}
+      <section id="solutions-list" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="max-w-3xl"
+          >
+            <p className="tri-overline">Capabilities</p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+              Enterprise solutions engineered for scale
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+              Each product is built to address specific functional gaps in standard enterprise software, delivering rapid time-to-value with minimal disruption.
+            </p>
+          </motion.div>
+
+          <div className="mx-auto mt-7 sm:mt-9 grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 items-stretch">
+            {solutions.map((solution, i) => (
+              <motion.article
+                key={solution.slug}
+                initial={{ opacity: 0, y: 36 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+              >
+                <Link href={solution.href} className="relative block h-[170px] w-full shrink-0 overflow-hidden bg-slate-900">
+                  <Image
+                    src={solution.cardImage}
+                    alt={solution.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className={`transition duration-700 group-hover:scale-105 ${solution.slug === "e-invoicing-pro" ? "object-cover" : "object-contain p-3 sm:p-4"}`}
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(18,25,39,0.7))]" />
+                </Link>
+                <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-5">
+                  <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">{solution.title}</h3>
+                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{solution.shortDescription}</p>
+                  <ul className="mt-3.5 space-y-2 border-t border-white/10 pt-3">
+                    {solution.featureCards.slice(0, 4).map((item) => (
+                      <li key={item.title} className="flex items-start gap-2 text-xs sm:text-sm font-medium text-slate-200">
+                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#29ab87]" />
+                        {item.title}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-4">
+                    <Link
+                      href={solution.href}
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#7edcc2] transition-all duration-200 group-hover:gap-2.5 group-hover:text-[#f5a623]"
+                    >
+                      Explore Solution <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
                 </div>
-              </div>
+              </motion.article>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <ContactCta />
+      {/* ── Why Choose ───────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 border-b border-white/10">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="max-w-3xl text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl"
+          >
+            Why choose in-house SAP solutions from{" "}
+            <span className="tri-gradient-text">Trijotech?</span>
+          </motion.h2>
+          <div className="mt-7 sm:mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2 items-stretch">
+            {whyItems.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+              >
+                <div className={`mb-3 h-1 w-10 rounded-full bg-gradient-to-r ${item.accent} transition-all duration-300 group-hover:w-16`} />
+                <h3 className="text-base sm:text-lg font-bold text-white">{item.title}</h3>
+                <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA Banner ────────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-30" />
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
+        >
+          <div aria-hidden className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
+          <div aria-hidden className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
+          <div className="relative mx-auto max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#f5a623]">Trijotech</p>
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
+              See which solution fits your landscape
+            </h2>
+            <p className="mt-4 text-sm text-slate-300 sm:text-base">
+              Book a technical demonstration tailored to your enterprise processes and data structure.
+            </p>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-6">
+              <Link
+                href="/contact"
+                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
+              >
+                Talk to Our Experts <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 }
-
-
-
-
-
-
-
-

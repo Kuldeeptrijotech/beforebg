@@ -1,22 +1,21 @@
 html,body{width:100%;max-width:100%;overflow-x:clip}*,*:before,*:after{box-sizing:border-box}body{-webkit-font-smoothing:auto;text-rendering:optimizeLegibility}.zip-inner-theme,.zip-inner-theme main,.zip-footer{width:100%;max-width:100%;overflow-x:clip}.zip-inner-theme .container{width:min(100% - 32px,1140px)!important;max-width:1140px!important;margin:auto!important;padding-left:0!important;padding-right:0!important}.zip-inner-theme .row{max-width:100%;margin-left:0!important;margin-right:0!important}.zip-inner-theme :is(h1,h2,h3,h4,p,a,span){overflow-wrap:anywhere}
 /* Shared heroes */
-.hero-carousel,.zip-inner-theme .page-heading,.zip-inner-theme .about-hero,.zip-inner-theme .legacy-service-hero,.zip-inner-theme .service-page-heading,.zip-inner-theme .case-studies-hero,.zip-inner-theme .sap-implementation-hero,.zip-inner-theme .services-page-heading{width:100vw!important;max-width:none!important;height:100svh!important;min-height:100svh!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;background-position:center!important;background-repeat:no-repeat!important;background-size:cover!important;overflow:hidden!important}.hero-carousel>.carousel-background,.zip-inner-theme :is(.page-heading,.about-hero,.legacy-service-hero,.service-page-heading,.case-studies-hero,.sap-implementation-hero,.services-page-heading) :is(.page-heading-image,.about-hero-image){width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;opacity:1!important}html body .hero-carousel .carousel-overlay,html body .zip-inner-theme .page-heading .page-heading-image-overlay,html body .zip-inner-theme .about-hero .about-hero-overlay,html body .zip-inner-theme .service-page-heading .service-hero-overlay,html body .zip-inner-theme .legacy-service-hero:before,html body .zip-inner-theme .case-studies-hero:before{opacity:1!important;background:radial-gradient(circle at 20% 16%,rgba(56,189,248,.32),rgba(14,165,233,.17) 36%,transparent 66%),linear-gradient(135deg,rgba(3,105,161,.3),rgba(7,89,133,.24) 45%,rgba(8,47,73,.42))!important;backdrop-filter:none!important;filter:none!important}html body .hero-carousel .carousel-heading,html body .hero-carousel .carousel-heading span,html body .zip-inner-theme :is(.page-heading,.about-hero,.legacy-service-hero,.service-page-heading,.case-studies-hero) h1{color:#fff!important;opacity:1!important;font-weight:800!important;-webkit-text-stroke:.45px rgba(2,12,27,.9);text-shadow:none!important}html body .zip-inner-theme :is(.page-heading,.about-hero,.legacy-service-hero,.service-page-heading) :is(p,span){color:#e8f8ff!important;opacity:1!important;font-weight:600!important;text-shadow:none!important}.zip-inner-theme .videos-page-hero h1{display:flex!important;align-items:center!important;justify-content:center!important;gap:16px!important}.zip-inner-theme .videos-page-hero .video-hero-title-icon{width:clamp(38px,4vw,54px);height:clamp(38px,4vw,54px);color:#67e8f9}
+.hero-carousel,.zip-inner-theme .page-heading,.zip-inner-theme .about-hero,.zip-inner-theme .legacy-service-hero,.zip-inner-theme .service-page-heading,.zip-inner-theme .case-studies-hero,.zip-inner-theme .sap-implementation-hero,.zip-inner-theme .services-page-heading{width:100vw!important;max-width:none!important;height:100svh!important;min-height:100svh!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;background-position:center!important;background-repeat:no-repeat!important;background-size:cover!important;overflow:hidden!important}.hero-carousel>.carousel-background,.zip-inner-theme :is(.page-heading,.about-hero,.legacy-service-hero,.service-page-heading,.case-studies-hero,.sap-implementation-hero,.services-page-heading) :is(.page-heading-image,.about-hero-image){width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;opacity:1!important}html body .hero-carousel .carousel-overlay,html body .zip-inner-theme .page-heading .page-heading-image-overlay,html body .zip-inner-theme .about-hero .about-hero-overlay,html body .zip-inner-theme .service-page-heading .service-hero-overlay,html body .zip-inner-theme .legacy-service-hero:before,html body .zip-inner-theme .case-studies-hero:before{opacity:1!important;background:radial-gradient(circle at 20% 16%,rgba(41,171,135,.32),rgba(17,122,75,.17) 36%,transparent 66%),linear-gradient(135deg,rgba(17,122,75,.3),rgba(10,95,60,.24) 45%,rgba(8,47,36,.42))!important;backdrop-filter:none!important;filter:none!important}html body .hero-carousel .carousel-heading,html body .hero-carousel .carousel-heading span,html body .zip-inner-theme :is(.page-heading,.about-hero,.legacy-service-hero,.service-page-heading,.case-studies-hero) h1{color:#fff!important;opacity:1!important;font-weight:800!important;-webkit-text-stroke:.45px rgba(2,12,27,.9);text-shadow:none!important}html body .zip-inner-theme :is(.page-heading,.about-hero,.legacy-service-hero,.service-page-heading) :is(p,span){color:#e8f8ff!important;opacity:1!important;font-weight:600!important;text-shadow:none!important}.zip-inner-theme .videos-page-hero h1{display:flex!important;align-items:center!important;justify-content:center!important;gap:16px!important}.zip-inner-theme .videos-page-hero .video-hero-title-icon{width:clamp(38px,4vw,54px);height:clamp(38px,4vw,54px);color:#7edcc2}
 /* Natural content */
 .zip-inner-theme main>section:not(.page-heading):not(.about-hero):not(.legacy-service-hero):not(.service-page-heading):not(.case-studies-hero):not(.sap-implementation-hero):not(.services-page-heading),.zip-inner-theme main>section:not(.page-heading):not(.about-hero):not(.legacy-service-hero):not(.service-page-heading):not(.case-studies-hero):not(.sap-implementation-hero):not(.services-page-heading) img{opacity:1!important;filter:none!important;backdrop-filter:none!important}
 /* Forms */
 .zip-inner-theme :is(.careers-page,.contact-page) :is(.contact-us-section,.callback-form){padding:48px 0!important;background:#dfe3e8!important;color:#172033!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-us-section .section-heading{margin-bottom:26px!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-us-section .section-heading :is(h2,p){color:#172033!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form{width:min(100%,920px)!important;margin:auto!important;padding:28px!important;border:1px solid #c5cbd3!important;background:#eef0f3!important;color:#172033!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .row{display:flex!important;width:100%!important;flex-wrap:wrap!important;row-gap:10px!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .row>div,.zip-inner-theme :is(.careers-page,.contact-page) .contact-form fieldset{margin:0!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .form-control{height:44px!important;min-height:44px!important;margin:0!important;padding:0 14px!important;border:1px solid #b8c0ca!important;background:#fff!important;color:#111827!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form textarea.form-control{height:110px!important;min-height:110px!important;padding:12px 14px!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .form-control::placeholder{color:#596579!important;opacity:1!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form :is(.file-label,.form-consent,.form-consent label,.form-consent span){color:#273244!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form input[type=file].form-control{height:auto!important;padding:6px 8px!important}.zip-inner-theme .careers-page .contact-form .file-label{margin:0 0 5px!important}@media(min-width:768px){.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .row>.col-lg-6{width:50%!important;max-width:50%!important;flex:0 0 50%!important;padding:0 5px!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .row>.col-lg-12{width:100%!important;max-width:100%!important;flex:0 0 100%!important;padding:0 5px!important}}
-a.industries-view-all-button{background:#22d3ee!important;color:#06202a!important;opacity:1!important}a.industries-view-all-button:hover{background:#0891b2!important;color:#06202a!important}
+a.industries-view-all-button{background:#29ab87!important;color:#030713!important;opacity:1!important}a.industries-view-all-button:hover{background:#29ab87!important;color:#030713!important}
 /* Blog cards */
-html body .zip-inner-theme .blogs-source-page,html body .zip-inner-theme .blogs-source-page .blogs-listing-section{background:#0c1627!important;color:#e8f4fa!important}html body .zip-inner-theme .blogs-source-page .blogs-listing-section{padding:72px 0 64px!important}html body .zip-inner-theme .blogs-source-page .section-heading h2{color:#f8fdff!important}html body .zip-inner-theme .blogs-source-page .section-heading h2 em{color:#67e8f9!important}html body .zip-inner-theme .blogs-source-page .section-heading p{color:#b8cad5!important}html body .zip-inner-theme .blogs-source-page .blogs-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}html body .zip-inner-theme .blogs-source-page .blogs-grid>.col-md-4{display:flex!important;width:100%!important;max-width:none!important;padding:0!important}html body .zip-inner-theme .blogs-source-page .blog-card{width:100%!important;min-height:460px!important;padding:0!important;border:1px solid #33445d!important;border-radius:14px!important;background:#142238!important;box-shadow:0 16px 34px rgba(0,0,0,.28)!important}html body .zip-inner-theme .blogs-source-page .blog-card-image{height:220px!important;overflow:hidden!important;margin:0!important;background:#091321!important}html body .zip-inner-theme .blogs-source-page .blog-card-image img{width:100%!important;height:100%!important;margin:0!important;padding:0!important;object-fit:fill!important;opacity:1!important;filter:none!important;transform:none!important}html body .zip-inner-theme .blogs-source-page .blog-card-image.crop-vertical-whitespace img{transform:scaleY(1.12)!important}html body .zip-inner-theme .blogs-source-page .blog-card-content{min-height:238px!important;padding:20px!important;background:#142238!important}html body .zip-inner-theme .blogs-source-page .blog-card-content .blog-meta{color:#67e8f9!important}html body .zip-inner-theme .blogs-source-page .blog-card-content h4{color:#fff!important;font-size:18px!important;line-height:1.4!important}html body .zip-inner-theme .blogs-source-page .blog-card-content p{color:#b9cbd6!important;font-size:14px!important;line-height:1.6!important;min-height:4.8em!important;max-height:4.8em!important;-webkit-line-clamp:3!important}html body .zip-inner-theme .blogs-source-page .blog-card-content .read-more{margin:16px 0 0!important;background:#22d3ee!important;color:#06202a!important}
-/* Blog reading */
-html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page){background:#e8edf3!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body{background:#f8fafc!important;color:#172033!important;opacity:1!important;filter:none!important;backdrop-filter:none!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body :is(h1,h2,h3,h4,h5,h6){color:#0f2137!important;opacity:1!important;font-weight:700!important;-webkit-text-stroke:0!important;text-shadow:none!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body :is(p,li,span,div){color:#27364a!important;opacity:1!important;filter:none!important;text-shadow:none!important}html body .zip-inner-theme .legacy-blog-page .legacy-article-body p,html body .zip-inner-theme .managed-blog-page .managed-blog-content{font-size:17px!important;line-height:1.8!important}html body .zip-inner-theme .managed-blog-page .managed-blog-content{width:min(100%,940px)!important;margin:auto!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body a{color:#0369a1!important;font-weight:650!important}
-/* Latest Blogs must remain dark on its light section. */
-html body .zip-inner-theme .latest-blogs-heading h2,html body .zip-inner-theme .latest-blogs-heading h2 em{color:#000!important;opacity:1!important;-webkit-text-stroke:0!important;text-shadow:none!important}
+html body .zip-inner-theme .blogs-source-page,html body .zip-inner-theme .blogs-source-page .blogs-listing-section{background:#0c1627!important;color:#e8f4fa!important}html body .zip-inner-theme .blogs-source-page .blogs-listing-section{padding:72px 0 64px!important}html body .zip-inner-theme .blogs-source-page .section-heading h2{color:#f8fdff!important}html body .zip-inner-theme .blogs-source-page .section-heading h2 em{color:#7edcc2!important}html body .zip-inner-theme .blogs-source-page .section-heading p{color:#b8cad5!important}html body .zip-inner-theme .blogs-source-page .blogs-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important}html body .zip-inner-theme .blogs-source-page .blogs-grid>.col-md-4{display:flex!important;width:100%!important;max-width:none!important;padding:0!important}html body .zip-inner-theme .blogs-source-page .blog-card{width:100%!important;min-height:460px!important;padding:0!important;border:1px solid #33445d!important;border-radius:14px!important;background:#142238!important;box-shadow:0 16px 34px rgba(0,0,0,.28)!important}html body .zip-inner-theme .blogs-source-page .blog-card-image{height:220px!important;overflow:hidden!important;margin:0!important;background:#091321!important}html body .zip-inner-theme .blogs-source-page .blog-card-image img{width:100%!important;height:100%!important;margin:0!important;padding:0!important;object-fit:fill!important;opacity:1!important;filter:none!important;transform:none!important}html body .zip-inner-theme .blogs-source-page .blog-card-image.crop-vertical-whitespace img{transform:scaleY(1.12)!important}html body .zip-inner-theme .blogs-source-page .blog-card-content{min-height:238px!important;padding:20px!important;background:#142238!important}html body .zip-inner-theme .blogs-source-page .blog-card-content .blog-meta{color:#7edcc2!important}html body .zip-inner-theme .blogs-source-page .blog-card-content h4{color:#fff!important;font-size:18px!important;line-height:1.4!important}html body .zip-inner-theme .blogs-source-page .blog-card-content p{color:#b9cbd6!important;font-size:14px!important;line-height:1.6!important;min-height:4.8em!important;max-height:4.8em!important;-webkit-line-clamp:3!important}html body .zip-inner-theme .blogs-source-page .blog-card-content .read-more{margin:16px 0 0!important;background:#29ab87!important;color:#030713!important}
+html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page){background:#030713!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body{background:#050817!important;color:#f8fafc!important;opacity:1!important;filter:none!important;backdrop-filter:none!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body :is(h1,h2,h3,h4,h5,h6){color:#fff!important;opacity:1!important;font-weight:700!important;-webkit-text-stroke:0!important;text-shadow:none!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body :is(p,li,span,div){color:#cbd5e1!important;opacity:1!important;filter:none!important;text-shadow:none!important}html body .zip-inner-theme .legacy-blog-page .legacy-article-body p,html body .zip-inner-theme .managed-blog-page .managed-blog-content{font-size:17px!important;line-height:1.8!important}html body .zip-inner-theme .managed-blog-page .managed-blog-content{width:min(100%,940px)!important;margin:auto!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body a{color:#7edcc2!important;font-weight:650!important}
+/* Latest Blogs */
+html body .zip-inner-theme .latest-blogs-heading h2,html body .zip-inner-theme .latest-blogs-heading h2 em{color:#fff!important;opacity:1!important;-webkit-text-stroke:0!important;text-shadow:none!important}
 
 /* Consistent, readable Latest Blogs carousel cards. */
 html body .zip-inner-theme .latest-blogs-section {
   padding:64px clamp(18px,5vw,72px) 76px !important;
-  background:#e8edf3 !important;
+  background:#050817 !important;
 }
 html body .zip-inner-theme .latest-blogs-heading {
   padding:0 !important;
@@ -26,7 +25,7 @@ html body .zip-inner-theme .latest-blogs-heading > div:first-child {
   padding:0 !important;
 }
 html body .zip-inner-theme .latest-blogs-heading > div:first-child > span {
-  color:#075985 !important;
+  color:#29ab87 !important;
   opacity:1 !important;
 }
 html body .zip-inner-theme .latest-blogs-track {
@@ -40,10 +39,10 @@ html body .zip-inner-theme .latest-blog-card {
   flex:0 0 clamp(280px,29vw,370px) !important;
   flex-direction:column !important;
   overflow:hidden !important;
-  border:1px solid #cbd5e1 !important;
-  border-radius:14px !important;
-  background:#fff !important;
-  box-shadow:0 12px 28px rgba(15,23,42,.12) !important;
+  border:1px solid rgba(255,255,255,0.1) !important;
+  border-radius:24px !important;
+  background:#0b1d33 !important;
+  box-shadow:0 12px 28px rgba(0,0,0,.3) !important;
 }
 html body .zip-inner-theme .latest-blog-image {
   display:block !important;
@@ -51,7 +50,7 @@ html body .zip-inner-theme .latest-blog-image {
   height:210px !important;
   min-height:210px !important;
   overflow:hidden !important;
-  background:#dbe4ec !important;
+  background:#050817 !important;
 }
 html body .zip-inner-theme .latest-blog-image img {
   width:100% !important;
@@ -70,7 +69,7 @@ html body .zip-inner-theme .latest-blog-copy {
   background:#fff !important;
 }
 html body .zip-inner-theme .latest-blog-copy > span {
-  color:#0369a1 !important;
+  color:#117a4b !important;
   opacity:1 !important;
   font-size:13px !important;
   font-weight:700 !important;
@@ -106,7 +105,7 @@ html body .zip-inner-theme .latest-blog-copy p {
 }
 html body .zip-inner-theme .latest-blog-link {
   margin-top:auto !important;
-  color:#0369a1 !important;
+  color:#117a4b !important;
   opacity:1 !important;
   font-size:14px !important;
   font-weight:800 !important;
@@ -114,7 +113,7 @@ html body .zip-inner-theme .latest-blog-link {
 html body .zip-inner-theme .latest-blog-controls button {
   border-color:#94a3b8 !important;
   background:#fff !important;
-  color:#075985 !important;
+  color:#0f6b46 !important;
 }
 @media(max-width:640px){
   html body .zip-inner-theme .latest-blogs-section { padding:48px 16px 60px !important; }
@@ -171,7 +170,7 @@ html body .zip-inner-theme .sap-implementation-source-page .implementation-offer
   text-align:center !important;
 }
 html body .zip-inner-theme .sap-implementation-source-page .implementation-offerings .section-heading em {
-  color:#67e8f9 !important;
+  color:#7edcc2 !important;
 }
 html body .zip-inner-theme .sap-implementation-source-page .implementation-grid {
   display:grid !important;
@@ -194,7 +193,7 @@ html body .zip-inner-theme .sap-implementation-source-page .implementation-card 
   transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease !important;
 }
 html body .zip-inner-theme .sap-implementation-source-page .implementation-card:hover {
-  border-color:#22d3ee !important;
+  border-color:#29ab87 !important;
   box-shadow:0 18px 38px rgba(0,0,0,.32) !important;
   transform:translateY(-4px) !important;
 }
@@ -237,8 +236,8 @@ html body .zip-inner-theme .sap-implementation-source-page :is(.implementation-p
 html body .zip-inner-theme .sap-implementation-source-page :is(.implementation-partner,.implementation-results) p { color:#c2d3dd !important; }
 
 /* Footer contact colors */
-html body .footer-contact-email { color:var(--color-cyan-300) !important; }
-html body .footer-contact-phone { color:var(--color-emerald-300) !important; }
+html body .footer-contact-email { color:#7edcc2 !important; }
+html body .footer-contact-phone { color:#f5a623 !important; }
 
 /* Homepage industry card images */
 html body .zip-theme .industry-preview-media {
@@ -274,8 +273,8 @@ html body .zip-theme .site-button-light {
   color:#0f172a !important;
 }
 html body .zip-theme .site-button-light:hover {
-  border-color:#67e8f9 !important;
-  background:#ecfeff !important;
+  border-color:#7edcc2 !important;
+  background:#eafaf3 !important;
   color:#020617 !important;
 }
 html body .zip-theme .site-button-dark {
@@ -284,8 +283,8 @@ html body .zip-theme .site-button-dark {
   color:#fff !important;
 }
 html body .zip-theme .site-button-dark:hover {
-  border-color:#0e7490 !important;
-  background:#0e7490 !important;
+  border-color:#117a4b !important;
+  background:#117a4b !important;
   color:#fff !important;
 }
 html body .zip-theme .home-hero-primary {
@@ -333,7 +332,7 @@ html body .zip-inner-theme .videos-page .video-library-card-content :is(p,h2,spa
   text-shadow:none !important;
 }
 html body .zip-inner-theme .videos-page .video-library-card-content > p {
-  color:#155e75 !important;
+  color:#0c5c38 !important;
 }
 
 /* SAP implementation result cards */
@@ -386,44 +385,68 @@ html body .zip-inner-theme .sap-implementation-source-page .implementation-resul
 }
 @media(max-width:1023px){.hero-carousel,.zip-inner-theme .page-heading,.zip-inner-theme .about-hero,.zip-inner-theme .legacy-service-hero,.zip-inner-theme .service-page-heading,.zip-inner-theme .case-studies-hero,.zip-inner-theme .sap-implementation-hero,.zip-inner-theme .services-page-heading{width:100%!important;height:calc(100svh - 72px)!important;min-height:520px!important;margin:0!important}html body .zip-inner-theme .blogs-source-page .blogs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:767px){.zip-inner-theme .container{width:min(100% - 28px,1140px)!important}.zip-inner-theme [class*=col-]{width:100%!important;max-width:100%!important;flex:0 0 100%!important;padding:0!important}}@media(max-width:640px){html body .zip-inner-theme .blogs-source-page .blogs-grid{grid-template-columns:1fr!important}html body .zip-inner-theme :is(.legacy-blog-page,.managed-blog-page) .legacy-article-body{padding:36px 18px!important}}@media(max-width:576px){.zip-inner-theme :is(.careers-page,.contact-page) .contact-form{padding:20px 15px!important}.zip-inner-theme :is(.careers-page,.contact-page) .contact-form .row{row-gap:9px!important}}
 
-/* Unified public-site blue theme. */
-html body{background:#0b1d33}
+/* Unified public-site glowing grey theme. */
+html body{background:#121927}
 html body .zip-inner-theme,
-html body .zip-inner-theme main{color:#183b56!important;background:linear-gradient(180deg,#d6e6f3 0%,#edf5fa 52%,#dcebf6 100%)!important}
-html body .zip-inner-theme section:not(.page-heading):not(.about-hero):not(.legacy-service-hero):not(.service-page-heading):not(.case-studies-hero){border-color:#b8d0e3!important}
-html body .zip-inner-theme :is(.about-intro,.about-values,.about-leadership,.services,.more-info,.contact-information,.blogs-listing-section,.case-study-section,.industry-source-intro,.legacy-service-offerings,.service-offerings,.implementation-results,.legacy-service-results,.products-page .services){color:#183b56!important;background:linear-gradient(180deg,#eaf3f9,#dcebf5)!important}
-html body .zip-inner-theme :is(.about-purpose,.about-gallery,.products-why-section,.hauptbuch-features-section,.support-industries,.legacy-impact-section,.contact-us-section,.callback-form,.services-why-source,.products-page section){color:#183b56!important;background:linear-gradient(145deg,#cddfec,#e3eef6)!important}
-html body .zip-inner-theme :is(.service-item,.service-item1,.about-purpose-card,.about-value-card,.about-leadership-card,.contact-item,.blog-card,.case-study-card,.implementation-card,.legacy-offering-grid article,.legacy-impact-grid article,.legacy-results-grid article,.support-growth,.product-item){color:#183b56!important;border-color:#b5cee2!important;background:#f3f8fc!important;box-shadow:0 12px 30px rgba(20,63,96,.12)!important}
-html body .zip-inner-theme :is(h2,h3,h4){color:#102f4a!important}
-html body .zip-inner-theme p{color:#486b84!important}
-html body .zip-inner-theme :is(.filled-button,button.filled-button,.service-hero-cta){color:#06202a!important;background:#22d3ee!important;border-color:#22d3ee!important}
-html body .zip-inner-theme :is(.contact-form,input,textarea,select,.form-control){color:#16324a!important;border-color:#aac7dc!important;background:#f7fbfe!important}
-html body .zip-inner-theme :is(.videos-page .video-library-card,.sap-implementation-source-page .implementation-results .results-grid article){color:#183b56!important;border-color:#b5cee2!important;background:#f3f8fc!important}
-html body .zip-inner-theme :is(.videos-page .video-library-card-content,.sap-implementation-source-page .implementation-results .results-grid article) :is(p,h2,h4,span){color:#183b56!important}
+html body .zip-inner-theme main{color:#fff!important;background:#121927!important}
+html body .zip-inner-theme section:not(.page-heading):not(.about-hero):not(.legacy-service-hero):not(.service-page-heading):not(.case-studies-hero){border-color:rgba(255,255,255,0.1)!important}
+html body .zip-inner-theme :is(.about-intro,.about-values,.about-leadership,.services,.more-info,.contact-information,.blogs-listing-section,.case-study-section,.industry-source-intro,.legacy-service-offerings,.service-offerings,.implementation-results,.legacy-service-results,.products-page .services){color:#fff!important;background:#1a2336!important}
+html body .zip-inner-theme :is(.about-purpose,.about-gallery,.products-why-section,.hauptbuch-features-section,.support-industries,.legacy-impact-section,.contact-us-section,.callback-form,.services-why-source,.products-page section){color:#fff!important;background:#121927!important}
+html body .zip-inner-theme :is(.service-item,.service-item1,.about-purpose-card,.about-value-card,.about-leadership-card,.contact-item,.blog-card,.case-study-card,.implementation-card,.legacy-offering-grid article,.legacy-impact-grid article,.legacy-results-grid article,.support-growth,.product-item){color:#fff!important;border-color:rgba(255,255,255,0.12)!important;background:rgba(255,255,255,0.04)!important;box-shadow:0 16px 36px rgba(0,0,0,.25)!important;backdrop-filter:blur(16px)!important}
+html body .zip-inner-theme :is(h2,h3,h4){color:#fff!important}
+html body .zip-inner-theme p{color:#cbd5e1!important}
+html body .zip-inner-theme :is(.filled-button,button.filled-button,.service-hero-cta){color:#030713!important;background:#29ab87!important;border-color:#29ab87!important}
+html body .zip-inner-theme :is(.contact-form,input,textarea,select,.form-control){color:#fff!important;border-color:rgba(255,255,255,0.14)!important;background:rgba(255,255,255,0.06)!important}
+html body .zip-inner-theme :is(.videos-page .video-library-card,.sap-implementation-source-page .implementation-results .results-grid article){color:#fff!important;border-color:rgba(255,255,255,0.12)!important;background:rgba(255,255,255,0.04)!important}
+html body .zip-inner-theme :is(.videos-page .video-library-card-content,.sap-implementation-source-page .implementation-results .results-grid article) :is(p,h2,h4,span){color:#cbd5e1!important}
 
-/* Top-level landing pages: darker than detail pages, lighter than the homepage. */
+/* Top-level landing pages: unified glowing grey slate. */
 html body .zip-inner-theme.site-landing-theme,
 html body .zip-inner-theme.site-landing-theme main{
-  color:#eaf6ff!important;
-  background:linear-gradient(180deg,#0b243d 0%,#123b5b 52%,#0d2d49 100%)!important;
+  color:#fff!important;
+  background:#121927!important;
 }
 html body .zip-inner-theme.site-landing-theme :is(.services,.products-page section,.products-why-section,.hauptbuch-features-section){
-  color:#eaf6ff!important;
-  background:linear-gradient(145deg,#123b5b,#194866)!important;
+  color:#fff!important;
+  background:#1a2336!important;
 }
 html body .zip-inner-theme.site-landing-theme :is(.service-item,.service-item1,.product-item,article){
-  color:#eaf6ff!important;
-  border-color:#7dd3fc38!important;
-  background:linear-gradient(145deg,#1b4b6b,#143b59)!important;
-  box-shadow:0 16px 36px rgba(2,15,28,.24)!important;
+  color:#fff!important;
+  border-color:rgba(255,255,255,0.12)!important;
+  background:rgba(255,255,255,0.04)!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.25)!important;
 }
-html body .zip-inner-theme.site-landing-theme :is(h2,h3,h4){color:#f3f9ff!important}
-html body .zip-inner-theme.site-landing-theme p{color:#bfd5e5!important}
+html body .zip-inner-theme.site-landing-theme :is(h2,h3,h4){color:#fff!important}
+html body .zip-inner-theme.site-landing-theme p{color:#cbd5e1!important}
 
 html body .zip-inner-theme.site-subpage-theme section:not(.page-heading):not(.about-hero):not(.legacy-service-hero):not(.service-page-heading):not(.case-studies-hero):not(.sap-implementation-hero):not(.services-page-heading){
-  color:#183b56!important;
-  background:linear-gradient(180deg,#eaf3f9,#d7e7f3)!important;
+  color:#fff!important;
+  background:#1a2336!important;
 }
 html body .zip-inner-theme.site-subpage-theme section:nth-of-type(even):not(.page-heading):not(.about-hero):not(.legacy-service-hero):not(.service-page-heading):not(.case-studies-hero){
-  background:linear-gradient(145deg,#ccdeeb,#e2edf5)!important;
+  background:#121927!important;
 }
+
+/* Shared glowing grey form treatment for modern industry/careers/contact pages. */
+.industry-form-theme .contact-us-section{padding:0;background:transparent;color:#fff}
+.industry-form-theme .contact-us-section>.container{width:100%;max-width:none;padding:0}
+.industry-form-theme .contact-us-section .row{margin:0}
+.industry-form-theme .contact-us-section [class*=col-]{padding:0}
+.industry-form-theme .contact-form{max-width:920px;margin:0 auto;padding:clamp(20px,4vw,40px);border:1px solid rgba(255,255,255,0.12);border-radius:28px;background:rgba(255,255,255,0.04);backdrop-filter:blur(16px);box-shadow:0 24px 60px rgba(0,0,0,.25)}
+.industry-form-theme .contact-form .row{display:flex;flex-wrap:wrap;margin:-5px}
+.industry-form-theme .contact-form .row>[class*=col-]{padding:5px}
+.industry-form-theme .contact-form fieldset{margin:0}
+.industry-form-theme .contact-form .form-control{width:100%;height:48px;margin:0;padding:0 16px;border:1px solid rgba(255,255,255,0.12);border-radius:12px;background:rgba(255,255,255,0.05);color:#fff;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.industry-form-theme .contact-form textarea.form-control{height:110px;min-height:110px;padding:12px 16px;resize:vertical}
+.industry-form-theme .contact-form .form-control:focus{border-color:#29ab87;box-shadow:0 0 0 3px rgba(41,171,135,.2)}
+.industry-form-theme .contact-form .form-control::placeholder{color:#94a3b8;opacity:1}
+.industry-form-theme .contact-form .file-label,.industry-form-theme .contact-form .form-consent,.industry-form-theme .contact-form .form-consent span{color:#cbd5e1}
+.industry-form-theme .contact-form .file-label{display:block;margin:0 0 5px;font-size:13px;font-weight:600}
+.industry-form-theme .contact-form input[type=file].form-control{height:46px;padding:8px 10px}
+.industry-form-theme .contact-form .form-consent label{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.45}
+.industry-form-theme .contact-form .form-consent input{flex:0 0 auto;margin-top:3px}
+.industry-form-theme .contact-form .filled-button{display:inline-flex;min-width:190px;min-height:48px;align-items:center;justify-content:center;padding:0 28px;border:1px solid #117a4b;border-radius:14px;background:linear-gradient(135deg,#29ab87,#117a4b);color:#fff;font-size:14px;font-weight:700;letter-spacing:.01em;box-shadow:0 8px 24px rgba(41,171,135,.3);transition:transform .2s,box-shadow .2s,filter .2s}
+.industry-form-theme .contact-form .filled-button:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 12px 28px rgba(41,171,135,.38)}
+.industry-form-theme .contact-form .filled-button:disabled{cursor:not-allowed;opacity:.65;transform:none}
+@media(min-width:768px){.industry-form-theme .contact-form .col-lg-6{width:50%;max-width:50%;flex:0 0 50%}.industry-form-theme .contact-form .col-lg-12{width:100%;max-width:100%;flex:0 0 100%}}
+@media(max-width:767px){.industry-form-theme .contact-form .col-lg-6,.industry-form-theme .contact-form .col-lg-12{width:100%;max-width:100%;flex:0 0 100%}.industry-form-theme .contact-form .filled-button{width:100%}}

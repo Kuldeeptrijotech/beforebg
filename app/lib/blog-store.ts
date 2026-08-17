@@ -5,6 +5,12 @@ import { legacyBlogPosts, type Blog, type BlogPost } from "@/app/data/blogs";
 type BlogStore = { version: 1; initialized: boolean; updatedAt: string | null; posts: BlogPost[] };
 const storePath = path.join(process.cwd(), "app", "data", "blogs.json");
 
+function normalizeBlogImagePath(imagePath: string) {
+  const legacyImage = imagePath.match(/^\/_next\/static\/media\/(Blog (\d+))\.[^.]+\.(png|jpe?g)$/i);
+  if (!legacyImage) return imagePath;
+  return `/assets/image/${legacyImage[1]}.${legacyImage[3].toLowerCase()}`;
+}
+
 const initialStore = (): BlogStore => ({ version: 1, initialized: false, updatedAt: null, posts: legacyBlogPosts() });
 export const defaultBlogBlockStyle = () => ({
   textAlign: "left" as const,
@@ -46,7 +52,7 @@ export async function readBlogStore(): Promise<BlogStore> {
     const raw = await fs.readFile(storePath, "utf8");
     const parsed = JSON.parse(raw.replace(/^\uFEFF/, "")) as BlogStore;
     if (!parsed.initialized) return initialStore();
-    return { version: 1, initialized: true, updatedAt: parsed.updatedAt || null, posts: Array.isArray(parsed.posts) ? parsed.posts.map((post) => ({ ...post, featuredImageStyle: { ...defaultFeaturedImageStyle(), ...(post.featuredImageStyle || {}) }, contentImages: Array.isArray(post.contentImages) ? post.contentImages : [], contentBlocks: Array.isArray(post.contentBlocks) ? post.contentBlocks.map((block) => ({ ...block, linkUrl: block.linkUrl || "", style: { ...defaultBlogBlockStyle(), ...(block.style || {}) } })) : [] })) : [] };
+    return { version: 1, initialized: true, updatedAt: parsed.updatedAt || null, posts: Array.isArray(parsed.posts) ? parsed.posts.map((post) => ({ ...post, featuredImage: normalizeBlogImagePath(post.featuredImage || ""), featuredImageStyle: { ...defaultFeaturedImageStyle(), ...(post.featuredImageStyle || {}) }, contentImages: Array.isArray(post.contentImages) ? post.contentImages : [], contentBlocks: Array.isArray(post.contentBlocks) ? post.contentBlocks.map((block) => ({ ...block, linkUrl: block.linkUrl || "", style: { ...defaultBlogBlockStyle(), ...(block.style || {}) } })) : [] })) : [] };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
     return initialStore();

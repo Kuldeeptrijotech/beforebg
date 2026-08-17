@@ -101,12 +101,34 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
     if (!previewMode) return () => document.removeEventListener("click", followAdminButtonLink, true);
     document.documentElement.classList.add("admin-preview-mode");
 
+    let hoveredElement: HTMLElement | null = null;
+    let selectedElement: HTMLElement | null = null;
+
+    const showHover = (event: MouseEvent) => {
+      const origin = event.target;
+      if (!(origin instanceof Element)) return;
+      const element = editableTarget(origin);
+      if (hoveredElement === element) return;
+      hoveredElement?.classList.remove("admin-edit-hover");
+      hoveredElement = element;
+      if (element !== selectedElement) element.classList.add("admin-edit-hover");
+    };
+
+    const clearHover = () => {
+      hoveredElement?.classList.remove("admin-edit-hover");
+      hoveredElement = null;
+    };
+
     const select = (event: MouseEvent) => {
       const origin = event.target;
       if (!(origin instanceof Element)) return;
       event.preventDefault();
       event.stopPropagation();
       const element = editableTarget(origin);
+      selectedElement?.classList.remove("admin-edit-selected");
+      element.classList.remove("admin-edit-hover");
+      element.classList.add("admin-edit-selected");
+      selectedElement = element;
       const section = element.closest("header,footer,section,main") as HTMLElement | null;
       const backgroundElement = (element.closest("section")?.querySelector<HTMLElement>("[style*='background-image']") || null);
       const global = Boolean(element.closest("header,footer"));
@@ -137,10 +159,16 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
       if (event.origin !== window.location.origin || event.data?.type !== "admin-content-preview") return;
       (event.data.entries as ContentEntry[]).forEach(applyEntry);
     };
+    document.addEventListener("mouseover", showHover, true);
+    document.addEventListener("mouseleave", clearHover, true);
     document.addEventListener("click", select, true);
     window.addEventListener("message", preview);
     return () => {
       document.documentElement.classList.remove("admin-preview-mode");
+      hoveredElement?.classList.remove("admin-edit-hover");
+      selectedElement?.classList.remove("admin-edit-selected");
+      document.removeEventListener("mouseover", showHover, true);
+      document.removeEventListener("mouseleave", clearHover, true);
       document.removeEventListener("click", followAdminButtonLink, true);
       document.removeEventListener("click", select, true);
       window.removeEventListener("message", preview);

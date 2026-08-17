@@ -1,111 +1,180 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
+import GradientButton from "@/components/ui/GradientButton";
+import HexScene from "@/components/three/HexScene";
 import { heroSlides } from "@/lib/hero-data";
 
 const AUTO_PLAY_MS = 6500;
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const contentVariants: Variants = {
+  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.65, ease: EASE_OUT_EXPO },
+  },
+  exit: {
+    opacity: 0,
+    y: -16,
+    filter: "blur(4px)",
+    transition: { duration: 0.3, ease: "easeIn" },
+  },
+};
+
+const childVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.1, ease: EASE_OUT_EXPO },
+  }),
+};
+
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const reduce = useReducedMotion();
   const activeSlide = heroSlides[activeIndex];
 
   useEffect(() => {
+    if (reduce) return;
     const timer = window.setTimeout(() => {
-      setActiveIndex((current) => (current + 1) % heroSlides.length)
-    }, AUTO_PLAY_MS)
-
-    return () => window.clearTimeout(timer)
-  }, [activeIndex]);
+      setActiveIndex((current) => (current + 1) % heroSlides.length);
+    }, AUTO_PLAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, reduce]);
 
   return (
-    <section className="relative min-h-[calc(100vh-4.5rem)] overflow-hidden bg-[#030713] text-white">
+    <section className="hero-fullvh relative isolate overflow-hidden bg-[#030713] text-white">
+      {/* layered ambient backgrounds */}
+      <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
+      <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-60" />
+
+      {/* Slide background image */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeSlide.id}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 1.02 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="absolute inset-0"
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-0 -z-20"
         >
-          {activeSlide.visual.type === "gif" || activeSlide.visual.type === "image" ? (
-            <Image
-              src={activeSlide.visual.src}
-              alt={activeSlide.visual.alt}
-              fill
-              priority={activeIndex === 0} // Prioritize loading the first slide's visual
-              sizes="100vw"
-              className="scale-200 object-cover object-center sm:scale-175 md:scale-150 lg:scale-100"
-            />
-          ) : null}
-
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,7,19,0.92),rgba(3,7,19,0.68),rgba(3,7,19,0.3))]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.18),transparent_34%)]" />
+          <Image
+            src={activeSlide.visual.src}
+            alt={activeSlide.visual.alt}
+            fill
+            priority={activeIndex === 0}
+            sizes="100vw"
+            className="object-cover object-center opacity-85"
+          />
+          {/* rich cinematic gradient overlay */}
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,7,19,0.88)_0%,rgba(3,7,19,0.52)_50%,rgba(3,7,19,0.18)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.2)_0%,transparent_35%,rgba(3,7,19,0.35)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.12),transparent_70%)]" />
         </motion.div>
       </AnimatePresence>
 
-      <Container className="relative z-10 flex min-h-[calc(100vh-4.5rem)] items-center py-20 lg:py-28">
-        <div className="max-w-3xl">
+      {/* Ambient glow orbs */}
+      <div aria-hidden className="tri-blob -z-10 h-96 w-96 animate-float-slow" style={{ left: "-6%", top: "18%", background: "radial-gradient(circle, rgba(41,171,135,0.22), transparent 68%)" }} />
+      <div aria-hidden className="tri-blob -z-10 h-80 w-80 animate-float-reverse" style={{ right: "-8%", bottom: "8%", background: "radial-gradient(circle, rgba(245,166,35,0.18), transparent 70%)" }} />
+      <div aria-hidden className="tri-blob -z-10 h-64 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(17,122,75,0.14), transparent 65%)", animationDelay: "-3s" }} />
+
+      <Container className="relative z-10 grid min-h-[100svh] items-center gap-10 py-14 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:py-20">
+        <div className="mx-auto w-full max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSlide.id}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
+              variants={contentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="flex flex-col"
             >
-              <p className="mb-4 text-sm font-semibold uppercase tracking-wide text-cyan-200">
+              {/* Eyebrow badge */}
+              <motion.span
+                custom={0}
+                variants={childVariants}
+                className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7edcc2] backdrop-blur-xl"
+              >
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tri-2 opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-tri-2" />
+                </span>
                 {activeSlide.eyebrow}
-              </p>
-              <h1 className="text-4xl font-bold leading-light tracking-light md:text-6xl">
+              </motion.span>
+
+              {/* Headline */}
+              <motion.h1
+                custom={1}
+                variants={childVariants}
+                className="max-w-[18ch] text-2xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[3.4rem] lg:leading-[1.06]"
+              >
                 {activeSlide.title}
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p
+                custom={2}
+                variants={childVariants}
+                className="mt-5 max-w-xl text-sm font-medium leading-[1.7] text-slate-300/90 sm:text-base"
+              >
                 {activeSlide.description}
-              </p>
+              </motion.p>
 
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-                <Link
-                  href={activeSlide.primaryCta.href}
-                  className="home-hero-primary rounded-full bg-white px-6 py-3 text-center text-sm font-semibold text-[#050817] transition hover:bg-cyan-100"
-                >
-                  {activeSlide.primaryCta.label}
-                </Link>
-
-                <Link
-                  href={activeSlide.secondaryCta.href}
-                  className="home-hero-secondary rounded-full border border-white/20 bg-white/6 px-6 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10"
-                >
+              {/* CTAs */}
+              <motion.div custom={3} variants={childVariants} className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <GradientButton href={activeSlide.primaryCta.href} size="md">
+                  {activeSlide.primaryCta.label} <ArrowRight className="h-4 w-4" />
+                </GradientButton>
+                <GradientButton href={activeSlide.secondaryCta.href} variant="ghost" size="md">
                   {activeSlide.secondaryCta.label}
-                </Link>
-              </div>
+                </GradientButton>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-12 flex items-center gap-3">
+          {/* Slide indicators */}
+          <div className="mt-8 flex items-center gap-3">
             {heroSlides.map((slide, index) => {
               const isActive = index === activeIndex;
-
               return (
                 <button
                   key={slide.id}
                   type="button"
-                  aria-label={`Show  ${slide.eyebrow}`}
+                  aria-label={`Show ${slide.eyebrow}`}
                   onClick={() => setActiveIndex(index)}
-                  className="group flex h-3 items-center"
+                  className="group flex h-5 items-center"
                 >
-                  <span className={`block h-1.5 rounded-full transition-all ${isActive ?
-                    "w-10 bg-cyan-200" : "w-4 bg-white/30 group-hover:bg-white/60"
-                    }`} />
+                  <span
+                    className={`block rounded-full transition-all duration-500 ${
+                      isActive
+                        ? "h-1.5 w-10 bg-[linear-gradient(90deg,#29ab87,#f5a623)] shadow-[0_0_8px_rgba(41,171,135,0.6)]"
+                        : "h-1 w-4 bg-white/20 group-hover:bg-white/45"
+                    }`}
+                  />
                 </button>
-              )
+              );
             })}
           </div>
         </div>
+
+        {/* 3D hexagon scene */}
+        <motion.div
+          className="mx-auto w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[520px]"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.0, delay: 0.3, ease: EASE_OUT_EXPO }}
+        >
+          <HexScene className="aspect-square w-full" />
+        </motion.div>
       </Container>
     </section>
   );

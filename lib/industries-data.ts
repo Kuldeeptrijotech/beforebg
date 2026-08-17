@@ -200,6 +200,16 @@ export const industries: Industry[] = [
   },
 ];
 
+const SLUG_ALIASES: Record<string, string> = {
+  pharma: "pharmaceuticals-life-sciences",
+  telecommunication: "telecommunications",
+  steel: "steel-manufacturing",
+  retail: "retail-supply-chain",
+  "supply-chain": "retail-supply-chain",
+};
+
 export function getIndustry(slug: string) {
-  return industries.find((industry) => industry.slug === slug);
+  const canonical = SLUG_ALIASES[slug] || slug;
+  return industries.find((industry) => industry.slug === canonical);
 }
+

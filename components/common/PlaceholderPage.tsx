@@ -20,30 +20,30 @@ export default function PlaceholderPage({
   ],
 }: PlaceholderPageProps) {
   return (
-    <main className="zip-theme min-h-[calc(100vh-4.5rem)] bg-[#030713] font-sans text-white antialiased">
+    <main className="zip-theme min-h-[calc(100svh-4.5rem)] bg-[#121927] font-sans text-white antialiased">
       <section className="relative overflow-hidden border-b border-white/10 py-24 md:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.16),transparent_34%)]" />
         <Container className="relative">
-          <p className="text-sm font-semibold uppercase tracking-wide text-cyan-200">{eyebrow}</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight md:text-6xl">{title}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/65">{description}</p>
+          <p className="tri-overline">{eyebrow}</p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-white md:text-6xl">{title}</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{description}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact" className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-[#050817] transition hover:bg-cyan-100">
+            <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">
               Talk to our team <ArrowRight className="size-4" />
             </Link>
-            <Link href="/" className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 text-sm font-semibold transition hover:bg-white/10">
+            <Link href="/" className="tri-btn tri-btn-ghost px-6 py-3 text-sm font-semibold">
               <ArrowLeft className="size-4" /> Back home
             </Link>
           </div>
         </Container>
       </section>
-      <section className="bg-white py-20 text-slate-950">
+      <section className="bg-[#162032] py-20 text-white border-b border-white/5">
         <Container>
           <div className="grid gap-5 md:grid-cols-3">
             {highlights.map((highlight) => (
-              <div key={highlight} className="rounded-lg border border-slate-200 bg-slate-50 p-6">
-                <CheckCircle2 className="size-5 text-cyan-700" />
-                <p className="mt-4 font-semibold">{highlight}</p>
+              <div key={highlight} className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-xl backdrop-blur-xl">
+                <CheckCircle2 className="size-5 text-[#29ab87]" />
+                <p className="mt-4 font-semibold text-slate-200">{highlight}</p>
               </div>
             ))}
           </div>

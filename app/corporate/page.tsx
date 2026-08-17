@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, ChevronRight, Mail, Sparkles, Users } from "lucide-react";
-
-export const metadata: Metadata = { title: "Corporate | Trijotech", description: "Learn about Trijotech, our culture, careers, and how to contact our team." };
+import { ArrowRight, Building2, Mail, Sparkles, Users } from "lucide-react";
+import { motion } from "framer-motion";
+import Container from "@/components/ui/Container";
+import SectionHeading from "@/components/ui/SectionHeading";
+import GradientButton from "@/components/ui/GradientButton";
+import HexBadge from "@/components/ui/HexBadge";
+import { StaggerReveal, StaggerRevealItem, Reveal } from "@/components/motion/Reveal";
 
 const cards = [
   {
@@ -14,6 +19,7 @@ const cards = [
     description: "Learn about our company, SAP and data expertise, practical delivery approach, mission, values, and leadership.",
     cta: "Learn More",
     icon: Building2,
+    tone: "green" as const,
   },
   {
     title: "Careers",
@@ -23,6 +29,7 @@ const cards = [
     description: "Explore opportunities to build your career in SAP consulting and enterprise technology with a collaborative team.",
     cta: "Explore Careers",
     icon: Users,
+    tone: "mix" as const,
   },
   {
     title: "Contact Us",
@@ -32,102 +39,225 @@ const cards = [
     description: "Connect with Trijotech about services, partnerships, support, careers, or your next transformation priority.",
     cta: "Contact Us",
     icon: Mail,
+    tone: "amber" as const,
   },
 ];
 
 export default function CorporatePage() {
   return (
-    <main className="overflow-hidden bg-[#e8f2fb] text-slate-900">
-      <section className="relative isolate min-h-[680px] overflow-hidden bg-cyan-950 pt-24 sm:min-h-[720px]">
+    <main className="overflow-hidden bg-[#030713] text-white font-sans">
+      {/* ── Hero (Untouched) ─────────────────── */}
+      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#030713] pt-20">
+        {/* layered ambient backgrounds */}
+        <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
+        <div aria-hidden className="absolute inset-0 -z-10 tri-hex-grid opacity-60" />
         <Image
           src="/assets/about/trijotech-team-collaboration-blue.png"
-          alt="Trijotech team collaborating"
+          alt=""
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-center"
+          className="absolute inset-0 -z-10 object-cover object-center opacity-25"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/95 via-cyan-950/75 to-cyan-900/20" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/70 via-transparent to-slate-950/20" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(3,7,19,0.92)_0%,rgba(3,7,19,0.65)_40%,rgba(3,7,19,0.2)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-36 bg-gradient-to-t from-[#030713] to-transparent" />
 
-        <div className="mx-auto flex min-h-[580px] max-w-7xl items-center px-5 py-16 sm:px-8 lg:px-12">
+        {/* Ambient glow orbs */}
+        <div className="tri-blob -z-10 h-80 w-80" style={{ right: "15%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
+        <div className="tri-blob -z-10 h-64 w-64" style={{ left: "5%", bottom: "15%", background: "radial-gradient(circle, rgba(245,166,35,0.12), transparent 70%)" }} />
+
+        <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-16 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
-            <nav className="mb-10 flex flex-wrap items-center gap-2 text-sm text-cyan-50/80" aria-label="Breadcrumb">
-              <Link href="/" className="transition hover:text-white">Home</Link>
-              <ChevronRight className="h-4 w-4" aria-hidden="true" />
-              <span className="font-medium text-white">Corporate</span>
-            </nav>
-
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md">
-              <Sparkles className="h-4 w-4 text-cyan-200" aria-hidden="true" />
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
+            >
+              <Sparkles className="h-4 w-4 text-cyan-200" />
               Corporate
-            </div>
-            <h1 className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-7xl">
-              Get to know Trijotech
-            </h1>
-            <p className="mt-6 max-w-2xl text-xl font-medium leading-8 text-cyan-50 sm:text-2xl">
-              Learn more about our company, our people, our culture, our opportunities, and how to connect with us.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-4">
-              <a href="#explore" className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg shadow-cyan-950/20 transition hover:-translate-y-0.5 hover:bg-cyan-300">
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              className="text-4xl font-extrabold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl"
+            >
+              Building lasting value through{" "}
+              <span className="tri-gradient-text">
+                SAP expertise & trust
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              className="mt-6 max-w-2xl text-lg font-medium leading-[1.75] text-slate-200 sm:text-xl"
+            >
+              Learn about our company, career opportunities, and how to connect with the Trijotech team across locations and capabilities.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mt-10 flex flex-wrap gap-4"
+            >
+              <a
+                href="#explore"
+                className="tri-btn tri-btn-primary px-7 py-3.5 text-sm font-semibold"
+              >
                 Explore Corporate <ArrowRight className="h-4 w-4" />
               </a>
-              <Link href="/contact" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-md transition hover:bg-white/20">
-                Contact Us
+              <Link
+                href="/about-us"
+                className="tri-btn tri-btn-ghost px-7 py-3.5 text-sm font-semibold"
+              >
+                About Trijotech
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
+
+        {/* Clean bottom separator */}
+        <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      <section id="explore" className="relative bg-gradient-to-b from-[#d5eafa] to-[#e8f2fb] py-20 sm:py-24">
-        <div className="absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-100/70 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-700">Company, people and connections</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">Explore the corporate information and resources</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-600">Discover the people, culture, and opportunities that make Trijotech a trusted SAP partner.</p>
-          </div>
+      {/* ── Cards ─────────────────────────────── */}
+      <section id="explore" className="relative overflow-hidden bg-[#162032] py-24 sm:py-32 border-b border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh" />
+        <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(41,171,135,0.18)] blur-[100px] tri-pulse" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(245,166,35,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
 
-          <div className="mt-12 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+        <Container className="relative">
+          <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+            <StaggerRevealItem className="max-w-3xl">
+              <SectionHeading
+                eyebrow="Company, people and connections"
+                dark
+                title={
+                  <>
+                    Explore the corporate{" "}
+                    <span className="tri-gradient-text">information and resources</span>
+                  </>
+                }
+                description="Discover the people, culture, and opportunities that make Trijotech a trusted SAP partner."
+              />
+            </StaggerRevealItem>
+            <StaggerRevealItem>
+              <GradientButton href="/about-us" variant="outline" size="md">
+                About Trijotech <ArrowRight className="h-4 w-4" />
+              </GradientButton>
+            </StaggerRevealItem>
+          </StaggerReveal>
+
+          <StaggerReveal className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.12}>
             {cards.map((card) => {
               const Icon = card.icon;
               return (
-                <article key={card.href} className="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-blue-200 bg-[#f5faff] shadow-sm transition duration-300 hover:-translate-y-1 hover:border-cyan-300 hover:shadow-xl hover:shadow-cyan-950/10">
-                  <Link href={card.href} className="relative block aspect-[16/10] overflow-hidden bg-slate-100">
-                    <Image src={card.image} alt={card.imageAlt} fill sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw" className="object-cover transition duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-950/40 to-transparent" />
-                    <span className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 text-cyan-700 shadow-lg backdrop-blur">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                  </Link>
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
-                    <h3 className="text-xl font-bold leading-snug text-slate-900 sm:text-2xl">{card.title}</h3>
-                    <p className="mt-4 leading-7 text-slate-600">{card.description}</p>
-                    <Link href={card.href} className="mt-7 inline-flex items-center gap-2 font-semibold text-cyan-700 transition group-hover:gap-3 group-hover:text-cyan-600">
-                      {card.cta} <ArrowRight className="h-4 w-4" />
+                <StaggerRevealItem key={card.href} className="h-full">
+                  <motion.article
+                    whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                    className="group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                  >
+                    <Link href={card.href} className="relative block aspect-[16/10] overflow-hidden bg-slate-900">
+                      <Image
+                        src={card.image}
+                        alt={card.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                        className="object-cover transition duration-700 group-hover:scale-108"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
+                      <motion.span
+                        whileHover={{ scale: 1.12, rotate: 5 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-4 top-4"
+                      >
+                        <HexBadge icon={Icon} tone={card.tone} size="md" />
+                      </motion.span>
                     </Link>
-                  </div>
-                </article>
+
+                    <div className="flex flex-1 flex-col p-6 sm:p-7">
+                      <h3 className="text-xl font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2] sm:text-2xl">
+                        {card.title}
+                      </h3>
+                      <p className="mt-4 flex-1 leading-7 text-slate-300">{card.description}</p>
+                      <Link
+                        href={card.href}
+                        className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#7edcc2] transition-all duration-300 group-hover:gap-3 group-hover:text-[#f5a623]"
+                      >
+                        {card.cta} <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                      </Link>
+                    </div>
+                  </motion.article>
+                </StaggerRevealItem>
               );
             })}
-          </div>
-        </div>
+          </StaggerReveal>
+        </Container>
       </section>
 
-      <section className="bg-[#ccdfef] px-5 py-20 sm:px-8 sm:py-24 lg:px-12">
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-gradient-to-br from-cyan-700 to-cyan-950 px-6 py-14 text-center shadow-2xl shadow-cyan-950/15 sm:px-12 sm:py-20">
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5" />
-          <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-300/10 blur-2xl" />
-          <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-cyan-200">Let's work together</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">Ready to build something great together?</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-cyan-50/80">Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.</p>
-            <Link href="/contact" className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-cyan-950 shadow-lg transition hover:-translate-y-0.5 hover:bg-cyan-50">
-              Start a conversation <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
+      {/* ── CTA Banner ────────────────────────── */}
+      <section className="relative overflow-hidden bg-[#121927] py-12 sm:py-14">
+        <Container className="relative">
+          <Reveal>
+            <div className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10">
+              <div className="absolute inset-0 tri-hex-grid opacity-50" />
+              <div className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
+              <div className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
+              <div className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(245,166,35,0.22), transparent 68%)" }} />
+
+              <div className="relative mx-auto max-w-3xl">
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.22em] text-[#f5a623]"
+                >
+                  <Sparkles className="h-4 w-4" />
+                  Let&apos;s work together
+                </motion.p>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                  className="mt-3 text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl"
+                >
+                  Ready to build something great together?
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.55, delay: 0.28 }}
+                  className="mx-auto mt-4 max-w-2xl text-sm leading-[1.7] text-slate-300 sm:text-base"
+                >
+                  Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.
+                </motion.p>
+
+                <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+                    <GradientButton href="/contact" size="lg" className="w-full sm:w-fit">
+                      Start a conversation <ArrowRight className="h-5 w-5" />
+                    </GradientButton>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
+                    <GradientButton href="/about-us" variant="ghost" size="lg" className="w-full sm:w-fit">
+                      About Trijotech
+                    </GradientButton>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
       </section>
     </main>
   );

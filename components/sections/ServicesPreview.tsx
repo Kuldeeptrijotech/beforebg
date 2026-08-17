@@ -1,68 +1,76 @@
+"use client";
+
 import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
+import SectionHeading from "@/components/ui/SectionHeading";
+import GradientButton from "@/components/ui/GradientButton";
+import TiltCard from "@/components/ui/TiltCard";
+import HexBadge from "@/components/ui/HexBadge";
+import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { services } from "@/lib/site-data";
-import Image from "next/image";
-import Link from "next/link";
+import { ArrowRight, Blocks, Compass, DatabaseZap, HeartHandshake } from "lucide-react";
+
+const serviceIcons = [Compass, HeartHandshake, Blocks, DatabaseZap];
 
 export default function ServicesPreview() {
   const featuredServices = services.filter((service) => service.showOnHome);
 
   return (
-    <section className="bg-white py-20">
-      <Container>
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-cyan-600">
-              Services
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
-              Practical SAP and digital services for enterprise growth.
-            </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">
-              Choose focused delivery teams for implementation, support,
-              integration, application development, and data-led decisions.
-            </p>
-          </div>
+    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
+      {/* Decorative ambient glowing layers with Hexagon grid */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(41,171,135,0.18)] blur-[100px] tri-pulse" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(245,166,35,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.45)] to-transparent" />
 
-          <Button href="/services" tone="light">
-            View all services
-          </Button>
-        </div>
+      <Container className="relative">
+        <StaggerReveal className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <StaggerRevealItem className="max-w-2xl">
+            <SectionHeading
+              eyebrow="Services"
+              dark
+              title={
+                <>
+                  Practical SAP and digital services for{" "}
+                  <span className="tri-gradient-text">enterprise growth.</span>
+                </>
+              }
+              description="Choose focused delivery teams for implementation, support, integration, application development, and data-led decisions."
+            />
+          </StaggerRevealItem>
+          <StaggerRevealItem>
+            <GradientButton href="/services" variant="outline" size="md">
+              View all services <ArrowRight className="h-4 w-4" />
+            </GradientButton>
+          </StaggerRevealItem>
+        </StaggerReveal>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredServices.map((service) => (
-            <Link
-              key={service.href}
-              href={service.href}
-              className="group flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-cyan-300/70 hover:shadow-xl hover:shadow-cyan-950/10"
-            >
-              <div className="relative aspect-4/3 overflow-hidden bg-slate-950">
-                <Image
-                  src={service.image}
-                  alt={service.imageAlt}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className={service.title === "SAP Support & AMS"
-                    ? "scale-[1.3] object-cover opacity-100 transition duration-500 group-hover:scale-[1.34]"
-                    : "object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100"}
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950/65 via-transparent to-transparent" />
-              </div>
-
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="text-lg font-semibold leading-6 text-slate-950">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">
-                  {service.description}
-                </p>
-                <span className="mt-auto inline-flex pt-5 text-sm font-semibold text-cyan-700 transition group-hover:text-cyan-900">
-                  Learn more
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
+        <StaggerReveal className="mt-7 sm:mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch" stagger={0.07}>
+          {featuredServices.map((service, i) => {
+            const Icon = serviceIcons[i % serviceIcons.length];
+            return (
+              <StaggerRevealItem key={service.href} className="h-full">
+                <TiltCard className="h-full">
+                  <a
+                    href={service.href}
+                    className="tri-glass-card group flex h-full flex-col rounded-2xl p-5 sm:p-6 border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.06] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                  >
+                    <HexBadge icon={Icon} tone={i % 2 === 0 ? "green" : "mix"} size="md" />
+                    <h3 className="mt-4 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">
+                      {service.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{service.description}</p>
+                    <div className="mt-auto pt-5">
+                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#29ab87] transition-all duration-300 group-hover:gap-2.5 group-hover:text-[#7edcc2]">
+                        Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                      </span>
+                    </div>
+                  </a>
+                </TiltCard>
+              </StaggerRevealItem>
+            );
+          })}
+        </StaggerReveal>
       </Container>
     </section>
   );
