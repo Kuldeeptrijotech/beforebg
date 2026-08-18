@@ -86,19 +86,29 @@ export default function HexScene({ className = "" }: { className?: string }) {
                 {/* Ambient logo core glow */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-60 blur-xl"
+                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-70 blur-xl animate-pulse-glow"
                   style={{
-                    background: "radial-gradient(circle at 40% 40%, rgba(41,171,135,0.4), rgba(245,166,35,0.3) 70%, transparent)",
+                    background: "radial-gradient(circle at 50% 50%, rgba(41,171,135,0.45), rgba(245,166,35,0.35) 70%, transparent)",
                   }}
                 />
 
-                {/* 3-Hexagon Vector Logo with brand gradients and glossy strokes */}
-                <svg
-                  viewBox="0 0 220 220"
-                  className="relative z-10 h-full w-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                {/* 3-Hexagon Vector Logo - Continuous Smooth 360° Revolving Animation */}
+                <motion.div
+                  className="relative z-10 flex h-full w-full items-center justify-center"
+                  animate={reduce ? undefined : { rotate: 360 }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 20,
+                    ease: "linear",
+                  }}
+                  style={{ transformOrigin: "50% 50%" }}
                 >
+                  <svg
+                    viewBox="0 0 220 220"
+                    className="h-full w-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                   <defs>
                     {/* Top-Left Deep Green Gradient */}
                     <linearGradient id="tri-hex-top-green" x1="0" y1="0" x2="123" y2="106" gradientUnits="userSpaceOnUse">
@@ -180,7 +190,8 @@ export default function HexScene({ className = "" }: { className?: string }) {
                       strokeLinecap="round"
                     />
                   </g>
-                </svg>
+                  </svg>
+                </motion.div>
 
                 {/* Subtle outer corner accents */}
                 <span className="absolute left-2 top-2 h-1.5 w-1.5 rounded-full bg-[#29ab87]/70" />
