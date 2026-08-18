@@ -73,22 +73,22 @@ export default function HexScene({ className = "" }: { className?: string }) {
             {/* Outer revolving boundary hexagon */}
             <Hexagon size={320} animated strokeWidth={2} fill="rgba(41,171,135,0.04)" />
 
-            {/* Glowing glass badge containing the Three Hexagon Logo */}
+            {/* Borderless & background-free revolving Three-Hexagon Logo with shiny crystal glow */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div
-                className="relative flex items-center justify-center rounded-3xl border border-white/20 bg-[linear-gradient(145deg,rgba(18,29,48,0.75),rgba(5,12,24,0.85))] p-5 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-2xl"
+                className="relative flex items-center justify-center"
                 style={{
-                  width: 170,
-                  height: 170,
-                  transform: "translateZ(25px)",
+                  width: 190,
+                  height: 190,
+                  transform: "translateZ(30px)",
                 }}
               >
-                {/* Ambient logo core glow */}
+                {/* Radiant shiny center aura */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 rounded-3xl opacity-70 blur-xl animate-pulse-glow"
+                  className="pointer-events-none absolute inset-0 -m-6 rounded-full opacity-80 blur-2xl animate-pulse-glow"
                   style={{
-                    background: "radial-gradient(circle at 50% 50%, rgba(41,171,135,0.45), rgba(245,166,35,0.35) 70%, transparent)",
+                    background: "radial-gradient(circle at 50% 50%, rgba(41,171,135,0.6), rgba(245,166,35,0.45) 50%, transparent 75%)",
                   }}
                 />
 
@@ -98,104 +98,126 @@ export default function HexScene({ className = "" }: { className?: string }) {
                   animate={reduce ? undefined : { rotate: 360 }}
                   transition={{
                     repeat: Infinity,
-                    duration: 20,
+                    duration: 18,
                     ease: "linear",
                   }}
                   style={{ transformOrigin: "50% 50%" }}
                 >
                   <svg
                     viewBox="0 0 220 220"
-                    className="h-full w-full drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]"
+                    className="h-full w-full filter drop-shadow-[0_0_20px_rgba(41,171,135,0.85)] drop-shadow-[0_0_35px_rgba(245,166,35,0.6)]"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                   <defs>
-                    {/* Top-Left Deep Green Gradient */}
+                    {/* Top-Left Deep Green Shiny Gloss Gradient */}
                     <linearGradient id="tri-hex-top-green" x1="0" y1="0" x2="123" y2="106" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stopColor="#22ab6e" />
-                      <stop offset="60%" stopColor="#117a4b" />
-                      <stop offset="100%" stopColor="#0a4f30" />
+                      <stop offset="0%" stopColor="#48e39f" />
+                      <stop offset="35%" stopColor="#1ebd76" />
+                      <stop offset="70%" stopColor="#117a4b" />
+                      <stop offset="100%" stopColor="#084d2f" />
                     </linearGradient>
 
-                    {/* Bottom-Left Mint Green Gradient */}
+                    {/* Bottom-Left Mint Green Shiny Gloss Gradient */}
                     <linearGradient id="tri-hex-bot-mint" x1="0" y1="111" x2="123" y2="218" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stopColor="#5ae0bd" />
-                      <stop offset="55%" stopColor="#29ab87" />
-                      <stop offset="100%" stopColor="#177359" />
+                      <stop offset="0%" stopColor="#86f3d4" />
+                      <stop offset="35%" stopColor="#3cd2a8" />
+                      <stop offset="70%" stopColor="#29ab87" />
+                      <stop offset="100%" stopColor="#136750" />
                     </linearGradient>
 
-                    {/* Right Amber / Gold Gradient */}
+                    {/* Right Amber / Gold Shiny Gloss Gradient */}
                     <linearGradient id="tri-hex-right-amber" x1="96" y1="56" x2="219" y2="162" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stopColor="#ffd066" />
-                      <stop offset="50%" stopColor="#f5a623" />
-                      <stop offset="100%" stopColor="#d4800b" />
+                      <stop offset="0%" stopColor="#ffe68a" />
+                      <stop offset="35%" stopColor="#ffb833" />
+                      <stop offset="70%" stopColor="#f5a623" />
+                      <stop offset="100%" stopColor="#b86b04" />
                     </linearGradient>
 
-                    {/* Hexagon glow filters */}
-                    <filter id="hex-glow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#29ab87" floodOpacity="0.4" />
-                    </filter>
+                    {/* Top Glass Specular Shine Linear Gradient */}
+                    <linearGradient id="hex-glass-shine" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                      <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+                      <stop offset="30%" stopColor="#ffffff" stopOpacity="0.3" />
+                      <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+                    </linearGradient>
                   </defs>
 
-                  {/* 1. Top-Left Hexagon (Deep Green) */}
+                  {/* 1. Top-Left Hexagon (Shiny Deep Green) */}
                   <g className="transition-transform duration-500 hover:scale-105" style={{ transformOrigin: "61px 53px" }}>
                     <path
                       d="M122.88 53.248L92.16 0H30.72L0 53.248L30.72 106.496H92.16L122.88 53.248Z"
                       fill="url(#tri-hex-top-green)"
-                      stroke="rgba(255,255,255,0.35)"
-                      strokeWidth="1.5"
+                      stroke="rgba(255,255,255,0.7)"
+                      strokeWidth="1.8"
                     />
-                    {/* Inner highlight line */}
+                    {/* Glass Glossy Top Half Shine */}
+                    <path
+                      d="M122.88 53.248L92.16 0H30.72L0 53.248Q61.44 70 122.88 53.248Z"
+                      fill="url(#hex-glass-shine)"
+                      opacity="0.55"
+                    />
+                    {/* Specular White Rim Highlight */}
                     <path
                       d="M92.16 0H30.72L0 53.248"
                       fill="none"
-                      stroke="rgba(255,255,255,0.65)"
-                      strokeWidth="2"
+                      stroke="#ffffff"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
+                      opacity="0.95"
                     />
                   </g>
 
-                  {/* 2. Bottom-Left Hexagon (Mint Green) */}
+                  {/* 2. Bottom-Left Hexagon (Shiny Mint Green) */}
                   <g className="transition-transform duration-500 hover:scale-105" style={{ transformOrigin: "61px 164px" }}>
                     <path
                       d="M122.88 164.608L92.16 111.36H30.72L0 164.608L30.72 217.856H92.16L122.88 164.608Z"
                       fill="url(#tri-hex-bot-mint)"
-                      stroke="rgba(255,255,255,0.35)"
-                      strokeWidth="1.5"
+                      stroke="rgba(255,255,255,0.75)"
+                      strokeWidth="1.8"
                     />
-                    {/* Inner highlight line */}
+                    {/* Glass Glossy Top Half Shine */}
+                    <path
+                      d="M122.88 164.608L92.16 111.36H30.72L0 164.608Q61.44 180 122.88 164.608Z"
+                      fill="url(#hex-glass-shine)"
+                      opacity="0.55"
+                    />
+                    {/* Specular White Rim Highlight */}
                     <path
                       d="M92.16 111.36H30.72L0 164.608"
                       fill="none"
-                      stroke="rgba(255,255,255,0.75)"
-                      strokeWidth="2"
+                      stroke="#ffffff"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
+                      opacity="0.95"
                     />
                   </g>
 
-                  {/* 3. Right Hexagon (Amber / Gold) */}
+                  {/* 3. Right Hexagon (Shiny Amber / Gold) */}
                   <g className="transition-transform duration-500 hover:scale-105" style={{ transformOrigin: "157px 108px" }}>
                     <path
                       d="M218.84 108.848L188.12 55.6H126.68L95.96 108.848L126.68 162.096H188.12L218.84 108.848Z"
                       fill="url(#tri-hex-right-amber)"
-                      stroke="rgba(255,255,255,0.35)"
-                      strokeWidth="1.5"
+                      stroke="rgba(255,255,255,0.8)"
+                      strokeWidth="1.8"
                     />
-                    {/* Inner highlight line */}
+                    {/* Glass Glossy Top Half Shine */}
+                    <path
+                      d="M218.84 108.848L188.12 55.6H126.68L95.96 108.848Q157.4 125 218.84 108.848Z"
+                      fill="url(#hex-glass-shine)"
+                      opacity="0.55"
+                    />
+                    {/* Specular White Rim Highlight */}
                     <path
                       d="M188.12 55.6H126.68L95.96 108.848"
                       fill="none"
-                      stroke="rgba(255,255,255,0.85)"
-                      strokeWidth="2"
+                      stroke="#ffffff"
+                      strokeWidth="2.5"
                       strokeLinecap="round"
+                      opacity="0.95"
                     />
                   </g>
                   </svg>
                 </motion.div>
-
-                {/* Subtle outer corner accents */}
-                <span className="absolute left-2 top-2 h-1.5 w-1.5 rounded-full bg-[#29ab87]/70" />
-                <span className="absolute bottom-2 right-2 h-1.5 w-1.5 rounded-full bg-[#f5a623]/70" />
               </div>
             </div>
           </div>
