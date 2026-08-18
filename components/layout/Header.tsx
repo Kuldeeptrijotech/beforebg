@@ -314,7 +314,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.98 }}
                           transition={{ duration: 0.16, ease: "easeOut" }}
-                          className="site-desktop-dropdown fixed left-1/2 top-13 hidden w-[min(760px,calc(100vw-2rem))] -translate-x-1/2 pt-3 xl:block"
+                          className="site-desktop-dropdown fixed left-1/2 top-13 hidden w-[min(760px,calc(100vw-2rem))] -translate-x-1/2 pt-3 lg:block"
                         >
                           <div className="grid min-h-80 grid-cols-[minmax(220px,0.9fr)_minmax(320px,1.1fr)] overflow-hidden rounded-lg border border-white/10 bg-[#111320]/95 shadow-2xl shadow-black/50 backdrop-blur-xl">
                             <div className="border-r border-white/10 p-2">
