@@ -56,7 +56,7 @@ export default function HexScene({ className = "" }: { className?: string }) {
       <div
         aria-hidden
         className="absolute inset-0 blur-3xl"
-        style={{ background: "radial-gradient(55% 55% at 50% 50%, rgba(41,171,135,0.3), transparent 72%)" }}
+        style={{ background: "radial-gradient(60% 60% at 50% 50%, rgba(41,171,135,0.38), rgba(15,34,60,0.5) 45%, transparent 75%)" }}
       />
 
       {/* data flow layer */}

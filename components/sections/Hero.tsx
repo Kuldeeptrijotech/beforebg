@@ -52,12 +52,12 @@ export default function Hero() {
   }, [activeIndex, reduce]);
 
   return (
-    <section className="hero-fullvh relative isolate overflow-hidden bg-[#030713] text-white">
-      {/* layered ambient backgrounds */}
-      <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
-      <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-60" />
+    <section className="hero-fullvh relative isolate overflow-hidden bg-[#091527] text-white">
+      {/* Layered rich midnight & emerald mesh background */}
+      <div aria-hidden className="absolute inset-0 -z-40 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(17,122,75,0.28),transparent_70%),radial-gradient(ellipse_90%_60%_at_85%_75%,rgba(245,166,35,0.18),transparent_65%),linear-gradient(180deg,#0a192f_0%,#0c1e38_50%,#081324_100%)]" />
+      <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-50" />
 
-      {/* Slide background image */}
+      {/* Slide background image with atmospheric depth overlays */}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeSlide.id}
@@ -73,12 +73,12 @@ export default function Hero() {
             fill
             priority={activeIndex === 0}
             sizes="100vw"
-            className="object-cover object-center opacity-85"
+            className="object-cover object-center opacity-75 mix-blend-luminosity"
           />
-          {/* rich cinematic gradient overlay */}
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,7,19,0.88)_0%,rgba(3,7,19,0.52)_50%,rgba(3,7,19,0.18)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.2)_0%,transparent_35%,rgba(3,7,19,0.35)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.12),transparent_70%)]" />
+          {/* Rich midnight depth gradient overlay */}
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(9,21,39,0.92)_0%,rgba(12,30,56,0.68)_50%,rgba(16,40,74,0.35)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,21,39,0.35)_0%,transparent_35%,rgba(9,21,39,0.7)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.22),transparent_70%)]" />
         </motion.div>
       </AnimatePresence>
 
