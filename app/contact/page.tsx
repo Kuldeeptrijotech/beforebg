@@ -79,7 +79,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl xl:text-5xl"
+              className="text-xl font-semibold leading-[1.2] tracking-tight text-white sm:text-2xl lg:text-3xl xl:text-4xl"
             >
               Let&apos;s start a{" "}
               <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">

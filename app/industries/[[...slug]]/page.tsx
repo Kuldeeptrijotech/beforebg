@@ -148,7 +148,7 @@ export default async function IndustryDetailPage({ params }: Props) {
             <p className="tri-overline">Definition</p>
             <div className="mt-4 grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-8">
-                <h2 className="tri-gradient-text text-[clamp(1.75rem,3.4vw,2.9rem)] font-bold leading-[1.16] tracking-[-0.02em]">
+                <h2 className="tri-gradient-text text-[clamp(1.35rem,2.5vw,2.1rem)] font-semibold leading-[1.2] tracking-[-0.02em]">
                   {industry.subtitle}
                 </h2>
               </div>

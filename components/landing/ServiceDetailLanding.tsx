@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -59,7 +59,7 @@ export default function ServiceDetailLanding({
         initial={{ opacity: 0, y: 28, filter: "blur(8px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
-        className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+        className="text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl xl:text-5xl"
       >
         {title}
       </motion.h1>

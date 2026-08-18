@@ -14,7 +14,7 @@ export default function ManagedBlogPage({ post, preview = false }: { post: BlogP
             <span>Trijotech</span> <span>Insights</span>
           </span>
           {preview && <span className="ml-[10px] inline-block rounded-full bg-[#f5a623] px-[9px] py-[5px] text-[11px] font-bold uppercase text-slate-950">Draft preview</span>}
-          <h1 className="m-0 max-w-none text-[clamp(32px,5vw,54px)] font-bold leading-[1.13] tracking-[-.02em] text-white">{post.title}</h1>
+          <h1 className="m-0 max-w-none text-[clamp(24px,3.8vw,38px)] font-semibold leading-[1.2] tracking-[-.02em] text-white">{post.title}</h1>
           <p className="mt-5 max-w-[760px] text-[17px] leading-[1.7] text-slate-300">{post.shortDescription}</p>
           <div className="mt-[18px] flex flex-wrap justify-start gap-x-[18px] gap-y-2 text-[12px] text-slate-400 max-[640px]:gap-x-3 max-[640px]:gap-y-[6px]">
             <span>{post.author}</span>

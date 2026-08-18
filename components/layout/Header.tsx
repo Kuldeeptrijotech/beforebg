@@ -326,6 +326,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                   <Link
                                     key={`${item.name}-${dropdownItem.name}-${dropdownItem.href}`}
                                     href={dropdownItem.href}
+                                    onClick={() => setOpenDropdownName(null)}
                                     onMouseEnter={() =>
                                       setActiveDropdownItem(
                                         item.name,
@@ -401,6 +402,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
 
                                     <Link
                                       href={activeDropdownItem.href}
+                                      onClick={() => setOpenDropdownName(null)}
                                       className="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/7 px-3 py-1.5 text-sm font-semibold text-white/80 transition hover:border-[rgba(41,171,135,0.55)] hover:bg-white/10 hover:text-white"
                                     >
                                       Know More

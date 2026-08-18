@@ -166,7 +166,7 @@ export default function SolutionDetailLanding({
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-        className="text-[clamp(2rem,4.2vw,3.75rem)] font-extrabold leading-[1.05] tracking-[-0.025em] text-white"
+        className="text-[clamp(1.5rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white"
       >
         {renderTitle(heroTitle)}
       </motion.h1>
@@ -240,7 +240,7 @@ export default function SolutionDetailLanding({
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-white"
+                className="text-[clamp(1.25rem,2.4vw,2rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white"
               >
                 {renderTitle(heroTitle)}
               </motion.h1>

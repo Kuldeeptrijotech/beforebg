@@ -109,7 +109,7 @@ export default function AboutUsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="mt-5 text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
             >
               Technology shaped around{" "}
               <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">

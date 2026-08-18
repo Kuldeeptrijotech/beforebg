@@ -50,24 +50,24 @@ const cards = [
 export default function InsightsPage() {
   return (
     <main className="overflow-hidden bg-[#030713] text-white font-sans">
-      {/* ── Hero (Untouched) ─────────────────── */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#030713] pt-20">
+      {/* ── Hero ─────────────────────────────── */}
+      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-20">
         {/* layered ambient backgrounds */}
         <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
         <div aria-hidden className="absolute inset-0 -z-10 tri-hex-grid opacity-60" />
         <Image
           src="/assets/heroes/blogs-blue.png"
-          alt=""
+          alt="Insights at Trijotech"
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
+          className="absolute inset-0 -z-10 object-cover object-center opacity-95"
         />
         {/* Slow luminous waveforms & insight pulses */}
         <InsightsLuminousStream />
 
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(3,7,19,0.85)_0%,rgba(3,7,19,0.45)_50%,rgba(3,7,19,0.15)_100%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#030713] to-transparent" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
         {/* Ambient glow orbs */}
         <div className="tri-blob -z-10 h-80 w-80" style={{ right: "15%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
@@ -89,7 +89,7 @@ export default function InsightsPage() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="text-4xl font-extrabold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
             >
               Practical perspectives on{" "}
               <span className="tri-gradient-text">

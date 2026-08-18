@@ -25,7 +25,7 @@ export default function PlaceholderPage({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.16),transparent_34%)]" />
         <Container className="relative">
           <p className="tri-overline">{eyebrow}</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold tracking-tight text-white md:text-6xl">{title}</h1>
+          <h1 className="mt-4 max-w-3xl text-2xl font-semibold leading-[1.18] tracking-tight text-white md:text-4xl">{title}</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{description}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">

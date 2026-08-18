@@ -95,7 +95,7 @@ export default function SectionLanding({
             </BlurReveal>
 
             <BlurReveal delay={0.2}>
-              <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+              <h1 className="max-w-3xl text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl xl:text-5xl">
                 {title}
               </h1>
             </BlurReveal>

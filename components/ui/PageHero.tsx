@@ -44,7 +44,7 @@ export default function PageHero({
           )}
         </Reveal>
         <Reveal delay={0.08}>
-          <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 max-w-3xl text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl">
             {title}
           </h1>
         </Reveal>

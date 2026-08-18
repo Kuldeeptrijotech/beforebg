@@ -17,7 +17,7 @@ export default function LegacyHtmlPage({ title, description = "", blocks, classN
           <span className="mb-[18px] block text-[12px] font-extrabold uppercase tracking-[.14em] text-[#bff4ea]">
             <span>Trijotech</span> <span>Insights</span>
           </span>
-          <h1 className="m-0 max-w-none text-[clamp(32px,5vw,54px)] font-bold leading-[1.13] tracking-[-.02em] text-white">{title}</h1>
+          <h1 className="m-0 max-w-none text-[clamp(24px,3.8vw,38px)] font-semibold leading-[1.2] tracking-[-.02em] text-white">{title}</h1>
           {description && <p className="mt-5 max-w-[760px] text-[17px] leading-[1.7] text-[#dff8f3]">{description}</p>}
         </header>
         <div className="rounded-b-[24px] border border-white/12 bg-[#162032] px-[clamp(24px,7vw,72px)] py-[58px] text-slate-200 shadow-2xl [&_a]:text-[#7edcc2] [&_a]:underline [&_h1]:text-white [&_h1]:font-bold [&_h2]:my-[18px] [&_h2]:mt-[52px] [&_h2]:text-[clamp(25px,3vw,34px)] [&_h2]:font-bold [&_h2]:leading-[1.28] [&_h2]:text-white [&_h3]:mb-[14px] [&_h3]:mt-[38px] [&_h3]:text-[22px] [&_h3]:font-bold [&_h3]:leading-[1.35] [&_h3]:text-white [&_li]:my-[10px] [&_li]:pl-[6px] [&_li]:leading-[1.7] [&_li]:text-slate-300 [&_ol]:mb-7 [&_ol]:mt-1 [&_ol]:pl-[26px] [&_p]:mb-[22px] [&_p]:text-left [&_p]:text-[17px] [&_p]:leading-[1.8] [&_p]:text-slate-300 [&_ul]:mb-7 [&_ul]:mt-1 [&_ul]:pl-[26px] max-[640px]:!px-[18px] max-[640px]:!py-9">

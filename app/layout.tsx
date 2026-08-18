@@ -1,4 +1,4 @@
-﻿import { Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import PublicChrome from "./components/PublicChrome";
 import ContentRuntime from "./components/ContentRuntime";
@@ -14,8 +14,6 @@ export const metadata = {
   title: "Trijotech | SAP Solutions",
   description: "SAP implementation, support, and business technology solutions.",
 };
-
-export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const content = await readSiteContent();

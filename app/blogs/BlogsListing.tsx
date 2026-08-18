@@ -58,7 +58,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="max-w-3xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-7xl"
+              className="max-w-3xl text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
             >
               Ideas that <span className="gradient-text">move business</span> forward
             </motion.h1>

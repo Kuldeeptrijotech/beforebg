@@ -115,7 +115,7 @@ export default function Hero() {
               <motion.h1
                 custom={1}
                 variants={childVariants}
-                className="max-w-[18ch] text-2xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[3.4rem] lg:leading-[1.06]"
+                className="max-w-[18ch] text-xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl lg:text-[2.5rem] lg:leading-[1.12]"
               >
                 {activeSlide.title}
               </motion.h1>
