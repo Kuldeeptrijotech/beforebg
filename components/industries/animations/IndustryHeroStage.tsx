@@ -82,7 +82,7 @@ export default function IndustryHeroStage({
       />
 
       {/* ── Bespoke 3D / SVG Animation Canvas ── */}
-      <div className="absolute inset-0 z-10 overflow-hidden">
+      <div className="absolute inset-0 z-10 overflow-hidden pt-18 sm:pt-20 lg:pt-0">
         {children}
       </div>
 

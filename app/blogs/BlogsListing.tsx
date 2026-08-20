@@ -25,8 +25,8 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
 
   return (
     <main className="overflow-hidden bg-[#121927] text-white">
-      {/* ── Hero (Untouched) ─────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-20">
+      {/* ── Hero ─────────────────────────────── */}
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/heroes/blogs-blue.png"
           alt=""

@@ -6,7 +6,7 @@ export default function FinlagoonConsolidationPage({ solution }: { solution: Sol
     <SolutionDetailLanding
       solution={solution}
       heroImage="/assets/heroes/industry-blue.png"
-      impactImage="/static/Software_Animation_1.gif"
+      impactImage="/static/Software_Animation_1.mp4"
       scene={<ConsolidationScene />}
     />
   );

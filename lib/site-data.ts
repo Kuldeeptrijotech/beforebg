@@ -145,7 +145,7 @@ export const services = [
     description:
       "Implementation, integration, reporting, and business process optimization for SAP landscapes.",
     href: "/services/sap-consulting",
-    image: "/static/Hero-Animation-1.gif",
+    image: "/static/Hero-Animation-1.mp4",
     imageAlt: "SAP consulting and enterprise workflow animation",
     showOnHome: true,
   },
@@ -154,7 +154,7 @@ export const services = [
     description:
       "Stabilize, support, and continuously optimize SAP environments with dependable application management.",
     href: "/services/sap-support-ams",
-    image: "/static/Hero-Animation-3.gif",
+    image: "/static/Hero-Animation-3.mp4",
     imageAlt: "SAP support and managed services animation",
     showOnHome: true,
   },
@@ -163,7 +163,7 @@ export const services = [
     description:
       "Build portals, workflows, extensions, and integrations on SAP Business Technology Platform.",
     href: "/services/sap-btp-full-stack-applications",
-    image: "/static/Hero-Animation-2.gif",
+    image: "/static/Hero-Animation-2.mp4",
     imageAlt: "SAP BTP application development animation",
     showOnHome: true,
   },
@@ -172,7 +172,7 @@ export const services = [
     description:
       "Move, transform, and connect business data across SAP and non-SAP systems with reliable delivery.",
     href: "/services/sap-data-integration-migration",
-    image: "/static/Hero-Animation-4.gif",
+    image: "/static/Hero-Animation-4.webm",
     imageAlt: "Data integration and migration animation",
     showOnHome: true,
   },
@@ -181,7 +181,7 @@ export const services = [
     description:
       "Use analytics, automation, and AI-assisted insight to turn enterprise data into better decisions.",
     href: "/services/sap-ai-data-insight-services",
-    image: "/static/Hero-Animation-5.gif",
+    image: "/static/Hero-Animation-5.mp4",
     imageAlt: "AI and enterprise data insights animation",
     showOnHome: false,
   },
@@ -193,7 +193,7 @@ export const whyChooseUs = [
     title: "Specialized SAP and Industry Expertise",
     description:
       "We combine business process knowledge with deep SAP capabilities across analytics, consolidation, planning, reporting, integration, and enterprise transformation. Every solution is designed to be practical, scalable, and tied to measurable business value.",
-    image: "/static/Hero-Animation-1.gif",
+    image: "/static/Hero-Animation-1.mp4",
     imageAlt: "SAP expertise and enterprise transformation",
     showOnHome: true,
   },
@@ -201,7 +201,7 @@ export const whyChooseUs = [
     title: "Global Experience, Local Commitment",
     description:
       "We support organizations across the US, Europe, the Middle East, and APAC with SAP and digital solutions adapted to regional business needs while staying aligned with global delivery standards and best practices.",
-    image: "/static/Hero-Animation-3.gif",
+    image: "/static/Hero-Animation-3.mp4",
     imageAlt: "Global SAP delivery and regional business support",
     showOnHome: true,
   },
@@ -209,7 +209,7 @@ export const whyChooseUs = [
     title: "Certified Talent, Quality-Driven Delivery",
     description:
       "Our SAP-certified professionals follow structured delivery practices with clear communication, transparent execution, and quality checkpoints that help every engagement move forward with confidence.",
-    image: "/static/Hero-Animation-5.gif",
+    image: "/static/Hero-Animation-5.mp4",
     imageAlt: "Certified SAP talent and quality delivery",
     showOnHome: true,
   },
@@ -219,10 +219,6 @@ export type WhyChooseStatItem = {
   value: string;
   label: string;
   summary: string;
-  animation: {
-    src: string;
-    alt: string;
-  };
 };
 
 export const whyChooseStats = [
@@ -231,40 +227,24 @@ export const whyChooseStats = [
     label: "Years in SAP implementation and support",
     summary:
       "Hands-on SAP delivery experience across implementation, stabilization, support, and continuous improvement.",
-    animation: {
-      src: "/static/Software_Animation_2.gif",
-      alt: "SAP implementation and support animation",
-    },
   },
   {
     value: "100+",
     label: "Projects delivered",
     summary:
       "Successful delivery across SAP consulting, data integration, reporting, analytics, and enterprise transformation programs.",
-    animation: {
-      src: "/static/Software_Animation_3.gif",
-      alt: "Completed enterprise projects animation",
-    },
   },
   {
     value: "50+",
     label: "Clients served",
     summary:
       "Trusted by clients across regions and industries with practical, scalable, and business-focused SAP solutions.",
-    animation: {
-      src: "/static/Software_Animation_4.gif",
-      alt: "Client success and global delivery animation",
-    },
   },
   {
     value: "30+",
     label: "Years of founder industry experience",
     summary:
       "Leadership shaped by deep industry experience, delivery ownership, and long-term client success.",
-    animation: {
-      src: "/static/Software_Animation_5.gif",
-      alt: "Founder experience and industry leadership animation",
-    },
   },
 ] satisfies WhyChooseStatItem[];
 
@@ -283,7 +263,7 @@ export const products = [
     description:
       "A secure and scalable e-invoicing solution that enables seamless compliance through direct integration with government portals. Built for SAP S/4HANA Public and Private Cloud, it reduces manual effort, minimizes errors, and provides real-time visibility into the invoicing process.",
     href: "/solutions/e-invoicing-pro",
-    image: "/static/Hero-Animation-1.gif",
+    image: "/static/Hero-Animation-1.mp4",
     imageAlt: "E-invoicing compliance and SAP integration animation",
     showOnHome: true,
   },
@@ -292,7 +272,7 @@ export const products = [
     description:
       "An SAP BTP-based consolidation solution that automates legal and financial consolidation across entities and jurisdictions. It supports Multi-GAAP and IFRS requirements, accelerates financial close, and reduces dependency on spreadsheets through real-time dashboards.",
     href: "/solutions/profitability-pro",
-    image: "/static/Hero-Animation-4.gif",
+    image: "/static/Hero-Animation-4.webm",
     imageAlt: "Profitability and financial consolidation dashboard animation",
     showOnHome: true,
   },
@@ -301,7 +281,7 @@ export const products = [
     description:
       "An SAP BTP-based consolidation solution that automates legal and financial consolidation across entities and jurisdictions. It supports Multi-GAAP and IFRS requirements, accelerates financial close, and reduces dependency on spreadsheets through real-time dashboards.",
     href: "/solutions/finlagoon-consolidation",
-    image: "/static/Software_Animation_1.gif",
+    image: "/static/Software_Animation_1.mp4",
     imageAlt: "Financial consolidation and group reporting animation",
     showOnHome: true,
   },
@@ -322,7 +302,7 @@ export const industries = [
     description:
       "SAP-led planning, finance, supply chain, and analytics solutions for pharmaceutical teams that need accuracy, compliance, and faster decision-making.",
     href: "/industries/pharma",
-    image: "/static/Pharma.jpg",
+    image: "/static/cards/Pharma.webp",
     imageAlt: "Pharma SAP analytics and planning animation",
     showOnHome: true,
   },
@@ -331,7 +311,7 @@ export const industries = [
     description:
       "Connected SAP solutions for production, procurement, inventory, reporting, and operational performance across modern manufacturing environments.",
     href: "/industries/manufacturing",
-    image: "/static/Manufacturing.jpg",
+    image: "/static/cards/Manufacturing.webp",
     imageAlt: "Manufacturing operations and SAP workflow animation",
     showOnHome: true,
   },
@@ -340,7 +320,7 @@ export const industries = [
     description:
       "Data-driven SAP and cloud solutions for finance platforms that need secure reporting, scalable operations, and reliable business visibility.",
     href: "/industries/fintech",
-    image: "/static/FinTech.jpg",
+    image: "/static/cards/FinTech.webp",
     imageAlt: "Fintech data and finance dashboard animation",
     showOnHome: true,
   },
@@ -349,7 +329,7 @@ export const industries = [
     description:
       "Flexible SAP and analytics solutions for media, entertainment, and digital businesses managing fast-changing revenue, content, and operations.",
     href: "/industries/entertainment",
-    image: "/static/Entertainment.jpg",
+    image: "/static/cards/Entertainment.webp",
     imageAlt: "Entertainment business analytics animation",
     showOnHome: false,
   },

@@ -42,3 +42,7 @@ dev-server-error.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temp logs
+tmp/
+

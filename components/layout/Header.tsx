@@ -106,7 +106,6 @@ function HeaderActionButton({
 
 export default function Header() {
   const pathname = usePathname();
-  const [isOverHero, setIsOverHero] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdownName, setOpenDropdownName] = useState<string | null>(null);
@@ -126,7 +125,6 @@ export default function Header() {
 
     if (!hero) {
       const resetFrame = window.requestAnimationFrame(() => {
-        setIsOverHero(false);
         setIsPastHero(false);
       });
       return () => window.cancelAnimationFrame(resetFrame);
@@ -141,7 +139,6 @@ export default function Header() {
       frame = window.requestAnimationFrame(() => {
         const hasStartedScrolling = window.scrollY > 8;
         const isHeroStillVisible = hero.getBoundingClientRect().bottom > 0;
-        setIsOverHero(hasStartedScrolling && isHeroStillVisible);
         setIsPastHero(hasStartedScrolling && !isHeroStillVisible);
       });
     };
@@ -227,18 +224,14 @@ export default function Header() {
 
   return (
     <header
-      className={`site-modern-header fixed inset-x-0 top-0 z-50 bg-[#030713] font-sans text-white transition-[transform,opacity] duration-300 ease-out ${
-        isOverHero
-          ? "pointer-events-none -translate-y-full opacity-0"
-          : "translate-y-0 opacity-100"
-      }`}
+      className="site-modern-header fixed inset-x-0 top-0 z-50 translate-y-0 bg-[#030713] font-sans text-white opacity-100"
     >
       <div className={`relative border-b backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-300 ${
         isPastHero
           ? "border-[rgba(41,171,135,0.28)] bg-[#050817]/90 shadow-lg shadow-black/25"
           : "border-white/10 bg-[#050817]/95"
       }`}>
-        <div className="site-header-grid mx-auto grid h-18 grid-cols-[1fr_auto] items-center gap-4 px-3 sm:px-4 xl:grid-cols-[1fr_auto_1fr] xl:px-6">
+        <div className="site-header-grid mx-auto grid h-18 w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] grid-cols-[1fr_auto] items-center gap-4 px-3 sm:px-4 xl:grid-cols-[1fr_auto_1fr] xl:px-6 2xl:px-8">
           <Link
             href={brand.homeHref}
             className="flex w-fit items-center"

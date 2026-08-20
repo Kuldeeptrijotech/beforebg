@@ -44,7 +44,7 @@ export default function TiltCard({ children, className = "", max = 7, scale = 1.
         onPointerMove={onPointerMove}
         onPointerLeave={reset}
         style={{ transform, transformStyle: "preserve-3d" }}
-        className="h-full w-full will-change-transform"
+        className="h-full w-full"
       >
         {children}
       </motion.div>

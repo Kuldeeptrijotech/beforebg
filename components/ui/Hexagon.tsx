@@ -14,7 +14,7 @@ const HEX_PATH =
 /** Decorative Trijotech hexagon with a brand gradient stroke. */
 export default function Hexagon({
   className = "",
-  size = 120,
+  size,
   fill = "rgba(41,171,135,0.04)",
   strokeWidth = 1.5,
   animated = false,

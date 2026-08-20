@@ -3,6 +3,19 @@ import nodemailer from "nodemailer";
 const attempts = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_ATTEMPTS = 5;
+const MAX_TRACKED_CLIENTS = 10_000;
+
+function pruneAttempts(now: number) {
+  if (attempts.size < MAX_TRACKED_CLIENTS) return;
+  attempts.forEach((record, address) => {
+    if (record.resetAt <= now) attempts.delete(address);
+  });
+  while (attempts.size >= MAX_TRACKED_CLIENTS) {
+    const oldest = attempts.keys().next().value;
+    if (oldest === undefined) break;
+    attempts.delete(oldest);
+  }
+}
 
 export function clientIp(request: Request) {
   return request.headers.get("cf-connecting-ip") || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -12,6 +25,8 @@ export function isRateLimited(ip: string) {
   const now = Date.now();
   const current = attempts.get(ip);
   if (!current || current.resetAt <= now) {
+    if (current) attempts.delete(ip);
+    pruneAttempts(now);
     attempts.set(ip, { count: 1, resetAt: now + WINDOW_MS });
     return false;
   }

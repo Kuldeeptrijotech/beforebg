@@ -2,10 +2,10 @@
 
 import Container from "@/components/ui/Container";
 import { testimonials, type TestimonialItem } from "@/lib/site-data";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const AUTO_ROTATE_MS = 6500;
 
@@ -25,6 +25,8 @@ function getInitials(name: string) {
 export default function TestimonialsPreview() {
   const visibleTestimonials = testimonials.filter((item) => item.showOnHome);
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const sectionInView = useInView(sectionRef, { amount: 0.05 });
   const [selectedTestimonial, setSelectedTestimonial] = useState<TestimonialItem | null>(null);
 
   const cardCount = Math.min(3, visibleTestimonials.length);
@@ -41,17 +43,17 @@ export default function TestimonialsPreview() {
 
   useEffect(() => {
     const visibleCount = visibleTestimonials.length;
-    if (visibleCount <= 1 || selectedTestimonial) return;
+    if (visibleCount <= 1 || selectedTestimonial || !sectionInView) return;
     const timer = window.setInterval(() => {
       setActiveIndex((current) => loopIndex(current + 1, visibleCount));
     }, AUTO_ROTATE_MS);
     return () => window.clearInterval(timer);
-  }, [visibleTestimonials.length, selectedTestimonial]);
+  }, [visibleTestimonials.length, selectedTestimonial, sectionInView]);
 
   if (!visibleTestimonials.length) return null;
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
+    <section ref={sectionRef} data-content-visibility="off" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-45" />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-50" />
       <div aria-hidden className="tri-blob -z-10 h-72 w-72 animate-float-slow" style={{ left: "-8%", top: "20%", background: "radial-gradient(circle, rgba(41,171,135,0.2), transparent 70%)" }} />

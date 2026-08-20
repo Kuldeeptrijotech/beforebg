@@ -29,7 +29,7 @@ export default function ServiceHero({
   glow = ["rgba(47,143,255,0.28)", "rgba(34,211,238,0.16)"],
 }: ServiceHeroProps) {
   return (
-    <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#030713] pb-4 pt-14 sm:pt-16 lg:h-screen lg:min-h-[680px] lg:py-0">
+    <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#030713] pb-4 pt-24 sm:pt-28 lg:h-screen lg:min-h-[680px] lg:py-0">
       {/* Brand tri-mesh, grid and hex-grid overlay */}
       <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
       <div aria-hidden className="absolute inset-0 -z-30 tri-grid-bg" />
@@ -46,7 +46,7 @@ export default function ServiceHero({
 
       {/* Optional Page Heading (if supplied) */}
       {heading && (
-        <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pt-16 sm:px-6 sm:pt-20 lg:px-10 lg:pt-24 pointer-events-none">
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-4 pt-24 sm:px-6 sm:pt-28 lg:px-10 lg:pt-28 pointer-events-none">
           <div className="max-w-md pointer-events-auto">{heading}</div>
         </div>
       )}

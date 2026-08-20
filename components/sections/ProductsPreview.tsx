@@ -1,5 +1,3 @@
-"use client";
-
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import GradientButton from "@/components/ui/GradientButton";
@@ -7,7 +5,7 @@ import SpotlightCard from "@/components/ui/SpotlightCard";
 import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { products } from "@/lib/site-data";
 import { ArrowRight, Layers3, LineChart, ReceiptText } from "lucide-react";
-import Image from "next/image";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
 
 const productIcons = [ReceiptText, LineChart, Layers3];
@@ -55,12 +53,10 @@ export default function ProductsPreview() {
                 >
                   <SpotlightCard glow="rgba(41,171,135,0.2)" className="flex h-full flex-col">
                     <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
-                      <Image
+                      <OptimizedVideo
                         src={product.image}
                         alt={product.imageAlt}
-                        fill
-                        sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                        className="object-cover transition duration-700 group-hover:scale-105"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                       />
                       <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(3,7,19,0.7))]" />
                     </div>

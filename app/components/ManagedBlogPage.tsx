@@ -2,6 +2,7 @@ import LatestBlogsCarousel from "./LatestBlogsCarousel";
 import ContactCta from "./common/ContactCta";
 import type { BlogPost } from "@/app/data/blogs";
 import { createElement } from "react";
+import { resolveBlockStyle } from "@/app/lib/blog-style-resolver";
 
 export default function ManagedBlogPage({ post, preview = false }: { post: BlogPost; preview?: boolean }) {
   const date = post.publishedAt ? new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" }).format(new Date(post.publishedAt)) : "Draft";
@@ -31,25 +32,23 @@ export default function ManagedBlogPage({ post, preview = false }: { post: BlogP
           </figure>
           <div className="mx-auto w-full max-w-[940px] text-[17px] leading-[1.8] text-slate-200 [&_a]:text-[#7edcc2] [&_a]:underline [&_h1]:my-[14px] [&_h1]:mt-[34px] [&_h1]:leading-[1.35] [&_h2]:my-[14px] [&_h2]:mt-[34px] [&_h2]:leading-[1.35] [&_h3]:my-[14px] [&_h3]:mt-[34px] [&_h3]:leading-[1.35] [&_ol]:mb-[18px] [&_ol]:pl-6 [&_p]:mb-[18px] [&_ul]:mb-[18px] [&_ul]:pl-6 max-[640px]:text-[15px]">
             {post.contentBlocks?.length ? post.contentBlocks.map((block) => {
-              const spacing = block.style?.spacing === "compact" ? "10px 0" : block.style?.spacing === "spacious" ? "34px 0" : "20px 0";
               const headingLevel = Math.min(6, Math.max(1, block.headingLevel || (block.type === "heading" ? 2 : 3))) as 1 | 2 | 3 | 4 | 5 | 6;
-              const textSize = block.style?.fontSize || "medium";
-              const fontSize = block.type === "heading" || block.type === "subheading"
-                ? `${Math.round(({ 1: 40, 2: 32, 3: 28, 4: 24, 5: 20, 6: 16 }[headingLevel]) * ({ small: .85, medium: 1, large: 1.15, xlarge: 1.3 }[textSize]))}px`
-                : ({ small: "14px", medium: "16px", large: "20px", xlarge: "26px" }[textSize]);
-              const blockStyle = { textAlign: block.style?.textAlign || "left", color: block.style?.textColor || undefined, backgroundColor: block.style?.backgroundColor || undefined, padding: `${block.style?.padding || (block.style?.backgroundColor ? "20" : "0")}px`, margin: spacing, fontSize, fontWeight: block.style?.fontWeight || "400", fontStyle: block.style?.fontStyle || "normal", textDecoration: block.style?.textDecoration || "none", lineHeight: block.style?.lineHeight === "compact" ? 1.35 : block.style?.lineHeight === "relaxed" ? 2 : 1.8, textTransform: block.style?.textTransform || "none", borderRadius: `${block.style?.blockRadius || "0"}px`, border: block.style?.borderColor ? `1px solid ${block.style.borderColor}` : undefined } as React.CSSProperties;
+              const blockStyle = resolveBlockStyle(block.style, block.type, headingLevel);
               if (block.type === "heading" || block.type === "subheading") return createElement(`h${headingLevel}`, { key: block.id, style: blockStyle, dangerouslySetInnerHTML: { __html: block.value } });
               if (block.type === "content") return /<[^>]+>/.test(block.value) ? <div key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <p key={block.id} style={blockStyle}>{block.value}</p>;
               if (block.type === "quote") return /<[^>]+>/.test(block.value) ? <blockquote className="my-[30px] border-l-4 border-[#f5a623] bg-white/[0.03] px-6 py-[18px] text-[18px] italic leading-[1.7] text-slate-300" key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <blockquote className="my-[30px] border-l-4 border-[#f5a623] bg-white/[0.03] px-6 py-[18px] text-[18px] italic leading-[1.7] text-slate-300" key={block.id} style={blockStyle}>{block.value}</blockquote>;
               if (block.type === "bulletList") return <ul key={block.id} style={blockStyle}>{block.value.split(/\r?\n/).filter(Boolean).map((item, index) => <li key={`${block.id}-${index}`}>{item}</li>)}</ul>;
               if (block.type === "numberedList") return <ol key={block.id} style={blockStyle}>{block.value.split(/\r?\n/).filter(Boolean).map((item, index) => <li key={`${block.id}-${index}`}>{item}</li>)}</ol>;
               if (block.type === "callout") return /<[^>]+>/.test(block.value) ? <aside className="my-[26px] rounded-2xl border border-[#29ab87]/30 bg-[#29ab87]/10 px-5 py-[18px] leading-[1.7] text-slate-200" key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <aside className="my-[26px] rounded-2xl border border-[#29ab87]/30 bg-[#29ab87]/10 px-5 py-[18px] leading-[1.7] text-slate-200" key={block.id} style={blockStyle}>{block.value}</aside>;
-              if (block.type === "divider") return <hr className="w-full border-0 border-t border-white/10" key={block.id} style={{ margin: spacing }} />;
+              if (block.type === "divider") return <hr className="w-full border-0 border-t border-white/10" key={block.id} style={{ marginTop: blockStyle.marginTop, marginBottom: blockStyle.marginBottom }} />;
               if (block.type === "link") return <p className="managed-blog-link-block" key={block.id} style={blockStyle}><a href={block.linkUrl}>{block.value}</a></p>;
+              
+              const imgShadow = block.style?.imageShadow === "none" ? "none" : block.style?.imageShadow === "strong" ? "0 16px 36px rgba(0,0,0,0.35)" : block.style?.imageShadow === "glow-green" ? "0 0 30px rgba(41,171,135,0.4)" : block.style?.imageShadow === "glow-amber" ? "0 0 30px rgba(245,166,35,0.4)" : "0 10px 24px rgba(0,0,0,0.18)";
+              const imgRadius = block.style?.borderRadius === "full" ? "9999px" : `${block.style?.borderRadius || "16"}px`;
               return (
-                <figure className="managed-blog-inline-image" key={block.id} style={{ marginTop: spacing.split(" ")[0], marginBottom: spacing.split(" ")[0], textAlign: block.style?.imageAlign || "center", backgroundColor: block.style?.backgroundColor || undefined }}>
+                <figure className="managed-blog-inline-image" key={block.id} style={{ marginTop: blockStyle.marginTop, marginBottom: blockStyle.marginBottom, textAlign: block.style?.imageAlign || "center", backgroundColor: block.style?.backgroundColor || undefined }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={block.imageSrc} alt={block.imageAlt} style={{ width: `${block.style?.imageWidth || "100"}%`, maxHeight: block.style?.imageMaxHeight === "auto" ? "none" : `${block.style?.imageMaxHeight || "640"}px`, objectFit: block.style?.imageObjectFit || "contain", borderRadius: `${block.style?.borderRadius || "16"}px`, marginLeft: block.style?.imageAlign === "right" || block.style?.imageAlign === "center" ? "auto" : 0, marginRight: block.style?.imageAlign === "left" || block.style?.imageAlign === "center" ? "auto" : 0 }} />
+                  <img src={block.imageSrc} alt={block.imageAlt} style={{ width: `${block.style?.imageWidth || "100"}%`, maxHeight: block.style?.imageMaxHeight === "auto" ? "none" : `${block.style?.imageMaxHeight || "640"}px`, objectFit: block.style?.imageObjectFit || "contain", borderRadius: imgRadius, boxShadow: imgShadow, marginLeft: block.style?.imageAlign === "right" || block.style?.imageAlign === "center" ? "auto" : 0, marginRight: block.style?.imageAlign === "left" || block.style?.imageAlign === "center" ? "auto" : 0 }} />
                   {block.caption && <figcaption className="mt-2 text-center text-xs text-slate-400">{block.caption}</figcaption>}
                 </figure>
               );

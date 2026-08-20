@@ -51,7 +51,7 @@ export default function InsightsPage() {
   return (
     <main className="overflow-hidden bg-[#030713] text-white font-sans">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-20">
+      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         {/* layered ambient backgrounds */}
         <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
         <div aria-hidden className="absolute inset-0 -z-10 tri-hex-grid opacity-60" />

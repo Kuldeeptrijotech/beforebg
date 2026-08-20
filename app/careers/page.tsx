@@ -32,7 +32,7 @@ export default function CareersPage() {
   return (
     <main className="overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-12 sm:pt-14 lg:pt-16">
+      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-10 sm:pb-12">
         <div className="absolute inset-0 -z-10 tri-mesh" />
         <div className="absolute inset-0 -z-10 tri-grid-bg" />
         <Image
@@ -49,7 +49,7 @@ export default function CareersPage() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
-        <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+        <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-12">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 16 }}

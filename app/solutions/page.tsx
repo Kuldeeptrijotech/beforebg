@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import SolutionsHoloRays from "@/components/ui/hero-animations/SolutionsHoloRays";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import { solutions } from "@/lib/solutions-data";
 
 const whyItems = [
@@ -33,8 +34,8 @@ const whyItems = [
 export default function SolutionsPage() {
   return (
     <main className="overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero (Untouched) ─────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-20">
+      {/* ── Hero ─────────────────────────────── */}
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image src="/assets/heroes/products.png" alt="" fill priority sizes="100vw" className="-z-20 object-cover object-center opacity-95" />
         {/* Slow geometric holographic rays animation */}
         <SolutionsHoloRays />
@@ -135,13 +136,21 @@ export default function SolutionsPage() {
                 className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
               >
                 <Link href={solution.href} className="relative block h-[170px] w-full shrink-0 overflow-hidden bg-slate-900">
-                  <Image
-                    src={solution.cardImage}
-                    alt={solution.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                    className={`transition duration-700 group-hover:scale-105 ${solution.slug === "e-invoicing-pro" ? "object-cover" : "object-contain p-3 sm:p-4"}`}
-                  />
+                  {solution.cardImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
+                    <OptimizedVideo
+                      src={solution.cardImage}
+                      alt={solution.imageAlt}
+                      className="pointer-events-none absolute inset-0 h-full w-full object-contain p-3 transition duration-700 group-hover:scale-105 sm:p-4"
+                    />
+                  ) : (
+                    <Image
+                      src={solution.cardImage}
+                      alt={solution.imageAlt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                      className={`transition duration-700 group-hover:scale-105 ${solution.slug === "e-invoicing-pro" ? "object-cover" : "object-contain p-3 sm:p-4"}`}
+                    />
+                  )}
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(18,25,39,0.7))]" />
                 </Link>
                 <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-5">

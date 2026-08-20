@@ -17,7 +17,7 @@ export const heroSlides = [
         },
         visual: {
             type: "gif",
-            src: "/static/Hero-Animation-1.gif",
+            src: "/static/Hero-Animation-1.mp4",
             alt: "SAP consulting and enterprise planning",
         },
     },
@@ -37,7 +37,7 @@ export const heroSlides = [
         },
         visual: {
             type: "image",
-            src: "/static/Hero-Animation-3.gif",
+            src: "/static/Hero-Animation-3.mp4",
             alt: "SAP support and application management",
         },
     },
@@ -57,7 +57,7 @@ export const heroSlides = [
         },
         visual: {
             type: "image",
-            src: "/static/Hero-Animation-2.gif",
+            src: "/static/Hero-Animation-2.mp4",
             alt: "SAP BTP full-stack application development",
         },
     },
@@ -77,7 +77,7 @@ export const heroSlides = [
         },
         visual: {
             type: "image",
-            src: "/static/Hero-Animation-5.gif",
+            src: "/static/Hero-Animation-5.mp4",
             alt: "SAP data integration analytics and AI insights",
         },
     },

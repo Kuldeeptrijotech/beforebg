@@ -1,10 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Wrench } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import type { LandingCard } from "./SectionLanding";
 
 const AUTO_PLAY_MS = 5500;
@@ -14,6 +15,8 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselInView = useInView(carouselRef, { amount: 0.05 });
   const reduce = useReducedMotion();
 
   const move = useCallback((step: number) => {
@@ -22,16 +25,17 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
   }, [cards.length]);
 
   useEffect(() => {
-    if (isPaused || reduce || cards.length < 2) return;
+    if (isPaused || reduce || !carouselInView || cards.length < 2) return;
     const timer = window.setTimeout(() => move(1), AUTO_PLAY_MS);
     return () => window.clearTimeout(timer);
-  }, [activeIndex, cards.length, isPaused, reduce, move]);
+  }, [activeIndex, cards.length, isPaused, reduce, move, carouselInView]);
 
   if (!cards.length) return null;
   const card = cards[activeIndex];
 
   return (
     <div
+      ref={carouselRef}
       className="mt-10"
       aria-roledescription="carousel"
       aria-label="Services"
@@ -78,13 +82,21 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
           >
             {/* Image panel */}
             <Link href={card.href} className="relative overflow-hidden rounded-tl-[2rem] rounded-tr-[2rem] md:rounded-bl-[2rem] md:rounded-tr-none">
-              <Image
-                src={card.image}
-                alt={card.imageAlt}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-              />
+              {/\.(mp4|webm)(?:$|[?#])/i.test(card.image) ? (
+                <OptimizedVideo
+                  src={card.image}
+                  alt={card.imageAlt}
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+                />
+              ) : (
+                <Image
+                  src={card.image}
+                  alt={card.imageAlt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(3,7,19,0.6)] to-transparent" />
               <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.35),transparent_50%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               {showCardIcons && (

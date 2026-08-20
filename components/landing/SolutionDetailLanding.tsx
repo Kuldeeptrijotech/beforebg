@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Sparkles, Zap } from "lucide-react";
 import OtherSolutions from "@/components/solutions/OtherSolutions";
@@ -218,7 +219,7 @@ export default function SolutionDetailLanding({
   return (
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#030713] pb-4 pt-14 sm:pt-16 lg:h-screen lg:min-h-[680px] lg:py-0">
+      <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#030713] pb-4 pt-24 sm:pt-28 lg:h-screen lg:min-h-[680px] lg:py-0">
         {/* Brand tri-mesh, grid and hex-grid overlay */}
         <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
         <div aria-hidden className="absolute inset-0 -z-10 tri-grid-bg" />
@@ -458,13 +459,21 @@ export default function SolutionDetailLanding({
             </div>
 
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/10 shadow-2xl">
-              <Image
-                src={impactImage}
-                alt={solution.imageAlt}
-                fill
-                sizes="(max-width:1024px) 100vw, 50vw"
-                className="object-cover transition duration-700 hover:scale-105"
-              />
+              {impactImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
+                <OptimizedVideo
+                  src={impactImage}
+                  alt={solution.imageAlt}
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-105"
+                />
+              ) : (
+                <Image
+                  src={impactImage}
+                  alt={solution.imageAlt}
+                  fill
+                  sizes="(max-width:1024px) 100vw, 50vw"
+                  className="object-cover transition duration-700 hover:scale-105"
+                />
+              )}
             </div>
           </motion.div>
 

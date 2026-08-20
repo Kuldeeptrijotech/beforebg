@@ -74,7 +74,7 @@ export default function AboutUsPage() {
   return (
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-slate-950 pt-20">
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-slate-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/about/trijotech-team-collaboration-blue.png"
           alt="Trijotech leadership and global consultant team collaboration"

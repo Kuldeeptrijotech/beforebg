@@ -43,7 +43,7 @@ export const solutions: SolutionItem[] = [
       "Keep up with government mandates and eliminate manual errors with our end-to-end e-invoicing solution. Whether you are on public or private cloud, E-Invoicing Pro ensures seamless compliance and real-time invoice tracking.",
     shortDescription:
       "E-Invoicing Pro simplifies compliant electronic invoicing with direct portal integration, automated processing and real-time invoice tracking across SAP environments.",
-    image: "/static/Hero-Animation-1.gif",
+    image: "/static/Hero-Animation-1.mp4",
     imageAlt: "E-invoicing compliance and SAP integration",
     heroImage: "/assets/heroes/products-blue.png",
     cardImage: "/assets/heroes/e-invoicing-generated-v2.png",
@@ -113,10 +113,10 @@ export const solutions: SolutionItem[] = [
       "Managing financial consolidation across multiple entities is complex, but it does not have to be. Finlagoon Consolidation is a single, intelligent platform built to streamline your financial close and reporting cycles. With robust automation, smart currency handling and fully customizable reports, it brings speed, accuracy and control to finance leaders handling multi-entity structures.",
     shortDescription:
       "Finlagoon Consolidation brings financial close, consolidation, currency translation, reporting and governance into one intelligent platform for multi-entity organizations.",
-    image: "/static/Software_Animation_1.gif",
+    image: "/static/Software_Animation_1.mp4",
     imageAlt: "Financial consolidation and group reporting",
     heroImage: "/assets/heroes/industry-blue.png",
-    cardImage: "/static/Software_Animation_1.gif",
+    cardImage: "/static/Software_Animation_1.mp4",
     showOnHome: true,
     overviewTitle: "Overview",
     overview:
@@ -187,7 +187,7 @@ export const solutions: SolutionItem[] = [
       "With Profitability Pro, you get real-time visibility into what is driving profits — and what is not. Automatically allocate expenses, assess margins and make data-backed decisions to improve financial performance at every level.",
     shortDescription:
       "Profitability Pro delivers real-time product and customer profitability insights by automating allocations, margin analysis and cost-driver mapping.",
-    image: "/static/Hero-Animation-4.gif",
+    image: "/static/Hero-Animation-4.webm",
     imageAlt: "Profitability and financial performance",
     heroImage: "/assets/image/Product_4.png",
     cardImage: "/assets/image/L0505.png",

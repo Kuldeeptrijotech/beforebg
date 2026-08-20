@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
+import { startViewportAnimationLoop } from "@/components/ui/canvasAnimationLoop";
 
 /* ─────────────────────────────────────────────────────────────
    HERO LASER BULLETS — HIGH-SPEED UNATCHABLE PHOTON TRACERS
@@ -60,7 +61,6 @@ export default function HeroLaserBullets({
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -216,13 +216,15 @@ export default function HeroLaserBullets({
         }
       });
 
-      animId = requestAnimationFrame(render);
     };
 
-    animId = requestAnimationFrame(render);
+    const stopAnimation = startViewportAnimationLoop(canvas, (time, resumed) => {
+      if (resumed) lastTime = time;
+      render(time);
+    });
 
     return () => {
-      cancelAnimationFrame(animId);
+      stopAnimation();
       window.removeEventListener("resize", handleResize);
     };
   }, [reduce, bulletCount]);

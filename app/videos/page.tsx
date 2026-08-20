@@ -20,7 +20,7 @@ export default function VideosPage() {
   return (
     <main className="overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-20">
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/heroes/videos-generated-v2.png"
           alt="Technical practitioner videos and architectural walkthroughs"

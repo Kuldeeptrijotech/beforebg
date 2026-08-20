@@ -42,7 +42,7 @@ export default function ContactPage() {
   return (
     <main className="overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-12 sm:pt-14 lg:pt-16">
+      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-10 sm:pb-12">
         <Image
           src="/assets/heroes/contact-generated-v2.png"
           alt="Contact Trijotech enterprise consulting team"
@@ -64,7 +64,7 @@ export default function ContactPage() {
         <div className="pointer-events-none absolute inset-0 max-lg:bg-[#050817]/65 lg:bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,transparent_85%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#050817] to-transparent" />
 
-        <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12">
+        <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-12">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 16 }}

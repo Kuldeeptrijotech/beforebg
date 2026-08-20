@@ -1,7 +1,4 @@
-"use client";
-
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
 import GradientButton from "@/components/ui/GradientButton";
 import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { industries } from "@/lib/site-data";

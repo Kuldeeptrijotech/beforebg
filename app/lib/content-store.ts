@@ -9,7 +9,7 @@ export type ContentEntry = {
   kind: ContentKind;
   value: string;
   match?: string;
-  attribute?: "href" | "src" | "alt" | "title" | "data-admin-href";
+  attribute?: "href" | "src" | "alt" | "aria-label" | "title" | "data-admin-href";
   label: string;
 };
 

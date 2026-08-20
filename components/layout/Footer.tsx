@@ -117,6 +117,7 @@ export default function Footer() {
                       width={badge.width}
                       height={badge.height}
                       className="h-auto max-h-12 w-auto max-w-32 object-contain sm:max-h-14"
+                      style={{ width: "auto", height: "auto" }}
                     />
                   </div>
                 ))}

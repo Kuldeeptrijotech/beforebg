@@ -1,9 +1,10 @@
-﻿"use client";
+"use client";
 
 import { usePathname } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Chatbot from "./chatbot/Chatbot";
+import DeferredChatbot from "./chatbot/DeferredChatbot";
+import ViewportPerformance from "@/components/ui/ViewportPerformance";
 
 export default function PublicChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -33,6 +34,7 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
     pathname.startsWith("/solutions/");
   return (
     <>
+      <ViewportPerformance />
       <Header />
       {pathname === "/" ? children : usesStandaloneTailwind || usesModernDetailTheme ? (
         <div className={isLandingPage ? "site-landing-theme" : "site-subpage-theme"}>{children}</div>
@@ -40,7 +42,7 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
         <div className={`zip-inner-theme ${isLandingPage ? "site-landing-theme" : "site-subpage-theme"}`}>{children}</div>
       )}
       <Footer />
-      <Chatbot />
+      <DeferredChatbot />
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
+import { startViewportAnimationLoop } from "@/components/ui/canvasAnimationLoop";
 
 /* ─────────────────────────────────────────────────────────────
    VIDEOS BROADCAST BEAMS (VIDEOS LANDING HERO ANIMATION)
@@ -41,7 +42,6 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -235,14 +235,13 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
         ctx.restore();
       });
 
-      animId = requestAnimationFrame(render);
     };
 
-    render();
+    const stopAnimation = startViewportAnimationLoop(canvas, render);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animId);
+      stopAnimation();
     };
   }, [reduce]);
 

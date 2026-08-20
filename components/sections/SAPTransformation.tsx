@@ -1,7 +1,4 @@
-"use client";
-
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
 import HexBadge from "@/components/ui/HexBadge";
 import DataFlow from "@/components/three/DataFlow";
 import { Reveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";

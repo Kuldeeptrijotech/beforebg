@@ -1,4 +1,5 @@
 import Image from "next/image";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getOtherSolutions } from "@/lib/solutions-data";
@@ -23,13 +24,21 @@ export default function OtherSolutions({ currentSlug }: { currentSlug: string })
               className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-[#29ab87] hover:bg-white/[0.05] hover:shadow-2xl"
             >
               <div className={`relative overflow-hidden bg-slate-950/40 border-b border-white/5 ${solution.slug === "e-invoicing-pro" ? "aspect-[3/2]" : "aspect-[16/10]"}`}>
-                <Image
-                  src={solution.cardImage}
-                  alt={solution.imageAlt}
-                  fill
-                  className={solution.slug === "e-invoicing-pro" ? "object-cover" : "object-contain p-3 sm:p-4"}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                {solution.cardImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
+                  <OptimizedVideo
+                    src={solution.cardImage}
+                    alt={solution.imageAlt}
+                    className="pointer-events-none absolute inset-0 h-full w-full object-contain p-3 sm:p-4"
+                  />
+                ) : (
+                  <Image
+                    src={solution.cardImage}
+                    alt={solution.imageAlt}
+                    fill
+                    className={solution.slug === "e-invoicing-pro" ? "object-cover" : "object-contain p-3 sm:p-4"}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                )}
               </div>
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-xl font-bold text-white">{solution.title}</h3>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
@@ -311,13 +312,21 @@ export default function ServiceDetailLanding({
             transition={{ duration: 0.7, ease: EASE }}
             className="relative aspect-[16/10] min-w-0 w-full self-center overflow-hidden rounded-[2rem] shadow-[0_32px_80px_-24px_rgba(41,171,135,0.35)]"
           >
-            <Image
-              src={impactImage}
-              alt={impactImageAlt}
-              fill
-              sizes="(max-width:1024px) 100vw, 50vw"
-              className="object-cover"
-            />
+            {impactImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
+              <OptimizedVideo
+                src={impactImage}
+                alt={impactImageAlt}
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+              />
+            ) : (
+              <Image
+                src={impactImage}
+                alt={impactImageAlt}
+                fill
+                sizes="(max-width:1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            )}
             <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(3,7,19,0.88))]" />
             <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.18),transparent_50%)]" />
             {/* Border glow */}

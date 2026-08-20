@@ -93,7 +93,8 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
       const htmlEntry = existing.find((entry) => entry.kind === "html");
       const hrefEntry = existing.find((entry) => entry.kind === "attribute" && entry.attribute === "href");
       const srcEntry = existing.find((entry) => entry.kind === "attribute" && entry.attribute === "src");
-      const altEntry = existing.find((entry) => entry.kind === "attribute" && entry.attribute === "alt");
+      const altAttribute = next.tag === "video" ? "aria-label" : "alt";
+      const altEntry = existing.find((entry) => entry.kind === "attribute" && entry.attribute === altAttribute);
       const backgroundEntry = existing.find((entry) => entry.kind === "backgroundImage");
       setSelection(next);
       setHtml(htmlEntry?.value ?? next.html);
@@ -122,10 +123,11 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
       entries.push({ id: saved?.id ?? entryId(selection, "attribute", selection.tag === "button" ? "data-admin-href" : "href"), selector: selection.hrefSelector, kind: "attribute", attribute: selection.tag === "button" ? "data-admin-href" : "href", value: href.trim(), match: saved?.match ?? selection.href, label: `${selection.label || "Link"} URL` });
     }
     if (selection.src) {
+      const altAttribute = selection.tag === "video" ? "aria-label" : "alt";
       const savedSrc = existing("attribute", "src", selection.selector);
-      const savedAlt = existing("attribute", "alt", selection.selector);
+      const savedAlt = existing("attribute", altAttribute, selection.selector);
       entries.push({ id: savedSrc?.id ?? entryId(selection, "attribute", "src"), selector: selection.selector, kind: "attribute", attribute: "src", value: src.trim(), match: savedSrc?.match ?? selection.src, label: `${selection.label || "Image"} URL` });
-      entries.push({ id: savedAlt?.id ?? entryId(selection, "attribute", "alt"), selector: selection.selector, kind: "attribute", attribute: "alt", value: alt.trim(), match: savedAlt?.match ?? selection.alt, label: `${selection.label || "Image"} alt text` });
+      entries.push({ id: savedAlt?.id ?? entryId(selection, "attribute", altAttribute), selector: selection.selector, kind: "attribute", attribute: altAttribute, value: alt.trim(), match: savedAlt?.match ?? selection.alt, label: `${selection.label || "Media"} alternative text` });
     }
     if (selection.backgroundSelector && backgroundImage) {
       const saved = existing("backgroundImage", undefined, selection.backgroundSelector);
@@ -262,7 +264,7 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
 
             {selection.tag !== "img" && selection.html !== "" && <div className="admin-field"><label htmlFor="content-html">Content</label><textarea id="content-html" rows={7} value={html} onChange={(event) => setHtml(event.target.value)} /><small>Simple formatting such as &lt;em&gt; and &lt;strong&gt; is supported.</small></div>}
             {selection.hrefSelector && <div className="admin-field"><label htmlFor="content-link">Button or link URL</label><input id="content-link" value={href} onChange={(event) => setHref(event.target.value)} placeholder="/contact or https://..." className={href && !urlValid(href) ? "invalid" : ""}/>{href && !urlValid(href) && <small className="error">Enter a valid URL or /site-path.</small>}</div>}
-            {selection.src && <><ImageUploadField id="content-image-upload" label={selection.label || "Current image"} value={src} alt={alt} onUploaded={(path) => imageUploaded(path, "src")} onError={(text) => setNotice({ type: "error", text })}/><div className="admin-field"><label htmlFor="content-image">Image URL</label><input id="content-image" value={src} onChange={(event) => setSrc(event.target.value)} className={src && !urlValid(src, true) ? "invalid" : ""}/></div><div className="admin-field"><label htmlFor="content-alt">Image alternative text</label><input id="content-alt" value={alt} onChange={(event) => setAlt(event.target.value)} /></div></>}
+            {selection.src && <>{selection.tag === "img" && <ImageUploadField id="content-image-upload" label={selection.label || "Current image"} value={src} alt={alt} onUploaded={(path) => imageUploaded(path, "src")} onError={(text) => setNotice({ type: "error", text })}/>}<div className="admin-field"><label htmlFor="content-image">{selection.tag === "video" ? "Video URL" : "Image URL"}</label><input id="content-image" value={src} onChange={(event) => setSrc(event.target.value)} className={src && !urlValid(src, true) ? "invalid" : ""}/></div><div className="admin-field"><label htmlFor="content-alt">Media alternative text</label><input id="content-alt" value={alt} onChange={(event) => setAlt(event.target.value)} /></div></>}
             {selection.backgroundSelector && <><ImageUploadField id="content-background-upload" label={`${selection.sectionLabel} background`} value={backgroundImage} alt={`${selection.sectionLabel} background preview`} onUploaded={(path) => imageUploaded(path, "background")} onError={(text) => setNotice({ type: "error", text })}/><div className="admin-field"><label htmlFor="content-background">Section background image URL</label><input id="content-background" value={backgroundImage} onChange={(event) => setBackgroundImage(event.target.value)} /></div></>}
 
             <div className="admin-actions"><button type="button" className="admin-primary-button" onClick={save} disabled={saving}>{saving ? "Saving..." : "Save Changes"}</button><button type="button" className="admin-secondary-button" onClick={preview} disabled={saving}>Preview</button><button type="button" className="admin-secondary-button" onClick={() => reset()} disabled={saving || selectedSaved.length === 0}>Reset</button><button type="button" className="admin-text-button" onClick={() => void cancel()} disabled={saving}>Cancel</button></div>

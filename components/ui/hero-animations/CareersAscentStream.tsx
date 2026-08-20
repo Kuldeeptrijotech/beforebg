@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
+import { startViewportAnimationLoop } from "@/components/ui/canvasAnimationLoop";
 
 /* ─────────────────────────────────────────────────────────────
    CAREERS ASCENT STREAM (CAREERS LANDING HERO)
@@ -38,7 +39,6 @@ export default function CareersAscentStream({ className = "" }: { className?: st
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -137,14 +137,13 @@ export default function CareersAscentStream({ className = "" }: { className?: st
         ctx.restore();
       });
 
-      animId = requestAnimationFrame(render);
     };
 
-    render();
+    const stopAnimation = startViewportAnimationLoop(canvas, render);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animId);
+      stopAnimation();
     };
   }, [reduce]);
 

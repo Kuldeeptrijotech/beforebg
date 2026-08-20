@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
+import { startViewportAnimationLoop } from "@/components/ui/canvasAnimationLoop";
 
 /* ─────────────────────────────────────────────────────────────
    SERVICES CONDUIT STREAM (SERVICES LANDING HERO)
@@ -30,7 +31,6 @@ export default function ServicesConduitStream({ className = "" }: { className?: 
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -170,13 +170,12 @@ export default function ServicesConduitStream({ className = "" }: { className?: 
         ctx.restore();
       });
 
-      animId = requestAnimationFrame(render);
     };
 
-    animId = requestAnimationFrame(render);
+    const stopAnimation = startViewportAnimationLoop(canvas, render);
 
     return () => {
-      cancelAnimationFrame(animId);
+      stopAnimation();
       window.removeEventListener("resize", handleResize);
     };
   }, [reduce]);

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef } from "react";
@@ -56,14 +56,18 @@ function applyEntry(entry: ContentEntry) {
       if (current === entry.value) return;
       if (!entry.match || current === entry.match) {
         element.setAttribute(entry.attribute, entry.value);
-        if (entry.attribute === "src") { element.removeAttribute("srcset"); element.removeAttribute("sizes"); }
+        if (entry.attribute === "src") {
+          element.removeAttribute("srcset");
+          element.removeAttribute("sizes");
+          if (element instanceof HTMLVideoElement) element.load();
+        }
       }
     }
   });
 }
 
 function editableTarget(origin: Element): HTMLElement {
-  return (origin.closest("h1,h2,h3,h4,h5,h6,p,a,button,img,li,span,label") || origin) as HTMLElement;
+  return (origin.closest("h1,h2,h3,h4,h5,h6,p,a,button,img,video,li,span,label") || origin) as HTMLElement;
 }
 
 export default function ContentRuntime({ content }: { content: SiteContent }) {
@@ -76,16 +80,37 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
   }, [content, pathname]);
 
   useEffect(() => {
+    if (entries.length === 0) return;
+
+    let frame = 0;
     const applyAll = () => {
       if (applying.current) return;
       applying.current = true;
       entries.forEach(applyEntry);
       queueMicrotask(() => { applying.current = false; });
     };
+    const scheduleApply = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        applyAll();
+      });
+    };
+
     applyAll();
-    const observer = new MutationObserver(applyAll);
-    observer.observe(document.body, { subtree: true, childList: true, attributes: true });
-    return () => observer.disconnect();
+    const observer = new MutationObserver(scheduleApply);
+    const attributeFilter = Array.from(
+      new Set(entries.flatMap((entry) => entry.attribute ? [entry.attribute] : [])),
+    );
+    observer.observe(document.body, {
+      subtree: true,
+      childList: true,
+      ...(attributeFilter.length ? { attributes: true, attributeFilter } : {}),
+    });
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(frame);
+    };
   }, [entries]);
 
   useEffect(() => {
@@ -130,6 +155,7 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
       element.classList.add("admin-edit-selected");
       selectedElement = element;
       const section = element.closest("header,footer,section,main") as HTMLElement | null;
+      const isMedia = element.tagName === "IMG" || element.tagName === "VIDEO";
       const backgroundElement = (element.closest("section")?.querySelector<HTMLElement>("[style*='background-image']") || null);
       const global = Boolean(element.closest("header,footer"));
       const linkElement = element.closest("a") || (element.tagName === "BUTTON" ? element : null);
@@ -143,12 +169,12 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
           sectionLabel: section?.getAttribute("aria-label") || section?.classList[0]?.replace(/[-_]/g, " ") || "General",
           selector: cssPath(element),
           tag: element.tagName.toLowerCase(),
-          label: normalize(element.textContent || element.getAttribute("alt") || element.tagName),
-          html: element.tagName === "IMG" ? "" : element.innerHTML,
+          label: normalize(element.textContent || element.getAttribute("alt") || element.getAttribute("aria-label") || element.tagName),
+          html: isMedia ? "" : element.innerHTML,
           href: linkElement?.getAttribute(linkElement.tagName === "BUTTON" ? "data-admin-href" : "href") || "",
           hrefSelector: linkElement ? cssPath(linkElement) : "",
-          src: element.tagName === "IMG" ? element.getAttribute("src") || "" : "",
-          alt: element.tagName === "IMG" ? element.getAttribute("alt") || "" : "",
+          src: isMedia ? element.getAttribute("src") || element.getAttribute("data-media-src") || "" : "",
+          alt: element.tagName === "VIDEO" ? element.getAttribute("aria-label") || "" : element.tagName === "IMG" ? element.getAttribute("alt") || "" : "",
           backgroundImage: backgroundElement?.style.backgroundImage.replace(/^url\(["']?|["']?\)$/g, "") || "",
           backgroundSelector: backgroundElement ? cssPath(backgroundElement) : "",
         },

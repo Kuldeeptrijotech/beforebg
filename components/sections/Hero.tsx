@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
-import Image from "next/image";
+import { AnimatePresence, motion, useInView, useReducedMotion, type Variants } from "framer-motion";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import GradientButton from "@/components/ui/GradientButton";
 import HexScene from "@/components/three/HexScene";
@@ -40,19 +40,21 @@ const childVariants: Variants = {
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const sectionInView = useInView(sectionRef, { amount: 0.05 });
   const reduce = useReducedMotion();
   const activeSlide = heroSlides[activeIndex];
 
   useEffect(() => {
-    if (reduce) return;
+    if (reduce || !sectionInView) return;
     const timer = window.setTimeout(() => {
       setActiveIndex((current) => (current + 1) % heroSlides.length);
     }, AUTO_PLAY_MS);
     return () => window.clearTimeout(timer);
-  }, [activeIndex, reduce]);
+  }, [activeIndex, reduce, sectionInView]);
 
   return (
-    <section className="hero-fullvh relative isolate overflow-hidden bg-[#091527] text-white">
+    <section ref={sectionRef} className="hero-fullvh relative isolate overflow-hidden bg-[#091527] text-white">
       {/* Layered rich midnight & emerald mesh background */}
       <div aria-hidden className="absolute inset-0 -z-40 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(17,122,75,0.28),transparent_70%),radial-gradient(ellipse_90%_60%_at_85%_75%,rgba(245,166,35,0.18),transparent_65%),linear-gradient(180deg,#0a192f_0%,#0c1e38_50%,#081324_100%)]" />
       <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-50" />
@@ -67,13 +69,11 @@ export default function Hero() {
           transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0 -z-20"
         >
-          <Image
+          <OptimizedVideo
             src={activeSlide.visual.src}
             alt={activeSlide.visual.alt}
-            fill
             priority={activeIndex === 0}
-            sizes="100vw"
-            className="object-cover object-center opacity-75 mix-blend-luminosity"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-75 mix-blend-luminosity"
           />
           {/* Rich midnight depth gradient overlay */}
           <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(9,21,39,0.92)_0%,rgba(12,30,56,0.68)_50%,rgba(16,40,74,0.35)_100%)]" />
@@ -87,8 +87,8 @@ export default function Hero() {
       <div aria-hidden className="tri-blob -z-10 h-80 w-80 animate-float-reverse" style={{ right: "-8%", bottom: "8%", background: "radial-gradient(circle, rgba(245,166,35,0.18), transparent 70%)" }} />
       <div aria-hidden className="tri-blob -z-10 h-64 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(17,122,75,0.14), transparent 65%)", animationDelay: "-3s" }} />
 
-      <Container className="relative z-10 grid min-h-[100svh] items-center gap-10 py-14 sm:py-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:py-20">
-        <div className="mx-auto w-full max-w-2xl">
+      <Container className="relative z-10 grid min-h-[calc(100svh-4.5rem)] max-h-[1100px] items-center gap-10 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:grid-cols-12 lg:gap-12 2xl:gap-16 lg:py-20 2xl:py-28">
+        <div className="w-full lg:col-span-7 2xl:max-w-3xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSlide.id}
@@ -115,7 +115,7 @@ export default function Hero() {
               <motion.h1
                 custom={1}
                 variants={childVariants}
-                className="max-w-[18ch] text-xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl lg:text-[2.5rem] lg:leading-[1.12]"
+                className="max-w-[18ch] text-xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl lg:text-[2.5rem] 2xl:text-[3.2rem] lg:leading-[1.12]"
               >
                 {activeSlide.title}
               </motion.h1>
@@ -124,7 +124,7 @@ export default function Hero() {
               <motion.p
                 custom={2}
                 variants={childVariants}
-                className="mt-5 max-w-xl text-sm font-medium leading-[1.7] text-slate-300/90 sm:text-base"
+                className="mt-5 max-w-xl 2xl:max-w-2xl text-sm font-medium leading-[1.7] text-slate-300/90 sm:text-base 2xl:text-lg"
               >
                 {activeSlide.description}
               </motion.p>
@@ -166,14 +166,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* 3D hexagon scene */}
+        {/* 3D hexagon scene (Hidden on mobile & tablet, visible on laptops/desktops lg+) */}
         <motion.div
-          className="mx-auto w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[520px]"
+          className="relative mx-auto hidden w-full max-w-[320px] sm:max-w-[440px] lg:flex lg:max-w-[540px] 2xl:max-w-[680px] 3xl:max-w-[760px] items-center justify-center lg:col-span-5"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.0, delay: 0.3, ease: EASE_OUT_EXPO }}
         >
-          <HexScene className="aspect-square w-full" />
+          <HexScene active={sectionInView} className="aspect-square w-full" />
         </motion.div>
       </Container>
     </section>

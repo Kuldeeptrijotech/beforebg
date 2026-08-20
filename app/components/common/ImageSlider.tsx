@@ -28,7 +28,7 @@ export default function ImageSlider({
           fill
           sizes="(max-width: 1200px) 100vw, 1140px"
           className="object-contain"
-          priority={current === 0}
+          loading="lazy"
         />
         <span className="absolute right-4 top-4 rounded-full bg-cyan-950/80 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
           {current + 1} / {images.length}

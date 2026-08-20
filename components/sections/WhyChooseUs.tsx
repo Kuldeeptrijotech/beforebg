@@ -1,5 +1,3 @@
-"use client";
-
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HexBadge from "@/components/ui/HexBadge";
@@ -7,7 +5,7 @@ import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import { Reveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { whyChooseStats, whyChooseUs } from "@/lib/site-data";
 import { Award, Globe2, BadgeCheck } from "lucide-react";
-import Image from "next/image";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 
 const statValues = whyChooseStats.map((stat) => ({
   ...stat,
@@ -70,12 +68,10 @@ export default function WhyChooseUs() {
               <StaggerRevealItem key={item.title} className="h-full">
                 <article className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
                   <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden">
-                    <Image
+                    <OptimizedVideo
                       src={item.image}
                       alt={item.imageAlt}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 100vw"
-                      className="object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+                      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
                     />
                     <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(3,7,19,0.8))]" />
                     <HexBadge

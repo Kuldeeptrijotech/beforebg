@@ -23,7 +23,7 @@ const toneFill: Record<string, string> = {
 };
 
 /** CSS 3D glass-hexagon hero scene with pointer parallax. Mouse-only, reduced-motion aware. */
-export default function HexScene({ className = "" }: { className?: string }) {
+export default function HexScene({ active = true, className = "" }: { active?: boolean; className?: string }) {
   const reduce = useReducedMotion();
   const mrx = useMotionValue(0);
   const mry = useMotionValue(0);
@@ -67,19 +67,21 @@ export default function HexScene({ className = "" }: { className?: string }) {
         {/* central 3D Trijotech Three-Hexagon Logo */}
         <div
           className="absolute"
-          style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%) translateZ(0px)" }}
+          style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%) translateZ(0px)", width: "68%", height: "68%" }}
         >
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex h-full w-full items-center justify-center">
             {/* Outer revolving boundary hexagon */}
-            <Hexagon size={320} animated strokeWidth={2} fill="rgba(41,171,135,0.04)" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Hexagon className="h-full w-full" animated strokeWidth={2} fill="rgba(41,171,135,0.04)" />
+            </div>
 
             {/* Borderless & background-free revolving Three-Hexagon Logo with shiny crystal glow */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div
                 className="relative flex items-center justify-center"
                 style={{
-                  width: 190,
-                  height: 190,
+                  width: "60%",
+                  height: "60%",
                   transform: "translateZ(30px)",
                 }}
               >
@@ -95,9 +97,9 @@ export default function HexScene({ className = "" }: { className?: string }) {
                 {/* 3-Hexagon Vector Logo - Continuous Smooth 360° Revolving Animation */}
                 <motion.div
                   className="relative z-10 flex h-full w-full items-center justify-center"
-                  animate={reduce ? undefined : { rotate: 360 }}
+                  animate={active && !reduce ? { rotate: 360 } : { rotate: 0 }}
                   transition={{
-                    repeat: Infinity,
+                    repeat: active && !reduce ? Infinity : 0,
                     duration: 18,
                     ease: "linear",
                   }}
@@ -229,15 +231,13 @@ export default function HexScene({ className = "" }: { className?: string }) {
           style={{
             left: "50%",
             top: "50%",
-            width: 230,
-            height: 230,
+            width: "50%",
+            height: "50%",
             transform: "translate(-50%, -50%) translateZ(-30px)",
-            marginLeft: -115,
-            marginTop: -115,
           }}
         >
           <span
-            className="tri-ring absolute left-1/2 top-1/2 h-6 w-6 rounded-full border-2 border-[rgba(245,166,35,0.8)]"
+            className="tri-ring absolute left-1/2 top-1/2 h-5 w-5 rounded-full border-2 border-[rgba(245,166,35,0.8)]"
             style={{ transform: "translate(-50%,-50%)" }}
           />
         </div>

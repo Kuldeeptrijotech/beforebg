@@ -104,13 +104,14 @@ export function validateBlogPost(post: Partial<BlogPost>) {
       // Divider blocks intentionally contain no text.
     } else if (!block.value?.trim()) return `Every ${block.type} block requires content.`;
     if (block.type === "link" && !block.linkUrl?.startsWith("/") && !/^https?:\/\//i.test(block.linkUrl || "")) return "Enter a valid link block URL.";
-    if (!["left", "center", "right"].includes(block.style?.textAlign) || !["small", "medium", "large", "xlarge"].includes(block.style?.fontSize) || !["compact", "normal", "spacious"].includes(block.style?.spacing)) return "A block contains invalid styling options.";
-    if (!/^(?:#[0-9a-fA-F]{6})?$/.test(block.style.textColor) || !/^(?:#[0-9a-fA-F]{6})?$/.test(block.style.backgroundColor)) return "Use valid six-digit colors for block styling.";
-    if (!["400", "500", "600", "700"].includes(block.style.fontWeight || "") || !["normal", "italic"].includes(block.style.fontStyle || "") || !["none", "underline"].includes(block.style.textDecoration || "")) return "A block contains invalid text formatting.";
-    if (!["compact", "normal", "relaxed"].includes(block.style.lineHeight || "") || !["none", "uppercase", "capitalize"].includes(block.style.textTransform || "") || !["0", "12", "20", "32"].includes(block.style.padding || "") || !["0", "8", "16", "24"].includes(block.style.blockRadius || "")) return "A block contains invalid layout styling.";
-    if (!/^(?:#[0-9a-fA-F]{6})?$/.test(block.style.borderColor || "")) return "Use a valid six-digit border color.";
-    if (!["320", "480", "640", "auto"].includes(block.style.imageMaxHeight || "") || !["contain", "cover"].includes(block.style.imageObjectFit || "") || !["none", "soft", "strong"].includes(block.style.imageShadow || "")) return "An image block contains invalid display styling.";
-    if (!["25", "50", "75", "100"].includes(block.style.imageWidth) || !["left", "center", "right"].includes(block.style.imageAlign) || !["0", "8", "16", "24"].includes(block.style.borderRadius)) return "An image block contains invalid sizing options.";
+    if (block.style) {
+      if (block.style.textAlign && !["left", "center", "right", "justify"].includes(block.style.textAlign)) return "A block contains invalid alignment.";
+      if (block.style.fontSize && !["small", "medium", "large", "xlarge", "huge"].includes(block.style.fontSize)) return "A block contains invalid font size.";
+      if (block.style.spacing && !["none", "compact", "normal", "spacious", "custom"].includes(block.style.spacing)) return "A block contains invalid spacing.";
+      if (block.style.textColor && !/^(?:#[0-9a-fA-F]{3,8}|rgba?\([^)]+\)|[a-z]+)$/i.test(block.style.textColor)) return "Use valid colors for text.";
+      if (block.style.backgroundColor && !/^(?:#[0-9a-fA-F]{3,8}|rgba?\([^)]+\)|[a-z]+)$/i.test(block.style.backgroundColor)) return "Use valid colors for background.";
+      if (block.style.borderColor && !/^(?:#[0-9a-fA-F]{3,8}|rgba?\([^)]+\)|[a-z]+)$/i.test(block.style.borderColor)) return "Use valid colors for border.";
+    }
     if (/<(?:script|style|iframe|object|embed|form)\b|\bon\w+\s*=|javascript:/i.test(block.value || "")) return "A content block contains unsafe HTML.";
   }
   if (!Array.isArray(post.contentImages) || post.contentImages.length > 30) return "Add no more than 30 inline images.";

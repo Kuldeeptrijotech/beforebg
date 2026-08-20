@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
+import { startViewportAnimationLoop } from "@/components/ui/canvasAnimationLoop";
 
 /* ─────────────────────────────────────────────────────────────
    CONTACT SIGNAL PULSE (CONTACT US LANDING HERO)
@@ -40,7 +41,6 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let animId: number;
     let width = (canvas.width = canvas.parentElement?.clientWidth || window.innerWidth);
     let height = (canvas.height = canvas.parentElement?.clientHeight || window.innerHeight);
 
@@ -191,14 +191,13 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
       ctx.stroke();
       ctx.restore();
 
-      animId = requestAnimationFrame(render);
     };
 
-    render();
+    const stopAnimation = startViewportAnimationLoop(canvas, render);
 
     return () => {
       window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animId);
+      stopAnimation();
     };
   }, [reduce]);
 

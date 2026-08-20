@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import ServicesConduitStream from "@/components/ui/hero-animations/ServicesConduitStream";
 import { Reveal } from "@/components/motion/Reveal";
 import { BlurReveal } from "@/components/motion/Reveal";
+import OptimizedVideo from "@/components/ui/OptimizedVideo";
 
 export type LandingCard = {
   title: string;
@@ -176,13 +177,21 @@ export default function SectionLanding({
                         : "aspect-[16/10]"
                     }`}
                   >
-                    <Image
-                      src={card.image}
-                      alt={card.imageAlt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-                    />
+                    {/\.(mp4|webm)(?:$|[?#])/i.test(card.image) ? (
+                      <OptimizedVideo
+                        src={card.image}
+                        alt={card.imageAlt}
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+                      />
+                    ) : (
+                      <Image
+                        src={card.image}
+                        alt={card.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,25,39,0.75)] to-transparent" />
                     <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.35),transparent_50%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="absolute inset-0 translate-x-[-105%] bg-gradient-to-r from-transparent via-white/8 to-transparent transition-transform duration-700 group-hover:translate-x-[105%]" />
