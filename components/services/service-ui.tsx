@@ -40,11 +40,11 @@ export const SAP = {
 
 /** Consistent hero heading typography (clamp sized, tight, premium). */
 export const heroH1 =
-  "text-[clamp(1.6rem,3.2vw,2.6rem)] font-extrabold leading-[1.1] tracking-[-0.02em] text-white";
+  "text-2xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] tracking-tight text-white";
 
 /** Consistent large intro statement. */
 export const introLead =
-  "text-[clamp(1.75rem,3.4vw,2.9rem)] font-bold leading-[1.16] tracking-[-0.02em]";
+  "text-xl sm:text-2xl lg:text-3xl font-bold leading-[1.2] tracking-tight text-white";
 
 /** Ease + duration used across page reveals. */
 export const springEase = { ease: EASE, duration: 0.7 };
@@ -109,9 +109,9 @@ export function SectionLabel({
   className?: string;
 }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.26em] ${className}`}>
-      <span className="h-px w-8 bg-gradient-to-r from-[#2f8fff] to-[#22d3ee]" />
-      <span className={dark ? "text-[#7ec8f7]" : "text-[#0a6ed1]"}>{children}</span>
+    <span className={`inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${className}`}>
+      <span className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#f5a623] to-[#29ab87]" />
+      <span className={dark ? "text-[#29ab87]" : "text-[#117a4b]"}>{children}</span>
     </span>
   );
 }
@@ -149,7 +149,7 @@ export function Glass({
   };
   const glow = tone ? toneGlow[tone] : toneGlow.cyan;
   return (
-    <div className={`group/glass relative overflow-hidden rounded-2xl shadow-[0_24px_70px_-28px_rgba(3,7,19,0.6)] transition-transform duration-300 ${GLASS[variant]} ${className}`}>
+    <div className={`group/glass relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[0_24px_70px_-28px_rgba(3,7,19,0.6)] transition-transform duration-300 ${GLASS[variant]} ${className}`}>
       {tone && (
         <div
           aria-hidden
@@ -160,7 +160,7 @@ export function Glass({
       {shine && (
         <div aria-hidden className="pointer-events-none absolute inset-0 -translate-x-[130%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/[0.05] to-transparent transition-transform duration-700 group-hover/glass:translate-x-[130%]" />
       )}
-      <div className="relative z-10 h-full">{children}</div>
+      <div className="relative z-10 flex h-full w-full flex-1 flex-col justify-between">{children}</div>
     </div>
   );
 }
@@ -183,12 +183,14 @@ export function Metric({
   sub?: string;
 }) {
   return (
-    <div className="relative h-full">
-      <p className={`flex h-10 items-end whitespace-nowrap text-4xl font-extrabold tracking-tight sm:h-12 sm:text-5xl ${accent}`}>
+    <div className="relative flex h-full flex-col justify-between">
+      <p className={`flex h-10 items-end whitespace-nowrap text-3xl font-extrabold tracking-tight sm:h-12 sm:text-4xl lg:text-5xl ${accent}`}>
         <AnimatedCounter to={to} prefix={prefix} suffix={suffix} />
       </p>
-      <p className="mt-2 text-sm font-semibold text-white/85">{label}</p>
-      {sub && <p className="mt-1 text-xs leading-5 text-white/45">{sub}</p>}
+      <div className="mt-3 flex flex-1 flex-col justify-end">
+        <p className="text-xs sm:text-sm font-semibold leading-snug text-white/90">{label}</p>
+        {sub && <p className="mt-1 text-[11px] sm:text-xs leading-4 text-white/50">{sub}</p>}
+      </div>
     </div>
   );
 }

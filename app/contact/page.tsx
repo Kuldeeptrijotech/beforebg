@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Mail, MapPin, Phone, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import ContactUs from "../components/ContactUs";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
@@ -40,7 +40,7 @@ const contactItems = [
 
 export default function ContactPage() {
   return (
-    <main className="overflow-hidden bg-[#121927] text-white">
+    <main className="font-sans overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-10 sm:pb-12">
         <Image
@@ -70,19 +70,19 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
             >
-              <Sparkles className="h-3.5 w-3.5 text-cyan-200" /> Contact Us
+              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" /> Contact Us
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="text-xl font-semibold leading-[1.2] tracking-tight text-white sm:text-2xl lg:text-3xl xl:text-4xl"
+              className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
               Let&apos;s start a{" "}
-              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+              <span className="tri-gradient-text">
                 meaningful conversation
               </span>
             </motion.h1>
@@ -91,7 +91,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="mt-3.5 sm:mt-4 max-w-2xl text-sm sm:text-base font-normal leading-relaxed text-slate-200"
+              className="mt-5 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               Whether exploring a new SAP implementation, solving integration bottlenecks, or upgrading your analytics, our team is ready to help.
             </motion.p>
@@ -103,9 +103,9 @@ export default function ContactPage() {
             >
               <a
                 href="#contact-form"
-                className="mt-6 sm:mt-7 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-cyan-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl"
+                className="mt-6 sm:mt-7 inline-flex items-center gap-2 tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
               >
-                Start a conversation
+                Start a conversation <ArrowRight className="h-4 w-4" />
               </a>
             </motion.div>
           </div>
@@ -129,7 +129,7 @@ export default function ContactPage() {
           >
             <p className="tri-overline">Get in touch</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Connect with our team
+              Connect with <span className="tri-gradient-text">our team</span>
             </h2>
             <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
               Reach out directly or send us an enquiry below. We are here to answer questions and explore how we can support your initiatives.
@@ -167,7 +167,7 @@ export default function ContactPage() {
       {/* ── Contact Form ─────────────────────── */}
       <section
         id="contact-form"
-        className="relative isolate overflow-hidden scroll-mt-24 bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10"
+        className="relative isolate overflow-hidden scroll-mt-24 bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5"
       >
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -181,7 +181,7 @@ export default function ContactPage() {
           >
             <p className="tri-overline">Send an enquiry</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              How can we help?
+              How can we <span className="tri-gradient-text">help you?</span>
             </h2>
             <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300">
               Share a few details and we will respond within one to two business days.

@@ -74,20 +74,20 @@ export default function AboutUsPage() {
   return (
     <main className="overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-slate-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/about/trijotech-team-collaboration-blue.png"
           alt="Trijotech leadership and global consultant team collaboration"
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-center opacity-95"
+          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
         {/* Slow interconnected constellation network & luminous partnership arcs */}
         <AboutGlobalConstellation />
 
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/85 via-slate-950/45 to-slate-900/10" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-950/50 via-transparent to-slate-950/10" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
         {/* Ambient glow orbs */}
         <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
@@ -99,9 +99,9 @@ export default function AboutUsPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-300 backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" />
               About Trijotech
             </motion.div>
 
@@ -109,10 +109,10 @@ export default function AboutUsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-5 text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
+              className="mt-5 text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
               Technology shaped around{" "}
-              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+              <span className="tri-gradient-text">
                 real outcomes
               </span>
             </motion.h1>
@@ -121,7 +121,7 @@ export default function AboutUsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 text-lg leading-8 text-slate-200 sm:text-xl"
+              className="mt-6 text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               We help enterprises modernize SAP landscapes, integrate critical data, and turn technology investments into sustainable business advantage.
             </motion.p>
@@ -134,7 +134,7 @@ export default function AboutUsPage() {
             >
               <a
                 href="#who-we-are"
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl"
+                className="inline-flex tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
               >
                 Discover our story <ArrowRight className="h-4 w-4" />
               </a>

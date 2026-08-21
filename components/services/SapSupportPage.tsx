@@ -38,7 +38,7 @@ const PROCESS = [
 
 export default function SapSupportPage({ offerings, impacts }: { offerings: ServiceItem[]; impacts: ServiceItem[] }) {
   return (
-    <main className="overflow-hidden bg-[#030713] text-white">
+    <main className="font-sans overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
         bgClass="bg-[#030713]"
@@ -86,24 +86,24 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
             </StaggerReveal>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Reveal>
-              <Glass variant="frosted" tone="green" className="p-6">
+          <div className="grid grid-cols-2 gap-4 items-stretch">
+            <Reveal className="h-full">
+              <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
                 <Metric to={99.9} suffix="%" label="Availability target" accent="text-[#29ab87]" />
               </Glass>
             </Reveal>
-            <Reveal delay={0.1}>
-              <Glass variant="frosted" tone="amber" className="p-6">
+            <Reveal delay={0.1} className="h-full">
+              <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
                 <Metric to={30} prefix="< " suffix=" min" label="Response SLA" accent="text-[#f5a623]" />
               </Glass>
             </Reveal>
-            <Reveal delay={0.2}>
-              <Glass variant="frosted" tone="cyan" className="p-6">
+            <Reveal delay={0.2} className="h-full">
+              <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
                 <Metric to={24} suffix="/7" label="Coverage" accent="text-[#29ab87]" />
               </Glass>
             </Reveal>
-            <Reveal delay={0.3}>
-              <Glass variant="frosted" tone="green" className="p-6">
+            <Reveal delay={0.3} className="h-full">
+              <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
                 <Metric to={40} suffix="%" label="Incident reduction" accent="text-[#117a4b]" />
               </Glass>
             </Reveal>

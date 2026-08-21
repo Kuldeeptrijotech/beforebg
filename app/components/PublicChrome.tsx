@@ -37,9 +37,9 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
       <ViewportPerformance />
       <Header />
       {pathname === "/" ? children : usesStandaloneTailwind || usesModernDetailTheme ? (
-        <div className={isLandingPage ? "site-landing-theme" : "site-subpage-theme"}>{children}</div>
+        <div className={`font-sans ${isLandingPage ? "site-landing-theme" : "site-subpage-theme"}`}>{children}</div>
       ) : (
-        <div className={`zip-inner-theme ${isLandingPage ? "site-landing-theme" : "site-subpage-theme"}`}>{children}</div>
+        <div className={`zip-inner-theme font-sans ${isLandingPage ? "site-landing-theme" : "site-subpage-theme"}`}>{children}</div>
       )}
       <Footer />
       <DeferredChatbot />

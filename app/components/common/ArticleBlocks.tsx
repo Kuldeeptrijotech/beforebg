@@ -10,9 +10,23 @@ function RichParagraph({block,index}:{block:ContentBlock;index:number}){
   content.push(text.slice(cursor));return <p>{content}</p>
 }
 
-function ArticleImage({block}:{block:ContentBlock}){
-  const layout=["wide","standard","compact"].includes(String(block.layout))?String(block.layout):"standard";
-  return <figure className={`my-[38px] w-full text-center max-[640px]:my-[26px] legacy-image-${layout}`}><img className="mx-auto block max-h-[720px] max-w-full rounded-[10px] object-contain shadow-[0_12px_34px_#122a3124] max-[640px]:rounded-md" src={String(block.src??"")} alt={String(block.alt??"")} width={Number(block.width)||undefined} height={Number(block.height)||undefined} loading="lazy"/></figure>
+function ArticleImage({ block }: { block: ContentBlock }) {
+  return (
+    <figure className="my-5 w-full text-center">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="mx-auto block h-[260px] sm:h-[340px] md:h-[380px] w-auto max-w-full rounded-lg object-contain bg-[#f1f5f9]"
+        src={String(block.src ?? "")}
+        alt={String(block.alt ?? "Blog diagram illustration")}
+        loading="lazy"
+      />
+      {Boolean(block.caption || block.alt) && String(block.caption || block.alt).trim() !== "" && (
+        <figcaption className="mt-2 text-center text-xs font-medium text-slate-400">
+          {String(block.caption || block.alt)}
+        </figcaption>
+      )}
+    </figure>
+  );
 }
 
 function ArticleTable({block}:{block:ContentBlock}){

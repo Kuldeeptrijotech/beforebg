@@ -74,20 +74,17 @@ export default function SAPTransformation() {
           {steps.map((item) => (
             <StaggerRevealItem key={item.step} className="h-full">
               <div className="group relative flex h-full flex-col rounded-2xl border border-white/5 bg-white/[0.02] p-5 backdrop-blur-sm transition-all duration-300 hover:border-[#29ab87]/30 hover:bg-white/[0.04]">
-                {/* Step badge with connector dot */}
-                <div className="relative z-10 flex w-fit flex-col gap-2">
-                  <div className="flex items-center gap-3">
-                    <HexBadge icon={item.icon} tone={item.tone} size="md" />
-                    <span
-                      className="text-2xl sm:text-3xl font-black leading-none tracking-tight transition-all duration-500"
-                      style={{
-                        WebkitTextStroke: "1px rgba(255,255,255,0.14)",
-                        color: "transparent",
-                      }}
-                    >
-                      {item.step}
-                    </span>
-                  </div>
+                {/* Header with Icon on the left and Step Number on the far right */}
+                <div className="relative z-10 flex items-center justify-between w-full">
+                  <HexBadge icon={item.icon} tone={item.tone} size="md" />
+                  <span
+                    className="text-2xl sm:text-3xl font-black leading-none tracking-tight transition-all duration-500 text-white/20 group-hover:text-white/40"
+                    style={{
+                      WebkitTextStroke: "1px rgba(255,255,255,0.18)",
+                    }}
+                  >
+                    {item.step}
+                  </span>
                 </div>
                 <h3 className="mt-3.5 text-base sm:text-lg font-bold leading-snug text-white group-hover:text-[#7edcc2] transition-colors">{item.title}</h3>
                 <div className="mt-2 h-px w-8 bg-[linear-gradient(90deg,#29ab87,#f5a623)] opacity-60 transition-all duration-500 group-hover:w-14 group-hover:opacity-100" />

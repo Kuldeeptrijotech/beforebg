@@ -7,9 +7,20 @@ import ImageSlider from "../components/common/ImageSlider";
 import { motion } from "framer-motion";
 import CaseStudiesVectorTrails from "@/components/ui/hero-animations/CaseStudiesVectorTrails";
 
-const studies = [
+type StudyItem = {
+  title: React.ReactNode;
+  description: string;
+  images: string[];
+};
+
+const studies: StudyItem[] = [
   {
-    title: "Maximizing ROI for Large Scale S/4HANA Transformations",
+    title: (
+      <>
+        Maximizing ROI for{" "}
+        <span className="tri-gradient-text">Large Scale S/4HANA Transformations</span>
+      </>
+    ),
     description:
       "Discover the incredible benefits that S/4HANA brings, including streamlined processes and innovative SAP tools that ensure a smooth transition. Our experts share valuable insights on selecting the perfect cloud offering tailored to your unique business needs, helping you achieve unparalleled efficiency and cost-effectiveness.",
     images: Array.from(
@@ -19,7 +30,12 @@ const studies = [
     ),
   },
   {
-    title: "SAP SAC Financial Planning for a Major Pharmaceutical Company",
+    title: (
+      <>
+        SAP SAC Financial Planning for a{" "}
+        <span className="tri-gradient-text">Major Pharmaceutical Company</span>
+      </>
+    ),
     description:
       "The case study illustrates how SAP SAC was used for financial planning by a leading pharmaceutical company. The goal was to analyze data from a BW environment, which included entities such as profit centers, segments, and material costs. The aim was to make use of this data analysis to effectively support the company's financial planning objectives.",
     images: Array.from(
@@ -29,8 +45,12 @@ const studies = [
     ),
   },
   {
-    title:
-      "Elevate Your Business with SAP Profitability & Performance Management (PaPM)",
+    title: (
+      <>
+        Elevate Your Business with{" "}
+        <span className="tri-gradient-text">SAP Profitability & Performance Management (PaPM)</span>
+      </>
+    ),
     description:
       "Discover how SAP PaPM can transform your approach to financial and operational performance management, with a comprehensive agenda covering its core functionalities, solution architecture, key use cases, and real-world success stories.",
     images: Array.from(
@@ -40,8 +60,12 @@ const studies = [
     ),
   },
   {
-    title:
-      "MIS & KPIs Dashboard Implementation for a Leading European Automotive Manufacturer using SAP BW/4HANA & SAP Analytics Cloud",
+    title: (
+      <>
+        MIS & KPIs Dashboard Implementation for a{" "}
+        <span className="tri-gradient-text">Leading European Automotive Manufacturer</span> using SAP BW/4HANA & SAP Analytics Cloud
+      </>
+    ),
     description:
       "This case study illustrates the implementation of performance indicators (KPIs) and management information system (MIS) reporting for a major British car manufacturer. The implementation was carried out using SAP BW and SAC, with a focus on optimizing business performance through a thorough understanding of KPIs.",
     images: Array.from(
@@ -51,8 +75,12 @@ const studies = [
     ),
   },
   {
-    title:
-      "Legal Consolidation and Disclosure reporting for Major APAC Palm oil Manufacturers using SAP BPC 11.0",
+    title: (
+      <>
+        Legal Consolidation and Disclosure reporting for{" "}
+        <span className="tri-gradient-text">Major APAC Palm oil Manufacturers</span> using SAP BPC 11.0
+      </>
+    ),
     description:
       "Legal Consolidation and Disclosure reporting for Major APAC Palmoil Manufacturer. It describes a unique approach towards BPC Legal Consolidation (SAP Business Object Planning & Consolidation 11.1 NW for Consolidation) to repurpose the Group Currency of a Group as a source for another group based on alternative currency base.",
     images: Array.from(
@@ -67,20 +95,20 @@ export default function CaseStudiesPage() {
   return (
     <main className="overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/case-studies/financial-analysis-team.png"
           alt="Business team reviewing financial analysis and performance reports"
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-center opacity-95"
+          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
         {/* Slow ascending growth curves animation */}
         <CaseStudiesVectorTrails />
 
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/85 via-cyan-950/45 to-cyan-900/10" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/50 via-transparent to-slate-950/10" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
         {/* Floating orbs */}
         <div className="pointer-events-none absolute right-1/3 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
@@ -92,9 +120,9 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
             >
-              <Sparkles className="h-4 w-4 text-cyan-200" aria-hidden="true" />
+              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" aria-hidden="true" />
               Case studies
             </motion.div>
 
@@ -102,10 +130,10 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
+              className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
               Proven SAP results for{" "}
-              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">
+              <span className="tri-gradient-text">
                 global enterprises
               </span>
             </motion.h1>
@@ -114,7 +142,7 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="mt-6 text-lg leading-8 text-cyan-50/90 sm:text-xl"
+              className="mt-6 text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               Explore how Trijotech helped organizations transform SAP landscapes, automate financial workflows, and unlock actionable insights.
             </motion.p>
@@ -126,7 +154,7 @@ export default function CaseStudiesPage() {
             >
               <a
                 href="#case-studies"
-                className="mt-9 inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg shadow-cyan-950/20 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl"
+                className="mt-9 inline-flex tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
               >
                 Explore case studies <ArrowRight className="h-4 w-4" />
               </a>
@@ -190,7 +218,7 @@ export default function CaseStudiesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="mt-7 sm:mt-9 rounded-2xl border border-white/10 bg-white/[0.04] p-3 shadow-2xl backdrop-blur-xl sm:p-5"
+                className="mx-auto mt-7 max-w-3xl sm:mt-9"
               >
                 <ImageSlider images={study.images} label={`Case study ${index + 1}`} />
               </motion.div>

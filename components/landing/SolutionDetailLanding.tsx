@@ -94,6 +94,7 @@ export default function SolutionDetailLanding({
   impactImage = solution.cardImage,
   heroTitle = solution.title,
   showHeroCopy = true,
+  cleanImpactImage = false,
   scene,
   heroLayout,
 }: Props) {
@@ -158,16 +159,16 @@ export default function SolutionDetailLanding({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
+        className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
       >
-        <Sparkles className="h-4 w-4 text-cyan-200" /> {solution.eyebrow}
+        <Sparkles className="h-4 w-4 text-[#29ab87]" /> {solution.eyebrow}
       </motion.div>
 
       <motion.h1
         initial={{ opacity: 0, y: 28 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-        className="text-[clamp(1.5rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white"
+        className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
       >
         {renderTitle(heroTitle)}
       </motion.h1>
@@ -177,7 +178,7 @@ export default function SolutionDetailLanding({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.38 }}
-          className="mt-6 text-xl font-medium leading-8 text-cyan-50 sm:text-2xl"
+          className="mt-5 text-lg font-semibold leading-relaxed text-[#29ab87] sm:text-xl"
         >
           {solution.subtitle}
         </motion.p>
@@ -188,7 +189,7 @@ export default function SolutionDetailLanding({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.46 }}
-          className="mt-4 max-w-xl text-sm leading-7 text-white/55 sm:text-base"
+          className="mt-4 max-w-xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
         >
           {solution.shortDescription}
         </motion.p>
@@ -217,7 +218,7 @@ export default function SolutionDetailLanding({
   );
 
   return (
-    <main className="overflow-hidden bg-[#030713] text-white">
+    <main className="font-sans overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#030713] pb-4 pt-24 sm:pt-28 lg:h-screen lg:min-h-[680px] lg:py-0">
         {/* Brand tri-mesh, grid and hex-grid overlay */}
@@ -336,7 +337,8 @@ export default function SolutionDetailLanding({
               At a glance
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Built for the way your teams work
+              Built for the way{" "}
+              <span className="tri-gradient-text">your teams work</span>
             </h2>
           </motion.div>
           <div className="mt-7 sm:mt-9 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -382,7 +384,8 @@ export default function SolutionDetailLanding({
               Capabilities
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Everything needed to move from complexity to control
+              Everything needed to move from{" "}
+              <span className="tri-gradient-text">complexity to control</span>
             </h2>
           </motion.div>
           <div className="mt-7 sm:mt-9 space-y-6">
@@ -454,24 +457,24 @@ export default function SolutionDetailLanding({
                 Business outcomes
               </p>
               <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-                {solution.outcomesTitle}
+                Business <span className="tri-gradient-text">Outcomes</span>
               </h2>
             </div>
 
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-slate-950 border border-white/10 shadow-2xl">
+            <div className={`relative w-full max-w-[480px] overflow-hidden rounded-2xl bg-slate-950 border border-white/10 shadow-2xl ${cleanImpactImage ? "aspect-[2.05/1]" : "aspect-[16/9]"}`}>
               {impactImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
                 <OptimizedVideo
                   src={impactImage}
                   alt={solution.imageAlt}
-                  className="pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-105"
+                  className="pointer-events-none absolute inset-[-2px] h-[calc(100%+4px)] w-[calc(100%+4px)] object-cover scale-[1.02]"
                 />
               ) : (
                 <Image
                   src={impactImage}
                   alt={solution.imageAlt}
                   fill
-                  sizes="(max-width:1024px) 100vw, 50vw"
-                  className="object-cover transition duration-700 hover:scale-105"
+                  sizes="(max-width:1024px) 100vw, 480px"
+                  className="object-cover scale-[1.02]"
                 />
               )}
             </div>
@@ -509,32 +512,33 @@ export default function SolutionDetailLanding({
       <OtherSolutions currentSlug={solution.slug} />
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-2xl bg-gradient-to-br from-[#117a4b] to-[#121927] border border-white/10 px-6 py-8 text-center shadow-2xl sm:px-12 sm:py-10"
+          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 animate-spin-slow" />
-          <div className="absolute -bottom-16 -left-16 h-56 w-56 rounded-full bg-cyan-300/8 blur-2xl animate-float-slow" />
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
               Let&apos;s work together
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-              Ready to see {solution.title} in your landscape?
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
+              Ready to see {solution.title} in{" "}
+              <span className="tri-gradient-text">your landscape?</span>
             </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300 sm:text-base">
               Talk with our team about your priorities, current systems, and the right path to measurable value.
             </p>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block">
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#29ab87] to-[#f5a623] px-6 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg border border-white/10 transition-all duration-300 hover:opacity-90"
+                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
               >
                 Talk to our experts <ArrowRight className="h-4 w-4" />
               </Link>

@@ -6,7 +6,8 @@ import { readSiteContent } from "./lib/content-store";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -18,8 +19,8 @@ export const metadata = {
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const content = await readSiteContent();
   return (
-    <html lang="en" className="w-full max-w-full overflow-x-clip">
-      <body className={`${poppins.className} w-full max-w-full overflow-x-clip bg-[#0b1d33] [text-rendering:optimizeLegibility] [-webkit-font-smoothing:auto]`}>
+    <html lang="en" className={`${poppins.variable} font-sans w-full max-w-full overflow-x-clip`}>
+      <body className={`${poppins.variable} ${poppins.className} font-sans w-full max-w-full overflow-x-clip bg-[#0b1d33] [text-rendering:optimizeLegibility] [-webkit-font-smoothing:auto]`}>
         <ContentRuntime content={content} />
         <PublicChrome>{children}</PublicChrome>
       </body>

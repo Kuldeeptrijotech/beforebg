@@ -49,15 +49,15 @@ export default function CorporatePage() {
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         {/* Layered ambient backgrounds */}
-        <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
-        <div aria-hidden className="absolute inset-0 -z-10 tri-hex-grid opacity-60" />
+        <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
+        <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-55" />
         <Image
           src="/assets/about/trijotech-team-collaboration-blue.png"
           alt="Corporate at Trijotech - enterprise consulting team"
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 -z-10 object-cover object-center opacity-95"
+          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-36 bg-gradient-to-t from-[#050817] to-transparent" />
@@ -66,15 +66,15 @@ export default function CorporatePage() {
         <div className="tri-blob -z-10 h-80 w-80" style={{ right: "15%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
         <div className="tri-blob -z-10 h-64 w-64" style={{ left: "5%", bottom: "15%", background: "radial-gradient(circle, rgba(245,166,35,0.12), transparent 70%)" }} />
 
-        <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-16 sm:px-8 lg:px-12">
+        <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
             >
-              <Sparkles className="h-4 w-4 text-cyan-200" />
+              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" />
               Corporate
             </motion.div>
 
@@ -82,7 +82,7 @@ export default function CorporatePage() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
+              className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
               Building lasting value through{" "}
               <span className="tri-gradient-text">
@@ -94,7 +94,7 @@ export default function CorporatePage() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="mt-6 max-w-2xl text-lg font-medium leading-[1.75] text-slate-200 sm:text-xl"
+              className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               Learn about our company, career opportunities, and how to connect with the Trijotech team across locations and capabilities.
             </motion.p>

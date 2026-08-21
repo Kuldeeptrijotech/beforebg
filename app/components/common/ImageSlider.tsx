@@ -21,47 +21,51 @@ export default function ImageSlider({
 
   return (
     <div className={`w-full ${className}`.trim()} aria-label={label}>
-      <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-[1.4rem] bg-slate-100">
-        <Image
-          src={images[current]}
-          alt={`${label} – slide ${current + 1}`}
-          fill
-          sizes="(max-width: 1200px) 100vw, 1140px"
-          className="object-contain"
-          loading="lazy"
-        />
-        <span className="absolute right-4 top-4 rounded-full bg-cyan-950/80 px-3 py-1.5 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
-          {current + 1} / {images.length}
-        </span>
+      <div className="relative">
+        <div className="relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#030713] border border-white/10 shadow-2xl">
+          <Image
+            src={images[current]}
+            alt={`${label} – slide ${current + 1}`}
+            fill
+            sizes="(max-width: 1024px) 100vw, 880px"
+            className="object-contain"
+            loading="lazy"
+          />
+          <span className="absolute right-3.5 top-3.5 rounded-full border border-white/15 bg-[rgba(3,7,19,0.75)] px-3 py-1 text-xs font-semibold text-[#29ab87] shadow-lg backdrop-blur-md">
+            {current + 1} / {images.length}
+          </span>
+        </div>
+
+        {/* Navigation Arrows Outside the Card */}
         <button
           type="button"
-          className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-cyan-950/80 text-white shadow-xl backdrop-blur-md transition hover:scale-105 hover:bg-cyan-700 sm:left-5 sm:h-12 sm:w-12"
+          className="absolute -left-4 sm:-left-12 md:-left-14 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-[#29ab87]/60 hover:bg-[linear-gradient(150deg,#29ab87,#117a4b)] sm:h-11 sm:w-11"
           onClick={() => move(-1)}
           aria-label="Previous slide"
         >
-          <ChevronLeft className="h-6 w-6" aria-hidden="true" />
+          <ChevronLeft className="h-5 w-5" aria-hidden="true" />
         </button>
         <button
           type="button"
-          className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-cyan-950/80 text-white shadow-xl backdrop-blur-md transition hover:scale-105 hover:bg-cyan-700 sm:right-5 sm:h-12 sm:w-12"
+          className="absolute -right-4 sm:-right-12 md:-right-14 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-110 hover:border-[#29ab87]/60 hover:bg-[linear-gradient(150deg,#29ab87,#117a4b)] sm:h-11 sm:w-11"
           onClick={() => move(1)}
           aria-label="Next slide"
         >
-          <ChevronRight className="h-6 w-6" aria-hidden="true" />
+          <ChevronRight className="h-5 w-5" aria-hidden="true" />
         </button>
       </div>
       <div
-        className="mt-5 flex max-w-full items-center justify-center gap-2 overflow-x-auto px-2 pb-1"
+        className="mt-4 flex max-w-full items-center justify-center gap-1.5 overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden px-2 pb-1"
         aria-label="Choose slide"
       >
         {images.map((_, index) => (
           <button
             type="button"
             key={index}
-            className={`h-2.5 shrink-0 rounded-full transition-all ${
+            className={`rounded-full transition-all duration-300 ${
               index === current
-                ? "w-8 bg-cyan-600"
-                : "w-2.5 bg-blue-200 hover:bg-cyan-300"
+                ? "h-2 w-6 bg-[linear-gradient(90deg,#29ab87,#f5a623)] shadow-[0_0_6px_rgba(41,171,135,0.6)]"
+                : "h-1.5 w-1.5 bg-white/25 hover:bg-white/50"
             }`}
             onClick={() => setCurrent(index)}
             aria-label={`Go to slide ${index + 1}`}

@@ -66,7 +66,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="tri-gradient-text text-[clamp(1rem,2.4vw,1.6rem)] font-extralight leading-tight tracking-tight"
+                className="tri-gradient-text text-[clamp(1.25rem,2.8vw,2rem)] font-bold leading-tight tracking-tight"
               >
                 SAP connects your entire retail value chain
               </motion.p>
@@ -74,7 +74,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-0.5 text-[clamp(0.62rem,1.4vw,0.85rem)] font-extralight uppercase tracking-[0.18em] text-slate-200/90"
+                className="mt-1 text-[clamp(0.75rem,1.4vw,0.95rem)] font-semibold uppercase tracking-[0.18em] text-[#29ab87]"
               >
                 suppliers · warehouses · stores — one live platform
               </motion.p>
@@ -95,10 +95,10 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
                   >
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: k.color, boxShadow: `0 0 8px ${k.color}` }} />
                     <span>
-                      <span className="block text-xs font-extralight leading-none sm:text-xs" style={{ color: k.color }}>
+                      <span className="block text-xs font-medium leading-none sm:text-xs" style={{ color: k.color }}>
                         {k.value}
                       </span>
-                      <span className="mt-0.5 block text-[8px] font-extralight uppercase tracking-[0.12em] text-white/70 sm:text-[9px]">
+                      <span className="mt-0.5 block text-[8px] font-medium uppercase tracking-[0.12em] text-white/70 sm:text-[9px]">
                         {k.label}
                       </span>
                     </span>
@@ -145,7 +145,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
                   </p>
                 </div>
               </div>
-              <div className="mt-0.5.5.5 flex items-center gap-0.5.5 border-t border-white/10 pt-0.5.5 text-xs font-extralight text-[#29ab87]">
+              <div className="mt-0.5.5.5 flex items-center gap-0.5.5 border-t border-white/10 pt-0.5.5 text-xs font-medium text-[#29ab87]">
                 <CircleCheckBig className="h-5 w-5 text-[#29ab87]" /> SAP expertise shaped around your operation
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
           <Reveal>
             <div className="max-w-3xl">
               <p className="tri-overline">What we deliver</p>
-              <h2 className="mt-0.5.5 text-xs font-extralight leading-[1.18] tracking-tight text-white sm:text-xs lg:text-[2.35rem] xl:text-[2.6rem] lg:leading-[1.15]">
+              <h2 className="mt-0.5.5 text-xs font-medium leading-[1.18] tracking-tight text-white sm:text-xs lg:text-[2.35rem] xl:text-[2.6rem] lg:leading-[1.15]">
                 <span className="tri-gradient-text">Capabilities built for your industry</span>
               </h2>
               <p className="mt-0.5.5 text-xs font-light leading-relaxed text-slate-300/90 sm:text-xs">
@@ -221,7 +221,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
           <SlideReveal direction="left" className="flex flex-col gap-0.5.5">
             <div>
               <p className="tri-overline">Business value</p>
-              <h2 className="mt-0.5.5 text-xs font-extralight leading-[1.18] tracking-tight text-white sm:text-xs lg:text-[2.35rem] xl:text-[2.6rem] lg:leading-[1.15]">
+              <h2 className="mt-0.5.5 text-xs font-medium leading-[1.18] tracking-tight text-white sm:text-xs lg:text-[2.35rem] xl:text-[2.6rem] lg:leading-[1.15]">
                 <span className="tri-gradient-text">Outcomes you can build on</span>
               </h2>
               <p className="mt-0.5.5 text-xs font-light leading-relaxed text-slate-300/90 sm:text-xs">
@@ -264,7 +264,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
                     >
                       <Check className="h-4 w-4" />
                     </span>
-                    <p className="font-extralight leading-relaxed text-white text-xs">{benefit}</p>
+                    <p className="font-medium leading-relaxed text-white text-xs">{benefit}</p>
                   </motion.div>
                 </StaggerRevealItem>
               );
@@ -288,7 +288,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
                   <Sparkles className="h-3.5 w-3.5" />
                   Let&apos;s work together
                 </p>
-                <h2 className="mt-0.5.5 text-xs font-extralight leading-[1.18] tracking-tight sm:text-xs lg:text-xs text-white">
+                <h2 className="mt-0.5.5 text-xs font-medium leading-[1.18] tracking-tight sm:text-xs lg:text-xs text-white">
                   <span className="tri-gradient-text">Ready to transform your {industry.title} operations?</span>
                 </h2>
                 <p className="mx-auto mt-0.5.5 max-w-2xl text-xs leading-relaxed text-slate-300 sm:text-xs">

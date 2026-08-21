@@ -49,16 +49,17 @@ export default function ProductsPreview() {
               <StaggerRevealItem key={product.title} className="h-full">
                 <Link
                   href={product.href}
-                  className="tri-focus group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.06] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                  className="tri-focus group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/60 hover:bg-white/[0.06] hover:shadow-[0_16px_40px_rgba(41,171,135,0.18)]"
                 >
                   <SpotlightCard glow="rgba(41,171,135,0.2)" className="flex h-full flex-col">
                     <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
                       <OptimizedVideo
                         src={product.image}
                         alt={product.imageAlt}
-                        className="pointer-events-none absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
                       />
-                      <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(3,7,19,0.7))]" />
+                      <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
+                      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     </div>
                     <div className="flex flex-1 flex-col p-5">
                       <h3 className="flex items-center gap-2.5 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">

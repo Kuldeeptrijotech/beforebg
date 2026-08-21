@@ -3,6 +3,7 @@
 import { AnimatePresence, motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
 import GradientButton from "@/components/ui/GradientButton";
@@ -54,9 +55,9 @@ export default function Hero() {
   }, [activeIndex, reduce, sectionInView]);
 
   return (
-    <section ref={sectionRef} className="hero-fullvh relative isolate overflow-hidden bg-[#091527] text-white">
+    <section ref={sectionRef} className="hero-fullvh relative isolate overflow-hidden bg-[#050817] text-white">
       {/* Layered rich midnight & emerald mesh background */}
-      <div aria-hidden className="absolute inset-0 -z-40 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(17,122,75,0.28),transparent_70%),radial-gradient(ellipse_90%_60%_at_85%_75%,rgba(245,166,35,0.18),transparent_65%),linear-gradient(180deg,#0a192f_0%,#0c1e38_50%,#081324_100%)]" />
+      <div aria-hidden className="absolute inset-0 -z-40 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(17,122,75,0.28),transparent_70%),radial-gradient(ellipse_90%_60%_at_85%_75%,rgba(245,166,35,0.18),transparent_65%),linear-gradient(180deg,#071224_0%,#050b18_50%,#030713_100%)]" />
       <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-50" />
 
       {/* Slide background image with atmospheric depth overlays */}
@@ -76,16 +77,16 @@ export default function Hero() {
             className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-75 mix-blend-luminosity"
           />
           {/* Rich midnight depth gradient overlay */}
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(9,21,39,0.92)_0%,rgba(12,30,56,0.68)_50%,rgba(16,40,74,0.35)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,21,39,0.35)_0%,transparent_35%,rgba(9,21,39,0.7)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.22),transparent_70%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,8,23,0.92)_0%,rgba(11,29,51,0.72)_50%,rgba(17,122,75,0.28)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,23,0.4)_0%,transparent_35%,rgba(5,8,23,0.85)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.25),transparent_70%)]" />
         </motion.div>
       </AnimatePresence>
 
       {/* Ambient glow orbs */}
-      <div aria-hidden className="tri-blob -z-10 h-96 w-96 animate-float-slow" style={{ left: "-6%", top: "18%", background: "radial-gradient(circle, rgba(41,171,135,0.22), transparent 68%)" }} />
+      <div aria-hidden className="tri-blob -z-10 h-96 w-96 animate-float-slow" style={{ left: "-6%", top: "18%", background: "radial-gradient(circle, rgba(41,171,135,0.26), transparent 68%)" }} />
       <div aria-hidden className="tri-blob -z-10 h-80 w-80 animate-float-reverse" style={{ right: "-8%", bottom: "8%", background: "radial-gradient(circle, rgba(245,166,35,0.18), transparent 70%)" }} />
-      <div aria-hidden className="tri-blob -z-10 h-64 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(17,122,75,0.14), transparent 65%)", animationDelay: "-3s" }} />
+      <div aria-hidden className="tri-blob -z-10 h-64 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(17,122,75,0.18), transparent 65%)", animationDelay: "-3s" }} />
 
       <Container className="relative z-10 grid min-h-[calc(100svh-4.5rem)] max-h-[1100px] items-center gap-10 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:grid-cols-12 lg:gap-12 2xl:gap-16 lg:py-20 2xl:py-28">
         <div className="w-full lg:col-span-7 2xl:max-w-3xl">
@@ -102,11 +103,11 @@ export default function Hero() {
               <motion.span
                 custom={0}
                 variants={childVariants}
-                className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/14 bg-white/[0.06] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7edcc2] backdrop-blur-xl"
+                className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
               >
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-tri-2 opacity-75" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-tri-2" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#29ab87] opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#29ab87]" />
                 </span>
                 {activeSlide.eyebrow}
               </motion.span>
@@ -115,28 +116,44 @@ export default function Hero() {
               <motion.h1
                 custom={1}
                 variants={childVariants}
-                className="max-w-[18ch] text-xl font-semibold leading-[1.2] tracking-tight text-white sm:text-3xl lg:text-[2.5rem] 2xl:text-[3.2rem] lg:leading-[1.12]"
+                className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
               >
-                {activeSlide.title}
+                {activeSlide.id === "sap-consulting" ? (
+                  <>Plan, implement, and optimize SAP systems <span className="tri-gradient-text">with confidence</span></>
+                ) : activeSlide.id === "sap-support-ams" ? (
+                  <>Keep your SAP systems stable, secure, and <span className="tri-gradient-text">continuously optimized</span></>
+                ) : activeSlide.id === "sap-btp-applications" ? (
+                  <>Build scalable SAP extensions, <span className="tri-gradient-text">portals, and workflows</span></>
+                ) : activeSlide.id === "sap-data-ai" ? (
+                  <>Turn enterprise data into <span className="tri-gradient-text">smarter decisions</span></>
+                ) : (
+                  activeSlide.title
+                )}
               </motion.h1>
 
               {/* Description */}
               <motion.p
                 custom={2}
                 variants={childVariants}
-                className="mt-5 max-w-xl 2xl:max-w-2xl text-sm font-medium leading-[1.7] text-slate-300/90 sm:text-base 2xl:text-lg"
+                className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
               >
                 {activeSlide.description}
               </motion.p>
 
               {/* CTAs */}
-              <motion.div custom={3} variants={childVariants} className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <GradientButton href={activeSlide.primaryCta.href} size="md">
+              <motion.div custom={3} variants={childVariants} className="mt-9 flex flex-wrap gap-4">
+                <Link
+                  href={activeSlide.primaryCta.href}
+                  className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold text-white"
+                >
                   {activeSlide.primaryCta.label} <ArrowRight className="h-4 w-4" />
-                </GradientButton>
-                <GradientButton href={activeSlide.secondaryCta.href} variant="ghost" size="md">
+                </Link>
+                <Link
+                  href={activeSlide.secondaryCta.href}
+                  className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white"
+                >
                   {activeSlide.secondaryCta.label}
-                </GradientButton>
+                </Link>
               </motion.div>
             </motion.div>
           </AnimatePresence>

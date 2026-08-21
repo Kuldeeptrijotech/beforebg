@@ -30,7 +30,9 @@ export default function LatestBlogsCarousel() {
           <button className="h-9 w-9 rounded-full border border-white/15 bg-white/5 text-white hover:bg-white/10 transition-colors flex items-center justify-center font-bold" type="button" onClick={() => move(index + 1)} aria-label="Next blogs">›</button>
         </div>
       </div>
-      <div className="overflow-x-auto max-w-7xl mx-auto" ref={viewport}><div className="flex items-stretch gap-5">{blogs.map((blog) => <BlogCard blog={blog} variant="carousel" key={blog.link} />)}</div></div>
+      <div className="overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-w-7xl mx-auto" ref={viewport}>
+        <div className="flex items-stretch gap-5">{blogs.map((blog) => <BlogCard blog={blog} variant="carousel" key={blog.link} />)}</div>
+      </div>
     </section>
   );
 }

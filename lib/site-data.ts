@@ -62,16 +62,22 @@ export const siteConfig = {
     contact: {
       email: "sales@trijotech.com",
       phones: [
-        { label: "+91 120 350 6433", href: "tel:+911203506433" },
-        { label: "+91 798 253 1976", href: "tel:+917982531976" }
+        {
+          label: "+91 120-3506433",
+          href: "tel:+911203506433"
+        },
+        {
+          label: "+91 7982531976",
+          href: "tel:+917982531976"
+        }
       ],
       addresses: [
         {
           title: "Corporate Address",
           lines: [
-            "C-414, Tower-C, 4th Floor, Noida One,",
-            "Plot No-8, Block-B, Sector 62,",
-            "Noida, Uttar Pradesh - 201301"
+            "C56A, Infinity Technopark, 501, 16, C Block,",
+            "Phase 2, Sector 62, Noida,",
+            "Uttar Pradesh 201309"
           ]
         },
         {
@@ -88,8 +94,8 @@ export const siteConfig = {
       {
         label: "Trijotech Software Consulting Pvt Ltd",
         src: "/static/footer/Trijotech-Full-White.svg",
-        width: 126,
-        height: 56
+        width: 596,
+        height: 320
       },
       {
         label: "SAP Partner",

@@ -69,7 +69,7 @@ export default function ServiceDetailLanding({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55, delay: 0.34, ease: EASE }}
-        className="mt-6 text-xl font-semibold leading-[1.5] text-[#7edcc2] sm:text-2xl"
+        className="mt-5 text-lg font-semibold leading-relaxed text-[#29ab87] sm:text-xl"
       >
         {subtitle}
       </motion.p>
@@ -78,7 +78,7 @@ export default function ServiceDetailLanding({
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.44, ease: EASE }}
-        className="mt-4 max-w-xl text-base leading-[1.8] text-slate-400 sm:text-[1.05rem]"
+        className="mt-4 max-w-xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
       >
         {description}
       </motion.p>
@@ -106,7 +106,7 @@ export default function ServiceDetailLanding({
   );
 
   return (
-    <main className="overflow-hidden bg-[#030713] text-white">
+    <main className="font-sans overflow-hidden bg-[#030713] text-white">
 
       {/* ── Hero ─────────────────────────────── */}
       <section

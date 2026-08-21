@@ -106,6 +106,7 @@ function HeaderActionButton({
 
 export default function Header() {
   const pathname = usePathname();
+  const [isOverHero, setIsOverHero] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdownName, setOpenDropdownName] = useState<string | null>(null);
@@ -120,11 +121,12 @@ export default function Header() {
 
   useEffect(() => {
     const hero = document.querySelector<HTMLElement>(
-      "main > section:first-child, .zip-theme > section:first-child",
+      "main > section:first-child, .zip-theme > section:first-child, .zip-inner-theme > section:first-child",
     );
 
     if (!hero) {
       const resetFrame = window.requestAnimationFrame(() => {
+        setIsOverHero(false);
         setIsPastHero(false);
       });
       return () => window.cancelAnimationFrame(resetFrame);
@@ -139,6 +141,7 @@ export default function Header() {
       frame = window.requestAnimationFrame(() => {
         const hasStartedScrolling = window.scrollY > 8;
         const isHeroStillVisible = hero.getBoundingClientRect().bottom > 0;
+        setIsOverHero(hasStartedScrolling && isHeroStillVisible);
         setIsPastHero(hasStartedScrolling && !isHeroStillVisible);
       });
     };
@@ -224,7 +227,11 @@ export default function Header() {
 
   return (
     <header
-      className="site-modern-header fixed inset-x-0 top-0 z-50 translate-y-0 bg-[#030713] font-sans text-white opacity-100"
+      className={`site-modern-header fixed inset-x-0 top-0 z-50 bg-[#030713] font-sans text-white transition-[transform,opacity] duration-300 ease-out ${
+        isOverHero
+          ? "pointer-events-none -translate-y-full opacity-0"
+          : "translate-y-0 opacity-100"
+      }`}
     >
       <div className={`relative border-b backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-300 ${
         isPastHero

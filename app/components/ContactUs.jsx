@@ -1,6 +1,92 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Check, ChevronDown } from "lucide-react";
+
+function CustomSelect({ name, placeholder, options, required = false, controlClass }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selected, setSelected] = useState("");
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    // Reset dropdown selection on form reset
+    useEffect(() => {
+        const form = dropdownRef.current?.closest("form");
+        if (!form) return;
+        const handleReset = () => setSelected("");
+        form.addEventListener("reset", handleReset);
+        return () => form.removeEventListener("reset", handleReset);
+    }, []);
+
+    return (
+        <div ref={dropdownRef} className="relative w-full">
+            <input
+                type="text"
+                name={name}
+                value={selected}
+                required={required}
+                onChange={() => {}}
+                tabIndex={-1}
+                className="absolute inset-0 opacity-0 pointer-events-none h-full w-full"
+                aria-hidden="true"
+            />
+            <button
+                type="button"
+                onClick={() => setIsOpen((prev) => !prev)}
+                className={`${controlClass} flex items-center justify-between text-left cursor-pointer transition-colors ${
+                    !selected ? "text-slate-400" : "text-white"
+                } ${isOpen ? "border-[#29ab87] ring-2 ring-[#29ab87]/20" : ""}`}
+                aria-haspopup="listbox"
+                aria-expanded={isOpen}
+            >
+                <span className="truncate">{selected || placeholder}</span>
+                <ChevronDown
+                    className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-[#29ab87]" : ""
+                    }`}
+                />
+            </button>
+
+            {isOpen && (
+                <div className="absolute left-0 right-0 top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-white/15 bg-[#0b1d33] p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl animate-in fade-in duration-150">
+                    <ul role="listbox" className="max-h-60 overflow-y-auto space-y-1">
+                        {options.map((option) => {
+                            const isSelected = selected === option;
+                            return (
+                                <li
+                                    key={option}
+                                    role="option"
+                                    aria-selected={isSelected}
+                                    onClick={() => {
+                                        setSelected(option);
+                                        setIsOpen(false);
+                                    }}
+                                    className={`flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[14px] cursor-pointer transition-all duration-150 ${
+                                        isSelected
+                                            ? "bg-[#29ab87]/20 font-semibold text-[#7edcc2]"
+                                            : "text-slate-200 hover:bg-white/[0.08] hover:text-white"
+                                    }`}
+                                >
+                                    <span>{option}</span>
+                                    {isSelected && <Check className="h-4 w-4 text-[#29ab87]" />}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+}
 
 export default function ContactUs({
     heading = "Contact Us",
@@ -66,15 +152,20 @@ export default function ContactUs({
                                     {showInquiryDropdown && (
                                         <div className={fieldColumn}>
                                             <fieldset className="m-0">
-                                                <select name="inquiryType" className={`${controlClass} [&>option]:bg-[#050817] [&>option]:text-white`} defaultValue="" required>
-                                                    <option value="" disabled className="text-slate-400">Select Inquiry Type</option>
-                                                    <option value="SAP Implementation">SAP Implementation</option>
-                                                    <option value="SAP Support">SAP Support</option>
-                                                    <option value="SAP BTP Full Stack Application">SAP BTP Full Stack Application</option>
-                                                    <option value="Products">Products</option>
-                                                    <option value="Careers">Careers</option>
-                                                    <option value="Other">Other</option>
-                                                </select>
+                                                <CustomSelect
+                                                    name="inquiryType"
+                                                    placeholder="Select Inquiry Type"
+                                                    controlClass={controlClass}
+                                                    options={[
+                                                        "SAP Implementation",
+                                                        "SAP Support",
+                                                        "SAP BTP Full Stack Application",
+                                                        "Products",
+                                                        "Careers",
+                                                        "Other"
+                                                    ]}
+                                                    required
+                                                />
                                             </fieldset>
                                         </div>
                                     )}
@@ -83,14 +174,19 @@ export default function ContactUs({
                                         <>
                                             <div className={fieldColumn}>
                                                 <fieldset className="m-0">
-                                                    <select name="position" className={`${controlClass} [&>option]:bg-[#050817] [&>option]:text-white`} defaultValue="" required>
-                                                        <option value="" disabled className="text-slate-400">Select Position</option>
-                                                        <option value="SAP Functional Consultant">SAP Functional Consultant</option>
-                                                        <option value="SAP Technical Consultant">SAP Technical Consultant</option>
-                                                        <option value="SAP Developer">SAP Developer</option>
-                                                        <option value="Business Analyst">Business Analyst</option>
-                                                        <option value="Other">Other</option>
-                                                    </select>
+                                                    <CustomSelect
+                                                        name="position"
+                                                        placeholder="Select Position"
+                                                        controlClass={controlClass}
+                                                        options={[
+                                                            "SAP Functional Consultant",
+                                                            "SAP Technical Consultant",
+                                                            "SAP Developer",
+                                                            "Business Analyst",
+                                                            "Other"
+                                                        ]}
+                                                        required
+                                                    />
                                                 </fieldset>
                                             </div>
                                             <div className={fieldColumn}><fieldset className="m-0"><input name="experience" type="number" className={controlClass} placeholder="Years of Experience" min="0" max="60" step="0.5" required /></fieldset></div>

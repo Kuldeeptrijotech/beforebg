@@ -8,20 +8,31 @@ export default function LegacyHtmlPage({ title, description = "", blocks, classN
   const latestIndex = blocks.findIndex(block => block.type === "heading" && String(block.text ?? "").toLowerCase().includes("latest blogs"));
   const articleBlocks = (latestIndex < 0 ? blocks : blocks.slice(0, latestIndex)).filter(block => !(block.type === "heading" && String(block.text ?? "").trim() === title.trim()));
   return (
-    <main className={`${className} bg-[#121927] px-5 pb-[90px] pt-[118px] text-white`}>
-      <article className="mx-auto w-full max-w-[960px]">
+    <main className={`${className} min-h-screen w-full bg-[#050817] pt-24 text-white font-sans overflow-hidden`}>
+      <article className="w-full">
+        {/* Full-width Hero Header */}
         <header
-          className="rounded-t-[24px] border border-white/12 border-b-0 bg-[linear-gradient(125deg,#075f59_0,#087b71_60%,#15978b_100%)] px-[clamp(24px,7vw,72px)] py-[58px] text-white shadow-2xl max-[640px]:px-5 max-[640px]:pb-[45px] max-[640px]:pt-[115px]"
-          style={heroImage ? { backgroundImage: `linear-gradient(90deg, rgba(18, 25, 39, .94), rgba(18, 25, 39, .35)), url(${heroImage})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
+          className="relative isolate w-full overflow-hidden bg-[#050817] py-12 sm:py-16 border-b border-white/10"
+          style={heroImage ? { backgroundImage: `linear-gradient(90deg, rgba(5, 8, 23, .92), rgba(5, 8, 23, .45)), url(${heroImage})`, backgroundSize: "cover", backgroundPosition: "center" } : undefined}
         >
-          <span className="mb-[18px] block text-[12px] font-extrabold uppercase tracking-[.14em] text-[#bff4ea]">
-            <span>Trijotech</span> <span>Insights</span>
-          </span>
-          <h1 className="m-0 max-w-none text-[clamp(24px,3.8vw,38px)] font-semibold leading-[1.2] tracking-[-.02em] text-white">{title}</h1>
-          {description && <p className="mt-5 max-w-[760px] text-[17px] leading-[1.7] text-[#dff8f3]">{description}</p>}
+          <div aria-hidden className="absolute inset-0 -z-20 tri-mesh opacity-60" />
+          <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-45" />
+          <div aria-hidden className="tri-blob -z-10 h-80 w-80" style={{ right: "10%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
+
+          <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md">
+              Trijotech Insights
+            </span>
+            <h1 className="max-w-4xl text-2xl font-bold leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">{title}</h1>
+            {description && <p className="mt-5 max-w-3xl text-base sm:text-lg leading-[1.7] text-white/80">{description}</p>}
+          </div>
         </header>
-        <div className="rounded-b-[24px] border border-white/12 bg-[#162032] px-[clamp(24px,7vw,72px)] py-[58px] text-slate-200 shadow-2xl [&_a]:text-[#7edcc2] [&_a]:underline [&_h1]:text-white [&_h1]:font-bold [&_h2]:my-[18px] [&_h2]:mt-[52px] [&_h2]:text-[clamp(25px,3vw,34px)] [&_h2]:font-bold [&_h2]:leading-[1.28] [&_h2]:text-white [&_h3]:mb-[14px] [&_h3]:mt-[38px] [&_h3]:text-[22px] [&_h3]:font-bold [&_h3]:leading-[1.35] [&_h3]:text-white [&_li]:my-[10px] [&_li]:pl-[6px] [&_li]:leading-[1.7] [&_li]:text-slate-300 [&_ol]:mb-7 [&_ol]:mt-1 [&_ol]:pl-[26px] [&_p]:mb-[22px] [&_p]:text-left [&_p]:text-[17px] [&_p]:leading-[1.8] [&_p]:text-slate-300 [&_ul]:mb-7 [&_ul]:mt-1 [&_ul]:pl-[26px] max-[640px]:!px-[18px] max-[640px]:!py-9">
-          <ArticleBlocks blocks={articleBlocks} />
+
+        {/* Full-width Content Body */}
+        <div className="w-full bg-[#f1f5f9] py-12 sm:py-16 border-b border-slate-200">
+          <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12 text-slate-900 [&_a]:text-[#087b71] [&_a]:underline [&_a]:font-medium [&_h1]:text-black [&_h1]:font-bold [&_h1]:text-2xl sm:[&_h1]:text-3xl [&_h1]:mt-8 [&_h1]:mb-4 [&_h2]:my-5 [&_h2]:mt-10 [&_h2]:text-xl sm:[&_h2]:text-2xl [&_h2]:font-bold [&_h2]:leading-snug [&_h2]:text-black [&_h3]:mb-3 [&_h3]:mt-8 [&_h3]:text-lg sm:[&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-snug [&_h3]:text-black [&_h4]:text-black [&_h4]:font-bold [&_li]:my-2 [&_li]:pl-1.5 [&_li]:leading-relaxed [&_li]:text-slate-800 [&_ol]:mb-6 [&_ol]:mt-2 [&_ol]:pl-6 [&_p]:mb-5 [&_p]:text-left [&_p]:text-sm sm:[&_p]:text-base [&_p]:leading-[1.8] [&_p]:text-slate-800 [&_ul]:mb-6 [&_ul]:mt-2 [&_ul]:pl-6">
+            <ArticleBlocks blocks={articleBlocks} />
+          </div>
         </div>
       </article>
 

@@ -24,22 +24,22 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
   );
 
   return (
-    <main className="overflow-hidden bg-[#121927] text-white">
+    <main className="font-sans overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/heroes/blogs-blue.png"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="-z-20 object-cover object-center opacity-95"
+          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
         {/* Slow drifting thought particles & connections */}
         <BlogsThoughtAuroras />
 
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/85 via-cyan-950/45 to-cyan-900/10" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/50 via-transparent to-slate-950/10" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
         {/* Floating orbs */}
         <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
         <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
@@ -49,24 +49,24 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-50 backdrop-blur-md animate-pulse-glow"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
             >
-              <Sparkles className="h-4 w-4 text-cyan-200" aria-hidden="true" />{" "}
+              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" aria-hidden="true" />{" "}
               Insights
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="max-w-3xl text-2xl font-semibold leading-[1.18] tracking-tight text-white sm:text-3xl lg:text-4xl"
+              className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Ideas that <span className="gradient-text">move business</span> forward
+              Ideas that <span className="tri-gradient-text">move business</span> forward
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.38 }}
-              className="mt-6 max-w-2xl text-xl font-medium leading-8 text-cyan-50 sm:text-2xl"
+              className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               Explore practical perspectives on SAP, analytics, integration,
               automation, and digital transformation.
@@ -79,13 +79,13 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
             >
               <a
                 href="#explore-blogs"
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg shadow-cyan-950/20 transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl"
+                className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
               >
                 Explore blogs <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20"
+                className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold"
               >
                 Contact Us
               </Link>
@@ -111,7 +111,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                 Explore
               </p>
               <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-                Insights shaped by experience
+                Insights shaped by <span className="tri-gradient-text">experience</span>
               </h2>
               <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
                 Stay current with expert thinking, implementation guidance, and
@@ -148,16 +148,16 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                 >
                   <Link
                     href={blog.link}
-                    className="relative m-2.5 mb-0 block aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-slate-900"
+                    className="no-underline relative m-2.5 mb-0 block aspect-[16/10] shrink-0 overflow-hidden rounded-xl bg-slate-900"
                   >
                     <Image
                       src={blog.image}
                       alt={blog.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition duration-700 group-hover:scale-105"
+                      className="object-cover scale-[1.04] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.12]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
+                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
                     <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg backdrop-blur-md">
                       <CalendarDays className="h-3 w-3 text-[#f5a623]" aria-hidden="true" />
                       {blog.date}
@@ -202,7 +202,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <motion.div
@@ -218,8 +218,9 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
               Let&apos;s work together
             </p>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              Ready to turn insight into measurable progress?
+            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
+              Ready to turn insight into{" "}
+              <span className="tri-gradient-text">measurable progress?</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               Connect with our team to explore the right SAP, data, and

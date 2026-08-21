@@ -33,19 +33,34 @@ const whyItems = [
 
 export default function SolutionsPage() {
   return (
-    <main className="overflow-hidden bg-[#030713] text-white">
+    <main className="font-sans overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-cyan-950 pt-24 sm:pt-28 lg:pt-24 pb-12">
-        <Image src="/assets/heroes/products.png" alt="" fill priority sizes="100vw" className="-z-20 object-cover object-center opacity-95" />
+      <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
+        {/* Mesh + hexgrid background */}
+        <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
+        <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-55" />
+
+        {/* Hero image */}
+        <Image
+          src="/assets/heroes/products.png"
+          alt="In-house SAP solutions and products"
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
+        />
+
         {/* Slow geometric holographic rays animation */}
         <SolutionsHoloRays />
 
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-950/85 via-cyan-950/45 to-cyan-900/10" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-cyan-950/50 via-transparent to-slate-950/10" />
+        {/* Gradient overlays — side-only */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_12%_55%,rgba(41,171,135,0.13),transparent_68%)]" />
 
         {/* Floating orbs */}
-        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
-        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
+        <div aria-hidden className="pointer-events-none absolute right-1/4 top-1/4 -z-10 h-72 w-72 rounded-full bg-[rgba(41,171,135,0.16)] blur-3xl animate-float-slow" />
+        <div aria-hidden className="pointer-events-none absolute bottom-1/3 left-1/3 -z-10 h-56 w-56 rounded-full bg-[rgba(245,166,35,0.12)] blur-3xl animate-float-reverse" />
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
@@ -53,9 +68,9 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-900/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-300 backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" />
               In-House SAP Solutions
             </motion.div>
 
@@ -63,16 +78,16 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Purpose-built platforms for <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent">modern SAP enterprises</span>
+              Purpose-built platforms for <span className="tri-gradient-text">modern SAP enterprises</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 text-lg leading-8 text-cyan-100/90 sm:text-xl"
+              className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               Extend your SAP investment with specialized tools for statutory compliance, financial consolidation, and operational profitability.
             </motion.p>
@@ -81,17 +96,17 @@ export default function SolutionsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-9 flex flex-wrap gap-4"
             >
               <a
-                href="#our-solutions"
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-7 py-3.5 text-sm font-semibold text-cyan-950 shadow-lg shadow-cyan-400/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-300 hover:shadow-xl hover:shadow-cyan-400/35"
+                href="#solutions-list"
+                className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
               >
                 Explore Solutions <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20"
+                className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold"
               >
                 Schedule Demo
               </Link>
@@ -117,7 +132,8 @@ export default function SolutionsPage() {
           >
             <p className="tri-overline">Capabilities</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Enterprise solutions engineered for scale
+              Enterprise solutions engineered for{" "}
+              <span className="tri-gradient-text">scale</span>
             </h2>
             <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
               Each product is built to address specific functional gaps in standard enterprise software, delivering rapid time-to-value with minimal disruption.
@@ -125,22 +141,17 @@ export default function SolutionsPage() {
           </motion.div>
 
           <div className="mx-auto mt-7 sm:mt-9 grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 items-stretch">
-            {solutions.map((solution, i) => (
-              <motion.article
+            {solutions.map((solution) => (
+              <article
                 key={solution.slug}
-                initial={{ opacity: 0, y: 36 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/60 hover:bg-white/[0.07] hover:shadow-[0_20px_50px_rgba(41,171,135,0.22)]"
               >
-                <Link href={solution.href} className="relative block h-[170px] w-full shrink-0 overflow-hidden bg-slate-900">
+                <Link href={solution.href} className="no-underline relative block h-[180px] w-full shrink-0 overflow-hidden bg-slate-900">
                   {solution.cardImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
                     <OptimizedVideo
                       src={solution.cardImage}
                       alt={solution.imageAlt}
-                      className="pointer-events-none absolute inset-0 h-full w-full object-contain p-3 transition duration-700 group-hover:scale-105 sm:p-4"
+                      className="pointer-events-none absolute inset-0 h-full w-full object-cover origin-center"
                     />
                   ) : (
                     <Image
@@ -148,10 +159,11 @@ export default function SolutionsPage() {
                       alt={solution.imageAlt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className={`transition duration-700 group-hover:scale-105 ${solution.slug === "e-invoicing-pro" ? "object-cover" : "object-contain p-3 sm:p-4"}`}
+                      className="object-cover origin-center"
                     />
                   )}
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(18,25,39,0.7))]" />
+                  <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.98)] via-[rgba(14,26,44,0.2)] to-transparent" />
+                  <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </Link>
                 <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-5">
                   <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">{solution.title}</h3>
@@ -173,7 +185,7 @@ export default function SolutionsPage() {
                     </Link>
                   </div>
                 </div>
-              </motion.article>
+              </article>
             ))}
           </div>
         </div>
@@ -202,8 +214,7 @@ export default function SolutionsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/60 hover:bg-white/[0.07] hover:shadow-[0_20px_50px_rgba(41,171,135,0.22)]"
               >
                 <div className={`mb-3 h-1 w-10 rounded-full bg-gradient-to-r ${item.accent} transition-all duration-300 group-hover:w-16`} />
                 <h3 className="text-base sm:text-lg font-bold text-white">{item.title}</h3>
@@ -231,7 +242,8 @@ export default function SolutionsPage() {
           <div className="relative mx-auto max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-[#f5a623]">Trijotech</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              See which solution fits your landscape
+              See which solution fits{" "}
+              <span className="tri-gradient-text">your landscape</span>
             </h2>
             <p className="mt-4 text-sm text-slate-300 sm:text-base">
               Book a technical demonstration tailored to your enterprise processes and data structure.

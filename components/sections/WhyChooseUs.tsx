@@ -66,19 +66,23 @@ export default function WhyChooseUs() {
             const Icon = itemIcons[index % itemIcons.length];
             return (
               <StaggerRevealItem key={item.title} className="h-full">
-                <article className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
-                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden">
+                <article className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-[#29ab87]/60 hover:bg-white/[0.05] hover:shadow-[0_20px_50px_rgba(41,171,135,0.22)]">
+                  <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
                     <OptimizedVideo
                       src={item.image}
                       alt={item.imageAlt}
-                      className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
+                      className={`pointer-events-none absolute inset-0 h-full w-full object-cover origin-center ${
+                        index > 0 ? "scale-[1.22]" : "scale-[1.02]"
+                      }`}
                     />
-                    <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(3,7,19,0.8))]" />
+                    {/* Seamless dark gradient overlay matching the card glass background */}
+                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
+                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.25),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <HexBadge
                       icon={Icon}
                       tone={index === 1 ? "amber" : "green"}
                       size="md"
-                      className="absolute bottom-3 left-4"
+                      className="absolute bottom-3 left-4 z-10"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-5">

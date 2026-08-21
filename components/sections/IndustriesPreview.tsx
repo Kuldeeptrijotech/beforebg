@@ -45,7 +45,7 @@ export default function IndustriesPreview() {
               <StaggerRevealItem key={industry.title} className="h-full">
                 <Link
                   href={industry.href}
-                  className="tri-focus group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-[#29ab87]/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
+                  className="tri-focus group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-[#29ab87]/60 hover:shadow-[0_16px_40px_rgba(41,171,135,0.2)]"
                 >
                   <div className="relative aspect-[3/4] w-full h-full overflow-hidden flex flex-col justify-end">
                     <Image
@@ -53,7 +53,7 @@ export default function IndustriesPreview() {
                       alt={industry.imageAlt}
                       fill
                       sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                      className="object-cover scale-[1.02]"
                     />
                     <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.15),rgba(3,7,19,0.92))]" />
                     <div aria-hidden className="absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.45),transparent_52%)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
