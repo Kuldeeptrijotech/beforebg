@@ -10,9 +10,6 @@ import {
   CircleCheckBig,
   DatabaseZap,
   Layers3,
-  ShieldCheck,
-  Target,
-  Workflow,
 } from "lucide-react";
 import { getIndustry, industries } from "@/lib/industries-data";
 
@@ -48,7 +45,7 @@ export default async function IndustryDetailPage({ params }: Props) {
 
   return (
     <main className="industry-detail-page overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero Section (Full Height & Full Width Background Image) ── */}
+      {/* ── Hero Section (Full Height & Full Width Background Image, High Visibility) ── */}
       <section className="industry-hero-section relative isolate flex min-h-[75vh] w-full flex-col justify-center overflow-hidden bg-[#050817] pb-16 pt-32 sm:pt-36 lg:min-h-[640px] lg:py-24">
         {/* Full width & full height image backdrop */}
         <div aria-hidden className="absolute inset-0 -z-20 overflow-hidden">
@@ -58,22 +55,17 @@ export default async function IndustryDetailPage({ params }: Props) {
             fill
             priority
             sizes="100vw"
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover object-center brightness-[0.88] contrast-[1.05]"
           />
-          {/* Multi-layer gradient overlays for text readability */}
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,7,19,0.92)_0%,rgba(3,7,19,0.78)_55%,rgba(3,7,19,0.48)_100%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(3,7,19,0.4),rgba(3,7,19,0.92))]" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#030713] to-transparent" />
+          {/* Subtle soft gradient on left for text legibility while keeping image vibrant & visible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030713]/80 via-[#030713]/35 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#030713] to-transparent" />
         </div>
-
-        {/* Ambient static grids */}
-        <div aria-hidden className="absolute inset-0 -z-10 tri-grid-bg opacity-25" />
-        <div className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-20" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="flex max-w-4xl flex-col items-start text-left">
             {/* Eyebrow badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#050817]/80 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
@@ -82,17 +74,17 @@ export default async function IndustryDetailPage({ params }: Props) {
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
               {industry.title}
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-5 text-lg font-semibold leading-relaxed text-white sm:text-xl">
+            <p className="mt-5 text-lg font-semibold leading-relaxed text-white drop-shadow-md sm:text-xl">
               {industry.subtitle}
             </p>
 
             {/* Description */}
-            <p className="mt-4 max-w-2xl text-base font-normal leading-[1.7] text-white/90 sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base font-normal leading-[1.7] text-white/90 drop-shadow sm:text-lg">
               {industry.shortDescription || industry.description}
             </p>
 
@@ -118,7 +110,7 @@ export default async function IndustryDetailPage({ params }: Props) {
                 {industry.services.slice(0, 4).map((serviceName) => (
                   <div
                     key={serviceName}
-                    className="flex items-center gap-2 rounded-2xl border border-white/20 bg-[#050817]/70 px-3.5 py-2 backdrop-blur-md"
+                    className="flex items-center gap-2 rounded-2xl border border-white/20 bg-[#050817]/70 px-3.5 py-2 backdrop-blur-md shadow"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-white" />
                     <span className="text-xs font-semibold uppercase tracking-wider text-white">{serviceName}</span>
@@ -282,31 +274,6 @@ export default async function IndustryDetailPage({ params }: Props) {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA Banner ────────────────────────── */}
-      <section className="bg-[#030713] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
-        <div
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-[#0c1828] via-[#08111e] to-[#050b14] px-6 py-12 text-center shadow-2xl sm:px-12 sm:py-16"
-        >
-          <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/[0.05] blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl" />
-          <div className="relative mx-auto max-w-3xl">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">Let&apos;s work together</p>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-              Ready to transform your {industry.title} operations?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300">
-              Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.
-            </p>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-[#030713] shadow-xl transition-all duration-300 hover:bg-slate-200 hover:scale-105"
-            >
-              Start a conversation <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </section>
