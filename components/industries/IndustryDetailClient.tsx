@@ -3,9 +3,8 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BarChart3, Check, CircleCheckBig, DatabaseZap, Layers3, Sparkles } from "lucide-react";
+import { ArrowRight, BarChart3, Check, CircleCheckBig, DatabaseZap, Layers3 } from "lucide-react";
 import type { Industry } from "@/lib/industries-data";
-import Container from "@/components/ui/Container";
 
 const capabilityIcons = [Layers3, DatabaseZap, BarChart3];
 
@@ -130,7 +129,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
         </div>
       </section>
 
-      {/* ── Capabilities ─────────────────────── */}
+      {/* ── Capabilities (What We Deliver) ─────────────────────── */}
       <section className="bg-[#030713] py-20 sm:py-24 border-b border-white/5">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
@@ -180,19 +179,21 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
         </div>
       </section>
 
-      {/* ── Business Value ───────────────────── */}
-      <section className="bg-[#050817] py-20 sm:py-24 border-b border-white/5">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-5">
+      {/* ── Business Value & Measurable Outcomes ───────────────────── */}
+      <section className="industry-outcomes-section relative bg-[#050817] py-20 sm:py-24 border-b border-white/5">
+        <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-25" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-12">
+          {/* Left Column: Title & Feature Image Card */}
+          <div className="flex flex-col gap-8">
+            <div>
               <p className="tri-overline">Value created</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Measurable outcomes for {industry.title}
               </h2>
-              <p className="mt-5 text-lg leading-8 text-slate-400">
+              <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
                 A strong foundation helps your teams react faster, work with greater precision, and plan with confidence.
               </p>
-              <div className="mt-8">
+              <div className="mt-6">
                 <Link
                   href="/contact"
                   className="tri-btn tri-btn-primary tri-focus px-7 py-3.5 text-sm font-bold text-[#030713]"
@@ -202,19 +203,72 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-              {industry.benefits.map((benefit) => (
+            <div className="industry-outcomes-image relative aspect-[16/9] w-full overflow-hidden rounded-[2rem] bg-slate-950 border border-white/10 shadow-2xl">
+              <Image
+                src={industry.heroImage}
+                alt={`${industry.title} business outcomes`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+              <div aria-hidden className="absolute inset-0 opacity-30 tri-hex-grid" />
+              <div className="absolute bottom-0 p-6 sm:p-8">
+                <p className="industry-outcomes-kicker text-xs font-bold uppercase tracking-[0.2em] text-white/80">Built for lasting value</p>
+                <p className="mt-2 text-xl font-bold text-white leading-snug sm:text-2xl">
+                  Better data. Clearer decisions. Stronger operations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Benefits Cards with Rich Background */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {industry.benefits.map((benefit, index) => {
+              const tone = cardTones[index % cardTones.length];
+              return (
                 <div
                   key={benefit}
-                  className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md"
+                  className="industry-detail-card flex min-w-0 items-start gap-4 overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] p-6 shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.10]"
+                  style={{ "--benefit-tone": tone.color, "--benefit-soft": tone.soft } as CSSProperties}
                 >
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#030713]">
+                  <span
+                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/15 text-white shadow-sm"
+                  >
                     <Check className="h-4 w-4 stroke-[3]" />
+                  </span>
+                  <div>
+                    <p className="text-base font-bold text-white leading-snug">{benefit}</p>
+                    <p className="mt-1 text-xs text-white/70">Delivering reliable, repeatable operational gains.</p>
                   </div>
-                  <span className="text-base font-semibold text-white">{benefit}</span>
                 </div>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA Banner ────────────────────────── */}
+      <section className="bg-[#030713] px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+        <div
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-[#0c1828] via-[#08111e] to-[#050b14] px-6 py-12 text-center shadow-2xl sm:px-12 sm:py-16"
+        >
+          <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/[0.05] blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl" />
+          <div className="relative mx-auto max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">Let&apos;s work together</p>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Ready to transform your {industry.title} operations?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300">
+              Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 font-bold text-[#030713] shadow-xl transition-all duration-300 hover:bg-slate-200 hover:scale-105"
+            >
+              Start a conversation <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
