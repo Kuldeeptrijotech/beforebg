@@ -1715,21 +1715,18 @@ main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .c
   text-shadow: none !important;
 }
 /* Industry outcome image-caption contrast */
+.industry-detail-page .industry-outcomes-image,
+.industry-detail-page .industry-outcomes-image *,
 .industry-detail-page .industry-outcomes-image :is(p, span),
-.industry-detail-page .industry-outcomes-image .tri-gradient-text {
+.industry-detail-page .industry-outcomes-image .tri-gradient-text,
+.industry-detail-page .industry-outcomes-image p.industry-outcomes-kicker,
+main.industry-detail-page > section.industry-outcomes-section .industry-outcomes-image :is(p, span) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   background: none !important;
   background-image: none !important;
   opacity: 1 !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95) !important;
-}
-/* Final priority for industry image kicker */
-main.industry-detail-page.public-alternating-page > section.industry-outcomes-section .industry-outcomes-image p.industry-outcomes-kicker {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
-  opacity: 1 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95) !important;
 }
 /* Videos library card treatment */
 main.public-alternating-page #explore-videos .video-library-card {

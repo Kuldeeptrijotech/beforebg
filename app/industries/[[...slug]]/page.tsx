@@ -241,11 +241,19 @@ export default async function IndustryDetailPage({ params }: Props) {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition duration-700 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
-              <div aria-hidden className="absolute inset-0 opacity-30 tri-hex-grid" />
-              <div className="absolute bottom-0 p-6 sm:p-8">
-                <p className="industry-outcomes-kicker text-xs font-bold uppercase tracking-[0.2em] text-white/80">Built for lasting value</p>
-                <p className="mt-2 text-xl font-bold text-white leading-snug sm:text-2xl">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent z-[1]" />
+              <div aria-hidden className="absolute inset-0 opacity-30 tri-hex-grid z-[2]" />
+              <div className="absolute bottom-0 p-6 sm:p-8 z-10">
+                <p
+                  className="industry-outcomes-kicker text-xs font-bold uppercase tracking-[0.2em] text-white"
+                  style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                >
+                  Built for lasting value
+                </p>
+                <p
+                  className="mt-2 text-xl font-bold text-white leading-snug sm:text-2xl"
+                  style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                >
                   Better data. Clearer decisions. Stronger operations.
                 </p>
               </div>
