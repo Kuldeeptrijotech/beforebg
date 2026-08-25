@@ -1,4 +1,4 @@
-﻿import { cookies } from "next/headers";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { SESSION_COOKIE, verifySessionToken } from "@/app/lib/admin-auth";
 import { readSiteContent } from "@/app/lib/content-store";
@@ -11,11 +11,11 @@ const coreRoutes = [
   ["Services", "/services"], ["SAP Consulting", "/services/sap-consulting"], ["SAP Implementation", "/services/sap-implementation"],
   ["SAP Support", "/services/sap-support"], ["SAP BTP Full Stack", "/services/sap-btp-full-stack"],
   ["SAP Data Integration", "/services/sap-data-integration"], ["SAP AI & ML", "/services/sap-ai-ml"],
-  ["About Us", "/about-us"], ["Industry", "/industry"], ["Retail & Supply Chain", "/industries/retail-supply-chain"],
+  ["About Us", "/about-us"], ["Corporate", "/corporate"], ["Industry", "/industry"], ["Retail & Supply Chain", "/industries/retail-supply-chain"],
   ["Pharmaceuticals & Life Sciences", "/industries/pharmaceuticals-life-sciences"], ["Manufacturing", "/industries/manufacturing"],
   ["Fintech", "/industries/fintech"], ["Entertainment", "/industries/entertainment"], ["Steel Manufacturing", "/industries/steel-manufacturing"],
   ["Telecommunications", "/industries/telecommunications"], ["Insights", "/insights"], ["Blogs", "/blogs"],
-  ["Case Studies", "/case-studies"], ["Careers", "/careers"], ["Contact", "/contact"],
+  ["Case Studies", "/case-studies"], ["Videos", "/videos"], ["Careers", "/careers"], ["Contact", "/contact"],
   ["Privacy Policy", "/privacy-policy"],
 ] as const;
 

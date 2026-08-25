@@ -25,6 +25,7 @@ const testimonials = [
         role: "Chief Executive Officer",
         company: "Diligent Global",
         rating: 5,
+        noImage: true,
         quote:
             "Thanks for the support Trijotech and the team has extended over the last 3 years. Their consistent quality, clear communication and business-driven approach made them a partner we can always rely on.",
     },
@@ -124,7 +125,13 @@ export default function Testimonials() {
                                             <p className="testimonial-quote">{item.quote}</p>
                                             <div className="testimonial-author">
                                                 <div className="author-avatar">
-                                                    <img src={clientAvatar.src} alt={item.name} />
+                                                    {item.noImage ? (
+                                                        <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600 text-xs font-bold text-white">
+                                                            {item.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                                                        </div>
+                                                    ) : (
+                                                        <img src={clientAvatar.src} alt={item.name} />
+                                                    )}
                                                 </div>
                                                 <div className="author-info">
                                                     <h4>{item.name}</h4>

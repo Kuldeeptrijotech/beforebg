@@ -15,6 +15,7 @@ export default function PrivacyPolicyPage() {
       blocks={page.blocks}
       className="legacy-content-page privacy-policy-page"
       heroImage="/assets/heroes/privacy-blue.png"
+      showLatestBlogs={false}
     />
   );
 }

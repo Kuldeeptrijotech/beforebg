@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -95,19 +95,137 @@ function applyEntry(entry: ContentEntry) {
   elements.forEach((element) => {
     if (entry.kind === "sectionStyle") {
       try {
-        const options = JSON.parse(entry.value) as { width?: string; minHeight?: string; padding?: string; layout?: string; columns?: string; hidden?: boolean };
-        element.style.width = options.width || "";
-        element.style.maxWidth = options.width && options.width !== "100%" ? options.width : "";
-        element.style.minHeight = options.minHeight || "";
-        element.style.paddingTop = options.padding || "";
-        element.style.paddingBottom = options.padding || "";
-        element.style.marginInline = options.width && options.width !== "100%" ? "auto" : "";
+        const options = JSON.parse(entry.value) as {
+          width?: string;
+          maxWidth?: string;
+          minHeight?: string;
+          height?: string;
+          paddingTop?: string;
+          paddingBottom?: string;
+          paddingLeft?: string;
+          paddingRight?: string;
+          marginTop?: string;
+          marginBottom?: string;
+          backgroundColor?: string;
+          background?: string;
+          borderRadius?: string;
+          layout?: string;
+          columns?: string;
+          gap?: string;
+          display?: string;
+          hidden?: boolean;
+        };
+        if (options.width) {
+          element.style.width = options.width;
+          element.style.maxWidth = options.width !== "100%" ? options.width : "";
+          element.style.marginInline = options.width !== "100%" ? "auto" : "";
+        }
+        if (options.maxWidth) element.style.maxWidth = options.maxWidth;
+        if (options.minHeight) element.style.minHeight = options.minHeight;
+        if (options.height) element.style.height = options.height;
+        if (options.paddingTop) element.style.paddingTop = options.paddingTop;
+        if (options.paddingBottom) element.style.paddingBottom = options.paddingBottom;
+        if (options.paddingLeft) element.style.paddingLeft = options.paddingLeft;
+        if (options.paddingRight) element.style.paddingRight = options.paddingRight;
+        if (options.marginTop) element.style.marginTop = options.marginTop;
+        if (options.marginBottom) element.style.marginBottom = options.marginBottom;
+        if (options.backgroundColor) element.style.backgroundColor = options.backgroundColor;
+        if (options.background) element.style.background = options.background;
+        if (options.borderRadius) element.style.borderRadius = options.borderRadius;
+        if (options.gap) element.style.gap = options.gap;
+        if (options.display) element.style.display = options.display;
         element.toggleAttribute("hidden", Boolean(options.hidden));
         element.dataset.adminLayout = options.layout || "original";
         element.style.setProperty("--admin-columns", options.columns || "3");
-      } catch { return; }
+      } catch {
+        return;
+      }
       return;
     }
+
+    if (entry.kind === "imageStyle") {
+      try {
+        const options = JSON.parse(entry.value) as {
+          width?: string;
+          maxWidth?: string;
+          minWidth?: string;
+          height?: string;
+          minHeight?: string;
+          maxHeight?: string;
+          aspectRatio?: string;
+          objectFit?: string;
+          objectPosition?: string;
+          borderRadius?: string;
+          filter?: string;
+          opacity?: string;
+          margin?: string;
+          boxShadow?: string;
+        };
+        if (options.width !== undefined) element.style.width = options.width;
+        if (options.maxWidth !== undefined) element.style.maxWidth = options.maxWidth;
+        if (options.minWidth !== undefined) element.style.minWidth = options.minWidth;
+        if (options.height !== undefined) element.style.height = options.height;
+        if (options.minHeight !== undefined) element.style.minHeight = options.minHeight;
+        if (options.maxHeight !== undefined) element.style.maxHeight = options.maxHeight;
+        if (options.aspectRatio !== undefined) element.style.aspectRatio = options.aspectRatio;
+        if (options.objectFit !== undefined) element.style.objectFit = options.objectFit;
+        if (options.objectPosition !== undefined) element.style.objectPosition = options.objectPosition;
+        if (options.borderRadius !== undefined) element.style.borderRadius = options.borderRadius;
+        if (options.filter !== undefined) element.style.filter = options.filter;
+        if (options.opacity !== undefined) element.style.opacity = options.opacity;
+        if (options.margin !== undefined) element.style.margin = options.margin;
+        if (options.boxShadow !== undefined) element.style.boxShadow = options.boxShadow;
+      } catch {
+        return;
+      }
+      return;
+    }
+
+    if (entry.kind === "elementStyle") {
+      try {
+        const options = JSON.parse(entry.value) as {
+          fontSize?: string;
+          fontWeight?: string;
+          color?: string;
+          textAlign?: string;
+          lineHeight?: string;
+          letterSpacing?: string;
+          padding?: string;
+          margin?: string;
+          marginTop?: string;
+          marginBottom?: string;
+          backgroundColor?: string;
+          background?: string;
+          borderRadius?: string;
+          border?: string;
+          boxShadow?: string;
+          display?: string;
+        };
+        if (options.fontSize !== undefined) element.style.fontSize = options.fontSize;
+        if (options.fontWeight !== undefined) element.style.fontWeight = options.fontWeight;
+        if (options.color !== undefined) {
+          element.style.color = options.color;
+          element.style.webkitTextFillColor = options.color;
+        }
+        if (options.textAlign !== undefined) element.style.textAlign = options.textAlign;
+        if (options.lineHeight !== undefined) element.style.lineHeight = options.lineHeight;
+        if (options.letterSpacing !== undefined) element.style.letterSpacing = options.letterSpacing;
+        if (options.padding !== undefined) element.style.padding = options.padding;
+        if (options.margin !== undefined) element.style.margin = options.margin;
+        if (options.marginTop !== undefined) element.style.marginTop = options.marginTop;
+        if (options.marginBottom !== undefined) element.style.marginBottom = options.marginBottom;
+        if (options.backgroundColor !== undefined) element.style.backgroundColor = options.backgroundColor;
+        if (options.background !== undefined) element.style.background = options.background;
+        if (options.borderRadius !== undefined) element.style.borderRadius = options.borderRadius;
+        if (options.border !== undefined) element.style.border = options.border;
+        if (options.boxShadow !== undefined) element.style.boxShadow = options.boxShadow;
+        if (options.display !== undefined) element.style.display = options.display;
+      } catch {
+        return;
+      }
+      return;
+    }
+
     if (entry.kind === "appendHtml" || entry.kind === "insertAfter") {
       if (document.querySelector(`[data-admin-entry="${CSS.escape(entry.id)}"]`)) return;
       const wrapper = document.createElement(entry.kind === "insertAfter" ? "section" : "div");
@@ -145,7 +263,7 @@ function applyEntry(entry: ContentEntry) {
 }
 
 function editableTarget(origin: Element): HTMLElement {
-  return (origin.closest("h1,h2,h3,h4,h5,h6,p,a,button,img,video,li,span,label") ||
+  return (origin.closest("h1,h2,h3,h4,h5,h6,p,a,button,img,video,li,span,label,article,section,div[class*='card']") ||
     origin) as HTMLElement;
 }
 
@@ -266,15 +384,9 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
       event.stopPropagation();
       const element = editableTarget(origin);
 
-      // Compute selector BEFORE adding the transient class .admin-edit-selected
+      // Compute selector BEFORE adding transient class
       const selector = cssPath(element);
 
-      selectedElement?.classList.remove("admin-edit-selected");
-      element.classList.remove("admin-edit-hover");
-      element.classList.add("admin-edit-selected");
-      selectedElement = element;
-
-      const section = element.closest("header,footer,section,main") as HTMLElement | null;
       const isMedia = element.tagName === "IMG" || element.tagName === "VIDEO";
       const heroSection = element.closest("section") as HTMLElement | null;
       const backgroundElement =
@@ -285,8 +397,27 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
             return style.position === "absolute" || image.className.includes("object-cover");
           }) || null
         : null;
+
+      let selectedType = "element";
+      if (element.tagName === "IMG") {
+        selectedType = heroImageElement === element || element.className.includes("hero") ? "hero-image" : "image";
+      } else if (element.tagName === "SECTION" || element.className.includes("hero")) {
+        selectedType = "hero-section";
+      }
+
+      selectedElement?.removeAttribute("data-admin-selected-type");
+      selectedElement?.classList.remove("admin-edit-selected");
+      element.classList.remove("admin-edit-hover");
+      element.classList.add("admin-edit-selected");
+      element.setAttribute("data-admin-selected-type", selectedType);
+      selectedElement = element;
+
+      const section = element.closest("header,footer,section,main") as HTMLElement | null;
       const global = Boolean(element.closest("header,footer"));
       const linkElement = element.closest("a") || (element.tagName === "BUTTON" ? element : null);
+
+      const computed = window.getComputedStyle(element);
+      const sectionComputed = heroSection ? window.getComputedStyle(heroSection) : null;
 
       window.parent.postMessage(
         {
@@ -300,7 +431,7 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
             sectionLabel:
               section?.getAttribute("aria-label") ||
               section?.classList[0]?.replace(/[-_]/g, " ") ||
-              "General",
+              "General Section",
             selector,
             tag: element.tagName.toLowerCase(),
             label: normalize(
@@ -331,10 +462,47 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
             heroImageSelector: heroImageElement ? cssPath(heroImageElement) : "",
             animation: heroSection?.getAttribute("data-admin-animation") || "default",
             animationSelector: heroSection ? cssPath(heroSection) : "",
+
+            // Image dimension & styling properties
+            imageWidth: element.style.width || (isMedia ? computed.width : ""),
+            imageMaxWidth: element.style.maxWidth || "",
+            imageHeight: element.style.height || (isMedia ? computed.height : ""),
+            imageMinHeight: element.style.minHeight || "",
+            imageAspectRatio: element.style.aspectRatio || (isMedia ? computed.aspectRatio : "auto"),
+            imageObjectFit: element.style.objectFit || (isMedia ? computed.objectFit : "cover"),
+            imageObjectPosition: element.style.objectPosition || (isMedia ? computed.objectPosition : "center"),
+            imageBorderRadius: element.style.borderRadius || (isMedia ? computed.borderRadius : ""),
+            imageOpacity: element.style.opacity || (isMedia ? computed.opacity : "1"),
+            imageFilter: element.style.filter || "",
+
+            // Element typography & styling properties
+            fontSize: element.style.fontSize || computed.fontSize,
+            fontWeight: element.style.fontWeight || computed.fontWeight,
+            color: element.style.color || computed.color,
+            textAlign: element.style.textAlign || computed.textAlign,
+            lineHeight: element.style.lineHeight || computed.lineHeight,
+            letterSpacing: element.style.letterSpacing || computed.letterSpacing,
+            elementPadding: element.style.padding || "",
+            elementMarginTop: element.style.marginTop || "",
+            elementMarginBottom: element.style.marginBottom || "",
+            elementBackgroundColor: element.style.backgroundColor || "",
+            elementBorderRadius: element.style.borderRadius || "",
+
+            // Section dimension & styling properties
             sectionSelector: heroSection ? cssPath(heroSection) : "",
             sectionWidth: heroSection?.style.width || "100%",
-            sectionMinHeight: heroSection?.style.minHeight || "auto",
-            sectionPadding: heroSection?.style.paddingTop || "",
+            sectionMaxWidth: heroSection?.style.maxWidth || "",
+            sectionMinHeight: heroSection?.style.minHeight || (sectionComputed ? sectionComputed.minHeight : "auto"),
+            sectionHeight: heroSection?.style.height || "",
+            sectionPaddingTop: heroSection?.style.paddingTop || (sectionComputed ? sectionComputed.paddingTop : ""),
+            sectionPaddingBottom: heroSection?.style.paddingBottom || (sectionComputed ? sectionComputed.paddingBottom : ""),
+            sectionPaddingLeft: heroSection?.style.paddingLeft || (sectionComputed ? sectionComputed.paddingLeft : ""),
+            sectionPaddingRight: heroSection?.style.paddingRight || (sectionComputed ? sectionComputed.paddingRight : ""),
+            sectionMarginTop: heroSection?.style.marginTop || "",
+            sectionMarginBottom: heroSection?.style.marginBottom || "",
+            sectionBackgroundColor: heroSection?.style.backgroundColor || (sectionComputed ? sectionComputed.backgroundColor : ""),
+            sectionBackground: heroSection?.style.background || "",
+            sectionBorderRadius: heroSection?.style.borderRadius || (sectionComputed ? sectionComputed.borderRadius : ""),
             sectionLayout: heroSection?.dataset.adminLayout || "original",
             sectionColumns: heroSection?.style.getPropertyValue("--admin-columns") || "3",
             sectionHidden: heroSection?.hasAttribute("hidden") || false,
@@ -371,6 +539,3 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
 
   return null;
 }
-
-
-

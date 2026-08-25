@@ -147,9 +147,11 @@ export default function SolutionsPage() {
                   <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{solution.shortDescription}</p>
                   <ul className="mt-3.5 space-y-2 border-t border-white/10 pt-3">
                     {solution.featureCards.slice(0, 4).map((item) => (
-                      <li key={item.title} className="flex items-start gap-2 text-xs sm:text-sm font-medium text-slate-200">
-                        <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-white" />
-                        {item.title}
+                      <li key={item.title} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-slate-200">
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 shadow-[0_0_8px_rgba(59,130,246,0.25)]">
+                          <Check className="h-2.5 w-2.5 stroke-[3] text-blue-300" />
+                        </span>
+                        <span>{item.title}</span>
                       </li>
                     ))}
                   </ul>

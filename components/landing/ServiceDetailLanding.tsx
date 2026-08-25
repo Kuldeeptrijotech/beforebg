@@ -99,7 +99,7 @@ export default function ServiceDetailLanding({
           href="/services"
           className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold"
         >
-          <ArrowLeft className="h-4 w-4" /> All services
+          All services
         </Link>
       </motion.div>
     </>

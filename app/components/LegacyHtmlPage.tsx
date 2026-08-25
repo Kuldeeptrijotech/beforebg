@@ -2,9 +2,25 @@ import LatestBlogsCarousel from "./LatestBlogsCarousel";
 import ContactCta from "./common/ContactCta";
 import ArticleBlocks, { type ContentBlock } from "./common/ArticleBlocks";
 
-type Props = { title: string; description?: string; blocks: ContentBlock[]; className?: string; heroImage?: string };
+type Props = {
+  title: string;
+  description?: string;
+  blocks: ContentBlock[];
+  className?: string;
+  heroImage?: string;
+  showLatestBlogs?: boolean;
+  showContactCta?: boolean;
+};
 
-export default function LegacyHtmlPage({ title, description = "", blocks, className = "legacy-content-page", heroImage }: Props) {
+export default function LegacyHtmlPage({
+  title,
+  description = "",
+  blocks,
+  className = "legacy-content-page",
+  heroImage,
+  showLatestBlogs = true,
+  showContactCta = true,
+}: Props) {
   const latestIndex = blocks.findIndex(block => block.type === "heading" && String(block.text ?? "").toLowerCase().includes("latest blogs"));
   const articleBlocks = (latestIndex < 0 ? blocks : blocks.slice(0, latestIndex)).filter(block => !(block.type === "heading" && String(block.text ?? "").trim() === title.trim()));
   return (
@@ -36,9 +52,9 @@ export default function LegacyHtmlPage({ title, description = "", blocks, classN
         </div>
       </article>
 
-      <LatestBlogsCarousel />
+      {showLatestBlogs && <LatestBlogsCarousel />}
 
-      <ContactCta />
+      {showContactCta && <ContactCta />}
     </main>
   );
 }

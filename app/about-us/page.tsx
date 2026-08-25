@@ -47,11 +47,11 @@ const values = [
 
 const leadership = [
   {
-    name: "Rakesh Kumar",
-    role: "Managing Director",
-    image: "/assets/images/team_01.jpg",
+    name: "Kalpesh Chavda",
+    role: "CEO",
+    image: "",
     description:
-      "Rakesh leads with accountability, business ownership, and a practical focus on SAP transformation that delivers measurable value.",
+      "Kalpesh leads Trijotech with vision, strategic direction, and a practical focus on SAP transformation that delivers measurable value.",
   },
   {
     name: "Rakesh Shah",
@@ -310,16 +310,27 @@ export default function AboutUsPage() {
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
                 className="about-card group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
               >
-                <div className="relative aspect-[16/10] w-full shrink-0 bg-slate-900 overflow-hidden">
-                  <Image
-                    src={leader.image}
-                    alt={`Photo of ${leader.name}`}
-                    fill
-                    sizes="(max-width:768px) 100vw, 33vw"
-                    className="object-cover object-top transition duration-700 group-hover:scale-108"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
-                </div>
+                {leader.image ? (
+                  <div className="relative aspect-[16/10] w-full shrink-0 bg-slate-900 overflow-hidden">
+                    <Image
+                      src={leader.image}
+                      alt={`Photo of ${leader.name}`}
+                      fill
+                      sizes="(max-width:768px) 100vw, 33vw"
+                      className="object-cover object-top transition duration-700 group-hover:scale-108"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
+                  </div>
+                ) : (
+                  <div className="pt-6 px-6 sm:pt-7 sm:px-7">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#0a6ed1] to-[#008fd3] text-xl font-bold text-white shadow-lg border border-white/20">
+                      {leader.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </div>
+                  </div>
+                )}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="text-xl font-bold text-white">{leader.name}</h3>
                   <p className="mt-0.5 text-xs sm:text-sm font-semibold text-white">{leader.role}</p>

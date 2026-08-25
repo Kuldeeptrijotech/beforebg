@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/app/lib/admin-auth";
 import { readSiteContent, validateEntry, writeSiteContent, type ContentEntry, type ContentSection } from "@/app/lib/content-store";
 
@@ -36,7 +36,7 @@ export async function PUT(request: NextRequest) {
       sectionLabel?: string;
       entries?: ContentEntry[];
     };
-    if (!Array.isArray(body.entries) || body.entries.length === 0 || body.entries.length > 12) {
+    if (!Array.isArray(body.entries) || body.entries.length === 0 || body.entries.length > 100) {
       return NextResponse.json({ error: "Select at least one valid field to save." }, { status: 400 });
     }
     for (const entry of body.entries) {

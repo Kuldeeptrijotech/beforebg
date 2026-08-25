@@ -1,7 +1,15 @@
-﻿import { promises as fs } from "node:fs";
+import { promises as fs } from "node:fs";
 import path from "node:path";
 
-export type ContentKind = "html" | "attribute" | "backgroundImage" | "sectionStyle" | "appendHtml" | "insertAfter";
+export type ContentKind =
+  | "html"
+  | "attribute"
+  | "backgroundImage"
+  | "sectionStyle"
+  | "imageStyle"
+  | "elementStyle"
+  | "appendHtml"
+  | "insertAfter";
 
 export type ContentEntry = {
   id: string;
@@ -81,12 +89,14 @@ export function validateEntry(entry: ContentEntry): string | null {
   if (entry.kind === "attribute" && entry.attribute === "src" && !isSafeUrl(entry.value, true)) return "Enter a valid image URL.";
   if (entry.kind === "attribute" && entry.attribute === "data-admin-animation" && !["default", "off", "subtle", "glow", "grid"].includes(entry.value)) return "Choose a valid animation preset.";
   if (entry.kind === "backgroundImage" && !isSafeUrl(entry.value, true)) return "Enter a valid background image URL.";
-  if (entry.kind === "sectionStyle") {
-    try { const options = JSON.parse(entry.value) as Record<string, unknown>; if (!options || typeof options !== "object") return "Invalid section settings."; } catch { return "Invalid section settings."; }
+  if (entry.kind === "sectionStyle" || entry.kind === "imageStyle" || entry.kind === "elementStyle") {
+    try {
+      const options = JSON.parse(entry.value) as Record<string, unknown>;
+      if (!options || typeof options !== "object") return "Invalid style settings.";
+    } catch {
+      return "Invalid style settings.";
+    }
   }
   if (/<script\b|on\w+\s*=|javascript:/i.test(entry.value)) return "Unsafe content is not allowed.";
   return null;
 }
-
-
-

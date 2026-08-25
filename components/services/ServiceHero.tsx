@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import type { ReactNode } from "react";
 import Link from "next/link";
@@ -58,19 +58,23 @@ export default function ServiceHero({
   const pathname = usePathname();
   const heroImage = navHeroImages[pathname];
   return (
-    <section className={`relative isolate flex min-h-[70vh] w-full flex-col justify-center overflow-hidden ${bgClass} pb-16 pt-32 sm:pt-36 lg:min-h-[600px] lg:py-24`}>
+    <section className={`relative isolate flex min-h-[75vh] w-full flex-col justify-center overflow-hidden ${bgClass} pb-16 pt-32 sm:pt-36 lg:min-h-[640px] lg:py-24`}>
+      {/* Full width & full height image backdrop */}
       {heroImage && (
-        <Image src={heroImage} alt="" fill priority sizes="100vw" className="-z-50 object-cover object-center" />
+        <div aria-hidden className="absolute inset-0 -z-20 overflow-hidden">
+          <Image
+            src={heroImage}
+            alt={title || "Service Hero"}
+            fill
+            priority
+            sizes="100vw"
+            className="h-full w-full object-cover object-center brightness-[0.88] contrast-[1.05]"
+          />
+          {/* Subtle soft gradient on left for text legibility while keeping image vibrant & visible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030713]/80 via-[#030713]/35 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#030713] to-transparent" />
+        </div>
       )}
-      <div aria-hidden className="absolute inset-0 -z-40 bg-gradient-to-r from-[#050817]/95 via-[#050817]/78 to-[#050817]/45" />
-      {/* Brand tri-mesh and grid overlays (static) */}
-      <div aria-hidden className="absolute inset-0 -z-30 tri-mesh opacity-40" />
-      <div aria-hidden className="absolute inset-0 -z-30 tri-grid-bg opacity-40" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-30" />
-
-      {/* Subtle static ambient glows */}
-      <div aria-hidden className="pointer-events-none absolute -right-20 top-10 -z-10 h-80 w-80 rounded-full bg-white/[0.07] blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -left-20 bottom-10 -z-10 h-72 w-72 rounded-full bg-white/[0.05] blur-3xl" />
 
       <Container className="relative z-10 mx-auto w-full max-w-7xl">
         {heading ? (
@@ -78,7 +82,7 @@ export default function ServiceHero({
         ) : (
           <div className="flex max-w-4xl flex-col items-start text-left">
             {/* Eyebrow badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
@@ -88,20 +92,20 @@ export default function ServiceHero({
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
               {title}
             </h1>
 
             {/* Subtitle */}
             {subtitle && (
-              <p className="mt-5 text-lg font-semibold leading-relaxed text-white sm:text-xl">
+              <p className="mt-5 text-lg font-semibold leading-relaxed text-white drop-shadow-md sm:text-xl">
                 {subtitle}
               </p>
             )}
 
             {/* Description */}
             {description && (
-              <p className="mt-4 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg">
+              <p className="mt-4 max-w-2xl text-base font-normal leading-[1.7] text-white/90 drop-shadow sm:text-lg">
                 {description}
               </p>
             )}
@@ -119,7 +123,7 @@ export default function ServiceHero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white"
+                  className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white backdrop-blur-md bg-white/10 hover:bg-white/20 border-white/20"
                 >
                   {secondaryCta.label}
                 </Link>
@@ -132,10 +136,10 @@ export default function ServiceHero({
                 {metrics.map((m) => (
                   <div
                     key={m.label}
-                    className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5 backdrop-blur-md"
+                    className="flex items-center gap-3 rounded-2xl border border-white/20 bg-[#050817]/70 px-4 py-2.5 backdrop-blur-md shadow"
                   >
                     <span className="text-base font-extrabold text-white sm:text-lg">{m.value}</span>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-white/70">{m.label}</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-white/80">{m.label}</span>
                   </div>
                 ))}
               </div>
@@ -144,10 +148,8 @@ export default function ServiceHero({
         )}
       </Container>
 
-      {/* Clean sharp boundary line */}
-      <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/10" />
+      {/* Clean bottom border */}
+      <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/15" />
     </section>
   );
 }
-
-

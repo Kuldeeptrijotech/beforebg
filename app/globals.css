@@ -188,24 +188,68 @@ p, a, span, li, label, div {
 
 .admin-preview-mode .admin-edit-selected {
   position: relative;
-  outline: 3px solid #f59e0b !important;
+  outline: 3px solid #ee9e1e !important;
   outline-offset: 4px !important;
-  box-shadow: 0 0 0 7px rgb(245 158 11 / 18%) !important;
+  box-shadow: 0 0 0 7px rgba(238, 158, 30, 0.28) !important;
+  animation: adminSelectedPulse 2.5s infinite alternate !important;
+}
+
+@keyframes adminSelectedPulse {
+  from { box-shadow: 0 0 0 4px rgba(238, 158, 30, 0.2); }
+  to { box-shadow: 0 0 0 9px rgba(238, 158, 30, 0.4); }
 }
 
 .admin-preview-mode .admin-edit-selected::after {
-  content: "SELECTED";
+  content: "✓ SELECTED";
   position: absolute;
   z-index: 2147483647;
   right: 0;
-  top: -28px;
-  padding: 4px 8px;
-  border-radius: 5px 5px 0 0;
+  top: -30px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #ee9e1e;
+  color: #ffffff;
+  font: 700 11px/1.2 system-ui, -apple-system, sans-serif;
+  letter-spacing: .05em;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  white-space: nowrap;
+}
+
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="hero-image"] {
+  outline: 3px solid #f59e0b !important;
+}
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="hero-image"]::after {
+  content: "🎯 HERO IMAGE SELECTED";
   background: #f59e0b;
   color: #111827;
-  font: 700 10px/1.2 "Poppins", sans-serif;
-  letter-spacing: .08em;
-  pointer-events: none;
+}
+
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="hero-section"] {
+  outline: 3px solid #087b71 !important;
+}
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="hero-section"]::after {
+  content: "✨ HERO SECTION / ANIMATION SELECTED";
+  background: #087b71;
+  color: #ffffff;
+}
+
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="animation"] {
+  outline: 3px solid #6366f1 !important;
+}
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="animation"]::after {
+  content: "✨ HERO ANIMATION SELECTED";
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="image"] {
+  outline: 3px solid #0284c7 !important;
+}
+.admin-preview-mode .admin-edit-selected[data-admin-selected-type="image"]::after {
+  content: "🖼️ IMAGE SELECTED";
+  background: #0284c7;
+  color: #ffffff;
 }
 
 /* Public chatbot: comfortable desktop panel and full-screen mobile experience. */
@@ -909,12 +953,12 @@ p, a, span, li, label, div {
 .zip-theme > section:nth-of-type(7),
 .zip-theme > section:nth-of-type(9),
 .zip-theme > section:nth-of-type(10),
-.zip-theme > section:nth-of-type(1) *,
-.zip-theme > section:nth-of-type(3) *,
-.zip-theme > section:nth-of-type(5) *,
-.zip-theme > section:nth-of-type(7) *,
-.zip-theme > section:nth-of-type(9) *,
-.zip-theme > section:nth-of-type(10) * {
+.zip-theme > section:nth-of-type(1) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
+.zip-theme > section:nth-of-type(3) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
+.zip-theme > section:nth-of-type(5) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
+.zip-theme > section:nth-of-type(7) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
+.zip-theme > section:nth-of-type(9) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
+.zip-theme > section:nth-of-type(10) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -954,7 +998,7 @@ p, a, span, li, label, div {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(odd) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button) {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(odd) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button):not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -997,7 +1041,7 @@ main.public-alternating-page > section:nth-of-type(odd) {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-main.public-alternating-page > section:nth-of-type(odd) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button) {
+main.public-alternating-page > section:nth-of-type(odd) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button):not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -2343,6 +2387,72 @@ section[data-admin-layout="carousel"] > :not([aria-hidden]) { flex: 0 0 min(82vw
 
 /* Industry definition section uses the same white surface as other light sections */
 .industry-detail-page .industry-definition-section { background: #ffffff !important; background-image: none !important; }
+
+/* Contact page form dropdown trigger & options styling - bold black text */
+.contact-custom-select-trigger,
+.contact-custom-select-trigger span,
+.contact-custom-select-value,
+.contact-custom-select-value.is-selected {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.contact-custom-select-trigger .contact-custom-select-value.is-placeholder {
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+}
+
+.contact-custom-select-trigger svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+.contact-custom-select-menu {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35) !important;
+}
+
+.contact-custom-select-menu ul {
+  background-color: #ffffff !important;
+}
+
+.contact-custom-select-option,
+.contact-custom-select-option span,
+.contact-custom-select-option * {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.contact-custom-select-option:hover,
+.contact-custom-select-option:hover span,
+.contact-custom-select-option:hover * {
+  background-color: #f1f5f9 !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.contact-custom-select-option[aria-selected="true"],
+.contact-custom-select-option[aria-selected="true"] span,
+.contact-custom-select-option[aria-selected="true"] * {
+  background-color: #e2e8f0 !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+.contact-custom-select-option svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+select,
+select option {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
 
 .industry-detail-page .industry-hero-section { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
 .industry-detail-page .industry-hero-section::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(3,27,51,.9) 0%, rgba(5,47,85,.68) 52%, rgba(10,110,209,.18) 100%); }

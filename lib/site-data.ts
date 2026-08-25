@@ -54,7 +54,6 @@ export const siteConfig = {
       {
         title: "Compliance",
         links: [
-          { label: "Terms of Service", href: "/terms-of-service" },
           { label: "Privacy Policy", href: "/privacy-policy" }
         ]
       }
@@ -364,6 +363,7 @@ export type TestimonialItem = {
   writerName: string;
   designation: string;
   testimonial: string;
+  href?: string;
   image?: string;
   imageAlt?: string;
   showOnHome: boolean;
@@ -396,7 +396,7 @@ export const testimonials = [
     designation: "CEO",
     testimonial:
       "Trijotech has supported us with an excellent team for BPC implementation and has been prompt in delivery and response. Their consultants have strong capability around Legal & Management Consolidation and Data Analytics. I strongly recommend Trijotech for SAP BPC and Group Reporting implementation services.",
-    image: "/static/Diligent.png",
+    image: "",
     imageAlt: "",
     showOnHome: true,
   },

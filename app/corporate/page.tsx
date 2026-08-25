@@ -19,7 +19,7 @@ const cards = [
     description: "Learn about our company, SAP and data expertise, practical delivery approach, mission, values, and leadership.",
     cta: "Learn More",
     icon: Building2,
-    tone: "green" as const,
+    tone: "blue" as const,
   },
   {
     title: "Careers",
@@ -29,7 +29,7 @@ const cards = [
     description: "Explore opportunities to build your career in SAP consulting and enterprise technology with a collaborative team.",
     cta: "Explore Careers",
     icon: Users,
-    tone: "mix" as const,
+    tone: "blue" as const,
   },
   {
     title: "Contact Us",
@@ -39,7 +39,7 @@ const cards = [
     description: "Connect with Trijotech about services, partnerships, support, careers, or your next transformation priority.",
     cta: "Contact Us",
     icon: Mail,
-    tone: "amber" as const,
+    tone: "blue" as const,
   },
 ];
 
@@ -172,9 +172,9 @@ export default function CorporatePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
                       <motion.span
-                        whileHover={{ scale: 1.12, rotate: 5 }}
+                        whileHover={{ scale: 1.15, rotate: 5 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute left-4 top-4"
+                        className="absolute left-4 top-4 z-10 drop-shadow-xl"
                       >
                         <HexBadge icon={Icon} tone={card.tone} size="md" />
                       </motion.span>

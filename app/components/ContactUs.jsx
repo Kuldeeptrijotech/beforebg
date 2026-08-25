@@ -41,24 +41,31 @@ function CustomSelect({ name, placeholder, options, required = false, controlCla
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
-                className={`${controlClass} contact-custom-select-trigger flex items-center justify-between text-left cursor-pointer transition-colors ${
-                    !selected ? "text-slate-400" : "text-white"
-                } ${isOpen ? "border-white ring-2 ring-[#ffffff]/20" : ""}`}
+                className={`${controlClass} contact-custom-select-trigger flex items-center justify-between text-left cursor-pointer transition-colors !bg-[#f8fafc] !text-black ${
+                    !selected ? "!text-slate-600" : "!text-black font-semibold"
+                } ${isOpen ? "!border-cyan-700 ring-2 ring-cyan-700/20" : "!border-slate-400"}`}
+                style={{ color: "#000000", backgroundColor: "#f8fafc" }}
                 aria-haspopup="listbox"
                 aria-expanded={isOpen}
                 aria-required={required}
             >
-                <span className={`contact-custom-select-value truncate ${selected ? "is-selected" : "is-placeholder"}`}>{selected || placeholder}</span>
+                <span
+                    className={`contact-custom-select-value truncate ${selected ? "is-selected !text-black font-semibold" : "is-placeholder !text-slate-600"}`}
+                    style={{ color: selected ? "#000000" : "#475569", fontWeight: selected ? 600 : 400 }}
+                >
+                    {selected || placeholder}
+                </span>
                 <ChevronDown
-                    className={`h-4 w-4 shrink-0 text-slate-400 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-white" : ""
+                    className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-black" : "text-slate-700"
                     }`}
+                    style={{ color: "#000000" }}
                 />
             </button>
 
             {isOpen && (
-                <div className="contact-custom-select-menu absolute left-0 right-0 top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-white/15 bg-[#0b1d33] p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl animate-in fade-in duration-150">
-                    <ul role="listbox" className="max-h-60 overflow-y-auto space-y-1">
+                <div className="contact-custom-select-menu absolute left-0 right-0 top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-slate-300 bg-white p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl animate-in fade-in duration-150" style={{ backgroundColor: "#ffffff" }}>
+                    <ul role="listbox" className="max-h-60 overflow-y-auto space-y-1 bg-white" style={{ backgroundColor: "#ffffff" }}>
                         {options.map((option) => {
                             const isSelected = selected === option;
                             return (
@@ -72,12 +79,13 @@ function CustomSelect({ name, placeholder, options, required = false, controlCla
                                     }}
                                     className={`contact-custom-select-option flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[14px] cursor-pointer transition-all duration-150 ${
                                         isSelected
-                                            ? "bg-white/20 font-semibold text-white"
-                                            : "text-slate-200 hover:bg-white/[0.08] hover:text-white"
+                                            ? "bg-slate-200 font-bold text-black"
+                                            : "bg-white text-black hover:bg-slate-100 hover:text-black"
                                     }`}
+                                    style={{ backgroundColor: isSelected ? "#e2e8f0" : "#ffffff", color: "#000000" }}
                                 >
-                                    <span>{option}</span>
-                                    {isSelected && <Check className="h-4 w-4 text-white" />}
+                                    <span style={{ color: "#000000", fontWeight: isSelected ? 700 : 500 }}>{option}</span>
+                                    {isSelected && <Check className="h-4 w-4 text-black" style={{ color: "#000000" }} />}
                                 </li>
                             );
                         })}
