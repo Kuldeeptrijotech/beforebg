@@ -17,9 +17,9 @@ const satellites = [
 ];
 
 const toneFill: Record<string, string> = {
-  green: "rgba(41,171,135,0.18)",
-  amber: "rgba(245,166,35,0.18)",
-  mix: "rgba(17,122,75,0.22)",
+  green: "rgba(255, 255, 255,0.18)",
+  amber: "rgba(255, 255, 255,0.18)",
+  mix: "rgba(255, 255, 255,0.22)",
 };
 
 /** CSS 3D glass-hexagon hero scene with pointer parallax. Mouse-only, reduced-motion aware. */
@@ -56,7 +56,7 @@ export default function HexScene({ active = true, className = "" }: { active?: b
       <div
         aria-hidden
         className="absolute inset-0 blur-3xl"
-        style={{ background: "radial-gradient(60% 60% at 50% 50%, rgba(41,171,135,0.32), rgba(11,29,51,0.6) 45%, transparent 75%)" }}
+        style={{ background: "radial-gradient(60% 60% at 50% 50%, rgba(255, 255, 255,0.32), rgba(11,29,51,0.6) 45%, transparent 75%)" }}
       />
 
       {/* data flow layer */}
@@ -68,7 +68,7 @@ export default function HexScene({ active = true, className = "" }: { active?: b
 
         {/* inner orbit ring */}
         <div
-          className="absolute rounded-full border border-[rgba(41,171,135,0.28)]"
+          className="absolute rounded-full border border-[rgba(255, 255, 255,0.28)]"
           style={{
             left: "50%",
             top: "50%",
@@ -78,7 +78,7 @@ export default function HexScene({ active = true, className = "" }: { active?: b
           }}
         >
           <span
-            className="tri-ring absolute left-1/2 top-1/2 h-5 w-5 rounded-full border-2 border-[rgba(245,166,35,0.85)]"
+            className="tri-ring absolute left-1/2 top-1/2 h-5 w-5 rounded-full border-2 border-[rgba(255, 255, 255,0.85)]"
             style={{ transform: "translate(-50%,-50%)" }}
           />
         </div>
@@ -106,13 +106,13 @@ export default function HexScene({ active = true, className = "" }: { active?: b
                       height: s.size,
                       background:
                         s.tone === "amber"
-                          ? "radial-gradient(circle, rgba(245,166,35,0.5), transparent 70%)"
-                          : "radial-gradient(circle, rgba(41,171,135,0.5), transparent 70%)",
+                          ? "radial-gradient(circle, rgba(255, 255, 255,0.5), transparent 70%)"
+                          : "radial-gradient(circle, rgba(255, 255, 255,0.5), transparent 70%)",
                     }}
                   />
                 ) : s.kind === "chip" ? (
-                  <div className="flex items-center justify-center rounded-xl border border-[rgba(41,171,135,0.3)] bg-[rgba(11,29,51,0.65)] p-3 text-[#29ab87] shadow-lg shadow-[rgba(3,7,19,0.5)] backdrop-blur-md">
-                    {Icon && <Icon className="text-[#29ab87]" style={{ width: s.size * 0.5, height: s.size * 0.5 }} strokeWidth={1.6} />}
+                  <div className="flex items-center justify-center rounded-xl border border-[rgba(255, 255, 255,0.3)] bg-[rgba(11,29,51,0.65)] p-3 text-white shadow-lg shadow-[rgba(3,7,19,0.5)] backdrop-blur-md">
+                    {Icon && <Icon className="text-white" style={{ width: s.size * 0.5, height: s.size * 0.5 }} strokeWidth={1.6} />}
                   </div>
                 ) : (
                   <Hexagon size={s.size} fill={toneFill[s.tone]} />
@@ -127,7 +127,7 @@ export default function HexScene({ active = true, className = "" }: { active?: b
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-10 top-0 h-px opacity-60"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(41,171,135,0.8), rgba(245,166,35,0.8), transparent)" }}
+        style={{ background: "linear-gradient(90deg, transparent, rgba(255, 255, 255,0.8), rgba(255, 255, 255,0.8), transparent)" }}
       />
     </div>
   );

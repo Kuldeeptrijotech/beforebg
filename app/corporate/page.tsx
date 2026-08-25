@@ -45,7 +45,7 @@ const cards = [
 
 export default function CorporatePage() {
   return (
-    <main className="overflow-hidden bg-[#030713] text-white font-sans">
+    <main className="public-alternating-page overflow-hidden bg-[#030713] text-white font-sans">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         {/* Layered ambient backgrounds */}
@@ -63,8 +63,8 @@ export default function CorporatePage() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-36 bg-gradient-to-t from-[#050817] to-transparent" />
 
         {/* Ambient glow orbs */}
-        <div className="tri-blob -z-10 h-80 w-80" style={{ right: "15%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
-        <div className="tri-blob -z-10 h-64 w-64" style={{ left: "5%", bottom: "15%", background: "radial-gradient(circle, rgba(245,166,35,0.12), transparent 70%)" }} />
+        <div className="tri-blob -z-10 h-80 w-80" style={{ right: "15%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.18), transparent 70%)" }} />
+        <div className="tri-blob -z-10 h-64 w-64" style={{ left: "5%", bottom: "15%", background: "radial-gradient(circle, rgba(255, 255, 255,0.12), transparent 70%)" }} />
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
@@ -72,9 +72,9 @@ export default function CorporatePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" />
+              <Sparkles className="h-3.5 w-3.5 text-white" />
               Corporate
             </motion.div>
 
@@ -128,8 +128,8 @@ export default function CorporatePage() {
       {/* ── Cards ─────────────────────────────── */}
       <section id="explore" className="relative overflow-hidden bg-[#162032] py-24 sm:py-32 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh" />
-        <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(41,171,135,0.18)] blur-[100px] tri-pulse" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(245,166,35,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
+        <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(255, 255, 255,0.18)] blur-[100px] tri-pulse" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(255, 255, 255,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
 
         <Container className="relative">
           <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -160,7 +160,7 @@ export default function CorporatePage() {
                 <StaggerRevealItem key={card.href} className="h-full">
                   <motion.article
                     whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                    className="group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                    className="group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
                   >
                     <Link href={card.href} className="relative block aspect-[16/10] overflow-hidden bg-slate-900">
                       <Image
@@ -181,13 +181,13 @@ export default function CorporatePage() {
                     </Link>
 
                     <div className="flex flex-1 flex-col p-6 sm:p-7">
-                      <h3 className="text-xl font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2] sm:text-2xl">
+                      <h3 className="text-xl font-bold leading-snug text-white transition-colors group-hover:text-white sm:text-2xl">
                         {card.title}
                       </h3>
                       <p className="mt-4 flex-1 leading-7 text-slate-300">{card.description}</p>
                       <Link
                         href={card.href}
-                        className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#7edcc2] transition-all duration-300 group-hover:gap-3 group-hover:text-[#f5a623]"
+                        className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-white transition-all duration-300 group-hover:gap-3 group-hover:text-white"
                       >
                         {card.cta} <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </Link>
@@ -201,14 +201,14 @@ export default function CorporatePage() {
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#121927] py-12 sm:py-14">
+      <section className="hidden relative overflow-hidden bg-[#121927] py-12 sm:py-14">
         <Container className="relative">
           <Reveal>
             <div className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10">
               <div className="absolute inset-0 tri-hex-grid opacity-50" />
               <div className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
-              <div className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
-              <div className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(245,166,35,0.22), transparent 68%)" }} />
+              <div className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
+              <div className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.22), transparent 68%)" }} />
 
               <div className="relative mx-auto max-w-3xl">
                 <motion.p
@@ -216,7 +216,7 @@ export default function CorporatePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.22em] text-[#f5a623]"
+                  className="inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.22em] text-white"
                 >
                   <Sparkles className="h-4 w-4" />
                   Let&apos;s work together

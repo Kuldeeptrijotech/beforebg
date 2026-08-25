@@ -30,12 +30,12 @@ export const SAP = {
   azure: "#38bdf8",
   cyan: "#22d3ee",
   aqua: "#67e8f9",
-  ice: "#7edcc2",
+  ice: "#ffffff",
   violet: "#8b7cf6",
   purple: "#a78bfa",
-  amber: "#f5a623",
-  green: "#29ab87",
-  greenDeep: "#117a4b",
+  amber: "#ffffff",
+  green: "#ffffff",
+  greenDeep: "#ffffff",
 };
 
 /** Consistent hero heading typography (clamp sized, tight, premium). */
@@ -109,9 +109,9 @@ export function SectionLabel({
   className?: string;
 }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${className}`}>
-      <span className="h-0.5 w-6 rounded-full bg-gradient-to-r from-[#f5a623] to-[#29ab87]" />
-      <span className={dark ? "text-[#29ab87]" : "text-[#117a4b]"}>{children}</span>
+    <span className={`service-section-label inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${className}`}>
+      <span aria-hidden className="service-section-marker h-0.5 w-7 shrink-0 rounded-full" />
+      <span className={dark ? "text-white" : "text-white"}>{children}</span>
     </span>
   );
 }
@@ -121,10 +121,10 @@ export function SectionLabel({
 export type GlassVariant = "frosted" | "transparent" | "dark" | "light";
 
 const GLASS: Record<GlassVariant, string> = {
-  frosted: "bg-white/[0.07] backdrop-blur-xl border border-white/15",
+  frosted: "bg-white/[0.07] border border-white/15",
   transparent: "bg-white/[0.03] backdrop-blur-sm border border-white/10",
-  dark: "bg-[#162032]/80 backdrop-blur-xl border border-white/12",
-  light: "bg-white/85 backdrop-blur-xl border border-[#cfe4f5]",
+  dark: "bg-[#162032]/80 border border-white/12",
+  light: "bg-white/85 border border-[#cfe4f5]",
 };
 
 export function Glass({
@@ -144,12 +144,12 @@ export function Glass({
     blue: "rgba(47,143,255,0.35)",
     cyan: "rgba(34,211,238,0.32)",
     violet: "rgba(139,124,246,0.32)",
-    amber: "rgba(245,166,35,0.28)",
-    green: "rgba(41,171,135,0.3)",
+    amber: "rgba(255, 255, 255,0.28)",
+    green: "rgba(255, 255, 255,0.3)",
   };
   const glow = tone ? toneGlow[tone] : toneGlow.cyan;
   return (
-    <div className={`group/glass relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[0_24px_70px_-28px_rgba(3,7,19,0.6)] transition-transform duration-300 ${GLASS[variant]} ${className}`}>
+    <div className={`service-glass-card group/glass relative flex h-full flex-col overflow-hidden rounded-2xl shadow-[0_24px_70px_-28px_rgba(3,7,19,0.6)] transition-transform duration-300 ${GLASS[variant]} ${className}`}>
       {tone && (
         <div
           aria-hidden
@@ -200,7 +200,7 @@ export function Metric({
 const CTA_ACCENT: Record<string, { orbs: [string, string]; line: string }> = {
   blue: {
     orbs: ["rgba(10,110,209,0.45)", "rgba(34,211,238,0.28)"],
-    line: "linear-gradient(90deg,#2f8fff,#22d3ee,#7edcc2)",
+    line: "linear-gradient(90deg,#2f8fff,#22d3ee,#ffffff)",
   },
   cyan: {
     orbs: ["rgba(34,211,238,0.4)", "rgba(47,143,255,0.3)"],
@@ -211,8 +211,8 @@ const CTA_ACCENT: Record<string, { orbs: [string, string]; line: string }> = {
     line: "linear-gradient(90deg,#8b7cf6,#38bdf8,#67e8f9)",
   },
   green: {
-    orbs: ["rgba(41,171,135,0.4)", "rgba(10,110,209,0.3)"],
-    line: "linear-gradient(90deg,#29ab87,#2f8fff,#22d3ee)",
+    orbs: ["rgba(255, 255, 255,0.4)", "rgba(10,110,209,0.3)"],
+    line: "linear-gradient(90deg,#ffffff,#2f8fff,#22d3ee)",
   },
 };
 
@@ -233,7 +233,7 @@ export function ServiceCta({
 }) {
   const palette = CTA_ACCENT[accent];
   return (
-    <section className="relative overflow-hidden bg-[#121927] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
+    <section className="hidden relative overflow-hidden bg-[#121927] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
       <div aria-hidden className="absolute inset-0 tri-hex-grid" />
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_0%,rgba(10,110,209,0.22),transparent_60%),radial-gradient(50%_50%_at_85%_100%,rgba(34,211,238,0.14),transparent_60%)]" />
       <div aria-hidden className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: `radial-gradient(circle, ${palette.orbs[0]}, transparent 70%)` }} />
@@ -247,7 +247,7 @@ export function ServiceCta({
           transition={springEase}
           className="mx-auto max-w-4xl text-center"
         >
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/60 backdrop-blur-md">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/60">
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: palette.line }} />
             {eyebrow}
           </span>

@@ -28,22 +28,22 @@ function BlogCard({ blog, index }: { blog: FeaturedBlogItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-[#29ab87]/60 hover:bg-white/[0.06] hover:shadow-[0_12px_36px_rgba(41,171,135,0.18)]"
+      className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/60 hover:bg-white/[0.06] hover:shadow-[0_12px_36px_rgba(255, 255, 255,0.18)]"
     >
       <Link href={blog.href} className="no-underline relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
         <Image src={blog.image} alt={blog.imageAlt} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover scale-[1.04]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-[rgba(3,7,19,0.65)] px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-xl">
-          <CalendarDays className="size-3 text-[#f5a623]" />
+          <CalendarDays className="size-3 text-white" />
           {blog.date}
         </span>
       </Link>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <h3 className="line-clamp-2 text-sm sm:text-base font-bold leading-snug text-white group-hover:text-[#7edcc2] transition-colors">{blog.title}</h3>
+        <h3 className="line-clamp-2 text-sm sm:text-base font-bold leading-snug text-white group-hover:text-white transition-colors">{blog.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-300">{blog.description}</p>
         <div className="mt-auto pt-4">
-          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#7edcc2] transition hover:text-[#f5a623]">
+          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition hover:text-white">
             Read blog <ExternalLink className="size-3.5" />
           </Link>
         </div>
@@ -59,22 +59,22 @@ function VideoCard({ video, index }: { video: FeaturedVideoItem; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-[#29ab87]/60 hover:bg-white/[0.06] hover:shadow-[0_12px_36px_rgba(41,171,135,0.18)]"
+      className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/60 hover:bg-white/[0.06] hover:shadow-[0_12px_36px_rgba(255, 255, 255,0.18)]"
     >
       <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="no-underline relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900" aria-label={`Watch ${video.title} on YouTube`}>
         <Image src={getYoutubeThumbnail(video.youtubeId)} alt={`${video.title} video thumbnail`} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover scale-[1.04]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <span className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-[#0b5a38] shadow-2xl shadow-black/30 transition">
           <Play className="size-5" />
         </span>
       </a>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-[#f5a623]">YouTube</p>
-        <h3 className="line-clamp-2 mt-1 text-sm sm:text-base font-bold leading-snug text-white group-hover:text-[#7edcc2] transition-colors">{video.title}</h3>
+        <p className="text-[10px] font-bold uppercase tracking-wider text-white">YouTube</p>
+        <h3 className="line-clamp-2 mt-1 text-sm sm:text-base font-bold leading-snug text-white group-hover:text-white transition-colors">{video.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-300">{video.description}</p>
         <div className="mt-auto pt-4">
-          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#f5a623] transition hover:text-white">
+          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition hover:text-white">
             Watch video <ExternalLink className="size-3.5" />
           </a>
         </div>
@@ -92,8 +92,8 @@ export default function InsightsPreview() {
     <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 text-white border-t border-white/10">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-      <div aria-hidden className="pointer-events-none absolute -left-28 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[rgba(41,171,135,0.16)] blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -right-28 top-1/3 h-64 w-64 rounded-full bg-[rgba(245,166,35,0.12)] blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -left-28 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[rgba(255, 255, 255,0.16)] blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute -right-28 top-1/3 h-64 w-64 rounded-full bg-[rgba(255, 255, 255,0.12)] blur-3xl" />
 
       <Container className="relative">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -109,7 +109,7 @@ export default function InsightsPreview() {
           </div>
 
           <div className="flex w-full flex-col gap-3 md:w-auto md:items-end">
-            <div role="tablist" aria-label="Insights tabs" className="grid w-full grid-cols-2 rounded-full border border-white/10 bg-white/[0.06] p-1 backdrop-blur-md md:w-64">
+            <div role="tablist" aria-label="Insights tabs" className="home-insights-tabs grid w-full grid-cols-2 rounded-full border border-white/10 bg-white/[0.06] p-1 backdrop-blur-md md:w-64">
               {insightTabs.map(({ id, label, Icon }) => {
                 const isActive = activeTab === id;
                 return (
@@ -119,9 +119,9 @@ export default function InsightsPreview() {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActiveTab(id)}
-                    className={`inline-flex h-9 min-w-0 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold transition sm:px-4 ${
+                    className={`home-insights-tab inline-flex h-9 min-w-0 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold transition sm:px-4 ${
                       isActive
-                        ? "bg-[linear-gradient(120deg,#29ab87,#117a4b)] text-white shadow-lg shadow-black/20"
+                        ? "bg-[linear-gradient(120deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-black/20"
                         : "text-slate-400 hover:bg-white/10 hover:text-white"
                     }`}
                   >

@@ -25,17 +25,17 @@ import { useEffect, useState } from "react";
    ───────────────────────────────────────────────────────────── */
 
 const PIPELINE = [
-  { label: "Revenue", sub: "$ 48.2M", icon: Coins, tone: "#29ab87", bg: "rgba(41,171,135,0.15)" },
-  { label: "Direct Costs", sub: "$ 29.4M", icon: Banknote, tone: "#f5a623", bg: "rgba(245,166,35,0.15)" },
+  { label: "Revenue", sub: "$ 48.2M", icon: Coins, tone: "#ffffff", bg: "rgba(255, 255, 255,0.15)" },
+  { label: "Direct Costs", sub: "$ 29.4M", icon: Banknote, tone: "#ffffff", bg: "rgba(255, 255, 255,0.15)" },
   { label: "Activity Allocation", sub: "12 Cost Pools", icon: Layers, tone: "#38bdf8", bg: "rgba(56,189,248,0.15)" },
   { label: "Gross Margin", sub: "38.9%", icon: TrendingUp, tone: "#22d3ee", bg: "rgba(34,211,238,0.15)" },
-  { label: "Net Profitability", sub: "+12.4% Net", icon: BarChart3, tone: "#7edcc2", bg: "rgba(126,220,194,0.2)" },
+  { label: "Net Profitability", sub: "+12.4% Net", icon: BarChart3, tone: "#ffffff", bg: "rgba(255, 255, 255,0.2)" },
 ];
 
 const DIMENSIONS = [
-  { label: "Product Hierarchy", icon: Package, tone: "#29ab87", badge: "SKU Level" },
+  { label: "Product Hierarchy", icon: Package, tone: "#ffffff", badge: "SKU Level" },
   { label: "Customer Segment", icon: Users, tone: "#38bdf8", badge: "Account 360" },
-  { label: "Geographic Region", icon: Globe, tone: "#f5a623", badge: "Multi-Entity" },
+  { label: "Geographic Region", icon: Globe, tone: "#ffffff", badge: "Multi-Entity" },
 ];
 
 const BARS = [
@@ -95,26 +95,26 @@ export default function ProfitabilityCube() {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              radial-gradient(circle at center, rgba(41,171,135,0.18) 1px, transparent 1px),
-              linear-gradient(to right, rgba(245,166,35,0.06) 1px, transparent 1px)
+              radial-gradient(circle at center, rgba(255, 255, 255,0.18) 1px, transparent 1px),
+              linear-gradient(to right, rgba(255, 255, 255,0.06) 1px, transparent 1px)
             `,
             backgroundSize: "36px 36px, 72px 72px",
           }}
         />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[460px] w-[800px] rounded-full bg-[radial-gradient(ellipse,rgba(41,171,135,0.18)_0%,transparent_70%)] blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[460px] w-[800px] rounded-full bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.18)_0%,transparent_70%)] blur-3xl" />
       </div>
 
       {/* ── Top Header Controls & Dimension Switcher ── */}
       <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87] shadow-[0_0_15px_rgba(41,171,135,0.4)]">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white shadow-[0_0_15px_rgba(255, 255, 255,0.4)]">
             <PieChart className="h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
           </span>
           <div>
             <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
               PROFITABILITY PRO · MULTI-DIMENSIONAL MARGIN ENGINE
             </h2>
-            <p className="text-[8px] sm:text-[9px] font-mono text-[#7edcc2]">
+            <p className="text-[8px] sm:text-[9px] font-mono text-white">
               SAP PaPM & CO-PA ALLOCATION · GRANULAR SKU & CUSTOMER MARGINS
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function ProfitabilityCube() {
             <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/50">
               Waterfall Margin Flow
             </span>
-            <span className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">E2E Traceability</span>
+            <span className="text-[8px] sm:text-[9px] font-mono text-white">E2E Traceability</span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-1.5 sm:gap-2">
@@ -196,16 +196,16 @@ export default function ProfitabilityCube() {
           onMouseLeave={() => setIsInteractive(false)}
         >
           {/* Ambient Glow Aura beneath cube */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 sm:h-80 sm:w-80 rounded-full bg-[radial-gradient(circle,rgba(41,171,135,0.25)_0%,transparent_70%)] blur-2xl animate-pulse" />
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-64 w-64 sm:h-80 sm:w-80 rounded-full bg-[radial-gradient(circle,rgba(255, 255, 255,0.25)_0%,transparent_70%)] blur-2xl animate-pulse" />
 
           {/* Floating Dimension Pills Orbiting the Cube */}
           <div className="hidden sm:flex absolute inset-0 items-center justify-between pointer-events-none px-2 lg:px-4 z-20">
             <motion.div
               animate={{ y: [-4, 4, -4] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#29ab87]/40 bg-[#030713]/90 px-3 py-1 text-[10px] font-mono font-bold text-[#7edcc2] shadow-[0_0_15px_rgba(41,171,135,0.3)] backdrop-blur-xl"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-[#030713]/90 px-3 py-1 text-[10px] font-mono font-bold text-white shadow-[0_0_15px_rgba(255, 255, 255,0.3)] backdrop-blur-xl"
             >
-              <Package className="h-3.5 w-3.5 text-[#29ab87]" />
+              <Package className="h-3.5 w-3.5 text-white" />
               <span>Product Dimension</span>
             </motion.div>
 
@@ -243,13 +243,13 @@ export default function ProfitabilityCube() {
                   style={{
                     transform: face.t.replace("var(--cube-half)", "105px"),
                     transformStyle: "preserve-3d",
-                    backgroundColor: idx === 5 ? "rgba(245,166,35,0.12)" : "rgba(41,171,135,0.1)",
-                    backgroundImage: "radial-gradient(circle, rgba(126,220,194,0.4) 1px, transparent 1.5px)",
+                    backgroundColor: idx === 5 ? "rgba(255, 255, 255,0.12)" : "rgba(255, 255, 255,0.1)",
+                    backgroundImage: "radial-gradient(circle, rgba(255, 255, 255,0.4) 1px, transparent 1.5px)",
                     backgroundSize: "20px 20px",
-                    borderColor: idx === 5 ? "rgba(245,166,35,0.6)" : "rgba(126,220,194,0.45)",
+                    borderColor: idx === 5 ? "rgba(255, 255, 255,0.6)" : "rgba(255, 255, 255,0.45)",
                     boxShadow: idx === 5
-                      ? "0 0 25px rgba(245,166,35,0.25), inset 0 0 30px rgba(245,166,35,0.15)"
-                      : "0 0 25px rgba(41,171,135,0.2), inset 0 0 30px rgba(41,171,135,0.12)",
+                      ? "0 0 25px rgba(255, 255, 255,0.25), inset 0 0 30px rgba(255, 255, 255,0.15)"
+                      : "0 0 25px rgba(255, 255, 255,0.2), inset 0 0 30px rgba(255, 255, 255,0.12)",
                     backdropFilter: "blur(8px)",
                   }}
                 >
@@ -260,13 +260,13 @@ export default function ProfitabilityCube() {
                     {face.label}
                   </p>
                   <p
-                    className="mt-0.5 text-[9px] sm:text-[10px] font-mono font-semibold text-[#7edcc2]"
+                    className="mt-0.5 text-[9px] sm:text-[10px] font-mono font-semibold text-white"
                     style={{ transform: "translateZ(8px)" }}
                   >
                     {face.sub}
                   </p>
                   <span
-                    className="mt-1 rounded-full px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold bg-black/60 border border-white/20 text-[#f5a623]"
+                    className="mt-1 rounded-full px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold bg-black/60 border border-white/20 text-white"
                     style={{ transform: "translateZ(12px)" }}
                   >
                     {face.metric}
@@ -294,9 +294,9 @@ export default function ProfitabilityCube() {
                     className="absolute inset-0 rounded-xl border"
                     style={{
                       transform: face.t.replace("var(--cube-half)", "65px"),
-                      backgroundColor: "rgba(245,166,35,0.08)",
-                      borderColor: "rgba(245,166,35,0.45)",
-                      boxShadow: "0 0 15px rgba(245,166,35,0.2)",
+                      backgroundColor: "rgba(255, 255, 255,0.08)",
+                      borderColor: "rgba(255, 255, 255,0.45)",
+                      boxShadow: "0 0 15px rgba(255, 255, 255,0.2)",
                     }}
                   />
                 ))}
@@ -306,7 +306,7 @@ export default function ProfitabilityCube() {
 
           {/* Cube Interactive Guidance Pill */}
           <div className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-[9px] sm:text-[10px] font-mono text-white/80 backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-[#29ab87]" />
+            <Sparkles className="h-3 w-3 text-white" />
             <span>3D PaPM MULTI-DIMENSIONAL CALCULATION ENGINE</span>
           </div>
         </div>
@@ -316,7 +316,7 @@ export default function ProfitabilityCube() {
           <div className="rounded-2xl border border-white/12 bg-[#030713]/95 p-3.5 sm:p-4 shadow-2xl backdrop-blur-2xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
               <div className="flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#f5a623]/20 border border-[#f5a623]/40 text-[#f5a623]">
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-white/20 border border-white/40 text-white">
                   <TrendingUp className="h-3.5 w-3.5" />
                 </span>
                 <div>
@@ -324,7 +324,7 @@ export default function ProfitabilityCube() {
                   <h3 className="text-xs font-mono font-bold text-white">Segment Margin Delta</h3>
                 </div>
               </div>
-              <span className="rounded-full bg-[#29ab87]/20 border border-[#29ab87]/40 px-2 py-0.5 text-[8px] font-mono font-bold text-[#7edcc2]">
+              <span className="rounded-full bg-white/20 border border-white/40 px-2 py-0.5 text-[8px] font-mono font-bold text-white">
                 +12.4% Net
               </span>
             </div>
@@ -339,8 +339,8 @@ export default function ProfitabilityCube() {
                     transition={{ duration: 3, repeat: Infinity, delay: i * 0.2, ease: "easeInOut" }}
                     className={`w-full rounded-t-md ${
                       i >= 4
-                        ? "bg-gradient-to-t from-[#f5a623] to-[#f29e16] shadow-[0_0_8px_rgba(245,166,35,0.4)]"
-                        : "bg-gradient-to-t from-[#29ab87] to-[#7edcc2] shadow-[0_0_8px_rgba(41,171,135,0.4)]"
+                        ? "bg-gradient-to-t from-[#ffffff] to-[#ffffff] shadow-[0_0_8px_rgba(255, 255, 255,0.4)]"
+                        : "bg-gradient-to-t from-[#ffffff] to-[#ffffff] shadow-[0_0_8px_rgba(255, 255, 255,0.4)]"
                     }`}
                   />
                   <span className="text-[8px] font-mono font-bold text-white/60">{b.label}</span>
@@ -352,15 +352,15 @@ export default function ProfitabilityCube() {
             <div className="mt-3 pt-2.5 border-t border-white/10 space-y-1.5 text-[10px] sm:text-[11px] font-mono">
               <div className="flex items-center justify-between text-white/80">
                 <span className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-[#29ab87]" /> Gross Margin Average
+                  <span className="h-2 w-2 rounded-full bg-white" /> Gross Margin Average
                 </span>
-                <span className="font-bold text-[#29ab87]">38.9%</span>
+                <span className="font-bold text-white">38.9%</span>
               </div>
               <div className="flex items-center justify-between text-white/80">
                 <span className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-[#f5a623]" /> Net Profit Realized
+                  <span className="h-2 w-2 rounded-full bg-white" /> Net Profit Realized
                 </span>
-                <span className="font-bold text-[#f5a623]">+12.4% Uplift</span>
+                <span className="font-bold text-white">+12.4% Uplift</span>
               </div>
             </div>
           </div>
@@ -375,11 +375,11 @@ export default function ProfitabilityCube() {
 
       {/* ── Bottom Ribbon: Certified PaPM Integration ── */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-        <span className="flex items-center gap-1.5 text-[#29ab87]">
+        <span className="flex items-center gap-1.5 text-white">
           <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP PaPM (PROFITABILITY & PERFORMANCE MANAGEMENT) CERTIFIED
         </span>
         <span className="hidden sm:inline">SUB-SECOND ALLOCATION CALCULATIONS ACROSS MILLIONS OF SKUS</span>
-        <span className="text-[#f5a623]">GRANULAR MARGIN INTELLIGENCE</span>
+        <span className="text-white">GRANULAR MARGIN INTELLIGENCE</span>
       </div>
     </div>
   );

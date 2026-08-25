@@ -8,15 +8,15 @@ type Size = "sm" | "md" | "lg" | "xl";
 const sizePx: Record<Size, number> = { sm: 38, md: 50, lg: 62, xl: 80 };
 
 const toneBg: Record<Tone, string> = {
-  green: "linear-gradient(160deg, #29ab87 0%, #117a4b 100%)",
-  amber: "linear-gradient(160deg, #f5a623 0%, #f29e16 100%)",
-  mix: "linear-gradient(135deg, #29ab87 0%, #117a4b 55%, #f5a623 130%)",
+  green: "linear-gradient(160deg, #ffffff 0%, #cbd5e1 100%)",
+  amber: "linear-gradient(160deg, #ffffff 0%, #94a3b8 100%)",
+  mix: "linear-gradient(135deg, #ffffff 0%, #e2e8f0 55%, #cbd5e1 130%)",
 };
 
 const toneGlow: Record<Tone, string> = {
-  green: "rgba(41,171,135,0.35)",
-  amber: "rgba(245,166,35,0.35)",
-  mix: "rgba(41,171,135,0.35)",
+  green: "rgba(255, 255, 255, 0.3)",
+  amber: "rgba(255, 255, 255, 0.3)",
+  mix: "rgba(255, 255, 255, 0.3)",
 };
 
 type HexBadgeProps = {

@@ -13,7 +13,7 @@ export default function CTA() {
       {/* Outer dark section accent with Hexagon grid */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.4)] to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(255, 255, 255,0.4)] to-transparent" />
 
       <Container className="relative">
         <Reveal>
@@ -22,10 +22,10 @@ export default function CTA() {
             <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-50" />
             <div aria-hidden className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
             <div aria-hidden className="absolute -left-12 bottom-1/3 h-64 w-64 rounded-full border-[48px] border-white/[0.03]" style={{ animation: 'spin-slow 32s linear infinite reverse' }} />
-            <div aria-hidden className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.32), transparent 68%)" }} />
-            <div aria-hidden className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(245,166,35,0.25), transparent 68%)" }} />
+            <div aria-hidden className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.32), transparent 68%)" }} />
+            <div aria-hidden className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.25), transparent 68%)" }} />
             {/* subtle center glow */}
-            <div aria-hidden className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-64 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(41,171,135,0.1),transparent)]" />
+            <div aria-hidden className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-64 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(255, 255, 255,0.1),transparent)]" />
 
             <div className="relative mx-auto max-w-3xl">
               <motion.p
@@ -33,7 +33,7 @@ export default function CTA() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-[#f5a623]"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-white"
               >
                 <Sparkles className="h-3.5 w-3.5" />
                 {homeCta.eyebrow}
@@ -75,7 +75,7 @@ export default function CTA() {
               <ul className="mx-auto mt-5 grid max-w-2xl gap-2 text-left sm:grid-cols-3">
                 {homeCta.highlights.map((highlight) => (
                   <li key={highlight} className="flex items-start gap-2 text-xs sm:text-sm leading-snug text-slate-300/90">
-                    <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-[#29ab87]" />
+                    <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-white" />
                     <span>{highlight}</span>
                   </li>
                 ))}
@@ -85,7 +85,7 @@ export default function CTA() {
                 <motion.span
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ repeat: Infinity, duration: 2.8, ease: "easeInOut" }}
-                  className="flex size-7 items-center justify-center rounded-full bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-[0_4px_16px_rgba(41,171,135,0.45)]"
+                  className="flex size-7 items-center justify-center rounded-full bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-[0_4px_16px_rgba(255, 255, 255,0.45)]"
                 >
                   <Mail className="size-3.5" />
                 </motion.span>

@@ -78,7 +78,7 @@ const SUBSIDIARIES: Subsidiary[] = [
     localRevenue: "€ 38.5M",
     groupEur: "€ 38.5M",
     intercompany: "€ 4.6M IC Recv",
-    color: "#29ab87",
+    color: "#ffffff",
   },
   {
     id: "jp",
@@ -89,7 +89,7 @@ const SUBSIDIARIES: Subsidiary[] = [
     localRevenue: "¥ 2.15B",
     groupEur: "€ 13.4M",
     intercompany: "¥ 180M Royalty",
-    color: "#f5a623",
+    color: "#ffffff",
   },
 ];
 
@@ -166,21 +166,21 @@ export default function ConsolidationScene() {
 
         {/* Cinematic Gradient Blending Overlays */}
         <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(3,7,19,0.92)_0%,rgba(3,7,19,0.72)_48%,rgba(3,7,19,0.85)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_50%,rgba(41,171,135,0.18),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_50%,rgba(255, 255, 255,0.18),transparent_70%)]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#030713] via-[#030713]/80 to-transparent" />
       </div>
 
       {/* ── Top Header Controls & Video Badge ── */}
       <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87] shadow-[0_0_15px_rgba(41,171,135,0.5)]">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white shadow-[0_0_15px_rgba(255, 255, 255,0.5)]">
             <Scale className="h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
           </span>
           <div>
             <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
               FINLAGOON · GENERAL LEDGER CONSOLIDATION ENGINE
             </h2>
-            <p className="text-[8px] sm:text-[9px] font-mono text-[#7edcc2]">
+            <p className="text-[8px] sm:text-[9px] font-mono text-white">
               MULTI-ENTITY INTERCOMPANY ELIMINATION · IFRS / US GAAP FAST CLOSE
             </p>
           </div>
@@ -190,7 +190,7 @@ export default function ConsolidationScene() {
         <div className="flex items-center gap-2">
           {/* Live Video Indicator */}
           <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-black/70 px-2.5 sm:px-3 py-1 text-[9px] sm:text-[10px] font-mono text-white/80 backdrop-blur-md">
-            <span className="h-2 w-2 rounded-full bg-[#29ab87] animate-ping" />
+            <span className="h-2 w-2 rounded-full bg-white animate-ping" />
             <span>4K CINEMATIC SIMULATION</span>
           </div>
 
@@ -223,7 +223,7 @@ export default function ConsolidationScene() {
             <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/50">
               1. Multi-Entity General Ledgers
             </span>
-            <span className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">4 Connected</span>
+            <span className="text-[8px] sm:text-[9px] font-mono text-white">4 Connected</span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
@@ -261,7 +261,7 @@ export default function ConsolidationScene() {
                   </div>
 
                   <div className="hidden sm:flex flex-col items-end shrink-0 pl-1">
-                    <span className="text-[9px] sm:text-[10px] font-mono font-bold text-[#7edcc2]">
+                    <span className="text-[9px] sm:text-[10px] font-mono font-bold text-white">
                       {sub.groupEur}
                     </span>
                     <span className="text-[7px] font-mono text-white/40">{sub.intercompany}</span>
@@ -293,7 +293,7 @@ export default function ConsolidationScene() {
                 style={{
                   width: rad * 2,
                   height: rad * 2,
-                  borderColor: i === 0 ? "#29ab87" : i === 1 ? "#38bdf8" : "#f5a623",
+                  borderColor: i === 0 ? "#ffffff" : i === 1 ? "#38bdf8" : "#ffffff",
                 }}
               />
             ))}
@@ -303,16 +303,16 @@ export default function ConsolidationScene() {
               animate={{
                 scale: [1, 1.05, 1],
                 boxShadow: [
-                  "0 0 35px rgba(41,171,135,0.6)",
-                  "0 0 65px rgba(41,171,135,0.9)",
-                  "0 0 35px rgba(41,171,135,0.6)",
+                  "0 0 35px rgba(255, 255, 255,0.6)",
+                  "0 0 65px rgba(255, 255, 255,0.9)",
+                  "0 0 35px rgba(255, 255, 255,0.6)",
                 ],
               }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               className="relative flex h-24 w-24 sm:h-28 sm:w-28 flex-col items-center justify-center rounded-3xl bg-gradient-to-br from-[#0c2238] via-[#030713] to-[#0e3328] border border-white/30 backdrop-blur-2xl shadow-2xl"
             >
-              <FileSpreadsheet className="h-8 w-8 sm:h-10 sm:w-10 text-white drop-shadow-[0_0_15px_#7edcc2]" />
-              <span className="mt-1 text-[8px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider text-[#7edcc2]">
+              <FileSpreadsheet className="h-8 w-8 sm:h-10 sm:w-10 text-white drop-shadow-[0_0_15px_#ffffff]" />
+              <span className="mt-1 text-[8px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider text-white">
                 FINLAGOON
               </span>
             </motion.div>
@@ -322,9 +322,9 @@ export default function ConsolidationScene() {
           <div className="mt-3 flex flex-col items-center gap-1.5">
             <button
               onClick={restartVideo}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#29ab87]/40 bg-black/80 px-4 py-1.5 text-[9px] sm:text-[10px] font-mono font-bold text-white hover:bg-white/10 transition-all shadow-[0_0_20px_rgba(41,171,135,0.4)] active:scale-95"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/40 bg-black/80 px-4 py-1.5 text-[9px] sm:text-[10px] font-mono font-bold text-white hover:bg-white/10 transition-all shadow-[0_0_20px_rgba(255, 255, 255,0.4)] active:scale-95"
             >
-              <Zap className="h-3 w-3 text-[#f5a623]" />
+              <Zap className="h-3 w-3 text-white" />
               <span>Simulate 48-Hour Fast Close</span>
             </button>
             <span className="text-[8px] font-mono text-white/50">IFRS & MULTI-GAAP ELIMINATION MATRIX</span>
@@ -342,7 +342,7 @@ export default function ConsolidationScene() {
               transition={{ duration: 0.25 }}
               className="rounded-2xl sm:rounded-3xl border border-white/12 bg-[#030713]/95 p-3.5 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-2xl"
               style={{
-                boxShadow: "0 20px 45px -15px rgba(41,171,135,0.35), 0 0 0 1px rgba(255,255,255,0.08)",
+                boxShadow: "0 20px 45px -15px rgba(255, 255, 255,0.35), 0 0 0 1px rgba(255,255,255,0.08)",
               }}
             >
               {/* Header Badge */}
@@ -355,7 +355,7 @@ export default function ConsolidationScene() {
                     {activeTab === "pnl" ? "Consolidated Profit & Loss" : activeTab === "bs" ? "Consolidated Balance Sheet" : "Intercompany Reconciliations"}
                   </h3>
                 </div>
-                <span className="rounded-full bg-[#29ab87]/20 border border-[#29ab87]/40 px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold text-[#7edcc2]">
+                <span className="rounded-full bg-white/20 border border-white/40 px-2 py-0.5 text-[8px] sm:text-[9px] font-mono font-bold text-white">
                   48-Hr Close
                 </span>
               </div>
@@ -364,14 +364,14 @@ export default function ConsolidationScene() {
               <div className="mt-2.5 sm:mt-3 grid grid-cols-2 gap-2 text-[10px] sm:text-[11px] font-mono">
                 <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2">
                   <p className="text-[8px] text-white/40 uppercase">GROUP REVENUE</p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#7edcc2] mt-0.5">€ 93.80M</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-white mt-0.5">€ 93.80M</p>
                   <p className="text-[7px] text-[#38bdf8]">+16.4% YoY Growth</p>
                 </div>
 
                 <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2">
                   <p className="text-[8px] text-white/40 uppercase">IC ELIMINATIONS</p>
-                  <p className="text-xs sm:text-sm font-extrabold text-[#f5a623] mt-0.5">- € 8.45M</p>
-                  <p className="text-[7px] text-[#29ab87]">100% Balanced Zero-Gap</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-white mt-0.5">- € 8.45M</p>
+                  <p className="text-[7px] text-white">100% Balanced Zero-Gap</p>
                 </div>
               </div>
 
@@ -379,10 +379,10 @@ export default function ConsolidationScene() {
               <div className="mt-2.5 sm:mt-3 space-y-1.5 pt-2 border-t border-white/10">
                 <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/85">
                   <span className="flex items-center gap-1.5 truncate">
-                    <CheckCircle2 className="h-3 w-3 text-[#29ab87] shrink-0" />
+                    <CheckCircle2 className="h-3 w-3 text-white shrink-0" />
                     <span className="truncate">Intercompany Elimination</span>
                   </span>
-                  <span className="font-mono font-bold text-[9px] text-[#29ab87]">- € 8.45M</span>
+                  <span className="font-mono font-bold text-[9px] text-white">- € 8.45M</span>
                 </div>
                 <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/85">
                   <span className="flex items-center gap-1.5 truncate">
@@ -393,20 +393,20 @@ export default function ConsolidationScene() {
                 </div>
                 <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-white/85">
                   <span className="flex items-center gap-1.5 truncate">
-                    <CheckCircle2 className="h-3 w-3 text-[#f5a623] shrink-0" />
+                    <CheckCircle2 className="h-3 w-3 text-white shrink-0" />
                     <span className="truncate">Consolidated Balance Sheet</span>
                   </span>
-                  <span className="font-mono font-bold text-[9px] text-[#f5a623]">Audit-Proof</span>
+                  <span className="font-mono font-bold text-[9px] text-white">Audit-Proof</span>
                 </div>
               </div>
 
               {/* Bottom Live Journal Counter Bar */}
               <div className="mt-3 flex items-center justify-between rounded-lg bg-white/[0.03] border border-white/8 px-2.5 py-1 text-[8px] sm:text-[9px] font-mono">
                 <span className="text-white/50 flex items-center gap-1">
-                  <Activity className="h-2.5 w-2.5 text-[#29ab87] animate-pulse" />
+                  <Activity className="h-2.5 w-2.5 text-white animate-pulse" />
                   Auto-Cleared Vouchers:
                 </span>
-                <span className="font-bold text-[#7edcc2]" suppressHydrationWarning>
+                <span className="font-bold text-white" suppressHydrationWarning>
                   {reconciledVouchers.toLocaleString("en-US")} entries
                 </span>
               </div>
@@ -419,7 +419,7 @@ export default function ConsolidationScene() {
       <div className="relative z-20 w-full pt-1">
         <div className="h-1 w-full rounded-full bg-white/10 overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-[#29ab87] via-[#38bdf8] to-[#f5a623] transition-all duration-200"
+            className="h-full bg-gradient-to-r from-[#ffffff] via-[#38bdf8] to-[#ffffff] transition-all duration-200"
             style={{ width: `${videoProgress}%` }}
           />
         </div>
@@ -427,7 +427,7 @@ export default function ConsolidationScene() {
 
       {/* ── Bottom Ribbon: Certified Financial Close Matrix ── */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-        <span className="flex items-center gap-1.5 text-[#29ab87]">
+        <span className="flex items-center gap-1.5 text-white">
           <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP S/4HANA FINANCE & GROUP REPORTING CERTIFIED
         </span>
         <span className="hidden sm:inline">MULTI-GAAP RECONCILIATION: IFRS, US GAAP, HGB</span>

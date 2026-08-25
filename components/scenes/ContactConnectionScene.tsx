@@ -1,4 +1,4 @@
-import { BadgeCheck, Handshake, User, Users } from "lucide-react";
+﻿import { BadgeCheck, Handshake, User, Users } from "lucide-react";
 import { Packet, SceneCanvas, StageChip, TRI } from "./scene-ui";
 
 const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
@@ -17,14 +17,14 @@ export default function ContactConnectionScene() {
         fill="none"
       >
         <path d="M95 250 L225 250" stroke="rgba(191,232,216,0.16)" strokeWidth="1.4" strokeDasharray="4 6" />
-        <path d="M315 250 C 360 220 400 180 442 158" stroke="rgba(41,171,135,0.5)" strokeWidth="1.4" strokeDasharray="4 6" />
-        <path d="M315 250 C 360 280 400 320 442 342" stroke="rgba(41,171,135,0.5)" strokeWidth="1.4" strokeDasharray="4 6" />
+        <path d="M315 250 C 360 220 400 180 442 158" stroke="rgba(255, 255, 255,0.5)" strokeWidth="1.4" strokeDasharray="4 6" />
+        <path d="M315 250 C 360 280 400 320 442 342" stroke="rgba(255, 255, 255,0.5)" strokeWidth="1.4" strokeDasharray="4 6" />
 
         <Packet d={TO_CLIENT_TO_CONSULTANT} dur={7} color={TRI.mint} r={4} delay={0} />
         <Packet d={TO_CLIENT_TO_SOLUTION} dur={8} color={TRI.amber} r={3.5} delay={2.5} />
 
         <g>
-          <rect x={-8} y={-5.5} width={16} height={11} rx={2} fill="#7edcc2" opacity={0.95} />
+          <rect x={-8} y={-5.5} width={16} height={11} rx={2} fill="#ffffff" opacity={0.95} />
           <path d="M-8 -5.5 L0 1.5 L8 -5.5" stroke="#0b1d33" strokeWidth="1.4" fill="none" />
           <animateMotion dur="4s" repeatCount="indefinite" path="M95 250 L225 250" />
         </g>
@@ -37,8 +37,8 @@ export default function ContactConnectionScene() {
       <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: "52%", top: "50%" }}>
         <div className="relative flex h-28 w-28 items-center justify-center">
           <span aria-hidden className="absolute inset-0 rounded-full border border-tri-2/40 tri-ring" />
-          <span aria-hidden className="absolute inset-0 blur-2xl" style={{ clipPath: HEX, background: "rgba(41,171,135,0.5)" }} />
-          <span className="relative flex h-24 w-24 items-center justify-center" style={{ clipPath: HEX, background: "linear-gradient(160deg,#29ab87,#117a4b)" }}>
+          <span aria-hidden className="absolute inset-0 blur-2xl" style={{ clipPath: HEX, background: "rgba(255, 255, 255,0.5)" }} />
+          <span className="relative flex h-24 w-24 items-center justify-center" style={{ clipPath: HEX, background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
             <Handshake className="h-9 w-9 text-white" strokeWidth={1.8} />
           </span>
         </div>

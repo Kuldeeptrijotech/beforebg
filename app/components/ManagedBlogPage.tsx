@@ -8,20 +8,20 @@ export default function ManagedBlogPage({ post, preview = false }: { post: BlogP
   const date = post.publishedAt ? new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" }).format(new Date(post.publishedAt)) : "Draft";
   const contentParts = post.content.split(/\{\{image:([^}]+)\}\}/g);
   return (
-    <main className="min-h-screen w-full bg-[#050817] pt-24 text-white font-sans overflow-hidden">
+    <main className="public-alternating-page min-h-screen w-full bg-[#050817] pt-24 text-white font-sans overflow-hidden">
       <article className="w-full">
         {/* Full-width Hero Header */}
         <header className="relative isolate w-full overflow-hidden bg-[#050817] py-12 sm:py-16 border-b border-white/10">
           <div aria-hidden className="absolute inset-0 -z-20 tri-mesh opacity-60" />
           <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-45" />
-          <div aria-hidden className="tri-blob -z-10 h-80 w-80" style={{ right: "10%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
+          <div aria-hidden className="tri-blob -z-10 h-80 w-80" style={{ right: "10%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.18), transparent 70%)" }} />
 
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="mb-4 flex flex-wrap items-center gap-2.5">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md">
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
                 Trijotech Insights
               </span>
-              {preview && <span className="rounded-full bg-[#f5a623] px-3 py-1 text-xs font-bold uppercase text-slate-950">Draft preview</span>}
+              {preview && <span className="rounded-full bg-white px-3 py-1 text-xs font-bold uppercase text-slate-950">Draft preview</span>}
             </div>
             <h1 className="max-w-4xl text-2xl font-bold leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">{post.title}</h1>
             <p className="mt-5 max-w-3xl text-base sm:text-lg leading-[1.7] text-white/80">{post.shortDescription}</p>
@@ -56,10 +56,10 @@ export default function ManagedBlogPage({ post, preview = false }: { post: BlogP
                 const blockStyle = resolveBlockStyle(block.style, block.type, headingLevel);
                 if (block.type === "heading" || block.type === "subheading") return createElement(`h${headingLevel}`, { key: block.id, style: blockStyle, dangerouslySetInnerHTML: { __html: block.value } });
                 if (block.type === "content") return /<[^>]+>/.test(block.value) ? <div key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <p key={block.id} style={blockStyle}>{block.value}</p>;
-                if (block.type === "quote") return /<[^>]+>/.test(block.value) ? <blockquote className="my-8 rounded-2xl border-l-4 border-[#f5a623] bg-white/[0.03] px-6 py-5 text-base sm:text-lg italic leading-relaxed text-slate-300" key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <blockquote className="my-8 rounded-2xl border-l-4 border-[#f5a623] bg-white/[0.03] px-6 py-5 text-base sm:text-lg italic leading-relaxed text-slate-300" key={block.id} style={blockStyle}>{block.value}</blockquote>;
+                if (block.type === "quote") return /<[^>]+>/.test(block.value) ? <blockquote className="my-8 rounded-2xl border-l-4 border-white bg-white/[0.03] px-6 py-5 text-base sm:text-lg italic leading-relaxed text-slate-300" key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <blockquote className="my-8 rounded-2xl border-l-4 border-white bg-white/[0.03] px-6 py-5 text-base sm:text-lg italic leading-relaxed text-slate-300" key={block.id} style={blockStyle}>{block.value}</blockquote>;
                 if (block.type === "bulletList") return <ul key={block.id} style={blockStyle}>{block.value.split(/\r?\n/).filter(Boolean).map((item, index) => <li key={`${block.id}-${index}`}>{item}</li>)}</ul>;
                 if (block.type === "numberedList") return <ol key={block.id} style={blockStyle}>{block.value.split(/\r?\n/).filter(Boolean).map((item, index) => <li key={`${block.id}-${index}`}>{item}</li>)}</ol>;
-                if (block.type === "callout") return /<[^>]+>/.test(block.value) ? <aside className="my-7 rounded-2xl border border-[#29ab87]/30 bg-[#29ab87]/10 px-6 py-5 leading-relaxed text-slate-200" key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <aside className="my-7 rounded-2xl border border-[#29ab87]/30 bg-[#29ab87]/10 px-6 py-5 leading-relaxed text-slate-200" key={block.id} style={blockStyle}>{block.value}</aside>;
+                if (block.type === "callout") return /<[^>]+>/.test(block.value) ? <aside className="my-7 rounded-2xl border border-white/30 bg-white/10 px-6 py-5 leading-relaxed text-slate-200" key={block.id} style={blockStyle} dangerouslySetInnerHTML={{ __html: block.value }} /> : <aside className="my-7 rounded-2xl border border-white/30 bg-white/10 px-6 py-5 leading-relaxed text-slate-200" key={block.id} style={blockStyle}>{block.value}</aside>;
                 if (block.type === "divider") return <hr className="my-8 w-full border-0 border-t border-white/10" key={block.id} style={{ marginTop: blockStyle.marginTop, marginBottom: blockStyle.marginBottom }} />;
                 if (block.type === "link") return <p className="managed-blog-link-block" key={block.id} style={blockStyle}><a href={block.linkUrl}>{block.value}</a></p>;
                 

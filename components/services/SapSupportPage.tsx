@@ -13,7 +13,6 @@ import {
   TrendingUp,
   Wrench,
 } from "lucide-react";
-import SupportCommandCenter from "@/components/scenes/SupportCommandCenter";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
@@ -30,29 +29,36 @@ const PILLARS = [
 
 const PROCESS = [
   { label: "Detect", icon: Activity, tone: "#38bdf8" },
-  { label: "Triage", icon: SearchCheck, tone: "#f5a623" },
+  { label: "Triage", icon: SearchCheck, tone: "#ffffff" },
   { label: "Resolve", icon: Wrench, tone: "#22d3ee" },
   { label: "Verify", icon: RefreshCw, tone: "#67e8f9" },
-  { label: "Improve", icon: TrendingUp, tone: "#29ab87" },
+  { label: "Improve", icon: TrendingUp, tone: "#ffffff" },
 ];
 
 export default function SapSupportPage({ offerings, impacts }: { offerings: ServiceItem[]; impacts: ServiceItem[] }) {
   return (
-    <main className="font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="service-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[#030713]"
-        glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
-        scene={<SupportCommandCenter />}
-        fadeTo="#030713"
+        eyebrow="SAP Support & Application Management"
+        title="24/7 Proactive AMS, System Stability & Optimization"
+        subtitle="Keep your SAP landscape fast, resilient, and continuously aligned with evolving business needs."
+        description="Dedicated SAP support teams providing rapid incident triage, proactive monitoring, release upgrades, and continuous performance tuning backed by enterprise-grade SLAs."
+        primaryCta={{ label: "Request support consultation", href: "/contact" }}
+        secondaryCta={{ label: "Explore all services", href: "/services" }}
+        metrics={[
+          { value: "24/7/365", label: "Global Coverage" },
+          { value: "<15 min", label: "Critical SLA Response" },
+          { value: "99.9%", label: "System Availability" },
+        ]}
       />
 
       {/* SUPPORT MODEL + HERO TAIL */}
       <section className="relative bg-[#162032]">
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="flex h-16 flex-col items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#29ab87] shadow-[0_0_10px_#29ab87]" />
-            <div className="h-12 w-px bg-gradient-to-b from-[#29ab87]/70 to-transparent" />
+            <span className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_#ffffff]" />
+            <div className="h-12 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
           </div>
         </div>
 
@@ -61,7 +67,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
             <SlideReveal direction="left">
               <SectionLabel>Our support model</SectionLabel>
               <h2 className={`mt-5 ${introLead} text-white`}>
-                Stable operations, <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">flexible service</span>
+                Stable operations, <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">flexible service</span>
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
                 Our SAP Support and AMS services deliver operational continuity, performance assurance, structured
@@ -74,7 +80,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 return (
                   <StaggerRevealItem key={p.label} variant="fadeIn">
                     <Glass variant="frosted" tone="green" className="h-full p-5">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#29ab87] to-[#117a4b] text-white">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#ffffff] to-[#ffffff] text-white">
                         <Icon className="h-5 w-5" strokeWidth={1.9} />
                       </span>
                       <h3 className="mt-4 font-bold text-white">{p.label}</h3>
@@ -89,22 +95,22 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={99.9} suffix="%" label="Availability target" accent="text-[#29ab87]" />
+                <Metric to={99.9} suffix="%" label="Availability target" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
-                <Metric to={30} prefix="< " suffix=" min" label="Response SLA" accent="text-[#f5a623]" />
+                <Metric to={30} prefix="< " suffix=" min" label="Response SLA" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
-                <Metric to={24} suffix="/7" label="Coverage" accent="text-[#29ab87]" />
+                <Metric to={24} suffix="/7" label="Coverage" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={40} suffix="%" label="Incident reduction" accent="text-[#117a4b]" />
+                <Metric to={40} suffix="%" label="Incident reduction" accent="text-white" />
               </Glass>
             </Reveal>
           </div>
@@ -117,7 +123,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Capabilities that keep you <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">operational</span>
+              Capabilities that keep you <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">operational</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
               From incident response to release governance — every capability maps to a real operational need.
@@ -130,7 +136,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
@@ -147,14 +153,14 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
       {/* 24/7 MONITORING (DARK / GLOWING GREY) */}
       <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
         <div aria-hidden className="absolute inset-0 tri-grid-bg opacity-40" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(55%_60%_at_15%_20%,rgba(41,171,135,0.16),transparent_60%)]" />
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(55%_60%_at_15%_20%,rgba(255, 255, 255,0.16),transparent_60%)]" />
         <Container className="relative">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <Reveal>
                 <SectionLabel dark>Around the clock</SectionLabel>
                 <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
-                  A command center for <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">your landscape</span>
+                  A command center for <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">your landscape</span>
                 </h2>
                 <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
                   Monitoring, incident resolution, and performance tuning run as one continuous operation — not a
@@ -164,8 +170,8 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
               <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
                 {impacts.map((i) => (
                   <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-                      <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#29ab87]" />
+                    <div className="service-surface-card flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
+                      <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-white" />
                       <div>
                         <p className="font-bold text-white">{i.title}</p>
                         <p className="mt-1 text-xs leading-5 text-slate-300">{i.description}</p>
@@ -177,25 +183,25 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
             </div>
 
             <Reveal delay={0.15}>
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-6 backdrop-blur-md sm:p-8">
+              <div className="service-surface-card relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-6 backdrop-blur-md sm:p-8">
                 <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Live operations feed</p>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#29ab87]/10 px-2.5 py-1 text-[10px] font-bold text-[#29ab87]">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#29ab87]" /> Monitoring
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">Live operations feed</p>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-[10px] font-bold text-white">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" /> Monitoring
                   </span>
                 </div>
                 <div className="mt-6 space-y-3.5">
                   {[
-                    { t: "S/4HANA job monitoring", s: "Healthy", c: "#29ab87", icon: Activity },
-                    { t: "Interface throughput", s: "Normal", c: "#29ab87", icon: SlidersHorizontal },
-                    { t: "Performance review", s: "Optimizing", c: "#f5a623", icon: TrendingUp },
-                    { t: "Role & access audit", s: "Compliant", c: "#117a4b", icon: ShieldCheck },
+                    { t: "S/4HANA job monitoring", s: "Healthy", c: "#ffffff", icon: Activity },
+                    { t: "Interface throughput", s: "Normal", c: "#ffffff", icon: SlidersHorizontal },
+                    { t: "Performance review", s: "Optimizing", c: "#ffffff", icon: TrendingUp },
+                    { t: "Role & access audit", s: "Compliant", c: "#ffffff", icon: ShieldCheck },
                   ].map((row) => {
                     const Icon = row.icon;
                     return (
                       <div key={row.t} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3">
                         <div className="flex items-center gap-3">
-                          <Icon className="h-4 w-4 text-[#29ab87]" />
+                          <Icon className="h-4 w-4 text-white" />
                           <span className="text-sm font-semibold text-white/90">{row.t}</span>
                         </div>
                         <span className="flex items-center gap-2 text-xs font-bold" style={{ color: row.c }}>
@@ -206,8 +212,8 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                     );
                   })}
                 </div>
-                <div className="mt-6 flex items-center gap-3 rounded-xl border border-[#29ab87]/25 bg-[#29ab87]/[0.07] px-4 py-3">
-                  <AlertTriangle className="h-5 w-5 shrink-0 text-[#f5a623]" />
+                <div className="service-surface-card mt-6 flex items-center gap-3 rounded-xl border border-white/25 bg-white/[0.07] px-4 py-3">
+                  <AlertTriangle className="h-5 w-5 shrink-0 text-white" />
                   <p className="text-sm text-slate-200">
                     <span className="font-bold text-white">Proactive alerts</span> — we catch degradation before users feel it.
                   </p>
@@ -224,12 +230,12 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           <Reveal className="max-w-2xl">
             <SectionLabel>How we resolve</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              From incident to <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">improvement</span>
+              From incident to <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">improvement</span>
             </h2>
           </Reveal>
 
           <div className="relative mt-14">
-            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#29ab87]/60 to-[#f5a623]/40 lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
+            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/60 to-[#ffffff]/40 lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
             <div className="grid gap-6 lg:grid-cols-5">
               {PROCESS.map((p, i) => {
                 const Icon = p.icon;
@@ -247,7 +253,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                     <Glass variant="frosted" tone="green" className="p-5">
                       <span className="flex items-center gap-2">
                         <span className="h-2 w-2 rounded-full" style={{ background: p.tone, boxShadow: `0 0 8px ${p.tone}` }} />
-                        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#29ab87]">Step {i + 1}</p>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white">Step {i + 1}</p>
                       </span>
                       <h3 className="mt-2 text-lg font-bold text-white">{p.label}</h3>
                       <p className="mt-2 text-sm leading-6 text-slate-400">
@@ -265,12 +271,12 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           </div>
 
           <Reveal delay={0.2}>
-            <div className="mt-14 flex flex-col items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm sm:flex-row sm:text-left">
+            <div className="service-surface-card mt-14 flex flex-col items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-center backdrop-blur-sm sm:flex-row sm:text-left">
               <div>
                 <p className="text-lg font-bold text-white">Flexible engagement models</p>
                 <p className="mt-1 text-slate-400">Scale teams and SLAs to match operational demand and service priorities.</p>
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#29ab87] to-[#f5a623] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-950/20">
+              <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ffffff] to-[#ffffff] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-950/20">
                 <CheckCircle2 className="h-4 w-4" /> Pay for what you need
               </div>
             </div>

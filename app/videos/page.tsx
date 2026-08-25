@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, Play, Sparkles } from "lucide-react";
 import { videos } from "@/app/data/videos";
 import { motion } from "framer-motion";
-import VideosBroadcastBeams from "@/components/ui/hero-animations/VideosBroadcastBeams";
 
 function getYoutubeId(embedUrl: string) {
   return embedUrl.match(/youtube\.com\/embed\/([^?&/]+)/)?.[1] ?? "";
@@ -18,40 +17,37 @@ function getYoutubeUrl(embedUrl: string) {
 
 export default function VideosPage() {
   return (
-    <main className="overflow-hidden bg-[#121927] text-white">
+    <main className="public-alternating-page overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
-          src="/assets/heroes/videos-generated-v2.png"
+          src="/assets/heroes/videos-camera-hero.png"
           alt="Technical practitioner videos and architectural walkthroughs"
           fill
           priority
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
-        {/* Slow harmonic broadcast waves & luminous projector beams */}
-        <VideosBroadcastBeams />
-
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
         {/* Floating orbs */}
-        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
-        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
+        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl" />
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" aria-hidden="true" /> Videos
+              <Sparkles className="h-3.5 w-3.5 text-white" aria-hidden="true" /> Videos
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 28 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
@@ -63,7 +59,7 @@ export default function VideosPage() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
@@ -72,7 +68,7 @@ export default function VideosPage() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
@@ -136,7 +132,7 @@ export default function VideosPage() {
                     href={youtubeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                    className="video-library-card group flex h-full min-h-[410px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl sm:min-h-[440px] transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
                   >
                     <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-slate-900">
                       {thumbnail ? (
@@ -154,21 +150,21 @@ export default function VideosPage() {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-xl shadow-[rgba(41,171,135,0.45)] transition-transform duration-300 group-hover:scale-115">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-xl shadow-[rgba(255, 255, 255,0.45)] transition-transform duration-300 group-hover:scale-115">
                           <Play className="ml-1 h-5 w-5 fill-current" />
                         </span>
                       </div>
                     </div>
 
                     <div className="flex flex-1 flex-col p-5 sm:p-6">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f5a623]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
                         Trijotech Video
                       </p>
-                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">
+                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-white">
                         {video.title}
                       </h3>
                       <div className="mt-auto pt-4">
-                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#7edcc2] transition-all duration-200 group-hover:gap-2.5 group-hover:text-[#f5a623]">
+                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 group-hover:gap-2.5 group-hover:text-white">
                           Watch video <ExternalLink className="h-3.5 w-3.5" />
                         </span>
                       </div>
@@ -182,7 +178,7 @@ export default function VideosPage() {
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
+      <section className="hidden relative isolate overflow-hidden bg-[#18263e] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <motion.div
@@ -193,9 +189,9 @@ export default function VideosPage() {
           className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">
               Let&apos;s work together
             </p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">

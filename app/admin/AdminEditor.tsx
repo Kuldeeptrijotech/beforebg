@@ -1,10 +1,20 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { ContentEntry, SiteContent } from "@/app/lib/content-store";
 import type { BlogPost } from "@/app/data/blogs";
 import ImageUploadField from "./ImageUploadField";
 import BlogManager from "./BlogManager";
+import AdminNavbar from "./AdminNavbar";
+
+function stripHtmlTags(str: string): string {
+  try {
+    const doc = new DOMParser().parseFromString(str, "text/html");
+    return (doc.body.textContent || "").replace(/\s+/g, " ").trim();
+  } catch {
+    return str.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+  }
+}
 
 type RouteOption = { label: string; path: string };
 type Selection = {
@@ -46,7 +56,9 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
   const [saving, setSaving] = useState(false);
   const [frameVersion, setFrameVersion] = useState(0);
   const frame = useRef<HTMLIFrameElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [stagedUploads, setStagedUploads] = useState<string[]>([]);
+  const hasHtmlTags = useMemo(() => /<[a-z][\s\S]*>/i.test(html), [html]);
 
   const allEntries = useMemo(() => [
     ...Object.values(content.global.sections).flatMap((section) => section.entries),
@@ -97,7 +109,8 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
       const altEntry = existing.find((entry) => entry.kind === "attribute" && entry.attribute === altAttribute);
       const backgroundEntry = existing.find((entry) => entry.kind === "backgroundImage");
       setSelection(next);
-      setHtml(htmlEntry?.value ?? next.html);
+      const rawContent = htmlEntry?.value ?? next.html;
+      setHtml(stripHtmlTags(rawContent));
       setHref(hrefEntry?.value ?? next.href);
       setSrc(srcEntry?.value ?? next.src);
       setAlt(altEntry?.value ?? next.alt);
@@ -110,6 +123,33 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
 
   const existing = (kind: ContentEntry["kind"], attribute?: ContentEntry["attribute"], selector?: string) =>
     selectedSaved.find((entry) => entry.kind === kind && entry.attribute === attribute && (!selector || entry.selector === selector));
+
+  function handleRemoveHtml() {
+    const cleaned = stripHtmlTags(html);
+    setHtml(cleaned);
+    setNotice({ type: "success", text: "HTML tags removed from text." });
+  }
+
+  function handleWrapTag(tag: "bold" | "italic" | "gradient") {
+    const textarea = textareaRef.current;
+    if (!textarea) return;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const selectedText = html.slice(start, end);
+    if (!selectedText) {
+      setNotice({ type: "error", text: "Highlight text inside the editor first to format it." });
+      return;
+    }
+
+    let replacement = "";
+    if (tag === "bold") replacement = `<strong>${selectedText}</strong>`;
+    else if (tag === "italic") replacement = `<em>${selectedText}</em>`;
+    else if (tag === "gradient") replacement = `<span class="tri-gradient-text">${selectedText}</span>`;
+
+    const nextHtml = html.slice(0, start) + replacement + html.slice(end);
+    setHtml(nextHtml);
+    setNotice({ type: "success", text: `Formatted with ${tag}.` });
+  }
 
   function buildEntries(): ContentEntry[] {
     if (!selection) return [];
@@ -225,11 +265,34 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
 
   return (
     <main className="admin-shell">
-      <header className="admin-topbar">
-        <div><span className="admin-logo">T</span><div><strong>Trijotech Admin</strong><small>Website content manager</small></div></div>
-        <nav className="admin-tool-tabs" aria-label="Admin tools"><button type="button" className={mode === "content" ? "is-active" : ""} onClick={() => setMode("content")}>Page Content</button><button type="button" className={mode === "blogs" ? "is-active" : ""} onClick={() => setMode("blogs")}>Blog Management</button></nav>
-        <div className="admin-top-actions">{mode === "content" && <button type="button" className="admin-primary-button admin-save-changes" onClick={save} disabled={saving || !selection}>{saving ? "Saving..." : "Save Changes"}</button>}<a className="admin-secondary-button" href="/admin/chatbot">Trijotech Chatbot</a><button type="button" className="admin-secondary-button" onClick={logout}>Sign out</button></div>
-      </header>
+      {/* Shared Admin Navigation Bar */}
+      <AdminNavbar
+        activeTab="content"
+        extraActions={
+          selection ? (
+            <button
+              type="button"
+              className="admin-primary-button"
+              onClick={save}
+              disabled={saving}
+              style={{
+                height: "38px",
+                padding: "0 18px",
+                borderRadius: "9px",
+                background: "#ee9e1e",
+                color: "#fff",
+                border: "1px solid #ee9e1e",
+                fontFamily: "inherit",
+                fontSize: "13px",
+                fontWeight: 700,
+                cursor: "pointer",
+              }}
+            >
+              {saving ? "Saving..." : "Save Changes"}
+            </button>
+          ) : undefined
+        }
+      />
 
       {notice && <div className={`admin-notice ${notice.type}`} role="status"><span>{notice.text}</span><button type="button" onClick={() => setNotice(null)} aria-label="Dismiss notification">×</button></div>}
 
@@ -262,7 +325,154 @@ export default function AdminEditor({ initialContent, initialBlogs, routes }: { 
           {!selection ? <div className="admin-empty-state"><span>✦</span><h2>Select content to edit</h2><p>Click a heading, paragraph, button, link, image, card, navigation item, or footer element in the preview.</p></div> : <>
             <div className="admin-editor-heading"><div><p className="admin-eyebrow">Editing</p><h2>{selection.label || selection.tag}</h2></div><span>{selection.scope === "global" ? "Global" : selection.sectionLabel}</span></div>
 
-            {selection.tag !== "img" && selection.html !== "" && <div className="admin-field"><label htmlFor="content-html">Content</label><textarea id="content-html" rows={7} value={html} onChange={(event) => setHtml(event.target.value)} /><small>Simple formatting such as &lt;em&gt; and &lt;strong&gt; is supported.</small></div>}
+            {selection.tag !== "img" && selection.html !== "" && (
+              <div className="admin-field">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginBottom: "6px",
+                  }}
+                >
+                  <label htmlFor="content-html" style={{ margin: 0, fontWeight: 700 }}>
+                    Content Text
+                  </label>
+                  {hasHtmlTags && (
+                    <button
+                      type="button"
+                      onClick={handleRemoveHtml}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "5px",
+                        padding: "3px 9px",
+                        border: "1px solid #087b71",
+                        borderRadius: "6px",
+                        background: "#edf7f5",
+                        color: "#087b71",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        transition: "all 0.15s ease",
+                      }}
+                      title="Strip HTML tags (like <span>, <strong>) and convert to clean plain text"
+                    >
+                      🧹 Remove HTML Tags
+                    </button>
+                  )}
+                </div>
+
+                <textarea
+                  ref={textareaRef}
+                  id="content-html"
+                  rows={6}
+                  value={html}
+                  onChange={(event) => setHtml(event.target.value)}
+                  placeholder="Enter content text..."
+                  style={{
+                    fontFamily: "inherit",
+                    fontSize: "13px",
+                    lineHeight: 1.6,
+                    width: "100%",
+                  }}
+                />
+
+                {/* Quick Formatting & HTML cleaning tools */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "8px",
+                    marginTop: "6px",
+                    padding: "8px 10px",
+                    background: "#f4f7f9",
+                    borderRadius: "8px",
+                    border: "1px solid #e2e8ee",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <span style={{ fontSize: "11px", color: "#667085", fontWeight: 600 }}>
+                      Format:
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => handleWrapTag("bold")}
+                      style={{
+                        padding: "2px 7px",
+                        fontSize: "11px",
+                        fontWeight: 700,
+                        border: "1px solid #cfd8e1",
+                        borderRadius: "4px",
+                        background: "#fff",
+                        color: "#344054",
+                        cursor: "pointer",
+                      }}
+                      title="Wrap highlighted text in <strong>"
+                    >
+                      Bold
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleWrapTag("italic")}
+                      style={{
+                        padding: "2px 7px",
+                        fontSize: "11px",
+                        fontStyle: "italic",
+                        border: "1px solid #cfd8e1",
+                        borderRadius: "4px",
+                        background: "#fff",
+                        color: "#344054",
+                        cursor: "pointer",
+                      }}
+                      title="Wrap highlighted text in <em>"
+                    >
+                      Italic
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleWrapTag("gradient")}
+                      style={{
+                        padding: "2px 7px",
+                        fontSize: "11px",
+                        fontWeight: 600,
+                        border: "1px solid #cfd8e1",
+                        borderRadius: "4px",
+                        background: "#fff",
+                        color: "#087b71",
+                        cursor: "pointer",
+                      }}
+                      title="Wrap highlighted text in gradient span"
+                    >
+                      Gradient
+                    </button>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleRemoveHtml}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "#b42318",
+                      fontSize: "11px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      padding: 0,
+                    }}
+                  >
+                    Strip all HTML tags
+                  </button>
+                </div>
+
+                <small style={{ display: "block", marginTop: "4px", color: "#98a2b3" }}>
+                  Supports plain text as well as inline tags (&lt;span&gt;, &lt;strong&gt;, &lt;em&gt;).
+                </small>
+              </div>
+            )}
             {selection.hrefSelector && <div className="admin-field"><label htmlFor="content-link">Button or link URL</label><input id="content-link" value={href} onChange={(event) => setHref(event.target.value)} placeholder="/contact or https://..." className={href && !urlValid(href) ? "invalid" : ""}/>{href && !urlValid(href) && <small className="error">Enter a valid URL or /site-path.</small>}</div>}
             {selection.src && <>{selection.tag === "img" && <ImageUploadField id="content-image-upload" label={selection.label || "Current image"} value={src} alt={alt} onUploaded={(path) => imageUploaded(path, "src")} onError={(text) => setNotice({ type: "error", text })}/>}<div className="admin-field"><label htmlFor="content-image">{selection.tag === "video" ? "Video URL" : "Image URL"}</label><input id="content-image" value={src} onChange={(event) => setSrc(event.target.value)} className={src && !urlValid(src, true) ? "invalid" : ""}/></div><div className="admin-field"><label htmlFor="content-alt">Media alternative text</label><input id="content-alt" value={alt} onChange={(event) => setAlt(event.target.value)} /></div></>}
             {selection.backgroundSelector && <><ImageUploadField id="content-background-upload" label={`${selection.sectionLabel} background`} value={backgroundImage} alt={`${selection.sectionLabel} background preview`} onUploaded={(path) => imageUploaded(path, "background")} onError={(text) => setNotice({ type: "error", text })}/><div className="admin-field"><label htmlFor="content-background">Section background image URL</label><input id="content-background" value={backgroundImage} onChange={(event) => setBackgroundImage(event.target.value)} /></div></>}

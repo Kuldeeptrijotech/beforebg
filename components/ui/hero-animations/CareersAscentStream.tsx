@@ -50,7 +50,7 @@ export default function CareersAscentStream({ className = "" }: { className?: st
 
     window.addEventListener("resize", handleResize);
 
-    const colors = ["#29ab87", "#38bdf8", "#f5a623", "#7edcc2"];
+    const colors = ["#ffffff", "#38bdf8", "#ffffff", "#ffffff"];
 
     const rays: AscentRay[] = Array.from({ length: 9 }, (_, i) => ({
       xPercent: 0.6 + (i * 0.045),
@@ -62,10 +62,10 @@ export default function CareersAscentStream({ className = "" }: { className?: st
     }));
 
     const orbs: MilestoneOrb[] = [
-      { xPercent: 0.72, yPercent: 0.35, radius: 4, color: "#29ab87", pulsePhase: 0 },
+      { xPercent: 0.72, yPercent: 0.35, radius: 4, color: "#ffffff", pulsePhase: 0 },
       { xPercent: 0.84, yPercent: 0.52, radius: 5, color: "#38bdf8", pulsePhase: Math.PI / 2 },
-      { xPercent: 0.68, yPercent: 0.68, radius: 3.5, color: "#f5a623", pulsePhase: Math.PI },
-      { xPercent: 0.9, yPercent: 0.28, radius: 4.5, color: "#7edcc2", pulsePhase: Math.PI * 1.5 },
+      { xPercent: 0.68, yPercent: 0.68, radius: 3.5, color: "#ffffff", pulsePhase: Math.PI },
+      { xPercent: 0.9, yPercent: 0.28, radius: 4.5, color: "#ffffff", pulsePhase: Math.PI * 1.5 },
     ];
 
     const render = () => {

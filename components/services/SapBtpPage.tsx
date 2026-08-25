@@ -11,7 +11,6 @@ import {
   Puzzle,
   Rocket,
 } from "lucide-react";
-import BtpExplodedLayers from "@/components/scenes/BtpExplodedLayers";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
@@ -31,7 +30,7 @@ const LAYERS = [
   { label: "CAP & RAP Services", tone: "#22d3ee", desc: "Maintainable service layers and business logic" },
   { label: "SAP BTP Platform", tone: "#2f8fff", desc: "Runtime, security, and build services" },
   { label: "Integration Suite", tone: "#8b7cf6", desc: "APIs, events, and prebuilt connectors" },
-  { label: "SAP Core", tone: "#7edcc2", desc: "Standard S/4HANA — clean and upgrade-ready" },
+  { label: "SAP Core", tone: "#0e7490", desc: "Standard S/4HANA — clean and upgrade-ready" },
 ];
 
 const TRIPLETS = [
@@ -42,21 +41,28 @@ const TRIPLETS = [
 
 export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceItem[]; impacts: ServiceItem[] }) {
   return (
-    <main className="font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="service-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[#030713]"
-        glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
-        scene={<BtpExplodedLayers />}
-        fadeTo="#030713"
+        eyebrow="SAP BTP Full-Stack Development"
+        title="Custom Cloud Applications & Side-by-Side Extensions"
+        subtitle="Build modern portals, mobile workflows, and clean-core extensions on SAP Business Technology Platform."
+        description="We create future-proof solutions on SAP BTP using CAP, RAP, Fiori, and Integration Suite — preserving the core SAP system clean, standard, and continuously upgrade-ready."
+        primaryCta={{ label: "Consult BTP architects", href: "/contact" }}
+        secondaryCta={{ label: "Explore all services", href: "/services" }}
+        metrics={[
+          { value: "Clean Core", label: "Architecture Compliant" },
+          { value: "Full-Stack", label: "CAP, RAP, UI5 & Fiori" },
+          { value: "Secure", label: "Enterprise BTP Runtime" },
+        ]}
       />
 
       {/* WHAT WE BUILD + HERO TAIL */}
       <section className="relative bg-[#050817]">
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="flex h-16 flex-col items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#29ab87] shadow-[0_0_10px_#29ab87]" />
-            <div className="h-12 w-px bg-gradient-to-b from-[#29ab87]/70 to-transparent" />
+            <span className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_#ffffff]" />
+            <div className="h-12 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
           </div>
         </div>
 
@@ -65,7 +71,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
             <SlideReveal direction="left">
               <SectionLabel>What we build</SectionLabel>
               <h2 className={`mt-5 ${introLead} text-white`}>
-                Modern apps, a <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">clean core</span>
+                Modern apps, a <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">clean core</span>
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
                 We design cloud-native applications, side-by-side extensions, intuitive Fiori experiences, and
@@ -78,7 +84,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                 return (
                   <StaggerRevealItem key={t.label} variant="fadeIn">
                     <Glass variant="frosted" tone="green" className="h-full p-5">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#29ab87] to-[#117a4b] text-white">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#ffffff] to-[#ffffff] text-white">
                         <Icon className="h-5 w-5" strokeWidth={1.9} />
                       </span>
                       <h3 className="mt-4 font-bold text-white">{t.label}</h3>
@@ -93,22 +99,22 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={3} suffix="x" label="Faster delivery" accent="text-[#29ab87]" />
+                <Metric to={3} suffix="x" label="Faster delivery" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
-                <Metric to={0} label="Core disruption" accent="text-[#f5a623]" sub="extensions live outside the core" />
+                <Metric to={0} label="Core disruption" accent="text-white" sub="extensions live outside the core" />
               </Glass>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
-                <Metric to={100} suffix="%" label="Upgrade readiness" accent="text-[#29ab87]" />
+                <Metric to={100} suffix="%" label="Upgrade readiness" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={60} suffix="%" label="Less custom code" accent="text-[#117a4b]" />
+                <Metric to={60} suffix="%" label="Less custom code" accent="text-white" />
               </Glass>
             </Reveal>
           </div>
@@ -121,7 +127,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Full-stack capabilities on <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">SAP BTP</span>
+              Full-stack capabilities on <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">SAP BTP</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-400">
               Reusable services and proven patterns across the entire application stack.
@@ -134,7 +140,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
@@ -151,14 +157,14 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
       {/* APP ARCHITECTURE (DARK / GLOWING GREY - HEX GRID PRESERVED) */}
       <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_80%_15%,rgba(41,171,135,0.2),transparent_60%)]" />
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_80%_15%,rgba(255, 255, 255,0.2),transparent_60%)]" />
         <Container className="relative">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <Reveal>
                 <SectionLabel dark>Application architecture</SectionLabel>
                 <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
-                  One coherent <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">technology stack</span>
+                  One coherent <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">technology stack</span>
                 </h2>
                 <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
                   Every layer has a job. Fiori on top, CAP services underneath, and the SAP core kept standard at the
@@ -168,8 +174,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
               <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
                 {impacts.slice(0, 4).map((i) => (
                   <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#29ab87]" />
+                    <div className="btp-impact-card flex items-start gap-3 rounded-xl border p-4">
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-white" />
                       <div>
                         <p className="font-bold text-white">{i.title}</p>
                         <p className="mt-1 text-xs leading-5 text-slate-300">{i.description}</p>
@@ -182,8 +188,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
 
             <div>
               <Reveal delay={0.15}>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Layer by layer</p>
+                <div className="btp-architecture-card relative overflow-hidden rounded-3xl border p-8">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">Layer by layer</p>
                   <div className="mt-6 space-y-3">
                     {LAYERS.map((l, i) => (
                       <motion.div
@@ -192,7 +198,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, margin: "-40px" }}
                         transition={{ duration: 0.5, delay: i * 0.12 }}
-                        className="relative flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3"
+                        className="btp-architecture-layer relative flex items-center gap-4 rounded-xl border px-4 py-3"
                       >
                         <span className="h-8 w-1 rounded-full" style={{ background: l.tone, boxShadow: `0 0 10px ${l.tone}` }} />
                         <span className="flex-1">
@@ -205,8 +211,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                       </motion.div>
                     ))}
                   </div>
-                  <div className="mt-6 flex items-center justify-center gap-3 rounded-xl border border-[#29ab87]/25 bg-[#29ab87]/[0.08] px-4 py-3">
-                    <Rocket className="h-5 w-5 shrink-0 text-[#29ab87]" />
+                  <div className="btp-architecture-summary mt-6 flex items-center justify-center gap-3 rounded-xl border px-4 py-3">
+                    <Rocket className="h-5 w-5 shrink-0 text-white" />
                     <p className="text-sm text-slate-200">
                       <span className="font-bold text-white">Ship fast, stay clean</span> — reusable services accelerate
                       every new build.
@@ -225,7 +231,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionLabel className="justify-center">Connected by default</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Everything your apps <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">need</span>
+              Everything your apps <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">need</span>
             </h2>
           </Reveal>
 
@@ -234,8 +240,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
               const Icon = t.icon;
               return (
                 <StaggerRevealItem key={t.label} variant="fadeIn">
-                  <div className="flex h-full flex-col items-center rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-center shadow-xl backdrop-blur-xl">
-                    <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#29ab87] to-[#117a4b] text-white shadow-lg shadow-violet-950/20">
+                  <div className="service-surface-card flex h-full flex-col items-center rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-center shadow-xl backdrop-blur-xl">
+                    <span className="btp-connected-icon flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#ffffff] to-[#ffffff] shadow-lg shadow-violet-950/20">
                       <Icon className="h-7 w-7" strokeWidth={1.8} />
                     </span>
                     <h3 className="mt-5 text-xl font-bold text-white">{t.label}</h3>

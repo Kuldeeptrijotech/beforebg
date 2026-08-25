@@ -52,8 +52,8 @@ export default function ServicesConduitStream({ className = "" }: { className?: 
           { dx: width * 0.15, dy: 45 },
           { dx: width * 0.55, dy: 0 },
         ],
-        color: "rgba(41, 171, 135, 0.35)",
-        glow: "#29ab87",
+        color: "rgba(255, 255, 255, 0.35)",
+        glow: "#ffffff",
         pulses: [
           { progress: 0.1, speed: 0.0008, size: 3.5 },
           { progress: 0.6, speed: 0.0007, size: 4 },
@@ -82,8 +82,8 @@ export default function ServicesConduitStream({ className = "" }: { className?: 
           { dx: width * 0.15, dy: 30 },
           { dx: width * 0.5, dy: 0 },
         ],
-        color: "rgba(245, 166, 35, 0.3)",
-        glow: "#f5a623",
+        color: "rgba(255, 255, 255, 0.3)",
+        glow: "#ffffff",
         pulses: [
           { progress: 0.2, speed: 0.0007, size: 3.8 },
           { progress: 0.75, speed: 0.0008, size: 3.2 },

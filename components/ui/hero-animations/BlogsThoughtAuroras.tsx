@@ -49,7 +49,7 @@ export default function BlogsThoughtAuroras({ className = "" }: { className?: st
       vx: (Math.random() - 0.5) * 0.3, // Gentle slow drift
       vy: (Math.random() - 0.5) * 0.3,
       radius: Math.random() * 2.5 + 1.2,
-      color: ["#29ab87", "#38bdf8", "#7edcc2", "#f5a623"][Math.floor(Math.random() * 4)],
+      color: ["#ffffff", "#38bdf8", "#ffffff", "#ffffff"][Math.floor(Math.random() * 4)],
       alpha: Math.random() * 0.5 + 0.3,
     }));
 

@@ -17,6 +17,7 @@ export default function IndustryPage() {
       }
       description="We shape connected, practical SAP solutions around the operational, financial, and data challenges unique to your industry."
       heroImage="/assets/heroes/industry.png"
+      animateHero={false}
       cardsTitle={
         <>
           Solutions grounded in{" "}

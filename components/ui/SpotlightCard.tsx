@@ -20,7 +20,7 @@ type SpotlightStyle = CSSProperties & {
 export default function SpotlightCard({
   children,
   className = "",
-  glow = "rgba(41,171,135,0.16)",
+  glow = "rgba(255, 255, 255,0.16)",
   radius = 440,
 }: SpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);

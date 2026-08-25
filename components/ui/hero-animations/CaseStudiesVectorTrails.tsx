@@ -54,7 +54,7 @@ export default function CaseStudiesVectorTrails({ className = "" }: { className?
         controlPercentY: 0.75,
         endPercentX: 0.95,
         endPercentY: 0.25,
-        color: "#29ab87",
+        color: "#ffffff",
         headProgress: 0.1,
         speed: 0.0006, // Slow, graceful ascent
         tailLength: 0.2,

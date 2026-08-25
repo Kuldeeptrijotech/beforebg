@@ -34,9 +34,9 @@ export default function SolutionsHoloRays({ className = "" }: { className?: stri
     window.addEventListener("resize", handleResize);
 
     const nodes = [
-      { xPercent: 0.65, yPercent: 0.35, radius: 45, angle: 0, speed: 0.005, color: "#29ab87" },
+      { xPercent: 0.65, yPercent: 0.35, radius: 45, angle: 0, speed: 0.005, color: "#ffffff" },
       { xPercent: 0.82, yPercent: 0.55, radius: 60, angle: 2, speed: -0.004, color: "#38bdf8" },
-      { xPercent: 0.58, yPercent: 0.72, radius: 50, angle: 4, speed: 0.003, color: "#f5a623" },
+      { xPercent: 0.58, yPercent: 0.72, radius: 50, angle: 4, speed: 0.003, color: "#ffffff" },
     ];
 
     const render = () => {

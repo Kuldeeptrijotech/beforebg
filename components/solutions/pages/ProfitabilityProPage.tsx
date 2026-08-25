@@ -1,6 +1,5 @@
 import SolutionDetailLanding from "@/components/landing/SolutionDetailLanding";
 import type { SolutionItem } from "@/lib/solutions-data";
-import ProfitabilityCube from "@/components/scenes/ProfitabilityCube";
 
 export default function ProfitabilityProPage({ solution }: { solution: SolutionItem }) {
   return (
@@ -9,7 +8,6 @@ export default function ProfitabilityProPage({ solution }: { solution: SolutionI
       heroImage="/assets/image/Product_4.png"
       impactImage="/assets/image/L0505.png"
       cleanImpactImage={true}
-      scene={<ProfitabilityCube />}
     />
   );
 }

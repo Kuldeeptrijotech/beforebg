@@ -2,7 +2,8 @@ import PlaceholderPage from "@/components/common/PlaceholderPage";
 import { redirect } from "next/navigation";
 
 const existingServiceRoutes: Record<string, string> = {
-  "sap-consulting": "/services/sap-implementation",
+  "sap-consulting": "/services/sap-consulting",
+  "sap-implementation": "/services/sap-consulting",
   "sap-support-ams": "/services/sap-support",
   "sap-btp-full-stack-applications": "/services/sap-btp-full-stack",
   "sap-data-integration-migration": "/services/sap-data-integration",

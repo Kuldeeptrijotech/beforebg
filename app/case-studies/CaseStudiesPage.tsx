@@ -93,7 +93,7 @@ const studies: StudyItem[] = [
 
 export default function CaseStudiesPage() {
   return (
-    <main className="overflow-hidden bg-[#121927] text-white">
+    <main className="public-alternating-page overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
@@ -120,9 +120,9 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" aria-hidden="true" />
+              <Sparkles className="h-3.5 w-3.5 text-white" aria-hidden="true" />
               Case studies
             </motion.div>
 
@@ -228,7 +228,7 @@ export default function CaseStudiesPage() {
       </div>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
+      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <motion.div
@@ -239,9 +239,9 @@ export default function CaseStudiesPage() {
           className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">
               Let&apos;s work together
             </p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">

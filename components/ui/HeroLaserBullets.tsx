@@ -5,9 +5,9 @@ import { useReducedMotion } from "framer-motion";
 import { startViewportAnimationLoop } from "@/components/ui/canvasAnimationLoop";
 
 /* ─────────────────────────────────────────────────────────────
-   HERO LASER BULLETS — HIGH-SPEED UNATCHABLE PHOTON TRACERS
+   HERO LASER BULLETS — HIGH-SPEED PHOTON TRACERS
    Ultra-fast luminous laser bullets with elongated glowing tails,
-   kinetic spark bursts, and enterprise multi-color trajectories.
+   kinetic spark bursts, and high-contrast white & silver trajectories.
    ───────────────────────────────────────────────────────────── */
 
 interface Bullet {
@@ -36,11 +36,10 @@ interface Spark {
 }
 
 const BULLET_COLORS = [
-  { main: "#29ab87", glow: "rgba(41, 171, 135, 0.8)", head: "#ffffff" }, // Mint/Emerald
-  { main: "#38bdf8", glow: "rgba(56, 189, 248, 0.8)", head: "#ffffff" }, // Cyan
-  { main: "#f5a623", glow: "rgba(245, 166, 35, 0.8)", head: "#ffffff" }, // Amber/Gold
-  { main: "#7edcc2", glow: "rgba(126, 220, 194, 0.9)", head: "#ffffff" }, // Light Mint
-  { main: "#22d3ee", glow: "rgba(34, 211, 238, 0.85)", head: "#ffffff" }, // Electric Blue
+  { main: "#ffffff", glow: "rgba(255, 255, 255, 0.9)", head: "#ffffff" },
+  { main: "#e2e8f0", glow: "rgba(255, 255, 255, 0.75)", head: "#ffffff" },
+  { main: "#f8fafc", glow: "rgba(255, 255, 255, 0.85)", head: "#ffffff" },
+  { main: "#cbd5e1", glow: "rgba(255, 255, 255, 0.7)", head: "#ffffff" },
 ];
 
 export default function HeroLaserBullets({

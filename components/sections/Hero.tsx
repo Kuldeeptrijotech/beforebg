@@ -2,12 +2,9 @@
 
 import { AnimatePresence, motion, useInView, useReducedMotion, type Variants } from "framer-motion";
 import OptimizedVideo from "@/components/ui/OptimizedVideo";
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/ui/Container";
-import GradientButton from "@/components/ui/GradientButton";
-import HexScene from "@/components/three/HexScene";
 import { heroSlides } from "@/lib/hero-data";
 
 const AUTO_PLAY_MS = 6500;
@@ -56,8 +53,8 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="hero-fullvh relative isolate overflow-hidden bg-[#050817] text-white">
-      {/* Layered rich midnight & emerald mesh background */}
-      <div aria-hidden className="absolute inset-0 -z-40 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,rgba(17,122,75,0.28),transparent_70%),radial-gradient(ellipse_90%_60%_at_85%_75%,rgba(245,166,35,0.18),transparent_65%),linear-gradient(180deg,#071224_0%,#050b18_50%,#030713_100%)]" />
+      {/* Layered rich midnight & white mesh background */}
+      <div aria-hidden className="absolute inset-0 -z-40 bg-[linear-gradient(180deg,#071224_0%,#050b18_50%,#030713_100%)]" />
       <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-50" />
 
       {/* Slide background image with atmospheric depth overlays */}
@@ -77,19 +74,19 @@ export default function Hero() {
             className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-75 mix-blend-luminosity"
           />
           {/* Rich midnight depth gradient overlay */}
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,8,23,0.92)_0%,rgba(11,29,51,0.72)_50%,rgba(17,122,75,0.28)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,8,23,0.92)_0%,rgba(11,29,51,0.72)_50%,rgba(3,7,19,0.25)_100%)]" />
           <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,23,0.4)_0%,transparent_35%,rgba(5,8,23,0.85)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_15%_50%,rgba(41,171,135,0.25),transparent_70%)]" />
+          <div aria-hidden className="absolute inset-0 opacity-0" />
         </motion.div>
       </AnimatePresence>
 
       {/* Ambient glow orbs */}
-      <div aria-hidden className="tri-blob -z-10 h-96 w-96 animate-float-slow" style={{ left: "-6%", top: "18%", background: "radial-gradient(circle, rgba(41,171,135,0.26), transparent 68%)" }} />
-      <div aria-hidden className="tri-blob -z-10 h-80 w-80 animate-float-reverse" style={{ right: "-8%", bottom: "8%", background: "radial-gradient(circle, rgba(245,166,35,0.18), transparent 70%)" }} />
-      <div aria-hidden className="tri-blob -z-10 h-64 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(17,122,75,0.18), transparent 65%)", animationDelay: "-3s" }} />
+      <div aria-hidden className="tri-blob -z-10 h-96 opacity-0 w-96 animate-float-slow" style={{ left: "-6%", top: "18%", background: "radial-gradient(circle, rgba(255, 255, 255,0.18), transparent 68%)" }} />
+      <div aria-hidden className="tri-blob -z-10 h-80 opacity-0 w-80 animate-float-reverse" style={{ right: "-8%", bottom: "8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.12), transparent 70%)" }} />
+      <div aria-hidden className="tri-blob -z-10 h-64 opacity-0 w-64 animate-float-slow" style={{ right: "20%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.12), transparent 65%)", animationDelay: "-3s" }} />
 
-      <Container className="relative z-10 grid min-h-[calc(100svh-4.5rem)] max-h-[1100px] items-center gap-10 pt-24 pb-14 sm:pt-28 sm:pb-16 lg:grid-cols-12 lg:gap-12 2xl:gap-16 lg:py-20 2xl:py-28">
-        <div className="w-full lg:col-span-7 2xl:max-w-3xl">
+      <Container className="relative z-10 flex min-h-[calc(100svh-4.5rem)] !max-w-7xl 2xl:!max-w-7xl 3xl:!max-w-7xl !px-5 sm:!px-8 lg:!px-12 max-h-[1100px] flex-col justify-center pt-24 pb-14 sm:pt-28 sm:pb-16 lg:py-20 2xl:py-28">
+        <div className="w-full max-w-3xl lg:max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSlide.id}
@@ -97,18 +94,14 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="flex flex-col"
+              className={`flex flex-col ${["sap-consulting", "sap-support-ams", "sap-btp-applications", "sap-data-ai"].includes(activeSlide.id) ? "pt-24 sm:pt-28" : ""}`}
             >
               {/* Eyebrow badge */}
               <motion.span
                 custom={0}
                 variants={childVariants}
-                className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+                className="home-hero-eyebrow mb-5 inline-flex w-fit text-xs font-bold uppercase tracking-[0.04em] text-cyan-200 sm:text-sm"
               >
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#29ab87] opacity-75" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#29ab87]" />
-                </span>
                 {activeSlide.eyebrow}
               </motion.span>
 
@@ -116,7 +109,7 @@ export default function Hero() {
               <motion.h1
                 custom={1}
                 variants={childVariants}
-                className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
+                className="home-hero-heading max-w-4xl text-4xl font-extrabold leading-[1.04] tracking-[-0.025em] text-white sm:text-5xl lg:text-6xl"
               >
                 {activeSlide.id === "sap-consulting" ? (
                   <>Plan, implement, and optimize SAP systems <span className="tri-gradient-text">with confidence</span></>
@@ -135,7 +128,7 @@ export default function Hero() {
               <motion.p
                 custom={2}
                 variants={childVariants}
-                className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
+                className="home-hero-description mt-6 max-w-3xl text-base font-normal leading-[1.75] text-slate-300 sm:text-lg"
               >
                 {activeSlide.description}
               </motion.p>
@@ -144,13 +137,13 @@ export default function Hero() {
               <motion.div custom={3} variants={childVariants} className="mt-9 flex flex-wrap gap-4">
                 <Link
                   href={activeSlide.primaryCta.href}
-                  className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold text-white"
+                  className="home-hero-primary tri-btn tri-focus px-7 py-4 text-sm font-semibold"
                 >
-                  {activeSlide.primaryCta.label} <ArrowRight className="h-4 w-4" />
+                  {activeSlide.primaryCta.label}
                 </Link>
                 <Link
                   href={activeSlide.secondaryCta.href}
-                  className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white"
+                  className="home-hero-secondary tri-btn tri-focus px-7 py-4 text-sm font-semibold"
                 >
                   {activeSlide.secondaryCta.label}
                 </Link>
@@ -173,8 +166,8 @@ export default function Hero() {
                   <span
                     className={`block rounded-full transition-all duration-500 ${
                       isActive
-                        ? "h-1.5 w-10 bg-[linear-gradient(90deg,#29ab87,#f5a623)] shadow-[0_0_8px_rgba(41,171,135,0.6)]"
-                        : "h-1 w-4 bg-white/20 group-hover:bg-white/45"
+                        ? "h-1.5 w-10 bg-[linear-gradient(90deg,#67e8f9,#22d3ee)]"
+                        : "h-1 w-4 bg-slate-500/70 group-hover:bg-cyan-200/70"
                     }`}
                   />
                 </button>
@@ -182,16 +175,6 @@ export default function Hero() {
             })}
           </div>
         </div>
-
-        {/* 3D hexagon scene (Hidden on mobile & tablet, visible on laptops/desktops lg+) */}
-        <motion.div
-          className="relative mx-auto hidden w-full max-w-[320px] sm:max-w-[440px] lg:flex lg:max-w-[540px] 2xl:max-w-[680px] 3xl:max-w-[760px] items-center justify-center lg:col-span-5"
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.0, delay: 0.3, ease: EASE_OUT_EXPO }}
-        >
-          <HexScene active={sectionInView} className="aspect-square w-full" />
-        </motion.div>
       </Container>
     </section>
   );

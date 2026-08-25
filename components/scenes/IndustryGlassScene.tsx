@@ -98,7 +98,7 @@ const CONFIGS: Record<string, Config> = {
     glyph: FlaskConical,
     glyphLabel: "Life Sciences",
     glyphSub: "Compliant data",
-    accent: "#7edcc2",
+    accent: "#ffffff",
     accent2: "#2f8fff",
     panels: [
       { x: 84, y: 18, icon: ShieldCheck, title: "Compliance", value: "100%", sub: "FDA validated" },
@@ -199,7 +199,7 @@ const CONFIGS: Record<string, Config> = {
     glyph: Flame,
     glyphLabel: "Steel Making",
     glyphSub: "Molten performance",
-    accent: "#f5a623",
+    accent: "#ffffff",
     accent2: "#ffb45e",
     panels: [
       { x: 84, y: 18, icon: Gauge, title: "Melting efficiency", value: "94.6%", sub: "furnace yield" },

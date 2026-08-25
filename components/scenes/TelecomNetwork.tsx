@@ -1,4 +1,4 @@
-import { Activity, BarChart3, Cloud, Database, Network, RadioTower } from "lucide-react";
+﻿import { Activity, BarChart3, Cloud, Database, Network, RadioTower } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { FlowLink, GlowHalo, Packet, PulseDot, SceneCanvas, SceneText, TRI } from "./scene-ui";
 
@@ -7,9 +7,9 @@ type Tone = "green" | "amber" | "mix" | "dim" | "white";
 const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
 
 const TONE_BG: Record<Tone, string> = {
-  green: "linear-gradient(160deg,#29ab87,#117a4b)",
-  amber: "linear-gradient(160deg,#f5a623,#f29e16)",
-  mix: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)",
+  green: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  amber: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  mix: "linear-gradient(135deg,#22d3ee,#2563eb 55%,#ffffff 130%)",
   dim: "linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))",
   white: "linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))",
 };
@@ -52,7 +52,7 @@ function SignalBars({ className }: { className?: string }) {
   return (
     <div className={`flex items-end gap-1 ${className ?? ""}`}>
       {[12, 18, 26, 34].map((h, i) => (
-        <span key={i} className="w-1.5 rounded-sm bg-[linear-gradient(160deg,#29ab87,#117a4b)] tri-pulse" style={{ height: `${h}px`, animationDelay: `${i * 0.4}s` }} />
+        <span key={i} className="w-1.5 rounded-sm bg-[linear-gradient(160deg,#22d3ee,#2563eb)] tri-pulse" style={{ height: `${h}px`, animationDelay: `${i * 0.4}s` }} />
       ))}
     </div>
   );
@@ -62,7 +62,7 @@ export default function TelecomNetwork() {
   return (
     <SceneCanvas bleed className="h-full w-full">
       <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 640 480" preserveAspectRatio="none" fill="none">
-        <FlowLink d={SPINE} color="rgba(41,171,135,0.4)" width={1.5} dash />
+        <FlowLink d={SPINE} color="rgba(255, 255, 255,0.4)" width={1.5} dash />
         <Packet d={SPINE} dur={7} delay={0} color={TRI.mint} r={4} />
         <Packet d={SPINE} dur={7} delay={3.5} color={TRI.green} r={3.5} />
         <Packet d={SPINE_REV} dur={7} delay={1.5} color={TRI.amber} r={4} />
@@ -73,20 +73,20 @@ export default function TelecomNetwork() {
             <Packet d={a.rev} dur={3.6} delay={i * 0.9} color={a.color} r={3} />
           </g>
         ))}
-        <path d="M285 80 Q252 92 252 124" stroke="rgba(245,166,35,0.4)" strokeWidth={1.3} fill="none" className="tri-dash" />
-        <path d="M355 80 Q388 92 388 124" stroke="rgba(41,171,135,0.4)" strokeWidth={1.3} fill="none" className="tri-dash" />
+        <path d="M285 80 Q252 92 252 124" stroke="rgba(255, 255, 255,0.4)" strokeWidth={1.3} fill="none" className="tri-dash" />
+        <path d="M355 80 Q388 92 388 124" stroke="rgba(255, 255, 255,0.4)" strokeWidth={1.3} fill="none" className="tri-dash" />
         {NODES.map((n) => (
           <PulseDot key={n.label} cx={320} cy={n.y} color={n.tone === "amber" ? TRI.amber : TRI.green} r={3} />
         ))}
         {[1, 2, 3].map((i) => (
-          <circle key={i} cx={320} cy={80} r={12} fill="none" stroke="rgba(245,166,35,0.55)" strokeWidth={1}>
+          <circle key={i} cx={320} cy={80} r={12} fill="none" stroke="rgba(255, 255, 255,0.55)" strokeWidth={1}>
             <animate attributeName="r" values={`${12 + i * 8};${12 + i * 8 + 34}`} dur={`${2.4 + i * 0.4}s`} repeatCount="indefinite" />
             <animate attributeName="opacity" values="0.55;0" dur={`${2.4 + i * 0.4}s`} repeatCount="indefinite" />
           </circle>
         ))}
         <GlowHalo cx={320} cy={80} r={30} color={TRI.amber} opacity={0.18} />
         <GlowHalo cx={320} cy={260} r={48} color={TRI.green} opacity={0.13} />
-        <SceneText x={320} y={52} size={9} fill="rgba(245,166,35,0.65)">RADIO ACCESS</SceneText>
+        <SceneText x={320} y={52} size={9} fill="rgba(255, 255, 255,0.65)">RADIO ACCESS</SceneText>
         <SceneText x={320} y={470} size={9} fill="rgba(191,232,216,0.45)">FULL-DUPLEX TRAFFIC</SceneText>
       </svg>
 

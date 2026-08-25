@@ -14,14 +14,14 @@ import type { ReactNode } from "react";
    ───────────────────────────────────────────────────────────── */
 
 export const TRI = {
-  green: "#29ab87",
-  greenDeep: "#117a4b",
-  amber: "#f5a623",
-  mint: "#7edcc2",
+  green: "#ffffff",
+  greenDeep: "#ffffff",
+  amber: "#ffffff",
+  mint: "#ffffff",
   mintText: "rgba(191,232,216,0.9)",
   faint: "rgba(191,232,216,0.55)",
-  line: "rgba(41,171,135,0.4)",
-  lineAmber: "rgba(245,166,35,0.35)",
+  line: "rgba(255, 255, 255,0.4)",
+  lineAmber: "rgba(255, 255, 255,0.35)",
   ink: "#030713",
 };
 
@@ -30,18 +30,18 @@ export const HEX_CLIP = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75
 type Tone = "green" | "amber" | "mix" | "dim" | "white";
 
 const TONE_BG: Record<Tone, string> = {
-  green: "linear-gradient(160deg,#29ab87,#117a4b)",
-  amber: "linear-gradient(160deg,#f5a623,#f29e16)",
-  mix: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)",
-  dim: "linear-gradient(160deg,rgba(41,171,135,0.22),rgba(17,122,75,0.32))",
+  green: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  amber: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  mix: "linear-gradient(135deg,#22d3ee,#2563eb 55%,#ffffff 130%)",
+  dim: "linear-gradient(160deg,rgba(255, 255, 255,0.22),rgba(255, 255, 255,0.32))",
   white: "linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))",
 };
 
 const TONE_GLOW: Record<Tone, string> = {
-  green: "rgba(41,171,135,0.35)",
-  amber: "rgba(245,166,35,0.3)",
-  mix: "rgba(41,171,135,0.35)",
-  dim: "rgba(41,171,135,0.12)",
+  green: "rgba(255, 255, 255,0.35)",
+  amber: "rgba(255, 255, 255,0.3)",
+  mix: "rgba(255, 255, 255,0.35)",
+  dim: "rgba(255, 255, 255,0.12)",
   white: "rgba(255,255,255,0.06)",
 };
 
@@ -78,8 +78,8 @@ export function SceneCanvas({
       {mesh && <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />}
       {hex && <div aria-hidden className="absolute inset-0 -z-10 tri-hex-grid opacity-70" />}
       {grid && <div aria-hidden className="absolute inset-0 -z-10 tri-grid-bg" />}
-      <div aria-hidden className="pointer-events-none absolute -left-24 top-10 h-56 w-56 rounded-full bg-[rgba(41,171,135,0.14)] blur-3xl tri-pulse" />
-      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-8 h-52 w-52 rounded-full bg-[rgba(245,166,35,0.1)] blur-3xl tri-pulse" style={{ animationDelay: "1.6s" }} />
+      <div aria-hidden className="pointer-events-none absolute -left-24 top-10 h-56 w-56 rounded-full bg-[rgba(255, 255, 255,0.14)] blur-3xl tri-pulse" />
+      <div aria-hidden className="pointer-events-none absolute -right-20 bottom-8 h-52 w-52 rounded-full bg-[rgba(255, 255, 255,0.1)] blur-3xl tri-pulse" style={{ animationDelay: "1.6s" }} />
       {vignette && <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(3,7,19,0.55)_100%)]" />}
       <div className="relative h-full w-full">{children}</div>
     </div>
@@ -142,7 +142,7 @@ export function ConnectorLine({ vertical = true, className = "" }: { vertical?: 
   return (
     <span
       aria-hidden
-      className={`pointer-events-none absolute left-1/2 top-full h-8 w-px -translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,rgba(41,171,135,0.55)_0,rgba(41,171,135,0.55)_5px,transparent_5px,transparent_10px)] ${vertical ? "" : "rotate-90"} ${className}`}
+      className={`pointer-events-none absolute left-1/2 top-full h-8 w-px -translate-x-1/2 bg-[repeating-linear-gradient(to_bottom,rgba(255, 255, 255,0.55)_0,rgba(255, 255, 255,0.55)_5px,transparent_5px,transparent_10px)] ${vertical ? "" : "rotate-90"} ${className}`}
     />
   );
 }

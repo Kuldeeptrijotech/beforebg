@@ -20,8 +20,8 @@ export default function SectionBackground({
       {variant !== "none" && <div aria-hidden className={`absolute inset-0 -z-30 ${variant === "grid" ? "tri-grid-bg" : variant === "hex" ? "tri-mesh tri-hex-grid" : "tri-mesh"}`} />}
       {variant !== "none" && (
         <>
-          <div aria-hidden className="tri-blob -z-20 h-72 w-72 animate-float-slow" style={{ left: "-8%", top: "12%", background: "radial-gradient(circle, rgba(41,171,135,0.22), transparent 70%)" }} />
-          <div aria-hidden className="tri-blob -z-20 h-80 w-80 animate-float-reverse" style={{ right: "-10%", bottom: "8%", background: "radial-gradient(circle, rgba(245,166,35,0.16), transparent 70%)" }} />
+          <div aria-hidden className="tri-blob -z-20 h-72 w-72 animate-float-slow" style={{ left: "-8%", top: "12%", background: "radial-gradient(circle, rgba(255, 255, 255,0.22), transparent 70%)" }} />
+          <div aria-hidden className="tri-blob -z-20 h-80 w-80 animate-float-reverse" style={{ right: "-10%", bottom: "8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.16), transparent 70%)" }} />
         </>
       )}
       {flow && (

@@ -27,7 +27,7 @@ export default function IndustryHeroStage({
   caption,
   sub,
   kpis,
-  accentColor = "#29ab87",
+  accentColor = "#ffffff",
   children,
 }: IndustryHeroStageProps) {
   const reduce = useReducedMotion();
@@ -78,7 +78,7 @@ export default function IndustryHeroStage({
       <div
         aria-hidden
         className="pointer-events-none absolute right-[-5%] top-1/3 z-0 h-[450px] w-[450px] rounded-full blur-[140px] opacity-20"
-        style={{ background: "#117a4b" }}
+        style={{ background: "#ffffff" }}
       />
 
       {/* ── Bespoke 3D / SVG Animation Canvas ── */}

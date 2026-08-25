@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import AboutPillarsShowcase from "@/components/about/AboutPillarsShowcase";
-import AboutGlobalConstellation from "@/components/ui/hero-animations/AboutGlobalConstellation";
 
 const purposes = [
   {
@@ -72,7 +71,7 @@ const leadership = [
 
 export default function AboutUsPage() {
   return (
-    <main className="overflow-hidden bg-[#030713] text-white">
+    <main className="about-page public-alternating-page overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
@@ -83,53 +82,39 @@ export default function AboutUsPage() {
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
-        {/* Slow interconnected constellation network & luminous partnership arcs */}
-        <AboutGlobalConstellation />
 
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
         {/* Ambient glow orbs */}
-        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl animate-float-slow" />
-        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl animate-float-reverse" />
+        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl" />
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+            <div
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" />
+              <Sparkles className="h-3.5 w-3.5 text-white" />
               About Trijotech
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <h1
               className="mt-5 text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
               Technology shaped around{" "}
               <span className="tri-gradient-text">
                 real outcomes
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+            <p
               className="mt-6 text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
             >
               We help enterprises modernize SAP landscapes, integrate critical data, and turn technology investments into sustainable business advantage.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.52 }}
+            <div
               className="mt-9 flex flex-wrap gap-4"
             >
               <a
@@ -140,24 +125,20 @@ export default function AboutUsPage() {
               </a>
               <Link
                 href="/contact"
-                className="rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/20"
+                className="rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:bg-white/20"
               >
                 Talk to our team
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
 
         {/* narrative progress line */}
         <div className="pointer-events-none absolute inset-x-0 bottom-14">
           <div className="relative mx-auto h-px w-[min(86%,38rem)] bg-white/15">
-            <motion.span
-              className="absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-[#29ab87] shadow-[0_0_12px_rgba(41,171,135,0.9)]"
-              animate={{ left: ["0%", "100%"] }}
-              transition={{ repeat: Infinity, duration: 9, repeatType: "reverse", ease: "easeInOut" }}
-            />
-            <span className="absolute -top-1 left-0 h-3 w-3 -translate-x-1/2 rounded-full border border-[#29ab87]/50" />
-            <span className="absolute -top-1 right-0 h-3 w-3 translate-x-1/2 rounded-full border border-[#29ab87]/50" />
+            <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_12px_rgba(255, 255, 255,0.9)]" />
+            <span className="absolute -top-1 left-0 h-3 w-3 -translate-x-1/2 rounded-full border border-white/50" />
+            <span className="absolute -top-1 right-0 h-3 w-3 translate-x-1/2 rounded-full border border-white/50" />
           </div>
         </div>
 
@@ -166,10 +147,10 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── Who We Are ───────────────────────── */}
-      <section id="who-we-are" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
+      <section id="who-we-are" className="relative isolate overflow-hidden bg-[#0b1d33] py-20 sm:py-24 lg:py-28 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(41,171,135,0.15)] blur-3xl animate-float" />
+        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(255, 255, 255,0.15)] blur-3xl animate-float" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -178,21 +159,21 @@ export default function AboutUsPage() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
             <p className="tri-overline">Who we are</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Deep expertise,{" "}
               <span className="tri-gradient-text">close collaboration</span>
             </h2>
-            <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-5 text-base leading-8 text-slate-300">
               Trijotech is a technology consulting company focused on SAP, enterprise data, analytics, integration, and intelligent automation. We combine deep functional understanding with hands-on engineering to solve the challenges that matter most to your business.
             </p>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-4 text-base leading-8 text-slate-300">
               Our consultants bring global experience and a collaborative mindset to every engagement. Whether modernizing a core platform, improving planning and reporting, or building on SAP BTP, we stay close to the outcome from strategy through support.
             </p>
-            <div className="mt-5 flex items-center gap-2.5 border-t border-white/10 pt-4 text-xs sm:text-sm font-semibold text-[#7edcc2]">
+            <div className="about-expertise-note mt-6 flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-semibold sm:text-base">
               <motion.span
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-md"
+                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-md"
               >
                 <Check className="h-3.5 w-3.5" />
               </motion.span>
@@ -212,7 +193,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── Vision / Mission / Goals ─────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 border-b border-white/10">
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-20 sm:py-24 lg:py-28 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -224,10 +205,10 @@ export default function AboutUsPage() {
             className="max-w-3xl"
           >
             <p className="tri-overline">Our direction</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Vision, mission and goals
             </h2>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-4 text-base leading-8 text-slate-300">
               The principles that guide every engagement and long-term client partnership.
             </p>
           </motion.div>
@@ -241,11 +222,11 @@ export default function AboutUsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                className="about-card flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 sm:p-8 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
               >
-                <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f5a623]">{item.label}</p>
+                <p className="text-[10px] font-bold uppercase tracking-[.2em] text-white">{item.label}</p>
                 <h3 className="mt-3 text-base sm:text-lg font-bold leading-snug text-white">{item.title}</h3>
-                <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.text}</p>
+                <p className="mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">{item.text}</p>
               </motion.article>
             ))}
           </div>
@@ -253,7 +234,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── Values ───────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-20 sm:py-24 lg:py-28 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -265,7 +246,7 @@ export default function AboutUsPage() {
             className="max-w-3xl"
           >
             <p className="tri-overline">How we work</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Simple principles, consistently applied
             </h2>
           </motion.div>
@@ -279,17 +260,17 @@ export default function AboutUsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                className="about-card group relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 sm:p-8 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
               >
                 <motion.span
-                  className="absolute right-4 top-3 text-4xl font-bold text-white/10 transition-colors group-hover:text-[#29ab87]/30"
+                  className="absolute right-4 top-3 text-4xl font-bold text-white/10 transition-colors group-hover:text-white/30"
                   animate={{ opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                 >
                   {value.number}
                 </motion.span>
                 <h3 className="relative mt-8 text-base sm:text-lg font-bold text-white">{value.title}</h3>
-                <p className="relative mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{value.description}</p>
+                <p className="relative mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">{value.description}</p>
               </motion.article>
             ))}
           </div>
@@ -297,7 +278,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── Leadership ───────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 border-b border-white/10">
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-20 sm:py-24 lg:py-28 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -309,11 +290,11 @@ export default function AboutUsPage() {
             className="max-w-3xl"
           >
             <p className="tri-overline">Our leadership</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Leadership that{" "}
               <span className="tri-gradient-text">builds trust</span>
             </h2>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-4 text-base leading-8 text-slate-300">
               Deep SAP experience with a practical focus on predictable delivery and long-term client success.
             </p>
           </motion.div>
@@ -327,7 +308,7 @@ export default function AboutUsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                className="about-card group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
               >
                 <div className="relative aspect-[16/10] w-full shrink-0 bg-slate-900 overflow-hidden">
                   <Image
@@ -340,9 +321,9 @@ export default function AboutUsPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
                 </div>
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-bold text-white">{leader.name}</h3>
-                  <p className="mt-0.5 text-xs sm:text-sm font-semibold text-[#7edcc2]">{leader.role}</p>
-                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{leader.description}</p>
+                  <h3 className="text-xl font-bold text-white">{leader.name}</h3>
+                  <p className="mt-0.5 text-xs sm:text-sm font-semibold text-white">{leader.role}</p>
+                  <p className="mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">{leader.description}</p>
                 </div>
               </motion.article>
             ))}
@@ -351,7 +332,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
+      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-30" />
@@ -363,9 +344,9 @@ export default function AboutUsPage() {
           className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[.2em] text-[#f5a623]">Let&apos;s work together</p>
+            <p className="text-sm font-bold uppercase tracking-[.2em] text-white">Let&apos;s work together</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               Ready to turn your next priority into progress?
             </h2>

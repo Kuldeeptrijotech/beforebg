@@ -9,74 +9,6 @@ import type { SolutionItem } from "@/lib/solutions-data";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
-function CloudAtmosphere() {
-  const layers = [
-    { top: "10%", dur: 46, delay: 0, scale: 1, o: 0.45 },
-    { top: "26%", dur: 62, delay: -18, scale: 1.4, o: 0.35 },
-    { top: "42%", dur: 52, delay: -32, scale: 1.1, o: 0.4 },
-  ];
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-[5] overflow-hidden">
-      {layers.map((c, i) => (
-        <motion.div
-          key={i}
-          className="absolute left-0"
-          style={{ top: c.top, filter: "blur(34px)", opacity: c.o }}
-          animate={{ x: ["-42vw", "110vw"] }}
-          transition={{ duration: c.dur, repeat: Infinity, ease: "linear", delay: c.delay }}
-        >
-          <div
-            className="relative"
-            style={{
-              width: "34rem",
-              height: "9rem",
-              transform: `scale(${c.scale})`,
-              background:
-                "radial-gradient(closest-side at 18% 72%, rgba(148,187,220,0.5), transparent), radial-gradient(closest-side at 42% 46%, rgba(148,187,220,0.6), transparent), radial-gradient(closest-side at 68% 70%, rgba(148,187,220,0.5), transparent), radial-gradient(closest-side at 88% 50%, rgba(122,168,214,0.35), transparent), radial-gradient(closest-side at 50% 100%, rgba(148,187,220,0.4), transparent)",
-            }}
-          />
-        </motion.div>
-      ))}
-      <div className="absolute inset-0 bg-[radial-gradient(70%_45%_at_50%_55%,rgba(186,212,236,0.06),transparent_70%)]" />
-    </div>
-  );
-}
-
-function OrbitRings() {
-  const reduce = useReducedMotion();
-  const ring = (size: string, border: string, tilt: string, dur: number, reverse = false, dashed = false) => (
-    <div style={{ transform: tilt, transformStyle: "preserve-3d" }} className="absolute flex items-center justify-center">
-      <motion.div
-        className="rounded-full"
-        style={{
-          width: size,
-          height: size,
-          border: dashed ? `1px dashed ${border}` : `1px solid ${border}`,
-          boxShadow: "0 0 60px rgba(56,189,248,0.1)",
-        }}
-        animate={{ rotate: reduce ? 0 : reverse ? -360 : 360 }}
-        transition={{ duration: dur, repeat: Infinity, ease: "linear" }}
-      />
-    </div>
-  );
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-[4] flex items-center justify-center overflow-hidden">
-      {ring("72vmin", "rgba(56,189,248,0.22)", "rotateX(74deg)", 28)}
-      {ring("48vmin", "rgba(34,211,238,0.28)", "rotateX(58deg) rotateY(-12deg)", 18, true, true)}
-      {ring("92vmin", "rgba(139,124,246,0.16)", "rotateX(80deg) rotateZ(16deg)", 40)}
-      <div style={{ transform: "rotateX(74deg)" }} className="absolute flex h-[72vmin] w-[72vmin] items-center justify-center">
-        <motion.div
-          className="absolute inset-0"
-          animate={{ rotate: reduce ? 0 : 360 }}
-          transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        >
-          <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#67e8f9] shadow-[0_0_14px_#67e8f9]" />
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
 type Props = {
   solution: SolutionItem;
   heroImage?: string;
@@ -95,194 +27,109 @@ export default function SolutionDetailLanding({
   heroTitle = solution.title,
   showHeroCopy = true,
   cleanImpactImage = false,
-  scene,
-  heroLayout,
 }: Props) {
-  const layout: "centered" | "split" | "split-reverse" =
-    heroLayout ??
-    (solution.slug.includes("invoicing")
-      ? "centered"
-      : solution.slug.includes("consolidation")
-        ? "split-reverse"
-        : "split");
-
   const renderTitle = (title: string | ReactNode) => {
     if (typeof title !== "string") return title;
-    const words = title.split(" ");
-    if (words.length <= 1) {
-      return (
-        <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">
-          {title}
-        </span>
-      );
-    }
-    const lastWord = words.pop();
-    const rest = words.join(" ");
-    return (
-      <>
-        {rest}{" "}
-        <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">
-          {lastWord}
-        </span>
-      </>
-    );
+    return title;
   };
 
   const getDefinitionTitle = () => {
     if (solution.slug === "e-invoicing-pro") {
-      return (
-        <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">
-          E-Invoicing
-        </span>
-      );
+      return "E-Invoicing";
     }
     if (solution.slug === "finlagoon-consolidation") {
-      return (
-        <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">
-          Finlagoon Consolidation
-        </span>
-      );
+      return "Finlagoon Consolidation";
     }
     if (solution.slug === "profitability-pro") {
-      return (
-        <span className="bg-gradient-to-r from-[#29ab87] via-[#117a4b] to-[#f5a623] bg-clip-text text-transparent">
-          Profitability Pro
-        </span>
-      );
+      return "Profitability Pro";
     }
     return solution.title;
   };
 
-  const heroCopy = (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
-      >
-        <Sparkles className="h-4 w-4 text-[#29ab87]" /> {solution.eyebrow}
-      </motion.div>
-
-      <motion.h1
-        initial={{ opacity: 0, y: 28 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-        className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
-      >
-        {renderTitle(heroTitle)}
-      </motion.h1>
-
-      {solution.slug !== "e-invoicing-pro" && solution.subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.38 }}
-          className="mt-5 text-lg font-semibold leading-relaxed text-[#29ab87] sm:text-xl"
-        >
-          {solution.subtitle}
-        </motion.p>
-      )}
-
-      {solution.slug !== "e-invoicing-pro" && solution.shortDescription && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.46 }}
-          className="mt-4 max-w-xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
-        >
-          {solution.shortDescription}
-        </motion.p>
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.52 }}
-        className="mt-9 flex flex-wrap gap-4"
-      >
-        <a
-          href="#capabilities"
-          className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 font-semibold text-cyan-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-cyan-300 hover:shadow-xl hover:shadow-cyan-400/25"
-        >
-          Explore capabilities <ArrowRight className="h-4 w-4" />
-        </a>
-        <Link
-          href="/solutions"
-          className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-md hover:bg-white/20"
-        >
-          <ArrowLeft className="h-4 w-4" /> All solutions
-        </Link>
-      </motion.div>
-    </>
-  );
-
   return (
-    <main className="font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="solution-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
-      <section className="relative isolate flex min-h-[100svh] w-full flex-col overflow-hidden bg-[#030713] pb-4 pt-24 sm:pt-28 lg:h-screen lg:min-h-[680px] lg:py-0">
+      <section className="relative isolate flex min-h-[70vh] w-full flex-col justify-center overflow-hidden bg-[#050817] pb-16 pt-32 sm:pt-36 lg:min-h-[600px] lg:py-24">
         {/* Brand tri-mesh, grid and hex-grid overlay */}
         <div aria-hidden className="absolute inset-0 -z-10 tri-mesh" />
-        <div aria-hidden className="absolute inset-0 -z-10 tri-grid-bg" />
-        <div className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-40" />
+        <div aria-hidden className="absolute inset-0 -z-10 tri-grid-bg opacity-40" />
+        <div className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-30" />
 
-        {/* Brand glowing orbs (mint-green/teal and orange/amber) */}
-        <div aria-hidden className="pointer-events-none absolute right-[8%] top-[14%] -z-10 h-64 w-64 rounded-full bg-[rgba(41,171,135,0.14)] blur-3xl tri-pulse" />
-        <div aria-hidden className="pointer-events-none absolute bottom-[16%] left-[6%] -z-10 h-48 w-48 rounded-full bg-[rgba(245,166,35,0.12)] blur-3xl tri-pulse" style={{ animationDelay: "1.5s" }} />
+        {/* Brand ambient glows (static) */}
+        <div aria-hidden className="pointer-events-none absolute right-[8%] top-[14%] -z-10 h-72 w-72 rounded-full bg-white/[0.07] blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute bottom-[16%] left-[6%] -z-10 h-64 w-64 rounded-full bg-white/[0.05] blur-3xl" />
 
-        {/* Immersive cloudy atmosphere & orbit rings behind the scene */}
-        <CloudAtmosphere />
-        <OrbitRings />
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
+          <div className="flex max-w-4xl flex-col items-start text-left">
+            {/* Eyebrow badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+              </span>
+              <Sparkles className="h-3.5 w-3.5 text-white" />
+              {solution.eyebrow}
+            </div>
 
-        {/* Heading zone at the top left (if no interactive scene provided) */}
-        {!scene && (
-          <div className="relative z-20 mx-auto w-full max-w-7xl px-5 pt-24 sm:px-8 lg:px-12 lg:pt-28 pointer-events-none">
-            <div className="max-w-md">
-              <motion.h1
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="text-[clamp(1.25rem,2.4vw,2rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white"
+            {/* Title */}
+            <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
+              {renderTitle(heroTitle)}
+            </h1>
+
+            {/* Subtitle */}
+            {solution.subtitle && (
+              <p className="mt-5 text-lg font-semibold leading-relaxed text-white sm:text-xl">
+                {solution.subtitle}
+              </p>
+            )}
+
+            {/* Description */}
+            {solution.shortDescription && (
+              <p className="mt-4 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg">
+                {solution.shortDescription}
+              </p>
+            )}
+
+            {/* Action buttons */}
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="#capabilities"
+                className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-bold text-[#030713]"
               >
-                {renderTitle(heroTitle)}
-              </motion.h1>
+                Explore capabilities <ArrowRight className="h-4 w-4" />
+              </a>
+              <Link
+                href="/solutions"
+                className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white"
+              >
+                <ArrowLeft className="h-4 w-4" /> All solutions
+              </Link>
             </div>
           </div>
-        )}
-
-        {/* Animation zone: Full-bleed responsive canvas */}
-        <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col justify-center">
-          {scene ? (
-            scene
-          ) : (
-            <div className="absolute inset-0 overflow-hidden opacity-30">
-              <Image src={heroImage} alt="" fill priority sizes="100vw" className="object-cover object-center" />
-            </div>
-          )}
         </div>
 
-        {/* Clean bottom border / cloud transition fade */}
-        <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
+        {/* Clean bottom border */}
+        <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/10" />
       </section>
 
       {/* ── Overview / Definition ─────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(41,171,135,0.08)] blur-3xl animate-float" />
+        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(255, 255, 255,0.08)] blur-3xl animate-float" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-            className="rounded-2xl border border-white/10 bg-[#1a2336]/90 p-5 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl"
+            className="solution-detail-card min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/90 p-5 sm:p-8 lg:p-10 shadow-2xl"
           >
             <div className="grid gap-6 lg:grid-cols-12 items-start">
               {/* Left Column: Definition Tag, Title, and Subtitle */}
               <div className="lg:col-span-6 flex flex-col justify-center">
-                <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">
-                  <span className="h-px w-5 bg-[#29ab87]" />
+                <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
+                  <span className="h-px w-5 bg-white" />
                   Definition
                 </p>
                 <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-white">
@@ -306,7 +153,7 @@ export default function SolutionDetailLanding({
                   <div className="mt-4 space-y-2 pt-4 border-t border-white/10">
                     {solution.highlights.map((highlight, i) => (
                       <div key={i} className="flex items-start gap-2.5">
-                        <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-[rgba(41,171,135,0.2)] text-[#29ab87]">
+                        <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-[rgba(255, 255, 255,0.2)] text-white">
                           <Check className="h-3 w-3" />
                         </span>
                         <p className="text-xs sm:text-sm font-medium text-slate-200 leading-snug">{highlight}</p>
@@ -332,8 +179,8 @@ export default function SolutionDetailLanding({
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">
-              <span className="h-px w-5 bg-[#29ab87]" />
+            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
+              <span className="h-px w-5 bg-white" />
               At a glance
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -350,14 +197,14 @@ export default function SolutionDetailLanding({
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="flex h-full flex-col rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md transition-all duration-300 hover:border-[#29ab87] hover:bg-[#222d42]"
+                className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md transition-all duration-300 hover:border-white hover:bg-[#222d42]"
               >
                 <motion.span
                   whileHover={{ rotate: 15, scale: 1.2 }}
                   transition={{ duration: 0.25 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-[#29ab87] shadow-md"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-white shadow-md"
                 >
-                  <Zap className="h-4.5 w-4.5" />
+                  <Zap className="solution-card-icon h-4.5 w-4.5" />
                 </motion.span>
                 <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{item.title}</h3>
                 <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
@@ -379,8 +226,8 @@ export default function SolutionDetailLanding({
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">
-              <span className="h-px w-5 bg-[#29ab87]" />
+            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
+              <span className="h-px w-5 bg-white" />
               Capabilities
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -396,7 +243,7 @@ export default function SolutionDetailLanding({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md sm:p-6"
+                className="solution-detail-card min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md sm:p-6"
               >
                 <div className="grid gap-6 lg:grid-cols-[.7fr_1.3fr]">
                   <div>
@@ -406,9 +253,9 @@ export default function SolutionDetailLanding({
                         whileInView={{ width: 16 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="h-px bg-[#29ab87] block"
+                        className="h-px bg-white block"
                       />
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#29ab87]">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
                         Capability {String(sectionIndex + 1).padStart(2, "0")}
                       </p>
                     </div>
@@ -425,7 +272,7 @@ export default function SolutionDetailLanding({
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: itemIndex * 0.08 }}
-                        className="flex h-full flex-col rounded-xl border border-white/10 bg-[#222d42]/70 p-4 transition-all duration-300 hover:border-[#29ab87] hover:bg-[#222d42]"
+                        className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#222d42]/70 p-4 transition-all duration-300 hover:border-white hover:bg-[#222d42]"
                       >
                         <h4 className="text-xs sm:text-sm font-bold text-white">{item.title}</h4>
                         <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
@@ -452,8 +299,8 @@ export default function SolutionDetailLanding({
             className="flex flex-col gap-6"
           >
             <div>
-              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#29ab87]">
-                <span className="h-px w-5 bg-[#29ab87]" />
+              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
+                <span className="h-px w-5 bg-white" />
                 Business outcomes
               </p>
               <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -495,11 +342,11 @@ export default function SolutionDetailLanding({
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.1 }}
                 whileHover={{ x: 4, transition: { duration: 0.15 } }}
-                className="rounded-xl border border-white/10 bg-[#1a2336]/80 p-4 hover:border-[#f5a623] transition-colors duration-300"
+                className="solution-detail-card min-w-0 overflow-hidden rounded-xl border border-white/10 bg-[#1a2336]/80 p-4 hover:border-white transition-colors duration-300"
               >
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[rgba(245,166,35,0.18)] text-[#f5a623]">
-                    <Check className="h-3.5 w-3.5" />
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[rgba(255, 255, 255,0.18)] text-white">
+                    <Check className="solution-card-icon h-3.5 w-3.5" />
                   </span>
                   <h3 className="text-xs sm:text-sm font-bold leading-relaxed text-white">{benefit}</h3>
                 </div>
@@ -512,7 +359,7 @@ export default function SolutionDetailLanding({
       <OtherSolutions currentSlug={solution.slug} />
 
       {/* ── CTA Banner ────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
+      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <motion.div
@@ -523,9 +370,9 @@ export default function SolutionDetailLanding({
           className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(41,171,135,0.28), transparent 68%)" }} />
+          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
           <div className="relative mx-auto max-w-3xl">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#f5a623]">
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
               Let&apos;s work together
             </p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">

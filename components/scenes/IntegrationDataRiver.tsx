@@ -95,7 +95,7 @@ const DATA_SOURCES: DataSource[] = [
     category: "Shopfloor Telemetry & Supply Chain",
     icon: Radio,
     protocol: "MQTT · Apache Kafka",
-    color: "#29ab87",
+    color: "#ffffff",
     speed: "480 MB/s",
     schema: "JSON Telemetry Stream",
     records: "980K msg/sec",
@@ -129,7 +129,7 @@ const FABRIC_MODES: FabricMode[] = [
     throughput: "2.9 GB/s",
     latency: "< 18 ms",
     quality: "100%",
-    color: "#29ab87",
+    color: "#ffffff",
   },
 ];
 
@@ -166,7 +166,7 @@ export default function IntegrationDataRiver() {
           style={{
             backgroundImage: `
               radial-gradient(circle at center, rgba(56,189,248,0.15) 1px, transparent 1px),
-              linear-gradient(to right, rgba(41,171,135,0.06) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255,0.06) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px, 80px 80px",
           }}
@@ -217,7 +217,7 @@ export default function IntegrationDataRiver() {
             <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-white/50">
               1. Federated Ingestion Sources
             </span>
-            <span className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">4 Connected</span>
+            <span className="text-[8px] sm:text-[9px] font-mono text-white">4 Connected</span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
@@ -329,7 +329,7 @@ export default function IntegrationDataRiver() {
               onClick={handlePulseSync}
             >
               <Database className="h-8 w-8 sm:h-10 sm:w-10 text-white drop-shadow-[0_0_15px_#38bdf8]" />
-              <span className="mt-1 text-[8px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider text-[#7edcc2]">
+              <span className="mt-1 text-[8px] sm:text-[9px] font-mono font-extrabold uppercase tracking-wider text-white">
                 DATASPHERE
               </span>
             </motion.div>
@@ -383,7 +383,7 @@ export default function IntegrationDataRiver() {
                 <div className="flex items-center justify-between font-mono text-[10px] sm:text-[11px] text-slate-200">
                   <span className="truncate max-w-[130px] sm:max-w-[160px]">{currentSource.schema}</span>
                   <ArrowRight className="h-3 w-3 text-white/40 shrink-0 mx-1" />
-                  <span className="text-[#29ab87] font-bold">SAC / Datasphere</span>
+                  <span className="text-white font-bold">SAC / Datasphere</span>
                 </div>
               </div>
 
@@ -405,18 +405,18 @@ export default function IntegrationDataRiver() {
                 </div>
                 <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
                   <p className="text-[7px] sm:text-[8px] font-mono text-white/40">LATENCY</p>
-                  <p className="text-[10px] sm:text-xs font-mono font-bold text-[#29ab87]">{currentMode.latency}</p>
+                  <p className="text-[10px] sm:text-xs font-mono font-bold text-white">{currentMode.latency}</p>
                 </div>
                 <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
                   <p className="text-[7px] sm:text-[8px] font-mono text-white/40">DATA QUALITY</p>
-                  <p className="text-[10px] sm:text-xs font-mono font-bold text-[#f5a623]">{currentMode.quality}</p>
+                  <p className="text-[10px] sm:text-xs font-mono font-bold text-white">{currentMode.quality}</p>
                 </div>
               </div>
 
               {/* Live Record Settled Stream */}
               <div className="mt-2.5 flex items-center justify-between rounded-lg bg-white/[0.03] px-2.5 py-1 text-[9px] sm:text-[10px] font-mono">
                 <span className="text-white/50">Total Live Ingested:</span>
-                <span className="font-bold text-[#29ab87]" suppressHydrationWarning>
+                <span className="font-bold text-white" suppressHydrationWarning>
                   {liveCounter.toLocaleString("en-US")} recs
                 </span>
               </div>
@@ -427,7 +427,7 @@ export default function IntegrationDataRiver() {
 
       {/* ── Bottom Ribbon: Certified Integration Matrix ── */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-        <span className="flex items-center gap-1.5 text-[#29ab87]">
+        <span className="flex items-center gap-1.5 text-white">
           <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP INTEGRATION SUITE CERTIFIED
         </span>
         <span className="hidden sm:inline">ZERO-ETL BUSINESS DATA FABRIC ARCHITECTURE</span>

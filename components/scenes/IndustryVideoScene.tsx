@@ -44,9 +44,9 @@ import { GlowHalo, HEX_CLIP, Packet, PulseDot } from "./scene-ui";
    ───────────────────────────────────────────────────────────── */
 
 const TRI = {
-  deep: "#117a4b",
-  mint: "#29ab87",
-  amber: "#f5a623",
+  deep: "#ffffff",
+  mint: "#ffffff",
+  amber: "#ffffff",
   navy: "#232555",
 };
 
@@ -427,7 +427,7 @@ function SapHub({ config }: { config: Config }) {
       </div>
       <div
         className="mt-4 flex items-center gap-2 rounded-full border border-white/12 bg-[#0b1d33]/70 px-3.5 py-1.5 backdrop-blur-md"
-        style={{ boxShadow: "0 0 34px rgba(41,171,135,0.35)" }}
+        style={{ boxShadow: "0 0 34px rgba(255, 255, 255,0.35)" }}
       >
         <span className="text-[10px] font-extrabold uppercase tracking-[0.22em]" style={{ color: TRI.amber }}>
           SAP
@@ -466,13 +466,13 @@ export default function IndustryVideoScene({ slug = "retail-supply-chain" }: { s
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         style={{
           background:
-            "radial-gradient(55% 45% at 28% 22%, rgba(41,171,135,0.32), transparent 62%), radial-gradient(48% 42% at 72% 28%, rgba(245,166,35,0.26), transparent 60%), radial-gradient(75% 55% at 50% 100%, rgba(17,122,75,0.32), transparent 68%)",
+            "radial-gradient(55% 45% at 28% 22%, rgba(255, 255, 255,0.32), transparent 62%), radial-gradient(48% 42% at 72% 28%, rgba(255, 255, 255,0.26), transparent 60%), radial-gradient(75% 55% at 50% 100%, rgba(255, 255, 255,0.32), transparent 68%)",
         }}
       />
       {/* tri-color ambient glow */}
-      <div className="pointer-events-none absolute left-[12%] top-[16%] h-80 w-80 rounded-full blur-3xl tri-pulse" style={{ background: "radial-gradient(circle, rgba(17,122,75,0.34), transparent 68%)" }} />
-      <div className="pointer-events-none absolute right-[10%] top-[12%] h-72 w-72 rounded-full blur-3xl tri-pulse" style={{ background: "radial-gradient(circle, rgba(245,166,35,0.26), transparent 68%)", animationDelay: "1.4s" }} />
-      <div className="pointer-events-none absolute bottom-[14%] right-[26%] h-72 w-72 rounded-full blur-3xl tri-pulse" style={{ background: "radial-gradient(circle, rgba(41,171,135,0.3), transparent 68%)", animationDelay: "2.6s" }} />
+      <div className="pointer-events-none absolute left-[12%] top-[16%] h-80 w-80 rounded-full blur-3xl tri-pulse" style={{ background: "radial-gradient(circle, rgba(255, 255, 255,0.34), transparent 68%)" }} />
+      <div className="pointer-events-none absolute right-[10%] top-[12%] h-72 w-72 rounded-full blur-3xl tri-pulse" style={{ background: "radial-gradient(circle, rgba(255, 255, 255,0.26), transparent 68%)", animationDelay: "1.4s" }} />
+      <div className="pointer-events-none absolute bottom-[14%] right-[26%] h-72 w-72 rounded-full blur-3xl tri-pulse" style={{ background: "radial-gradient(circle, rgba(255, 255, 255,0.3), transparent 68%)", animationDelay: "2.6s" }} />
 
       {/* slow cinematic camera drift */}
       <motion.div
@@ -555,7 +555,7 @@ export default function IndustryVideoScene({ slug = "retail-supply-chain" }: { s
           className="absolute flex items-center justify-center"
           style={{ left: `${INSIGHT.x / 10}%`, top: `${INSIGHT.y / 6.4}%`, transform: "translate(-50%, -50%)" }}
         >
-          <div className="flex h-14 w-14 items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg, rgba(245,166,35,0.9), rgba(223,138,18,0.95))", boxShadow: "0 0 40px rgba(245,166,35,0.55)" }}>
+          <div className="flex h-14 w-14 items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg, rgba(255, 255, 255,0.9), rgba(223,138,18,0.95))", boxShadow: "0 0 40px rgba(255, 255, 255,0.55)" }}>
             <Activity className="h-7 w-7 text-white" strokeWidth={1.7} />
           </div>
         </div>
@@ -566,10 +566,10 @@ export default function IndustryVideoScene({ slug = "retail-supply-chain" }: { s
 
       {/* cinematic light rays */}
       {!reduce && (
-        <div aria-hidden className="pointer-events-none absolute -left-1/4 -top-1/3 h-[150%] w-32 rotate-[16deg] bg-gradient-to-b from-[rgba(126,220,194,0.07)] via-[rgba(255,255,255,0.02)] to-transparent blur-2xl" />
+        <div aria-hidden className="pointer-events-none absolute -left-1/4 -top-1/3 h-[150%] w-32 rotate-[16deg] bg-gradient-to-b from-[rgba(255, 255, 255,0.07)] via-[rgba(255,255,255,0.02)] to-transparent blur-2xl" />
       )}
       {!reduce && (
-        <div aria-hidden className="pointer-events-none absolute -right-1/4 top-1/4 h-[130%] w-44 rotate-[-14deg] bg-gradient-to-b from-[rgba(245,166,35,0.06)] via-transparent to-transparent blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -right-1/4 top-1/4 h-[130%] w-44 rotate-[-14deg] bg-gradient-to-b from-[rgba(255, 255, 255,0.06)] via-transparent to-transparent blur-3xl" />
       )}
 
       {/* scanning light sweep */}
@@ -640,7 +640,7 @@ export default function IndustryVideoScene({ slug = "retail-supply-chain" }: { s
                 <motion.div
                   key={`fill-${shot}`}
                   className="absolute inset-0 rounded-full"
-                  style={{ background: "linear-gradient(90deg,#117a4b,#29ab87,#f5a623)" }}
+                  style={{ background: "linear-gradient(90deg,#22d3ee,#2563eb,#ffffff)" }}
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: SHOT_MS / 1000, ease: "linear" }}

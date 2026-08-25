@@ -1,4 +1,4 @@
-import {
+﻿import {
   Boxes,
   Factory,
   PackageCheck,
@@ -15,9 +15,9 @@ type Tone = "green" | "amber" | "mix" | "dim" | "white";
 const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
 
 const TONE_BG: Record<Tone, string> = {
-  green: "linear-gradient(160deg,#29ab87,#117a4b)",
-  amber: "linear-gradient(160deg,#f5a623,#f29e16)",
-  mix: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)",
+  green: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  amber: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  mix: "linear-gradient(135deg,#22d3ee,#2563eb 55%,#ffffff 130%)",
   dim: "linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))",
   white: "linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))",
 };
@@ -54,8 +54,8 @@ export default function SupplyChainScene() {
   return (
     <SceneCanvas bleed className="h-full w-full">
       <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 640 480" preserveAspectRatio="none" fill="none">
-        <FlowLink d={SPINE} color="rgba(41,171,135,0.35)" width={1.5} dash />
-        <FlowLink d={RETURN} color="rgba(245,166,35,0.3)" width={1.3} dash />
+        <FlowLink d={SPINE} color="rgba(255, 255, 255,0.35)" width={1.5} dash />
+        <FlowLink d={RETURN} color="rgba(255, 255, 255,0.3)" width={1.3} dash />
         <Packet d={SPINE} dur={8} delay={0} color={TRI.mint} r={4} />
         <Packet d={SPINE} dur={8} delay={4} color={TRI.green} r={3.5} />
         <Packet d={RETURN} dur={7} delay={1} color={TRI.amber} r={3.5} />
@@ -69,7 +69,7 @@ export default function SupplyChainScene() {
         <GlowHalo cx={570} cy={150} r={46} color={TRI.green} opacity={0.14} />
         <SceneText x={70} y={112} size={9} fill="rgba(191,232,216,0.4)">START</SceneText>
         <SceneText x={570} y={112} size={9} fill="rgba(191,232,216,0.45)">END</SceneText>
-        <SceneText x={330} y={236} size={9} fill="rgba(245,166,35,0.55)">DEMAND SIGNAL</SceneText>
+        <SceneText x={330} y={236} size={9} fill="rgba(255, 255, 255,0.55)">DEMAND SIGNAL</SceneText>
       </svg>
 
       {NODES.map((n) => (
@@ -92,7 +92,7 @@ export default function SupplyChainScene() {
         </span>
         <div className="leading-tight">
           <p className="text-[10px] font-semibold text-white/50">Demand signal</p>
-          <p className="text-sm font-bold text-amber-300">+8.2% <span className="font-medium text-white/70">forecast</span></p>
+          <p className="text-sm font-bold text-white">+8.2% <span className="font-medium text-white/70">forecast</span></p>
         </div>
       </div>
     </SceneCanvas>

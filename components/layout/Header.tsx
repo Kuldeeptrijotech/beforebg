@@ -31,6 +31,7 @@ const dropdownHeroImages: Record<string, string> = {
   "/solutions/finlagoon-consolidation": "/assets/heroes/industry-blue.png",
   "/solutions/profitability-pro": "/assets/image/Product_4.png",
   "/services": "/assets/heroes/services.png",
+  "/services/sap-consulting": "/assets/heroes/sap-implementation-blue.png",
   "/services/sap-implementation": "/assets/heroes/sap-implementation-blue.png",
   "/services/sap-support": "/assets/heroes/sap-support-blue.png",
   "/services/sap-btp-full-stack": "/assets/heroes/sap-btp-full-stack-blue.png",
@@ -47,7 +48,7 @@ const dropdownHeroImages: Record<string, string> = {
   "/insights": "/assets/heroes/blogs-blue.png",
   "/blogs": "/assets/heroes/blogs-blue.png",
   "/case-studies": "/assets/case-studies/financial-analysis-team.png",
-  "/videos": "/assets/heroes/videos-generated-v2.png",
+  "/videos": "/assets/heroes/videos-camera-hero.png",
   "/corporate": "/assets/about/trijotech-team-collaboration-blue.png",
   "/about-us": "/assets/about/trijotech-team-collaboration-blue.png",
   "/careers": "/assets/heroes/careers-generated-v2.png",
@@ -235,10 +236,10 @@ export default function Header() {
     >
       <div className={`relative border-b backdrop-blur-xl transition-[border-color,background-color,box-shadow] duration-300 ${
         isPastHero
-          ? "border-[rgba(41,171,135,0.28)] bg-[#050817]/90 shadow-lg shadow-black/25"
+          ? "border-white/20 bg-[#050817]/90 shadow-lg shadow-black/25"
           : "border-white/10 bg-[#050817]/95"
       }`}>
-        <div className="site-header-grid mx-auto grid h-18 w-full max-w-7xl 2xl:max-w-[1536px] 3xl:max-w-[1780px] grid-cols-[1fr_auto] items-center gap-4 px-3 sm:px-4 xl:grid-cols-[1fr_auto_1fr] xl:px-6 2xl:px-8">
+        <div className="site-header-grid mx-auto grid h-18 w-full max-w-none grid-cols-[1fr_auto] items-center gap-4 px-3 sm:px-4 xl:grid-cols-[1fr_auto_1fr] xl:px-6 2xl:px-8">
           <Link
             href={brand.homeHref}
             className="flex w-fit items-center"
@@ -246,15 +247,7 @@ export default function Header() {
             onClick={() => setIsMenuOpen(false)}
           >
             <span className="relative block">
-              <Image src={brand.logoSrc} alt={brand.logoAlt} width={180} height={48} priority className="h-11 w-auto" />
-              <Image
-                src="/brand/trijotech-header-logo-sticky.png"
-                alt=""
-                width={180}
-                height={48}
-                aria-hidden="true"
-                className={`pointer-events-none absolute inset-0 h-11 w-auto transition-opacity duration-300 ${isPastHero ? "opacity-100" : "opacity-0"}`}
-              />
+              <span className="relative block h-14 w-36"><Image src="/brand/favicon.svg" alt="" width={48} height={48} priority className="absolute left-0 top-0 h-12 w-12 object-contain" /><span className="absolute left-[1.95rem] top-[2.3rem] whitespace-nowrap text-base font-medium uppercase leading-none tracking-[0.08em] text-white">Trijo<span className={isPastHero ? "text-[#F5A623]" : "text-white"}>tech</span></span></span>
             </span>
           </Link>
 
@@ -314,9 +307,9 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 8, scale: 0.98 }}
                           transition={{ duration: 0.16, ease: "easeOut" }}
-                          className="site-desktop-dropdown fixed left-1/2 top-13 hidden w-[min(760px,calc(100vw-2rem))] -translate-x-1/2 pt-3 lg:block"
+                          className="site-desktop-dropdown fixed left-1/2 top-13 hidden w-[min(861px,calc(100vw-2rem))] -translate-x-1/2 pt-3 lg:block"
                         >
-                          <div className="grid min-h-80 grid-cols-[minmax(220px,0.9fr)_minmax(320px,1.1fr)] overflow-hidden rounded-lg border border-white/10 bg-[#111320]/95 shadow-2xl shadow-black/50 backdrop-blur-xl">
+                          <div className="grid min-h-[22rem] grid-cols-[minmax(242px,0.9fr)_minmax(352px,1.1fr)] overflow-hidden rounded-lg border border-white/10 bg-[#111320]/95 shadow-[inset_0_0_28px_rgba(47,143,255,0.12),0_28px_70px_rgba(0,0,0,0.58)] backdrop-blur-xl">
                             <div className="border-r border-white/10 p-2">
                               {item.items?.map((dropdownItem) => {
                                 const isSelected =
@@ -339,7 +332,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                         dropdownItem.href,
                                       )
                                     }
-                                    className={`group/item flex items-center justify-between gap-3 rounded-lg px-4 py-3 text-sm font-semibold transition focus-visible:outline-none ${isSelected
+                                    className={`group/item flex items-center justify-between gap-3 rounded-lg px-4 py-3 text-base font-semibold transition focus-visible:outline-none ${isSelected
                                       ? "bg-white/12 text-white"
                                       : "text-white/70 hover:bg-white/7 hover:text-white focus-visible:bg-white/7 focus-visible:text-white"
                                       }`}
@@ -349,8 +342,8 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                     </span>
                                     <ChevronRight
                                       className={`h-4 w-4 shrink-0 transition ${isSelected
-                                        ? "translate-x-0.5 text-[#7edcc2]"
-                                        : "text-white/25 group-hover/item:translate-x-0.5 group-hover/item:text-[#7edcc2]"
+                                        ? "translate-x-0.5 text-white"
+                                        : "text-white/25 group-hover/item:translate-x-0.5 group-hover/item:text-white"
                                         }`}
                                     />
                                   </Link>
@@ -370,7 +363,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                     className="flex h-full flex-col"
                                   >
                                     <div
-                                      className="min-h-30 overflow-hidden rounded-lg border border-white/10 bg-white/5 bg-cover bg-center"
+                                      className="min-h-[8.25rem] overflow-hidden rounded-lg border border-white/10 bg-white/5 bg-cover bg-center shadow-[inset_0_0_20px_rgba(10,110,209,0.18)]"
                                       style={
                                         activeDropdownItem.hasImage &&
                                           activeDropdownItem.imageUrl
@@ -382,7 +375,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                     >
                                       {!activeDropdownItem.hasImage ||
                                         !activeDropdownItem.imageUrl ? (
-                                        <div className="flex min-h-30 items-center justify-center bg-[linear-gradient(135deg,rgba(41,171,135,0.22),rgba(17,122,75,0.14))]">
+                                        <div className="flex min-h-[8.25rem] items-center justify-center bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]">
                                           <span className="text-5xl font-bold text-white/20">
                                             {activeDropdownItem.name.charAt(0)}
                                           </span>
@@ -391,10 +384,10 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                     </div>
 
                                     <div className="mt-2">
-                                      <p className="text-base font-semibold text-white">
+                                      <p className="text-lg font-semibold text-white">
                                         {activeDropdownItem.name}
                                       </p>
-                                      <p className="mt-2 text-sm leading-6 text-white/55">
+                                      <p className="mt-2 text-base leading-7 text-white/70">
                                         {activeDropdownItem.description ||
                                           item.description}
                                       </p>
@@ -403,7 +396,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                                     <Link
                                       href={activeDropdownItem.href}
                                       onClick={() => setOpenDropdownName(null)}
-                                      className="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/7 px-3 py-1.5 text-sm font-semibold text-white/80 transition hover:border-[rgba(41,171,135,0.55)] hover:bg-white/10 hover:text-white"
+                                      className="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/7 px-3 py-1.5 text-base font-semibold text-white/80 transition hover:border-white/40 hover:bg-white/10 hover:text-white"
                                     >
                                       Know More
                                       <ChevronRight className="h-4 w-4" />
@@ -457,7 +450,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
           aria-hidden
           className={`pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity duration-500 ${
             isPastHero ? "opacity-100" : "opacity-0"
-          } bg-[linear-gradient(90deg,transparent,rgba(41,171,135,0.7),rgba(245,166,35,0.7),transparent)]`}
+          } bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.4),rgba(255,255,255,0.2),transparent)]`}
         />
 
         <AnimatePresence>
@@ -477,15 +470,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                   onClick={closeSearch}
                 >
                   <span className="relative block">
-                    <Image src={brand.logoSrc} alt={brand.logoAlt} width={180} height={48} priority className="h-11 w-auto" />
-                    <Image
-                      src="/brand/trijotech-header-logo-sticky.png"
-                      alt=""
-                      width={180}
-                      height={48}
-                      aria-hidden="true"
-                      className={`pointer-events-none absolute inset-0 h-11 w-auto transition-opacity duration-300 ${isPastHero ? "opacity-100" : "opacity-0"}`}
-                    />
+                    <span className="relative block h-14 w-36"><Image src="/brand/favicon.svg" alt="" width={48} height={48} priority className="absolute left-0 top-0 h-12 w-12 object-contain" /><span className="absolute left-[1.95rem] top-[2.3rem] whitespace-nowrap text-base font-medium uppercase leading-none tracking-[0.08em] text-white">Trijo<span className={isPastHero ? "text-[#F5A623]" : "text-white"}>tech</span></span></span>
                   </span>
                 </Link>
 

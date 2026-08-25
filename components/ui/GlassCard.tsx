@@ -23,8 +23,8 @@ export default function GlassCard({
           style={{
             background:
               glow === "amber"
-                ? "radial-gradient(circle, rgba(245,166,35,0.9), transparent 70%)"
-                : "radial-gradient(circle, rgba(41,171,135,0.9), transparent 70%)",
+                ? "radial-gradient(circle, rgba(255, 255, 255,0.9), transparent 70%)"
+                : "radial-gradient(circle, rgba(255, 255, 255,0.9), transparent 70%)",
           }}
         />
       )}

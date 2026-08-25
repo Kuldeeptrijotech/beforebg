@@ -69,10 +69,10 @@ export function resolveBlockStyle(
   let backgroundColor = style.backgroundColor || undefined;
   if (style.backgroundGradient === "emerald") {
     backgroundImage =
-      "linear-gradient(135deg, rgba(41,171,135,0.18) 0%, rgba(9,21,39,0.06) 100%)";
+      "linear-gradient(135deg, rgba(255, 255, 255,0.18) 0%, rgba(9,21,39,0.06) 100%)";
   } else if (style.backgroundGradient === "amber") {
     backgroundImage =
-      "linear-gradient(135deg, rgba(245,166,35,0.2) 0%, rgba(255,255,255,0.02) 100%)";
+      "linear-gradient(135deg, rgba(255, 255, 255,0.2) 0%, rgba(255,255,255,0.02) 100%)";
   } else if (style.backgroundGradient === "midnight") {
     backgroundImage =
       "linear-gradient(135deg, #101c30 0%, #0a1322 100%)";
@@ -121,9 +121,9 @@ export function resolveBlockStyle(
   else if (style.boxShadow === "deep")
     boxShadow = "0 20px 45px rgba(0,0,0,0.24)";
   else if (style.boxShadow === "glow-green")
-    boxShadow = "0 0 25px rgba(41,171,135,0.35)";
+    boxShadow = "0 0 25px rgba(255, 255, 255,0.35)";
   else if (style.boxShadow === "glow-amber")
-    boxShadow = "0 0 25px rgba(245,166,35,0.35)";
+    boxShadow = "0 0 25px rgba(255, 255, 255,0.35)";
   else if (style.boxShadow === "glow-cyan")
     boxShadow = "0 0 25px rgba(56,189,248,0.35)";
 

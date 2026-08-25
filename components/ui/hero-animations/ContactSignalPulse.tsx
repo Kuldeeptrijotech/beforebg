@@ -58,7 +58,7 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
         yPercent: 0.46,
         radius: 0,
         maxRadius: 260,
-        color: "#29ab87", // Emerald
+        color: "#ffffff", // Emerald
         speed: 0.35,
       },
       {
@@ -74,7 +74,7 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
         yPercent: 0.46,
         radius: 160,
         maxRadius: 260,
-        color: "#f5a623", // Amber
+        color: "#ffffff", // Amber
         speed: 0.35,
       },
     ];
@@ -96,7 +96,7 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
         endY: 0.78,
         progress: 0.5,
         speed: 0.0025,
-        color: "#29ab87",
+        color: "#ffffff",
       },
       {
         startX: 0.76,
@@ -105,7 +105,7 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
         endY: 0.72,
         progress: 0.8,
         speed: 0.0028,
-        color: "#f5a623",
+        color: "#ffffff",
       },
     ];
 
@@ -186,7 +186,7 @@ export default function ContactSignalPulse({ className = "" }: { className?: str
 
       ctx.beginPath();
       ctx.arc(hubX, hubY, 16, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(41, 171, 135, 0.5)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
       ctx.lineWidth = 2;
       ctx.stroke();
       ctx.restore();

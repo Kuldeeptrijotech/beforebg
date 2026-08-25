@@ -27,7 +27,7 @@ export default function Button({
     return (
         <Link
             href={href}
-            className={`site-button site-button-${tone} inline-flex h-11 w-fit items-center justify-center gap-2 rounded-lg px-5 text-sm font-semibold transition ${toneClasses[tone]} ${className}`}      {...props}
+            className={`site-button site-button-${tone} relative inline-flex h-11 w-fit items-center justify-center gap-2 overflow-hidden rounded-lg px-5 text-sm font-semibold transition ${toneClasses[tone]} ${className}`}      {...props}
         >
             {children}
         </Link>

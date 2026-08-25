@@ -1,4 +1,4 @@
-import { Box, Check, Cog, Factory, Gauge, ShieldCheck, Truck, Warehouse } from "lucide-react";
+﻿import { Box, Check, Cog, Factory, Gauge, ShieldCheck, Truck, Warehouse } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { FlowLink, GlowHalo, Packet, PulseDot, SceneCanvas, SceneText, TRI } from "./scene-ui";
 
@@ -7,9 +7,9 @@ type Tone = "green" | "amber" | "mix" | "dim" | "white";
 const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
 
 const TONE_BG: Record<Tone, string> = {
-  green: "linear-gradient(160deg,#29ab87,#117a4b)",
-  amber: "linear-gradient(160deg,#f5a623,#f29e16)",
-  mix: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)",
+  green: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  amber: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  mix: "linear-gradient(135deg,#22d3ee,#2563eb 55%,#ffffff 130%)",
   dim: "linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))",
   white: "linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))",
 };
@@ -48,7 +48,7 @@ export default function ManufacturingFlow() {
   return (
     <SceneCanvas bleed className="h-full w-full">
       <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 640 480" preserveAspectRatio="none" fill="none">
-        <FlowLink d={PATH} color="rgba(41,171,135,0.35)" width={1.5} dash />
+        <FlowLink d={PATH} color="rgba(255, 255, 255,0.35)" width={1.5} dash />
         <Packet d={PATH} dur={9} delay={0} color={TRI.mint} r={4} />
         <Packet d={PATH} dur={9} delay={4.5} color={TRI.green} r={3.5} />
         {TICKS_Y150.map((x) => (
@@ -60,14 +60,14 @@ export default function ManufacturingFlow() {
         {NODES.map((n) => (
           <PulseDot key={n.label} cx={n.x} cy={n.y} color={n.tone === "amber" ? TRI.amber : TRI.green} r={3} />
         ))}
-        <polygon points="410,289 421,300 410,311 399,300" fill="rgba(245,166,35,0.16)" stroke={TRI.amber} strokeWidth={1.4} className="tri-pulse" />
+        <polygon points="410,289 421,300 410,311 399,300" fill="rgba(255, 255, 255,0.16)" stroke={TRI.amber} strokeWidth={1.4} className="tri-pulse" />
         <path d="M405 300 l4 4 l8 -8" stroke={TRI.amber} strokeWidth={1.6} fill="none" strokeLinecap="round" />
         {[155, 325].map((x) => (
-          <polygon key={`d1-${x}`} points={`${x},144 ${x + 6},150 ${x},156 ${x - 6},150`} fill="rgba(41,171,135,0.18)" stroke={TRI.green} strokeWidth={1.1} />
+          <polygon key={`d1-${x}`} points={`${x},144 ${x + 6},150 ${x},156 ${x - 6},150`} fill="rgba(255, 255, 255,0.18)" stroke={TRI.green} strokeWidth={1.1} />
         ))}
-        <polygon points="544,294 550,300 544,306 538,300" fill="rgba(41,171,135,0.18)" stroke={TRI.green} strokeWidth={1.1} />
+        <polygon points="544,294 550,300 544,306 538,300" fill="rgba(255, 255, 255,0.18)" stroke={TRI.green} strokeWidth={1.1} />
         <GlowHalo cx={410} cy={300} r={40} color={TRI.amber} opacity={0.13} />
-        <SceneText x={410} y={276} size={9} fill="rgba(245,166,35,0.6)">QUALITY GATE</SceneText>
+        <SceneText x={410} y={276} size={9} fill="rgba(255, 255, 255,0.6)">QUALITY GATE</SceneText>
         <SceneText x={410} y={330} size={9} fill="rgba(191,232,216,0.4)">VERTICAL TRANSFER</SceneText>
       </svg>
 
@@ -91,7 +91,7 @@ export default function ManufacturingFlow() {
         </span>
         <div className="leading-tight">
           <p className="text-[10px] font-semibold text-white/50">Reject rate</p>
-          <p className="text-sm font-bold text-amber-300">Scrap &lt; 0.4%</p>
+          <p className="text-sm font-bold text-white">Scrap &lt; 0.4%</p>
         </div>
       </div>
     </SceneCanvas>

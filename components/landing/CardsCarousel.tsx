@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useInView, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Wrench } from "lucide-react";
@@ -52,7 +52,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
           type="button"
           onClick={() => move(-1)}
           aria-label="Previous service"
-          className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[rgba(41,171,135,0.6)] hover:bg-[linear-gradient(150deg,#29ab87,#117a4b)] hover:shadow-[0_8px_24px_rgba(41,171,135,0.4)] sm:left-5"
+          className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[rgba(255, 255, 255,0.6)] hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] hover:shadow-[0_8px_24px_rgba(255, 255, 255,0.4)] sm:left-5"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
@@ -60,7 +60,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
           type="button"
           onClick={() => move(1)}
           aria-label="Next service"
-          className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[rgba(41,171,135,0.6)] hover:bg-[linear-gradient(150deg,#29ab87,#117a4b)] hover:shadow-[0_8px_24px_rgba(41,171,135,0.4)] sm:right-5"
+          className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[rgba(255, 255, 255,0.6)] hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] hover:shadow-[0_8px_24px_rgba(255, 255, 255,0.4)] sm:right-5"
         >
           <ArrowRight className="h-5 w-5" />
         </button>
@@ -95,7 +95,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
                 )}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(3,7,19,0.5)] via-transparent to-transparent" />
                 {showCardIcons && (
-                  <span className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(150deg,#29ab87,#117a4b)] text-white shadow-lg shadow-[rgba(41,171,135,0.4)]">
+                  <span className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-[rgba(255, 255, 255,0.4)]">
                     <Wrench className="h-5 w-5" aria-hidden="true" />
                   </span>
                 )}
@@ -112,7 +112,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
                   <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
                     {card.capabilities.slice(0, 4).map((item) => (
                       <li key={item} className="flex items-start gap-2.5 text-sm font-medium text-slate-100">
-                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#29ab87,#117a4b)]">
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#22d3ee,#2563eb)]">
                           <Check className="h-2.5 w-2.5 text-white" strokeWidth={3} />
                         </span>
                         {item}
@@ -122,7 +122,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
                 ) : null}
                 <Link
                   href={card.href}
-                  className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-bold text-[#7edcc2] transition-all duration-200 hover:gap-3 hover:text-[#f5a623]"
+                  className="mt-6 inline-flex w-fit items-center gap-2 text-sm font-bold text-white transition-all duration-200 hover:gap-3 hover:text-white"
                 >
                   {card.cta ?? "Explore"} <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -144,7 +144,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
               onClick={() => setActiveIndex(index)}
               className={`rounded-full transition-all duration-500 ${
                 index === activeIndex
-                  ? "h-1.5 w-10 bg-[linear-gradient(90deg,#29ab87,#f5a623)] shadow-[0_0_8px_rgba(41,171,135,0.6)]"
+                  ? "h-1.5 w-10 bg-[linear-gradient(90deg,#22d3ee,#2563eb)] shadow-[0_0_8px_rgba(255, 255, 255,0.6)]"
                   : "h-1 w-4 bg-white/20 hover:bg-white/40"
               }`}
             />

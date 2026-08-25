@@ -26,9 +26,9 @@ const capabilities = [
 
 export default function SAPCapabilities() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-45" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-50" />
+    <section className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-black border-t border-slate-200">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-0" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-0" />
 
       <Container className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
@@ -47,7 +47,7 @@ export default function SAPCapabilities() {
             {capabilities.map((capability) => (
               <StaggerRevealItem key={capability}>
                 <div className="flex items-center gap-3">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#29ab87,#117a4b)] text-white shadow-sm">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-white shadow-sm">
                     <DatabaseZap className="h-3.5 w-3.5" strokeWidth={2.2} />
                   </span>
                   <p className="text-xs font-medium leading-snug text-slate-200 sm:text-sm">{capability}</p>

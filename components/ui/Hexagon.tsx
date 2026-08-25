@@ -15,7 +15,7 @@ const HEX_PATH =
 export default function Hexagon({
   className = "",
   size,
-  fill = "rgba(41,171,135,0.04)",
+  fill = "rgba(255, 255, 255,0.04)",
   strokeWidth = 1.5,
   animated = false,
 }: HexagonProps) {
@@ -32,9 +32,9 @@ export default function Hexagon({
     >
       <defs>
         <linearGradient id={gradId} x1="20" y1="6" x2="180" y2="194" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#29ab87" />
-          <stop offset="0.55" stopColor="#117a4b" />
-          <stop offset="1" stopColor="#f5a623" />
+          <stop stopColor="#ffffff" />
+          <stop offset="0.55" stopColor="#ffffff" />
+          <stop offset="1" stopColor="#ffffff" />
         </linearGradient>
       </defs>
       <path d={HEX_PATH} fill={fill} stroke={`url(#${gradId})`} strokeWidth={strokeWidth} strokeLinejoin="round" />

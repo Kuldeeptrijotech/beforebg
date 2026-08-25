@@ -7,9 +7,9 @@ type Tone = "green" | "amber" | "mix" | "dim" | "white";
 const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
 
 const TONE_BG: Record<Tone, string> = {
-  green: "linear-gradient(160deg,#29ab87,#117a4b)",
-  amber: "linear-gradient(160deg,#f5a623,#f29e16)",
-  mix: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)",
+  green: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  amber: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  mix: "linear-gradient(135deg,#22d3ee,#2563eb 55%,#ffffff 130%)",
   dim: "linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))",
   white: "linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))",
 };
@@ -50,7 +50,7 @@ export default function EntertainmentFlow() {
     <SceneCanvas bleed className="h-full w-full">
       <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 640 480" preserveAspectRatio="none" fill="none">
         {OUTER.map((o) => (
-          <FlowLink key={o.label} d={o.line} color={o.tone === "amber" ? "rgba(245,166,35,0.4)" : "rgba(41,171,135,0.4)"} width={1.4} dash />
+          <FlowLink key={o.label} d={o.line} color={o.tone === "amber" ? "rgba(255, 255, 255,0.4)" : "rgba(255, 255, 255,0.4)"} width={1.4} dash />
         ))}
         {OUTER.map((o, i) => (
           <Packet key={o.label} d={o.line} dur={4.5} delay={i * 1.1} color={o.tone === "amber" ? TRI.amber : TRI.mint} r={3.5} />
@@ -58,8 +58,8 @@ export default function EntertainmentFlow() {
         {OUTER.map((o) => (
           <PulseDot key={`dot-${o.label}`} cx={o.x} cy={o.y} color={o.tone === "amber" ? TRI.amber : TRI.green} r={3} />
         ))}
-        <circle cx={320} cy={230} r={74} fill="none" stroke="rgba(41,171,135,0.22)" strokeWidth={1} strokeDasharray="4 10" className="tri-dash" />
-        <circle cx={320} cy={230} r={108} fill="none" stroke="rgba(245,166,35,0.12)" strokeWidth={1} />
+        <circle cx={320} cy={230} r={74} fill="none" stroke="rgba(255, 255, 255,0.22)" strokeWidth={1} strokeDasharray="4 10" className="tri-dash" />
+        <circle cx={320} cy={230} r={108} fill="none" stroke="rgba(255, 255, 255,0.12)" strokeWidth={1} />
         {SPARKS.map((s, i) => (
           <Sparkles key={i} x={s.x} y={s.y} className="tri-pulse" style={{ width: 12, height: 12 }} />
         ))}
@@ -69,7 +69,7 @@ export default function EntertainmentFlow() {
 
       <div className="absolute z-10 -translate-x-1/2 -translate-y-1/2" style={{ left: "50%", top: "47.9%" }}>
         <div className="flex flex-col items-center gap-1">
-          <span aria-hidden className="relative flex h-12 w-12 items-center justify-center" style={{ clipPath: HEX, background: TONE_BG.amber, filter: "drop-shadow(0 6px 18px rgba(245,166,35,0.4))" }}>
+          <span aria-hidden className="relative flex h-12 w-12 items-center justify-center" style={{ clipPath: HEX, background: TONE_BG.amber, filter: "drop-shadow(0 6px 18px rgba(255, 255, 255,0.4))" }}>
             <Clapperboard className="h-6 w-6 text-white" strokeWidth={1.8} />
           </span>
           <div className="rounded-md border border-white/10 bg-black/40 px-2 py-1 text-center">

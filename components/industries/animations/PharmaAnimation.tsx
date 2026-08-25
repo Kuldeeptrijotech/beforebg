@@ -18,9 +18,9 @@ import { useState, useEffect } from "react";
 import IndustryHeroStage from "./IndustryHeroStage";
 
 const KPIS = [
-  { value: "100%", label: "FDA 21 CFR Part 11", color: "#117a4b" },
-  { value: "99.99%", label: "Unit Traceability", color: "#29ab87" },
-  { value: "98.9%", label: "Batch Yield", color: "#f5a623" },
+  { value: "100%", label: "FDA 21 CFR Part 11", color: "#ffffff" },
+  { value: "99.99%", label: "Unit Traceability", color: "#ffffff" },
+  { value: "98.9%", label: "Batch Yield", color: "#ffffff" },
 ];
 
 export default function PharmaAnimation() {
@@ -47,7 +47,7 @@ export default function PharmaAnimation() {
       caption="SAP unifies pharma operations end to end"
       sub="R&D · batch formulation · serialization · cold-chain compliance"
       kpis={KPIS}
-      accentColor="#29ab87"
+      accentColor="#ffffff"
     >
       <div className="relative h-full w-full overflow-hidden select-none">
         {/* ── Background Molecular Grid & DNA Helix Wave ── */}
@@ -60,14 +60,14 @@ export default function PharmaAnimation() {
         >
           <defs>
             <linearGradient id="pharmaHelix1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#117a4b" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#29ab87" stopOpacity="1" />
-              <stop offset="100%" stopColor="#7edcc2" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
             </linearGradient>
             <linearGradient id="pharmaLaser" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#7edcc2" stopOpacity="0.1" />
-              <stop offset="50%" stopColor="#29ab87" stopOpacity="1" />
-              <stop offset="100%" stopColor="#117a4b" stopOpacity="0.1" />
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.1" />
             </linearGradient>
             <filter id="pharmaGlow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="5" result="blur" />
@@ -88,7 +88,7 @@ export default function PharmaAnimation() {
           />
           <path
             d="M 100 380 Q 250 540 400 380 T 700 380 T 1000 380 T 1300 380"
-            stroke="#117a4b"
+            stroke="#ffffff"
             strokeWidth="2.5"
             strokeDasharray="4 6"
             opacity="0.35"
@@ -102,7 +102,7 @@ export default function PharmaAnimation() {
               y1={300 + Math.sin(x) * 60}
               x2={x}
               y2={460 - Math.sin(x) * 60}
-              stroke="#7edcc2"
+              stroke="#ffffff"
               strokeWidth="1.5"
               strokeOpacity="0.3"
               strokeDasharray="2 4"
@@ -110,14 +110,14 @@ export default function PharmaAnimation() {
           ))}
 
           {/* Flowing Active Enzyme Molecules */}
-          <circle r="6" fill="#7edcc2" filter="url(#pharmaGlow)">
+          <circle r="6" fill="#ffffff" filter="url(#pharmaGlow)">
             <animateMotion
               dur="12s"
               repeatCount="indefinite"
               path="M 100 380 Q 250 220 400 380 T 700 380 T 1000 380 T 1300 380"
             />
           </circle>
-          <circle r="4.5" fill="#f5a623" filter="url(#pharmaGlow)">
+          <circle r="4.5" fill="#ffffff" filter="url(#pharmaGlow)">
             <animateMotion
               dur="12s"
               begin="6s"
@@ -132,7 +132,7 @@ export default function PharmaAnimation() {
             cy="420"
             rx="240"
             ry="110"
-            stroke="#29ab87"
+            stroke="#ffffff"
             strokeWidth="2"
             strokeDasharray="8 6"
             strokeOpacity="0.4"
@@ -150,28 +150,28 @@ export default function PharmaAnimation() {
           <motion.div
             animate={reduce ? {} : { rotate: [0, 360] }}
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="relative flex h-32 w-32 items-center justify-center rounded-full border border-[#29ab87]/30 bg-[radial-gradient(circle,rgba(41,171,135,0.2)_0%,transparent_70%)] backdrop-blur-md"
+            className="relative flex h-32 w-32 items-center justify-center rounded-full border border-white/30 bg-[radial-gradient(circle,rgba(255, 255, 255,0.2)_0%,transparent_70%)] backdrop-blur-md"
           >
-            <div className="absolute inset-1 rounded-full border border-dashed border-[#7edcc2]/40" />
-            <Dna className="h-14 w-14 text-[#7edcc2] drop-shadow-[0_0_15px_rgba(41,171,135,0.8)]" />
+            <div className="absolute inset-1 rounded-full border border-dashed border-white/40" />
+            <Dna className="h-14 w-14 text-white drop-shadow-[0_0_15px_rgba(255, 255, 255,0.8)]" />
           </motion.div>
 
           <div className="mt-4 rounded-2xl border border-white/10 bg-[#030713]/80 p-4 shadow-2xl backdrop-blur-xl">
             <div className="flex items-center justify-between">
-              <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-[#29ab87]">
+              <span className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-white">
                 <FlaskConical className="h-4 w-4" /> Cleanroom Synthesis
               </span>
-              <span className="rounded-full bg-[#117a4b]/40 border border-[#29ab87]/40 px-2 py-0.5 text-[9px] font-mono text-[#7edcc2]">
+              <span className="rounded-full bg-white/40 border border-white/40 px-2 py-0.5 text-[9px] font-mono text-white">
                 GxP Class A
               </span>
             </div>
             <p className="mt-2 text-sm font-bold text-white">Active Molecular Formulation</p>
             <div className="mt-2.5 flex items-center justify-between text-xs text-white/70">
               <span>Assay Purity</span>
-              <span className="font-mono font-bold text-[#7edcc2]">{batches[activeBatch].purity}</span>
+              <span className="font-mono font-bold text-white">{batches[activeBatch].purity}</span>
             </div>
             <div className="mt-1 h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
-              <div className="h-full w-[99.9%] bg-gradient-to-r from-[#117a4b] to-[#29ab87]" />
+              <div className="h-full w-[99.9%] bg-gradient-to-r from-[#ffffff] to-[#ffffff]" />
             </div>
           </div>
         </div>
@@ -183,11 +183,11 @@ export default function PharmaAnimation() {
           className="absolute left-1/2 top-[12%] -translate-x-1/2 z-20 text-center"
         >
           <div className="inline-flex flex-col items-center">
-            <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-[#29ab87]/50 bg-gradient-to-br from-[#117a4b] via-[#030713] to-[#29ab87] p-4 shadow-[0_0_50px_rgba(41,171,135,0.4)] backdrop-blur-xl">
-              <ShieldCheck className="h-10 w-10 text-white drop-shadow-[0_0_12px_#7edcc2]" />
+            <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-white/50 bg-gradient-to-br from-[#ffffff] via-[#030713] to-[#ffffff] p-4 shadow-[0_0_50px_rgba(255, 255, 255,0.4)] backdrop-blur-xl">
+              <ShieldCheck className="h-10 w-10 text-white drop-shadow-[0_0_12px_#ffffff]" />
             </div>
             <div className="mt-3 rounded-full border border-white/15 bg-black/60 px-4 py-1 backdrop-blur-md">
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#7edcc2]">
+              <span className="text-[11px] font-extrabold uppercase tracking-widest text-white">
                 SAP ATTP Compliance Engine
               </span>
             </div>
@@ -205,29 +205,29 @@ export default function PharmaAnimation() {
           >
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
-                <PackageCheck className="h-5 w-5 text-[#29ab87]" />
+                <PackageCheck className="h-5 w-5 text-white" />
                 <div>
-                  <p className="text-xs font-mono font-extrabold text-[#7edcc2]">{batches[activeBatch].id}</p>
+                  <p className="text-xs font-mono font-extrabold text-white">{batches[activeBatch].id}</p>
                   <p className="text-[9px] text-white/50">{batches[activeBatch].drug}</p>
                 </div>
               </div>
-              <span className="flex h-2 w-2 rounded-full bg-[#29ab87] animate-ping" />
+              <span className="flex h-2 w-2 rounded-full bg-white animate-ping" />
             </div>
 
             <div className="mt-3 space-y-2 text-xs">
               <div className="flex items-center justify-between text-white/80">
                 <span>Compliance Audit</span>
-                <span className="font-semibold text-[#29ab87]">{batches[activeBatch].status}</span>
+                <span className="font-semibold text-white">{batches[activeBatch].status}</span>
               </div>
               <div className="flex items-center justify-between text-white/80">
                 <span className="flex items-center gap-1">
-                  <ThermometerSnowflake className="h-3.5 w-3.5 text-[#f5a623]" /> Cold-Chain
+                  <ThermometerSnowflake className="h-3.5 w-3.5 text-white" /> Cold-Chain
                 </span>
-                <span className="font-mono font-bold text-[#f5a623]">{batches[activeBatch].temp}</span>
+                <span className="font-mono font-bold text-white">{batches[activeBatch].temp}</span>
               </div>
             </div>
 
-            <div className="mt-3 rounded-lg bg-[#29ab87]/10 border border-[#29ab87]/30 p-2 text-center text-[10px] font-bold text-[#7edcc2]">
+            <div className="mt-3 rounded-lg bg-white/10 border border-white/30 p-2 text-center text-[10px] font-bold text-white">
               ✓ GS1 DataMatrix Verified · Ready for Global Dispatch
             </div>
           </motion.div>

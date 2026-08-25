@@ -114,9 +114,9 @@ function RichTextField({
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("backColor", "#fff1ad")} title="Yellow Highlight" style={{ background: "#fff9db" }}>🎨 Yellow</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("backColor", "#d1fae5")} title="Mint Highlight" style={{ background: "#ecfdf5" }}>🌿 Mint</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("backColor", "#fef3c7")} title="Amber Highlight" style={{ background: "#fffbeb" }}>☀️ Amber</button>
-        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#117a4b")} title="Deep Green" style={{ color: "#117a4b", fontWeight: 700 }}>Green</button>
-        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#29ab87")} title="Mint Teal" style={{ color: "#29ab87", fontWeight: 700 }}>Mint</button>
-        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#f5a623")} title="Amber Gold" style={{ color: "#f5a623", fontWeight: 700 }}>Amber</button>
+        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#ffffff")} title="Deep Green" style={{ color: "#ffffff", fontWeight: 700 }}>Green</button>
+        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#ffffff")} title="Mint Teal" style={{ color: "#ffffff", fontWeight: 700 }}>Mint</button>
+        <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#ffffff")} title="Amber Gold" style={{ color: "#ffffff", fontWeight: 700 }}>Amber</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("foreColor", "#0284c7")} title="Sky Blue" style={{ color: "#0284c7", fontWeight: 700 }}>Cyan</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("justifyLeft")} title="Align Left">⇤</button>
         <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => run("justifyCenter")} title="Align Center">≡</button>
@@ -1031,7 +1031,7 @@ export default function BlogBlockEditor({
                 return createElement(`h${headingLevel}`, { key: block.id, style, dangerouslySetInnerHTML: { __html: block.value || "Subheading" } });
               }
               if (block.type === "image") {
-                const imgShadow = block.style?.imageShadow === "none" ? "none" : block.style?.imageShadow === "strong" ? "0 16px 36px rgba(0,0,0,0.35)" : block.style?.imageShadow === "glow-green" ? "0 0 30px rgba(41,171,135,0.4)" : block.style?.imageShadow === "glow-amber" ? "0 0 30px rgba(245,166,35,0.4)" : "0 10px 24px rgba(0,0,0,0.18)";
+                const imgShadow = block.style?.imageShadow === "none" ? "none" : block.style?.imageShadow === "strong" ? "0 16px 36px rgba(0,0,0,0.35)" : block.style?.imageShadow === "glow-green" ? "0 0 30px rgba(255, 255, 255,0.4)" : block.style?.imageShadow === "glow-amber" ? "0 0 30px rgba(255, 255, 255,0.4)" : "0 10px 24px rgba(0,0,0,0.18)";
                 const imgRadius = block.style?.borderRadius === "full" ? "9999px" : `${block.style?.borderRadius || "16"}px`;
                 return block.imageSrc ? (
                   <img

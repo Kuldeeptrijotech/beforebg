@@ -18,9 +18,9 @@ import { useState, useEffect } from "react";
 import IndustryHeroStage from "./IndustryHeroStage";
 
 const KPIS = [
-  { value: "93.4%", label: "Overall OEE", color: "#117a4b" },
-  { value: "99.98%", label: "Process Uptime", color: "#29ab87" },
-  { value: "-6.8%", label: "Scrap Reduction", color: "#f5a623" },
+  { value: "93.4%", label: "Overall OEE", color: "#ffffff" },
+  { value: "99.98%", label: "Process Uptime", color: "#ffffff" },
+  { value: "-6.8%", label: "Scrap Reduction", color: "#ffffff" },
 ];
 
 export default function ManufacturingAnimation() {
@@ -93,7 +93,7 @@ export default function ManufacturingAnimation() {
                 cx={x}
                 cy={x >= 580 && x <= 920 ? 320 : 440}
                 r="2"
-                fill="#f5a623"
+                fill="#ffffff"
               />
             </g>
           ))}
@@ -106,7 +106,7 @@ export default function ManufacturingAnimation() {
               path="M 120 440 L 460 440 L 580 320 L 920 320 L 1040 440 L 1340 440"
             />
           </circle>
-          <circle r="4.5" fill="#f5a623" filter="url(#mfgSparkGlow)">
+          <circle r="4.5" fill="#ffffff" filter="url(#mfgSparkGlow)">
             <animateMotion
               dur="8s"
               begin="4s"
@@ -143,17 +143,17 @@ export default function ManufacturingAnimation() {
               <div>
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-white/70">Overall OEE</span>
-                  <span className="font-mono font-extrabold text-[#29ab87]" suppressHydrationWarning>{oee}%</span>
+                  <span className="font-mono font-extrabold text-white" suppressHydrationWarning>{oee}%</span>
                 </div>
                 <div className="mt-1 h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#0284c7] via-[#38bdf8] to-[#29ab87]" style={{ width: `${oee}%` }} />
+                  <div className="h-full bg-gradient-to-r from-[#0284c7] via-[#38bdf8] to-[#ffffff]" style={{ width: `${oee}%` }} />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 pt-1">
                 <div className="rounded-lg bg-white/[0.03] border border-white/5 p-2 text-center">
                   <p className="text-[9px] text-white/50">Cycle Time</p>
-                  <p className="text-xs font-mono font-bold text-[#f5a623]" suppressHydrationWarning>{cycleTime}s</p>
+                  <p className="text-xs font-mono font-bold text-white" suppressHydrationWarning>{cycleTime}s</p>
                 </div>
                 <div className="rounded-lg bg-white/[0.03] border border-white/5 p-2 text-center">
                   <p className="text-[9px] text-white/50">Thermal Load</p>
@@ -172,7 +172,7 @@ export default function ManufacturingAnimation() {
             className="relative flex h-24 w-24 items-center justify-center rounded-3xl border border-[#38bdf8]/40 bg-gradient-to-b from-[#0369a1] via-[#030713] to-[#38bdf8]/30 shadow-[0_0_60px_rgba(56,189,248,0.4)] backdrop-blur-xl"
           >
             <Factory className="h-12 w-12 text-white drop-shadow-[0_0_15px_#38bdf8]" />
-            <Sparkles className="absolute -top-1 -right-1 h-5 w-5 text-[#f5a623] animate-bounce" />
+            <Sparkles className="absolute -top-1 -right-1 h-5 w-5 text-white animate-bounce" />
           </motion.div>
 
           <div className="mt-3 rounded-full border border-white/15 bg-black/70 px-4 py-1 backdrop-blur-md">
@@ -187,7 +187,7 @@ export default function ManufacturingAnimation() {
           <div className="rounded-2xl border border-white/10 bg-[#030713]/85 p-4 shadow-2xl backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#f5a623]/20 border border-[#f5a623]/40 text-[#f5a623]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white">
                   <Scan className="h-5 w-5 animate-pulse" />
                 </span>
                 <div>
@@ -200,13 +200,13 @@ export default function ManufacturingAnimation() {
             <div className="mt-3 space-y-2 text-xs">
               <div className="flex items-center justify-between text-white/80">
                 <span>Tolerance Inspection</span>
-                <span className="font-mono font-bold text-[#29ab87]">0.000mm [PERFECT]</span>
+                <span className="font-mono font-bold text-white">0.000mm [PERFECT]</span>
               </div>
               <div className="flex items-center justify-between text-white/80">
                 <span>Defect Scrap Rate</span>
-                <span className="font-mono font-bold text-[#f5a623]">&lt; 0.02%</span>
+                <span className="font-mono font-bold text-white">&lt; 0.02%</span>
               </div>
-              <div className="rounded-lg bg-[#29ab87]/15 border border-[#29ab87]/30 p-2 text-center text-[10px] font-bold text-[#7edcc2]">
+              <div className="rounded-lg bg-white/15 border border-white/30 p-2 text-center text-[10px] font-bold text-white">
                 ✓ Autonomous Mobile Robot (AMR) Routed to Dispatch
               </div>
             </div>

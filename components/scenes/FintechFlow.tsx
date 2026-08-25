@@ -1,4 +1,4 @@
-import { BarChart3, CreditCard, Cpu, Database, Landmark, Lock, Router, ShieldCheck } from "lucide-react";
+﻿import { BarChart3, CreditCard, Cpu, Database, Landmark, Lock, Router, ShieldCheck } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { FlowLink, GlowHalo, Packet, PulseDot, SceneCanvas, SceneText, TRI } from "./scene-ui";
 
@@ -7,9 +7,9 @@ type Tone = "green" | "amber" | "mix" | "dim" | "white";
 const HEX = "polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%)";
 
 const TONE_BG: Record<Tone, string> = {
-  green: "linear-gradient(160deg,#29ab87,#117a4b)",
-  amber: "linear-gradient(160deg,#f5a623,#f29e16)",
-  mix: "linear-gradient(135deg,#29ab87,#117a4b 55%,#f5a623 130%)",
+  green: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  amber: "linear-gradient(160deg,#22d3ee,#2563eb)",
+  mix: "linear-gradient(135deg,#22d3ee,#2563eb 55%,#ffffff 130%)",
   dim: "linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.04))",
   white: "linear-gradient(160deg,rgba(255,255,255,0.16),rgba(255,255,255,0.05))",
 };
@@ -66,12 +66,12 @@ export default function FintechFlow() {
       </div>
 
       <svg aria-hidden className="absolute inset-0 h-full w-full" viewBox="0 0 640 480" preserveAspectRatio="none" fill="none">
-        <rect x={262} y={56} width={116} height={352} rx={20} fill="rgba(41,171,135,0.06)" stroke="rgba(41,171,135,0.18)" strokeWidth={1} />
-        <FlowLink d={SPINE} color="rgba(41,171,135,0.4)" width={1.5} dash />
+        <rect x={262} y={56} width={116} height={352} rx={20} fill="rgba(255, 255, 255,0.06)" stroke="rgba(255, 255, 255,0.18)" strokeWidth={1} />
+        <FlowLink d={SPINE} color="rgba(255, 255, 255,0.4)" width={1.5} dash />
         <Packet d={SPINE} dur={7} delay={0} color={TRI.mint} r={4} />
         <Packet d={SPINE} dur={7} delay={3.5} color={TRI.green} r={3.5} />
-        <FlowLink d={RAIL_L} color="rgba(245,166,35,0.28)" width={1.2} dash />
-        <FlowLink d={RAIL_R} color="rgba(245,166,35,0.28)" width={1.2} dash />
+        <FlowLink d={RAIL_L} color="rgba(255, 255, 255,0.28)" width={1.2} dash />
+        <FlowLink d={RAIL_R} color="rgba(255, 255, 255,0.28)" width={1.2} dash />
         <Packet d="M490 390 L490 70" dur={6} delay={0.8} color={TRI.amber} r={3.5} />
         <Packet d="M150 390 L150 70" dur={6} delay={3} color={TRI.amber} r={3.5} />
         {NODES.map((n) => (
@@ -79,8 +79,8 @@ export default function FintechFlow() {
         ))}
         <GlowHalo cx={320} cy={230} r={58} color={TRI.green} opacity={0.14} />
         <SceneText x={320} y={56} size={9} fill="rgba(191,232,216,0.45)">PAYMENT AUTHORIZED</SceneText>
-        <SceneText x={150} y={420} size={8} fill="rgba(245,166,35,0.5)">AUDIT TRAIL</SceneText>
-        <SceneText x={490} y={420} size={8} fill="rgba(245,166,35,0.5)">SETTLEMENT</SceneText>
+        <SceneText x={150} y={420} size={8} fill="rgba(255, 255, 255,0.5)">AUDIT TRAIL</SceneText>
+        <SceneText x={490} y={420} size={8} fill="rgba(255, 255, 255,0.5)">SETTLEMENT</SceneText>
       </svg>
 
       {NODES.map((n) => (
@@ -103,7 +103,7 @@ export default function FintechFlow() {
           {BARS.map((h, i) => (
             <span
               key={i}
-              className="w-3 rounded-t-sm bg-[linear-gradient(160deg,#29ab87,#117a4b)]"
+              className="w-3 rounded-t-sm bg-[linear-gradient(160deg,#22d3ee,#2563eb)]"
               style={{ height: `${h}px`, opacity: 0.7 + i * 0.05, animationDelay: `${i * 0.4}s` }}
             />
           ))}

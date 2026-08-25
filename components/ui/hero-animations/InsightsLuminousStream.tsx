@@ -50,11 +50,11 @@ export default function InsightsLuminousStream({ className = "" }: { className?:
         frequency: 0.0028,
         speed: 0.0012, // Slow, gentle flow
         offset: 0,
-        color: "rgba(41, 171, 135, 0.45)",
-        glowColor: "rgba(41, 171, 135, 0.8)",
+        color: "rgba(255, 255, 255, 0.45)",
+        glowColor: "rgba(255, 255, 255, 0.8)",
         yPercent: 0.35,
         packets: [
-          { pos: 0.1, speed: 0.0006, size: 4, color: "#7edcc2" },
+          { pos: 0.1, speed: 0.0006, size: 4, color: "#ffffff" },
           { pos: 0.6, speed: 0.0007, size: 3.5, color: "#ffffff" },
         ],
       },
@@ -76,11 +76,11 @@ export default function InsightsLuminousStream({ className = "" }: { className?:
         frequency: 0.0032,
         speed: 0.0011,
         offset: 4,
-        color: "rgba(245, 166, 35, 0.35)",
-        glowColor: "rgba(245, 166, 35, 0.7)",
+        color: "rgba(255, 255, 255, 0.35)",
+        glowColor: "rgba(255, 255, 255, 0.7)",
         yPercent: 0.72,
         packets: [
-          { pos: 0.45, speed: 0.0007, size: 4, color: "#f5a623" },
+          { pos: 0.45, speed: 0.0007, size: 4, color: "#ffffff" },
         ],
       },
     ];
@@ -92,7 +92,7 @@ export default function InsightsLuminousStream({ className = "" }: { className?:
       vx: (Math.random() - 0.5) * 0.4, // Slow drift
       vy: -Math.random() * 0.5 - 0.2,   // Gentle upward float
       size: Math.random() * 2 + 1,
-      color: ["#29ab87", "#38bdf8", "#f5a623", "#ffffff"][Math.floor(Math.random() * 4)],
+      color: ["#ffffff", "#38bdf8", "#ffffff", "#ffffff"][Math.floor(Math.random() * 4)],
       alpha: Math.random() * 0.6 + 0.2,
     }));
 

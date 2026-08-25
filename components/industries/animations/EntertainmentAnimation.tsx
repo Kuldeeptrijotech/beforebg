@@ -19,9 +19,9 @@ import { useState, useEffect } from "react";
 import IndustryHeroStage from "./IndustryHeroStage";
 
 const KPIS = [
-  { value: "100%", label: "Royalty Calculation Accuracy", color: "#117a4b" },
-  { value: "1.4M", label: "Concurrent Global Streams", color: "#29ab87" },
-  { value: "99.2%", label: "Edge CDN Cache Hit Rate", color: "#f5a623" },
+  { value: "100%", label: "Royalty Calculation Accuracy", color: "#ffffff" },
+  { value: "1.4M", label: "Concurrent Global Streams", color: "#ffffff" },
+  { value: "99.2%", label: "Edge CDN Cache Hit Rate", color: "#ffffff" },
 ];
 
 export default function EntertainmentAnimation() {
@@ -56,8 +56,8 @@ export default function EntertainmentAnimation() {
           <defs>
             <linearGradient id="entBroadCast" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#ec4899" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#29ab87" stopOpacity="1" />
-              <stop offset="100%" stopColor="#f5a623" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
             </linearGradient>
             <filter id="entGlow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="5" result="blur" />
@@ -85,7 +85,7 @@ export default function EntertainmentAnimation() {
               path="M 120 460 C 420 280, 620 480, 820 340 S 1180 460, 1340 460"
             />
           </circle>
-          <circle r="4.5" fill="#29ab87" filter="url(#entGlow)">
+          <circle r="4.5" fill="#ffffff" filter="url(#entGlow)">
             <animateMotion
               dur="7s"
               begin="3.5s"
@@ -146,12 +146,12 @@ export default function EntertainmentAnimation() {
                   <span className="font-mono font-bold text-[#f472b6]">100% VERIFIED</span>
                 </div>
                 <div className="mt-1 h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full w-[98%] bg-gradient-to-r from-[#db2777] via-[#ec4899] to-[#29ab87]" />
+                  <div className="h-full w-[98%] bg-gradient-to-r from-[#db2777] via-[#ec4899] to-[#ffffff]" />
                 </div>
               </div>
               <div className="flex items-center justify-between text-[10px] text-white/70 px-1">
                 <span>Asset: 4K HDR Master</span>
-                <span className="font-semibold text-[#29ab87]">Worldwide Sync</span>
+                <span className="font-semibold text-white">Worldwide Sync</span>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function EntertainmentAnimation() {
           <div className="rounded-2xl border border-white/10 bg-[#030713]/85 p-4 shadow-2xl backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white">
                   <Users className="h-5 w-5" />
                 </span>
                 <div>
@@ -192,13 +192,13 @@ export default function EntertainmentAnimation() {
             <div className="mt-3 space-y-2 text-xs">
               <div className="flex items-center justify-between text-white/80">
                 <span>Concurrent Viewers</span>
-                <span className="font-mono font-bold text-[#29ab87]" suppressHydrationWarning>
+                <span className="font-mono font-bold text-white" suppressHydrationWarning>
                   {viewers.toLocaleString("en-US")}
                 </span>
               </div>
               <div className="flex items-center justify-between text-white/80">
                 <span>CDN Cache Hit</span>
-                <span className="font-mono font-bold text-[#f5a623]">99.2% Optimal</span>
+                <span className="font-mono font-bold text-white">99.2% Optimal</span>
               </div>
               <div className="rounded-lg bg-[#ec4899]/15 border border-[#ec4899]/30 p-2 text-center text-[10px] font-bold text-[#f472b6]">
                 ✓ Syndication P&L Synced · SVOD Revenue Automated

@@ -68,7 +68,7 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
         amplitude: 45,
         frequency: 0.0014,
         speed: 0.003,
-        color: "#29ab87", // Emerald
+        color: "#ffffff", // Emerald
         phase: Math.PI / 3,
         yPercent: 0.55,
         lineWidth: 2.2,
@@ -77,7 +77,7 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
         amplitude: 30,
         frequency: 0.0022,
         speed: 0.005,
-        color: "#f5a623", // Amber / Gold
+        color: "#ffffff", // Amber / Gold
         phase: Math.PI / 1.5,
         yPercent: 0.68,
         lineWidth: 1.6,
@@ -100,7 +100,7 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
         yPercent: 0.58,
         radius: 20,
         maxRadius: 80,
-        color: "#29ab87",
+        color: "#ffffff",
         alpha: 0.5,
         speed: 0.3,
       },
@@ -109,7 +109,7 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
         yPercent: 0.75,
         radius: 10,
         maxRadius: 55,
-        color: "#f5a623",
+        color: "#ffffff",
         alpha: 0.45,
         speed: 0.4,
       },
@@ -134,7 +134,7 @@ export default function VideosBroadcastBeams({ className = "" }: { className?: s
         width * 0.75
       );
       beamGrad.addColorStop(0, "rgba(56, 189, 248, 0.12)");
-      beamGrad.addColorStop(0.4, "rgba(41, 171, 135, 0.06)");
+      beamGrad.addColorStop(0.4, "rgba(255, 255, 255, 0.06)");
       beamGrad.addColorStop(1, "rgba(3, 7, 19, 0)");
 
       ctx.save();

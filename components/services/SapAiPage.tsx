@@ -14,7 +14,6 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
-import AiPredictionField from "@/components/scenes/AiPredictionField";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
@@ -24,11 +23,11 @@ import TiltCard from "@/components/ui/TiltCard";
 type ServiceItem = { title: string; description: string };
 
 const DOMAINS = [
-  { label: "Finance", icon: Landmark, tone: "#117a4b" },
-  { label: "Sales", icon: PackageSearch, tone: "#29ab87" },
-  { label: "Customer", icon: Users, tone: "#f5a623" },
-  { label: "Operations", icon: Workflow, tone: "#29ab87" },
-  { label: "Supply Chain", icon: Boxes, tone: "#117a4b" },
+  { label: "Finance", icon: Landmark, tone: "#ffffff" },
+  { label: "Sales", icon: PackageSearch, tone: "#ffffff" },
+  { label: "Customer", icon: Users, tone: "#ffffff" },
+  { label: "Operations", icon: Workflow, tone: "#ffffff" },
+  { label: "Supply Chain", icon: Boxes, tone: "#ffffff" },
 ];
 
 const PIPELINE = [
@@ -48,13 +47,20 @@ const CASES = [
 
 export default function SapAiPage({ offerings, impacts }: { offerings: ServiceItem[]; impacts: ServiceItem[] }) {
   return (
-    <main className="font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="service-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[#030713]"
-        glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
-        scene={<AiPredictionField />}
-        fadeTo="#030713"
+        eyebrow="SAP AI & Data Intelligence"
+        title="Predictive AI & Real-Time Enterprise Analytics"
+        subtitle="Turn enterprise data into forward-looking insights, automated decisioning, and measurable performance visibility."
+        description="We integrate SAP Analytics Cloud, Databricks, and native SAP AI capabilities into core financial and supply chain processes so business leaders can anticipate shifts before they happen."
+        primaryCta={{ label: "Consult AI specialists", href: "/contact" }}
+        secondaryCta={{ label: "Explore all services", href: "/services" }}
+        metrics={[
+          { value: "Real-Time", label: "Predictive Telemetry" },
+          { value: "100%", label: "Governance Compliance" },
+          { value: "Scalable", label: "Enterprise Foundation" },
+        ]}
       />
 
       {/* BUSINESS DATA + HERO TAIL */}
@@ -63,8 +69,8 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="flex h-16 flex-col items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-[#29ab87] shadow-[0_0_10px_#29ab87]" />
-            <div className="h-12 w-px bg-gradient-to-b from-[#29ab87]/70 to-transparent" />
+            <span className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_#ffffff]" />
+            <div className="h-12 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
           </div>
         </div>
 
@@ -73,7 +79,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
             <SlideReveal direction="left">
               <SectionLabel>Trusted data first</SectionLabel>
               <h2 className={`mt-5 ${introLead} text-white`}>
-                Intelligence works when <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">data is connected</span>
+                Intelligence works when <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">data is connected</span>
               </h2>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
                 We combine SAP data integration with AI, machine learning, and automation to surface timely insights,
@@ -85,12 +91,12 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
               {DOMAINS.map((d) => {
                 const Icon = d.icon;
                 return (
-                  <StaggerRevealItem key={d.label} variant="fadeIn" className="h-full">
-                    <div className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3 backdrop-blur-sm h-full w-full justify-start">
+                  <StaggerRevealItem key={d.label} variant="fadeIn" className="h-full min-w-0">
+                    <div className="service-surface-card flex min-w-0 items-center gap-2.5 overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3 backdrop-blur-sm h-full w-full justify-start">
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-white" style={{ background: d.tone }}>
-                        <Icon className="h-4 w-4" strokeWidth={1.9} />
+                        <Icon className="sap-ai-domain-icon h-4 w-4" strokeWidth={1.9} />
                       </span>
-                      <span className="text-[13px] font-semibold text-slate-200">{d.label}</span>
+                      <span className="min-w-0 break-words text-[13px] font-semibold leading-4 text-slate-200">{d.label}</span>
                     </div>
                   </StaggerRevealItem>
                 );
@@ -101,22 +107,22 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={35} suffix="%" label="Faster decisions" accent="text-[#29ab87]" />
+                <Metric to={35} suffix="%" label="Faster decisions" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
-                <Metric to={60} suffix="%" label="Manual effort reduced" accent="text-[#f5a623]" />
+                <Metric to={60} suffix="%" label="Manual effort reduced" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
-                <Metric to={90} suffix="%" label="Forecast accuracy" accent="text-[#29ab87]" />
+                <Metric to={90} suffix="%" label="Forecast accuracy" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={100} suffix="%" label="Governed data" accent="text-[#117a4b]" />
+                <Metric to={100} suffix="%" label="Governed data" accent="text-white" />
               </Glass>
             </Reveal>
           </div>
@@ -131,12 +137,12 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           <Reveal className="max-w-2xl">
             <SectionLabel>How intelligence flows</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              From connected data to <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">confident action</span>
+              From connected data to <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">confident action</span>
             </h2>
           </Reveal>
 
           <div className="relative mt-14">
-            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#29ab87]/70 via-[#117a4b]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
+            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/70 via-[#ffffff]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
             <div className="grid gap-6 lg:grid-cols-5">
               {PIPELINE.map((s, i) => {
                 const Icon = s.icon;
@@ -144,7 +150,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                   <StaggerRevealItem key={s.label} variant="scale" className="relative pl-16 lg:pl-0 lg:pt-10">
                     <span className="absolute left-6 top-0 -translate-x-1/2 lg:left-0 lg:top-8 lg:translate-x-0 lg:-translate-y-1/2">
                       <motion.span
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-[#29ab87] shadow-lg shadow-violet-950/10"
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-white shadow-lg shadow-violet-950/10"
                         animate={{ scale: [1, 1.12, 1] }}
                         transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.45, ease: "easeInOut" }}
                       >
@@ -152,7 +158,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                       </motion.span>
                     </span>
                     <Glass variant="frosted" tone="green" className="p-5">
-                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#29ab87]">{String(i + 1).padStart(2, "0")}</p>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white">{String(i + 1).padStart(2, "0")}</p>
                       <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
                       <p className="mt-2 text-sm leading-6 text-slate-300">{s.desc}</p>
                     </Glass>
@@ -172,7 +178,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           <Reveal className="max-w-2xl">
             <SectionLabel>In practice</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Intelligent outcomes for <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">real processes</span>
+              Intelligent outcomes for <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">real processes</span>
             </h2>
           </Reveal>
 
@@ -184,7 +190,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                   <TiltCard max={5} scale={1.02} className="h-full">
                     <Glass variant="frosted" tone="green" className="h-full p-7">
                       <div className="flex items-start gap-4">
-                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white" style={{ background: "linear-gradient(160deg,#29ab87,#117a4b)" }}>
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                           <Icon className="h-6 w-6" strokeWidth={1.8} />
                         </span>
                         <div>
@@ -209,7 +215,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           <Reveal className="max-w-2xl">
             <SectionLabel>What we deliver</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              AI capabilities you can <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">trust</span>
+              AI capabilities you can <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">trust</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-400">
               From embedded SAP AI to responsible adoption — governed, secure, and practical.
@@ -222,7 +228,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>

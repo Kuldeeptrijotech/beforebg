@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ContentPage({ eyebrow, title, description, highlights, action = { href: "", label: "" }, showHero = true }) {
   return (
-    <main>
+    <main className="public-alternating-page">
       {showHero && <section className="page-hero">
         <div className="content-shell">
           <p className="eyebrow">{eyebrow}</p>

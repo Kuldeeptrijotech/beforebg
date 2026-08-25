@@ -40,7 +40,7 @@ export default function CareerGrowthScene() {
         <p className="text-[9px] text-tri-2">Hiring · Hybrid</p>
       </div>
 
-      <div className="absolute right-[5%] top-[4%] rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[10px] font-semibold text-amber-300">
+      <div className="absolute right-[5%] top-[4%] rounded-full border border-white/20/30 bg-white/ px-3 py-1 text-[10px] font-semibold text-white">
         Reach your next role
       </div>
 
@@ -51,8 +51,8 @@ export default function CareerGrowthScene() {
         preserveAspectRatio="none"
         fill="none"
       >
-        <path d={STAIR} stroke="rgba(41,171,135,0.5)" strokeWidth="2" strokeDasharray="5 7" />
-        <path d={STAIR} stroke="rgba(41,171,135,0.9)" strokeWidth="2.5" strokeLinejoin="round" />
+        <path d={STAIR} stroke="rgba(255, 255, 255,0.5)" strokeWidth="2" strokeDasharray="5 7" />
+        <path d={STAIR} stroke="rgba(255, 255, 255,0.9)" strokeWidth="2.5" strokeLinejoin="round" />
         <Packet d={STAIR} dur={10} color={TRI.mint} r={4} delay={0} />
         <Packet d={STAIR} dur={10} color={TRI.amber} r={3} delay={5} />
 
@@ -80,11 +80,11 @@ export default function CareerGrowthScene() {
           <span className="text-[10px] sm:text-[11px] font-semibold text-white/60">Bring your ambition</span>
         </div>
         <div className="hidden md:flex flex-1 items-center">
-          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(245,166,35,0.6)_0,rgba(245,166,35,0.6)_6px,transparent_6px,transparent_12px)]" />
+          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(255, 255, 255,0.6)_0,rgba(255, 255, 255,0.6)_6px,transparent_6px,transparent_12px)]" />
           <Code2 className="mx-2 h-4 w-4 text-tri-2 tri-pulse" />
-          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(41,171,135,0.7)_0,rgba(41,171,135,0.7)_6px,transparent_6px,transparent_12px)]" />
+          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(255, 255, 255,0.7)_0,rgba(255, 255, 255,0.7)_6px,transparent_6px,transparent_12px)]" />
         </div>
-        <div className="flex items-center gap-1.5 sm:gap-2 rounded-lg bg-[linear-gradient(160deg,#29ab87,#117a4b)] px-2.5 sm:px-3 py-1 sm:py-1.5 shadow-lg shadow-[rgba(41,171,135,0.35)]">
+        <div className="flex items-center gap-1.5 sm:gap-2 rounded-lg bg-[linear-gradient(160deg,#22d3ee,#2563eb)] px-2.5 sm:px-3 py-1 sm:py-1.5 shadow-lg shadow-[rgba(255, 255, 255,0.35)]">
           <TrendingUp className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white" />
           <span className="text-[10px] sm:text-[11px] font-bold text-white">Grow with Trijotech</span>
         </div>

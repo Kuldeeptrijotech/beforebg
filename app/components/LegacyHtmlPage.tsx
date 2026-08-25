@@ -17,10 +17,10 @@ export default function LegacyHtmlPage({ title, description = "", blocks, classN
         >
           <div aria-hidden className="absolute inset-0 -z-20 tri-mesh opacity-60" />
           <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-45" />
-          <div aria-hidden className="tri-blob -z-10 h-80 w-80" style={{ right: "10%", top: "10%", background: "radial-gradient(circle, rgba(41,171,135,0.18), transparent 70%)" }} />
+          <div aria-hidden className="tri-blob -z-10 h-80 w-80" style={{ right: "10%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.18), transparent 70%)" }} />
 
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Trijotech Insights
             </span>
             <h1 className="max-w-4xl text-2xl font-bold leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl">{title}</h1>

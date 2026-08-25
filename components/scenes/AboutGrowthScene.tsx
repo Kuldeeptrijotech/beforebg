@@ -1,4 +1,4 @@
-import { Award, Compass, Handshake, TrendingUp, Users } from "lucide-react";
+﻿import { Award, Compass, Handshake, TrendingUp, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Packet, PulseDot, SceneCanvas, StageChip, TRI } from "./scene-ui";
 
@@ -39,8 +39,8 @@ export default function AboutGrowthScene() {
       >
         <defs>
           <linearGradient id="growArea" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#29ab87" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#29ab87" stopOpacity="0" />
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
         </defs>
 
@@ -48,14 +48,14 @@ export default function AboutGrowthScene() {
         <path d="M40 470 L470 470" stroke="rgba(191,232,216,0.12)" strokeWidth="1.2" strokeDasharray="3 6" />
 
         <g>
-          <rect x={31} y={390} width={14} height={80} fill="#29ab87" opacity={0.16} />
-          <rect x={123} y={330} width={14} height={140} fill="#29ab87" opacity={0.18} />
-          <rect x={225} y={252} width={14} height={218} fill="#29ab87" opacity={0.2} />
-          <rect x={340} y={169} width={14} height={301} fill="#29ab87" opacity={0.22} />
-          <rect x={462} y={95} width={14} height={375} fill="#f5a623" opacity={0.28} />
+          <rect x={31} y={390} width={14} height={80} fill="#ffffff" opacity={0.16} />
+          <rect x={123} y={330} width={14} height={140} fill="#ffffff" opacity={0.18} />
+          <rect x={225} y={252} width={14} height={218} fill="#ffffff" opacity={0.2} />
+          <rect x={340} y={169} width={14} height={301} fill="#ffffff" opacity={0.22} />
+          <rect x={462} y={95} width={14} height={375} fill="#ffffff" opacity={0.28} />
         </g>
 
-        <path d="M40 390 C150 330 300 180 470 95" stroke="rgba(41,171,135,0.85)" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M40 390 C150 330 300 180 470 95" stroke="rgba(255, 255, 255,0.85)" strokeWidth="2.5" strokeLinecap="round" />
         <path d="M40 390 C150 330 300 180 470 95" stroke="rgba(191,232,216,0.18)" strokeWidth="6" strokeLinecap="round" strokeDasharray="1 14" />
 
         <Packet d="M40 390 C150 330 300 180 470 95" dur={8} color={TRI.mint} r={4.5} delay={0} />
@@ -85,11 +85,11 @@ export default function AboutGrowthScene() {
           <span className="text-[11px] font-semibold text-white/45">Experience</span>
         </div>
         <div className="flex flex-1 items-center">
-          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(41,171,135,0.6)_0,rgba(41,171,135,0.6)_6px,transparent_6px,transparent_12px)]" />
+          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(255, 255, 255,0.6)_0,rgba(255, 255, 255,0.6)_6px,transparent_6px,transparent_12px)]" />
           <TrendingUp className="mx-2 h-4 w-4 text-tri-2 tri-pulse" />
-          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(245,166,35,0.6)_0,rgba(245,166,35,0.6)_6px,transparent_6px,transparent_12px)]" />
+          <span className="h-px flex-1 bg-[repeating-linear-gradient(90deg,rgba(255, 255, 255,0.6)_0,rgba(255, 255, 255,0.6)_6px,transparent_6px,transparent_12px)]" />
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-[linear-gradient(160deg,#29ab87,#117a4b)] px-3 py-1.5 shadow-lg shadow-[rgba(41,171,135,0.35)]">
+        <div className="flex items-center gap-2 rounded-lg bg-[linear-gradient(160deg,#22d3ee,#2563eb)] px-3 py-1.5 shadow-lg shadow-[rgba(255, 255, 255,0.35)]">
           <Handshake className="h-3.5 w-3.5 text-white" />
           <span className="text-[11px] font-bold text-white">Lasting impact</span>
         </div>

@@ -72,7 +72,7 @@ const BLUEPRINT_STEPS: StepData[] = [
     name: "Zero-Downtime Production Go-Live",
     desc: "Switching active transaction streams over to the high-availability S/4HANA production cluster.",
     coords: "LAT 82.30° N · GRID D-12",
-    color: "#29ab87",
+    color: "#ffffff",
     modules: ["Production Switchover", "Hypercare 24/7", "User Enablement", "Value Realization"],
     metrics: { label: "Go-Live Downtime", val: "Zero Disruption" },
   },
@@ -116,8 +116,8 @@ export default function ImplementationAssembly() {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(41,171,135,0.15) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(41,171,135,0.15) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 255, 255,0.15) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255,0.15) 1px, transparent 1px)
             `,
             backgroundSize: "200px 200px",
           }}
@@ -175,7 +175,7 @@ export default function ImplementationAssembly() {
               <linearGradient id="gantryLaser" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stopColor="#38bdf8" stopOpacity="0" />
                 <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#29ab87" stopOpacity="0" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
               </linearGradient>
               <filter id="cadGlow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="4" result="blur" />
@@ -197,11 +197,11 @@ export default function ImplementationAssembly() {
             <g transform="translate(600, 310)" filter="url(#cadGlow)">
               {/* Isometric Cube Faces */}
               <polygon points="0,-120 120,-50 0,20 -120,-50" fill="rgba(56,189,248,0.12)" stroke="#38bdf8" strokeWidth="2" />
-              <polygon points="0,20 120,-50 120,90 0,160" fill="rgba(41,171,135,0.15)" stroke="#29ab87" strokeWidth="2" />
+              <polygon points="0,20 120,-50 120,90 0,160" fill="rgba(255, 255, 255,0.15)" stroke="#ffffff" strokeWidth="2" />
               <polygon points="0,20 -120,-50 -120,90 0,160" fill="rgba(139,124,246,0.12)" stroke="#8b7cf6" strokeWidth="2" />
 
               {/* Inner Core Pulsing Circuit Node */}
-              <circle cx="0" cy="20" r="28" fill="rgba(41,171,135,0.4)" stroke="#29ab87" strokeWidth="2">
+              <circle cx="0" cy="20" r="28" fill="rgba(255, 255, 255,0.4)" stroke="#ffffff" strokeWidth="2">
                 <animate attributeName="r" values="24;32;24" dur="3s" repeatCount="indefinite" />
               </circle>
               <text x="0" y="24" textAnchor="middle" fill="#ffffff" fontSize="10" fontFamily="monospace" fontWeight="bold">
@@ -225,7 +225,7 @@ export default function ImplementationAssembly() {
             >
               <line x1="0" y1="80" x2="0" y2="570" stroke="url(#gantryLaser)" strokeWidth="3" filter="url(#cadGlow)" />
               <circle cx="0" cy="80" r="4" fill="#38bdf8" />
-              <circle cx="0" cy="570" r="4" fill="#29ab87" />
+              <circle cx="0" cy="570" r="4" fill="#ffffff" />
             </motion.g>
           </svg>
 
@@ -262,7 +262,7 @@ export default function ImplementationAssembly() {
                   </p>
                   {active.modules.map((m) => (
                     <div key={m} className="flex items-center gap-1.5 text-[10px] font-mono text-white/80">
-                      <Check className="h-3 w-3 text-[#29ab87]" />
+                      <Check className="h-3 w-3 text-white" />
                       <span>{m}</span>
                     </div>
                   ))}
@@ -276,15 +276,15 @@ export default function ImplementationAssembly() {
             <div className="rounded-2xl border border-white/15 bg-[#030713]/90 p-4 sm:p-5 shadow-2xl backdrop-blur-xl">
               <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
                 <span className="flex items-center gap-1.5 text-xs font-mono font-bold text-white">
-                  <Scan className="h-4 w-4 text-[#29ab87] animate-pulse" /> Precision Verification
+                  <Scan className="h-4 w-4 text-white animate-pulse" /> Precision Verification
                 </span>
-                <span className="h-2 w-2 rounded-full bg-[#29ab87] animate-ping" />
+                <span className="h-2 w-2 rounded-full bg-white animate-ping" />
               </div>
 
               <div className="mt-2.5 space-y-2">
                 <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2">
                   <p className="text-[8px] font-mono text-white/50">{active.metrics.label}</p>
-                  <p className="text-xs sm:text-sm font-mono font-extrabold text-[#29ab87]" suppressHydrationWarning>
+                  <p className="text-xs sm:text-sm font-mono font-extrabold text-white" suppressHydrationWarning>
                     {active.metrics.val}
                   </p>
                 </div>
@@ -296,12 +296,12 @@ export default function ImplementationAssembly() {
                   </div>
                   <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
                     <p className="text-[7px] font-mono text-white/40">RISK DEVIATION</p>
-                    <p className="text-[11px] font-mono font-bold text-[#29ab87]">0.00%</p>
+                    <p className="text-[11px] font-mono font-bold text-white">0.00%</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-2.5 rounded-lg bg-[#29ab87]/15 border border-[#29ab87]/30 p-1.5 text-center text-[9px] font-mono font-bold text-[#7edcc2]">
+              <div className="mt-2.5 rounded-lg bg-white/15 border border-white/30 p-1.5 text-center text-[9px] font-mono font-bold text-white">
                 ✓ SAP Activate Milestone Validated
               </div>
             </div>
@@ -339,7 +339,7 @@ export default function ImplementationAssembly() {
               <div className="mt-2.5 flex flex-wrap gap-1.5 pt-2 border-t border-white/10">
                 {active.modules.map((m) => (
                   <span key={m} className="inline-flex items-center gap-1 rounded bg-white/[0.04] border border-white/8 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-mono text-white/80">
-                    <Check className="h-2.5 w-2.5 text-[#29ab87]" />
+                    <Check className="h-2.5 w-2.5 text-white" />
                     {m}
                   </span>
                 ))}
@@ -351,9 +351,9 @@ export default function ImplementationAssembly() {
           <div className="rounded-xl sm:rounded-2xl border border-white/15 bg-[#030713]/95 p-3.5 sm:p-4 shadow-xl backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-2">
               <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold text-white">
-                <Scan className="h-3.5 w-3.5 text-[#29ab87] animate-pulse" /> Precision Verification
+                <Scan className="h-3.5 w-3.5 text-white animate-pulse" /> Precision Verification
               </span>
-              <span className="rounded bg-[#29ab87]/15 px-2 py-0.5 text-[8px] font-mono font-bold text-[#7edcc2]">
+              <span className="rounded bg-white/15 px-2 py-0.5 text-[8px] font-mono font-bold text-white">
                 Validated
               </span>
             </div>
@@ -361,7 +361,7 @@ export default function ImplementationAssembly() {
             <div className="mt-2 grid grid-cols-2 gap-2 text-center">
               <div className="rounded-lg bg-white/[0.03] border border-white/8 p-2">
                 <p className="text-[8px] font-mono text-white/50">{active.metrics.label}</p>
-                <p className="text-xs font-mono font-extrabold text-[#29ab87]" suppressHydrationWarning>
+                <p className="text-xs font-mono font-extrabold text-white" suppressHydrationWarning>
                   {active.metrics.val}
                 </p>
               </div>
@@ -383,7 +383,7 @@ export default function ImplementationAssembly() {
           </div>
           <div className="relative h-1.5 sm:h-2 w-full rounded-full bg-white/10 overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#38bdf8] via-[#22d3ee] to-[#29ab87]"
+              className="h-full bg-gradient-to-r from-[#38bdf8] via-[#22d3ee] to-[#ffffff]"
               animate={{ width: `${scanPos}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />

@@ -56,7 +56,7 @@ const JURISDICTIONS: Jurisdiction[] = [
     name: "India GST e-Invoice",
     region: "NIC / IRP Portal",
     format: "JSON Schema V1.1 · Signed QR",
-    color: "#29ab87",
+    color: "#ffffff",
     irnExample: "a8f3e1...99c4d2",
     taxAuthority: "Goods & Services Tax Network (GSTN)",
   },
@@ -74,7 +74,7 @@ const JURISDICTIONS: Jurisdiction[] = [
     name: "Saudi ZATCA Phase 2",
     region: "Fatoora Portal",
     format: "Cryptographic Stamp · ECDSA",
-    color: "#f5a623",
+    color: "#ffffff",
     irnExample: "zatca-uuid-48f1-98ac",
     taxAuthority: "Zakat, Tax & Customs Authority",
   },
@@ -118,7 +118,7 @@ const STAGES: ClearanceStage[] = [
     name: "Government Portal Handshake",
     desc: "Direct cryptographic connection to government tax server with sub-second signing.",
     protocol: "TLS 1.3 / HMAC-SHA256 Sign",
-    color: "#f5a623",
+    color: "#ffffff",
     status: "IRN GENERATED",
     metrics: { label: "Clearance Speed", value: "< 340 ms" },
     checks: ["Official IRN hash generated & registered", "Digital signature affixed to payload", "Signed B2B / B2G QR code payload returned"],
@@ -129,7 +129,7 @@ const STAGES: ClearanceStage[] = [
     name: "SAP Sync & Buyer Dispatch",
     desc: "Real-time update of SAP billing document with IRN, QR code, and automated dispatch.",
     protocol: "Instant B2B PDF/XML Dispatch",
-    color: "#29ab87",
+    color: "#ffffff",
     status: "DISPATCHED",
     metrics: { label: "Auto-Reconciliation", value: "Instant 100%" },
     checks: ["SAP invoice status set to Cleared", "Signed PDF invoice generated with QR", "Automated email/portal dispatch to buyer"],
@@ -170,26 +170,26 @@ export default function EInvoiceWorkflow() {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              radial-gradient(circle at center, rgba(41,171,135,0.18) 1px, transparent 1px),
+              radial-gradient(circle at center, rgba(255, 255, 255,0.18) 1px, transparent 1px),
               linear-gradient(to right, rgba(56,189,248,0.08) 1px, transparent 1px)
             `,
             backgroundSize: "36px 36px, 72px 72px",
           }}
         />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[420px] w-[700px] rounded-full bg-[radial-gradient(ellipse,rgba(41,171,135,0.16)_0%,transparent_70%)] blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[420px] w-[700px] rounded-full bg-[radial-gradient(ellipse,rgba(255, 255, 255,0.16)_0%,transparent_70%)] blur-3xl" />
       </div>
 
       {/* ── Top Header Controls & Jurisdiction Switcher ── */}
       <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87] shadow-[0_0_15px_rgba(41,171,135,0.4)]">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white shadow-[0_0_15px_rgba(255, 255, 255,0.4)]">
             <FileCheck2 className="h-4 w-4 sm:h-5 sm:w-5 animate-pulse" />
           </span>
           <div>
             <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
               E-INVOICING PRO · STATUTORY CLEARANCE ENGINE
             </h2>
-            <p className="text-[8px] sm:text-[9px] font-mono text-[#7edcc2]">
+            <p className="text-[8px] sm:text-[9px] font-mono text-white">
               GLOBAL PEPPOL NETWORK · ZATCA · GST IRP · 100% AUDIT-PROOF
             </p>
           </div>
@@ -255,8 +255,8 @@ export default function EInvoiceWorkflow() {
               </div>
 
               {/* Status Badge */}
-              <div className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[9px] sm:text-[10px] font-mono font-bold bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#7edcc2] shadow-[0_0_10px_rgba(41,171,135,0.3)]">
-                <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#29ab87]" />
+              <div className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[9px] sm:text-[10px] font-mono font-bold bg-white/20 border border-white/40 text-white shadow-[0_0_10px_rgba(255, 255, 255,0.3)]">
+                <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white" />
                 <span>IRN CLEARED</span>
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function EInvoiceWorkflow() {
               <div className="rounded-xl bg-white/[0.03] border border-white/8 p-2.5">
                 <p className="text-[8px] sm:text-[9px] text-white/40 uppercase">BUYER / RECIPIENT</p>
                 <p className="font-bold text-white mt-0.5 truncate">ENTERPRISE CORP AG</p>
-                <p className="text-[8px] text-[#f5a623]">PEPPOL ID: 0088:492</p>
+                <p className="text-[8px] text-white">PEPPOL ID: 0088:492</p>
               </div>
             </div>
 
@@ -280,10 +280,10 @@ export default function EInvoiceWorkflow() {
             <div className="mt-2.5 rounded-xl bg-black/60 border border-white/10 p-2.5 flex items-center justify-between gap-2">
               <div className="min-w-0">
                 <div className="flex items-center gap-1.5 text-[8px] sm:text-[9px] font-mono text-white/50">
-                  <Lock className="h-3 w-3 text-[#29ab87]" />
+                  <Lock className="h-3 w-3 text-white" />
                   <span>CRYPTOGRAPHIC IRN HASH</span>
                 </div>
-                <p className="mt-0.5 text-[10px] sm:text-xs font-mono font-extrabold text-[#7edcc2] truncate">
+                <p className="mt-0.5 text-[10px] sm:text-xs font-mono font-extrabold text-white truncate">
                   {jur.irnExample} · SIGNED_OK
                 </p>
               </div>
@@ -300,7 +300,7 @@ export default function EInvoiceWorkflow() {
               </div>
               <div className="text-right">
                 <p className="text-base sm:text-lg font-mono font-extrabold text-white">
-                  $128,450.00 <span className="text-[10px] text-[#29ab87]">USD</span>
+                  $128,450.00 <span className="text-[10px] text-white">USD</span>
                 </p>
               </div>
             </div>
@@ -420,7 +420,7 @@ export default function EInvoiceWorkflow() {
               <div className="mt-3 grid grid-cols-3 gap-1.5 pt-2.5 border-t border-white/10 text-center">
                 <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
                   <p className="text-[7px] sm:text-[8px] font-mono text-white/40">CLEARANCE TIME</p>
-                  <p className="text-[11px] sm:text-xs font-mono font-bold text-[#29ab87]">&lt; 340 ms</p>
+                  <p className="text-[11px] sm:text-xs font-mono font-bold text-white">&lt; 340 ms</p>
                 </div>
                 <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
                   <p className="text-[7px] sm:text-[8px] font-mono text-white/40">ERROR RATE</p>
@@ -428,7 +428,7 @@ export default function EInvoiceWorkflow() {
                 </div>
                 <div className="rounded-lg bg-white/[0.02] border border-white/5 p-1.5">
                   <p className="text-[7px] sm:text-[8px] font-mono text-white/40">ERP INTEGRITY</p>
-                  <p className="text-[11px] sm:text-xs font-mono font-bold text-[#f5a623]">100% Clean</p>
+                  <p className="text-[11px] sm:text-xs font-mono font-bold text-white">100% Clean</p>
                 </div>
               </div>
             </motion.div>
@@ -437,10 +437,10 @@ export default function EInvoiceWorkflow() {
           {/* Live Invoices Cleared Counter Bar */}
           <div className="flex items-center justify-between rounded-xl bg-white/[0.03] border border-white/10 px-3 py-1.5 text-[9px] sm:text-[10px] font-mono">
             <span className="text-white/60 flex items-center gap-1.5">
-              <Activity className="h-3 w-3 text-[#29ab87] animate-pulse" />
+              <Activity className="h-3 w-3 text-white animate-pulse" />
               Live Invoices Cleared This Fiscal Year:
             </span>
-            <span className="font-extrabold text-[#7edcc2]" suppressHydrationWarning>
+            <span className="font-extrabold text-white" suppressHydrationWarning>
               {invoiceCounter.toLocaleString("en-US")} docs
             </span>
           </div>
@@ -449,7 +449,7 @@ export default function EInvoiceWorkflow() {
 
       {/* ── Bottom Ribbon: Certified Integration Matrix ── */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-        <span className="flex items-center gap-1.5 text-[#29ab87]">
+        <span className="flex items-center gap-1.5 text-white">
           <ShieldCheck className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP CERTIFIED INTEGRATION FOR S/4HANA & ECC 6.0
         </span>
         <span className="hidden sm:inline">MULTI-COUNTRY STATUTORY CLEARANCE (PEPPOL, ZATCA, GSTN, SDI)</span>

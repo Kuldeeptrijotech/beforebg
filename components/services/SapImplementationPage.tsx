@@ -14,7 +14,6 @@ import {
   Target,
   Zap,
 } from "lucide-react";
-import ImplementationAssembly from "@/components/scenes/ImplementationAssembly";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
@@ -43,19 +42,26 @@ const EXTENSIONS = ["Consolidation", "Planning", "Analytics", "Automation", "Int
 
 export default function SapImplementationPage({ offerings, impacts }: { offerings: ServiceItem[]; impacts: ServiceItem[] }) {
   return (
-    <main className="font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="service-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        bgClass="bg-[#030713]"
-        glow={["rgba(41,171,135,0.3)", "rgba(245,166,35,0.2)"]}
-        scene={<ImplementationAssembly />}
-        fadeTo="#030713"
+        eyebrow="SAP Consulting & Implementation"
+        title="Strategy, Implementation & Full-Lifecycle SAP Consulting"
+        subtitle="Plan, deliver, and optimize standard and cloud-native SAP landscapes with accountable delivery ownership."
+        description="We combine strategy, technology, and deep domain expertise to build agile, unified SAP environments from initial roadmap to stabilization and continuous value realization."
+        primaryCta={{ label: "Consult our SAP team", href: "/contact" }}
+        secondaryCta={{ label: "Explore all services", href: "/services" }}
+        metrics={[
+          { value: "9+", label: "Years Experience" },
+          { value: "100+", label: "Projects Delivered" },
+          { value: "100%", label: "Delivery Ownership" },
+        ]}
       />
 
       {/* INTRODUCTION + HERO TAIL */}
       <section className="relative bg-[#162032]">
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
-          <div className="h-16 w-px bg-gradient-to-b from-[#29ab87]/70 to-transparent" />
+          <div className="h-16 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
         </div>
         <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-12">
           <div>
@@ -63,7 +69,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               <SectionLabel>Our approach</SectionLabel>
               <h2 className={`mt-2 text-[clamp(1.4rem,2.6vw,2.1rem)] font-bold leading-[1.16] tracking-[-0.02em] text-white`}>
                 Strategy, technology and data —{" "}
-                <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">one transformation</span>
+                <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">one transformation</span>
               </h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
                 Whether you are starting fresh with SAP or modernizing an established landscape, we combine strategy,
@@ -74,8 +80,8 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             <StaggerReveal className="mt-10 grid max-w-xl gap-3" stagger={0.08}>
               {impacts.slice(0, 2).map((i) => (
                 <StaggerRevealItem key={i.title} variant="fadeIn">
-                  <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#29ab87]" />
+                  <div className="service-surface-card flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-white" />
                     <div>
                       <p className="font-bold text-white">{i.title}</p>
                       <p className="mt-0.5 text-sm leading-6 text-slate-300">{i.description}</p>
@@ -89,22 +95,22 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={9} suffix="+" label="Years of SAP expertise" accent="text-[#29ab87]" />
+                <Metric to={9} suffix="+" label="Years of SAP expertise" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
-                <Metric to={100} suffix="+" label="Projects delivered" accent="text-[#29ab87]" />
+                <Metric to={100} suffix="+" label="Projects delivered" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={100} suffix="%" label="Go-live success rate" accent="text-[#117a4b]" />
+                <Metric to={100} suffix="%" label="Go-live success rate" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
-                <Metric to={30} suffix="+" label="Founder industry expertise" accent="text-[#f5a623]" />
+                <Metric to={30} suffix="+" label="Founder industry expertise" accent="text-white" />
               </Glass>
             </Reveal>
           </div>
@@ -117,12 +123,12 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
           <Reveal className="max-w-2xl">
             <SectionLabel>Delivery journey</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              From blueprint to <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">go-live</span>
+              From blueprint to <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">go-live</span>
             </h2>
           </Reveal>
 
           <div className="relative mt-14">
-            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#29ab87]/70 via-[#117a4b]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
+            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/70 via-[#ffffff]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
             <div className="grid gap-6 lg:grid-cols-5">
               {STEPS.map((s, i) => {
                 const Icon = s.icon;
@@ -133,7 +139,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
                       className="absolute left-6 top-0 flex -translate-x-1/2 items-center justify-center lg:left-0 lg:top-8 lg:-translate-y-1/2 lg:translate-x-0"
                     >
                       <motion.span
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-[#29ab87] shadow-lg shadow-emerald-950/10"
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-white shadow-lg shadow-emerald-950/10"
                         animate={{ scale: [1, 1.12, 1] }}
                         transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
                       >
@@ -141,7 +147,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
                       </motion.span>
                     </span>
                     <Glass variant="frosted" tone="green" className="p-5">
-                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">{s.n}</p>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">{s.n}</p>
                       <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
                       <p className="mt-2 text-sm leading-6 text-slate-300">
                         {i === 0 && "Prioritize goals, define scope, and build the transformation roadmap."}
@@ -166,7 +172,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             <Reveal>
               <SectionLabel>What we deliver</SectionLabel>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-                Capabilities built around <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">your priorities</span>
+                Capabilities built around <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">your priorities</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
@@ -183,7 +189,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
@@ -200,12 +206,12 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
       {/* SAP ARCHITECTURE (DARK / GLOWING GREY - HEX GRID PRESERVED) */}
       <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_10%,rgba(41,171,135,0.2),transparent_60%)]" />
+        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_10%,rgba(255, 255, 255,0.2),transparent_60%)]" />
         <Container className="relative">
           <Reveal className="max-w-2xl">
             <SectionLabel dark>How it comes together</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
-              A clean core with <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">flexible edges</span>
+              A clean core with <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">flexible edges</span>
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
               We keep your SAP core standard and upgrade-ready, moving everything extensible to the platform layer
@@ -215,16 +221,16 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
 
           <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="relative">
-              <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#29ab87]/60 to-[#f5a623]/20" />
+              <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/60 to-[#ffffff]/20" />
               {STACK.map((s, i) => {
                 const Icon = s.icon;
                 return (
                   <Reveal key={s.label} delay={i * 0.1}>
                     <div className="relative mb-5 pl-16 last:mb-0">
-                      <span className="absolute left-0 top-1 flex h-12 w-12 items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                      <span className="absolute left-0 top-1 flex h-12 w-12 items-center justify-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                         <Icon className="h-5 w-5 text-white" strokeWidth={1.9} />
                       </span>
-                      <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm">
+                      <div className="service-surface-card rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm">
                         <h3 className="text-lg font-bold text-white">{s.label}</h3>
                         <p className="mt-1.5 text-sm leading-6 text-slate-300">{s.desc}</p>
                       </div>
@@ -236,15 +242,15 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
 
             <div>
               <Reveal delay={0.15}>
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
+                <div className="service-surface-card relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
                   <div className="flex items-center justify-between">
-                     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#29ab87]">Clean core model</p>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#29ab87]/30 px-2.5 py-1 text-[10px] font-bold text-[#29ab87]">
+                     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">Clean core model</p>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/30 px-2.5 py-1 text-[10px] font-bold text-white">
                       <Lock className="h-3 w-3" /> Standard & stable
                     </span>
                   </div>
                   <div className="mt-8 flex justify-center">
-                    <div className="flex h-36 w-36 items-center justify-center text-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#29ab87,#f5a623)", boxShadow: "0 0 60px rgba(41,171,135,0.35)" }}>
+                    <div className="flex h-36 w-36 items-center justify-center text-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#22d3ee,#2563eb)", boxShadow: "0 0 60px rgba(255, 255, 255,0.35)" }}>
                       <div>
                         <p className="text-sm font-extrabold text-white">SAP Core</p>
                         <p className="mt-1 px-4 text-[10px] leading-4 text-white/75">S/4HANA standard, minimal custom code</p>
@@ -276,12 +282,12 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               <Reveal>
                 <SectionLabel>Why Trijotech</SectionLabel>
                 <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-                  Outcomes you can <span className="bg-gradient-to-r from-[#29ab87] to-[#f5a623] bg-clip-text text-transparent">build on</span>
+                  Outcomes you can <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">build on</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
-                <div className="mt-8 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl text-white" style={{ background: "linear-gradient(160deg,#29ab87,#f5a623)" }}>
+                <div className="service-surface-card mt-8 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
                     <Zap className="h-6 w-6" />
                   </span>
                   <div>
@@ -296,7 +302,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               {impacts.map((i, idx) => (
                 <StaggerRevealItem key={i.title} variant="slideRight">
                   <Glass variant="frosted" tone={idx % 2 ? "cyan" : "amber"} className="h-full p-6">
-                    <CheckCircle2 className="h-6 w-6 text-[#29ab87]" />
+                    <CheckCircle2 className="h-6 w-6 text-white" />
                     <h3 className="mt-4 text-xl font-bold text-white">{i.title}</h3>
                     <p className="mt-2 text-sm leading-6 text-slate-400">{i.description}</p>
                   </Glass>

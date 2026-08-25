@@ -19,9 +19,9 @@ import { useState, useEffect } from "react";
 import IndustryHeroStage from "./IndustryHeroStage";
 
 const KPIS = [
-  { value: "0.18s", label: "Reconciliation Latency", color: "#117a4b" },
-  { value: "4.8M", label: "Transactions / Day", color: "#29ab87" },
-  { value: "0.01%", label: "Fraud Anomaly Rate", color: "#f5a623" },
+  { value: "0.18s", label: "Reconciliation Latency", color: "#ffffff" },
+  { value: "4.8M", label: "Transactions / Day", color: "#ffffff" },
+  { value: "0.01%", label: "Fraud Anomaly Rate", color: "#ffffff" },
 ];
 
 export default function FintechAnimation() {
@@ -56,8 +56,8 @@ export default function FintechAnimation() {
           <defs>
             <linearGradient id="fintechOrbital" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#8b7cf6" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#29ab87" stopOpacity="1" />
-              <stop offset="100%" stopColor="#f5a623" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
             </linearGradient>
             <filter id="fintechGlow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="4.5" result="blur" />
@@ -98,7 +98,7 @@ export default function FintechAnimation() {
               path="M 200 420 a 520 220 0 1 0 1040 0 a 520 220 0 1 0 -1040 0"
             />
           </circle>
-          <circle r="5" fill="#29ab87" filter="url(#fintechGlow)">
+          <circle r="5" fill="#ffffff" filter="url(#fintechGlow)">
             <animateMotion
               dur="8s"
               begin="4s"
@@ -106,7 +106,7 @@ export default function FintechAnimation() {
               path="M 200 420 a 520 220 0 1 0 1040 0 a 520 220 0 1 0 -1040 0"
             />
           </circle>
-          <circle r="4.5" fill="#f5a623" filter="url(#fintechGlow)">
+          <circle r="4.5" fill="#ffffff" filter="url(#fintechGlow)">
             <animateMotion
               dur="6s"
               repeatCount="indefinite"
@@ -134,7 +134,7 @@ export default function FintechAnimation() {
             <div className="mt-3 space-y-2">
               <div className="rounded-lg bg-white/[0.03] border border-white/5 p-2.5">
                 <p className="text-[9px] uppercase tracking-wider text-white/50">Live Settled Volume Today</p>
-                <p className="text-base font-mono font-extrabold text-[#29ab87]" suppressHydrationWarning>
+                <p className="text-base font-mono font-extrabold text-white" suppressHydrationWarning>
                   {txCount.toLocaleString("en-US")} <span className="text-[10px] font-normal text-white/50">txns</span>
                 </p>
               </div>
@@ -169,7 +169,7 @@ export default function FintechAnimation() {
           <div className="rounded-2xl border border-white/10 bg-[#030713]/85 p-4 shadow-2xl backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white">
                   <ShieldCheck className="h-5 w-5 animate-pulse" />
                 </span>
                 <div>
@@ -182,11 +182,11 @@ export default function FintechAnimation() {
             <div className="mt-3 space-y-2 text-xs">
               <div className="flex items-center justify-between text-white/80">
                 <span>Threat Isolation</span>
-                <span className="font-mono font-bold text-[#29ab87]">99.99% BLOCKED</span>
+                <span className="font-mono font-bold text-white">99.99% BLOCKED</span>
               </div>
               <div className="flex items-center justify-between text-white/80">
                 <span>Reconciliation Speed</span>
-                <span className="font-mono font-bold text-[#f5a623]">0.18s / Batch</span>
+                <span className="font-mono font-bold text-white">0.18s / Batch</span>
               </div>
               <div className="rounded-lg bg-[#8b7cf6]/15 border border-[#8b7cf6]/30 p-2 text-center text-[10px] font-bold text-[#a78bfa]">
                 ✓ Continuous Multi-GAAP Accounting · Zero Variance

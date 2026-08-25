@@ -43,7 +43,7 @@ export default function AboutGlobalConstellation({ className = "" }: { className
 
     window.addEventListener("resize", handleResize);
 
-    const colors = ["#29ab87", "#38bdf8", "#f5a623", "#7edcc2"];
+    const colors = ["#ffffff", "#38bdf8", "#ffffff", "#ffffff"];
     const nodeCount = 28;
     const nodes: Node[] = [];
 
@@ -79,7 +79,7 @@ export default function AboutGlobalConstellation({ className = "" }: { className
           time * 0.2,
           time * 0.2 + Math.PI * 0.8
         );
-        ctx.strokeStyle = "rgba(41, 171, 135, 0.08)";
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
         ctx.lineWidth = 1.2;
         ctx.stroke();
 

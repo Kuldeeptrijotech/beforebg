@@ -2,7 +2,7 @@
   "brand": {
     "name": "Trijotech",
     "homeHref": "/",
-    "logoSrc": "/brand/trijotech-header-logo.png",
+    "logoSrc": "/brand/Trijotech_Complete_white.svg",
     "logoAlt": "Trijotech",
     "ariaLabel": "Trijotech home"
   },
@@ -50,7 +50,7 @@
       "items": [
         {
           "name": "SAP Consulting",
-          "href": "/services/sap-implementation",
+          "href": "/services/sap-consulting",
           "description": "Plan, implement, integrate, and optimize SAP solutions for your organization.\nImprove business processes with expert guidance across ERP and enterprise systems.",
           "hasImage": false,
           "imageUrl": ""

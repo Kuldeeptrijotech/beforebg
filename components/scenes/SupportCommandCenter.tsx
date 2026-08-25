@@ -95,21 +95,21 @@ export default function SupportCommandCenter() {
     <div className="relative isolate h-full min-h-full w-full overflow-hidden select-none bg-[#030713] px-3 sm:px-6 lg:px-10 py-2 flex flex-col justify-between">
       {/* ── Console Ambient Backdrop ── */}
       <div aria-hidden className="absolute inset-0 pointer-events-none opacity-30">
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#117a4b]/30 blur-[140px]" />
+        <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-white/30 blur-[140px]" />
         <div className="absolute right-1/4 bottom-1/4 h-96 w-96 rounded-full bg-[#38bdf8]/20 blur-[140px]" />
       </div>
 
       {/* ── Top Mission Control Nav & Emergency Trigger ── */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-white/10 pb-2 sm:pb-3 pt-2 sm:pt-4">
         <div className="flex items-center gap-2.5 sm:gap-3">
-          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+          <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white">
             <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5" />
           </span>
           <div>
             <h2 className="text-[11px] sm:text-xs lg:text-sm font-mono font-extrabold text-white tracking-wider">
               SAP MANAGED SERVICES · 24/7 COMMAND DECK
             </h2>
-            <p className="text-[8px] sm:text-[9px] font-mono text-[#29ab87]">
+            <p className="text-[8px] sm:text-[9px] font-mono text-white">
               AUTONOMOUS HEALING ENGINE · LEVEL 1-3 GLOBAL SUPPORT ACTIVE
             </p>
           </div>
@@ -121,11 +121,11 @@ export default function SupportCommandCenter() {
             onClick={triggerSimulatedAlert}
             className={`flex items-center gap-1.5 sm:gap-2 rounded-xl px-2.5 sm:px-3.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-mono font-bold transition-all duration-300 backdrop-blur-md border ${
               isAlerting
-                ? "bg-[#f5a623] text-slate-950 border-[#f5a623] shadow-[0_0_20px_rgba(245,166,35,0.6)] animate-pulse"
+                ? "bg-white text-slate-950 border-white shadow-[0_0_20px_rgba(255, 255, 255,0.6)] animate-pulse"
                 : "bg-white/5 hover:bg-white/10 text-white border-white/15 active:scale-95"
             }`}
           >
-            <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-[#f5a623]" />
+            <Zap className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white" />
             <span>{isAlerting ? "Intercepting Alert..." : "Test Anomaly Trigger"}</span>
           </button>
         </div>
@@ -137,10 +137,10 @@ export default function SupportCommandCenter() {
         <div className="rounded-xl sm:rounded-2xl border border-white/12 bg-[#030713]/90 p-3 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-xl">
           <div className="flex items-center justify-between border-b border-white/10 pb-2 sm:pb-3">
             <span className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono font-bold text-white">
-              <HeartPulse className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#29ab87] animate-pulse" />
+              <HeartPulse className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white animate-pulse" />
               SCREEN 01: SYSTEM HEARTBEAT SCOPE
             </span>
-            <span className="rounded-full bg-[#29ab87]/20 border border-[#29ab87]/40 px-2 py-0.5 text-[7px] sm:text-[8px] font-mono font-bold text-[#29ab87]">
+            <span className="rounded-full bg-white/20 border border-white/40 px-2 py-0.5 text-[7px] sm:text-[8px] font-mono font-bold text-white">
               99.999% NOMINAL
             </span>
           </div>
@@ -148,7 +148,7 @@ export default function SupportCommandCenter() {
           <div className="mt-2.5 sm:mt-3">
             <div className="flex items-center justify-between text-[10px] sm:text-xs text-slate-300 font-mono mb-1.5 sm:mb-2">
               <span>S/4HANA CORE CPU: 24.2%</span>
-              <span className="text-[#29ab87]">ZERO DISRUPTIONS</span>
+              <span className="text-white">ZERO DISRUPTIONS</span>
             </div>
 
             {/* Continuous Pulse Waveform SVG */}
@@ -156,7 +156,7 @@ export default function SupportCommandCenter() {
               <svg className="h-full w-full" preserveAspectRatio="none" viewBox="0 0 500 50">
                 <path
                   d="M 0 25 L 80 25 L 95 8 L 110 42 L 125 15 L 140 32 L 155 25 L 260 25 L 275 8 L 290 42 L 305 15 L 320 32 L 335 25 L 500 25"
-                  stroke="#29ab87"
+                  stroke="#ffffff"
                   strokeWidth="2.5"
                   fill="none"
                 >
@@ -186,7 +186,7 @@ export default function SupportCommandCenter() {
                 <span
                   className={`font-bold px-1 rounded text-[8px] sm:text-[9px] ${
                     log.type === "HEAL"
-                      ? "bg-[#29ab87]/20 text-[#29ab87]"
+                      ? "bg-white/20 text-white"
                       : log.type === "PATCH"
                       ? "bg-[#38bdf8]/20 text-[#38bdf8]"
                       : "bg-white/10 text-white/80"
@@ -204,10 +204,10 @@ export default function SupportCommandCenter() {
         <div className="rounded-xl sm:rounded-2xl border border-white/12 bg-[#030713]/90 p-3 sm:p-4 lg:p-5 shadow-2xl backdrop-blur-xl">
           <div className="flex items-center justify-between border-b border-white/10 pb-2 sm:pb-3">
             <span className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-mono font-bold text-white">
-              <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#f5a623]" />
+              <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
               SCREEN 03: P1 RESPONSE & MTTR METRICS
             </span>
-            <span className="rounded-full bg-[#f5a623]/20 border border-[#f5a623]/40 px-2 py-0.5 text-[7px] sm:text-[8px] font-mono font-bold text-[#f5a623]">
+            <span className="rounded-full bg-white/20 border border-white/40 px-2 py-0.5 text-[7px] sm:text-[8px] font-mono font-bold text-white">
               SLA GUARANTEED
             </span>
           </div>
@@ -215,10 +215,10 @@ export default function SupportCommandCenter() {
           <div className="mt-2.5 sm:mt-3 grid grid-cols-2 gap-2 sm:gap-3">
             <div className="rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/5 p-2 sm:p-3 text-center">
               <p className="text-[8px] sm:text-[9px] font-mono uppercase text-white/50">Priority 1 SLA Target</p>
-              <p className="text-sm sm:text-base lg:text-lg font-mono font-extrabold text-[#29ab87] mt-0.5">
+              <p className="text-sm sm:text-base lg:text-lg font-mono font-extrabold text-white mt-0.5">
                 &lt; 15 Minutes
               </p>
-              <p className="text-[7px] sm:text-[8px] font-mono text-[#7edcc2] mt-0.5">Actual Avg: 11.2 min</p>
+              <p className="text-[7px] sm:text-[8px] font-mono text-white mt-0.5">Actual Avg: 11.2 min</p>
             </div>
             <div className="rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/5 p-2 sm:p-3 text-center">
               <p className="text-[8px] sm:text-[9px] font-mono uppercase text-white/50">Auto-Remediation Rate</p>
@@ -252,7 +252,7 @@ export default function SupportCommandCenter() {
                 }`}
               >
                 <p className="text-[7px] sm:text-[8px] font-mono text-white/50 truncate">{r.name.split(" ")[0]}</p>
-                <p className="text-[11px] sm:text-xs font-mono font-bold text-[#29ab87] mt-0.5">{r.uptime}</p>
+                <p className="text-[11px] sm:text-xs font-mono font-bold text-white mt-0.5">{r.uptime}</p>
                 <p className="text-[7px] sm:text-[8px] font-mono text-white/60">{r.latency}</p>
               </button>
             ))}
@@ -262,7 +262,7 @@ export default function SupportCommandCenter() {
 
       {/* ── Console Bottom Status Ribbon ── */}
       <div className="relative z-20 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 border-t border-white/10 pt-2 text-[9px] sm:text-[10px] font-mono text-white/60">
-        <span className="flex items-center gap-1.5 text-[#29ab87]">
+        <span className="flex items-center gap-1.5 text-white">
           <CheckCircle2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> SAP SOLMAN & CLOUD ALM CERTIFIED
         </span>
         <span className="hidden sm:inline">QUARTERLY UPGRADE ASSURANCE: 100% CLEAN CORE</span>

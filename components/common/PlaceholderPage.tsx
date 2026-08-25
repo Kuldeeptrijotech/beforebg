@@ -20,7 +20,7 @@ export default function PlaceholderPage({
   ],
 }: PlaceholderPageProps) {
   return (
-    <main className="zip-theme min-h-[calc(100svh-4.5rem)] bg-[#121927] font-sans text-white antialiased">
+    <main className="public-alternating-page zip-theme min-h-[calc(100svh-4.5rem)] bg-[#121927] font-sans text-white antialiased">
       <section className="relative overflow-hidden border-b border-white/10 py-24 md:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.16),transparent_34%)]" />
         <Container className="relative">
@@ -42,7 +42,7 @@ export default function PlaceholderPage({
           <div className="grid gap-5 md:grid-cols-3">
             {highlights.map((highlight) => (
               <div key={highlight} className="rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-xl backdrop-blur-xl">
-                <CheckCircle2 className="size-5 text-[#29ab87]" />
+                <CheckCircle2 className="size-5 text-white" />
                 <p className="mt-4 font-semibold text-slate-200">{highlight}</p>
               </div>
             ))}

@@ -68,7 +68,7 @@ export default function ServicePage({
     showContactForm = true,
 }: ServicePageProps) {
     return (
-        <main>
+        <main className="public-alternating-page">
             
             <section
                 className="page-heading service-page-heading"

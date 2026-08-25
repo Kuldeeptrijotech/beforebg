@@ -13,13 +13,13 @@ export default function ServicesPreview() {
   const featuredServices = services.filter((service) => service.showOnHome);
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
+    <section className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-black border-t border-slate-200">
       {/* Decorative ambient glowing layers with Hexagon grid */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-      <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(41,171,135,0.18)] blur-[100px] tri-pulse" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(245,166,35,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.45)] to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-0" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-0" />
+      <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(255, 255, 255,0.18)] blur-[100px] tri-pulse" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(255, 255, 255,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(255, 255, 255,0.45)] to-transparent" />
 
       <Container className="relative">
         <StaggerReveal className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
@@ -51,15 +51,15 @@ export default function ServicesPreview() {
                 <TiltCard className="h-full">
                   <a
                     href={service.href}
-                    className="tri-glass-card group flex h-full flex-col rounded-2xl p-5 sm:p-6 border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.06] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                    className="tri-glass-card group flex h-full flex-col rounded-2xl p-5 sm:p-6 border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.06] hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                   >
                     <HexBadge icon={Icon} tone={i % 2 === 0 ? "green" : "mix"} size="md" />
-                    <h3 className="mt-4 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-[#7edcc2]">
+                    <h3 className="mt-4 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-white">
                       {service.title}
                     </h3>
                     <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{service.description}</p>
                     <div className="mt-auto pt-5">
-                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#29ab87] transition-all duration-300 group-hover:gap-2.5 group-hover:text-[#7edcc2]">
+                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:gap-2.5 group-hover:text-white">
                         Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </span>
                     </div>

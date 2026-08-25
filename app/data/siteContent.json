@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T05:32:28.356Z",
+  "updatedAt": "2026-08-24T06:54:31.677Z",
   "global": {
     "sections": {
       "legacy-article-hero": {
@@ -122,6 +122,138 @@
               "value": "SAP Data, AI &amp; Insights",
               "match": "SAP Data, AI &amp; Insights",
               "label": "SAP Data, AI & Insights"
+            },
+            {
+              "id": "content-17q15p5",
+              "selector": "section.relative.isolate:nth-of-type(3) > div.mx-auto.w-full:nth-of-type(5) > div.flex.flex-col:nth-of-type(1) > div.max-w-2xl:nth-of-type(1) > div.flex.flex-col > h2.mt-2.max-w-3xl > span.tri-gradient-text",
+              "kind": "html",
+              "value": "enterprise teams",
+              "match": "enterprise teams.",
+              "label": "enterprise teams."
+            },
+            {
+              "id": "content-1j5qzfv",
+              "selector": "div.mt-7.sm\\:mt-9:nth-of-type(2) > div.h-full:nth-of-type(1) > a.tri-focus.group > div.group.relative > div.relative.z-10:nth-of-type(2) > div.flex.flex-1:nth-of-type(2) > p.mt-2\\.5.flex-1",
+              "kind": "html",
+              "value": "A secure and scalable e-invoicing solution that enables seamless compliance through direct integration with government portals. Built for SAP S/4HANA Public and Private Cloud, it reduces manual effort, minimizes errors, and provides real-time visibility into the invoicing process.",
+              "match": "A secure and scalable e-invoicing solution that enables seamless compliance through direct integration with government portals. Built for SAP S/4HANA Public and Private Cloud, it reduces manual effort, minimizes errors, and provides real-time visibility into the invoicing process.",
+              "label": "A secure and scalable e-invoicing solution that enables seamless compliance through direct integration with government portals. Built for SAP S/4HANA Public and Private Cloud, it reduces manual effort, minimizes errors, and provides real-time visibility into the invoicing process."
+            },
+            {
+              "id": "content-ge9erd",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.relative.isolate:nth-of-type(3) > div.mx-auto.w-full:nth-of-type(5) > div.mt-7.sm\\:mt-9:nth-of-type(2) > div.h-full:nth-of-type(1) > a.tri-focus.group",
+              "kind": "attribute",
+              "attribute": "href",
+              "value": "/solutions/e-invoicing-pro",
+              "match": "/solutions/e-invoicing-pro",
+              "label": "A secure and scalable e-invoicing solution that enables seamless compliance through direct integration with government portals. Built for SAP S/4HANA Public and Private Cloud, it reduces manual effort, minimizes errors, and provides real-time visibility into the invoicing process. URL"
+            },
+            {
+              "id": "content-b71thn",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(2) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > div.items-start > h2.font-bold > span.tri-gradient-text",
+              "kind": "html",
+              "value": "enterprise growth",
+              "match": "enterprise growth.",
+              "label": "enterprise growth."
+            },
+            {
+              "id": "content-sb3ak4",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(4) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div.items-center > h2.font-bold",
+              "kind": "html",
+              "value": "From strategy to running systems, one connected journey",
+              "match": "From strategy to running systems,<!-- --> <span class=\"tri-gradient-text\">one connected journey.</span>",
+              "label": "From strategy to running systems, one connected journey."
+            },
+            {
+              "id": "content-tvb175",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(5) > div.px-4:nth-of-type(4) > div:nth-of-type(1) > div.items-center > h2.font-bold > span.tri-gradient-text",
+              "kind": "html",
+              "value": "business outcomes",
+              "match": "business outcomes.",
+              "label": "business outcomes."
+            },
+            {
+              "id": "content-hv5wro",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4.items-center:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > h2.font-bold",
+              "kind": "html",
+              "value": "One connected ecosystem across the SAP landscape",
+              "match": "One connected ecosystem across the<!-- --> <span class=\"tri-gradient-text\">SAP landscape.</span>",
+              "label": "One connected ecosystem across the SAP landscape."
+            },
+            {
+              "id": "content-76dcy8",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(2) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "html",
+              "value": "View All Services",
+              "match": "View all services <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right h-4 w-4\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg>",
+              "label": "View all services"
+            },
+            {
+              "id": "content-fsd64g",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(2) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "attribute",
+              "attribute": "href",
+              "value": "/services",
+              "match": "/services",
+              "label": "View all services URL"
+            },
+            {
+              "id": "content-13yt6f6",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(3) > div.px-4:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "html",
+              "value": "View All Solutions",
+              "match": "View all solutions <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right h-4 w-4\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg>",
+              "label": "View all solutions"
+            },
+            {
+              "id": "content-m8yinq",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(3) > div.px-4:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "attribute",
+              "attribute": "href",
+              "value": "/solutions",
+              "match": "/solutions",
+              "label": "View all solutions URL"
+            },
+            {
+              "id": "content-c7v6s5",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(7) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "html",
+              "value": "View All Industries",
+              "match": "View all industries <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right h-4 w-4\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg>",
+              "label": "View all industries"
+            },
+            {
+              "id": "content-12llsn",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(7) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "attribute",
+              "attribute": "href",
+              "value": "/industry",
+              "match": "/industry",
+              "label": "View all industries URL"
+            },
+            {
+              "id": "content-yyduf9",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(8) > div.px-4:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > h2.font-bold",
+              "kind": "html",
+              "value": "Trusted by teams modernizing with SAP",
+              "match": "Trusted by teams<!-- --> <span class=\"tri-gradient-text\">modernizing with SAP.</span>",
+              "label": "Trusted by teams modernizing with SAP."
+            },
+            {
+              "id": "content-19x9fs6",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(7) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(1) > h2.font-bold",
+              "kind": "html",
+              "value": "SAP solutions shaped around industry needs",
+              "match": "SAP solutions shaped around<!-- --> <span class=\"tri-gradient-text\">industry needs.</span>",
+              "label": "SAP solutions shaped around industry needs."
+            },
+            {
+              "id": "content-1izbn9l",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(9) > div.px-4:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > h2.font-bold",
+              "kind": "html",
+              "value": "Practical SAP thinking in blogs and videos",
+              "match": "Practical SAP thinking in<!-- --> <span class=\"tri-gradient-text\">blogs and videos.</span>",
+              "label": "Practical SAP thinking in blogs and videos."
             }
           ]
         }

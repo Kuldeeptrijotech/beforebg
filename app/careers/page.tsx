@@ -12,7 +12,7 @@ const highlights = [
     icon: BriefcaseBusiness,
     title: "Meaningful work",
     text: "Solve real enterprise challenges across SAP, data, analytics, and automation.",
-    color: "bg-[#29ab87]/20 text-[#29ab87] ring-[#29ab87]/40",
+    color: "bg-white/20 text-white ring-[#ffffff]/40",
   },
   {
     icon: Users,
@@ -24,13 +24,13 @@ const highlights = [
     icon: Mail,
     title: "Start a conversation",
     text: "Share your experience with us and we will contact you when there is a strong fit.",
-    color: "bg-[#f5a623]/20 text-[#f5a623] ring-[#f5a623]/40",
+    color: "bg-white/20 text-white ring-[#ffffff]/40",
   },
 ];
 
 export default function CareersPage() {
   return (
-    <main className="overflow-hidden bg-[#121927] text-white">
+    <main className="public-alternating-page overflow-hidden bg-[#121927] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-10 sm:pb-12">
         <div className="absolute inset-0 -z-10 tri-mesh" />
@@ -55,9 +55,9 @@ export default function CareersPage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" /> Careers
+              <Sparkles className="h-3.5 w-3.5 text-white" /> Careers
             </motion.div>
 
             <motion.h1
@@ -120,7 +120,7 @@ export default function CareersPage() {
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                    className="flex flex-1 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                    className="careers-highlight-card flex flex-1 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
                   >
                     <motion.div
                       whileHover={{ rotate: 10, scale: 1.12 }}
@@ -172,7 +172,7 @@ export default function CareersPage() {
             </h2>
             <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300">
               Apply below or email{" "}
-              <a className="font-semibold text-[#7edcc2] hover:text-[#f5a623] underline" href="mailto:hr@trijotech.com">
+              <a className="font-semibold text-white hover:text-white underline" href="mailto:hr@trijotech.com">
                 hr@trijotech.com
               </a>
               . We will get in touch when your experience matches an opportunity.
@@ -183,6 +183,7 @@ export default function CareersPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            className="career-form-parent"
           >
             <ContactUs variant="career" showResume hideHeading />
           </motion.div>

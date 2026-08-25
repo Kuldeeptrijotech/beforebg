@@ -53,10 +53,10 @@ export default function TestimonialsPreview() {
   if (!visibleTestimonials.length) return null;
 
   return (
-    <section ref={sectionRef} data-content-visibility="off" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-45" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-50" />
-      <div aria-hidden className="tri-blob -z-10 h-72 w-72 animate-float-slow" style={{ left: "-8%", top: "20%", background: "radial-gradient(circle, rgba(41,171,135,0.2), transparent 70%)" }} />
+    <section ref={sectionRef} data-content-visibility="off" className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-black border-t border-slate-200">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-0" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-0" />
+      <div aria-hidden className="tri-blob -z-10 h-72 opacity-0 w-72 animate-float-slow" style={{ left: "-8%", top: "20%", background: "radial-gradient(circle, rgba(255, 255, 255,0.2), transparent 70%)" }} />
 
       <Container className="relative">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -77,7 +77,7 @@ export default function TestimonialsPreview() {
               type="button"
               onClick={goPrevious}
               aria-label="Previous testimonial"
-              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(41,171,135,0.6)] hover:bg-white/[0.12]"
+              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(255, 255, 255,0.6)] hover:bg-white/[0.12]"
             >
               <ArrowLeft className="size-4" />
             </button>
@@ -85,7 +85,7 @@ export default function TestimonialsPreview() {
               type="button"
               onClick={goNext}
               aria-label="Next testimonial"
-              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full bg-[linear-gradient(120deg,#29ab87,#117a4b)] text-white shadow-lg shadow-[rgba(41,171,135,0.4)] transition hover:-translate-y-0.5"
+              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full bg-[linear-gradient(120deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-[rgba(255, 255, 255,0.4)] transition hover:-translate-y-0.5"
             >
               <ArrowRight className="size-4" />
             </button>
@@ -105,10 +105,10 @@ export default function TestimonialsPreview() {
                 className="tri-glass-card tri-border-gradient flex h-full flex-col rounded-2xl p-5 sm:p-6"
               >
                 <div className="flex items-center justify-between">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(160deg,rgba(41,171,135,0.3),rgba(17,122,75,0.3))]">
-                    <Quote className="size-4 text-[#7edcc2]" />
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(160deg,rgba(255, 255, 255,0.3),rgba(255, 255, 255,0.3))]">
+                    <Quote className="size-4 text-white" />
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#f5a623]">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white">
                     {testimonial.companyName}
                   </span>
                 </div>
@@ -121,7 +121,7 @@ export default function TestimonialsPreview() {
                   <button
                     type="button"
                     onClick={() => setSelectedTestimonial(testimonial)}
-                    className="tri-focus w-fit text-sm font-semibold text-[#7edcc2] transition hover:text-[#f5a623]"
+                    className="tri-focus w-fit text-sm font-semibold text-white transition hover:text-white"
                   >
                     Read more
                   </button>
@@ -138,7 +138,7 @@ export default function TestimonialsPreview() {
                         />
                       </div>
                     ) : (
-                      <div className="flex size-12 items-center justify-center rounded-full bg-[linear-gradient(160deg,#29ab87,#117a4b)] text-sm font-bold text-white">
+                      <div className="flex size-12 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-sm font-bold text-white">
                         {getInitials(testimonial.writerName)}
                       </div>
                     )}
@@ -183,7 +183,7 @@ export default function TestimonialsPreview() {
                 <X className="size-5" />
               </button>
 
-              <p className="pr-10 text-sm font-semibold uppercase tracking-wide text-[#f5a623]">
+              <p className="pr-10 text-sm font-semibold uppercase tracking-wide text-white">
                 {selectedTestimonial.companyName}
               </p>
               <p className="mt-5 text-lg leading-8 text-slate-200">{selectedTestimonial.testimonial}</p>

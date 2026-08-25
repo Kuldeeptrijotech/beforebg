@@ -128,9 +128,9 @@ const BTP_LAYERS: BtpLayer[] = [
     category: "Foundation Tier",
     tagline: "SAP HANA Cloud · Datasphere · S/4 Clean Core",
     icon: Database,
-    color: "#29ab87",
-    glow: "rgba(41,171,135,0.5)",
-    bgGrad: "linear-gradient(135deg, rgba(41,171,135,0.18) 0%, rgba(3,7,19,0.85) 100%)",
+    color: "#ffffff",
+    glow: "rgba(255, 255, 255,0.5)",
+    bgGrad: "linear-gradient(135deg, rgba(255, 255, 255,0.18) 0%, rgba(3,7,19,0.85) 100%)",
     tech: ["HANA Cloud DB", "SAP Datasphere", "S/4HANA Clean Core", "Analytics Cloud (SAC)"],
     specs: [
       "In-memory columnar database speeds",
@@ -188,13 +188,13 @@ export default function BtpExplodedLayers() {
           className="absolute left-1/3 top-1/4 h-96 w-96 rounded-full blur-[130px] opacity-25 transition-colors duration-700"
           style={{ background: current.color }}
         />
-        <div className="absolute right-10 bottom-10 h-80 w-80 rounded-full bg-[#117a4b]/20 blur-[120px]" />
+        <div className="absolute right-10 bottom-10 h-80 w-80 rounded-full bg-white/20 blur-[120px]" />
       </div>
 
       {/* ── Top Floating Navigation Filters ── */}
       <div className="relative z-30 flex flex-wrap items-center justify-between gap-2 px-3 sm:px-6 pt-2 sm:pt-4">
         <div className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/20 border border-white/40 text-white">
             <Layers className="h-4 w-4" />
           </span>
           <div>
@@ -244,7 +244,7 @@ export default function BtpExplodedLayers() {
                 <stop offset="25%" stopColor="#22d3ee" stopOpacity="1" />
                 <stop offset="50%" stopColor="#2f8fff" stopOpacity="1" />
                 <stop offset="75%" stopColor="#8b7cf6" stopOpacity="1" />
-                <stop offset="100%" stopColor="#29ab87" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
               </linearGradient>
               <filter id="beamGlow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="6" result="blur" />
@@ -271,7 +271,7 @@ export default function BtpExplodedLayers() {
             <circle cx="400" r="6" fill="#38bdf8" filter="url(#beamGlow)">
               <animate attributeName="cy" values="90;510;90" dur="4.5s" repeatCount="indefinite" />
             </circle>
-            <circle cx="400" r="5" fill="#29ab87" filter="url(#beamGlow)">
+            <circle cx="400" r="5" fill="#ffffff" filter="url(#beamGlow)">
               <animate attributeName="cy" values="510;90;510" dur="4.5s" repeatCount="indefinite" />
             </circle>
           </svg>
@@ -304,7 +304,7 @@ export default function BtpExplodedLayers() {
                     scale: isLayerActive ? 1.04 : 1,
                   }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="relative w-full h-[46px] sm:h-[56px] lg:h-[64px] cursor-pointer rounded-xl sm:rounded-2xl border transition-all duration-300"
+                  className="relative w-full h-[46px] sm:h-[56px] lg:h-[64px] cursor-pointer overflow-hidden rounded-xl sm:rounded-2xl border transition-all duration-300"
                   style={{
                     transformStyle: "preserve-3d",
                     background: layer.bgGrad,
@@ -317,7 +317,7 @@ export default function BtpExplodedLayers() {
                   {/* Layer Surface Grid Pattern */}
                   <div
                     aria-hidden
-                    className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-20 pointer-events-none"
+                    className="absolute inset-0 rounded-[inherit] opacity-20 pointer-events-none"
                     style={{
                       backgroundImage: `radial-gradient(circle at center, ${layer.color} 1px, transparent 1px)`,
                       backgroundSize: "16px 16px",

@@ -5,13 +5,12 @@ import { ArrowRight, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import ContactUs from "../components/ContactUs";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import ContactSignalPulse from "@/components/ui/hero-animations/ContactSignalPulse";
 
 const contactItems = [
   {
     icon: Phone,
     title: "Call us",
-    color: "bg-[#29ab87]/20 text-[#29ab87] ring-[#29ab87]/40",
+    color: "bg-white/20 text-white ring-[#ffffff]/40",
     content: (
       <>
         <a href="tel:+911203506433">+91 120-3506433</a>
@@ -40,7 +39,7 @@ const contactItems = [
 
 export default function ContactPage() {
   return (
-    <main className="font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* ── Hero ─────────────────────────────── */}
       <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-10 sm:pb-12">
         <Image
@@ -55,10 +54,9 @@ export default function ContactPage() {
         <div className="absolute inset-0 -z-10 tri-grid-bg opacity-30" />
         
         {/* Slow radiating signal pulses & connection waves */}
-        <ContactSignalPulse />
 
-        <div className="pointer-events-none absolute right-[8%] top-[14%] h-64 w-64 rounded-full bg-[rgba(41,171,135,0.14)] blur-3xl tri-pulse" />
-        <div className="pointer-events-none absolute bottom-[16%] left-[6%] h-48 w-48 rounded-full bg-[rgba(245,166,35,0.12)] blur-3xl tri-pulse" style={{ animationDelay: "1.5s" }} />
+        <div className="pointer-events-none absolute right-[8%] top-[14%] h-64 w-64 rounded-full bg-[rgba(255, 255, 255,0.14)] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[16%] left-[6%] h-48 w-48 rounded-full bg-[rgba(255, 255, 255,0.12)] blur-3xl" style={{ animationDelay: "1.5s" }} />
 
         {/* text safe zone */}
         <div className="pointer-events-none absolute inset-0 max-lg:bg-[#050817]/65 lg:bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,transparent_85%)]" />
@@ -67,16 +65,16 @@ export default function ContactPage() {
         <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-12">
           <div className="max-w-3xl">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-[rgba(41,171,135,0.35)] bg-[rgba(41,171,135,0.1)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#29ab87] shadow-sm shadow-[rgba(41,171,135,0.18)] backdrop-blur-md"
+              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
-              <Sparkles className="h-3.5 w-3.5 text-[#29ab87]" /> Contact Us
+              <Sparkles className="h-3.5 w-3.5 text-white" /> Contact Us
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
@@ -88,7 +86,7 @@ export default function ContactPage() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="mt-5 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg"
@@ -97,7 +95,7 @@ export default function ContactPage() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.52 }}
             >
@@ -121,7 +119,7 @@ export default function ContactPage() {
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
@@ -140,12 +138,11 @@ export default function ContactPage() {
             {contactItems.map(({ icon: Icon, title, content, color }, i) => (
               <motion.article
                 key={title}
-                initial={{ opacity: 0, y: 32 }}
+                initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-[#29ab87]/50 hover:bg-white/[0.07]"
+                className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
               >
                 <motion.div
                   animate={{ scale: [1, 1.08, 1] }}
@@ -155,7 +152,7 @@ export default function ContactPage() {
                   <Icon className="h-5 w-5" />
                 </motion.div>
                 <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{title}</h3>
-                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-slate-300 [&_a]:font-semibold [&_a]:text-[#7edcc2] [&_a]:hover:text-[#f5a623] [&_a]:transition-colors">
+                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-slate-300 [&_a]:font-semibold [&_a]:text-white [&_a]:hover:text-white [&_a]:transition-colors">
                   {content as ReactNode}
                 </div>
               </motion.article>
@@ -167,13 +164,11 @@ export default function ContactPage() {
       {/* ── Contact Form ─────────────────────── */}
       <section
         id="contact-form"
-        className="relative isolate overflow-hidden scroll-mt-24 bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5"
+        className="contact-form-section relative isolate overflow-hidden scroll-mt-24 bg-[#050817] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10"
       >
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto w-full max-w-5xl">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
@@ -187,12 +182,7 @@ export default function ContactPage() {
               Share a few details and we will respond within one to two business days.
             </p>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          >
+          <motion.div className="w-full" initial={false}>
             <ContactUs showInquiryDropdown hideHeading />
           </motion.div>
         </div>

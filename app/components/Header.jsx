@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import coloredLogo from "../assets/new_/Trijotech_colored.svg";
 const navigation = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services", children: [
-    { href: "/services/sap-implementation", label: "SAP Implementation" },
+    { href: "/services/sap-consulting", label: "SAP Consulting" },
     { href: "/services/sap-support", label: "SAP Support" },
     { href: "/services/sap-btp-full-stack", label: "SAP BTP Full Stack Application" },
     { href: "/services/sap-data-integration", label: "SAP Data Integration" },

@@ -17,9 +17,9 @@ import { useState, useEffect } from "react";
 import IndustryHeroStage from "./IndustryHeroStage";
 
 const KPIS = [
-  { value: "4.2ms", label: "Data Plane Latency", color: "#117a4b" },
-  { value: "120k/s", label: "CDR Mediation Rate", color: "#29ab87" },
-  { value: "1.4 Gbps", label: "5G Peak Throughput", color: "#f5a623" },
+  { value: "4.2ms", label: "Data Plane Latency", color: "#ffffff" },
+  { value: "120k/s", label: "CDR Mediation Rate", color: "#ffffff" },
+  { value: "1.4 Gbps", label: "5G Peak Throughput", color: "#ffffff" },
 ];
 
 export default function TelecomAnimation() {
@@ -54,7 +54,7 @@ export default function TelecomAnimation() {
           <defs>
             <linearGradient id="telecomBeam" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#2f8fff" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#29ab87" stopOpacity="1" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
               <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.8" />
             </linearGradient>
             <filter id="telecomGlow" x="-30%" y="-30%" width="160%" height="160%">
@@ -104,7 +104,7 @@ export default function TelecomAnimation() {
               path="M 120 460 Q 420 300 720 460 T 1320 460"
             />
           </circle>
-          <circle r="4.5" fill="#29ab87" filter="url(#telecomGlow)">
+          <circle r="4.5" fill="#ffffff" filter="url(#telecomGlow)">
             <animateMotion
               dur="7.5s"
               begin="3.75s"
@@ -142,7 +142,7 @@ export default function TelecomAnimation() {
               </div>
               <div className="flex items-center justify-between text-[10px] text-white/70 px-1">
                 <span>Data Latency: 4.2ms</span>
-                <span className="font-semibold text-[#29ab87]">URLLC Sliced</span>
+                <span className="font-semibold text-white">URLLC Sliced</span>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function TelecomAnimation() {
           <div className="rounded-2xl border border-white/10 bg-[#030713]/85 p-4 shadow-2xl backdrop-blur-xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#29ab87]/20 border border-[#29ab87]/40 text-[#29ab87]">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/20 border border-white/40 text-white">
                   <Smartphone className="h-5 w-5" />
                 </span>
                 <div>
@@ -183,7 +183,7 @@ export default function TelecomAnimation() {
             <div className="mt-3 space-y-2 text-xs">
               <div className="flex items-center justify-between text-white/80">
                 <span>Ingestion Velocity</span>
-                <span className="font-mono font-bold text-[#29ab87]" suppressHydrationWarning>
+                <span className="font-mono font-bold text-white" suppressHydrationWarning>
                   {cdrRate.toLocaleString("en-US")} CDRs/s
                 </span>
               </div>

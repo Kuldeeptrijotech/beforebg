@@ -15,9 +15,9 @@ export default function IndustriesPreview() {
     <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 text-white border-t border-white/10">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.45)] to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[rgba(245,166,35,0.15)] blur-[80px]" />
-      <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 h-[400px] w-[400px] rounded-full bg-[rgba(41,171,135,0.12)] blur-[70px]" />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(255, 255, 255,0.45)] to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[rgba(255, 255, 255,0.15)] blur-[80px]" />
+      <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 h-[400px] w-[400px] rounded-full bg-[rgba(255, 255, 255,0.12)] blur-[70px]" />
 
       <Container className="relative">
         <StaggerReveal className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -45,7 +45,7 @@ export default function IndustriesPreview() {
               <StaggerRevealItem key={industry.title} className="h-full">
                 <Link
                   href={industry.href}
-                  className="tri-focus group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-[#29ab87]/60 hover:shadow-[0_16px_40px_rgba(41,171,135,0.2)]"
+                  className="home-industry-card tri-focus group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-white/60 hover:shadow-[0_16px_40px_rgba(255, 255, 255,0.2)]"
                 >
                   <div className="relative aspect-[3/4] w-full h-full overflow-hidden flex flex-col justify-end">
                     <Image
@@ -56,18 +56,18 @@ export default function IndustriesPreview() {
                       className="object-cover scale-[1.02]"
                     />
                     <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.15),rgba(3,7,19,0.92))]" />
-                    <div aria-hidden className="absolute inset-0 bg-[linear-gradient(160deg,rgba(41,171,135,0.45),transparent_52%)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+                    <div aria-hidden className="absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.45),transparent_52%)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
 
                     <div className="relative z-10 p-4 sm:p-5 flex flex-col h-full justify-end">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08] text-white backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[linear-gradient(150deg,#29ab87,#117a4b)] group-hover:border-transparent">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08] text-white backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] group-hover:border-transparent">
                         <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
                       </span>
-                      <h3 className="mt-3 text-base sm:text-lg font-bold text-white group-hover:text-[#7edcc2] transition-colors">{industry.title}</h3>
+                      <h3 className="mt-3 text-base sm:text-lg font-bold text-white group-hover:text-white transition-colors">{industry.title}</h3>
                       <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-300 opacity-90 transition-all duration-300 group-hover:opacity-100">
                         {industry.description}
                       </p>
                       <div className="mt-3">
-                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7edcc2] transition-all duration-300 group-hover:gap-2">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white transition-all duration-300 group-hover:gap-2">
                           Explore industry <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                         </span>
                       </div>

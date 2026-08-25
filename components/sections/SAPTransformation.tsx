@@ -41,15 +41,15 @@ const steps = [
 
 export default function SAPTransformation() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 text-white border-t border-white/5">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-hex-grid opacity-45" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-      <div aria-hidden className="absolute inset-0 -z-10 opacity-35">
+    <section className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-black border-t border-slate-200">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-hex-grid opacity-0" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-0" />
+      <div aria-hidden className="absolute inset-0 -z-10 opacity-0">
         <DataFlow className="h-full w-full" />
       </div>
       {/* ambient glow */}
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(41,171,135,0.5)] to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/4 h-64 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(41,171,135,0.08),transparent)]" />
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(255, 255, 255,0.5)] to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-1/4 h-64 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(255, 255, 255,0.08),transparent)]" />
 
       <Container className="relative">
         <Reveal>
@@ -68,12 +68,12 @@ export default function SAPTransformation() {
         <StaggerReveal className="relative mt-8 sm:mt-10 grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch" stagger={0.08}>
           {/* connector line */}
           <div aria-hidden className="absolute left-8 right-8 top-5 hidden h-px lg:block">
-            <div className="h-full w-full bg-[linear-gradient(90deg,transparent,rgba(41,171,135,0.5),rgba(245,166,35,0.45),rgba(41,171,135,0.3),transparent)]" />
+            <div className="h-full w-full bg-[linear-gradient(90deg,transparent,rgba(255, 255, 255,0.5),rgba(255, 255, 255,0.45),rgba(255, 255, 255,0.3),transparent)]" />
           </div>
 
           {steps.map((item) => (
             <StaggerRevealItem key={item.step} className="h-full">
-              <div className="group relative flex h-full flex-col rounded-2xl border border-white/5 bg-white/[0.02] p-5 backdrop-blur-sm transition-all duration-300 hover:border-[#29ab87]/30 hover:bg-white/[0.04]">
+              <div className="group relative flex h-full flex-col rounded-2xl border border-white/5 bg-white/[0.02] p-5 backdrop-blur-sm transition-all duration-300 hover:border-white/30 hover:bg-white/[0.04]">
                 {/* Header with Icon on the left and Step Number on the far right */}
                 <div className="relative z-10 flex items-center justify-between w-full">
                   <HexBadge icon={item.icon} tone={item.tone} size="md" />
@@ -86,8 +86,8 @@ export default function SAPTransformation() {
                     {item.step}
                   </span>
                 </div>
-                <h3 className="mt-3.5 text-base sm:text-lg font-bold leading-snug text-white group-hover:text-[#7edcc2] transition-colors">{item.title}</h3>
-                <div className="mt-2 h-px w-8 bg-[linear-gradient(90deg,#29ab87,#f5a623)] opacity-60 transition-all duration-500 group-hover:w-14 group-hover:opacity-100" />
+                <h3 className="mt-3.5 text-base sm:text-lg font-bold leading-snug text-white group-hover:text-white transition-colors">{item.title}</h3>
+                <div className="mt-2 h-px w-8 bg-[linear-gradient(90deg,#22d3ee,#2563eb)] opacity-60 transition-all duration-500 group-hover:w-14 group-hover:opacity-100" />
                 <p className="mt-2.5 flex-1 text-xs leading-relaxed text-slate-300">{item.description}</p>
               </div>
             </StaggerRevealItem>
