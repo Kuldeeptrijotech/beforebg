@@ -113,7 +113,7 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ── Overview / Definition ─────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
+      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-16 sm:py-20 lg:py-24 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(255, 255, 255,0.08)] blur-3xl animate-float" />
@@ -168,7 +168,7 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ── Feature Cards ────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 border-b border-white/10">
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 lg:py-24 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -215,7 +215,7 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ── Capabilities ─────────────────────── */}
-      <section id="capabilities" className="relative isolate scroll-mt-24 bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
+      <section id="capabilities" className="relative isolate scroll-mt-24 bg-[#0b1d33] py-16 sm:py-20 lg:py-24 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -245,7 +245,7 @@ export default function SolutionDetailLanding({
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 className="solution-detail-card min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md sm:p-6"
               >
-                <div className="grid gap-6 lg:grid-cols-[.7fr_1.3fr]">
+                <div className="detail-split-grid grid gap-6 lg:grid-cols-[.7fr_1.3fr]">
                   <div>
                     <div className="mb-2.5 flex items-center gap-2.5">
                       <motion.span
@@ -287,10 +287,10 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ── Business Outcomes ────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 border-b border-white/10">
+      <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 lg:py-24 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-12">
+        <div className="detail-split-grid mx-auto grid w-full max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}

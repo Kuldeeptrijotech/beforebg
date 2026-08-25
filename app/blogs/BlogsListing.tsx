@@ -15,10 +15,10 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
     () =>
       normalizedQuery
         ? blogs.filter((blog) =>
-            `${blog.title} ${blog.description}`
-              .toLowerCase()
-              .includes(normalizedQuery),
-          )
+          `${blog.title} ${blog.description}`
+            .toLowerCase()
+            .includes(normalizedQuery),
+        )
         : blogs,
     [blogs, normalizedQuery],
   );

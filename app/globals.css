@@ -1663,9 +1663,9 @@ main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass
 }
 /* SAP brand-blue replacement for pale public card surfaces */
 :root {
-  --sap-brand-blue: #0a6ed1;
-  --sap-brand-blue-hover: #085caf;
-  --sap-brand-blue-border: #2f8fff;
+  --sap-brand-blue: #008fd3;
+  --sap-brand-blue-hover: #007bb8;
+  --sap-brand-blue-border: #38bdf8;
 }
 
 .zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)),
@@ -1934,4 +1934,358 @@ main.public-alternating-page #explore .service-card-image {
   opacity: 1 !important;
   filter: none !important;
   mix-blend-mode: normal !important;
+}
+/* Public action arrows and icons follow their text color */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page, .site-modern-header, .zip-footer) :is(a, button) svg {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page, .site-modern-header, .zip-footer) :is(a, button) svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page, .site-modern-header, .zip-footer) :is(a, button) svg [fill]:not([fill="none"]) {
+  fill: currentColor !important;
+}
+/* Homepage service-card link and arrow parity */
+.zip-theme section .tri-glass-card .home-service-link,
+.zip-theme section .tri-glass-card .home-service-link svg {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.zip-theme section .tri-glass-card .home-service-link svg,
+.zip-theme section .tri-glass-card .home-service-link svg * {
+  stroke: currentColor !important;
+}
+
+.zip-theme section .tri-glass-card:hover .home-service-link,
+.zip-theme section .tri-glass-card:hover .home-service-link svg {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+/* Absolute final priority for homepage service arrows */
+html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow,
+html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow path {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+/* Card actions always match their card text */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) {
+  color: #ffffff !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel))
+:is(a, button) {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel))
+:is(a, button) :is(span, strong, small, svg) {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel))
+:is(a, button) svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel))
+:is(a, button) svg [fill]:not([fill="none"]) {
+  fill: currentColor !important;
+}
+/* Final white color for homepage Services Learn more arrows */
+html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow,
+html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow *,
+html body .zip-theme > section .tri-glass-card a:hover .home-service-link svg.home-service-arrow,
+html body .zip-theme > section .tri-glass-card a:hover .home-service-link svg.home-service-arrow * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  opacity: 1 !important;
+}
+/* Homepage Insights blog action contrast */
+html body .zip-theme > section .tri-glass-card a[href^="/blogs"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body .zip-theme > section .tri-glass-card a[href^="/blogs"] span {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+/* Services landing card action contrast */
+html body main.public-alternating-page #explore .tri-glass-card a:last-child,
+html body main.public-alternating-page #explore .tri-glass-card a:last-child span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+/* Services landing cards SAP blue */
+html body main.public-alternating-page #explore article.tri-glass-card {
+  background: #008fd3 !important;
+  border-color: #38bdf8 !important;
+}
+
+html body main.public-alternating-page #explore article.tri-glass-card:hover {
+  background: #007bb8 !important;
+  border-color: #67e8f9 !important;
+}
+
+html body main.public-alternating-page #explore article.tri-glass-card :is(h3, p, li, a, span, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+/* Final SAP-blue cards on every white public section */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) > section:nth-of-type(even)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel):not(.home-industry-card), [class$="-card"]:not(.contact-form-panel):not(.home-industry-card)) {
+  background: #008fd3 !important;
+  border-color: #38bdf8 !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) > section:nth-of-type(even)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel):not(.home-industry-card), [class$="-card"]:not(.contact-form-panel):not(.home-industry-card)):hover {
+  background: #007bb8 !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) > section:nth-of-type(even)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel):not(.home-industry-card), [class$="-card"]:not(.contact-form-panel):not(.home-industry-card))
+:is(h2, h3, h4, p, li, a, button, span, strong, small, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+/* Neutral borders for all public cards */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) {
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover {
+  border-color: rgba(255, 255, 255, 0.42) !important;
+}
+/* Final black borders for every public card */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):focus-within {
+  border-color: #000000 !important;
+  outline-color: #000000 !important;
+  --tw-ring-color: #000000 !important;
+}
+/* Final card action color parity across every public page */
+html body .zip-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
+html body .zip-inner-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
+html body .site-landing-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
+html body .site-subpage-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
+html body main.public-alternating-page :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel))
+:is(a, button) :is(span, strong, small, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel))
+:is(a, button) svg,
+html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel))
+:is(a, button) svg * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+/* Exact matching Careers form corner radius */
+main.public-alternating-page section#apply .career-form-parent {
+  border-radius: 28px !important;
+}
+
+main.public-alternating-page section#apply .career-form-parent .contact-form-panel {
+  border-radius: inherit !important;
+}
+/* Remove homepage statistics blue outline */
+html body .zip-theme section .home-stats-band {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+/* Remove homepage Why Choose card outlines */
+html body .zip-theme section .why-choose-card,
+html body .zip-theme section .why-choose-card:hover,
+html body .zip-theme section .why-choose-card:focus-within {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  --tw-ring-color: transparent !important;
+}
+/* Remove all public card outlines site-wide */
+html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
+html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
+html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
+:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):focus-within {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  --tw-ring-color: transparent !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
+/* Refined responsive alignment for service, solution and industry details */
+:is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid {
+  align-items: start !important;
+  column-gap: clamp(2.25rem, 4vw, 3.75rem) !important;
+  row-gap: 2.5rem !important;
+}
+
+:is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid > * {
+  min-width: 0 !important;
+  align-self: start !important;
+}
+
+:is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid > :first-child {
+  position: relative;
+  z-index: 1;
+}
+
+:is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid > :last-child {
+  width: 100% !important;
+  justify-self: stretch !important;
+}
+
+:is(.service-detail-page, .solution-detail-page, .industry-detail-page) section
+:is(h1, h2, h3, h4, p, li, a, span) {
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 1024px) {
+  .service-detail-page > section > .detail-split-grid.mx-auto.max-w-7xl {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .solution-detail-page .detail-split-grid > :first-child,
+  .industry-detail-page .detail-split-grid > :first-child {
+    max-width: 38rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  :is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 2rem !important;
+  }
+
+  :is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid > * {
+    width: 100% !important;
+    max-width: none !important;
+    grid-column: 1 !important;
+  }
+}
+
+@media (max-width: 639px) {
+  :is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid {
+    row-gap: 1.5rem !important;
+  }
+}
+/* Exact top alignment for service approach section */
+.service-detail-page .service-approach-grid {
+  align-items: start !important;
+}
+
+.service-detail-page .service-approach-grid > * {
+  align-self: start !important;
+  margin-top: 0 !important;
+}
+/* Visible SAP BTP track icons */
+html body main.service-detail-page .service-glass-card .btp-track-icon {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #008fd3 !important;
+  -webkit-text-fill-color: #008fd3 !important;
+  opacity: 1 !important;
+}
+
+html body main.service-detail-page .service-glass-card .btp-track-icon svg,
+html body main.service-detail-page .service-glass-card .btp-track-icon svg * {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  opacity: 1 !important;
+}
+/* SAP BTP architecture panel: keep nested light layers legible over the SAP-blue card. */
+html body main.service-detail-page .btp-architecture-card .btp-architecture-heading {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
+}
+
+html body main.service-detail-page .btp-architecture-card .btp-architecture-layer {
+  background: #fff !important;
+  border-color: transparent !important;
+}
+
+html body main.service-detail-page .btp-architecture-card .btp-architecture-layer span:not(.btp-layer-number) {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+}
+
+html body main.service-detail-page .btp-architecture-card .btp-architecture-layer .btp-layer-number {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
+}
+
+html body main.service-detail-page .btp-architecture-card .btp-architecture-summary {
+  background: #fff !important;
+  border-color: transparent !important;
+}
+
+html body main.service-detail-page .btp-architecture-card .btp-architecture-summary-text,
+html body main.service-detail-page .btp-architecture-card .btp-architecture-summary-text span {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  opacity: 1 !important;
+}
+
+html body main.service-detail-page .btp-architecture-card .btp-architecture-summary svg {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+}
+/* Keep SAP Support model icons visible on their white icon tiles. */
+html body main.service-detail-page .sap-support-pillar-icon {
+  background: #fff !important;
+  color: #008fd3 !important;
+  -webkit-text-fill-color: #008fd3 !important;
+}
+
+html body main.service-detail-page .sap-support-pillar-icon svg {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  opacity: 1 !important;
 }

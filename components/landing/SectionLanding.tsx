@@ -208,7 +208,7 @@ export default function SectionLanding({
                         href={card.href}
                         className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 group-hover:gap-2.5 group-hover:text-white"
                       >
-                        {card.cta ?? "Explore"} <ArrowRight className="h-3.5 w-3.5" />
+                        {card.cta ?? "Explore"} <span aria-hidden="true">→</span>
                       </Link>
                     </div>
                   </div>

@@ -68,7 +68,7 @@ export default function IndustriesPreview() {
                       </p>
                       <div className="mt-3">
                         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white transition-all duration-300 group-hover:gap-2">
-                          Explore industry <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                          Explore industry <span aria-hidden="true">→</span>
                         </span>
                       </div>
                     </div>

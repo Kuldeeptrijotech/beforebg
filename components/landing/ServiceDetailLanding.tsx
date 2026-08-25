@@ -188,7 +188,7 @@ export default function ServiceDetailLanding({
         <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(255, 255, 255,0.4)] to-transparent" />
         <div aria-hidden className="pointer-events-none absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-[rgba(255, 255, 255,0.07)] blur-[80px]" />
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:px-12">
+        <div className="service-approach-grid detail-split-grid relative mx-auto grid max-w-7xl items-start gap-10 px-5 sm:px-8 lg:grid-cols-[.85fr_1.15fr] lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -207,7 +207,7 @@ export default function ServiceDetailLanding({
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
-            className="service-template-card tri-glass-card rounded-3xl p-8 sm:p-10"
+            className="service-template-card tri-glass-card self-start rounded-3xl p-8 sm:p-10"
           >
             <p className="text-[1.05rem] leading-[1.85] text-slate-300">{description}</p>
             <div className="mt-8 flex items-center gap-3.5 border-t border-white/[0.08] pt-7">

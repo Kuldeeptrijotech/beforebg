@@ -93,9 +93,9 @@ export const siteConfig = {
     badges: [
       {
         label: "Trijotech Software Consulting Pvt Ltd",
-        src: "/static/footer/Trijotech-Full-White.svg",
-        width: 596,
-        height: 320
+        src: "/static/footer/trijotech-footer-logo.png",
+        width: 500,
+        height: 289
       },
       {
         label: "SAP Partner",

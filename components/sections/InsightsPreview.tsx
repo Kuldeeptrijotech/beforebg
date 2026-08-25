@@ -44,7 +44,7 @@ function BlogCard({ blog, index }: { blog: FeaturedBlogItem; index: number }) {
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-300">{blog.description}</p>
         <div className="mt-auto pt-4">
           <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition hover:text-white">
-            Read blog <ExternalLink className="size-3.5" />
+            Read blog <span aria-hidden="true">↗</span>
           </Link>
         </div>
       </div>

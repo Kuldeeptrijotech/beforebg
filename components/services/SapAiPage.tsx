@@ -8,10 +8,8 @@ import {
   Eye,
   Landmark,
   Lightbulb,
-  PackageSearch,
   Sparkles,
   TrendingUp,
-  Users,
   Workflow,
 } from "lucide-react";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
@@ -21,14 +19,6 @@ import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
 
 type ServiceItem = { title: string; description: string };
-
-const DOMAINS = [
-  { label: "Finance", icon: Landmark, tone: "#ffffff" },
-  { label: "Sales", icon: PackageSearch, tone: "#ffffff" },
-  { label: "Customer", icon: Users, tone: "#ffffff" },
-  { label: "Operations", icon: Workflow, tone: "#ffffff" },
-  { label: "Supply Chain", icon: Boxes, tone: "#ffffff" },
-];
 
 const PIPELINE = [
   { label: "Connect", desc: "Ingest data from SAP and surrounding systems.", icon: Boxes },
@@ -74,7 +64,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           </div>
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
               <SectionLabel>Trusted data first</SectionLabel>
@@ -86,22 +76,6 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                 simplify decisions, and build an adaptable data foundation.
               </p>
             </SlideReveal>
-
-            <StaggerReveal className="mt-10 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3" stagger={0.07}>
-              {DOMAINS.map((d) => {
-                const Icon = d.icon;
-                return (
-                  <StaggerRevealItem key={d.label} variant="fadeIn" className="h-full min-w-0">
-                    <div className="service-surface-card flex min-w-0 items-center gap-2.5 overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-3 backdrop-blur-sm h-full w-full justify-start">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-white" style={{ background: d.tone }}>
-                        <Icon className="sap-ai-domain-icon h-4 w-4" strokeWidth={1.9} />
-                      </span>
-                      <span className="min-w-0 break-words text-[13px] font-semibold leading-4 text-slate-200">{d.label}</span>
-                    </div>
-                  </StaggerRevealItem>
-                );
-              })}
-            </StaggerReveal>
           </div>
 
           <div className="grid grid-cols-2 gap-4 items-stretch">

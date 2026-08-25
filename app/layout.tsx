@@ -14,6 +14,7 @@ const poppins = Poppins({
 export const metadata = {
   title: "Trijotech | SAP Solutions",
   description: "SAP implementation, support, and business technology solutions.",
+  icons: { icon: "/brand/favicon.svg", shortcut: "/brand/favicon.svg", apple: "/brand/favicon.svg" },
 };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

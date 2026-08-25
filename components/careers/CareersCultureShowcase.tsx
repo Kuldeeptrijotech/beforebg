@@ -127,8 +127,8 @@ export default function CareersCultureShowcase() {
             <p className="mt-0.5 text-[11px] font-medium text-slate-400">Enterprise Clients</p>
           </div>
           <div className="careers-metric-card rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
-            <p className="text-xl font-extrabold text-white">4.9/5</p>
-            <p className="mt-0.5 text-[11px] font-medium text-slate-400">Team Satisfaction</p>
+            <p className="text-xl font-extrabold text-white">5/5</p>
+            <p className="mt-0.5 text-[11px] font-medium text-slate-400">Satisfaction</p>
           </div>
         </div>
       </div>

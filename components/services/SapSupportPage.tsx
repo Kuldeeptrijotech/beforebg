@@ -62,7 +62,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           </div>
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
               <SectionLabel>Our support model</SectionLabel>
@@ -80,7 +80,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 return (
                   <StaggerRevealItem key={p.label} variant="fadeIn">
                     <Glass variant="frosted" tone="green" className="h-full p-5">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#ffffff] to-[#ffffff] text-white">
+                      <span className="sap-support-pillar-icon flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#008fd3]">
                         <Icon className="h-5 w-5" strokeWidth={1.9} />
                       </span>
                       <h3 className="mt-4 font-bold text-white">{p.label}</h3>
@@ -155,7 +155,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
         <div aria-hidden className="absolute inset-0 tri-grid-bg opacity-40" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(55%_60%_at_15%_20%,rgba(255, 255, 255,0.16),transparent_60%)]" />
         <Container className="relative">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="detail-split-grid grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <Reveal>
                 <SectionLabel dark>Around the clock</SectionLabel>

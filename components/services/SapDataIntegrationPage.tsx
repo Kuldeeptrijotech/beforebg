@@ -68,7 +68,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
           </div>
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
               <SectionLabel>One reliable foundation</SectionLabel>
@@ -167,7 +167,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_15%_20%,rgba(255, 255, 255,0.16),transparent_60%)]" />
         <Container className="relative">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="detail-split-grid grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <Reveal>
                 <SectionLabel dark>Transform at the center</SectionLabel>

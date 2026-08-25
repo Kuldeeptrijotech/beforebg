@@ -128,7 +128,7 @@ export default async function IndustryDetailPage({ params }: Props) {
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="tri-border-gradient mx-auto max-w-5xl rounded-[2rem] bg-white/[0.03] p-7 shadow-2xl backdrop-blur-md sm:p-10">
             <p className="tri-overline">Definition</p>
-            <div className="mt-4 grid gap-8 lg:grid-cols-12">
+            <div className="detail-split-grid mt-4 grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-8">
                 <h2 className="tri-gradient-text text-[clamp(1.35rem,2.5vw,2.1rem)] font-semibold leading-[1.2] tracking-[-0.02em]">
                   {industry.subtitle}
@@ -260,7 +260,7 @@ export default async function IndustryDetailPage({ params }: Props) {
       </section>
       {/* ── Business Outcomes ────────────────── */}
       <section className="industry-outcomes-section bg-[#050817] py-20 sm:py-24 border-b border-white/5">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-12">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-12">
           <div className="flex flex-col gap-8">
             <div>
               <p className="tri-overline">Business value</p>

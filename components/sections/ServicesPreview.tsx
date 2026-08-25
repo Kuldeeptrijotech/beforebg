@@ -59,8 +59,8 @@ export default function ServicesPreview() {
                     </h3>
                     <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{service.description}</p>
                     <div className="mt-auto pt-5">
-                      <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:gap-2.5 group-hover:text-white">
-                        Learn more <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                      <span className="home-service-link inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:gap-2.5 group-hover:text-white">
+                        Learn more <span aria-hidden="true">→</span>
                       </span>
                     </div>
                   </a>

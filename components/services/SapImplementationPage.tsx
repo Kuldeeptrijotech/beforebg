@@ -63,7 +63,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
         <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
           <div className="h-16 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
         </div>
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-12">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
               <SectionLabel>Our approach</SectionLabel>
@@ -168,7 +168,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
       {/* CAPABILITIES */}
       <section className="relative bg-[#162032] py-20 sm:py-24">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+          <div className="detail-split-grid grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
             <Reveal>
               <SectionLabel>What we deliver</SectionLabel>
               <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -219,7 +219,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             </p>
           </Reveal>
 
-          <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-center">
+          <div className="detail-split-grid mt-14 grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="relative">
               <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/60 to-[#ffffff]/20" />
               {STACK.map((s, i) => {
@@ -277,7 +277,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
       {/* WHY TRIJOTECH */}
       <section className="relative bg-[#162032] py-20 sm:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div className="detail-split-grid grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
               <Reveal>
                 <SectionLabel>Why Trijotech</SectionLabel>

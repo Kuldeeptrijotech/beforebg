@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import {
   Brain,
   CheckCircle2,
@@ -9,7 +8,6 @@ import {
   MousePointerClick,
   Plug,
   Puzzle,
-  Rocket,
 } from "lucide-react";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
@@ -23,14 +21,6 @@ const TRACKS = [
   { label: "Applications", desc: "Cloud-native apps built around specific business needs — without disrupting the core.", icon: LayoutDashboard },
   { label: "Extensions", desc: "Upgrade-ready side-by-side extensions using SAP Extension Suite.", icon: Puzzle },
   { label: "Experiences", desc: "Intuitive Fiori and UI5 interfaces that lift productivity and adoption.", icon: MousePointerClick },
-];
-
-const LAYERS = [
-  { label: "Fiori & UI5", tone: "#38bdf8", desc: "Responsive user experiences across devices" },
-  { label: "CAP & RAP Services", tone: "#22d3ee", desc: "Maintainable service layers and business logic" },
-  { label: "SAP BTP Platform", tone: "#2f8fff", desc: "Runtime, security, and build services" },
-  { label: "Integration Suite", tone: "#8b7cf6", desc: "APIs, events, and prebuilt connectors" },
-  { label: "SAP Core", tone: "#0e7490", desc: "Standard S/4HANA — clean and upgrade-ready" },
 ];
 
 const TRIPLETS = [
@@ -66,7 +56,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           </div>
         </div>
 
-        <div className="mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
               <SectionLabel>What we build</SectionLabel>
@@ -84,7 +74,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                 return (
                   <StaggerRevealItem key={t.label} variant="fadeIn">
                     <Glass variant="frosted" tone="green" className="h-full p-5">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#ffffff] to-[#ffffff] text-white">
+                      <span className="btp-track-icon flex h-10 w-10 items-center justify-center rounded-xl">
                         <Icon className="h-5 w-5" strokeWidth={1.9} />
                       </span>
                       <h3 className="mt-4 font-bold text-white">{t.label}</h3>
@@ -159,7 +149,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_80%_15%,rgba(255, 255, 255,0.2),transparent_60%)]" />
         <Container className="relative">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="mx-auto max-w-5xl">
             <div>
               <Reveal>
                 <SectionLabel dark>Application architecture</SectionLabel>
@@ -186,41 +176,6 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
               </StaggerReveal>
             </div>
 
-            <div>
-              <Reveal delay={0.15}>
-                <div className="btp-architecture-card relative overflow-hidden rounded-3xl border p-8">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">Layer by layer</p>
-                  <div className="mt-6 space-y-3">
-                    {LAYERS.map((l, i) => (
-                      <motion.div
-                        key={l.label}
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-40px" }}
-                        transition={{ duration: 0.5, delay: i * 0.12 }}
-                        className="btp-architecture-layer relative flex items-center gap-4 rounded-xl border px-4 py-3"
-                      >
-                        <span className="h-8 w-1 rounded-full" style={{ background: l.tone, boxShadow: `0 0 10px ${l.tone}` }} />
-                        <span className="flex-1">
-                          <span className="block text-sm font-bold text-white">{l.label}</span>
-                          <span className="block text-xs text-slate-400">{l.desc}</span>
-                        </span>
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full text-[10px] font-bold text-white" style={{ background: l.tone }}>
-                          {i + 1}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-                  <div className="btp-architecture-summary mt-6 flex items-center justify-center gap-3 rounded-xl border px-4 py-3">
-                    <Rocket className="h-5 w-5 shrink-0 text-white" />
-                    <p className="text-sm text-slate-200">
-                      <span className="font-bold text-white">Ship fast, stay clean</span> — reusable services accelerate
-                      every new build.
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
           </div>
         </Container>
       </section>
