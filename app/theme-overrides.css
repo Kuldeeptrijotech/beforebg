@@ -550,3 +550,42 @@ html body .home-hero-secondary:hover * {
   stroke: #ffffff !important;
 }
 
+/* ──── Guarantee 100% Crisp White Text on Black Background Rows ──── */
+html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))),
+html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))) *,
+html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))) :is(h1, h2, h3, h4, h5, h6, p, span, li, label, strong, a, div, span) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))) :is(svg, svg path, svg polyline, svg line) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* ──── Guarantee Crisp Black Text on White Background Rows ──── */
+html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) h3 {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  opacity: 1 !important;
+}
+
+html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(p, span, li, label, strong):not(.industry-number-badge):not(.industry-enable-heading):not(.industry-explore-btn):not(.service-number-badge):not(.service-enable-heading):not(.service-explore-btn) {
+  color: #1e293b !important;
+  -webkit-text-fill-color: #1e293b !important;
+  opacity: 1 !important;
+}
+
+html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.industry-number-badge, .industry-enable-heading, .industry-explore-btn, .service-number-badge, .service-enable-heading, .service-explore-btn),
+html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.industry-enable-icon-box svg, .service-explore-btn svg) {
+  color: #008fd3 !important;
+  -webkit-text-fill-color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  opacity: 1 !important;
+}
+
+
+
+

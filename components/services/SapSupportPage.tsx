@@ -22,7 +22,7 @@ import TiltCard from "@/components/ui/TiltCard";
 type ServiceItem = { title: string; description: string };
 
 const PILLARS = [
-  { label: "Monitor", desc: "Proactive 24/7 monitoring keeps critical processes visible before issues surface.", icon: Activity },
+  { label: "Monitor", desc: "Proactive 24*7 monitoring keeps critical processes visible before issues surface.", icon: Activity },
   { label: "Respond", desc: "SLAs, triage, and deep expertise resolve incidents quickly across every layer.", icon: Headphones },
   { label: "Improve", desc: "Structured enhancements help the landscape evolve with the business.", icon: TrendingUp },
 ];
@@ -41,12 +41,12 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
       {/* HERO */}
       <ServiceHero
         eyebrow="SAP Support & Application Management"
-        title="24/7 Proactive AMS, System Stability & Optimization"
+        title="24*7 Proactive AMS, System Stability & Optimization"
         subtitle="Keep your SAP landscape fast, resilient, and continuously aligned with evolving business needs."
         primaryCta={{ label: "Request support consultation", href: "/contact" }}
         secondaryCta={{ label: "Explore all services", href: "/services" }}
         metrics={[
-          { value: "24/7/365", label: "Global Coverage" },
+          { value: "24*7*365", label: "Global Coverage" },
           { value: "<15 min", label: "Critical SLA Response" },
           { value: "99.9%", label: "System Availability" },
         ]}
@@ -104,7 +104,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
-                <Metric to={24} suffix="/7" label="Coverage" accent="text-white" />
+                <Metric to={24} suffix="*7" label="Coverage" accent="text-white" />
               </Glass>
             </Reveal>
             <Reveal delay={0.3} className="h-full">

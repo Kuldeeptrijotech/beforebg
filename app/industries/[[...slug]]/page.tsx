@@ -13,15 +13,26 @@ import {
 } from "lucide-react";
 import { getIndustry, industries } from "@/lib/industries-data";
 
+import IndustryPage from "@/app/industry/page";
+
 type Props = { params: Promise<{ slug?: string[] }> };
 
 export function generateStaticParams() {
-  return industries.map((industry) => ({ slug: [industry.slug] }));
+  return [
+    { slug: [] },
+    ...industries.map((industry) => ({ slug: [industry.slug] })),
+  ];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const slug = (await params).slug?.[0];
-  const industry = slug ? getIndustry(slug) : undefined;
+  if (!slug) {
+    return {
+      title: "Industries | Trijotech",
+      description: "Industry-focused SAP solutions for connected operations, reporting, analytics, and growth.",
+    };
+  }
+  const industry = getIndustry(slug);
   if (!industry) return {};
   return {
     title: `${industry.title} Solutions | Trijotech`,
@@ -40,7 +51,10 @@ const cardTones = [
 
 export default async function IndustryDetailPage({ params }: Props) {
   const rawSlug = (await params).slug?.[0];
-  const industry = rawSlug ? getIndustry(rawSlug) : undefined;
+  if (!rawSlug) {
+    return <IndustryPage />;
+  }
+  const industry = getIndustry(rawSlug);
   if (!industry) notFound();
 
   return (

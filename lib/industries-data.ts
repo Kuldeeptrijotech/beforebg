@@ -198,6 +198,60 @@ export const industries: Industry[] = [
       "Greater operational visibility",
     ],
   },
+
+  {
+    slug: "oil-and-gas",
+    title: "Oil & Gas",
+    subtitle: "Connected asset intelligence & compliance for energy enterprises",
+    shortDescription:
+      "Modernize upstream, midstream and downstream operations with real-time SAP analytics, asset telemetry, and statutory compliance.",
+    description:
+      "Trijotech empowers oil, gas, and energy enterprises to streamline joint venture accounting, optimize asset integrity management, automate carbon emissions tracking, and achieve end-to-end supply chain visibility across exploration, refining, and distribution.",
+    heroImage: "/static/Oil_and_Gas.jpg",
+
+    services: [
+      "Upstream & Hydrocarbon Accounting",
+      "Plant Asset & Pipeline Telemetry",
+      "SAP S/4HANA Energy Integration",
+      "ESG & Emissions Compliance",
+      "Supply & Trading Analytics",
+      "Predictive Maintenance",
+    ],
+
+    benefits: [
+      "Real-time pipeline & refinery telemetry",
+      "Automated statutory & ESG compliance",
+      "Optimized maintenance scheduling",
+      "Enhanced joint venture transparency",
+    ],
+  },
+
+  {
+    slug: "healthcare",
+    title: "Healthcare",
+    subtitle: "Intelligent healthcare systems and clinical analytics",
+    shortDescription:
+      "Improve patient outcomes, streamline clinical workflows, and modernize healthcare data infrastructure with secure SAP solutions.",
+    description:
+      "Trijotech empowers healthcare providers and hospital networks to connect clinical, financial, and operational systems. Our SAP healthcare solutions enhance patient care delivery, ensure statutory HIPAA/GxP compliance, and enable real-time healthcare analytics across hospitals, diagnostic centers, and clinics.",
+    heroImage: "/static/Healthcare.jpg",
+
+    services: [
+      "Clinical Data Analytics",
+      "Hospital Information Systems",
+      "Patient Care Management",
+      "Medical Supply Chain",
+      "Regulatory & HIPAA Compliance",
+      "SAP Health S/4HANA Integration",
+    ],
+
+    benefits: [
+      "Improved patient care coordination",
+      "Real-time clinical telemetry & insights",
+      "Optimized hospital resource planning",
+      "Automated regulatory & safety compliance",
+    ],
+  },
 ];
 
 const SLUG_ALIASES: Record<string, string> = {
@@ -206,10 +260,17 @@ const SLUG_ALIASES: Record<string, string> = {
   steel: "steel-manufacturing",
   retail: "retail-supply-chain",
   "supply-chain": "retail-supply-chain",
+  "oil-gas": "oil-and-gas",
+  oil: "oil-and-gas",
+  energy: "oil-and-gas",
+  health: "healthcare",
+  hospital: "healthcare",
+  medical: "healthcare",
 };
 
 export function getIndustry(slug: string) {
   const canonical = SLUG_ALIASES[slug] || slug;
   return industries.find((industry) => industry.slug === canonical);
 }
+
 
