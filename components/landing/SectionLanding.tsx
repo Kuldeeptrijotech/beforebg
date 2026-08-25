@@ -50,7 +50,7 @@ export default function SectionLanding({
 }: Props) {
   return (
     <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero ─────────────────────────────── */}
+      {/* ──── Hero ────────────────────────────────────────────────────────────── */}
       <section
         className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12"
       >
@@ -84,7 +84,7 @@ export default function SectionLanding({
         {/* Content */}
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+            <span className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
@@ -101,11 +101,19 @@ export default function SectionLanding({
               {description}
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-4">
-              <a href="#explore" className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold">
+            <div className="mt-9 flex flex-wrap gap-4 relative z-10">
+              <a
+                href="#explore"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+              >
                 Explore {eyebrow} <ArrowRight className="h-4 w-4" />
               </a>
-              <Link href="/contact" className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold">
+              <Link
+                href="/contact"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+              >
                 Contact Us
               </Link>
             </div>
@@ -116,7 +124,7 @@ export default function SectionLanding({
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      {/* ── Cards Section ─────────────────────── */}
+      {/* ──── Cards Section ────────────────────────────────────────────── */}
       <section
         id="explore"
         className="relative z-20 bg-[#071322] py-14 sm:py-16 lg:py-20 border-t border-white/10 text-white"
@@ -219,7 +227,7 @@ export default function SectionLanding({
         </div>
       </section>
 
-      {/* ── CTA Banner ────────────────────────── */}
+      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
       <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -251,3 +259,4 @@ export default function SectionLanding({
     </main>
   );
 }
+

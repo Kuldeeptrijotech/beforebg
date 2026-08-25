@@ -49,7 +49,6 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
         eyebrow="SAP Data Integration & Migration"
         title="Unified Integration Pipelines & Seamless Data Migration"
         subtitle="Connect on-premise, cloud, and legacy systems into high-reliability, automated enterprise workflows."
-        description="We implement secure SAP Integration Suite, CPI, and Event Mesh pipelines that ensure zero data loss, full auditability, and synchronized data across every business application."
         primaryCta={{ label: "Consult integration engineers", href: "/contact" }}
         secondaryCta={{ label: "Explore all services", href: "/services" }}
         metrics={[

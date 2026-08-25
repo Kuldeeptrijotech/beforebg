@@ -45,10 +45,9 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
     <main className="service-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* HERO */}
       <ServiceHero
-        eyebrow="SAP Consulting & Implementation"
+        eyebrow=""
         title="Strategy, Implementation & Full-Lifecycle SAP Consulting"
         subtitle="Plan, deliver, and optimize standard and cloud-native SAP landscapes with accountable delivery ownership."
-        description="We combine strategy, technology, and deep domain expertise to build agile, unified SAP environments from initial roadmap to stabilization and continuous value realization."
         primaryCta={{ label: "Consult our SAP team", href: "/contact" }}
         secondaryCta={{ label: "Explore all services", href: "/services" }}
         metrics={[
@@ -322,3 +321,4 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
     </main>
   );
 }
+

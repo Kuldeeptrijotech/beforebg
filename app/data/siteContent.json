@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T06:54:31.677Z",
+  "updatedAt": "2026-08-25T12:07:35.368Z",
   "global": {
     "sections": {
       "legacy-article-hero": {
@@ -254,6 +254,62 @@
               "value": "Practical SAP thinking in blogs and videos",
               "match": "Practical SAP thinking in<!-- --> <span class=\"tri-gradient-text\">blogs and videos.</span>",
               "label": "Practical SAP thinking in blogs and videos."
+            },
+            {
+              "id": "content-11bvoro",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "html",
+              "value": "View All Industries",
+              "match": "View all industries <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-arrow-right h-4 w-4\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"m12 5 7 7-7 7\"></path></svg>",
+              "label": "View all industries"
+            },
+            {
+              "id": "content-1jsftik",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "attribute",
+              "attribute": "href",
+              "value": "/industry",
+              "match": "/industry",
+              "label": "View all industries URL"
+            },
+            {
+              "id": "content-1v9r4dq",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4:nth-of-type(6) > div.items-stretch:nth-of-type(2) > div:nth-of-type(1) > a.home-industry-card.tri-focus > div.overflow-hidden.justify-end > img.object-cover",
+              "kind": "imageStyle",
+              "value": "{\"width\":\"\",\"maxWidth\":\"\",\"height\":\"\",\"minHeight\":\"\",\"aspectRatio\":\"auto\",\"objectFit\":\"cover\",\"objectPosition\":\"center\",\"borderRadius\":\"\",\"opacity\":\"1\",\"filter\":\"\"}",
+              "label": "View all industries dimensions & style"
+            },
+            {
+              "id": "content-rs2nmk",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
+              "kind": "elementStyle",
+              "value": "{\"fontSize\":\"14.4px\",\"fontWeight\":\"600\",\"color\":\"rgb(255, 255, 255)\",\"textAlign\":\"start\",\"lineHeight\":\"21.6px\",\"padding\":\"\",\"marginTop\":\"\",\"marginBottom\":\"\",\"backgroundColor\":\"\",\"borderRadius\":\"\"}",
+              "label": "View all industries styling"
+            },
+            {
+              "id": "content-146g863",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6)",
+              "kind": "sectionStyle",
+              "value": "{\"width\":\"100%\",\"maxWidth\":\"\",\"minHeight\":\"0px\",\"height\":\"\",\"paddingTop\":\"56px\",\"paddingBottom\":\"56px\",\"paddingLeft\":\"0px\",\"paddingRight\":\"0px\",\"marginTop\":\"\",\"marginBottom\":\"\",\"backgroundColor\":\"rgb(255, 255, 255)\",\"background\":\"\",\"borderRadius\":\"0px\",\"layout\":\"original\",\"columns\":\"3\",\"hidden\":false}",
+              "label": "relative section dimensions & layout"
+            },
+            {
+              "id": "content-vu3gai",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4:nth-of-type(6) > div.items-stretch:nth-of-type(2) > div:nth-of-type(1) > a.home-industry-card.tri-focus > div.overflow-hidden.justify-end > img.object-cover",
+              "kind": "attribute",
+              "attribute": "src",
+              "value": "/_next/image?url=%2Fstatic%2Fcards%2FPharma.webp&w=3840&q=75",
+              "match": "/_next/image?url=%2Fstatic%2Fcards%2FPharma.webp&w=3840&q=75",
+              "label": "relative hero image"
+            },
+            {
+              "id": "content-p75wgk",
+              "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6)",
+              "kind": "attribute",
+              "attribute": "data-admin-animation",
+              "value": "default",
+              "match": "default",
+              "label": "relative animation"
             }
           ]
         }

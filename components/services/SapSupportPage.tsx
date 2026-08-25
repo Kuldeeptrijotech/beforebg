@@ -43,7 +43,6 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
         eyebrow="SAP Support & Application Management"
         title="24/7 Proactive AMS, System Stability & Optimization"
         subtitle="Keep your SAP landscape fast, resilient, and continuously aligned with evolving business needs."
-        description="Dedicated SAP support teams providing rapid incident triage, proactive monitoring, release upgrades, and continuous performance tuning backed by enterprise-grade SLAs."
         primaryCta={{ label: "Request support consultation", href: "/contact" }}
         secondaryCta={{ label: "Explore all services", href: "/services" }}
         metrics={[

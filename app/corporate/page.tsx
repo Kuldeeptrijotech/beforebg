@@ -46,7 +46,7 @@ const cards = [
 export default function CorporatePage() {
   return (
     <main className="public-alternating-page overflow-hidden bg-[#030713] text-white font-sans">
-      {/* ── Hero ─────────────────────────────── */}
+      {/* ──── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         {/* Layered ambient backgrounds */}
         <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
@@ -72,7 +72,7 @@ export default function CorporatePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
+              className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
               <Sparkles className="h-3.5 w-3.5 text-white" />
               Corporate
@@ -103,17 +103,19 @@ export default function CorporatePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-10 flex flex-wrap gap-4"
+              className="mt-10 flex flex-wrap gap-4 relative z-10"
             >
               <a
                 href="#explore"
-                className="tri-btn tri-btn-primary px-7 py-3.5 text-sm font-semibold"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-3.5 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 Explore Corporate <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/about-us"
-                className="tri-btn tri-btn-ghost px-7 py-3.5 text-sm font-semibold"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-3.5 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 About Trijotech
               </Link>
@@ -125,7 +127,7 @@ export default function CorporatePage() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      {/* ── Cards ─────────────────────────────── */}
+      {/* ──── Cards ────────────────────────────────────────────────────────────── */}
       <section id="explore" className="relative overflow-hidden bg-[#162032] py-24 sm:py-32 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh" />
         <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(255, 255, 255,0.18)] blur-[100px] tri-pulse" />
@@ -200,7 +202,7 @@ export default function CorporatePage() {
         </Container>
       </section>
 
-      {/* ── CTA Banner ────────────────────────── */}
+      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
       <section className="hidden relative overflow-hidden bg-[#121927] py-12 sm:py-14">
         <Container className="relative">
           <Reveal>

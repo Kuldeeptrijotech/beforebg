@@ -975,9 +975,19 @@ p, a, span, li, label, div {
   -webkit-text-fill-color: #000000 !important;
 }
 
-.zip-theme > section :is(.gradient-text, .gradient-text-gold, .tri-gradient-text) {
+.zip-theme > section :is(.gradient-text, .gradient-text-gold):not(.hero-fullvh *):not(.home-hero-heading *) {
   background-image: none !important;
   background-color: transparent !important;
+}
+
+.zip-theme section.hero-fullvh .tri-gradient-text,
+.zip-theme .home-hero-heading .tri-gradient-text,
+.home-hero-heading .tri-gradient-text {
+  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #93c5fd 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
 }
 /* Nested monochrome surface contrast */
 .zip-theme :is(.tri-btn-primary, .bg-white),
@@ -1082,47 +1092,60 @@ main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
-/* Homepage hero CTA color and contrast */
-.zip-theme .home-hero-primary {
-  background: #0e7490 !important;
-  border: 1px solid #0e7490 !important;
+/* All Hero Section Buttons across the whole website - #257ae8d6 theme */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary),
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary),
+:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline),
+.home-hero-primary,
+.home-hero-secondary {
+  background: #257ae8d6 !important;
+  background-color: #257ae8d6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  box-shadow: none !important;
+  font-weight: 700 !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 4px 20px rgba(37, 122, 232, 0.35) !important;
+  border-radius: 9999px !important;
+  position: relative !important;
+  z-index: 10 !important;
+  transition: all 0.25s ease !important;
 }
 
-.zip-theme .home-hero-primary * {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary) *,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary) *,
+:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) *,
+.home-hero-primary *,
+.home-hero-secondary * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
-.zip-theme .home-hero-primary:hover {
-  background: var(--color-cyan-200) !important;
-  border-color: var(--color-cyan-200) !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-  box-shadow: none !important;
-}
-
-.zip-theme .home-hero-primary:hover * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-.zip-theme .home-hero-secondary {
-  background: #0e7490 !important;
-  border: 1px solid #0e7490 !important;
+/* Hover state for all hero buttons */
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary):hover,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary):hover,
+:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover,
+.home-hero-primary:hover,
+.home-hero-secondary:hover {
+  background: #257ae8 !important;
+  background-color: #257ae8 !important;
+  border-color: #ffffff !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  box-shadow: none !important;
+  box-shadow: 0 8px 25px rgba(37, 122, 232, 0.55) !important;
+  transform: translateY(-2px) !important;
+  z-index: 30 !important;
 }
 
-.zip-theme .home-hero-secondary:hover {
-  background: var(--color-cyan-200) !important;
-  border-color: var(--color-cyan-200) !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-  box-shadow: none !important;
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary):hover *,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary):hover *,
+:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover *,
+.home-hero-primary:hover *,
+.home-hero-secondary:hover * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  stroke: #ffffff !important;
 }
 
 /* Cyan outline for buttons on white public sections */
@@ -2461,3 +2484,305 @@ select option {
 /* Keep industry hero photography bright—no black backdrop or black wash */
 .industry-detail-page .industry-hero-section { background-color: #0a6ed1 !important; }
 .industry-detail-page .industry-hero-section::before { background: linear-gradient(90deg, rgba(10,110,209,.58) 0%, rgba(0,143,211,.24) 48%, rgba(0,143,211,.04) 100%) !important; }
+
+/* Industry hero buttons: explicit readable normal and hover states */
+.industry-detail-page .industry-hero-section .tri-btn-primary {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #0b1d33 !important;
+  -webkit-text-fill-color: #0b1d33 !important;
+  box-shadow: 0 12px 30px -16px rgba(0,0,0,.55) !important;
+}
+.industry-detail-page .industry-hero-section .tri-btn-primary :is(span,svg),
+.industry-detail-page .industry-hero-section .tri-btn-primary svg {
+  color: #0b1d33 !important;
+  -webkit-text-fill-color: #0b1d33 !important;
+}
+.industry-detail-page .industry-hero-section .tri-btn-primary:hover,
+.industry-detail-page .industry-hero-section .tri-btn-primary:focus-visible {
+  background: #0a6ed1 !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  transform: translateY(-2px);
+}
+.industry-detail-page .industry-hero-section .tri-btn-primary:hover :is(span,svg),
+.industry-detail-page .industry-hero-section .tri-btn-primary:focus-visible :is(span,svg),
+.industry-detail-page .industry-hero-section .tri-btn-primary:hover svg,
+.industry-detail-page .industry-hero-section .tri-btn-primary:focus-visible svg {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.industry-detail-page .industry-hero-section .tri-btn-ghost {
+  background: rgba(3,27,51,.34) !important;
+  border-color: rgba(255,255,255,.78) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  backdrop-filter: blur(8px);
+}
+.industry-detail-page .industry-hero-section .tri-btn-ghost :is(span,svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.industry-detail-page .industry-hero-section .tri-btn-ghost:hover,
+.industry-detail-page .industry-hero-section .tri-btn-ghost:focus-visible {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #0b1d33 !important;
+  -webkit-text-fill-color: #0b1d33 !important;
+  transform: translateY(-2px);
+}
+.industry-detail-page .industry-hero-section .tri-btn-ghost:hover :is(span,svg),
+.industry-detail-page .industry-hero-section .tri-btn-ghost:focus-visible :is(span,svg) {
+  color: #0b1d33 !important;
+  -webkit-text-fill-color: #0b1d33 !important;
+}
+
+/* Final homepage hero CTA text visibility */
+html body .zip-theme .hero-fullvh a.home-hero-primary {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+html body .zip-theme .hero-fullvh a.home-hero-primary:hover,
+html body .zip-theme .hero-fullvh a.home-hero-primary:focus-visible {
+  background: #cffafe !important;
+  border-color: #67e8f9 !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  opacity: 1 !important;
+}
+html body .zip-theme .hero-fullvh a.home-hero-secondary {
+  background: rgba(7,17,31,.82) !important;
+  border-color: rgba(255,255,255,.72) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+html body .zip-theme .hero-fullvh a.home-hero-secondary:hover,
+html body .zip-theme .hero-fullvh a.home-hero-secondary:focus-visible {
+  background: #0a6ed1 !important;
+  border-color: #67e8f9 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+html body .zip-theme .hero-fullvh a.home-hero-primary *,
+html body .zip-theme .hero-fullvh a.home-hero-primary:hover *,
+html body .zip-theme .hero-fullvh a.home-hero-secondary *,
+html body .zip-theme .hero-fullvh a.home-hero-secondary:hover * {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* High-contrast homepage hero CTAs across every slide */
+html body .zip-theme section.hero-fullvh a.home-hero-primary {
+  background: #f5a623 !important;
+  border: 2px solid #ffd27a !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  box-shadow: 0 10px 28px rgba(245,166,35,.42), 0 0 0 1px rgba(7,17,31,.15) !important;
+  opacity: 1 !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-primary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-primary:focus-visible {
+  background: #ffbf47 !important;
+  border-color: #ffffff !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  box-shadow: 0 14px 34px rgba(245,166,35,.58), 0 0 0 3px rgba(255,255,255,.28) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-secondary {
+  background: #0a6ed1 !important;
+  border: 2px solid #7dd3fc !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 10px 28px rgba(10,110,209,.48), 0 0 0 1px rgba(255,255,255,.16) !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
+  background: #008fd3 !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 14px 34px rgba(0,143,211,.62), 0 0 0 3px rgba(255,255,255,.28) !important;
+  transform: translateY(-3px) scale(1.02) !important;
+}
+
+/* Final homepage hero button background palette */
+html body .zip-theme section.hero-fullvh a.home-hero-primary {
+  background: #0a6ed1 !important;
+  border-color: #7dd3fc !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(10,110,209,.5) !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-primary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-primary:focus-visible {
+  background: #07569f !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-secondary {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  box-shadow: 0 12px 30px rgba(255,255,255,.3) !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
+  background: #f5a623 !important;
+  border-color: #ffd27a !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+}
+
+/* Secondary homepage hero CTA brand color */
+html body .zip-theme section.hero-fullvh a.home-hero-secondary {
+  background: #f5a623 !important;
+  border-color: #ffd27a !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  box-shadow: 0 12px 30px rgba(245,166,35,.42) !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+  box-shadow: 0 14px 34px rgba(255,255,255,.38) !important;
+}
+
+/* Final blue-only CTA system for every website hero */
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) {
+  position: relative !important;
+  z-index: 10 !important;
+  transform: none !important;
+  transition: z-index .01s linear !important;
+}
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.home-hero-primary, .tri-btn-primary, a.filled-button, button.filled-button) {
+  background: #0a6ed1 !important;
+  border-color: #7dd3fc !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
+}
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.home-hero-secondary, .tri-btn-ghost, .tri-btn-outline) {
+  background: #07569f !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(0,143,211,.38) !important;
+}
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover,
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):focus-visible {
+  z-index: 50 !important;
+  transform: none !important;
+}
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.home-hero-primary, .tri-btn-primary, a.filled-button, button.filled-button):is(:hover,:focus-visible) {
+  background: #0a6ed1 !important;
+  border-color: #7dd3fc !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
+}
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.home-hero-secondary, .tri-btn-ghost, .tri-btn-outline):is(:hover,:focus-visible) {
+  background: #07569f !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(0,143,211,.38) !important;
+}
+:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Remove watermark-style eyebrow treatments from all public heroes */
+.home-hero-eyebrow,
+.hero-eyebrow-badge,
+.hero-fullvh .tri-overline,
+.page-heading > div .tri-overline,
+.about-hero > div .tri-overline,
+.service-page-heading > div .tri-overline,
+.legacy-service-hero > div .tri-overline {
+  display: none !important;
+}
+
+/* Remove remaining yellow from homepage hero CTAs */
+html body .zip-theme section.hero-fullvh a.home-hero-primary,
+html body .zip-theme section.hero-fullvh a.home-hero-primary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-primary:focus-visible {
+  background: #0a6ed1 !important;
+  border-color: #7dd3fc !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
+  transform: none !important;
+}
+html body .zip-theme section.hero-fullvh a.home-hero-secondary,
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:hover,
+html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
+  background: #07569f !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(0,143,211,.4) !important;
+  transform: none !important;
+}
+
+/* Exact homepage CTA palette on every public page hero */
+html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary, a.filled-button, button.filled-button),
+html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary, a.filled-button, button.filled-button):is(:hover,:focus-visible) {
+  position: relative !important;
+  z-index: 10 !important;
+  background: #0a6ed1 !important;
+  border-color: #7dd3fc !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
+  transform: none !important;
+}
+html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-ghost, .tri-btn-outline, .home-hero-secondary),
+html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-ghost, .tri-btn-outline, .home-hero-secondary):is(:hover,:focus-visible) {
+  position: relative !important;
+  z-index: 10 !important;
+  background: #07569f !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 12px 30px rgba(0,143,211,.4) !important;
+  transform: none !important;
+}
+html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary, a.filled-button, button.filled-button) * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary, a.filled-button, button.filled-button):is(:hover,:focus-visible) {
+  z-index: 50 !important;
+}

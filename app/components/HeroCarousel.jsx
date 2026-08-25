@@ -82,7 +82,14 @@ export default function HeroCarousel() {
             <span key={line}>{line}</span>
           ))}
         </div>
-        <button type="button" className="primary-action" onClick={() => router.push("/contact")}>{slide.cta}</button>
+        <button
+          type="button"
+          className="primary-action hero-btn-blue relative z-10 hover:z-20 transition-all duration-200"
+          style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+          onClick={() => router.push("/contact")}
+        >
+          {slide.cta}
+        </button>
       </div>
       <div className="carousel-controls" aria-label="Carousel controls">
         <button type="button" className="carousel-control prev-control" onClick={() => selectSlide(-1)} aria-label="Previous slide">&lt;</button>

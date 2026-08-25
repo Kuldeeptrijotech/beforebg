@@ -48,7 +48,7 @@ export default function SolutionDetailLanding({
 
   return (
     <main className="solution-detail-page public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero Section (Full Height & Full Width Background Image, High Visibility) ── */}
+      {/* ──── Hero Section (Full Height & Full Width Background Image, High Visibility) ──── */}
       <section className="relative isolate flex min-h-[75vh] w-full flex-col justify-center overflow-hidden bg-[#050817] pb-16 pt-32 sm:pt-36 lg:min-h-[640px] lg:py-24">
         {/* Full width & full height image backdrop */}
         {heroImage && (
@@ -70,7 +70,7 @@ export default function SolutionDetailLanding({
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="flex max-w-4xl flex-col items-start text-left">
             {/* Eyebrow badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
+            <div className="hero-eyebrow-badge mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
@@ -102,13 +102,15 @@ export default function SolutionDetailLanding({
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#capabilities"
-                className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-bold text-[#030713]"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-bold !text-white"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 Explore capabilities <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/solutions"
-                className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white backdrop-blur-md bg-white/10 hover:bg-white/20 border-white/20"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 All solutions
               </Link>
@@ -120,7 +122,7 @@ export default function SolutionDetailLanding({
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/15" />
       </section>
 
-      {/* ── Overview / Definition ─────────────────────────── */}
+      {/* ──── Overview / Definition ────────────────────────────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#0b1d33] py-16 sm:py-20 lg:py-24 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
@@ -175,7 +177,7 @@ export default function SolutionDetailLanding({
         </div>
       </section>
 
-      {/* ── Feature Cards ────────────────────── */}
+      {/* ──── Feature Cards ──────────────────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 lg:py-24 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -222,7 +224,7 @@ export default function SolutionDetailLanding({
         </div>
       </section>
 
-      {/* ── Capabilities ─────────────────────── */}
+      {/* ──── Capabilities ────────────────────────────────────────────── */}
       <section id="capabilities" className="relative isolate scroll-mt-24 bg-[#0b1d33] py-16 sm:py-20 lg:py-24 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
@@ -294,7 +296,7 @@ export default function SolutionDetailLanding({
         </div>
       </section>
 
-      {/* ── Business Outcomes ────────────────── */}
+      {/* ──── Business Outcomes ──────────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 lg:py-24 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -366,7 +368,7 @@ export default function SolutionDetailLanding({
 
       <OtherSolutions currentSlug={solution.slug} />
 
-      {/* ── CTA Banner ────────────────────────── */}
+      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
       <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
@@ -404,3 +406,4 @@ export default function SolutionDetailLanding({
     </main>
   );
 }
+

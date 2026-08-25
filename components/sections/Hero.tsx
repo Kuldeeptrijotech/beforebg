@@ -71,12 +71,11 @@ export default function Hero() {
             src={activeSlide.visual.src}
             alt={activeSlide.visual.alt}
             priority={activeIndex === 0}
-            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-75 mix-blend-luminosity"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-80"
           />
-          {/* Rich midnight depth gradient overlay */}
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,8,23,0.92)_0%,rgba(11,29,51,0.72)_50%,rgba(3,7,19,0.25)_100%)]" />
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,23,0.4)_0%,transparent_35%,rgba(5,8,23,0.85)_100%)]" />
-          <div aria-hidden className="absolute inset-0 opacity-0" />
+          {/* Subtle balanced midnight gradient overlays to ensure text readability while keeping the image clear */}
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,8,23,0.85)_0%,rgba(11,29,51,0.55)_50%,rgba(3,7,19,0.2)_100%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,23,0.3)_0%,transparent_35%,rgba(5,8,23,0.75)_100%)]" />
         </motion.div>
       </AnimatePresence>
 
@@ -134,16 +133,18 @@ export default function Hero() {
               </motion.p>
 
               {/* CTAs */}
-              <motion.div custom={3} variants={childVariants} className="mt-9 flex flex-wrap gap-4">
+              <motion.div custom={3} variants={childVariants} className="mt-9 flex flex-wrap gap-4 relative z-10">
                 <Link
                   href={activeSlide.primaryCta.href}
-                  className="home-hero-primary tri-btn tri-focus px-7 py-4 text-sm font-semibold"
+                  className="home-hero-primary hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
                 >
                   {activeSlide.primaryCta.label}
                 </Link>
                 <Link
                   href={activeSlide.secondaryCta.href}
-                  className="home-hero-secondary tri-btn tri-focus px-7 py-4 text-sm font-semibold"
+                  className="home-hero-secondary hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
                 >
                   {activeSlide.secondaryCta.label}
                 </Link>

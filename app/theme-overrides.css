@@ -497,3 +497,56 @@ select option {
   -webkit-text-fill-color: #000000 !important;
   font-weight: 700 !important;
 }
+
+/* All Hero Section Buttons - #257ae8d6 background override */
+html body :is(.hero-fullvh, section:first-of-type, header, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline, .hero-btn-blue, a[class*="tri-btn"], button[class*="tri-btn"]),
+html body .hero-btn-blue,
+html body .home-hero-primary,
+html body .home-hero-secondary {
+  background: #257ae8d6 !important;
+  background-color: #257ae8d6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(37, 122, 232, 0.35) !important;
+  border-radius: 9999px !important;
+  backdrop-filter: blur(10px) !important;
+  text-decoration: none !important;
+  position: relative !important;
+  z-index: 10 !important;
+  transition: all 0.25s ease !important;
+}
+
+html body :is(.hero-fullvh, section:first-of-type, header, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline, .hero-btn-blue, a[class*="tri-btn"], button[class*="tri-btn"]) *,
+html body .hero-btn-blue *,
+html body .home-hero-primary *,
+html body .home-hero-secondary * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+html body :is(.hero-fullvh, section:first-of-type, header, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline, .hero-btn-blue, a[class*="tri-btn"], button[class*="tri-btn"]):hover,
+html body .hero-btn-blue:hover,
+html body .home-hero-primary:hover,
+html body .home-hero-secondary:hover {
+  background: #257ae8 !important;
+  background-color: #257ae8 !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 8px 25px rgba(37, 122, 232, 0.55) !important;
+  transform: translateY(-2px) !important;
+  z-index: 30 !important;
+}
+
+html body :is(.hero-fullvh, section:first-of-type, header, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline, .hero-btn-blue, a[class*="tri-btn"], button[class*="tri-btn"]):hover *,
+html body .hero-btn-blue:hover *,
+html body .home-hero-primary:hover *,
+html body .home-hero-secondary:hover * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+

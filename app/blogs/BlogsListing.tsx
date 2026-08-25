@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +25,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
 
   return (
     <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero ─────────────────────────────── */}
+      {/* ──── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/heroes/blogs-blue.png"
@@ -49,7 +49,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
+              className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
               <Sparkles className="h-3.5 w-3.5 text-white" aria-hidden="true" />{" "}
               Insights
@@ -97,7 +97,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      {/* ── Explore Blogs ────────────────────── */}
+      {/* ──── Explore Blogs ──────────────────────────────────────────── */}
       <section
         id="explore-blogs"
         className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5"
@@ -201,7 +201,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
         </div>
       </section>
 
-      {/* ── CTA Banner ────────────────────────── */}
+      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
       <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -240,3 +240,4 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
     </main>
   );
 }
+

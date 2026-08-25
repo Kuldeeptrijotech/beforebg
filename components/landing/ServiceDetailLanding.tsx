@@ -91,13 +91,15 @@ export default function ServiceDetailLanding({
       >
         <Link
           href="/contact"
-          className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
+          className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white"
+          style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
         >
           Consult our experts <ArrowRight className="h-4 w-4" />
         </Link>
         <Link
           href="/services"
-          className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold"
+          className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white"
+          style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
         >
           All services
         </Link>

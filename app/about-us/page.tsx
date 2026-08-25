@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -72,7 +72,7 @@ const leadership = [
 export default function AboutUsPage() {
   return (
     <main className="about-page public-alternating-page overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero ─────────────────────────────── */}
+      {/* ──── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
           src="/assets/about/trijotech-team-collaboration-blue.png"
@@ -93,7 +93,7 @@ export default function AboutUsPage() {
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
             <div
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
+              className="hero-eyebrow-badge inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
             >
               <Sparkles className="h-3.5 w-3.5 text-white" />
               About Trijotech
@@ -146,7 +146,7 @@ export default function AboutUsPage() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      {/* ── Who We Are ───────────────────────── */}
+      {/* ──── Who We Are ────────────────────────────────────────────────── */}
       <section id="who-we-are" className="relative isolate overflow-hidden bg-[#0b1d33] py-20 sm:py-24 lg:py-28 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
@@ -192,7 +192,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── Vision / Mission / Goals ─────────── */}
+      {/* ──── Vision / Mission / Goals ────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#18263e] py-20 sm:py-24 lg:py-28 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -233,7 +233,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── Values ───────────────────────────── */}
+      {/* ──── Values ────────────────────────────────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#0b1d33] py-20 sm:py-24 lg:py-28 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
@@ -277,7 +277,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── Leadership ───────────────────────── */}
+      {/* ──── Leadership ────────────────────────────────────────────────── */}
       <section className="relative isolate overflow-hidden bg-[#18263e] py-20 sm:py-24 lg:py-28 border-b border-white/10">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
@@ -342,7 +342,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── CTA Banner ────────────────────────── */}
+      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
       <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
@@ -378,3 +378,4 @@ export default function AboutUsPage() {
     </main>
   );
 }
+

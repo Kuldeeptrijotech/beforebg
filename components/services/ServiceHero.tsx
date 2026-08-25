@@ -44,7 +44,7 @@ export default function ServiceHero({
   eyebrow = "SAP Enterprise Services",
   title = "End-to-End SAP Transformation & Consulting",
   subtitle = "Delivering scalable architecture, cloud integration, and measurable business outcomes.",
-  description = "Our dedicated SAP consultants partner with enterprise teams from initial architecture strategy and system implementation through continuous optimization.",
+  description = "",
   primaryCta = { label: "Consult our SAP experts", href: "/contact" },
   secondaryCta = { label: "Explore all services", href: "/services" },
   metrics = [
@@ -82,14 +82,14 @@ export default function ServiceHero({
         ) : (
           <div className="flex max-w-4xl flex-col items-start text-left">
             {/* Eyebrow badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
+            {eyebrow && <div className="hero-eyebrow-badge mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
               </span>
               <Sparkles className="h-3.5 w-3.5 text-white" />
               {eyebrow}
-            </div>
+            </div>}
 
             {/* Title */}
             <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
@@ -111,11 +111,12 @@ export default function ServiceHero({
             )}
 
             {/* Action buttons */}
-            <div className="mt-9 flex flex-wrap items-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-4 relative z-10">
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-bold text-[#030713]"
+                  className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-bold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
                 >
                   {primaryCta.label} <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -123,27 +124,13 @@ export default function ServiceHero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="tri-btn tri-btn-ghost tri-focus px-7 py-4 text-sm font-semibold text-white backdrop-blur-md bg-white/10 hover:bg-white/20 border-white/20"
+                  className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
                 >
                   {secondaryCta.label}
                 </Link>
               )}
             </div>
-
-            {/* Key Metrics / Highlights */}
-            {metrics && metrics.length > 0 && (
-              <div className="mt-12 flex flex-wrap items-center gap-3 sm:gap-4">
-                {metrics.map((m) => (
-                  <div
-                    key={m.label}
-                    className="flex items-center gap-3 rounded-2xl border border-white/20 bg-[#050817]/70 px-4 py-2.5 backdrop-blur-md shadow"
-                  >
-                    <span className="text-base font-extrabold text-white sm:text-lg">{m.value}</span>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-white/80">{m.label}</span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         )}
       </Container>
@@ -153,3 +140,5 @@ export default function ServiceHero({
     </section>
   );
 }
+
+

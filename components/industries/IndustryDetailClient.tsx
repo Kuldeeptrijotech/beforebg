@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { CSSProperties } from "react";
 import Image from "next/image";
@@ -18,7 +18,7 @@ const cardTones = [
 export default function IndustryDetailClient({ industry }: { industry: Industry }) {
   return (
     <main className="industry-detail-page overflow-hidden bg-[#030713] text-white">
-      {/* ── Hero Section (Full Height & Full Width Background Image, High Visibility) ── */}
+      {/* ──── Hero Section (Full Height & Full Width Background Image, High Visibility) ──── */}
       <section className="industry-hero-section relative isolate flex min-h-[75vh] w-full flex-col justify-center overflow-hidden bg-[#050817] pb-16 pt-32 sm:pt-36 lg:min-h-[640px] lg:py-24">
         {/* Full width & full height image backdrop */}
         <div aria-hidden className="absolute inset-0 -z-20 overflow-hidden">
@@ -38,7 +38,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="flex max-w-4xl flex-col items-start text-left">
             {/* Eyebrow badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
+            <div className="hero-eyebrow-badge mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
@@ -98,7 +98,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/15" />
       </section>
 
-      {/* ── Definition / Overview ────────────── */}
+      {/* ──── Definition / Overview ──────────────────────────── */}
       <section className="industry-definition-section relative overflow-hidden bg-[#0b1d33] py-16 sm:py-20 border-b border-white/5">
         <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(255,255,255,0.08)] blur-3xl animate-float" />
         <div className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 translate-x-1/3 rounded-full bg-[rgba(255,255,255,0.07)] blur-3xl animate-float-reverse" />
@@ -124,7 +124,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
         </div>
       </section>
 
-      {/* ── Capabilities (What We Deliver) ─────────────────────── */}
+      {/* ──── Capabilities (What We Deliver) ────────────────────────────────────────────── */}
       <section className="bg-[#030713] py-20 sm:py-24 border-b border-white/5">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
@@ -174,7 +174,7 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
         </div>
       </section>
 
-      {/* ── Business Value & Measurable Outcomes ───────────────────── */}
+      {/* ──── Business Value & Measurable Outcomes ────────────────────────────────────────── */}
       <section className="industry-outcomes-section relative bg-[#050817] py-20 sm:py-24 border-b border-white/5">
         <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-25" />
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-12">
@@ -253,3 +253,4 @@ export default function IndustryDetailClient({ industry }: { industry: Industry 
     </main>
   );
 }
+

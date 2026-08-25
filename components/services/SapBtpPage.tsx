@@ -37,7 +37,6 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
         eyebrow="SAP BTP Full-Stack Development"
         title="Custom Cloud Applications & Side-by-Side Extensions"
         subtitle="Build modern portals, mobile workflows, and clean-core extensions on SAP Business Technology Platform."
-        description="We create future-proof solutions on SAP BTP using CAP, RAP, Fiori, and Integration Suite — preserving the core SAP system clean, standard, and continuously upgrade-ready."
         primaryCta={{ label: "Consult BTP architects", href: "/contact" }}
         secondaryCta={{ label: "Explore all services", href: "/services" }}
         metrics={[

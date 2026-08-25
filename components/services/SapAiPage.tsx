@@ -43,7 +43,6 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
         eyebrow="SAP AI & Data Intelligence"
         title="Predictive AI & Real-Time Enterprise Analytics"
         subtitle="Turn enterprise data into forward-looking insights, automated decisioning, and measurable performance visibility."
-        description="We integrate SAP Analytics Cloud, Databricks, and native SAP AI capabilities into core financial and supply chain processes so business leaders can anticipate shifts before they happen."
         primaryCta={{ label: "Consult AI specialists", href: "/contact" }}
         secondaryCta={{ label: "Explore all services", href: "/services" }}
         metrics={[
