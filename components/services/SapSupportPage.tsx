@@ -276,7 +276,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 <p className="text-lg font-bold text-white">Flexible engagement models</p>
                 <p className="mt-1 text-slate-400">Scale teams and SLAs to match operational demand and service priorities.</p>
               </div>
-              <div className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ffffff] to-[#ffffff] px-6 py-3 text-sm font-bold text-white shadow-lg shadow-cyan-950/20">
+              <div className="sap-support-flexible-badge flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[#008fd3] shadow-lg shadow-cyan-950/20">
                 <CheckCircle2 className="h-4 w-4" /> Pay for what you need
               </div>
             </div>

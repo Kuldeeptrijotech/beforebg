@@ -2289,3 +2289,68 @@ html body main.service-detail-page .sap-support-pillar-icon svg {
   stroke: #008fd3 !important;
   opacity: 1 !important;
 }
+/* Keep the SAP Support engagement badge readable on its white surface. */
+html body main.service-detail-page .sap-support-flexible-badge,
+html body main.service-detail-page .sap-support-flexible-badge svg {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  -webkit-text-fill-color: #008fd3 !important;
+  opacity: 1 !important;
+}
+
+html body main.service-detail-page .sap-support-flexible-badge {
+  background: #fff !important;
+}
+/* Admin-selectable section motion presets */
+section[data-admin-animation="off"] *, section[data-admin-animation="off"]::before, section[data-admin-animation="off"]::after { animation: none !important; transition: none !important; }
+section[data-admin-animation="off"] canvas, section[data-admin-animation="off"] [class*="animation"], section[data-admin-animation="off"] [class*="stream"], section[data-admin-animation="off"] [class*="aurora"] { display: none !important; }
+section[data-admin-animation="subtle"] * { animation-duration: 12s !important; transition-duration: 1.2s !important; }
+section[data-admin-animation="glow"]::after, section[data-admin-animation="grid"]::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+section[data-admin-animation="glow"]::after { background: radial-gradient(circle at 72% 30%, rgba(255,255,255,.18), transparent 34%), radial-gradient(circle at 25% 72%, rgba(245,166,35,.13), transparent 30%); animation: adminHeroGlow 7s ease-in-out infinite alternate; }
+section[data-admin-animation="grid"]::after { opacity: .24; background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px); background-size: 42px 42px; animation: adminHeroGrid 16s linear infinite; }
+@keyframes adminHeroGlow { from { opacity: .45; transform: scale(1); } to { opacity: .9; transform: scale(1.08); } }
+@keyframes adminHeroGrid { to { background-position: 42px 42px; } }
+@media (prefers-reduced-motion: reduce) { section[data-admin-animation]::after { animation: none !important; } }
+
+/* Admin page-builder section layouts */
+section[data-admin-layout="grid"] > :not([aria-hidden]), .admin-created-section[data-admin-layout="grid"] { display: grid !important; grid-template-columns: repeat(var(--admin-columns, 3), minmax(0, 1fr)); gap: 1.5rem; }
+section[data-admin-layout="stack"] > :not([aria-hidden]) { display: flex !important; flex-direction: column; gap: 1.25rem; }
+section[data-admin-layout="carousel"] { display: flex !important; gap: 1.25rem; overflow-x: auto !important; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+section[data-admin-layout="carousel"] > :not([aria-hidden]) { flex: 0 0 min(82vw, 420px) !important; scroll-snap-align: start; }
+.admin-added-content { position: relative; z-index: 3; width: min(100% - 2rem, 1200px); margin: 1.5rem auto; }
+.admin-created-section { position: relative; padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 5rem); background: #0b1d33; color: #fff; }
+@media (max-width: 767px) { section[data-admin-layout="grid"] > :not([aria-hidden]) { grid-template-columns: 1fr !important; } }
+
+/* Cohesive SAP styling for industry detail pages */
+.industry-detail-page .industry-definition-section { background: radial-gradient(circle at 85% 15%, rgba(10,110,209,.22), transparent 34%), linear-gradient(135deg, #0b1d33 0%, #062b4f 100%) !important; }
+.industry-detail-page .industry-priorities-section { background: radial-gradient(circle at 12% 20%, rgba(56,189,248,.12), transparent 30%), #0b1d33 !important; color: #fff !important; }
+.industry-detail-page .industry-priorities-section .industry-detail-card { background: linear-gradient(145deg, rgba(10,110,209,.92), rgba(0,143,211,.72)) !important; border-color: rgba(125,211,252,.45) !important; color: #fff !important; box-shadow: 0 18px 50px -30px rgba(0,143,211,.9); }
+.industry-detail-page .industry-priorities-section .industry-detail-card :is(h3,p,span,svg) { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+.industry-detail-page > section:first-child > img { filter: saturate(.92) contrast(1.05); }
+
+.industry-detail-page .industry-definition-card { background: #fff !important; color: #0b1d33 !important; }
+.industry-detail-page .industry-definition-card :is(h2,p,span,strong) { color: #0b1d33 !important; -webkit-text-fill-color: #0b1d33 !important; }
+.industry-detail-page .industry-definition-card .tri-overline { color: #0a6ed1 !important; -webkit-text-fill-color: #0a6ed1 !important; }
+.industry-detail-page .industry-definition-card .tri-gradient-text { background: linear-gradient(90deg,#0a6ed1,#008fd3) !important; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; -webkit-text-fill-color: transparent !important; }
+.industry-detail-page .industry-definition-card > div:last-child { border-color: #dbe7f3 !important; }
+.industry-detail-page .industry-definition-card svg { color: #0a6ed1 !important; }
+
+/* Unified dark SAP theme for industry pages */
+.industry-detail-page > section { background-color: #0b1d33 !important; color: #fff !important; }
+.industry-detail-page > section:nth-of-type(odd) { background-color: #050817 !important; }
+.industry-detail-page .industry-definition-card { background: linear-gradient(145deg, #0a6ed1, #07569f) !important; border-color: rgba(125,211,252,.48) !important; color: #fff !important; }
+.industry-detail-page .industry-definition-card :is(h2,p,span,strong) { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+.industry-detail-page .industry-definition-card :is(.tri-overline,.tri-gradient-text) { background: none !important; color: #fff !important; -webkit-text-fill-color: #fff !important; }
+.industry-detail-page .industry-definition-card > div:last-child { border-color: rgba(255,255,255,.22) !important; }
+.industry-detail-page .industry-definition-card svg { color: #fff !important; }
+
+/* Industry definition section uses the same white surface as other light sections */
+.industry-detail-page .industry-definition-section { background: #ffffff !important; background-image: none !important; }
+
+.industry-detail-page .industry-hero-section { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+.industry-detail-page .industry-hero-section::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(3,27,51,.9) 0%, rgba(5,47,85,.68) 52%, rgba(10,110,209,.18) 100%); }
+.industry-detail-page .industry-hero-section > .relative { z-index: 10 !important; }
+
+/* Keep industry hero photography bright—no black backdrop or black wash */
+.industry-detail-page .industry-hero-section { background-color: #0a6ed1 !important; }
+.industry-detail-page .industry-hero-section::before { background: linear-gradient(90deg, rgba(10,110,209,.58) 0%, rgba(0,143,211,.24) 48%, rgba(0,143,211,.04) 100%) !important; }

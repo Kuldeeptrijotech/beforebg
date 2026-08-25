@@ -1,7 +1,7 @@
 ﻿import { promises as fs } from "node:fs";
 import path from "node:path";
 
-export type ContentKind = "html" | "attribute" | "backgroundImage";
+export type ContentKind = "html" | "attribute" | "backgroundImage" | "sectionStyle" | "appendHtml" | "insertAfter";
 
 export type ContentEntry = {
   id: string;
@@ -9,7 +9,7 @@ export type ContentEntry = {
   kind: ContentKind;
   value: string;
   match?: string;
-  attribute?: "href" | "src" | "alt" | "aria-label" | "title" | "data-admin-href";
+  attribute?: "href" | "src" | "alt" | "aria-label" | "title" | "data-admin-href" | "data-admin-animation";
   label: string;
 };
 
@@ -79,8 +79,14 @@ export function validateEntry(entry: ContentEntry): string | null {
   if (entry.value.length > 50000) return "Content is too long.";
   if (entry.kind === "attribute" && (entry.attribute === "href" || entry.attribute === "data-admin-href") && !isSafeUrl(entry.value)) return "Enter a valid link URL.";
   if (entry.kind === "attribute" && entry.attribute === "src" && !isSafeUrl(entry.value, true)) return "Enter a valid image URL.";
+  if (entry.kind === "attribute" && entry.attribute === "data-admin-animation" && !["default", "off", "subtle", "glow", "grid"].includes(entry.value)) return "Choose a valid animation preset.";
   if (entry.kind === "backgroundImage" && !isSafeUrl(entry.value, true)) return "Enter a valid background image URL.";
+  if (entry.kind === "sectionStyle") {
+    try { const options = JSON.parse(entry.value) as Record<string, unknown>; if (!options || typeof options !== "object") return "Invalid section settings."; } catch { return "Invalid section settings."; }
+  }
   if (/<script\b|on\w+\s*=|javascript:/i.test(entry.value)) return "Unsafe content is not allowed.";
   return null;
 }
+
+
 

@@ -1,9 +1,12 @@
-"use client";
+﻿"use client";
 
 import type { ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Container from "@/components/ui/Container";
+import { navHeroImages } from "@/lib/nav-hero-images";
 
 type ServiceHeroProps = {
   /** Optional Eyebrow badge text */
@@ -52,10 +55,16 @@ export default function ServiceHero({
   heading,
   bgClass = "bg-[#050817]",
 }: ServiceHeroProps) {
+  const pathname = usePathname();
+  const heroImage = navHeroImages[pathname];
   return (
     <section className={`relative isolate flex min-h-[70vh] w-full flex-col justify-center overflow-hidden ${bgClass} pb-16 pt-32 sm:pt-36 lg:min-h-[600px] lg:py-24`}>
+      {heroImage && (
+        <Image src={heroImage} alt="" fill priority sizes="100vw" className="-z-50 object-cover object-center" />
+      )}
+      <div aria-hidden className="absolute inset-0 -z-40 bg-gradient-to-r from-[#050817]/95 via-[#050817]/78 to-[#050817]/45" />
       {/* Brand tri-mesh and grid overlays (static) */}
-      <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
+      <div aria-hidden className="absolute inset-0 -z-30 tri-mesh opacity-40" />
       <div aria-hidden className="absolute inset-0 -z-30 tri-grid-bg opacity-40" />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-30" />
 
@@ -140,3 +149,5 @@ export default function ServiceHero({
     </section>
   );
 }
+
+

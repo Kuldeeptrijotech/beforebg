@@ -36,7 +36,7 @@ export async function PUT(request: NextRequest) {
       sectionLabel?: string;
       entries?: ContentEntry[];
     };
-    if (!Array.isArray(body.entries) || body.entries.length === 0 || body.entries.length > 5) {
+    if (!Array.isArray(body.entries) || body.entries.length === 0 || body.entries.length > 12) {
       return NextResponse.json({ error: "Select at least one valid field to save." }, { status: 400 });
     }
     for (const entry of body.entries) {
@@ -97,3 +97,5 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "The saved content could not be reset." }, { status: 500 });
   }
 }
+
+

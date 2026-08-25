@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -93,6 +93,31 @@ function applyEntry(entry: ContentEntry) {
   }
 
   elements.forEach((element) => {
+    if (entry.kind === "sectionStyle") {
+      try {
+        const options = JSON.parse(entry.value) as { width?: string; minHeight?: string; padding?: string; layout?: string; columns?: string; hidden?: boolean };
+        element.style.width = options.width || "";
+        element.style.maxWidth = options.width && options.width !== "100%" ? options.width : "";
+        element.style.minHeight = options.minHeight || "";
+        element.style.paddingTop = options.padding || "";
+        element.style.paddingBottom = options.padding || "";
+        element.style.marginInline = options.width && options.width !== "100%" ? "auto" : "";
+        element.toggleAttribute("hidden", Boolean(options.hidden));
+        element.dataset.adminLayout = options.layout || "original";
+        element.style.setProperty("--admin-columns", options.columns || "3");
+      } catch { return; }
+      return;
+    }
+    if (entry.kind === "appendHtml" || entry.kind === "insertAfter") {
+      if (document.querySelector(`[data-admin-entry="${CSS.escape(entry.id)}"]`)) return;
+      const wrapper = document.createElement(entry.kind === "insertAfter" ? "section" : "div");
+      wrapper.dataset.adminEntry = entry.id;
+      wrapper.className = entry.kind === "insertAfter" ? "admin-created-section" : "admin-added-content";
+      wrapper.innerHTML = safeHtml(entry.value);
+      if (entry.kind === "insertAfter") element.insertAdjacentElement("afterend", wrapper);
+      else element.appendChild(wrapper);
+      return;
+    }
     if (entry.kind === "html") {
       const current = normalize(element.innerHTML);
       const target = normalize(entry.value);
@@ -251,9 +276,15 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
 
       const section = element.closest("header,footer,section,main") as HTMLElement | null;
       const isMedia = element.tagName === "IMG" || element.tagName === "VIDEO";
+      const heroSection = element.closest("section") as HTMLElement | null;
       const backgroundElement =
-        element.closest("section")?.querySelector<HTMLElement>("[style*='background-image']") ||
-        null;
+        heroSection?.querySelector<HTMLElement>("[style*='background-image']") || null;
+      const heroImageElement = heroSection
+        ? Array.from(heroSection.querySelectorAll<HTMLImageElement>("img")).find((image) => {
+            const style = window.getComputedStyle(image);
+            return style.position === "absolute" || image.className.includes("object-cover");
+          }) || null
+        : null;
       const global = Boolean(element.closest("header,footer"));
       const linkElement = element.closest("a") || (element.tagName === "BUTTON" ? element : null);
 
@@ -296,6 +327,17 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
             backgroundImage:
               backgroundElement?.style.backgroundImage.replace(/^url\(["']?|["']?\)$/g, "") || "",
             backgroundSelector: backgroundElement ? cssPath(backgroundElement) : "",
+            heroImage: heroImageElement?.getAttribute("src") || "",
+            heroImageSelector: heroImageElement ? cssPath(heroImageElement) : "",
+            animation: heroSection?.getAttribute("data-admin-animation") || "default",
+            animationSelector: heroSection ? cssPath(heroSection) : "",
+            sectionSelector: heroSection ? cssPath(heroSection) : "",
+            sectionWidth: heroSection?.style.width || "100%",
+            sectionMinHeight: heroSection?.style.minHeight || "auto",
+            sectionPadding: heroSection?.style.paddingTop || "",
+            sectionLayout: heroSection?.dataset.adminLayout || "original",
+            sectionColumns: heroSection?.style.getPropertyValue("--admin-columns") || "3",
+            sectionHidden: heroSection?.hasAttribute("hidden") || false,
           },
         },
         window.location.origin
@@ -329,3 +371,6 @@ export default function ContentRuntime({ content }: { content: SiteContent }) {
 
   return null;
 }
+
+
+
