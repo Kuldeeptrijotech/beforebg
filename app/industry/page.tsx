@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import IndustryAngledBanners from "@/components/industries/IndustryAngledBanners";
 
 export const metadata: Metadata = {
@@ -29,31 +29,23 @@ export default function IndustryPage() {
           className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
 
-        {/* Gradient overlays — side-only */}
+        {/* Gradient overlays — slightly darker for elevated contrast & text readability */}
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(3,7,19,0.85)_0%,rgba(3,7,19,0.50)_50%,rgba(3,7,19,0.15)_100%)]"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(3,7,19,0.92)_0%,rgba(3,7,19,0.65)_50%,rgba(3,7,19,0.30)_100%)]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,7,19,0.25)_0%,transparent_30%,transparent_75%,rgba(3,7,19,0.15)_100%)]"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,7,19,0.40)_0%,transparent_30%,transparent_70%,rgba(3,7,19,0.35)_100%)]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_12%_55%,rgba(255, 255, 255,0.13),transparent_68%)]"
+          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_12%_55%,rgba(3,7,19,0.50),transparent_75%)]"
         />
 
         {/* Content */}
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <span className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
-              </span>
-              <Sparkles className="h-3.5 w-3.5 text-white" />
-              Industries
-            </span>
 
             <h1 className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
               Industry knowledge meets{" "}

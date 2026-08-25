@@ -111,16 +111,13 @@ p, a, span, li, label, div {
 .animate-float { animation: float 6.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
 .animate-float-slow { animation: float-slow 9s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
 .animate-float-reverse { animation: float-reverse 7.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-.animate-spin-slow { animation: spin-slow 22s linear infinite; }
-.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 7s ease infinite;
-}
-.animate-border-shimmer { animation: border-shimmer 2.8s ease-in-out infinite; }
-.animate-reveal-up { animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-reveal-fade { animation: reveal-fade 0.75s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+
+
+
+
+
+
+
 
 /* Gradient text utility (now on Trijotech brand gradient) */
 .gradient-text {
@@ -132,47 +129,11 @@ p, a, span, li, label, div {
   animation: gradient-shift 8s ease infinite;
 }
 
-.gradient-text-gold {
-  background: linear-gradient(135deg, #ffffff, #cbd5e1, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Glassmorphism card */
 .glass-card {
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* Shimmer border */
-.shimmer-border {
-  position: relative;
-}
-.shimmer-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  background-size: 200% 100%;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: shimmer 2s linear infinite;
-  pointer-events: none;
-}
-
-/* Play button pulse ring */
-.play-ring::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  animation: ping-once 2s ease-out infinite;
 }
 
 /* Scroll reveal base state (used with JS) */
@@ -619,18 +580,6 @@ p, a, span, li, label, div {
   box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.75), 0 0 30px -10px rgba(255, 255, 255, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-/* Light glass panel (for light sections) */
-.tri-card-light {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 18px 46px -20px rgba(11, 29, 51, 0.18), inset 0 1px 0 rgba(255,255,255,0.8);
-  transition: box-shadow 0.3s, border-color 0.3s, background-color 0.3s;
-}
-.tri-card-light:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 28px 64px -24px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255,255,255,0.9);
-}
-
 /* Gradient border (mask trick) */
 .tri-border-gradient {
   position: relative;
@@ -651,7 +600,7 @@ p, a, span, li, label, div {
 }
 
 /* Rounded button rendering safeguards: clip owned paint layers without clipping external UI. */
-:is(.tri-btn, .filled-button, .primary-action, .service-outline-button, .site-button) {
+:is(.tri-btn) {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -659,8 +608,8 @@ p, a, span, li, label, div {
   -webkit-background-clip: padding-box;
 }
 
-:is(.tri-btn, .filled-button, .primary-action, .service-outline-button, .site-button)::before,
-:is(.tri-btn, .filled-button, .primary-action, .service-outline-button, .site-button)::after {
+:is(.tri-btn)::before,
+:is(.tri-btn)::after {
   border-radius: inherit;
 }
 
@@ -789,28 +738,17 @@ p, a, span, li, label, div {
 .tri-pulse { animation: tri-pulse 3.2s ease-in-out infinite; }
 
 /* Assembly / slide-in used by transformation heroes */
-.tri-slide-in {
-  animation: tri-slide-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+
 
 /* Status bar scan for support heroes */
-.tri-scan {
-  position: relative;
-  overflow: hidden;
-}
-.tri-scan::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  animation: tri-scan 4.2s ease-in-out infinite;
-}
+
+
 
 /* Orbit helpers */
-.tri-orbit { animation: tri-orb 26s linear infinite; transform-origin: center; }
-.tri-orbit-reverse { animation: tri-orb-reverse 34s linear infinite; transform-origin: center; }
+
+
 .tri-spin-slow { animation: tri-spin 36s linear infinite; }
-.tri-wave { animation: tri-wave 3s ease-in-out infinite; }
+
 
 /* Focus visibility for the new components */
 .tri-focus:focus-visible {
@@ -975,10 +913,7 @@ p, a, span, li, label, div {
   -webkit-text-fill-color: #000000 !important;
 }
 
-.zip-theme > section :is(.gradient-text, .gradient-text-gold):not(.hero-fullvh *):not(.home-hero-heading *) {
-  background-image: none !important;
-  background-color: transparent !important;
-}
+
 
 .zip-theme section.hero-fullvh .tri-gradient-text,
 .zip-theme .home-hero-heading .tri-gradient-text,
@@ -1029,7 +964,7 @@ p, a, span, li, label, div {
   opacity: 0 !important;
 }
 
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section :is(.gradient-text, .gradient-text-gold, .tri-gradient-text) {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section :is(.gradient-text, .tri-gradient-text) {
   background: none !important;
 }
 
@@ -1083,7 +1018,7 @@ main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass
   -webkit-text-fill-color: #000000 !important;
 }
 
-main.public-alternating-page > section :is(.gradient-text, .gradient-text-gold, .tri-gradient-text) {
+main.public-alternating-page > section :is(.gradient-text, .tri-gradient-text) {
   background: none !important;
 }
 
@@ -1094,8 +1029,8 @@ main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
 }
 /* All Hero Section Buttons across the whole website - #257ae8d6 theme */
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary),
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary),
-:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline),
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary),
+:is(.hero-fullvh, .page-heading, .case-studies-hero, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline),
 .home-hero-primary,
 .home-hero-secondary {
   background: #257ae8d6 !important;
@@ -1113,8 +1048,8 @@ main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
 }
 
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary) *,
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary) *,
-:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) *,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary) *,
+:is(.hero-fullvh, .page-heading, .case-studies-hero, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) *,
 .home-hero-primary *,
 .home-hero-secondary * {
   color: #ffffff !important;
@@ -1124,8 +1059,8 @@ main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
 
 /* Hover state for all hero buttons */
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary):hover,
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary):hover,
-:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary):hover,
+:is(.hero-fullvh, .page-heading, .case-studies-hero, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover,
 .home-hero-primary:hover,
 .home-hero-secondary:hover {
   background: #257ae8 !important;
@@ -1139,8 +1074,8 @@ main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
 }
 
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary):hover *,
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary):hover *,
-:is(.hero-fullvh, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover *,
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:first-of-type :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary):hover *,
+:is(.hero-fullvh, .page-heading, .case-studies-hero, .industry-hero-section, .industry-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type) :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover *,
 .home-hero-primary:hover *,
 .home-hero-secondary:hover * {
   color: #ffffff !important;
@@ -1149,18 +1084,18 @@ main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
 }
 
 /* Cyan outline for buttons on white public sections */
-.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button),
-main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button),
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button) {
+.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn),
+main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn),
+:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn) {
   border: 2px solid var(--color-cyan-200) !important;
   outline: none !important;
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
 
-.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button) *,
-main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button) *,
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button) * {
+.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn) *,
+main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn) *,
+:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn) * {
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
@@ -1178,26 +1113,26 @@ main.public-alternating-page > section:first-of-type span.inline-flex.rounded-fu
   -webkit-font-smoothing: antialiased;
 }
 /* Final public button contrast normalization */
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary, .filled-button):not(.home-hero-primary):not(.home-hero-secondary) {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary):not(.home-hero-primary):not(.home-hero-secondary) {
   background: #0e7490 !important;
   border-color: var(--color-cyan-200) !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary, .filled-button):not(.home-hero-primary):not(.home-hero-secondary) * {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary):not(.home-hero-primary):not(.home-hero-secondary) * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary, .filled-button):not(.home-hero-primary):not(.home-hero-secondary):hover {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary):not(.home-hero-primary):not(.home-hero-secondary):hover {
   background: var(--color-cyan-200) !important;
   border-color: var(--color-cyan-200) !important;
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
 
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary, .filled-button):not(.home-hero-primary):not(.home-hero-secondary):hover * {
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary):not(.home-hero-primary):not(.home-hero-secondary):hover * {
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
@@ -1305,9 +1240,9 @@ main.public-alternating-page section.contact-form-section .contact-form-panel la
   opacity: 1 !important;
 }
 /* Blue hover treatment for buttons placed on white public sections */
-.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button):not(.contact-form-panel *):hover,
-main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button):not(.contact-form-panel *):hover,
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button):not(.contact-form-panel *):hover {
+.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn):not(.contact-form-panel *):hover,
+main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn):not(.contact-form-panel *):hover,
+:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn):not(.contact-form-panel *):hover {
   background: #0e7490 !important;
   border-color: #0e7490 !important;
   outline-color: #0e7490 !important;
@@ -1316,9 +1251,9 @@ main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.t
   box-shadow: none !important;
 }
 
-.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button):not(.contact-form-panel *):hover *,
-main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button):not(.contact-form-panel *):hover *,
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn, .filled-button):not(.contact-form-panel *):hover * {
+.zip-theme > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn):not(.contact-form-panel *):hover *,
+main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.tri-btn):not(.contact-form-panel *):hover *,
+:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(a.tri-btn, button.tri-btn):not(.contact-form-panel *):hover * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -1605,31 +1540,6 @@ main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass
   -webkit-text-fill-color: #ffffff !important;
 }
 /* Light SAP BTP architecture card */
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .btp-architecture-card {
-  background: #ecfeff !important;
-  border-color: #67e8f9 !important;
-  box-shadow: 0 18px 44px -28px rgba(14, 116, 144, 0.5), inset 0 0 0 1px #a5f3fc !important;
-  backdrop-filter: none !important;
-}
-
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .btp-architecture-card :is(p, span) {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .btp-architecture-layer {
-  background: #ffffff !important;
-  border-color: #a5f3fc !important;
-}
-
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .btp-architecture-summary {
-  background: #cffafe !important;
-  border-color: #67e8f9 !important;
-}
-
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .btp-architecture-summary svg {
-  color: #0e7490 !important;
-}
 /* SAP BTP impact cards */
 :is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .btp-impact-card {
   background: #ecfeff !important;
@@ -1658,53 +1568,42 @@ main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass
   -webkit-text-fill-color: #2563eb !important;
 }
 /* Consistent, high-contrast cards across service detail pages. */
-.service-detail-page > section:nth-of-type(even) :is(.service-glass-card, .service-surface-card, .service-template-card) {
+.service-detail-page > section:nth-of-type(even) :is(.service-glass-card, .service-surface-card) {
   background: #ecfeff !important;
   border-color: #67e8f9 !important;
   box-shadow: 0 14px 34px -26px rgba(14, 116, 144, 0.58), inset 0 0 0 1px rgba(165, 243, 252, 0.72) !important;
   backdrop-filter: none !important;
 }
 
-.service-detail-page > section:nth-of-type(even) .service-template-card > .absolute.inset-0:first-child {
-  background: #ecfeff !important;
-  border-color: #67e8f9 !important;
-  backdrop-filter: none !important;
-}
 
-.service-detail-page > section:nth-of-type(even) :is(.service-glass-card, .service-surface-card, .service-template-card) :is(h2, h3, h4, p, li, strong, small) {
+
+.service-detail-page > section:nth-of-type(even) :is(.service-glass-card, .service-surface-card) :is(h2, h3, h4, p, li, strong, small) {
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
 
-.service-detail-page > section:nth-of-type(even) :is(.service-glass-card, .service-surface-card, .service-template-card) svg {
+.service-detail-page > section:nth-of-type(even) :is(.service-glass-card, .service-surface-card) svg {
   color: #2563eb !important;
 }
 
-.service-detail-page > section:nth-of-type(odd) :is(.service-glass-card, .service-surface-card, .service-template-card) {
+.service-detail-page > section:nth-of-type(odd) :is(.service-glass-card, .service-surface-card) {
   background: #111827 !important;
   border-color: rgba(103, 232, 249, 0.3) !important;
   box-shadow: 0 16px 38px -28px rgba(34, 211, 238, 0.42) !important;
 }
 
-.service-detail-page > section:nth-of-type(odd) .service-template-card > .absolute.inset-0:first-child {
-  background: #111827 !important;
-  border-color: rgba(103, 232, 249, 0.3) !important;
-}
 
-.service-detail-page > section:nth-of-type(odd) :is(.service-glass-card, .service-surface-card, .service-template-card) :is(h2, h3, h4, p, li, strong, small) {
+
+.service-detail-page > section:nth-of-type(odd) :is(.service-glass-card, .service-surface-card) :is(h2, h3, h4, p, li, strong, small) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-.service-detail-page > section:nth-of-type(odd) :is(.service-glass-card, .service-surface-card, .service-template-card) svg {
+.service-detail-page > section:nth-of-type(odd) :is(.service-glass-card, .service-surface-card) svg {
   color: #67e8f9 !important;
 }
 
-/* SAP AI/ML business-domain icons */
-.service-detail-page .sap-ai-domain-icon {
-  color: #2563eb !important;
-  -webkit-text-fill-color: #2563eb !important;
-}
+
 
 /* Industry and solution detail card containment */
 :is(.industry-detail-page .industry-detail-card, .solution-detail-page .solution-detail-card) {
@@ -1738,7 +1637,7 @@ main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass
 .zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)),
 :is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
 main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)),
-main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card, .btp-architecture-card) {
+main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card) {
   background: var(--sap-brand-blue) !important;
   border-color: var(--sap-brand-blue-border) !important;
   box-shadow: 0 14px 32px -24px rgba(10, 110, 209, 0.72), inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
@@ -1747,7 +1646,7 @@ main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .c
 .zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)):hover,
 :is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
 main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)):hover,
-main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card, .btp-architecture-card):hover {
+main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card):hover {
   background: var(--sap-brand-blue-hover) !important;
   border-color: var(--sap-brand-blue-border) !important;
 }
@@ -1755,7 +1654,7 @@ main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .c
 .zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)) :is(h2, h3, h4, p, span, strong, small, li, svg),
 :is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) :is(h2, h3, h4, p, span, strong, small, li, svg),
 main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)) :is(h2, h3, h4, p, span, strong, small, li, svg),
-main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card, .btp-architecture-card) :is(h2, h3, h4, p, span, strong, small, li, svg) {
+main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card) :is(h2, h3, h4, p, span, strong, small, li, svg) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -2031,13 +1930,7 @@ main.public-alternating-page #explore .service-card-image {
   -webkit-text-fill-color: #ffffff !important;
 }
 /* Absolute final priority for homepage service arrows */
-html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow,
-html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow path {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-  fill: none !important;
-  opacity: 1 !important;
-}
+
 /* Card actions always match their card text */
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
 :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) {
@@ -2070,15 +1963,7 @@ html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-ser
   fill: currentColor !important;
 }
 /* Final white color for homepage Services Learn more arrows */
-html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow,
-html body .zip-theme > section .tri-glass-card a .home-service-link svg.home-service-arrow *,
-html body .zip-theme > section .tri-glass-card a:hover .home-service-link svg.home-service-arrow,
-html body .zip-theme > section .tri-glass-card a:hover .home-service-link svg.home-service-arrow * {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-  fill: none !important;
-  opacity: 1 !important;
-}
+
 /* Homepage Insights blog action contrast */
 html body .zip-theme > section .tri-glass-card a[href^="/blogs"] {
   color: #ffffff !important;
@@ -2277,15 +2162,7 @@ html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-t
     row-gap: 1.5rem !important;
   }
 }
-/* Exact top alignment for service approach section */
-.service-detail-page .service-approach-grid {
-  align-items: start !important;
-}
 
-.service-detail-page .service-approach-grid > * {
-  align-self: start !important;
-  margin-top: 0 !important;
-}
 /* Visible SAP BTP track icons */
 html body main.service-detail-page .service-glass-card .btp-track-icon {
   background: #ffffff !important;
@@ -2301,46 +2178,8 @@ html body main.service-detail-page .service-glass-card .btp-track-icon svg * {
   stroke: #008fd3 !important;
   opacity: 1 !important;
 }
-/* SAP BTP architecture panel: keep nested light layers legible over the SAP-blue card. */
-html body main.service-detail-page .btp-architecture-card .btp-architecture-heading {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  opacity: 1 !important;
-}
 
-html body main.service-detail-page .btp-architecture-card .btp-architecture-layer {
-  background: #fff !important;
-  border-color: transparent !important;
-}
 
-html body main.service-detail-page .btp-architecture-card .btp-architecture-layer span:not(.btp-layer-number) {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
-  opacity: 1 !important;
-}
-
-html body main.service-detail-page .btp-architecture-card .btp-architecture-layer .btp-layer-number {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  opacity: 1 !important;
-}
-
-html body main.service-detail-page .btp-architecture-card .btp-architecture-summary {
-  background: #fff !important;
-  border-color: transparent !important;
-}
-
-html body main.service-detail-page .btp-architecture-card .btp-architecture-summary-text,
-html body main.service-detail-page .btp-architecture-card .btp-architecture-summary-text span {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important;
-  opacity: 1 !important;
-}
-
-html body main.service-detail-page .btp-architecture-card .btp-architecture-summary svg {
-  color: #008fd3 !important;
-  stroke: #008fd3 !important;
-}
 /* Keep SAP Support model icons visible on their white icon tiles. */
 html body main.service-detail-page .sap-support-pillar-icon {
   background: #fff !important;
@@ -2387,9 +2226,7 @@ section[data-admin-layout="carousel"] > :not([aria-hidden]) { flex: 0 0 min(82vw
 
 /* Cohesive SAP styling for industry detail pages */
 .industry-detail-page .industry-definition-section { background: radial-gradient(circle at 85% 15%, rgba(10,110,209,.22), transparent 34%), linear-gradient(135deg, #0b1d33 0%, #062b4f 100%) !important; }
-.industry-detail-page .industry-priorities-section { background: radial-gradient(circle at 12% 20%, rgba(56,189,248,.12), transparent 30%), #0b1d33 !important; color: #fff !important; }
-.industry-detail-page .industry-priorities-section .industry-detail-card { background: linear-gradient(145deg, rgba(10,110,209,.92), rgba(0,143,211,.72)) !important; border-color: rgba(125,211,252,.45) !important; color: #fff !important; box-shadow: 0 18px 50px -30px rgba(0,143,211,.9); }
-.industry-detail-page .industry-priorities-section .industry-detail-card :is(h3,p,span,svg) { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+
 .industry-detail-page > section:first-child > img { filter: saturate(.92) contrast(1.05); }
 
 .industry-detail-page .industry-definition-card { background: #fff !important; color: #0b1d33 !important; }
@@ -2665,22 +2502,22 @@ html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
 }
 
 /* Final blue-only CTA system for every website hero */
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
-:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) {
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) {
   position: relative !important;
   z-index: 10 !important;
   transform: none !important;
   transition: z-index .01s linear !important;
 }
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
-:is(.home-hero-primary, .tri-btn-primary, a.filled-button, button.filled-button) {
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.home-hero-primary, .tri-btn-primary) {
   background: #0a6ed1 !important;
   border-color: #7dd3fc !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
 }
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
 :is(.home-hero-secondary, .tri-btn-ghost, .tri-btn-outline) {
   background: #07569f !important;
   border-color: #38bdf8 !important;
@@ -2688,22 +2525,22 @@ html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
   -webkit-text-fill-color: #ffffff !important;
   box-shadow: 0 12px 30px rgba(0,143,211,.38) !important;
 }
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
-:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover,
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
-:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):focus-visible {
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):hover,
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline):focus-visible {
   z-index: 50 !important;
   transform: none !important;
 }
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
-:is(.home-hero-primary, .tri-btn-primary, a.filled-button, button.filled-button):is(:hover,:focus-visible) {
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.home-hero-primary, .tri-btn-primary):is(:hover,:focus-visible) {
   background: #0a6ed1 !important;
   border-color: #7dd3fc !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
 }
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
 :is(.home-hero-secondary, .tri-btn-ghost, .tri-btn-outline):is(:hover,:focus-visible) {
   background: #07569f !important;
   border-color: #38bdf8 !important;
@@ -2711,22 +2548,13 @@ html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
   -webkit-text-fill-color: #ffffff !important;
   box-shadow: 0 12px 30px rgba(0,143,211,.38) !important;
 }
-:is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
-:is(a.tri-btn, button.tri-btn, a.filled-button, button.filled-button, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) * {
+:is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type)
+:is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary, .tri-btn-primary, .tri-btn-ghost, .tri-btn-outline) * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
 
-/* Remove watermark-style eyebrow treatments from all public heroes */
-.home-hero-eyebrow,
-.hero-eyebrow-badge,
-.hero-fullvh .tri-overline,
-.page-heading > div .tri-overline,
-.about-hero > div .tri-overline,
-.service-page-heading > div .tri-overline,
-.legacy-service-hero > div .tri-overline {
-  display: none !important;
-}
+
 
 /* Remove remaining yellow from homepage hero CTAs */
 html body .zip-theme section.hero-fullvh a.home-hero-primary,
@@ -2751,10 +2579,10 @@ html body .zip-theme section.hero-fullvh a.home-hero-secondary:focus-visible {
 }
 
 /* Exact homepage CTA palette on every public page hero */
-html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
-:is(.tri-btn-primary, .home-hero-primary, a.filled-button, button.filled-button),
-html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
-:is(.tri-btn-primary, .home-hero-primary, a.filled-button, button.filled-button):is(:hover,:focus-visible) {
+html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary),
+html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary):is(:hover,:focus-visible) {
   position: relative !important;
   z-index: 10 !important;
   background: #0a6ed1 !important;
@@ -2764,9 +2592,9 @@ html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading
   box-shadow: 0 12px 30px rgba(10,110,209,.48) !important;
   transform: none !important;
 }
-html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
 :is(.tri-btn-ghost, .tri-btn-outline, .home-hero-secondary),
-html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
 :is(.tri-btn-ghost, .tri-btn-outline, .home-hero-secondary):is(:hover,:focus-visible) {
   position: relative !important;
   z-index: 10 !important;
@@ -2777,13 +2605,13 @@ html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading
   box-shadow: 0 12px 30px rgba(0,143,211,.4) !important;
   transform: none !important;
 }
-html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
-:is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary, a.filled-button, button.filled-button) * {
+html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary) * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
-html body :is(.hero-fullvh, .industry-hero-section, .service-hero, .page-heading, .about-hero, .legacy-service-hero, .service-page-heading, .case-studies-hero, .sap-implementation-hero, .services-page-heading, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
-:is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary, a.filled-button, button.filled-button):is(:hover,:focus-visible) {
+html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
+:is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary):is(:hover,:focus-visible) {
   z-index: 50 !important;
 }
 
@@ -2816,7 +2644,7 @@ html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-r
 }
 
 html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.industry-number-badge, .industry-enable-heading, .industry-explore-btn, .service-number-badge, .service-enable-heading, .service-explore-btn),
-html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.industry-enable-icon-box svg, .service-explore-btn svg) {
+html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.service-explore-btn svg) {
   color: #008fd3 !important;
   -webkit-text-fill-color: #008fd3 !important;
   stroke: #008fd3 !important;

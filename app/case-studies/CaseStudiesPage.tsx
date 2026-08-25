@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import ImageSlider from "../components/common/ImageSlider";
 import { motion } from "framer-motion";
 import CaseStudiesVectorTrails from "@/components/ui/hero-animations/CaseStudiesVectorTrails";
+import CTA from "@/components/sections/CTA";
+import { ReactNode } from "react";
 
-type StudyItem = {
-  title: React.ReactNode;
+type CaseStudy = {
+  title: ReactNode;
   description: string;
   images: string[];
 };
 
-const studies: StudyItem[] = [
+const studies: CaseStudy[] = [
   {
     title: (
       <>
@@ -116,16 +118,6 @@ export default function CaseStudiesPage() {
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-white" aria-hidden="true" />
-              Case studies
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}

@@ -1,7 +1,7 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
-import { BriefcaseBusiness, Mail, Sparkles, Users } from "lucide-react";
+import { BriefcaseBusiness, Mail, Users } from "lucide-react";
 import ContactUs from "../components/ContactUs";
 import { motion } from "framer-motion";
 import CareersCultureShowcase from "@/components/careers/CareersCultureShowcase";
@@ -51,15 +51,6 @@ export default function CareersPage() {
 
         <div className="relative mx-auto flex w-full max-w-7xl flex-1 items-center px-5 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-12">
           <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-white" /> Careers
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}

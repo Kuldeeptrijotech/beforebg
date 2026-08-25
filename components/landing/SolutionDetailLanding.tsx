@@ -3,7 +3,7 @@
 import Image from "next/image";
 import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, Sparkles, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Zap } from "lucide-react";
 import OtherSolutions from "@/components/solutions/OtherSolutions";
 import type { SolutionItem } from "@/lib/solutions-data";
 import { motion, useReducedMotion } from "framer-motion";
@@ -69,16 +69,6 @@ export default function SolutionDetailLanding({
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="flex max-w-4xl flex-col items-start text-left">
-            {/* Eyebrow badge */}
-            <div className="hero-eyebrow-badge mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-              </span>
-              <Sparkles className="h-3.5 w-3.5 text-white" />
-              {solution.eyebrow}
-            </div>
-
             {/* Title */}
             <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
               {renderTitle(heroTitle)}

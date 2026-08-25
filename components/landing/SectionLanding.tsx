@@ -84,14 +84,6 @@ export default function SectionLanding({
         {/* Content */}
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <span className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" />
-              </span>
-              <Sparkles className="h-3.5 w-3.5 text-white" />
-              {eyebrow}
-            </span>
 
             <h1 className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
               {title}

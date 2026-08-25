@@ -19,7 +19,8 @@ import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
-import { HEX_CLIP } from "@/components/scenes/scene-ui";
+
+const HEX_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
 
 type ServiceItem = { title: string; description: string };
 

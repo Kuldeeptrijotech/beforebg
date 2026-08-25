@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { navHeroImages } from "@/lib/nav-hero-images";
 
@@ -81,16 +81,6 @@ export default function ServiceHero({
           <div className="max-w-3xl">{heading}</div>
         ) : (
           <div className="flex max-w-4xl flex-col items-start text-left">
-            {/* Eyebrow badge */}
-            {eyebrow && <div className="hero-eyebrow-badge mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-              </span>
-              <Sparkles className="h-3.5 w-3.5 text-white" />
-              {eyebrow}
-            </div>}
-
             {/* Title */}
             <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
               {title}

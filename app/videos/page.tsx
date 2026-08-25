@@ -1,8 +1,8 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Play, Sparkles } from "lucide-react";
+import { ArrowRight, ExternalLink, Play } from "lucide-react";
 import { videos } from "@/app/data/videos";
 import { motion } from "framer-motion";
 
@@ -17,12 +17,12 @@ function getYoutubeUrl(embedUrl: string) {
 
 export default function VideosPage() {
   return (
-    <main className="public-alternating-page overflow-hidden bg-[#121927] text-white">
+    <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* ──── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         <Image
-          src="/assets/heroes/videos-camera-hero.png"
-          alt="Technical practitioner videos and architectural walkthroughs"
+          src="/assets/heroes/videos.png"
+          alt="Trijotech Videos and Demos"
           fill
           priority
           sizes="100vw"
@@ -37,15 +37,6 @@ export default function VideosPage() {
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-white" aria-hidden="true" /> Videos
-            </motion.div>
-
             <motion.h1
               initial={false}
               animate={{ opacity: 1, y: 0 }}

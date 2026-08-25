@@ -73,16 +73,6 @@ export default function InsightsPage() {
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="hero-eyebrow-badge mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-[#050817]/90 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-white" />
-              Insights Hub
-            </motion.div>
-
             <motion.h1
               initial={false}
               animate={{ opacity: 1, y: 0 }}

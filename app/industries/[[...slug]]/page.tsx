@@ -71,22 +71,13 @@ export default async function IndustryDetailPage({ params }: Props) {
             sizes="100vw"
             className="h-full w-full object-cover object-center brightness-[0.88] contrast-[1.05]"
           />
-          {/* Subtle soft gradient on left for text legibility while keeping image vibrant & visible */}
+          {/* Subtle soft gradient on left for text legibility while keeping image vibrant & visible (matching solution detail) */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#030713]/80 via-[#030713]/35 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#030713] to-transparent" />
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="flex max-w-4xl flex-col items-start text-left">
-            {/* Eyebrow badge */}
-            <div className="hero-eyebrow-badge mb-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-[#050817]/75 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-lg">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-              </span>
-              Industry Solutions · SAP Ecosystem
-            </div>
-
             {/* Title */}
             <h1 className="text-3xl font-extrabold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-5xl">
               {industry.title}
@@ -119,21 +110,6 @@ export default async function IndustryDetailPage({ params }: Props) {
                 Explore all industries
               </Link>
             </div>
-
-            {/* Capability summary chips */}
-            {industry.services && industry.services.length > 0 && (
-              <div className="mt-10 flex flex-wrap items-center gap-2.5 sm:gap-3">
-                {industry.services.slice(0, 4).map((serviceName) => (
-                  <div
-                    key={serviceName}
-                    className="flex items-center gap-2 rounded-2xl border border-white/20 bg-[#050817]/70 px-3.5 py-2 backdrop-blur-md shadow"
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-white">{serviceName}</span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
 
