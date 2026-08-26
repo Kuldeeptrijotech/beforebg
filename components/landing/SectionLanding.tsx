@@ -237,8 +237,7 @@ export default function SectionLanding({
               <Sparkles className="h-4 w-4" /> Trijotech
             </p>
             <h2 className="mt-4 text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Let&apos;s turn your next priority into{" "}
-              <span className="tri-gradient-text">measurable progress.</span>
+              Let&apos;s turn your next priority into measurable progress.
             </h2>
             <div className="inline-block mt-6">
               <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">

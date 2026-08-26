@@ -84,29 +84,23 @@ export default function CareersCultureShowcase() {
                 <div>
                   <div className="flex items-center justify-between gap-2">
                     <span
-                      className={`flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 ${
-                        isCyan
-                          ? "bg-[#38bdf8]/15 text-[#38bdf8]"
-                          : isAmber
-                          ? "bg-white/15 text-white"
-                          : "bg-white/15 text-white"
-                      }`}
+                      className="careers-perk-icon-badge flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-[#38bdf8] shadow-sm transition-transform duration-300 group-hover:scale-110"
                     >
-                      <Icon className="h-4.5 w-4.5" />
+                      <Icon className="h-5 w-5 text-[#38bdf8]" strokeWidth={2.2} />
                     </span>
                     <span
-                      className={`rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                      className={`rounded-md px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${
                         isCyan
-                          ? "bg-[#38bdf8]/10 text-[#38bdf8]"
+                          ? "bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/30"
                           : isAmber
-                          ? "bg-white/10 text-white"
-                          : "bg-white/10 text-white"
+                          ? "bg-amber-400/15 text-amber-300 border border-amber-400/30"
+                          : "bg-emerald-400/15 text-emerald-300 border border-emerald-400/30"
                       }`}
                     >
                       {perk.badge}
                     </span>
                   </div>
-                  <h4 className="mt-3.5 text-sm font-bold text-white transition-colors group-hover:text-white">
+                  <h4 className="mt-3.5 text-sm sm:text-base font-bold text-white transition-colors">
                     {perk.title}
                   </h4>
                   <p className="mt-1.5 text-xs leading-5 text-slate-300">{perk.desc}</p>

@@ -227,8 +227,8 @@
               "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(7) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
               "kind": "attribute",
               "attribute": "href",
-              "value": "/industry",
-              "match": "/industry",
+              "value": "/industries/retail-supply-chain",
+              "match": "/industries/retail-supply-chain",
               "label": "View all industries URL"
             },
             {
@@ -268,8 +268,8 @@
               "selector": "div.zip-theme.font-sans:nth-of-type(2) > section.overflow-hidden.py-12:nth-of-type(6) > div.px-4:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > a.tri-btn.tri-focus",
               "kind": "attribute",
               "attribute": "href",
-              "value": "/industry",
-              "match": "/industry",
+              "value": "/industries/retail-supply-chain",
+              "match": "/industries/retail-supply-chain",
               "label": "View all industries URL"
             },
             {

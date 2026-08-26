@@ -1,7 +1,6 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-import GradientButton from "@/components/ui/GradientButton";
 import { featuredBlogs, featuredVideos, type FeaturedBlogItem, type FeaturedVideoItem } from "@/lib/site-data";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CalendarDays, ExternalLink, Newspaper, Play, Video as VideoIcon, type LucideIcon } from "lucide-react";
@@ -12,9 +11,17 @@ import { useState } from "react";
 type InsightTab = "blogs" | "videos";
 type InsightTabItem = { id: InsightTab; label: string; Icon: LucideIcon; url: string };
 
+function YoutubePlayIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  );
+}
+
 const insightTabs = [
   { id: "blogs", label: "Blogs", Icon: Newspaper, url: "/blogs" },
-  { id: "videos", label: "Videos", Icon: VideoIcon, url: "/videos" },
+  { id: "videos", label: "Videos", Icon: YoutubePlayIcon as unknown as LucideIcon, url: "/videos" },
 ] satisfies InsightTabItem[];
 
 function getYoutubeThumbnail(youtubeId: string) {
@@ -28,22 +35,21 @@ function BlogCard({ blog, index }: { blog: FeaturedBlogItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/60 hover:bg-white/[0.06] hover:shadow-[0_12px_36px_rgba(255, 255, 255,0.18)]"
+      className="insights-preview-card group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
     >
       <Link href={blog.href} className="no-underline relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
         <Image src={blog.image} alt={blog.imageAlt} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover scale-[1.04]" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-[rgba(3,7,19,0.65)] px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-xl">
-          <CalendarDays className="size-3 text-white" />
-          {blog.date}
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
+        <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#008fd3] shadow-md">
+          <CalendarDays className="size-3 text-[#008fd3]" />
+          <span>{blog.date}</span>
         </span>
       </Link>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <h3 className="line-clamp-2 text-sm sm:text-base font-bold leading-snug text-white group-hover:text-white transition-colors">{blog.title}</h3>
-        <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-300">{blog.description}</p>
+        <h3 className="line-clamp-2 text-sm sm:text-base font-bold leading-snug text-white transition-colors">{blog.title}</h3>
+        <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-white/90">{blog.description}</p>
         <div className="mt-auto pt-4">
-          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition hover:text-white">
+          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition group-hover:gap-2">
             Read blog <span aria-hidden="true">↗</span>
           </Link>
         </div>
@@ -59,22 +65,23 @@ function VideoCard({ video, index }: { video: FeaturedVideoItem; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="tri-glass-card group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-300 hover:border-white/60 hover:bg-white/[0.06] hover:shadow-[0_12px_36px_rgba(255, 255, 255,0.18)]"
+      className="insights-preview-card group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
     >
       <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="no-underline relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900" aria-label={`Watch ${video.title} on YouTube`}>
         <Image src={getYoutubeThumbnail(video.youtubeId)} alt={`${video.title} video thumbnail`} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover scale-[1.04]" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <span className="absolute left-1/2 top-1/2 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-[#0b5a38] shadow-2xl shadow-black/30 transition">
-          <Play className="size-5" />
-        </span>
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
+        <div className="youtube-play-badge absolute left-1/2 top-1/2 flex h-10 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl bg-[#FF0000] text-white shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#cc0000]">
+          <svg className="h-5 w-5 fill-white text-white ml-0.5" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" fill="#ffffff" />
+          </svg>
+        </div>
       </a>
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <p className="text-[10px] font-bold uppercase tracking-wider text-white">YouTube</p>
-        <h3 className="line-clamp-2 mt-1 text-sm sm:text-base font-bold leading-snug text-white group-hover:text-white transition-colors">{video.title}</h3>
-        <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-300">{video.description}</p>
+        <p className="text-[10px] font-bold uppercase tracking-wider text-white/80">YouTube</p>
+        <h3 className="line-clamp-2 mt-1 text-sm sm:text-base font-bold leading-snug text-white transition-colors">{video.title}</h3>
+        <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-white/90">{video.description}</p>
         <div className="mt-auto pt-4">
-          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition hover:text-white">
+          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition group-hover:gap-2">
             Watch video <ExternalLink className="size-3.5" />
           </a>
         </div>
@@ -89,27 +96,21 @@ export default function InsightsPreview() {
   const visibleVideos = featuredVideos.filter((video) => video.showOnHome);
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 text-white border-t border-white/10">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-      <div aria-hidden className="pointer-events-none absolute -left-28 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[rgba(255, 255, 255,0.16)] blur-3xl" />
-      <div aria-hidden className="pointer-events-none absolute -right-28 top-1/3 h-64 w-64 rounded-full bg-[rgba(255, 255, 255,0.12)] blur-3xl" />
-
+    <section id="insights-preview" className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-slate-900 border-t border-slate-200">
       <Container className="relative">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <span className="tri-overline">Insights</span>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Practical SAP thinking in{" "}
-              <span className="tri-gradient-text">blogs and videos.</span>
+            <span className="tri-overline text-black !text-black">Insights</span>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              Practical SAP thinking in blogs and videos.
             </h2>
-            <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
+            <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-600 sm:text-sm sm:leading-6">
               Explore SAP, data, cloud, finance, and transformation ideas from the Trijotech team.
             </p>
           </div>
 
           <div className="flex w-full flex-col gap-3 md:w-auto md:items-end">
-            <div role="tablist" aria-label="Insights tabs" className="home-insights-tabs grid w-full grid-cols-2 rounded-full border border-white/10 bg-white/[0.06] p-1 backdrop-blur-md md:w-64">
+            <div role="tablist" aria-label="Insights tabs" className="grid w-full grid-cols-2 rounded-full border border-[#22d3ee] bg-[#ecfeff] p-1 shadow-[inset_0_0_0_1px_#67e8f9] md:w-64">
               {insightTabs.map(({ id, label, Icon }) => {
                 const isActive = activeTab === id;
                 return (
@@ -119,10 +120,10 @@ export default function InsightsPreview() {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActiveTab(id)}
-                    className={`home-insights-tab inline-flex h-9 min-w-0 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold transition sm:px-4 ${
+                    className={`inline-flex h-9 min-w-0 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold transition sm:px-4 ${
                       isActive
-                        ? "bg-[linear-gradient(120deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-black/20"
-                        : "text-slate-400 hover:bg-white/10 hover:text-white"
+                        ? "bg-[#0e7490] text-white shadow-sm"
+                        : "text-black hover:bg-[#cffafe]"
                     }`}
                   >
                     <Icon className="size-3.5 shrink-0" />
@@ -131,9 +132,12 @@ export default function InsightsPreview() {
                 );
               })}
             </div>
-            <GradientButton href={activeTab === "blogs" ? "/blogs" : "/videos"} variant="ghost" size="sm" className="w-full md:w-fit">
+            <Link
+              href={activeTab === "blogs" ? "/blogs" : "/videos"}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#008fd3] transition-all duration-200 hover:gap-2.5"
+            >
               {activeTab === "blogs" ? "View all blogs" : "View all videos"} <ArrowRight className="h-3.5 w-3.5" />
-            </GradientButton>
+            </Link>
           </div>
         </div>
 

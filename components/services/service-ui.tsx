@@ -44,7 +44,7 @@ export const heroH1 =
 
 /** Consistent large intro statement. */
 export const introLead =
-  "text-xl sm:text-2xl lg:text-3xl font-bold leading-[1.2] tracking-tight text-white";
+  "text-xl sm:text-2xl lg:text-3xl font-bold leading-[1.2] tracking-tight";
 
 /** Ease + duration used across page reveals. */
 export const springEase = { ease: EASE, duration: 0.7 };
@@ -111,7 +111,7 @@ export function SectionLabel({
   return (
     <span className={`service-section-label inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.2em] ${className}`}>
       <span aria-hidden className="service-section-marker h-0.5 w-7 shrink-0 rounded-full" />
-      <span className={dark ? "text-white" : "text-white"}>{children}</span>
+      <span className={dark ? "text-white" : "text-black"}>{children}</span>
     </span>
   );
 }

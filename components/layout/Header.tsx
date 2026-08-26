@@ -37,7 +37,6 @@ const dropdownHeroImages: Record<string, string> = {
   "/services/sap-btp-full-stack": "/assets/heroes/sap-btp-full-stack-blue.png",
   "/services/sap-data-integration": "/assets/heroes/sap-data-integration-blue.png",
   "/services/sap-ai-ml": "/assets/heroes/sap-ai-ml-blue.png",
-  "/industry": "/assets/heroes/industry.png",
   "/industries/retail-supply-chain": "/static/Retail_and_supply_chain_image.png",
   "/industries/pharmaceuticals-life-sciences": "/static/Pharma.jpg",
   "/industries/manufacturing": "/static/Manufacturing.jpg",
@@ -175,7 +174,7 @@ export default function Header() {
     setOpenDropdownName(item.name);
     setActiveItemByMenu((current) => ({
       ...current,
-      [item.name]: item.href,
+      [item.name]: current[item.name] || item.items?.[0]?.href || item.href,
     }));
   }
 
@@ -189,7 +188,7 @@ export default function Header() {
   }
 
   function getActiveDropdownItem(item: HeaderNavItem) {
-    const activeHref = activeItemByMenu[item.name] ?? item.href;
+    const activeHref = activeItemByMenu[item.name] || item.items?.[0]?.href || item.href;
     const child = getDropdownItemByHref(item, activeHref);
 
     if (child) {
@@ -197,10 +196,10 @@ export default function Header() {
       return { ...child, hasImage: Boolean(imageUrl), imageUrl };
     }
 
-    const imageUrl = dropdownHeroImages[item.href] ?? "";
+    const imageUrl = (item.href ? dropdownHeroImages[item.href] : "") || (item.items?.[0]?.href ? dropdownHeroImages[item.items[0].href] : "") || "";
     return {
       name: item.name,
-      href: item.href,
+      href: item.href || item.items?.[0]?.href || "#",
       description: item.description,
       hasImage: Boolean(imageUrl),
       imageUrl,
@@ -246,9 +245,14 @@ export default function Header() {
             aria-label={brand.ariaLabel}
             onClick={() => setIsMenuOpen(false)}
           >
-            <span className="relative block">
-              <span className="relative block h-14 w-36"><Image src="/brand/favicon.svg" alt="" width={48} height={48} priority className="absolute left-0 top-0 h-12 w-12 object-contain" /><span className="absolute left-[1.95rem] top-[2.3rem] whitespace-nowrap text-base font-medium uppercase leading-none tracking-[0.08em] text-white">Trijo<span className={isPastHero ? "text-[#F5A623]" : "text-white"}>tech</span></span></span>
-            </span>
+            <Image
+              src="/brand/Trijotech_Complete_white.svg"
+              alt="Trijotech"
+              width={168}
+              height={44}
+              priority
+              className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 hover:scale-105"
+            />
           </Link>
 
           <nav
@@ -258,7 +262,7 @@ export default function Header() {
             {navItems.map((item) => {
               const isActive = isNavItemActive(pathname, item);
               const hasDropdown = hasDropdownItems(item);
-const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.href === "/solutions";
+              const parentNavigates = item.name !== "Solutions" && item.name !== "Industries" ? Boolean(item.href) : item.href === "/solutions";
               const isDropdownOpen = openDropdownName === item.name;
               const activeDropdownItem = getActiveDropdownItem(item);
               const navLinkClasses = `inline-flex h-8 items-center gap-1 rounded-full px-4 text-sm font-semibold transition ${isActive
@@ -519,7 +523,7 @@ const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.hr
                   {navItems.map((item) => {
                     const isActive = isNavItemActive(pathname, item);
                     const hasDropdown = hasDropdownItems(item);
-const parentNavigates = item.name !== "Solutions" ? Boolean(item.href) : item.href === "/solutions";
+                    const parentNavigates = item.name !== "Solutions" && item.name !== "Industries" ? Boolean(item.href) : item.href === "/solutions";
                     const isMobileDropdownOpen =
                       openMobileDropdownName === item.name;
 

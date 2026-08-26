@@ -286,8 +286,8 @@ export const products = [
     description:
       "An SAP BTP-based consolidation solution that automates legal and financial consolidation across entities and jurisdictions. It supports Multi-GAAP and IFRS requirements, accelerates financial close, and reduces dependency on spreadsheets through real-time dashboards.",
     href: "/solutions/finlagoon-consolidation",
-    image: "/static/Software_Animation_1.mp4",
-    imageAlt: "Financial consolidation and group reporting animation",
+    image: "/static/Hero-Animation-2.mp4",
+    imageAlt: "SAP BTP applications, portals, and workflows animation",
     showOnHome: true,
   },
 ] satisfies ProductItem[];
@@ -303,57 +303,75 @@ export type IndustryItem = {
 
 export const industries = [
   {
-    title: "Pharma",
+    title: "Retail & Supply Chain",
     description:
-      "SAP-led planning, finance, supply chain, and analytics solutions for pharmaceutical teams that need accuracy, compliance, and faster decision-making.",
-    href: "/industries/pharma",
-    image: "/static/cards/Pharma.webp",
-    imageAlt: "Pharma SAP analytics and planning animation",
+      "Build connected, intelligent and resilient retail and supply chain operations using modern SAP solutions.",
+    href: "/industries/retail-supply-chain",
+    image: "/static/Retail_and_supply_chain_image.png",
+    imageAlt: "Retail and supply chain operations and analytics",
     showOnHome: true,
   },
   {
-    title: "Manufacturing",
+    title: "Life Sciences & Pharma",
     description:
-      "Connected SAP solutions for production, procurement, inventory, reporting, and operational performance across modern manufacturing environments.",
+      "SAP-led planning, finance, supply chain, and analytics solutions for pharmaceutical teams that need accuracy and compliance.",
+    href: "/industries/pharmaceuticals-life-sciences",
+    image: "/static/cards/Pharma.webp",
+    imageAlt: "Pharma and life sciences SAP analytics",
+    showOnHome: true,
+  },
+  {
+    title: "Manufacturing & Industrial",
+    description:
+      "Connected SAP solutions for production, procurement, inventory, reporting, and operational performance.",
     href: "/industries/manufacturing",
     image: "/static/cards/Manufacturing.webp",
-    imageAlt: "Manufacturing operations and SAP workflow animation",
+    imageAlt: "Manufacturing and industrial operations",
     showOnHome: true,
   },
   {
-    title: "Fintech",
+    title: "Banking & Fintech",
     description:
-      "Data-driven SAP and cloud solutions for finance platforms that need secure reporting, scalable operations, and reliable business visibility.",
+      "Data-driven SAP and cloud solutions for finance platforms that need secure reporting and scalable operations.",
     href: "/industries/fintech",
     image: "/static/cards/FinTech.webp",
-    imageAlt: "Fintech data and finance dashboard animation",
+    imageAlt: "Banking and fintech data dashboard",
     showOnHome: true,
   },
   {
-    title: "Entertainment",
+    title: "Oil & Gas",
     description:
-      "Flexible SAP and analytics solutions for media, entertainment, and digital businesses managing fast-changing revenue, content, and operations.",
-    href: "/industries/entertainment",
-    image: "/static/cards/Entertainment.webp",
-    imageAlt: "Entertainment business analytics animation",
-    showOnHome: false,
+      "Real-time asset telemetry, hydrocarbon accounting, emissions compliance, and joint venture analytics.",
+    href: "/industries/oil-and-gas",
+    image: "/static/Oil_and_Gas.jpg",
+    imageAlt: "Oil and gas energy operations and pipeline telemetry",
+    showOnHome: true,
+  },
+  {
+    title: "Healthcare",
+    description:
+      "Clinical data analytics, hospital resource planning, and regulatory compliance powered by SAP.",
+    href: "/industries/healthcare",
+    image: "/static/Healthcare.jpg",
+    imageAlt: "Healthcare analytics and clinical operations",
+    showOnHome: true,
+  },
+  {
+    title: "Telecom & Media",
+    description:
+      "Enterprise SAP, integration, and reporting solutions for telecom teams managing network infrastructure and subscribers.",
+    href: "/industries/telecommunications",
+    image: "/static/Telecommunication.jpg",
+    imageAlt: "Telecommunication and media infrastructure systems",
+    showOnHome: true,
   },
   {
     title: "Steel Manufacturing",
     description:
-      "SAP solutions for complex steel operations, production planning, materials, financial control, and enterprise-wide reporting.",
+      "SAP solutions for complex steel operations, production planning, materials, financial control, and KPI monitoring.",
     href: "/industries/steel-manufacturing",
     image: "/static/Steel_Manufacturing.jpg",
-    imageAlt: "Steel manufacturing SAP operations animation",
-    showOnHome: false,
-  },
-  {
-    title: "Telecommunication",
-    description:
-      "Enterprise SAP, integration, and reporting solutions for telecom teams managing customers, infrastructure, operations, and financial performance.",
-    href: "/industries/telecommunication",
-    image: "/static/Telecommunication.jpg",
-    imageAlt: "Telecommunication systems and SAP integration animation",
+    imageAlt: "Steel manufacturing and heavy industrial operations",
     showOnHome: true,
   },
 ] satisfies IndustryItem[];

@@ -74,10 +74,12 @@ export default function HexBadge({
         style={{ clipPath: HEX_CLIP, background: toneBg[tone] }}
       >
         <Icon
+          className="!text-white !stroke-white text-white stroke-white"
           style={{
             width: px * 0.52,
             height: px * 0.52,
-            color: finalIconColor,
+            color: finalIconColor || "#ffffff",
+            stroke: finalIconColor || "#ffffff",
             filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))",
           }}
           strokeWidth={2.4}

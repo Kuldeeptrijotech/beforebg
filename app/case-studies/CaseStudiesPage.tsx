@@ -17,12 +17,7 @@ type CaseStudy = {
 
 const studies: CaseStudy[] = [
   {
-    title: (
-      <>
-        Maximizing ROI for{" "}
-        <span className="tri-gradient-text">Large Scale S/4HANA Transformations</span>
-      </>
-    ),
+    title: "Maximizing ROI for Large Scale S/4HANA Transformations",
     description:
       "Discover the incredible benefits that S/4HANA brings, including streamlined processes and innovative SAP tools that ensure a smooth transition. Our experts share valuable insights on selecting the perfect cloud offering tailored to your unique business needs, helping you achieve unparalleled efficiency and cost-effectiveness.",
     images: Array.from(
@@ -32,12 +27,7 @@ const studies: CaseStudy[] = [
     ),
   },
   {
-    title: (
-      <>
-        SAP SAC Financial Planning for a{" "}
-        <span className="tri-gradient-text">Major Pharmaceutical Company</span>
-      </>
-    ),
+    title: "SAP SAC Financial Planning for a Major Pharmaceutical Company",
     description:
       "The case study illustrates how SAP SAC was used for financial planning by a leading pharmaceutical company. The goal was to analyze data from a BW environment, which included entities such as profit centers, segments, and material costs. The aim was to make use of this data analysis to effectively support the company's financial planning objectives.",
     images: Array.from(
@@ -47,12 +37,7 @@ const studies: CaseStudy[] = [
     ),
   },
   {
-    title: (
-      <>
-        Elevate Your Business with{" "}
-        <span className="tri-gradient-text">SAP Profitability & Performance Management (PaPM)</span>
-      </>
-    ),
+    title: "Elevate Your Business with SAP Profitability & Performance Management (PaPM)",
     description:
       "Discover how SAP PaPM can transform your approach to financial and operational performance management, with a comprehensive agenda covering its core functionalities, solution architecture, key use cases, and real-world success stories.",
     images: Array.from(
@@ -62,12 +47,7 @@ const studies: CaseStudy[] = [
     ),
   },
   {
-    title: (
-      <>
-        MIS & KPIs Dashboard Implementation for a{" "}
-        <span className="tri-gradient-text">Leading European Automotive Manufacturer</span> using SAP BW/4HANA & SAP Analytics Cloud
-      </>
-    ),
+    title: "MIS & KPIs Dashboard Implementation for a Leading European Automotive Manufacturer using SAP BW/4HANA & SAP Analytics Cloud",
     description:
       "This case study illustrates the implementation of performance indicators (KPIs) and management information system (MIS) reporting for a major British car manufacturer. The implementation was carried out using SAP BW and SAC, with a focus on optimizing business performance through a thorough understanding of KPIs.",
     images: Array.from(
@@ -77,12 +57,7 @@ const studies: CaseStudy[] = [
     ),
   },
   {
-    title: (
-      <>
-        Legal Consolidation and Disclosure reporting for{" "}
-        <span className="tri-gradient-text">Major APAC Palm oil Manufacturers</span> using SAP BPC 11.0
-      </>
-    ),
+    title: "Legal Consolidation and Disclosure reporting for Major APAC Palm oil Manufacturers using SAP BPC 11.0",
     description:
       "Legal Consolidation and Disclosure reporting for Major APAC Palmoil Manufacturer. It describes a unique approach towards BPC Legal Consolidation (SAP Business Object Planning & Consolidation 11.1 NW for Consolidation) to repurpose the Group Currency of a Group as a source for another group based on alternative currency base.",
     images: Array.from(
@@ -124,10 +99,7 @@ export default function CaseStudiesPage() {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Proven SAP results for{" "}
-              <span className="tri-gradient-text">
-                global enterprises
-              </span>
+              Proven SAP results for global enterprises
             </motion.h1>
 
             <motion.p
@@ -161,64 +133,60 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* ──── Case Studies ────────────────────────────────────────────── */}
-      <div id="case-studies" className="divide-y divide-white/5">
-        {studies.map((study, index) => (
-          <section
-            className={
-              index % 2 === 0
-                ? "relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16"
-                : "relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16"
-            }
-            key={index}
-          >
-            {index % 2 === 0 ? (
-              <>
-                <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-                <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-              </>
-            ) : (
-              <>
-                <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-                <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-              </>
-            )}
-            <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-              <motion.div
-                initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="max-w-4xl"
-              >
-                <motion.p
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
-                  className="tri-overline"
+      <div id="case-studies" className="divide-y divide-slate-200">
+        {studies.map((study, index) => {
+          const isWhite = index % 2 === 0;
+          return (
+            <section
+              className={
+                isWhite
+                  ? "relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-slate-900 border-b border-slate-200"
+                  : "relative isolate overflow-hidden bg-[#050817] py-12 sm:py-14 lg:py-16 text-white border-b border-white/10"
+              }
+              key={index}
+            >
+              <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+                <motion.div
+                  initial={{ opacity: 0, x: isWhite ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  className="max-w-4xl"
                 >
-                  Case study {String(index + 1).padStart(2, "0")}
-                </motion.p>
-                <h2 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
-                  {study.title}
-                </h2>
-                <p className="mt-2 max-w-3xl text-xs sm:text-sm leading-relaxed text-slate-300">
-                  {study.description}
-                </p>
-              </motion.div>
+                  <motion.p
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4 }}
+                    className={`tri-overline ${isWhite ? "text-black !text-black" : "text-[#38bdf8]"}`}
+                  >
+                    Case study {String(index + 1).padStart(2, "0")}
+                  </motion.p>
+                  <h2 className={`mt-2 text-2xl font-bold leading-tight tracking-tight sm:text-3xl lg:text-4xl ${
+                    isWhite ? "text-slate-900" : "text-white"
+                  }`}>
+                    {study.title}
+                  </h2>
+                  <p className={`mt-2 max-w-3xl text-xs sm:text-sm leading-relaxed ${
+                    isWhite ? "text-slate-600" : "text-slate-300"
+                  }`}>
+                    {study.description}
+                  </p>
+                </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="mx-auto mt-7 max-w-3xl sm:mt-9"
-              >
-                <ImageSlider images={study.images} label={`Case study ${index + 1}`} />
-              </motion.div>
-            </div>
-          </section>
-        ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  className="mx-auto mt-7 max-w-3xl sm:mt-9"
+                >
+                  <ImageSlider images={study.images} label={`Case study ${index + 1}`} />
+                </motion.div>
+              </div>
+            </section>
+          );
+        })}
       </div>
 
       {/* ──── CTA Banner ──────────────────────────────────────────────────── */}

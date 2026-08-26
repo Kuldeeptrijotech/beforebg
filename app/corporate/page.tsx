@@ -74,10 +74,7 @@ export default function CorporatePage() {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Building lasting value through{" "}
-              <span className="tri-gradient-text">
-                SAP expertise & trust
-              </span>
+              Building lasting value through SAP expertise & trust
             </motion.h1>
 
             <motion.p
@@ -118,23 +115,14 @@ export default function CorporatePage() {
       </section>
 
       {/* ──── Cards ────────────────────────────────────────────────────────────── */}
-      <section id="explore" className="relative overflow-hidden bg-[#162032] py-24 sm:py-32 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh" />
-        <div aria-hidden className="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-[rgba(255, 255, 255,0.18)] blur-[100px] tri-pulse" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-28 -left-28 h-[420px] w-[420px] rounded-full bg-[rgba(255, 255, 255,0.14)] blur-[100px] tri-pulse" style={{ animationDelay: "2s" }} />
-
+      <section id="explore" className="relative overflow-hidden bg-white py-24 sm:py-32 border-b border-slate-200 text-slate-900">
         <Container className="relative">
           <StaggerReveal className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <StaggerRevealItem className="max-w-3xl">
               <SectionHeading
                 eyebrow="Company, people and connections"
-                dark
-                title={
-                  <>
-                    Explore the corporate{" "}
-                    <span className="tri-gradient-text">information and resources</span>
-                  </>
-                }
+                dark={false}
+                title="Explore corporate information and resources"
                 description="Discover the people, culture, and opportunities that make Trijotech a trusted SAP partner."
               />
             </StaggerRevealItem>
@@ -151,8 +139,8 @@ export default function CorporatePage() {
               return (
                 <StaggerRevealItem key={card.href} className="h-full">
                   <motion.article
-                    whileHover={{ y: -8, transition: { duration: 0.25 } }}
-                    className="group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
+                    whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                    className="corporate-landing-card group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
                   >
                     <Link href={card.href} className="relative block aspect-[16/10] overflow-hidden bg-slate-900">
                       <Image
@@ -162,7 +150,7 @@ export default function CorporatePage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                         className="object-cover transition duration-700 group-hover:scale-108"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#121927]/80 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
                       <motion.span
                         whileHover={{ scale: 1.15, rotate: 5 }}
                         transition={{ duration: 0.2 }}
@@ -172,17 +160,20 @@ export default function CorporatePage() {
                       </motion.span>
                     </Link>
 
-                    <div className="flex flex-1 flex-col p-6 sm:p-7">
-                      <h3 className="text-xl font-bold leading-snug text-white transition-colors group-hover:text-white sm:text-2xl">
+                    <div className="flex flex-1 flex-col p-5 sm:p-6">
+                      <h3 className="text-base sm:text-lg font-bold leading-snug text-white">
                         {card.title}
                       </h3>
-                      <p className="mt-4 flex-1 leading-7 text-slate-300">{card.description}</p>
-                      <Link
-                        href={card.href}
-                        className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-white transition-all duration-300 group-hover:gap-3 group-hover:text-white"
-                      >
-                        {card.cta} <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-                      </Link>
+                      <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-white/90">{card.description}</p>
+                      <div className="mt-auto pt-4">
+                        <Link
+                          href={card.href}
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:gap-2.5"
+                        >
+                          <span>{card.cta}</span>
+                          <span aria-hidden="true" className="text-base font-bold transition-transform duration-300 group-hover:translate-x-1">→</span>
+                        </Link>
+                      </div>
                     </div>
                   </motion.article>
                 </StaggerRevealItem>

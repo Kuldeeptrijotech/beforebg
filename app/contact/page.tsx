@@ -10,26 +10,23 @@ const contactItems = [
   {
     icon: Phone,
     title: "Call us",
-    color: "bg-white/20 text-white ring-[#ffffff]/40",
     content: (
       <>
-        <a href="tel:+911203506433">+91 120-3506433</a>
-        <a href="tel:+917982531976">+91 7982531976</a>
+        <a href="tel:+911203506433" className="text-white hover:underline">+91 120-3506433</a>
+        <a href="tel:+917982531976" className="text-white hover:underline">+91 7982531976</a>
       </>
     ),
   },
   {
     icon: Mail,
     title: "Email us",
-    color: "bg-[#38bdf8]/20 text-[#38bdf8] ring-[#38bdf8]/40",
-    content: <a href="mailto:sales@trijotech.com">sales@trijotech.com</a>,
+    content: <a href="mailto:sales@trijotech.com" className="text-white hover:underline">sales@trijotech.com</a>,
   },
   {
     icon: MapPin,
     title: "Visit us",
-    color: "bg-[#8b7cf6]/20 text-[#8b7cf6] ring-[#8b7cf6]/40",
     content: (
-      <p className="text-slate-300">
+      <p className="text-white/90">
         C56A, Infinity Tecnopark, 501, 16, C Block, Phase 2, Sector 62, Noida,
         Uttar Pradesh 201309
       </p>
@@ -70,10 +67,7 @@ export default function ContactPage() {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Let&apos;s start a{" "}
-              <span className="tri-gradient-text">
-                meaningful conversation
-              </span>
+              Let&apos;s start a meaningful conversation
             </motion.h1>
 
             <motion.p
@@ -107,9 +101,7 @@ export default function ContactPage() {
       </section>
 
       {/* ──── Contact Info ────────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      <section className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={false}
@@ -118,34 +110,32 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline">Get in touch</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Connect with <span className="tri-gradient-text">our team</span>
+            <p className="tri-overline text-black !text-black">Get in touch</p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              Connect with our team
             </h2>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
               Reach out directly or send us an enquiry below. We are here to answer questions and explore how we can support your initiatives.
             </p>
           </motion.div>
 
           <div className="mt-7 sm:mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
-            {contactItems.map(({ icon: Icon, title, content, color }, i) => (
+            {contactItems.map(({ icon: Icon, title, content }, i) => (
               <motion.article
                 key={title}
                 initial={false}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
+                className="flex h-full flex-col rounded-2xl border-0 bg-[#008fd3] text-white p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
               >
-                <motion.div
-                  animate={{ scale: [1, 1.08, 1] }}
-                  transition={{ repeat: Infinity, duration: 3 + i, ease: "easeInOut" }}
-                  className={`flex h-10 w-10 items-center justify-center rounded-xl ring-1 ${color}`}
+                <div
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-md transition-transform duration-300"
                 >
-                  <Icon className="h-5 w-5" />
-                </motion.div>
+                  <Icon className="h-5.5 w-5.5 text-[#008fd3]" strokeWidth={2.2} />
+                </div>
                 <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{title}</h3>
-                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-slate-300 [&_a]:font-semibold [&_a]:text-white [&_a]:hover:text-white [&_a]:transition-colors">
+                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-white/90 [&_a]:font-semibold [&_a]:text-white [&_a]:underline">
                   {content as ReactNode}
                 </div>
               </motion.article>
@@ -157,7 +147,7 @@ export default function ContactPage() {
       {/* ──── Contact Form ────────────────────────────────────────────── */}
       <section
         id="contact-form"
-        className="contact-form-section relative isolate overflow-hidden scroll-mt-24 bg-[#050817] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10"
+        className="contact-form-section relative isolate overflow-hidden scroll-mt-24 bg-[#050817] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/10 text-white"
       >
         <div className="mx-auto w-full max-w-5xl">
           <motion.div
@@ -167,9 +157,9 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="mb-8 text-center"
           >
-            <p className="tri-overline">Send an enquiry</p>
+            <p className="tri-overline text-[#38bdf8]">Send an enquiry</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              How can we <span className="tri-gradient-text">help you?</span>
+              How can we help you?
             </h2>
             <p className="mx-auto mt-2 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300">
               Share a few details and we will respond within one to two business days.

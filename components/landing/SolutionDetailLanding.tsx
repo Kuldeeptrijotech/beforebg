@@ -3,11 +3,55 @@
 import Image from "next/image";
 import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
-import { ArrowRight, Check, Zap } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  BarChart3,
+  Boxes,
+  Building2,
+  Check,
+  CircleDollarSign,
+  Cloud,
+  FileCheck,
+  Landmark,
+  Layers,
+  Package,
+  ShieldCheck,
+  SlidersHorizontal,
+  TrendingUp,
+  Users,
+  Workflow,
+  Zap,
+} from "lucide-react";
 import OtherSolutions from "@/components/solutions/OtherSolutions";
 import type { SolutionItem } from "@/lib/solutions-data";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+
+function getFeatureCardIcon(title: string, index: number) {
+  const t = title.toLowerCase();
+  // E-Invoicing Pro features
+  if (t.includes("s/4hana") || t.includes("sap")) return Cloud;
+  if (t.includes("government") || t.includes("portal")) return Landmark;
+  if (t.includes("tracking") || t.includes("real-time")) return Activity;
+  if (t.includes("compliance") || t.includes("regulatory")) return ShieldCheck;
+
+  // Finlagoon Consolidation features
+  if (t.includes("multi-entity") || t.includes("entity")) return Building2;
+  if (t.includes("currency") || t.includes("conversion")) return CircleDollarSign;
+  if (t.includes("reporting") || t.includes("customizable")) return SlidersHorizontal;
+  if (t.includes("governance") || t.includes("audit")) return FileCheck;
+
+  // Profitability Pro features
+  if (t.includes("product")) return Package;
+  if (t.includes("customer")) return Users;
+  if (t.includes("allocation") || t.includes("automated")) return Workflow;
+  if (t.includes("driver") || t.includes("mapping") || t.includes("margin")) return TrendingUp;
+
+  // Fallback distinct icons by index
+  const fallbacks = [Cloud, Landmark, Activity, ShieldCheck, Zap, Layers, BarChart3, Building2];
+  return fallbacks[index % fallbacks.length];
+}
 
 type Props = {
   solution: SolutionItem;
@@ -184,32 +228,34 @@ export default function SolutionDetailLanding({
               At a glance
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Built for the way{" "}
-              <span className="tri-gradient-text">your teams work</span>
+              Built for the way your teams work
             </h2>
           </motion.div>
           <div className="mt-7 sm:mt-9 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {solution.featureCards.map((item, i) => (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md transition-all duration-300 hover:border-white hover:bg-[#222d42]"
-              >
-                <motion.span
-                  whileHover={{ rotate: 15, scale: 1.2 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] border border-white/10 text-white shadow-md"
+            {solution.featureCards.map((item, i) => {
+              const CardIcon = getFeatureCardIcon(item.title, i);
+              return (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md transition-all duration-300 hover:border-white hover:bg-[#222d42]"
                 >
-                  <Zap className="solution-card-icon h-4.5 w-4.5" />
-                </motion.span>
-                <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{item.title}</h3>
-                <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
-              </motion.article>
-            ))}
+                  <motion.span
+                    whileHover={{ rotate: 12, scale: 1.15 }}
+                    transition={{ duration: 0.25 }}
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-white shadow-md"
+                  >
+                    <CardIcon className="solution-card-icon h-5 w-5 text-white" strokeWidth={2} />
+                  </motion.span>
+                  <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{item.title}</h3>
+                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -231,8 +277,7 @@ export default function SolutionDetailLanding({
               Capabilities
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Everything needed to move from{" "}
-              <span className="tri-gradient-text">complexity to control</span>
+              Everything needed to move from complexity to control
             </h2>
           </motion.div>
           <div className="mt-7 sm:mt-9 space-y-6">
@@ -304,7 +349,7 @@ export default function SolutionDetailLanding({
                 Business outcomes
               </p>
               <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-                Business <span className="tri-gradient-text">Outcomes</span>
+                Business Outcomes
               </h2>
             </div>
 
@@ -376,8 +421,7 @@ export default function SolutionDetailLanding({
               Let&apos;s work together
             </p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Ready to see {solution.title} in{" "}
-              <span className="tri-gradient-text">your landscape?</span>
+              Ready to see {solution.title} in your landscape?
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300 sm:text-base">
               Talk with our team about your priorities, current systems, and the right path to measurable value.

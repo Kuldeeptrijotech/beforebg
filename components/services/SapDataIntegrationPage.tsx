@@ -25,12 +25,12 @@ import TiltCard from "@/components/ui/TiltCard";
 type ServiceItem = { title: string; description: string };
 
 const SOURCES = [
-  { label: "ERP / S/4HANA", icon: Server, tone: "#38bdf8" },
-  { label: "CRM", icon: Users, tone: "#22d3ee" },
-  { label: "Legacy", icon: HardDrive, tone: "#ffffff" },
-  { label: "Files & Docs", icon: FileText, tone: "#67e8f9" },
-  { label: "Cloud SaaS", icon: Cloud, tone: "#38bdf8" },
-  { label: "Databases", icon: Database, tone: "#ffffff" },
+  { label: "ERP / S/4HANA", icon: Server },
+  { label: "CRM", icon: Users },
+  { label: "Legacy", icon: HardDrive },
+  { label: "Files & Docs", icon: FileText },
+  { label: "Cloud SaaS", icon: Cloud },
+  { label: "Databases", icon: Database },
 ];
 
 const JOURNEY = [
@@ -59,22 +59,15 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
       />
 
       {/* SOURCE SYSTEMS + HERO TAIL */}
-      <section className="relative bg-[#162032]">
-        <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
-          <div className="flex h-16 flex-col items-center gap-2">
-            <span className="h-3 w-3 rounded-full bg-white shadow-[0_0_10px_#ffffff]" />
-            <div className="h-12 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
-          </div>
-        </div>
-
-        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
+      <section className="relative bg-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
-              <SectionLabel>One reliable foundation</SectionLabel>
-              <h2 className={`mt-5 ${introLead} text-white`}>
-                Every system, <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">one trusted flow</span>
+              <SectionLabel dark={false}>One reliable foundation</SectionLabel>
+              <h2 className={`mt-5 ${introLead} text-slate-900`}>
+                Every system, one trusted flow
               </h2>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
                 Our integration services unify SAP and non-SAP landscapes through scalable APIs, cloud integration,
                 migration, and enterprise connectivity — supporting seamless operations and real-time insight.
               </p>
@@ -85,11 +78,11 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                 const Icon = s.icon;
                 return (
                   <StaggerRevealItem key={s.label} variant="fadeIn">
-                    <div className="service-surface-card flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-3 backdrop-blur-sm">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-white" style={{ background: s.tone }}>
-                        <Icon className="h-4 w-4" strokeWidth={1.9} />
+                    <div className="service-surface-card flex items-center gap-2.5 rounded-xl border-0 bg-[#008fd3] text-white px-3.5 py-3 shadow-[0_8px_20px_rgba(0,143,211,0.2)] transition-all duration-300 hover:bg-[#007bb8]">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-[#008fd3] shadow-xs">
+                        <Icon className="h-4.5 w-4.5 text-[#008fd3]" strokeWidth={2.2} />
                       </span>
-                      <span className="text-[13px] font-semibold text-slate-200">{s.label}</span>
+                      <span className="text-[13px] font-bold text-white">{s.label}</span>
                     </div>
                   </StaggerRevealItem>
                 );
@@ -99,57 +92,58 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
 
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
-              <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={100} suffix="+" label="Interfaces connected" accent="text-white" />
-              </Glass>
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                <Metric to={100} suffix="+" label="Interfaces connected" accent="text-[#008fd3]" />
+              </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
-              <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
-                <Metric to={99.95} suffix="%" label="Sync reliability" accent="text-white" />
-              </Glass>
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                <Metric to={99.95} suffix="%" label="Sync reliability" accent="text-[#008fd3]" />
+              </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
-              <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
-                <Metric to={40} suffix="%" label="Faster data delivery" accent="text-white" />
-              </Glass>
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                <Metric to={40} suffix="%" label="Faster data delivery" accent="text-[#008fd3]" />
+              </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
-              <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
-                <Metric to={0} label="Data silos" accent="text-white" sub="All systems fully unified" />
-              </Glass>
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
+                <Metric to={0} label="Data silos" accent="text-[#008fd3]" sub="All systems fully unified" />
+              </div>
             </Reveal>
           </div>
         </div>
       </section>
 
       {/* JOURNEY */}
-      <section className="relative bg-gradient-to-b from-[#162032] to-[#121927] py-20 sm:py-24">
-        <Container>
+      <section className="relative bg-[#050817] text-white py-20 sm:py-24 border-b border-white/10">
+        <div aria-hidden className="absolute inset-0 tri-mesh opacity-50" />
+        <Container className="relative">
           <Reveal className="max-w-2xl">
-            <SectionLabel>Integration journey</SectionLabel>
+            <SectionLabel dark={true}>Integration journey</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              From messy sources to <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">clean data</span>
+              From messy sources to clean data
             </h2>
           </Reveal>
 
           <div className="relative mt-14">
-            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/70 via-[#ffffff]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
-            <div className="grid gap-6 lg:grid-cols-5">
+            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#38bdf8]/70 via-[#38bdf8]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r z-0" />
+            <div className="grid gap-6 lg:grid-cols-5 relative z-10">
               {JOURNEY.map((s, i) => {
                 const Icon = s.icon;
                 return (
                   <StaggerRevealItem key={s.label} variant="scale" className="relative pl-16 lg:pl-0 lg:pt-10">
-                    <span className="absolute left-6 top-0 -translate-x-1/2 lg:left-0 lg:top-8 lg:translate-x-0 lg:-translate-y-1/2">
+                    <span className="absolute left-6 top-0 -translate-x-1/2 lg:left-0 lg:top-8 lg:translate-x-0 lg:-translate-y-1/2 z-30">
                       <motion.span
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-white shadow-lg shadow-cyan-950/10"
+                        className="relative z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#121927] text-white shadow-lg shadow-cyan-950/10"
                         animate={{ scale: [1, 1.12, 1] }}
                         transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.45, ease: "easeInOut" }}
                       >
-                        <Icon className="h-5 w-5" strokeWidth={1.9} />
+                        <Icon className="h-5 w-5 text-[#38bdf8]" strokeWidth={1.9} />
                       </motion.span>
                     </span>
-                    <Glass variant="frosted" tone="green" className="p-5">
-                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white">{String(i + 1).padStart(2, "0")}</p>
+                    <Glass variant="frosted" tone="cyan" className="relative z-10 p-5">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#38bdf8]">{String(i + 1).padStart(2, "0")}</p>
                       <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
                       <p className="mt-2 text-sm leading-6 text-slate-300">{s.desc}</p>
                     </Glass>
@@ -161,19 +155,17 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
         </Container>
       </section>
 
-      {/* MAPPING & TRANSFORMATION (DARK / GLOWING GREY - HEX GRID PRESERVED) */}
-      <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
-        <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_15%_20%,rgba(255, 255, 255,0.16),transparent_60%)]" />
+      {/* MAPPING & TRANSFORMATION */}
+      <section className="relative overflow-hidden bg-white text-slate-900 py-20 sm:py-28 border-b border-slate-200">
         <Container className="relative">
           <div className="detail-split-grid grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <Reveal>
-                <SectionLabel dark>Transform at the center</SectionLabel>
-                <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
-                  Mapped once, <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">trusted everywhere</span>
+                <SectionLabel dark={false}>Transform at the center</SectionLabel>
+                <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl text-slate-900">
+                  Mapped once, trusted everywhere
                 </h2>
-                <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
+                <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
                   Controlled mappings, validation, and reconciliation build trust in the data every downstream system
                   consumes.
                 </p>
@@ -181,11 +173,13 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
               <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
                 {impacts.map((i) => (
                   <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="service-surface-card flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-white" />
+                    <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
+                        <CheckCircle2 className="h-4.5 w-4.5 text-[#008fd3]" />
+                      </span>
                       <div>
                         <p className="font-bold text-white">{i.title}</p>
-                        <p className="mt-1 text-xs leading-5 text-slate-300">{i.description}</p>
+                        <p className="mt-1 text-xs leading-5 text-white/90">{i.description}</p>
                       </div>
                     </div>
                   </StaggerRevealItem>
@@ -194,14 +188,14 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
             </div>
 
             <Reveal delay={0.15}>
-              <div className="service-surface-card relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">Mapping in motion</p>
+              <div className="service-surface-card relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-md">
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008fd3]">Mapping in motion</p>
                 <div className="mt-6 space-y-3">
                   {[
-                    { from: "Legacy ERP", to: "S/4HANA", status: "Validated", tone: "#ffffff" },
-                    { from: "CRM export", to: "SAP Integration Suite", status: "Synchronized", tone: "#ffffff" },
-                    { from: "Raw files", to: "HANA Cloud", status: "Cleansed", tone: "#ffffff" },
-                    { from: "Master data", to: "MDM", status: "Harmonized", tone: "#ffffff" },
+                    { from: "Legacy ERP", to: "S/4HANA", status: "Validated", tone: "#008fd3" },
+                    { from: "CRM export", to: "SAP Integration Suite", status: "Synchronized", tone: "#008fd3" },
+                    { from: "Raw files", to: "HANA Cloud", status: "Cleansed", tone: "#008fd3" },
+                    { from: "Master data", to: "MDM", status: "Harmonized", tone: "#008fd3" },
                   ].map((r, i) => (
                     <motion.div
                       key={r.from}
@@ -209,12 +203,12 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-40px" }}
                       transition={{ duration: 0.5, delay: i * 0.12 }}
-                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3"
+                      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm"
                     >
-                      <Layers className="h-4 w-4 shrink-0 text-white" />
-                      <span className="flex-1 truncate text-sm font-semibold text-white/90">{r.from}</span>
-                      <span className="text-white">→</span>
-                      <span className="flex-1 truncate text-right text-sm font-semibold text-white/90">{r.to}</span>
+                      <Layers className="h-4 w-4 shrink-0 text-[#008fd3]" />
+                      <span className="flex-1 truncate text-sm font-semibold text-slate-900">{r.from}</span>
+                      <span className="text-slate-400">→</span>
+                      <span className="flex-1 truncate text-right text-sm font-semibold text-slate-900">{r.to}</span>
                       <span className="flex items-center gap-1.5 text-[11px] font-bold" style={{ color: r.tone }}>
                         <span className="h-1.5 w-1.5 rounded-full" style={{ background: r.tone, boxShadow: `0 0 8px ${r.tone}` }} />
                         {r.status}
@@ -222,10 +216,10 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                     </motion.div>
                   ))}
                 </div>
-                <div className="service-surface-card mt-6 flex items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/[0.07] px-4 py-3">
-                  <RefreshCw className="h-5 w-5 shrink-0 text-white" />
-                  <p className="text-sm text-slate-200">
-                    <span className="font-bold text-white">Continuous sync</span> — real-time events keep data current.
+                <div className="service-surface-card mt-6 flex items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
+                  <RefreshCw className="h-5 w-5 shrink-0 text-[#008fd3]" />
+                  <p className="text-sm text-slate-700">
+                    <span className="font-bold text-slate-900">Continuous sync</span> — real-time events keep data current.
                   </p>
                 </div>
               </div>
@@ -235,14 +229,15 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
       </section>
 
       {/* CAPABILITIES */}
-      <section className="relative bg-[#162032] py-20 sm:py-24">
-        <Container>
+      <section className="relative bg-[#050817] text-white py-20 sm:py-24 border-b border-white/10">
+        <div aria-hidden className="absolute inset-0 tri-mesh opacity-50" />
+        <Container className="relative">
           <Reveal className="max-w-2xl">
-            <SectionLabel>What we deliver</SectionLabel>
+            <SectionLabel dark={true}>What we deliver</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              Integration capabilities that <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">scale</span>
+              Integration capabilities that scale
             </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-400">
+            <p className="mt-5 text-lg leading-8 text-slate-300">
               Repeatable patterns that connect applications, processes, and partners across the enterprise.
             </p>
           </Reveal>
@@ -253,12 +248,12 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-[#008fd3]">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
                     </div>
-                    <p className="mt-4 leading-7 text-white/70">{o.description}</p>
+                    <p className="mt-4 leading-7 text-slate-300">{o.description}</p>
                   </Glass>
                 </TiltCard>
               </StaggerRevealItem>

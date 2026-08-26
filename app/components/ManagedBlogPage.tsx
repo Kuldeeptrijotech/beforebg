@@ -36,13 +36,13 @@ export default function ManagedBlogPage({ post, preview = false }: { post: BlogP
         </header>
 
         {/* Full-width Content Body */}
-        <div className="w-full bg-[#f1f5f9] py-12 sm:py-16 border-b border-slate-200">
+        <div className="w-full bg-white py-12 sm:py-16 border-b border-slate-200">
           <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
             {post.featuredImage && (
               <figure className="my-5 flex w-full flex-col items-center justify-center text-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  className="mx-auto block h-[260px] sm:h-[340px] md:h-[380px] w-auto max-w-full rounded-lg object-contain bg-[#f1f5f9]"
+                  className="mx-auto block h-[260px] sm:h-[340px] md:h-[380px] w-auto max-w-full rounded-lg object-contain bg-white"
                   src={post.featuredImage}
                   alt={post.imageAlt}
                   loading="lazy"

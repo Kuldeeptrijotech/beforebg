@@ -12,14 +12,12 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
   const isLandingPage = [
     "/services",
     "/solutions",
-    "/industry",
     "/insights",
     "/corporate",
   ].includes(pathname.toLowerCase());
   const usesStandaloneTailwind =
     pathname === "/services" ||
     pathname === "/solutions" ||
-    pathname.toLowerCase() === "/industry" ||
     pathname === "/insights" ||
     pathname === "/corporate" ||
     pathname.startsWith("/industries/") ||

@@ -23,7 +23,15 @@ export default function SectionHeading({
   const alignCls = align === "center" ? "text-center items-center" : "text-left items-start";
   return (
     <div className={`flex flex-col ${alignCls} ${className}`}>
-      {eyebrow && <span className="tri-overline mb-0.5">{eyebrow}</span>}
+      {eyebrow && (
+        <span
+          className={`tri-overline mb-0.5 ${
+            dark ? "text-white !text-white" : "text-black !text-black"
+          }`}
+        >
+          {eyebrow}
+        </span>
+      )}
       <Tag
         className={`mt-2 max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight sm:text-3xl lg:text-4xl ${
           dark ? "text-white" : "text-slate-900"

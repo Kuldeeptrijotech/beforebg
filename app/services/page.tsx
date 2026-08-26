@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
+    <main className="services-page-root font-sans overflow-hidden bg-[#030713] text-white">
       {/* ──── Hero Section (Preserved & Untouched) ──── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
         {/* Mesh + hexgrid background */}
@@ -21,26 +21,22 @@ export default function ServicesPage() {
 
         {/* Hero image */}
         <Image
-          src="/assets/heroes/services.png"
+          src="/assets/heroes/services-blue.png"
           alt="Trijotech SAP Services"
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 -z-20 object-cover object-center opacity-95"
+          className="absolute inset-0 -z-20 object-cover object-center opacity-90"
         />
 
-        {/* Gradient overlays — side-only */}
+        {/* Gradient overlays — balanced for text readability and clear background visibility */}
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(3,7,19,0.85)_0%,rgba(3,7,19,0.50)_50%,rgba(3,7,19,0.15)_100%)]"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(3,7,19,0.92)_0%,rgba(3,7,19,0.70)_40%,rgba(3,7,19,0.20)_75%,transparent_100%)]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,7,19,0.25)_0%,transparent_30%,transparent_75%,rgba(3,7,19,0.15)_100%)]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_75%_55%_at_12%_55%,rgba(255, 255, 255,0.13),transparent_68%)]"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(3,7,19,0.30)_0%,transparent_30%,transparent_70%,rgba(3,7,19,0.60)_100%)]"
         />
 
         {/* Content */}
@@ -48,8 +44,7 @@ export default function ServicesPage() {
           <div className="max-w-3xl">
 
             <h1 className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
-              SAP solutions designed to{" "}
-              <span className="tri-gradient-text">transform your business</span>
+              SAP solutions designed to transform your business
             </h1>
 
             <p className="mt-6 max-w-2xl text-base font-normal leading-[1.7] text-white/80 sm:text-lg">

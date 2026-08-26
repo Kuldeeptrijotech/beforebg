@@ -47,11 +47,11 @@ const values = [
 
 const leadership = [
   {
-    name: "Kalpesh Chavda",
-    role: "CEO",
+    name: "Rakesh Kumar",
+    role: "Managing Director",
     image: "",
     description:
-      "Kalpesh leads Trijotech with vision, strategic direction, and a practical focus on SAP transformation that delivers measurable value.",
+      "Rakesh leads Trijotech with vision, strategic direction, and a practical focus on SAP transformation that delivers measurable value.",
   },
   {
     name: "Rakesh Shah",
@@ -95,10 +95,7 @@ export default function AboutUsPage() {
             <h1
               className="mt-5 text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Technology shaped around{" "}
-              <span className="tri-gradient-text">
-                real outcomes
-              </span>
+              Technology shaped around real outcomes
             </h1>
 
             <p
@@ -142,10 +139,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ──── Who We Are ────────────────────────────────────────────────── */}
-      <section id="who-we-are" className="relative isolate overflow-hidden bg-[#0b1d33] py-20 sm:py-24 lg:py-28 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(255, 255, 255,0.15)] blur-3xl animate-float" />
+      <section id="who-we-are" className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -153,22 +147,21 @@ export default function AboutUsPage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
-            <p className="tri-overline">Who we are</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Deep expertise,{" "}
-              <span className="tri-gradient-text">close collaboration</span>
+            <p className="tri-overline text-black !text-black">Who we are</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              Deep expertise, close collaboration
             </h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">
+            <p className="mt-5 text-base leading-8 text-slate-600">
               Trijotech is a technology consulting company focused on SAP, enterprise data, analytics, integration, and intelligent automation. We combine deep functional understanding with hands-on engineering to solve the challenges that matter most to your business.
             </p>
-            <p className="mt-4 text-base leading-8 text-slate-300">
+            <p className="mt-4 text-base leading-8 text-slate-600">
               Our consultants bring global experience and a collaborative mindset to every engagement. Whether modernizing a core platform, improving planning and reporting, or building on SAP BTP, we stay close to the outcome from strategy through support.
             </p>
-            <div className="about-expertise-note mt-6 flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-semibold sm:text-base">
+            <div className="about-expertise-note mt-6 flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold sm:text-base text-slate-900">
               <motion.span
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-md"
+                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#008fd3] text-white shadow-md"
               >
                 <Check className="h-3.5 w-3.5" />
               </motion.span>
@@ -199,7 +192,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline">Our direction</p>
+            <p className="tri-overline text-[#38bdf8]">Our direction</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Vision, mission and goals
             </h2>
@@ -229,9 +222,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ──── Values ────────────────────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-20 sm:py-24 lg:py-28 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      <section className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -240,8 +231,8 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline">How we work</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <p className="tri-overline text-black !text-black">How we work</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
               Simple principles, consistently applied
             </h2>
           </motion.div>
@@ -255,17 +246,17 @@ export default function AboutUsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="about-card group relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 sm:p-8 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
+                className="about-card group relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 sm:p-8 shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:border-[#008fd3] hover:shadow-[0_16px_36px_rgba(0,143,211,0.14)]"
               >
                 <motion.span
-                  className="absolute right-4 top-3 text-4xl font-bold text-white/10 transition-colors group-hover:text-white/30"
+                  className="absolute right-4 top-3 text-4xl font-bold text-slate-200 transition-colors group-hover:text-[#008fd3]/30"
                   animate={{ opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                 >
                   {value.number}
                 </motion.span>
-                <h3 className="relative mt-8 text-base sm:text-lg font-bold text-white">{value.title}</h3>
-                <p className="relative mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">{value.description}</p>
+                <h3 className="relative mt-8 text-base sm:text-lg font-bold text-slate-900">{value.title}</h3>
+                <p className="relative mt-4 flex-1 text-sm leading-7 text-slate-600 sm:text-base">{value.description}</p>
               </motion.article>
             ))}
           </div>
@@ -273,7 +264,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ──── Leadership ────────────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-20 sm:py-24 lg:py-28 border-b border-white/10">
+      <section className="relative isolate overflow-hidden bg-[#050817] py-20 sm:py-24 lg:py-28 border-b border-white/10 text-white">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -284,10 +275,9 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline">Our leadership</p>
+            <p className="tri-overline text-[#38bdf8]">Our leadership</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-              Leadership that{" "}
-              <span className="tri-gradient-text">builds trust</span>
+              Leadership that builds trust
             </h2>
             <p className="mt-4 text-base leading-8 text-slate-300">
               Deep SAP experience with a practical focus on predictable delivery and long-term client success.
@@ -328,7 +318,7 @@ export default function AboutUsPage() {
                 )}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <h3 className="text-xl font-bold text-white">{leader.name}</h3>
-                  <p className="mt-0.5 text-xs sm:text-sm font-semibold text-white">{leader.role}</p>
+                  <p className="mt-0.5 text-xs sm:text-sm font-semibold text-[#38bdf8]">{leader.role}</p>
                   <p className="mt-4 flex-1 text-sm leading-7 text-slate-300 sm:text-base">{leader.description}</p>
                 </div>
               </motion.article>

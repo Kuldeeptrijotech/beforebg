@@ -1,0 +1,68 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="b_glow1" cx="70%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#8B7CF6" stop-opacity="0.32"/>
+      <stop offset="70%" stop-color="#8B7CF6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b_card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141428"/>
+      <stop offset="100%" stop-color="#0B0F1E"/>
+    </linearGradient>
+    <linearGradient id="b_bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8B7CF6"/>
+      <stop offset="100%" stop-color="#008fd3"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="80" y="30" width="640" height="540" rx="24" fill="url(#b_glow1)"/>
+  <rect x="150" y="55" width="500" height="490" rx="18" fill="url(#b_card)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+
+  <circle cx="182" cy="88" r="4" fill="#8B7CF6"/>
+  <circle cx="198" cy="88" r="4" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="214" cy="88" r="4" fill="rgba(255,255,255,0.4)"/>
+  <text x="234" y="92" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">BTP APPLICATION WORKSPACE</text>
+  <line x1="150" y1="112" x2="650" y2="112" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- Stack items -->
+  <g transform="translate(176, 130)">
+    <rect width="448" height="50" rx="10" fill="rgba(139,124,246,0.16)" stroke="rgba(139,124,246,0.4)" stroke-width="1"/>
+    <rect x="14" y="14" width="22" height="22" rx="6" fill="rgba(139,124,246,0.4)"/>
+    <text x="48" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Fiori launchpad app</text>
+    <text x="400" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700">LIVE</text>
+  </g>
+
+  <g transform="translate(176, 192)">
+    <rect width="448" height="50" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <rect x="14" y="14" width="22" height="22" rx="6" fill="rgba(56,189,248,0.3)"/>
+    <text x="48" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="14" font-weight="600">CAP service layer</text>
+    <text x="404" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700">v2.4</text>
+  </g>
+
+  <g transform="translate(176, 254)">
+    <rect width="448" height="50" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <rect x="14" y="14" width="22" height="22" rx="6" fill="rgba(0,143,211,0.3)"/>
+    <text x="48" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="14" font-weight="600">Workflow extension</text>
+    <text x="375" y="32" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700">PASSING</text>
+  </g>
+
+  <!-- 2-col metrics -->
+  <g transform="translate(176, 320)">
+    <rect width="216" height="84" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <text x="16" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">BUILD SUCCESS</text>
+    <text x="16" y="68" fill="#ffffff" font-family="system-ui, sans-serif" font-size="32" font-weight="800">100%</text>
+  </g>
+  <g transform="translate(408, 320)">
+    <rect width="216" height="84" rx="12" fill="rgba(139,124,246,0.15)" stroke="rgba(139,124,246,0.4)" stroke-width="1"/>
+    <text x="16" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">TIME TO SHIP</text>
+    <text x="16" y="68" fill="#ffffff" font-family="system-ui, sans-serif" font-size="32" font-weight="800">3x</text>
+  </g>
+
+  <!-- Deploy row -->
+  <g transform="translate(176, 424)">
+    <rect width="448" height="46" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <text x="18" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1">DEPLOY</text>
+    <rect x="86" y="20" width="290" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
+    <rect x="86" y="20" width="238" height="6" rx="3" fill="url(#b_bar)"/>
+    <text x="395" y="28" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700">82%</text>
+  </g>
+</svg>

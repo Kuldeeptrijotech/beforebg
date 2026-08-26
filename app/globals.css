@@ -545,7 +545,8 @@ p, a, span, li, label, div {
   font-weight: 700;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: #000000;
+  -webkit-text-fill-color: #000000;
   transition: color 0.3s;
 }
 .tri-overline::before {
@@ -553,8 +554,24 @@ p, a, span, li, label, div {
   width: 28px;
   height: 2px;
   border-radius: 9999px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), #ffffff);
+  background: linear-gradient(90deg, #67e8f9 0%, #22d3ee 48%, #2563eb 100%);
   flex-shrink: 0;
+}
+
+/* Light / White sections - ensure overline text is solid black */
+:is(.bg-white, .bg-slate-50, .bg-slate-100, .text-slate-900, [data-theme="light"]) .tri-overline,
+section.bg-white .tri-overline,
+.tri-overline.text-black {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+/* Dark sections - overline text is white */
+:is(.bg-\[\#050817\], .bg-\[\#030713\], .bg-\[\#121927\], .bg-\[\#162032\], .bg-\[\#18263e\], .bg-\[\#0b1d33\], .bg-slate-950, .bg-slate-900, [data-theme="dark"]) .tri-overline,
+.text-white .tri-overline,
+.tri-overline.text-white {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 /* Dark translucent glass panels */
@@ -836,196 +853,19 @@ p, a, span, li, label, div {
   scrollbar-width: none !important;  /* Firefox */
 }
 
-/* Homepage alternating light/dark section rhythm */
-.zip-theme > section:nth-of-type(3),
-.zip-theme > section:nth-of-type(5),
-.zip-theme > section:nth-of-type(7),
-.zip-theme > section:nth-of-type(9) {
-  background-color: #050817 !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-.zip-theme > section:nth-of-type(2),
-.zip-theme > section:nth-of-type(4),
-.zip-theme > section:nth-of-type(6),
-.zip-theme > section:nth-of-type(8) {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-  border-color: #e2e8f0 !important;
-}
-
-.zip-theme > section:nth-of-type(2) :is(h2, h3, h4),
-.zip-theme > section:nth-of-type(4) :is(h2, h3, h4),
-.zip-theme > section:nth-of-type(6) :is(h2, h3, h4),
-.zip-theme > section:nth-of-type(8) :is(h2, h3, h4) {
-  color: #0f172a !important;
-}
-
-.zip-theme > section:nth-of-type(2) p,
-.zip-theme > section:nth-of-type(4) p,
-.zip-theme > section:nth-of-type(6) p,
-.zip-theme > section:nth-of-type(8) p {
-  color: #475569 !important;
-}
-
-.zip-theme > section:nth-of-type(2) .tri-overline,
-.zip-theme > section:nth-of-type(4) .tri-overline,
-.zip-theme > section:nth-of-type(6) .tri-overline,
-.zip-theme > section:nth-of-type(8) .tri-overline {
-  color: #0e7490 !important;
-}
-
-.zip-theme > section:nth-of-type(2) :is(.tri-glass-card, article),
-.zip-theme > section:nth-of-type(4) :is(.tri-glass-card, article),
-.zip-theme > section:nth-of-type(6) :is(.tri-glass-card, article),
-.zip-theme > section:nth-of-type(8) :is(.tri-glass-card, article) {
-  background: #ffffff !important;
-  border-color: #e2e8f0 !important;
-  box-shadow: 0 18px 46px -24px rgba(15, 23, 42, 0.22) !important;
-}
-/* Homepage strict black-and-white text contrast */
-.zip-theme > section:nth-of-type(1),
-.zip-theme > section:nth-of-type(3),
-.zip-theme > section:nth-of-type(5),
-.zip-theme > section:nth-of-type(7),
-.zip-theme > section:nth-of-type(9),
-.zip-theme > section:nth-of-type(10),
-.zip-theme > section:nth-of-type(1) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
-.zip-theme > section:nth-of-type(3) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
-.zip-theme > section:nth-of-type(5) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
-.zip-theme > section:nth-of-type(7) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
-.zip-theme > section:nth-of-type(9) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]),
-.zip-theme > section:nth-of-type(10) :not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-.zip-theme > section:nth-of-type(2),
-.zip-theme > section:nth-of-type(4),
-.zip-theme > section:nth-of-type(6),
-.zip-theme > section:nth-of-type(8),
-.zip-theme > section:nth-of-type(2) *,
-.zip-theme > section:nth-of-type(4) *,
-.zip-theme > section:nth-of-type(6) *,
-.zip-theme > section:nth-of-type(8) * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-
-
+/* Blue gradient removed from text - crisp solid color everywhere */
 .zip-theme section.hero-fullvh .tri-gradient-text,
 .zip-theme .home-hero-heading .tri-gradient-text,
-.home-hero-heading .tri-gradient-text {
-  background: linear-gradient(135deg, #38bdf8 0%, #60a5fa 50%, #93c5fd 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-/* Nested monochrome surface contrast */
-.zip-theme :is(.tri-btn-primary, .bg-white),
-.zip-theme :is(.tri-btn-primary, .bg-white) * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-.zip-theme :is(.bg-black, .bg-slate-950),
-.zip-theme :is(.bg-black, .bg-slate-950) * {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-/* Whole public website alternating monochrome sections */
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(odd) {
-  background-color: #050817 !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(odd) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button):not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border-color: #e2e8f0 !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button) {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) > [aria-hidden].absolute {
-  background: transparent !important;
-  opacity: 0 !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) section :is(.gradient-text, .tri-gradient-text) {
+.home-hero-heading .tri-gradient-text,
+.tri-gradient-text,
+.gradient-text,
+[class*="gradient-text"],
+.bg-clip-text {
   background: none !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) :is(.bg-white, .tri-btn-primary),
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) :is(.bg-white, .tri-btn-primary) * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) :is(.bg-black, .bg-slate-950),
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme) :is(.bg-black, .bg-slate-950) * {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-/* Direct public-page alternation matching the homepage */
-main.public-alternating-page > section:nth-of-type(odd) {
-  background: #050817 !important;
-  color: #ffffff !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-main.public-alternating-page > section:nth-of-type(odd) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button):not(.contact-form-panel *):not(.contact-custom-select-menu *):not([role="listbox"] *):not([role="option"] *):not([role="option"]) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-main.public-alternating-page > section:nth-of-type(even) {
-  background: #ffffff !important;
-  color: #000000 !important;
-  border-color: #e2e8f0 !important;
-}
-
-main.public-alternating-page > section:nth-of-type(even) :is(h1, h2, h3, h4, h5, h6, p, a, span, li, label, strong, small, button) {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-main.public-alternating-page > section:nth-of-type(even) > [aria-hidden].absolute {
-  background: transparent !important;
-  opacity: 0 !important;
-}
-
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card) {
-  background: #ffffff !important;
-  color: #000000 !important;
-  border-color: #e2e8f0 !important;
-}
-
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card) * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-}
-
-main.public-alternating-page > section :is(.gradient-text, .tri-gradient-text) {
-  background: none !important;
-}
-
-main.public-alternating-page :is(.bg-white, .tri-btn-primary),
-main.public-alternating-page :is(.bg-white, .tri-btn-primary) * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
 }
 /* All Hero Section Buttons across the whole website - #257ae8d6 theme */
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section.hero-fullvh :is(a.tri-btn, button.tri-btn, .home-hero-primary, .home-hero-secondary),
@@ -1285,20 +1125,6 @@ main.public-alternating-page > section:nth-of-type(even) :is(a.tri-btn, button.t
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
-/* Homepage industry-card image overlay contrast */
-.zip-theme section .home-industry-card,
-.zip-theme section .home-industry-card :is(h3, p, span, svg),
-main.public-alternating-page .home-industry-card,
-main.public-alternating-page .home-industry-card :is(h3, p, span, svg) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-.zip-theme section .home-industry-card p,
-main.public-alternating-page .home-industry-card p {
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-}
 /* Careers page contrast fixes */
 main.public-alternating-page .careers-culture-card {
   background: #ffffff !important;
@@ -1368,69 +1194,90 @@ main.public-alternating-page .careers-metric-card :is(h3, h4, p, span, svg) {
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
 }
-/* Visible light-section card surfaces across the public site */
-.zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)),
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) {
-  background: #ecfeff !important;
-  border-color: #67e8f9 !important;
-  box-shadow: 0 12px 28px -20px rgba(14, 116, 144, 0.5), inset 0 0 0 1px #67e8f9 !important;
-}
-
-.zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)):hover,
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover {
-  background: #cffafe !important;
-}
-/* Homepage SAP statistics cards on the white section */
-.zip-theme section .home-stats-band {
-  background: #f0fdff !important;
-  border-color: #67e8f9 !important;
-  box-shadow: inset 0 0 0 1px #a5f3fc !important;
-}
-
-
-/* Why Choose Us white-section surfaces */
-.zip-theme section .home-stats-band {
-  background: #e6faff !important;
-  border-color: #67e8f9 !important;
-}
-
-.zip-theme section .why-choose-card {
-  background: #ecfeff !important;
-  border-color: #67e8f9 !important;
-  box-shadow: 0 12px 28px -20px rgba(14, 116, 144, 0.5), inset 0 0 0 1px #a5f3fc !important;
-}
-
-.zip-theme section .why-choose-card:hover {
-  background: #cffafe !important;
-}
-/* Visible homepage Blogs and Videos tab outlines */
-.zip-theme section .home-insights-tabs {
-  background: #ecfeff !important;
-  border-color: #22d3ee !important;
-  box-shadow: inset 0 0 0 1px #67e8f9 !important;
-}
-
-.zip-theme section .home-insights-tab {
+/* SAP Blue Cards for Why Choose Us, Insights Preview, and Services Preview */
+html body .why-choose-card,
+html body .insights-preview-card,
+html body .home-service-card,
+html body .zip-theme .why-choose-card,
+html body .zip-theme .insights-preview-card,
+html body .zip-theme .home-service-card,
+html body #why-choose-us article,
+html body #insights-preview article {
+  background-color: #008fd3 !important;
+  background-image: none !important;
   border: 0 !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
+  border-color: transparent !important;
+  box-shadow: 0 10px 30px rgba(0, 143, 211, 0.22) !important;
 }
 
-.zip-theme section .home-insights-tab[aria-selected="true"] {
-  background: #0e7490 !important;
+html body .why-choose-card:hover,
+html body .insights-preview-card:hover,
+html body .home-service-card:hover,
+html body .zip-theme .why-choose-card:hover,
+html body .zip-theme .insights-preview-card:hover,
+html body .zip-theme .home-service-card:hover,
+html body #why-choose-us article:hover,
+html body #insights-preview article:hover {
+  background-color: #007bb8 !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: 0 16px 40px rgba(0, 143, 211, 0.35) !important;
+}
+
+html body :is(.why-choose-card, .insights-preview-card, .home-service-card, #why-choose-us article, #insights-preview article)
+:is(h1, h2, h3, h4, h5, h6, p, span, li, label, strong, a, button, small, div) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
 }
 
-.zip-theme section .home-insights-tab[aria-selected="true"] :is(span, svg) {
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel):not(.industry-definition-card), .why-choose-card, .home-industry-card, .solution-detail-card, .service-surface-card, .industry-detail-card, .ai-practice-card)
+:is(svg, svg path, svg polyline, svg line, svg circle, svg rect):not(.youtube-play-badge *):not(.youtube-brand-icon *):not(.bg-white *):not(.bg-white):not([class*="bg-white"] *):not([class*="bg-white"]):not([class*="icon-badge"] *):not([class*="icon-badge"]) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(.bg-white, [class*="bg-white"], [class*="icon-badge"]) :is(svg, svg path, svg polyline, svg line, svg circle, svg rect):not(.youtube-play-badge *):not(.youtube-brand-icon *) {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  opacity: 1 !important;
+}
+
+html body :is(.why-choose-card, .insights-preview-card, article, [class*="-card"], .home-industry-card, .home-service-card) :is(.bg-white, [class*="bg-white"], .home-service-icon-badge) :is(p, span, div, small) {
+  color: #008fd3 !important;
+  -webkit-text-fill-color: #008fd3 !important;
+  opacity: 1 !important;
+}
+
+html body :is(.why-choose-card, .insights-preview-card, #why-choose-us article, #insights-preview article)
+:is(h1, h2, h3, h4, h5, h6, p, span, li, label, strong, a, button, small, div) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
 }
 
-.zip-theme section .home-insights-tab[aria-selected="false"]:hover {
-  background: #cffafe !important;
+
+/* YouTube Play Badge & Brand Icon */
+html body .youtube-play-badge,
+html body .insights-preview-card .youtube-play-badge {
+  background-color: #FF0000 !important;
+  color: #ffffff !important;
+  border-radius: 0.75rem !important;
+}
+html body .youtube-play-badge svg,
+html body .youtube-play-badge svg path {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  stroke: none !important;
+}
+html body .youtube-brand-icon,
+html body .youtube-brand-icon path {
+  color: #FF0000 !important;
+  fill: #FF0000 !important;
+  stroke: none !important;
 }
 /* Neon-blue public overline marker */
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) .tri-overline::before {
@@ -1662,44 +1509,10 @@ main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass
   --sap-brand-blue-border: #38bdf8;
 }
 
-.zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)),
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)),
-main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card) {
-  background: var(--sap-brand-blue) !important;
-  border-color: var(--sap-brand-blue-border) !important;
-  box-shadow: 0 14px 32px -24px rgba(10, 110, 209, 0.72), inset 0 0 0 1px rgba(255, 255, 255, 0.18) !important;
-}
-
-.zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)):hover,
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)):hover,
-main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card):hover {
-  background: var(--sap-brand-blue-hover) !important;
-  border-color: var(--sap-brand-blue-border) !important;
-}
-
-.zip-theme > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)) :is(h2, h3, h4, p, span, strong, small, li, svg),
-:is(.zip-inner-theme, .site-landing-theme, .site-subpage-theme) section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) :is(h2, h3, h4, p, span, strong, small, li, svg),
-main.public-alternating-page > section:nth-of-type(even) :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.home-industry-card):not(.contact-form-panel), [class$="-card"]:not(.home-industry-card):not(.contact-form-panel)) :is(h2, h3, h4, p, span, strong, small, li, svg),
-main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .careers-metric-card, .btp-impact-card) :is(h2, h3, h4, p, span, strong, small, li, svg) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-
-.zip-theme section :is(.home-stats-band, .home-insights-tabs) {
-  background: var(--sap-brand-blue) !important;
-  border-color: var(--sap-brand-blue-border) !important;
-}
-
-.zip-theme section :is(.home-stats-band, .home-insights-tabs) :is(h2, h3, h4, p, span, strong, small, li, svg, button) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
 /* Industry business-outcome card contrast */
 .industry-detail-page .industry-outcomes-section .industry-detail-card {
-  background: var(--sap-brand-blue) !important;
-  border-color: var(--sap-brand-blue-border) !important;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .industry-detail-page .industry-outcomes-section .industry-detail-card p {
@@ -1707,37 +1520,6 @@ main.public-alternating-page :is(.careers-highlight-card, .careers-perk-card, .c
   -webkit-text-fill-color: #ffffff !important;
   opacity: 1 !important;
   text-shadow: none !important;
-}
-/* Industry outcome image-caption contrast */
-.industry-detail-page .industry-outcomes-image,
-.industry-detail-page .industry-outcomes-image *,
-.industry-detail-page .industry-outcomes-image :is(p, span),
-.industry-detail-page .industry-outcomes-image .tri-gradient-text,
-.industry-detail-page .industry-outcomes-image p.industry-outcomes-kicker,
-main.industry-detail-page > section.industry-outcomes-section .industry-outcomes-image :is(p, span) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  background: none !important;
-  background-image: none !important;
-  opacity: 1 !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95) !important;
-}
-/* Videos library card treatment */
-main.public-alternating-page #explore-videos .video-library-card {
-  background: var(--sap-brand-blue) !important;
-  border-color: var(--sap-brand-blue-border) !important;
-  box-shadow: 0 20px 45px -28px rgba(10, 110, 209, 0.8) !important;
-}
-
-main.public-alternating-page #explore-videos .video-library-card:hover {
-  background: var(--sap-brand-blue-hover) !important;
-  border-color: #60a5fa !important;
-}
-
-main.public-alternating-page #explore-videos .video-library-card :is(h3, p, span, svg) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
 }
 /* Contact and careers custom-select contrast */
 .contact-form-panel .contact-custom-select-trigger,
@@ -1939,24 +1721,6 @@ main.public-alternating-page #explore .service-card-image {
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page, .site-modern-header, .zip-footer) :is(a, button) svg [fill]:not([fill="none"]) {
   fill: currentColor !important;
 }
-/* Homepage service-card link and arrow parity */
-.zip-theme section .tri-glass-card .home-service-link,
-.zip-theme section .tri-glass-card .home-service-link svg {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-.zip-theme section .tri-glass-card .home-service-link svg,
-.zip-theme section .tri-glass-card .home-service-link svg * {
-  stroke: currentColor !important;
-}
-
-.zip-theme section .tri-glass-card:hover .home-service-link,
-.zip-theme section .tri-glass-card:hover .home-service-link svg {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
 /* Absolute final priority for homepage service arrows */
 
 /* Card actions always match their card text */
@@ -2026,113 +1790,6 @@ html body main.public-alternating-page #explore article.tri-glass-card :is(h3, p
   -webkit-text-fill-color: #ffffff !important;
   opacity: 1 !important;
 }
-/* Final SAP-blue cards on every white public section */
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) > section:nth-of-type(even)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel):not(.home-industry-card), [class$="-card"]:not(.contact-form-panel):not(.home-industry-card)) {
-  background: #008fd3 !important;
-  border-color: #38bdf8 !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) > section:nth-of-type(even)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel):not(.home-industry-card), [class$="-card"]:not(.contact-form-panel):not(.home-industry-card)):hover {
-  background: #007bb8 !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) > section:nth-of-type(even)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel):not(.home-industry-card), [class$="-card"]:not(.contact-form-panel):not(.home-industry-card))
-:is(h2, h3, h4, p, li, a, button, span, strong, small, svg) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-/* Neutral borders for all public cards */
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)) {
-  border-color: rgba(255, 255, 255, 0.22) !important;
-}
-
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover {
-  border-color: rgba(255, 255, 255, 0.42) !important;
-}
-/* Final black borders for every public card */
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
-:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):focus-within {
-  border-color: #000000 !important;
-  outline-color: #000000 !important;
-  --tw-ring-color: #000000 !important;
-}
-/* Final card action color parity across every public page */
-html body .zip-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
-html body .zip-inner-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
-html body .site-landing-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
-html body .site-subpage-theme :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button),
-html body main.public-alternating-page :is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel)) :is(a, button) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel))
-:is(a, button) :is(span, strong, small, svg) {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel))
-:is(a, button) svg,
-html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel))
-:is(a, button) svg * {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-  opacity: 1 !important;
-}
-/* Exact matching Careers form corner radius */
-main.public-alternating-page section#apply .career-form-parent {
-  border-radius: 28px !important;
-}
-
-main.public-alternating-page section#apply .career-form-parent .contact-form-panel {
-  border-radius: inherit !important;
-}
-/* Remove homepage statistics blue outline */
-html body .zip-theme section .home-stats-band {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
-/* Remove homepage Why Choose card outlines */
-html body .zip-theme section .why-choose-card,
-html body .zip-theme section .why-choose-card:hover,
-html body .zip-theme section .why-choose-card:focus-within {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  --tw-ring-color: transparent !important;
-}
-/* Remove all public card outlines site-wide */
-html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)),
-html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):hover,
-html body :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page)
-:is(article, .tri-glass-card, .glass-card, [class*="-card "]:not(.contact-form-panel), [class$="-card"]:not(.contact-form-panel)):focus-within {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  --tw-ring-color: transparent !important;
-  --tw-ring-shadow: 0 0 #0000 !important;
-  --tw-ring-offset-shadow: 0 0 #0000 !important;
-}
-
 /* Refined responsive alignment for service, solution and industry details */
 :is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid {
   align-items: start !important;
@@ -2220,6 +1877,18 @@ html body main.service-detail-page .sap-support-pillar-icon svg {
   stroke: #008fd3 !important;
   opacity: 1 !important;
 }
+/* Careers Page Highlight & Culture Cards Icon Visibility */
+html body .careers-highlight-card :is(.bg-white, [class*="bg-white"]) svg {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  opacity: 1 !important;
+}
+html body .careers-culture-card .careers-perk-icon-badge svg {
+  color: #38bdf8 !important;
+  stroke: #38bdf8 !important;
+  opacity: 1 !important;
+}
+
 /* Keep the SAP Support engagement badge readable on its white surface. */
 html body main.service-detail-page .sap-support-flexible-badge,
 html body main.service-detail-page .sap-support-flexible-badge svg {
@@ -2229,8 +1898,87 @@ html body main.service-detail-page .sap-support-flexible-badge svg {
   opacity: 1 !important;
 }
 
+/* Home Industry photographic cards with sharp flat corners & 100% circular icon badges */
+html body .home-industry-card,
+html body .home-industry-card > div,
+html body .home-industry-card img {
+  border-radius: 0 !important;
+}
+html body .home-industry-card .home-industry-icon-badge {
+  border-radius: 9999px !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel):not(.industry-definition-card), .why-choose-card, .home-industry-card, .solution-detail-card, .service-surface-card, .industry-detail-card)
+:is(svg, svg path, svg polyline, svg line, svg circle, svg rect):not(.youtube-play-badge *):not(.youtube-brand-icon *):not(.bg-white *):not(.bg-white):not([class*="bg-white"] *):not([class*="bg-white"]) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel), .why-choose-card, .home-industry-card, .solution-detail-card, .service-surface-card, .industry-detail-card)
+:is(.bg-white, [class*="bg-white"]) :is(svg, svg path, svg polyline, svg line, svg circle, svg rect):not(.youtube-play-badge *):not(.youtube-brand-icon *) {
+  color: #008fd3 !important;
+  stroke: #008fd3 !important;
+  opacity: 1 !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel), .why-choose-card, .home-industry-card, .solution-detail-card, .service-surface-card, .industry-detail-card)
+:is(.bg-white, [class*="bg-white"]) :is(p, span, div, small) {
+  color: #008fd3 !important;
+  -webkit-text-fill-color: #008fd3 !important;
+  opacity: 1 !important;
+}
+
 html body main.service-detail-page .sap-support-flexible-badge {
   background: #fff !important;
+}
+
+/* ──── Exclusively for White Background Sections: SAP Blue Cards with No Border & Crisp White Text/Icons/Links ──── */
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel):not(.industry-definition-card):not(.home-industry-card), .why-choose-card, .solution-detail-card, .service-surface-card, .industry-detail-card) {
+  background-color: #008fd3 !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: 0 10px 30px rgba(0, 143, 211, 0.22) !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel):not(.industry-definition-card):not(.home-industry-card), .why-choose-card, .solution-detail-card, .service-surface-card, .industry-detail-card):hover {
+  background-color: #007bb8 !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  box-shadow: 0 16px 40px rgba(0, 143, 211, 0.35) !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(article, .tri-glass-card, .glass-card, [class*="-card"]:not(.contact-form-panel):not(.industry-definition-card), .why-choose-card, .home-industry-card, .solution-detail-card, .service-surface-card, .industry-detail-card)
+:is(h1, h2, h3, h4, h5, h6, p, span, li, label, strong, a, button, small) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"])
+:is(svg, svg path, svg polyline, svg line, svg circle, svg rect) {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"]) .home-stats-band {
+  background-color: #008fd3 !important;
+  border: 0 !important;
+  box-shadow: 0 10px 30px rgba(0, 143, 211, 0.22) !important;
+}
+
+html body :is(section.bg-white, section[class*="bg-white"], main > section.bg-white, main > section[class*="bg-white"]) .home-stats-band :is(p, span, div) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
 }
 /* Admin-selectable section motion presets */
 section[data-admin-animation="off"] *, section[data-admin-animation="off"]::before, section[data-admin-animation="off"]::after { animation: none !important; transition: none !important; }
@@ -2252,29 +2000,8 @@ section[data-admin-layout="carousel"] > :not([aria-hidden]) { flex: 0 0 min(82vw
 .admin-created-section { position: relative; padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 5rem); background: #0b1d33; color: #fff; }
 @media (max-width: 767px) { section[data-admin-layout="grid"] > :not([aria-hidden]) { grid-template-columns: 1fr !important; } }
 
-/* Cohesive SAP styling for industry detail pages */
-.industry-detail-page .industry-definition-section { background: radial-gradient(circle at 85% 15%, rgba(10,110,209,.22), transparent 34%), linear-gradient(135deg, #0b1d33 0%, #062b4f 100%) !important; }
-
+/* Cohesive styling for industry detail pages */
 .industry-detail-page > section:first-child > img { filter: saturate(.92) contrast(1.05); }
-
-.industry-detail-page .industry-definition-card { background: #fff !important; color: #0b1d33 !important; }
-.industry-detail-page .industry-definition-card :is(h2,p,span,strong) { color: #0b1d33 !important; -webkit-text-fill-color: #0b1d33 !important; }
-.industry-detail-page .industry-definition-card .tri-overline { color: #0a6ed1 !important; -webkit-text-fill-color: #0a6ed1 !important; }
-.industry-detail-page .industry-definition-card .tri-gradient-text { background: linear-gradient(90deg,#0a6ed1,#008fd3) !important; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; -webkit-text-fill-color: transparent !important; }
-.industry-detail-page .industry-definition-card > div:last-child { border-color: #dbe7f3 !important; }
-.industry-detail-page .industry-definition-card svg { color: #0a6ed1 !important; }
-
-/* Unified dark SAP theme for industry pages */
-.industry-detail-page > section { background-color: #0b1d33 !important; color: #fff !important; }
-.industry-detail-page > section:nth-of-type(odd) { background-color: #050817 !important; }
-.industry-detail-page .industry-definition-card { background: linear-gradient(145deg, #0a6ed1, #07569f) !important; border-color: rgba(125,211,252,.48) !important; color: #fff !important; }
-.industry-detail-page .industry-definition-card :is(h2,p,span,strong) { color: #fff !important; -webkit-text-fill-color: #fff !important; }
-.industry-detail-page .industry-definition-card :is(.tri-overline,.tri-gradient-text) { background: none !important; color: #fff !important; -webkit-text-fill-color: #fff !important; }
-.industry-detail-page .industry-definition-card > div:last-child { border-color: rgba(255,255,255,.22) !important; }
-.industry-detail-page .industry-definition-card svg { color: #fff !important; }
-
-/* Industry definition section uses the same white surface as other light sections */
-.industry-detail-page .industry-definition-section { background: #ffffff !important; background-image: none !important; }
 
 /* Contact page form dropdown trigger & options styling - bold black text */
 .contact-custom-select-trigger,
@@ -2641,43 +2368,314 @@ html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies
 html body :is(.hero-fullvh, .industry-hero-section, .page-heading, .case-studies-hero, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .industry-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type)
 :is(.tri-btn-primary, .home-hero-primary, .tri-btn-ghost, .tri-btn-outline, .home-hero-secondary):is(:hover,:focus-visible) {
   z-index: 50 !important;
+}/* ──── ULTRA SPECIFICITY: All Mockups, Mockup Cards, Card Titles, and Sub-sections 100% Crisp White ──── */
+html body [data-mock],
+html body [data-mock] *,
+html body [data-mock] :is(h1, h2, h3, h4, h5, h6, p, span, div, strong, small, text, a, li, label, b, em),
+html body .service-col-image [data-mock] :is(h1, h2, h3, h4, h5, h6, p, span, div, strong, small, text, a, li, label, b, em),
+html body :is(.service-banner-row-light, .service-banner-row-dark, .service-row-light, .service-row-dark) .service-col-image [data-mock] :is(h1, h2, h3, h4, h5, h6, p, span, div, strong, small, text, a, li, label, b, em) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+/* SAP service cards on white sections */
+main.service-detail-page section.bg-white :is(div, article)[class*="border"]:is([class*="rounded-xl"], [class*="rounded-2xl"], [class*="rounded-3xl"]):is([class*="bg-white"], [class*="bg-slate-50"]) {
+  background: var(--sap-brand-blue) !important;
+  border-color: var(--sap-brand-blue-border) !important;
+  box-shadow: 0 20px 46px -30px rgba(10, 110, 209, 0.82), inset 0 0 0 1px rgba(255, 255, 255, 0.14) !important;
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease !important;
 }
 
-/* ──── Guarantee 100% Crisp White Text on Black Background Rows ──── */
-html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))),
-html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))) *,
-html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))) :is(h1, h2, h3, h4, h5, h6, p, span, li, label, strong, a, div, span) {
+main.service-detail-page section.bg-white :is(div, article)[class*="border"]:is([class*="rounded-xl"], [class*="rounded-2xl"], [class*="rounded-3xl"]):is([class*="bg-white"], [class*="bg-slate-50"]):hover {
+  background: var(--sap-brand-blue-hover) !important;
+  border-color: var(--sap-brand-blue-border) !important;
+}
+
+main.service-detail-page section.bg-white :is(div, article)[class*="border"]:is([class*="rounded-xl"], [class*="rounded-2xl"], [class*="rounded-3xl"]):is([class*="bg-white"], [class*="bg-slate-50"]) :is(h2, h3, h4, p, span, strong, small, li, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+/* Alternating solution-detail section backgrounds */
+main.solution-detail-page > section:nth-of-type(even) {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+main.solution-detail-page > section:nth-of-type(even) > [aria-hidden].absolute {
+  opacity: 0 !important;
+}
+
+main.solution-detail-page > section:nth-of-type(even) :is(h1, h2, h3, h4, h5, h6, p, span, strong, small, li):not(.solution-detail-card *):not(article *) {
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  opacity: 1 !important;
+}
+
+main.solution-detail-page > section:nth-of-type(odd):not(:first-of-type) {
+  background-color: #18263e !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+/* SAP cards in white solution sections */
+main.solution-detail-page > section:nth-of-type(even) :is(.solution-detail-card, article) {
+  background: var(--sap-brand-blue) !important;
+  background-image: none !important;
+  border: 1px solid var(--sap-brand-blue-border) !important;
+  box-shadow: 0 20px 46px -30px rgba(10, 110, 209, 0.82), inset 0 0 0 1px rgba(255, 255, 255, 0.14) !important;
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease !important;
+}
+
+main.solution-detail-page > section:nth-of-type(even) :is(.solution-detail-card, article):hover {
+  background: var(--sap-brand-blue-hover) !important;
+  border-color: #7dd3fc !important;
+}
+
+main.solution-detail-page > section:nth-of-type(even) :is(.solution-detail-card, article) :is(h1, h2, h3, h4, h5, h6, p, span, strong, small, li, a, button, svg) {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   opacity: 1 !important;
 }
 
-html body :is(.industry-banner-row-dark, .industry-row-dark, [class*="industry-row-dark"], [class*="industry-banner-row-dark"], [id^="ind-"]:is(:nth-of-type(even)), .service-banner-row-dark, .service-row-dark, [class*="service-row-dark"], [class*="service-banner-row-dark"], [id^="srv-"]:is(:nth-of-type(even))) :is(svg, svg path, svg polyline, svg line) {
+main.solution-detail-page > section:nth-of-type(even) .solution-detail-card .solution-detail-card,
+main.solution-detail-page > section:nth-of-type(even) article article {
+  background: #007bb8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.48) !important;
+  box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.24) !important;
+}
+
+main.solution-detail-page > section:nth-of-type(even) .solution-detail-card .solution-detail-card:hover,
+main.solution-detail-page > section:nth-of-type(even) article article:hover {
+  background: #006a9f !important;
+  border-color: #ffffff !important;
+}
+/* Match industry hero image treatment to service heroes */
+main.industry-detail-page .industry-hero-section {
+  background-color: #050817 !important;
+}
+
+main.industry-detail-page .industry-hero-section::before {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+}
+/* Visible borders for video library cards */
+html body main.public-alternating-page #explore-videos .video-library-card {
+  border: 1px solid #38bdf8 !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 10px 30px rgba(0, 143, 211, 0.18), inset 0 0 0 1px rgba(125, 211, 252, 0.16) !important;
+}
+
+html body main.public-alternating-page #explore-videos .video-library-card:hover {
+  border: 1px solid #0a6ed1 !important;
+  border-color: #0a6ed1 !important;
+  box-shadow: 0 16px 40px rgba(0, 143, 211, 0.3), inset 0 0 0 1px rgba(125, 211, 252, 0.24) !important;
+}
+/* SAP theme for industry definition cards */
+html body main.industry-detail-page .industry-definition-section .industry-definition-card {
+  background: var(--sap-brand-blue) !important;
+  background-image: none !important;
+  border: 1px solid var(--sap-brand-blue-border) !important;
   color: #ffffff !important;
-  stroke: #ffffff !important;
+  box-shadow: 0 20px 46px -30px rgba(10, 110, 209, 0.82), inset 0 0 0 1px rgba(255, 255, 255, 0.14) !important;
+  transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease !important;
+}
+
+html body main.industry-detail-page .industry-definition-section .industry-definition-card:hover {
+  background: var(--sap-brand-blue-hover) !important;
+  border-color: #7dd3fc !important;
+}
+
+html body main.industry-detail-page .industry-definition-section .industry-definition-card :is(h2, h3, h4, p, span, strong, small, li, div, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
   opacity: 1 !important;
 }
 
-/* ──── Guarantee Crisp Black Text on White Background Rows ──── */
-html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) h3 {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
-  opacity: 1 !important;
+html body main.industry-detail-page .industry-definition-section .industry-definition-card > div:last-child {
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(p, span, li, label, strong):not(.industry-number-badge):not(.industry-enable-heading):not(.industry-explore-btn):not(.service-number-badge):not(.service-enable-heading):not(.service-explore-btn) {
-  color: #1e293b !important;
-  -webkit-text-fill-color: #1e293b !important;
-  opacity: 1 !important;
+html body main.industry-detail-page .industry-definition-section .industry-definition-card .tri-overline::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.45), #ffffff) !important;
+}
+/* Site-wide mobile responsiveness hardening */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
-html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.industry-number-badge, .industry-enable-heading, .industry-explore-btn, .service-number-badge, .service-enable-heading, .service-explore-btn),
-html body :is(.industry-banner-row-light, .industry-row-light, .service-banner-row-light, .service-row-light) :is(.service-explore-btn svg) {
-  color: #008fd3 !important;
-  -webkit-text-fill-color: #008fd3 !important;
-  stroke: #008fd3 !important;
-  opacity: 1 !important;
+:is(main, header, footer, section, nav, aside),
+:is(main, header, footer, section, nav, aside) * {
+  box-sizing: border-box;
+  min-width: 0;
 }
 
+main :is(img, video, canvas, iframe) {
+  max-width: 100%;
+}
 
+main :is(h1, h2, h3, h4, h5, h6, p, li, a, button, label, span) {
+  overflow-wrap: anywhere;
+}
 
+main :is(input, select, textarea, button) {
+  max-width: 100%;
+}
+
+main :is(table, pre, code) {
+  max-width: 100%;
+}
+
+@media (max-width: 1023px) {
+  :is(.service-detail-page, .solution-detail-page, .industry-detail-page) .detail-split-grid,
+  :is(.service-detail-page, .solution-detail-page, .industry-detail-page) [class*="lg:grid-cols-"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .service-banner-inner {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .admin-root .admin-workspace {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --mobile-page-gutter: 1rem;
+  }
+
+  main > section {
+    scroll-margin-top: 5rem;
+  }
+
+  main :is(h1, .page-heading h1) {
+    max-width: 100%;
+    font-size: clamp(1.85rem, 9vw, 2.75rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  main h2 {
+    max-width: 100%;
+    font-size: clamp(1.55rem, 7vw, 2.2rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  main h3 {
+    line-height: 1.25 !important;
+  }
+
+  :is(.hero-fullvh, .industry-hero-section, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type, .site-landing-theme > section:first-of-type, .site-subpage-theme > section:first-of-type) {
+    min-height: min(760px, 100svh) !important;
+    height: auto !important;
+    padding-top: 7rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+
+  main :is(.detail-split-grid, [class*="grid-cols-"]) > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  main :is(.rounded-2xl, .rounded-3xl, [class*="rounded-[2"], [class*="rounded-[3"]) {
+    max-width: 100%;
+  }
+
+  main :is(.tri-btn, .home-hero-primary, .home-hero-secondary) {
+    min-height: 44px;
+    max-width: 100%;
+    white-space: normal !important;
+    text-align: center;
+  }
+
+  main :is(input, select, textarea) {
+    width: 100%;
+    min-height: 44px;
+    font-size: 16px !important;
+  }
+
+  main textarea {
+    min-height: 8rem;
+  }
+
+  main :is(.overflow-x-auto, [class*="overflow-x-auto"]) {
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  main table {
+    width: max-content;
+    min-width: 100%;
+  }
+
+  main pre {
+    overflow-x: auto;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  [role="dialog"] {
+    max-height: calc(100svh - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+    overflow-y: auto !important;
+  }
+
+  .contact-form-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  .admin-root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: clip;
+  }
+
+  .admin-root :is(.admin-topbar, .admin-top-actions, .admin-tool-tabs, .admin-actions, .admin-blog-action-buttons) {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .admin-root :is(input, select, textarea, button) {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  :is(.hero-fullvh, .industry-hero-section, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type) :is(.mt-8.flex, .mt-10.flex, [class*="flex-wrap"]) {
+    width: 100%;
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  :is(.hero-fullvh, .industry-hero-section, .service-detail-page > section:first-of-type, .solution-detail-page > section:first-of-type) :is(.tri-btn, a[class*="hero"], button[class*="hero"]) {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  main :is(.home-stats-band, .contact-info-grid) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  footer nav.grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .admin-root .admin-top-actions,
+  .admin-root .admin-actions {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .admin-root .admin-blog-action-buttons > * {
+    flex-basis: 100% !important;
+  }
+}

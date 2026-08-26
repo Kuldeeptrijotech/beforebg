@@ -88,7 +88,7 @@
     {
       "name": "Industries",
       "type": "dropdown",
-      "href": "/industry",
+      "href": "",
       "description": "Explore industry-focused solutions tailored to specific business challenges.\nWe help organizations modernize operations, reporting, compliance, and customer experiences.",
       "items": [
         {

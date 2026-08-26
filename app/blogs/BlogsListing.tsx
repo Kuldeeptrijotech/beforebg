@@ -51,7 +51,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Ideas that <span className="tri-gradient-text">move business</span> forward
+              Ideas that move business forward
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -93,20 +93,18 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
       {/* ──── Explore Blogs ──────────────────────────────────────────── */}
       <section
         id="explore-blogs"
-        className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5"
+        className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 border-b border-slate-200 text-slate-900"
       >
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-end">
             <div className="max-w-3xl">
-              <p className="tri-overline">
+              <p className="tri-overline text-black !text-black">
                 Explore
               </p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-                Insights shaped by <span className="tri-gradient-text">experience</span>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                Insights shaped by experience
               </h2>
-              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+              <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
                 Stay current with expert thinking, implementation guidance, and
                 technology updates from the Trijotech team.
               </p>
@@ -114,7 +112,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
             <label className="relative block">
               <span className="sr-only">Search blogs</span>
               <Search
-                className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white"
+                className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500"
                 aria-hidden="true"
               />
               <input
@@ -122,7 +120,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search articles..."
-                className="h-11 w-full rounded-full border border-white/10 bg-white/[0.05] pl-11 pr-4 text-xs sm:text-sm text-white placeholder:text-slate-400 shadow-sm outline-none transition focus:border-white focus:ring-2 focus:ring-[#ffffff]/20"
+                className="h-11 w-full rounded-full border border-slate-300 bg-white pl-11 pr-4 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 shadow-sm outline-none transition focus:border-[#008fd3] focus:ring-2 focus:ring-[#008fd3]/20"
               />
             </label>
           </div>
@@ -137,7 +135,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.55, delay: (i % 3) * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                  className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
+                  className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:border-[#008fd3] hover:shadow-[0_16px_36px_rgba(0,143,211,0.14)]"
                 >
                   <Link
                     href={blog.link}
@@ -150,29 +148,26 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                       className="object-cover scale-[1.04] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.12]"
                     />
-                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
-                    <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg">
+                    <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/70 px-2.5 py-1 text-[11px] font-semibold text-white shadow-lg">
                       <CalendarDays className="h-3 w-3 text-white" aria-hidden="true" />
                       {blog.date}
-                    </span>
-                    <span className="absolute right-3 top-3 flex h-8 w-8 translate-y-1 items-center justify-center rounded-full bg-white/90 text-slate-950 opacity-0 shadow-lg backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <ArrowRight className="h-3.5 w-3.5 -rotate-45" aria-hidden="true" />
                     </span>
                   </Link>
                   <div className="flex flex-1 flex-col px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
                     <Link href={blog.link} className="group/title">
-                      <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover/title:text-white">
+                      <h3 className="text-base sm:text-lg font-bold leading-snug text-slate-900 transition-colors group-hover/title:text-[#008fd3]">
                         {blog.title}
                       </h3>
                     </Link>
-                    <p className="mt-2 line-clamp-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">
+                    <p className="mt-2 line-clamp-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-600">
                       {blog.description}
                     </p>
-                    <div className="mt-4 h-px bg-white/10" />
+                    <div className="mt-4 h-px bg-slate-200" />
                     <div className="mt-auto pt-3.5">
                       <Link
                         href={blog.link}
-                        className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 hover:text-white"
+                        className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-bold text-[#008fd3] transition-all duration-200 hover:gap-2"
                       >
                         Read article <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                       </Link>
@@ -212,8 +207,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
               Let&apos;s work together
             </p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Ready to turn insight into{" "}
-              <span className="tri-gradient-text">measurable progress?</span>
+              Ready to turn insight into measurable progress?
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
               Connect with our team to explore the right SAP, data, and

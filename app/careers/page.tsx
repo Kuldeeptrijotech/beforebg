@@ -57,10 +57,7 @@ export default function CareersPage() {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Grow with a team that{" "}
-              <span className="tri-gradient-text">
-                values craft & outcome
-              </span>
+              Grow with a team that values craft & outcome
             </motion.h1>
 
             <motion.p
@@ -79,9 +76,7 @@ export default function CareersPage() {
       </section>
 
       {/* ──── Life at Trijotech ────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      <section id="culture" className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
             <div className="flex h-full flex-col gap-6">
@@ -92,18 +87,17 @@ export default function CareersPage() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 className="max-w-3xl"
               >
-                <p className="tri-overline">Life at Trijotech</p>
-                <h2 className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl lg:text-3xl">
-                  Create impact while{" "}
-                  <span className="tri-gradient-text">building your career</span>
+                <p className="tri-overline text-black !text-black">Life at Trijotech</p>
+                <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl lg:text-3xl">
+                  Create impact while building your career
                 </h2>
-                <p className="mt-2 text-xs leading-relaxed text-slate-300">
+                <p className="mt-2 text-xs leading-relaxed text-slate-600">
                   We value thoughtful problem-solving, continuous learning, and people who take responsibility for excellent outcomes.
                 </p>
               </motion.div>
 
               <div className="grid flex-1 gap-4 items-stretch">
-                {highlights.map(({ icon: Icon, title, text, color }, i) => (
+                {highlights.map(({ icon: Icon, title, text }, i) => (
                   <motion.article
                     key={title}
                     initial={{ opacity: 0, y: 32 }}
@@ -111,17 +105,17 @@ export default function CareersPage() {
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                    className="careers-highlight-card flex flex-1 flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
+                    className="careers-highlight-card flex flex-1 flex-col rounded-2xl border-0 bg-[#008fd3] p-4.5 sm:p-5 text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
                   >
-                    <motion.div
+                    <motion.span
                       whileHover={{ rotate: 10, scale: 1.12 }}
                       transition={{ duration: 0.25 }}
-                      className={`flex h-9 w-9 items-center justify-center rounded-xl ring-1 ${color}`}
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-md transition-all duration-300"
                     >
-                      <Icon className="h-4 w-4" />
-                    </motion.div>
-                    <h3 className="mt-3 text-sm sm:text-base font-bold text-white">{title}</h3>
-                    <p className="mt-1.5 text-xs leading-relaxed text-slate-300">{text}</p>
+                      <Icon className="h-5 w-5 text-[#008fd3]" strokeWidth={2.2} />
+                    </motion.span>
+                    <h3 className="mt-3.5 text-base sm:text-lg font-bold text-white">{title}</h3>
+                    <p className="mt-1 text-xs sm:text-sm leading-relaxed text-white/90">{text}</p>
                   </motion.article>
                 ))}
               </div>
@@ -157,7 +151,7 @@ export default function CareersPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="mb-8 text-center"
           >
-            <p className="tri-overline">Join our team</p>
+            <p className="tri-overline text-[#38bdf8]">Join our team</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Tell us where you want to grow
             </h2>

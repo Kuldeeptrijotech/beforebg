@@ -46,10 +46,7 @@ export default function VideosPage() {
               transition={{ duration: 0.65, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Explore videos from{" "}
-              <span className="tri-gradient-text">
-                our practitioners
-              </span>
+              Explore videos from our practitioners
             </motion.h1>
 
             <motion.p
@@ -82,10 +79,11 @@ export default function VideosPage() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 z-30 h-px bg-white/[0.08]" />
       </section>
 
-      {/* ──── Video Library ────────────────────────────────────────────── */}
-      <section id="explore-videos" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      {/* ──── Explore Videos ──────────────────────────────────────────── */}
+      <section
+        id="explore-videos"
+        className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 border-b border-slate-200 text-slate-900"
+      >
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -94,14 +92,13 @@ export default function VideosPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline">
+            <p className="tri-overline text-black !text-black">
               Watch and learn
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Insights from the{" "}
-              <span className="tri-gradient-text">Trijotech team</span>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              Insights from the Trijotech team
             </h2>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
               Explore concise, practical videos designed to turn complex enterprise technology topics into clear business direction.
             </p>
           </motion.div>
@@ -128,7 +125,7 @@ export default function VideosPage() {
                     href={youtubeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="video-library-card group flex h-full min-h-[410px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl sm:min-h-[440px] transition-all duration-300 hover:border-white/50 hover:bg-white/[0.07]"
+                    className="video-library-card group flex h-full min-h-[410px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] sm:min-h-[440px] transition-all duration-300 hover:border-[#008fd3] hover:shadow-[0_16px_36px_rgba(0,143,211,0.14)]"
                   >
                     <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-slate-900">
                       {thumbnail ? (
@@ -146,21 +143,21 @@ export default function VideosPage() {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-xl shadow-[rgba(255, 255, 255,0.45)] transition-transform duration-300 group-hover:scale-115">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#008fd3] text-white shadow-xl transition-transform duration-300 group-hover:scale-115">
                           <Play className="ml-1 h-5 w-5 fill-current" />
                         </span>
                       </div>
                     </div>
 
                     <div className="flex flex-1 flex-col p-5 sm:p-6">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#008fd3]">
                         Trijotech Video
                       </p>
-                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-white">
+                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-slate-900 transition-colors group-hover:text-[#008fd3]">
                         {video.title}
                       </h3>
                       <div className="mt-auto pt-4">
-                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 group-hover:gap-2.5 group-hover:text-white">
+                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#008fd3] transition-all duration-200 group-hover:gap-2.5">
                           Watch video <ExternalLink className="h-3.5 w-3.5" />
                         </span>
                       </div>

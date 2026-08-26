@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   // Next.js expects hostnames here (without protocol or port).
   allowedDevOrigins: ["192.168.1.49"],
   images: {
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     minimumCacheTTL: 86400,
     remotePatterns: [
       {

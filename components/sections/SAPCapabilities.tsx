@@ -1,7 +1,6 @@
 "use client";
 
 import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
 import GradientButton from "@/components/ui/GradientButton";
 import SAPEcosystem from "@/components/three/SAPEcosystem";
 import { Reveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
@@ -33,10 +32,9 @@ export default function SAPCapabilities() {
       <Container className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
           <Reveal>
-            <span className="tri-overline">SAP Ecosystem</span>
+            <span className="tri-overline text-[#38bdf8]">SAP Ecosystem</span>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              One connected ecosystem across the{" "}
-              <span className="tri-gradient-text">SAP landscape.</span>
+              One connected ecosystem across the SAP landscape.
             </h2>
             <p className="mt-2.5 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
               Trijotech works across the SAP stack — core ERP, analytics, finance, platform services, and managed support — so your systems stay connected and your teams keep full visibility.

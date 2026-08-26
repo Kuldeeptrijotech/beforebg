@@ -48,7 +48,7 @@ export default function SolutionsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-3xl text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl"
             >
-              Purpose-built platforms for <span className="tri-gradient-text">modern SAP enterprises</span>
+              Purpose-built platforms for modern SAP enterprises
             </motion.h1>
 
             <motion.p
@@ -89,9 +89,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* ──── Solutions Grid ──────────────────────────────────────── */}
-      <section id="solutions-list" className="relative isolate overflow-hidden bg-[#0b1d33] py-12 sm:py-14 lg:py-16 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      <section id="solutions-list" className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -100,12 +98,11 @@ export default function SolutionsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline">Capabilities</p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Enterprise solutions engineered for{" "}
-              <span className="tri-gradient-text">scale</span>
+            <p className="tri-overline text-black !text-black">Capabilities</p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              Enterprise solutions engineered for scale
             </h2>
-            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">
               Each product is built to address specific functional gaps in standard enterprise software, delivering rapid time-to-value with minimal disruption.
             </p>
           </motion.div>
@@ -114,7 +111,7 @@ export default function SolutionsPage() {
             {solutions.map((solution) => (
               <article
                 key={solution.slug}
-                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl transition-all duration-300 hover:border-white/60 hover:bg-white/[0.07] hover:shadow-[0_20px_50px_rgba(255, 255, 255,0.22)]"
+                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
               >
                 <Link href={solution.href} className="no-underline relative block h-[180px] w-full shrink-0 overflow-hidden bg-slate-900">
                   {solution.cardImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
@@ -132,26 +129,25 @@ export default function SolutionsPage() {
                       className="object-cover origin-center"
                     />
                   )}
-                  <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.98)] via-[rgba(14,26,44,0.2)] to-transparent" />
-                  <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
                 </Link>
                 <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-5">
-                  <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-white">{solution.title}</h3>
-                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{solution.shortDescription}</p>
-                  <ul className="mt-3.5 space-y-2 border-t border-white/10 pt-3">
+                  <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors">{solution.title}</h3>
+                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-white/90">{solution.shortDescription}</p>
+                  <ul className="mt-3.5 space-y-2 border-t border-white/20 pt-3">
                     {solution.featureCards.slice(0, 4).map((item) => (
-                      <li key={item.title} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-slate-200">
-                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 shadow-[0_0_8px_rgba(59,130,246,0.25)]">
-                          <Check className="h-2.5 w-2.5 stroke-[3] text-blue-300" />
+                      <li key={item.title} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-white">
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
+                          <Check className="h-2.5 w-2.5 stroke-[3] text-[#008fd3]" />
                         </span>
-                        <span>{item.title}</span>
+                        <span className="text-white/95">{item.title}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="mt-auto pt-4">
                     <Link
                       href={solution.href}
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 group-hover:gap-2.5 group-hover:text-white"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 group-hover:gap-2.5"
                     >
                       Explore Solution <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -180,8 +176,7 @@ export default function SolutionsPage() {
           <div className="relative mx-auto max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-[0.22em] text-white">Trijotech</p>
             <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              See which solution fits{" "}
-              <span className="tri-gradient-text">your landscape</span>
+              See which solution fits your landscape
             </h2>
             <p className="mt-4 text-sm text-slate-300 sm:text-base">
               Book a technical demonstration tailored to your enterprise processes and data structure.

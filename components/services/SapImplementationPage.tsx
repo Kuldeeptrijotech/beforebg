@@ -59,19 +59,15 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
       />
 
       {/* INTRODUCTION + HERO TAIL */}
-      <section className="relative bg-[#162032]">
-        <div aria-hidden className="absolute inset-x-0 top-0 flex justify-center">
-          <div className="h-16 w-px bg-gradient-to-b from-[#ffffff]/70 to-transparent" />
-        </div>
-        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 pb-20 pt-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-12">
+      <section className="relative bg-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
+        <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
-              <SectionLabel>Our approach</SectionLabel>
-              <h2 className={`mt-2 text-[clamp(1.4rem,2.6vw,2.1rem)] font-bold leading-[1.16] tracking-[-0.02em] text-white`}>
-                Strategy, technology and data —{" "}
-                <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">one transformation</span>
+              <SectionLabel dark={false}>Our approach</SectionLabel>
+              <h2 className={`mt-2 text-[clamp(1.4rem,2.6vw,2.1rem)] font-bold leading-[1.16] tracking-[-0.02em] text-slate-900`}>
+                Strategy, technology and data — one transformation
               </h2>
-              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
+              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
                 Whether you are starting fresh with SAP or modernizing an established landscape, we combine strategy,
                 technology, and industry knowledge to create measurable outcomes — and an enterprise ready for what
                 comes next.
@@ -80,11 +76,13 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             <StaggerReveal className="mt-10 grid max-w-xl gap-3" stagger={0.08}>
               {impacts.slice(0, 2).map((i) => (
                 <StaggerRevealItem key={i.title} variant="fadeIn">
-                  <div className="service-surface-card flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-white" />
+                  <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
+                      <CheckCircle2 className="h-4.5 w-4.5 text-[#008fd3]" />
+                    </span>
                     <div>
                       <p className="font-bold text-white">{i.title}</p>
-                      <p className="mt-0.5 text-sm leading-6 text-slate-300">{i.description}</p>
+                      <p className="mt-0.5 text-sm leading-6 text-white/90">{i.description}</p>
                     </div>
                   </div>
                 </StaggerRevealItem>
@@ -94,60 +92,61 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
 
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
-              <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
+              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
                 <Metric to={9} suffix="+" label="Years of SAP expertise" accent="text-white" />
-              </Glass>
+              </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
-              <Glass variant="frosted" tone="cyan" className="h-full p-5 sm:p-6">
+              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
                 <Metric to={100} suffix="+" label="Projects delivered" accent="text-white" />
-              </Glass>
+              </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
-              <Glass variant="frosted" tone="green" className="h-full p-5 sm:p-6">
+              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
                 <Metric to={100} suffix="%" label="Go-live success rate" accent="text-white" />
-              </Glass>
+              </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
-              <Glass variant="frosted" tone="amber" className="h-full p-5 sm:p-6">
+              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
                 <Metric to={30} suffix="+" label="Founder industry expertise" accent="text-white" />
-              </Glass>
+              </div>
             </Reveal>
           </div>
         </div>
       </section>
 
       {/* JOURNEY */}
-      <section className="relative bg-gradient-to-b from-[#162032] to-[#121927] py-20 sm:py-24">
-        <Container>
+      <section className="relative bg-[#050817] text-white py-20 sm:py-24 border-b border-white/10">
+        <div aria-hidden className="absolute inset-0 tri-mesh opacity-50" />
+        <Container className="relative">
           <Reveal className="max-w-2xl">
-            <SectionLabel>Delivery journey</SectionLabel>
+            <SectionLabel dark={true}>Delivery journey</SectionLabel>
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-              From blueprint to <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">go-live</span>
+              From blueprint to go-live
             </h2>
           </Reveal>
 
           <div className="relative mt-14">
-            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/70 via-[#ffffff]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r" />
-            <div className="grid gap-6 lg:grid-cols-5">
+            <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#38bdf8]/70 via-[#38bdf8]/50 to-transparent lg:left-0 lg:top-8 lg:h-px lg:w-full lg:bg-gradient-to-r z-0" />
+            <div className="grid gap-6 lg:grid-cols-5 relative z-10">
               {STEPS.map((s, i) => {
                 const Icon = s.icon;
                 return (
                   <StaggerRevealItem key={s.n} variant="scale" className="relative pl-16 lg:pl-0 lg:pt-10">
                     <span
                       aria-hidden
-                      className="absolute left-6 top-0 flex -translate-x-1/2 items-center justify-center lg:left-0 lg:top-8 lg:-translate-y-1/2 lg:translate-x-0"
+                      className="absolute left-6 top-0 flex -translate-x-1/2 items-center justify-center lg:left-0 lg:top-8 lg:-translate-y-1/2 lg:translate-x-0 z-30"
                     >
                       <motion.span
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#121927] text-white shadow-lg shadow-emerald-950/10"
+                        className="relative z-30 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#121927] text-white shadow-lg shadow-cyan-950/10"
                         animate={{ scale: [1, 1.12, 1] }}
                         transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
                       >
-                        <Icon className="h-5 w-5" strokeWidth={1.9} />
+                        <Icon className="h-5 w-5 text-[#38bdf8]" strokeWidth={1.9} />
                       </motion.span>
                     </span>
-                    <Glass variant="frosted" tone="green" className="p-5">
-                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">{s.n}</p>
+                    <Glass variant="frosted" tone="cyan" className="relative z-10 p-5">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#38bdf8]">{s.n}</p>
                       <h3 className="mt-2 text-lg font-bold text-white">{s.label}</h3>
                       <p className="mt-2 text-sm leading-6 text-slate-300">
                         {i === 0 && "Prioritize goals, define scope, and build the transformation roadmap."}
@@ -166,17 +165,17 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
       </section>
 
       {/* CAPABILITIES */}
-      <section className="relative bg-[#162032] py-20 sm:py-24">
+      <section className="relative bg-white text-slate-900 py-20 sm:py-24 border-b border-slate-200">
         <Container>
           <div className="detail-split-grid grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
             <Reveal>
-              <SectionLabel>What we deliver</SectionLabel>
-              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-                Capabilities built around <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">your priorities</span>
+              <SectionLabel dark={false}>What we deliver</SectionLabel>
+              <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+                Capabilities built around your priorities
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="max-w-xl text-lg leading-8 text-slate-300">
+              <p className="max-w-xl text-lg leading-8 text-slate-600">
                 Flexible capabilities that connect strategy, technology, data, and day-to-day operations — delivered as
                 one coherent program.
               </p>
@@ -187,15 +186,15 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             {offerings.map((o, i) => (
               <StaggerRevealItem key={o.title} variant="scale">
                 <TiltCard max={6} scale={1.02} className="h-full">
-                  <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
+                  <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-[11px] font-bold text-white">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
                     </div>
-                    <p className="mt-4 leading-7 text-white/70">{o.description}</p>
-                  </Glass>
+                    <p className="mt-4 leading-7 text-white/90">{o.description}</p>
+                  </div>
                 </TiltCard>
               </StaggerRevealItem>
             ))}
@@ -203,15 +202,14 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
         </Container>
       </section>
 
-      {/* SAP ARCHITECTURE (DARK / GLOWING GREY - HEX GRID PRESERVED) */}
-      <section className="relative overflow-hidden bg-[#121927] py-20 text-white sm:py-28">
+      {/* SAP ARCHITECTURE (DARK) */}
+      <section className="relative overflow-hidden bg-[#050817] py-20 text-white sm:py-28 border-b border-white/10">
         <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-60" />
-        <div aria-hidden className="absolute inset-0 bg-[radial-gradient(50%_60%_at_85%_10%,rgba(255, 255, 255,0.2),transparent_60%)]" />
         <Container className="relative">
           <Reveal className="max-w-2xl">
-            <SectionLabel dark>How it comes together</SectionLabel>
-            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl">
-              A clean core with <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">flexible edges</span>
+            <SectionLabel dark={true}>How it comes together</SectionLabel>
+            <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-5xl text-white">
+              A clean core with flexible edges
             </h2>
             <p className="mt-5 text-lg leading-8 text-slate-300">
               We keep your SAP core standard and upgrade-ready, moving everything extensible to the platform layer
@@ -221,7 +219,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
 
           <div className="detail-split-grid mt-14 grid gap-10 lg:grid-cols-2 lg:items-center">
             <div className="relative">
-              <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#ffffff]/60 to-[#ffffff]/20" />
+              <div aria-hidden className="absolute left-6 top-0 h-full w-px bg-gradient-to-b from-[#38bdf8]/60 to-[#38bdf8]/20" />
               {STACK.map((s, i) => {
                 const Icon = s.icon;
                 return (
@@ -244,13 +242,13 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               <Reveal delay={0.15}>
                 <div className="service-surface-card relative overflow-hidden rounded-3xl border border-white/10 bg-[#162032]/90 p-8 backdrop-blur-md">
                   <div className="flex items-center justify-between">
-                     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white">Clean core model</p>
+                     <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#38bdf8]">Clean core model</p>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-white/30 px-2.5 py-1 text-[10px] font-bold text-white">
                       <Lock className="h-3 w-3" /> Standard & stable
                     </span>
                   </div>
                   <div className="mt-8 flex justify-center">
-                    <div className="flex h-36 w-36 items-center justify-center text-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#22d3ee,#2563eb)", boxShadow: "0 0 60px rgba(255, 255, 255,0.35)" }}>
+                    <div className="flex h-36 w-36 items-center justify-center text-center" style={{ clipPath: HEX_CLIP, background: "linear-gradient(160deg,#22d3ee,#2563eb)", boxShadow: "0 0 60px rgba(34,211,238,0.35)" }}>
                       <div>
                         <p className="text-sm font-extrabold text-white">SAP Core</p>
                         <p className="mt-1 px-4 text-[10px] leading-4 text-white/75">S/4HANA standard, minimal custom code</p>
@@ -275,37 +273,37 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
       </section>
 
       {/* WHY TRIJOTECH */}
-      <section className="relative bg-[#162032] py-20 sm:py-24">
+      <section className="relative bg-white text-slate-900 py-20 sm:py-24 border-b border-slate-200">
         <Container>
           <div className="detail-split-grid grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
               <Reveal>
-                <SectionLabel>Why Trijotech</SectionLabel>
-                <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
-                  Outcomes you can <span className="bg-gradient-to-r from-[#ffffff] to-[#ffffff] bg-clip-text text-transparent">build on</span>
+                <SectionLabel dark={false}>Why Trijotech</SectionLabel>
+                <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
+                  Outcomes you can build on
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
-                <div className="service-surface-card mt-8 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl text-white" style={{ background: "linear-gradient(160deg,#22d3ee,#2563eb)" }}>
+                <div className="mt-8 flex items-center gap-4 h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] p-5">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-white">
                     <Zap className="h-6 w-6" />
                   </span>
                   <div>
                     <p className="text-2xl font-extrabold text-white">Practical delivery</p>
-                    <p className="text-sm text-slate-400">Structured governance, testing, migration, and adoption throughout.</p>
+                    <p className="text-sm text-white/90">Structured governance, testing, migration, and adoption throughout.</p>
                   </div>
                 </div>
               </Reveal>
             </div>
 
             <StaggerReveal className="grid gap-5 sm:grid-cols-2" stagger={0.1}>
-              {impacts.map((i, idx) => (
+              {impacts.map((i) => (
                 <StaggerRevealItem key={i.title} variant="slideRight">
-                  <Glass variant="frosted" tone={idx % 2 ? "cyan" : "amber"} className="h-full p-6">
+                  <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] p-6">
                     <CheckCircle2 className="h-6 w-6 text-white" />
                     <h3 className="mt-4 text-xl font-bold text-white">{i.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">{i.description}</p>
-                  </Glass>
+                    <p className="mt-2 text-sm leading-6 text-white/90">{i.description}</p>
+                  </div>
                 </StaggerRevealItem>
               ))}
             </StaggerReveal>

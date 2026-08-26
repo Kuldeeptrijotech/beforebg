@@ -1,4 +1,4 @@
-﻿import Container from "@/components/ui/Container";
+import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import GradientButton from "@/components/ui/GradientButton";
 import SpotlightCard from "@/components/ui/SpotlightCard";
@@ -26,12 +26,7 @@ export default function ProductsPreview() {
             <SectionHeading
               eyebrow="Our Solutions"
               dark
-              title={
-                <>
-                  Practical SAP products built for{" "}
-                  <span className="tri-gradient-text">enterprise teams.</span>
-                </>
-              }
+              title="Practical SAP products built for enterprise teams."
               description="Explore Trijotech solutions designed to simplify operations, improve reporting, and support business-critical SAP workflows."
             />
           </StaggerRevealItem>
@@ -62,7 +57,7 @@ export default function ProductsPreview() {
                       <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.28),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <h3 className="flex items-center gap-2.5 text-base sm:text-lg font-bold leading-snug text-white transition-colors group-hover:text-white">
+                      <h3 className="flex items-center gap-2.5 text-base sm:text-lg font-bold leading-snug text-white">
                         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-white shadow-md">
                           <Icon className="h-4 w-4" strokeWidth={1.8} />
                         </span>
@@ -70,7 +65,7 @@ export default function ProductsPreview() {
                       </h3>
                       <p className="mt-2.5 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{product.description}</p>
                       <div className="mt-auto pt-4">
-                        <span className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-200 group-hover:gap-2.5 group-hover:text-white">
+                        <span className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-200 group-hover:gap-2.5">
                           Explore product <ArrowRight className="h-3.5 w-3.5" />
                         </span>
                       </div>

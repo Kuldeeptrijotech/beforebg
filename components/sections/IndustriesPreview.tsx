@@ -2,73 +2,98 @@ import Container from "@/components/ui/Container";
 import GradientButton from "@/components/ui/GradientButton";
 import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { industries } from "@/lib/site-data";
-import { ArrowRight, Factory, Pill, Radio, Wallet } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  Factory,
+  Flame,
+  FlaskConical,
+  Fuel,
+  HeartPulse,
+  Layers,
+  Pill,
+  Radio,
+  ShoppingCart,
+  Wallet,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const industryIcons = [Pill, Factory, Wallet, Radio];
+const industryIconMap: Record<string, any> = {
+  "Retail & Supply Chain": ShoppingCart,
+  "Life Sciences & Pharma": FlaskConical,
+  "Manufacturing & Industrial": Factory,
+  "Banking & Fintech": Wallet,
+  "Oil & Gas": Fuel,
+  "Healthcare": HeartPulse,
+  "Telecom & Media": Radio,
+  "Steel Manufacturing": Layers,
+};
 
 export default function IndustriesPreview() {
   const visibleIndustries = industries.filter((industry) => industry.showOnHome);
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 text-white border-t border-white/10">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-      <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-[rgba(255, 255, 255,0.45)] to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[rgba(255, 255, 255,0.15)] blur-[80px]" />
-      <div aria-hidden className="pointer-events-none absolute -left-32 bottom-0 h-[400px] w-[400px] rounded-full bg-[rgba(255, 255, 255,0.12)] blur-[70px]" />
-
+    <section className="relative isolate overflow-hidden bg-white py-5 sm:py-6 lg:py-8 text-slate-900 border-t border-slate-200">
       <Container className="relative">
-        <StaggerReveal className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <StaggerReveal className="flex flex-col gap-2.5 md:flex-row md:items-end md:justify-between">
           <StaggerRevealItem className="max-w-2xl">
-            <span className="tri-overline">Industries</span>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              SAP solutions shaped around{" "}
-              <span className="tri-gradient-text">industry needs.</span>
+            <span className="tri-overline text-black">Industries</span>
+            <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              SAP solutions shaped around industry needs.
             </h2>
-            <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
+            <p className="mt-1 max-w-xl text-xs leading-relaxed text-slate-600 sm:text-sm">
               We help organizations modernize operations, reporting, planning, and decision-making across industries with practical SAP expertise.
             </p>
           </StaggerRevealItem>
           <StaggerRevealItem>
-            <GradientButton href="/industry" variant="outline" size="md">
-              View all industries <ArrowRight className="h-4 w-4" />
+            <GradientButton href="/industries/retail-supply-chain" variant="outline" size="sm">
+              Explore All Industries <ArrowRight className="h-3.5 w-3.5" />
             </GradientButton>
           </StaggerRevealItem>
         </StaggerReveal>
 
-        <StaggerReveal className="mt-7 sm:mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 items-stretch" stagger={0.06}>
-          {visibleIndustries.map((industry, i) => {
-            const Icon = industryIcons[i % industryIcons.length];
+        <StaggerReveal className="mt-4 sm:mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[3px] items-stretch" stagger={0.03}>
+          {visibleIndustries.map((industry) => {
+            const Icon = industryIconMap[industry.title] || Building2;
             return (
               <StaggerRevealItem key={industry.title} className="h-full">
                 <Link
                   href={industry.href}
-                  className="home-industry-card tri-focus group relative block h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-all duration-300 hover:border-white/60 hover:shadow-[0_16px_40px_rgba(255, 255, 255,0.2)]"
+                  className="home-industry-card tri-focus group relative block h-full overflow-hidden rounded-none border border-slate-200/80 bg-slate-900 shadow-xs transition-all duration-300 hover:border-[#008fd3] hover:shadow-md active:scale-[0.99]"
                 >
-                  <div className="relative aspect-[3/4] w-full h-full overflow-hidden flex flex-col justify-end">
+                  <div className="relative aspect-[16/10] sm:aspect-[4/5] lg:aspect-[3/4] w-full h-full min-h-[220px] sm:min-h-[240px] lg:min-h-[255px] overflow-hidden flex flex-col justify-between p-3.5 sm:p-4 rounded-none">
+                    {/* Full bleed industry photographic background */}
                     <Image
                       src={industry.image}
                       alt={industry.imageAlt}
                       fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover scale-[1.02]"
+                      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-108 rounded-none"
                     />
-                    <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,rgba(3,7,19,0.15),rgba(3,7,19,0.92))]" />
-                    <div aria-hidden className="absolute inset-0 bg-[linear-gradient(160deg,rgba(255, 255, 255,0.45),transparent_52%)] opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100" />
+                    
+                    {/* Subtle contrast gradient for text clarity without obscuring imagery */}
+                    <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 rounded-none" />
+                    <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,143,211,0.25),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-none" />
 
-                    <div className="relative z-10 p-4 sm:p-5 flex flex-col h-full justify-end">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08] text-white backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] group-hover:border-transparent">
-                        <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
+                    {/* Top row: 100% circular icon badge */}
+                    <div className="relative z-10 flex items-center justify-between">
+                      <span className="home-industry-icon-badge flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/95 text-[#008fd3] shadow-xs backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
+                        <Icon className="h-4 w-4 text-[#008fd3]" strokeWidth={2.2} />
                       </span>
-                      <h3 className="mt-3 text-base sm:text-lg font-bold text-white group-hover:text-white transition-colors">{industry.title}</h3>
-                      <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-300 opacity-90 transition-all duration-300 group-hover:opacity-100">
+                    </div>
+
+                    {/* Bottom row: Industry Title, Description & Action */}
+                    <div className="relative z-10 mt-auto">
+                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug drop-shadow-md transition-colors">
+                        {industry.title}
+                      </h3>
+                      <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-200/95 opacity-90 drop-shadow transition-opacity duration-300 group-hover:opacity-100">
                         {industry.description}
                       </p>
-                      <div className="mt-3">
-                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white transition-all duration-300 group-hover:gap-2">
-                          Explore industry <span aria-hidden="true">→</span>
+                      <div className="mt-2">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-white transition-all duration-300 group-hover:gap-2">
+                          Explore industry <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>
                     </div>
