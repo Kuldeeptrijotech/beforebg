@@ -20,20 +20,23 @@ export default function VideosPage() {
     <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* ──── Hero ────────────────────────────────────────────────────────────── */}
       <section className="relative isolate min-h-[calc(100svh-4.5rem)] overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-12">
+        {/* Mesh background */}
+        <div aria-hidden className="absolute inset-0 -z-40 tri-mesh" />
+        <div aria-hidden className="absolute inset-0 -z-30 tri-hex-grid opacity-40" />
+
+        {/* Hero image */}
         <Image
           src="/assets/heroes/videos.png"
-          alt="Trijotech Videos and Demos"
+          alt="Trijotech Practitioner Videos and Technical Demos"
           fill
           priority
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,rgba(5,8,23,0.85)_0%,rgba(5,8,23,0.45)_50%,rgba(5,8,23,0.15)_100%)]" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
-        {/* Floating orbs */}
-        <div className="pointer-events-none absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-1/3 left-1/3 h-56 w-56 rounded-full bg-indigo-400/8 blur-3xl" />
+        {/* Gradient overlays — clean side-only text protection */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(105deg,rgba(3,7,19,0.85)_0%,rgba(3,7,19,0.45)_50%,rgba(3,7,19,0.15)_100%)]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#050817] to-transparent" />
 
         <div className="mx-auto flex min-h-[calc(100svh-9.5rem)] w-full max-w-7xl items-center px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="max-w-3xl">
@@ -62,10 +65,12 @@ export default function VideosPage() {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.5 }}
+              className="mt-9 flex flex-wrap gap-4 relative z-10"
             >
               <a
                 href="#explore-videos"
-                className="tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 Explore videos <ArrowRight className="h-4 w-4" />
               </a>

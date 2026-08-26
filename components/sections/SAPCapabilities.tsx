@@ -26,9 +26,9 @@ const capabilities = [
 
 export default function SAPCapabilities() {
   return (
-    <section className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-black border-t border-slate-200">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-0" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-0" />
+    <section className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 text-white border-t border-white/10">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-60" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-grid-bg opacity-25" />
 
       <Container className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
@@ -58,7 +58,7 @@ export default function SAPCapabilities() {
 
           <Reveal delay={0.15}>
             <div className="mt-6">
-              <GradientButton href="/services" size="md">
+              <GradientButton href="/services" variant="outline" size="md">
                 Explore our services <ArrowRight className="h-4 w-4" />
               </GradientButton>
             </div>

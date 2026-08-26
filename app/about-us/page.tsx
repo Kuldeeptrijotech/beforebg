@@ -108,17 +108,19 @@ export default function AboutUsPage() {
             </p>
 
             <div
-              className="mt-9 flex flex-wrap gap-4"
+              className="mt-9 flex flex-wrap gap-4 relative z-10"
             >
               <a
                 href="#who-we-are"
-                className="inline-flex tri-btn tri-btn-primary tri-focus px-7 py-4 text-sm font-semibold"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 Discover our story <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white transition-all duration-300 hover:bg-white/20"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 Talk to our team
               </Link>

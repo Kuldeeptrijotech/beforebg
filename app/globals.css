@@ -1126,15 +1126,15 @@ main.public-alternating-page > section:first-of-type span.inline-flex.rounded-fu
 }
 
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary):not(.home-hero-primary):not(.home-hero-secondary):hover {
-  background: var(--color-cyan-200) !important;
-  border-color: var(--color-cyan-200) !important;
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
+  background: #0284c7 !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-primary):not(.home-hero-primary):not(.home-hero-secondary):hover * {
-  color: #000000 !important;
-  -webkit-text-fill-color: #000000 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:nth-of-type(odd) :is(.tri-btn-ghost, .tri-btn-outline),
@@ -1145,12 +1145,40 @@ main.public-alternating-page > section:first-of-type span.inline-flex.rounded-fu
   -webkit-text-fill-color: #ffffff !important;
 }
 
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:nth-of-type(odd) :is(.tri-btn-ghost, .tri-btn-outline):hover,
+.zip-theme > section:nth-of-type(odd) :is(.tri-btn-ghost, .tri-btn-outline):hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:nth-of-type(odd) :is(.tri-btn-ghost, .tri-btn-outline):hover *,
+.zip-theme > section:nth-of-type(odd) :is(.tri-btn-ghost, .tri-btn-outline):hover * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:nth-of-type(even) :is(.tri-btn-ghost, .tri-btn-outline),
 .zip-theme > section:nth-of-type(even) :is(.tri-btn-ghost, .tri-btn-outline) {
   background: #ffffff !important;
   border-color: #0e7490 !important;
   color: #000000 !important;
   -webkit-text-fill-color: #000000 !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:nth-of-type(even) :is(.tri-btn-ghost, .tri-btn-outline):hover,
+.zip-theme > section:nth-of-type(even) :is(.tri-btn-ghost, .tri-btn-outline):hover {
+  background: #0e7490 !important;
+  border-color: #0e7490 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+:is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) section:nth-of-type(even) :is(.tri-btn-ghost, .tri-btn-outline):hover *,
+.zip-theme > section:nth-of-type(even) :is(.tri-btn-ghost, .tri-btn-outline):hover * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 :is(.zip-theme, .zip-inner-theme, .site-landing-theme, .site-subpage-theme, main.public-alternating-page) :is(.tri-btn-ghost, .tri-btn-outline) * {

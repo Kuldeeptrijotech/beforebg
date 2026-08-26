@@ -3,7 +3,7 @@
 import Image from "next/image";
 import OptimizedVideo from "@/components/ui/OptimizedVideo";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, Zap } from "lucide-react";
+import { ArrowRight, Check, Zap } from "lucide-react";
 import OtherSolutions from "@/components/solutions/OtherSolutions";
 import type { SolutionItem } from "@/lib/solutions-data";
 import { motion, useReducedMotion } from "framer-motion";

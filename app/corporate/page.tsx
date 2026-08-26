@@ -97,14 +97,14 @@ export default function CorporatePage() {
             >
               <a
                 href="#explore"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-3.5 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
                 style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 Explore Corporate <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/about-us"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-3.5 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
                 style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
               >
                 About Trijotech

@@ -20,8 +20,8 @@ const serviceBanners: ServiceBannerItem[] = [
     slug: "sap-consulting",
     rowId: "srv-consulting",
     description: "End-to-end SAP transformation and consulting that aligns consolidation, planning, forecasting, analytics, and profitability processes with business goals.",
-    image: "/static/Service_Consulting.jpg",
-    imageAlt: "SAP enterprise strategy consulting session in modern glass executive boardroom",
+    image: "/assets/services/service_consulting.jpg",
+    imageAlt: "Executive boardroom with warm architectural lighting and consultants reviewing SAP transformation strategy",
     enables: [
       "Implementation Strategy",
       "Architecture & Configuration",
@@ -36,8 +36,8 @@ const serviceBanners: ServiceBannerItem[] = [
     slug: "sap-support",
     rowId: "srv-support-ams",
     description: "Reliable functional and technical support that keeps SAP landscapes stable, current, efficient, and ready for evolving business needs.",
-    image: "/static/Service_Support.jpg",
-    imageAlt: "Modern 24*7 IT operations command center monitoring enterprise cloud systems",
+    image: "/assets/services/service_support.jpg",
+    imageAlt: "24*7 global IT operations center with real-time green telemetry and cloud uptime monitoring displays",
     enables: [
       "Functional & Technical Support",
       "Post-Go-Live Stabilization",
@@ -52,8 +52,8 @@ const serviceBanners: ServiceBannerItem[] = [
     slug: "sap-btp-full-stack",
     rowId: "srv-btp-fullstack",
     description: "Modern applications, extensions, workflows, and integrations built on SAP BTP to make enterprise work simpler and faster.",
-    image: "/static/Service_BTP.jpg",
-    imageAlt: "High-tech software lab developing modern enterprise SAP BTP cloud applications",
+    image: "/assets/services/service_btp.jpg",
+    imageAlt: "Creative software engineering studio with neon violet accents and engineers building full-stack SAP BTP cloud applications",
     enables: [
       "SAP Fiori & UI5 Modernization",
       "Process Automation & Workflows",
@@ -68,8 +68,8 @@ const serviceBanners: ServiceBannerItem[] = [
     slug: "sap-data-integration",
     rowId: "srv-data-integration",
     description: "Secure, scalable interfaces connecting SAP and non-SAP systems through SAP PI/PO, Cloud Integration, APIs, and enterprise protocols.",
-    image: "/static/Service_Data_Integration.jpg",
-    imageAlt: "Futuristic enterprise data center with illuminated fiber optic data streaming pipelines",
+    image: "/assets/services/service_data_integration.jpg",
+    imageAlt: "Enterprise datacenter with glowing golden-orange fiber optic cables and cloud API connectivity pipelines",
     enables: [
       "SAP CPI & PI/PO Integration",
       "API & Middleware Management",
@@ -84,8 +84,8 @@ const serviceBanners: ServiceBannerItem[] = [
     slug: "sap-ai-ml",
     rowId: "srv-ai-ml",
     description: "AI, predictive analytics, automation, and intelligent insights embedded into core SAP operations and decision-making.",
-    image: "/static/Service_AI_ML.jpg",
-    imageAlt: "Artificial intelligence research lab visualizing 3D neural network analytics and predictive data models",
+    image: "/assets/services/service_ai_ml.jpg",
+    imageAlt: "Advanced AI research laboratory visualizing holographic 3D neural network clusters and predictive data models",
     enables: [
       "SAP Business AI & Copilots",
       "Predictive Financial Analytics",
@@ -102,6 +102,7 @@ export default function ServiceBanners() {
       <div className="service-banners-container w-full">
         {serviceBanners.map((item, index) => {
           const isDark = index % 2 === 1; // 0=White, 1=Black, 2=White, 3=Black, 4=White
+          const isImageRight = index % 2 === 0; // 0=Right, 1=Left, 2=Right, 3=Left, 4=Right
 
           return (
             <div
@@ -117,23 +118,33 @@ export default function ServiceBanners() {
                 color: isDark ? "#ffffff" : "#000000",
               }}
             >
-              <div className="service-banner-inner mx-auto grid w-full max-w-[1560px] grid-cols-1 lg:grid-cols-12 lg:items-stretch">
-                {/* ── Mobile Order 1 / Desktop Order 3: Full Rectangular Image Frame ── */}
-                <div className="service-col-right order-1 lg:order-3 relative h-[240px] sm:h-[320px] md:h-[380px] lg:h-auto lg:min-h-[400px] w-full lg:col-span-5 overflow-hidden">
+              <div className="service-banner-inner mx-auto grid w-full max-w-[1600px] grid-cols-1 lg:grid-cols-2 lg:items-stretch">
+                {/* ── 50% Image Column: Mobile Order 1 / Desktop Order 2 (if right) or Order 1 (if left) ── */}
+                <div
+                  className={`service-col-image order-1 ${
+                    isImageRight ? "lg:order-2" : "lg:order-1"
+                  } relative h-[260px] sm:h-[340px] md:h-[400px] lg:h-auto lg:min-h-[460px] w-full overflow-hidden`}
+                >
                   <div className="service-image-frame relative h-full w-full overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.imageAlt}
                       fill
                       priority={index < 2}
-                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="service-photo object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                   </div>
                 </div>
 
-                {/* ── Mobile Order 2 / Desktop Order 1: Number, Title, Description ── */}
-                <div className="service-col-left order-2 lg:order-1 flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:col-span-4 lg:py-14 xl:col-span-4 xl:pl-16 xl:pr-8">
+                {/* ── 50% Content Column: Mobile Order 2 / Desktop Order 1 (if image right) or Order 2 (if image left) ── */}
+                <div
+                  className={`service-col-content order-2 ${
+                    isImageRight
+                      ? "lg:order-1 lg:pl-10 lg:pr-10 xl:pl-16 xl:pr-14"
+                      : "lg:order-2 lg:pl-10 lg:pr-10 xl:pl-14 xl:pr-16"
+                  } flex flex-col justify-center px-6 py-8 sm:px-10 sm:py-10 lg:py-14`}
+                >
                   {/* Number badge */}
                   <div className="service-num-wrapper flex items-center">
                     <span
@@ -151,7 +162,7 @@ export default function ServiceBanners() {
 
                   {/* Service Title */}
                   <h3
-                    className={`service-heading-title mt-3 text-2xl font-black uppercase tracking-tight sm:text-3xl lg:text-[1.75rem] xl:text-[1.95rem] leading-[1.18] ${
+                    className={`service-heading-title mt-3 text-2xl font-black uppercase tracking-tight sm:text-3xl lg:text-[1.85rem] xl:text-[2.05rem] leading-[1.15] ${
                       isDark ? "!text-[#ffffff]" : "!text-[#000000]"
                     }`}
                     style={{
@@ -164,7 +175,7 @@ export default function ServiceBanners() {
 
                   {/* Description */}
                   <p
-                    className={`service-paragraph-description mt-3 text-sm sm:text-base leading-relaxed font-medium max-w-md ${
+                    className={`service-paragraph-description mt-3.5 text-sm sm:text-base leading-relaxed font-medium ${
                       isDark ? "!text-[#ffffff]" : "!text-slate-800"
                     }`}
                     style={{
@@ -174,54 +185,54 @@ export default function ServiceBanners() {
                   >
                     {item.description}
                   </p>
-                </div>
 
-                {/* ── Mobile Order 3 / Desktop Order 2: "WHAT WE ENABLE" Capabilities & CTA ── */}
-                <div className="service-col-middle order-3 lg:order-2 flex flex-col justify-center px-6 pb-10 pt-2 sm:px-10 sm:pb-12 lg:col-span-3 lg:py-14 lg:pb-14 xl:col-span-3 xl:px-8">
-                  <p
-                    className={`service-enable-heading text-[11px] font-black tracking-[0.24em] uppercase ${
-                      isDark ? "!text-[#ffffff]" : "!text-[#008fd3]"
-                    }`}
-                    style={{
-                      color: isDark ? "#ffffff" : "#008fd3",
-                      WebkitTextFillColor: isDark ? "#ffffff" : "#008fd3",
-                    }}
-                  >
-                    WHAT WE ENABLE
-                  </p>
+                  {/* WHAT WE ENABLE */}
+                  <div className="service-enable-wrapper mt-6 border-t border-black/10 dark:border-white/10 pt-5">
+                    <p
+                      className={`service-enable-heading text-[11px] font-black tracking-[0.24em] uppercase ${
+                        isDark ? "!text-[#ffffff]" : "!text-[#008fd3]"
+                      }`}
+                      style={{
+                        color: isDark ? "#ffffff" : "#008fd3",
+                        WebkitTextFillColor: isDark ? "#ffffff" : "#008fd3",
+                      }}
+                    >
+                      WHAT WE ENABLE
+                    </p>
 
-                  {/* Vertical List of Enables using Clean Bullet Points */}
-                  <ul className="service-enable-list mt-4 space-y-2.5">
-                    {item.enables.map((label) => (
-                      <li
-                        key={label}
-                        className="service-enable-item flex items-center gap-3 text-sm font-semibold"
-                      >
-                        <span
-                          className={`service-bullet-dot h-2 w-2 shrink-0 rounded-full ${
-                            isDark ? "!bg-[#ffffff]" : "!bg-[#008fd3]"
-                          }`}
-                          style={{
-                            backgroundColor: isDark ? "#ffffff" : "#008fd3",
-                          }}
-                        />
-                        <span
-                          className={`service-enable-label ${
-                            isDark ? "!text-[#ffffff]" : "!text-[#000000]"
-                          }`}
-                          style={{
-                            color: isDark ? "#ffffff" : "#000000",
-                            WebkitTextFillColor: isDark ? "#ffffff" : "#000000",
-                          }}
+                    {/* 2-Column Responsive Grid of Enables */}
+                    <ul className="service-enable-list mt-3.5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                      {item.enables.map((label) => (
+                        <li
+                          key={label}
+                          className="service-enable-item flex items-center gap-2.5 text-xs sm:text-sm font-semibold"
                         >
-                          {label}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                          <span
+                            className={`service-bullet-dot h-2 w-2 shrink-0 rounded-full ${
+                              isDark ? "!bg-[#ffffff]" : "!bg-[#008fd3]"
+                            }`}
+                            style={{
+                              backgroundColor: isDark ? "#ffffff" : "#008fd3",
+                            }}
+                          />
+                          <span
+                            className={`service-enable-label ${
+                              isDark ? "!text-[#ffffff]" : "!text-[#000000]"
+                            }`}
+                            style={{
+                              color: isDark ? "#ffffff" : "#000000",
+                              WebkitTextFillColor: isDark ? "#ffffff" : "#000000",
+                            }}
+                          >
+                            {label}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
                   {/* Explore Service CTA Link */}
-                  <div className="service-cta-wrapper mt-6">
+                  <div className="service-cta-wrapper mt-7">
                     <Link
                       href={`/services/${item.slug}`}
                       className={`service-explore-btn inline-flex items-center gap-2 text-sm font-bold transition-all duration-200 group-hover:gap-3 ${

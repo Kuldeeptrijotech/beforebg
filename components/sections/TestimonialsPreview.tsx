@@ -5,7 +5,7 @@ import { testimonials, type TestimonialItem } from "@/lib/site-data";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 
 const AUTO_ROTATE_MS = 6500;
 
@@ -25,11 +25,32 @@ function getInitials(name: string) {
 export default function TestimonialsPreview() {
   const visibleTestimonials = testimonials.filter((item) => item.showOnHome);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [cardsToShow, setCardsToShow] = useState(3);
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, { amount: 0.05 });
   const [selectedTestimonial, setSelectedTestimonial] = useState<TestimonialItem | null>(null);
 
-  const cardCount = Math.min(3, visibleTestimonials.length);
+  // Touch swipe handling
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
+  // Responsive card count adjustment
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth < 640) {
+        setCardsToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setCardsToShow(2);
+      } else {
+        setCardsToShow(3);
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const cardCount = Math.min(cardsToShow, visibleTestimonials.length);
   const visibleCards = Array.from({ length: cardCount }, (_, offset) =>
     visibleTestimonials[loopIndex(activeIndex + offset, visibleTestimonials.length)]
   );
@@ -39,6 +60,28 @@ export default function TestimonialsPreview() {
   }
   function goPrevious() {
     setActiveIndex((current) => loopIndex(current - 1, visibleTestimonials.length));
+  }
+
+  function handleTouchStart(e: TouchEvent) {
+    touchStartX.current = e.targetTouches[0].clientX;
+    touchEndX.current = null;
+  }
+
+  function handleTouchMove(e: TouchEvent) {
+    touchEndX.current = e.targetTouches[0].clientX;
+  }
+
+  function handleTouchEnd() {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+    if (distance > minSwipeDistance) {
+      goNext();
+    } else if (distance < -minSwipeDistance) {
+      goPrevious();
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
   }
 
   useEffect(() => {
@@ -53,10 +96,18 @@ export default function TestimonialsPreview() {
   if (!visibleTestimonials.length) return null;
 
   return (
-    <section ref={sectionRef} data-content-visibility="off" className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 text-black border-t border-slate-200">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-hex-grid opacity-0" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-mesh opacity-0" />
-      <div aria-hidden className="tri-blob -z-10 h-72 opacity-0 w-72 animate-float-slow" style={{ left: "-8%", top: "20%", background: "radial-gradient(circle, rgba(255, 255, 255,0.2), transparent 70%)" }} />
+    <section
+      ref={sectionRef}
+      data-content-visibility="off"
+      className="relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-14 lg:py-16 text-white border-t border-white/10"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-60" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-grid-bg opacity-25" />
+      <div
+        aria-hidden
+        className="tri-blob -z-10 h-72 w-72 animate-float-slow"
+        style={{ left: "-8%", top: "20%", background: "radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 70%)" }}
+      />
 
       <Container className="relative">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
@@ -72,12 +123,12 @@ export default function TestimonialsPreview() {
             </p>
           </div>
 
-          <div className="flex gap-2.5">
+          <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={goPrevious}
               aria-label="Previous testimonial"
-              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(255, 255, 255,0.6)] hover:bg-white/[0.12]"
+              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(255,255,255,0.6)] hover:bg-white/[0.14] active:scale-95"
             >
               <ArrowLeft className="size-4" />
             </button>
@@ -85,67 +136,75 @@ export default function TestimonialsPreview() {
               type="button"
               onClick={goNext}
               aria-label="Next testimonial"
-              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full bg-[linear-gradient(120deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-[rgba(255, 255, 255,0.4)] transition hover:-translate-y-0.5"
+              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full bg-[linear-gradient(120deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-cyan-500/25 transition hover:-translate-y-0.5 active:scale-95"
             >
               <ArrowRight className="size-4" />
             </button>
           </div>
         </div>
 
-        <div className="mt-7 sm:mt-8 grid gap-5 lg:grid-cols-3 items-stretch">
+        {/* Responsive Cards Container with Touch Swipe */}
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          className="mt-7 sm:mt-8 grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-stretch"
+        >
           <AnimatePresence mode="popLayout">
             {visibleCards.map((testimonial) => (
               <motion.article
-                key={`${testimonial.companyName}-${testimonial.writerName}`}
+                key={`${testimonial.companyName}-${testimonial.writerName}-${activeIndex}`}
                 layout
-                initial={{ opacity: 0, y: 24, scale: 0.97 }}
+                initial={{ opacity: 0, y: 16, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -24, scale: 0.97 }}
+                exit={{ opacity: 0, y: -16, scale: 0.98 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="tri-glass-card tri-border-gradient flex h-full flex-col rounded-2xl p-5 sm:p-6"
+                className="tri-glass-card tri-border-gradient flex h-full flex-col justify-between rounded-2xl p-5 sm:p-6 lg:p-7 transition-all duration-300"
               >
-                <div className="flex items-center justify-between">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(160deg,rgba(255, 255, 255,0.3),rgba(255, 255, 255,0.3))]">
-                    <Quote className="size-4 text-white" />
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-white">
-                    {testimonial.companyName}
-                  </span>
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(160deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08))]">
+                      <Quote className="size-4 text-white" />
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">
+                      {testimonial.companyName}
+                    </span>
+                  </div>
+
+                  <p className="mt-5 line-clamp-4 text-xs sm:text-sm leading-relaxed text-slate-300">
+                    &ldquo;{testimonial.testimonial}&rdquo;
+                  </p>
                 </div>
 
-                <p className="mt-5 line-clamp-3 flex-1 text-sm leading-6 text-slate-300">
-                  {testimonial.testimonial}
-                </p>
-
-                <div className="mt-auto pt-4">
+                <div className="mt-5 pt-4">
                   <button
                     type="button"
                     onClick={() => setSelectedTestimonial(testimonial)}
-                    className="tri-focus w-fit text-sm font-semibold text-white transition hover:text-white"
+                    className="tri-focus text-xs sm:text-sm font-semibold text-cyan-300 transition hover:text-white"
                   >
-                    Read more
+                    Read full review &rarr;
                   </button>
 
-                  <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-5">
+                  <div className="mt-4 flex items-center gap-3.5 border-t border-white/10 pt-4">
                     {testimonial.image ? (
-                      <div className="relative size-12 overflow-hidden rounded-full bg-slate-700">
+                      <div className="relative size-10 sm:size-11 shrink-0 overflow-hidden rounded-full bg-slate-700 ring-2 ring-white/15">
                         <Image
                           src={testimonial.image}
                           alt={testimonial.imageAlt ?? testimonial.writerName}
                           fill
-                          sizes="48px"
+                          sizes="44px"
                           className="object-cover"
                         />
                       </div>
                     ) : (
-                      <div className="flex size-12 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-sm font-bold text-white">
+                      <div className="flex size-10 sm:size-11 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-xs sm:text-sm font-bold text-white ring-2 ring-white/15">
                         {getInitials(testimonial.writerName)}
                       </div>
                     )}
 
                     <div className="min-w-0">
-                      <p className="truncate font-semibold text-white">{testimonial.writerName}</p>
-                      <p className="truncate text-sm text-slate-400">{testimonial.designation}</p>
+                      <p className="truncate text-xs sm:text-sm font-semibold text-white">{testimonial.writerName}</p>
+                      <p className="truncate text-[11px] sm:text-xs text-slate-400">{testimonial.designation}</p>
                     </div>
                   </div>
                 </div>
@@ -153,12 +212,33 @@ export default function TestimonialsPreview() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Interactive Pagination Dots */}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          {visibleTestimonials.map((_, idx) => {
+            const isSelected = activeIndex === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setActiveIndex(idx)}
+                aria-label={`Go to testimonial ${idx + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  isSelected
+                    ? "w-7 bg-[linear-gradient(120deg,#22d3ee,#2563eb)]"
+                    : "w-2 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            );
+          })}
+        </div>
       </Container>
 
+      {/* Modal Dialog for Full Testimonial */}
       <AnimatePresence>
         {selectedTestimonial && (
           <motion.div
-            className="fixed inset-0 z-80 flex items-center justify-center bg-slate-950/75 px-4 backdrop-blur-sm"
+            className="fixed inset-0 z-80 flex items-center justify-center bg-slate-950/80 p-4 sm:p-6 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -167,10 +247,10 @@ export default function TestimonialsPreview() {
             onClick={() => setSelectedTestimonial(null)}
           >
             <motion.div
-              className="tri-glass-card relative w-full max-w-2xl rounded-3xl p-6 text-white sm:p-8"
-              initial={{ opacity: 0, y: 24, scale: 0.96 }}
+              className="tri-glass-card relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white"
+              initial={{ opacity: 0, y: 20, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 24, scale: 0.96 }}
+              exit={{ opacity: 0, y: 20, scale: 0.96 }}
               transition={{ duration: 0.25 }}
               onClick={(event) => event.stopPropagation()}
             >
@@ -178,19 +258,42 @@ export default function TestimonialsPreview() {
                 type="button"
                 onClick={() => setSelectedTestimonial(null)}
                 aria-label="Close testimonial"
-                className="tri-focus absolute right-4 top-4 flex size-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-slate-300 transition hover:bg-white/[0.14] hover:text-white"
+                className="tri-focus absolute right-4 top-4 flex size-8 sm:size-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.08] text-slate-300 transition hover:bg-white/[0.18] hover:text-white"
               >
-                <X className="size-5" />
+                <X className="size-4 sm:size-5" />
               </button>
 
-              <p className="pr-10 text-sm font-semibold uppercase tracking-wide text-white">
-                {selectedTestimonial.companyName}
-              </p>
-              <p className="mt-5 text-lg leading-8 text-slate-200">{selectedTestimonial.testimonial}</p>
+              <div className="flex items-center gap-2">
+                <Quote className="size-5 text-cyan-300" />
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-cyan-200">
+                  {selectedTestimonial.companyName}
+                </p>
+              </div>
 
-              <div className="mt-8 border-t border-white/10 pt-5">
-                <p className="font-semibold">{selectedTestimonial.writerName}</p>
-                <p className="text-sm text-slate-400">{selectedTestimonial.designation}</p>
+              <p className="mt-5 text-sm sm:text-base leading-relaxed text-slate-200">
+                &ldquo;{selectedTestimonial.testimonial}&rdquo;
+              </p>
+
+              <div className="mt-6 flex items-center gap-3.5 border-t border-white/10 pt-5">
+                {selectedTestimonial.image ? (
+                  <div className="relative size-12 shrink-0 overflow-hidden rounded-full bg-slate-700 ring-2 ring-white/15">
+                    <Image
+                      src={selectedTestimonial.image}
+                      alt={selectedTestimonial.imageAlt ?? selectedTestimonial.writerName}
+                      fill
+                      sizes="48px"
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-sm font-bold text-white ring-2 ring-white/15">
+                    {getInitials(selectedTestimonial.writerName)}
+                  </div>
+                )}
+                <div>
+                  <p className="font-semibold text-white text-sm sm:text-base">{selectedTestimonial.writerName}</p>
+                  <p className="text-xs sm:text-sm text-slate-400">{selectedTestimonial.designation}</p>
+                </div>
               </div>
             </motion.div>
           </motion.div>

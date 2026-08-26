@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Check, Layers, Network, ShieldCheck, Sparkles, TrendingUp, Users } from "lucide-react";
+import { Award, Layers, Network, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 const pillars = [
   {

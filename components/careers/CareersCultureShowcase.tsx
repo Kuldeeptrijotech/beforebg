@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, CheckCircle2, Compass, Flame, GraduationCap, HeartHandshake, ShieldCheck, Sparkles, TrendingUp, Users } from "lucide-react";
+import { CheckCircle2, Compass, GraduationCap, Sparkles, TrendingUp, Users } from "lucide-react";
 
 export default function CareersCultureShowcase() {
   const perks = [
