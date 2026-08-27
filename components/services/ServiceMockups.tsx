@@ -13,9 +13,9 @@ export function ConsultingMockup() {
       />
 
       {/* Main Glass Console Card */}
-      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-white/20 bg-gradient-to-br from-[#111C2E] to-[#0A1220] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(4,10,22,0.6)] backdrop-blur-md">
+      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-[#111C2E] to-[#0A1220] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(4,10,22,0.6)] backdrop-blur-md">
         {/* Header Bar */}
-        <div className="flex items-center gap-2.5 border-b border-white/15 pb-3 sm:pb-3.5">
+        <div className="flex items-center gap-2.5 border-b border-slate-700/60 pb-3 sm:pb-3.5">
           <span className="h-2 w-2 rounded-full bg-[#008fd3]" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
@@ -44,7 +44,7 @@ export function ConsultingMockup() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-white/20 bg-white/[0.06] p-3.5 sm:p-4">
+          <div className="rounded-xl border border-cyan-500/20 bg-white/[0.06] p-3.5 sm:p-4">
             <div
               className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-[0.12em] text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -62,7 +62,7 @@ export function ConsultingMockup() {
 
         {/* Status Rows */}
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
             <span className="h-5 w-5 shrink-0 rounded-md border border-[#008fd3]/50 bg-[#008fd3]/30" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
@@ -78,7 +78,7 @@ export function ConsultingMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
             <span className="h-5 w-5 shrink-0 rounded-md border border-[#8B7CF6]/50 bg-[#8B7CF6]/30" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
@@ -94,8 +94,8 @@ export function ConsultingMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
-            <span className="h-5 w-5 shrink-0 rounded-md border border-white/20 bg-white/10" />
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+            <span className="h-5 w-5 shrink-0 rounded-md border border-cyan-500/20 bg-white/10" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -138,9 +138,9 @@ export function SupportMockup() {
       />
 
       {/* Main Glass Console Card */}
-      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-white/20 bg-gradient-to-br from-[#0F1A2B] to-[#0B1421] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(0,0,0,0.7)] backdrop-blur-md">
+      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-[#0F1A2B] to-[#0B1421] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(0,0,0,0.7)] backdrop-blur-md">
         {/* Header Bar */}
-        <div className="flex items-center gap-2.5 border-b border-white/15 pb-3 sm:pb-3.5">
+        <div className="flex items-center gap-2.5 border-b border-slate-700/60 pb-3 sm:pb-3.5">
           <span className="h-2 w-2 rounded-full bg-[#008fd3]" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
@@ -192,7 +192,7 @@ export function SupportMockup() {
 
         {/* 2-Column Stats */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-xl border border-white/20 bg-white/[0.06] p-3.5">
+          <div className="rounded-xl border border-cyan-500/20 bg-white/[0.06] p-3.5">
             <div
               className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-[0.12em] text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -225,7 +225,7 @@ export function SupportMockup() {
 
         {/* Status Rows */}
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
             <span className="h-1.5 w-1.5 rounded-full bg-[#008fd3]" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
@@ -241,7 +241,7 @@ export function SupportMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
             <span className="h-1.5 w-1.5 rounded-full bg-[#8B7CF6]" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
@@ -275,9 +275,9 @@ export function BTPMockup() {
       />
 
       {/* Main Glass Console Card */}
-      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-white/20 bg-gradient-to-br from-[#141428] to-[#0B0F1E] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(4,10,22,0.6)] backdrop-blur-md">
+      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-[#141428] to-[#0B0F1E] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(4,10,22,0.6)] backdrop-blur-md">
         {/* Header Bar */}
-        <div className="flex items-center gap-2.5 border-b border-white/15 pb-3 sm:pb-3.5">
+        <div className="flex items-center gap-2.5 border-b border-slate-700/60 pb-3 sm:pb-3.5">
           <span className="h-2 w-2 rounded-full bg-[#8B7CF6]" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
@@ -307,7 +307,7 @@ export function BTPMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
             <span className="h-5 w-5 shrink-0 rounded-md border border-[#38BDF8]/40 bg-[#38BDF8]/30" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
@@ -323,7 +323,7 @@ export function BTPMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5 sm:py-3">
             <span className="h-5 w-5 shrink-0 rounded-md border border-[#008fd3]/40 bg-[#008fd3]/30" />
             <span
               className="flex-1 text-xs sm:text-[13.5px] font-semibold text-white"
@@ -342,7 +342,7 @@ export function BTPMockup() {
 
         {/* 2-Column Stats */}
         <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-xl border border-white/20 bg-white/[0.06] p-3.5 sm:p-4">
+          <div className="rounded-xl border border-cyan-500/20 bg-white/[0.06] p-3.5 sm:p-4">
             <div
               className="font-mono text-[9.5px] sm:text-[10px] font-bold tracking-[0.12em] text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -374,7 +374,7 @@ export function BTPMockup() {
         </div>
 
         {/* Deploy Progress */}
-        <div className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.04] p-3 sm:p-3.5">
+        <div className="flex items-center gap-3 rounded-xl border border-slate-700/50 bg-white/[0.04] p-3 sm:p-3.5">
           <span
             className="font-mono text-[9.5px] font-bold tracking-[0.12em] text-white"
             style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -409,9 +409,9 @@ export function IntegrationMockup() {
       />
 
       {/* Main Glass Console Card */}
-      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-white/20 bg-gradient-to-br from-[#0E1A2C] to-[#0A1220] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(0,0,0,0.7)] backdrop-blur-md">
+      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-[#0E1A2C] to-[#0A1220] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(0,0,0,0.7)] backdrop-blur-md">
         {/* Header Bar */}
-        <div className="flex items-center gap-2.5 border-b border-white/15 pb-3 sm:pb-3.5">
+        <div className="flex items-center gap-2.5 border-b border-slate-700/60 pb-3 sm:pb-3.5">
           <span className="h-2 w-2 rounded-full bg-[#38BDF8]" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
@@ -424,56 +424,46 @@ export function IntegrationMockup() {
         </div>
 
         {/* Integration Pipeline Flow */}
-        <div className="flex items-stretch gap-2 sm:gap-2.5">
-          <div className="flex-1 rounded-xl border border-white/20 bg-white/[0.06] p-3">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5 items-stretch">
+          <div className="flex flex-col justify-center rounded-xl border border-cyan-500/20 bg-white/[0.06] p-2 sm:p-3 min-w-0 text-center">
             <div
-              className="font-mono text-[9px] font-bold tracking-[0.1em] text-white"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              className="font-mono text-[8.5px] sm:text-[9.5px] font-bold tracking-wider text-cyan-300 uppercase truncate"
+              style={{ color: "#38bdf8", WebkitTextFillColor: "#38bdf8" }}
             >
               SOURCE
             </div>
             <div
-              className="mt-1.5 text-xs sm:text-[13px] font-bold text-white"
+              className="mt-1 text-[11px] sm:text-[13px] font-bold text-white leading-tight break-words"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               SAP S/4HANA
             </div>
           </div>
-          <div
-            className="flex w-6 sm:w-8 items-center justify-center font-mono font-extrabold text-[#38BDF8]"
-            style={{ color: "#38BDF8", WebkitTextFillColor: "#38BDF8" }}
-          >
-            →
-          </div>
-          <div className="flex-1 rounded-xl border border-[#38BDF8]/40 bg-[#38BDF8]/15 p-3">
+
+          <div className="flex flex-col justify-center rounded-xl border border-[#38BDF8]/40 bg-[#38BDF8]/15 p-2 sm:p-3 min-w-0 text-center relative">
             <div
-              className="font-mono text-[9px] font-bold tracking-[0.1em] text-white"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              className="font-mono text-[8.5px] sm:text-[9.5px] font-bold tracking-wider text-[#38BDF8] uppercase truncate"
+              style={{ color: "#38BDF8", WebkitTextFillColor: "#38BDF8" }}
             >
               MIDDLEWARE
             </div>
             <div
-              className="mt-1.5 text-xs sm:text-[13px] font-bold text-white"
+              className="mt-1 text-[11px] sm:text-[13px] font-bold text-white leading-tight break-words"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               Cloud Integration
             </div>
           </div>
-          <div
-            className="flex w-6 sm:w-8 items-center justify-center font-mono font-extrabold text-[#38BDF8]"
-            style={{ color: "#38BDF8", WebkitTextFillColor: "#38BDF8" }}
-          >
-            →
-          </div>
-          <div className="flex-1 rounded-xl border border-white/20 bg-white/[0.06] p-3">
+
+          <div className="flex flex-col justify-center rounded-xl border border-cyan-500/20 bg-white/[0.06] p-2 sm:p-3 min-w-0 text-center">
             <div
-              className="font-mono text-[9px] font-bold tracking-[0.1em] text-white"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              className="font-mono text-[8.5px] sm:text-[9.5px] font-bold tracking-wider text-cyan-300 uppercase truncate"
+              style={{ color: "#38bdf8", WebkitTextFillColor: "#38bdf8" }}
             >
               TARGET
             </div>
             <div
-              className="mt-1.5 text-xs sm:text-[13px] font-bold text-white"
+              className="mt-1 text-[11px] sm:text-[13px] font-bold text-white leading-tight break-words"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               Non-SAP APIs
@@ -482,46 +472,46 @@ export function IntegrationMockup() {
         </div>
 
         {/* 3-Column Metrics */}
-        <div className="grid grid-cols-3 gap-2 sm:gap-3">
-          <div className="rounded-xl border border-[#008fd3]/40 bg-[#008fd3]/[0.12] p-3 sm:p-3.5">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-3">
+          <div className="rounded-xl border border-[#008fd3]/40 bg-[#008fd3]/[0.12] p-2.5 sm:p-3.5 min-w-0 text-center sm:text-left">
             <div
-              className="font-mono text-[9.5px] font-bold tracking-[0.1em] text-white"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              className="font-mono text-[8px] sm:text-[9.5px] font-bold tracking-wider text-slate-300 uppercase truncate"
+              style={{ color: "#cbd5e1", WebkitTextFillColor: "#cbd5e1" }}
             >
               LATENCY
             </div>
             <div
-              className="mt-1.5 text-lg sm:text-2xl font-extrabold text-white"
+              className="mt-1 text-sm sm:text-xl md:text-2xl font-extrabold text-white leading-none truncate"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               &lt;100ms
             </div>
           </div>
 
-          <div className="rounded-xl border border-white/20 bg-white/[0.06] p-3 sm:p-3.5">
+          <div className="rounded-xl border border-cyan-500/20 bg-white/[0.06] p-2.5 sm:p-3.5 min-w-0 text-center sm:text-left">
             <div
-              className="font-mono text-[9.5px] font-bold tracking-[0.1em] text-white"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              className="font-mono text-[8px] sm:text-[9.5px] font-bold tracking-wider text-slate-300 uppercase truncate"
+              style={{ color: "#cbd5e1", WebkitTextFillColor: "#cbd5e1" }}
             >
               MSGS/DAY
             </div>
             <div
-              className="mt-1.5 text-lg sm:text-2xl font-extrabold text-white"
+              className="mt-1 text-sm sm:text-xl md:text-2xl font-extrabold text-white leading-none truncate"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               2.4M
             </div>
           </div>
 
-          <div className="rounded-xl border border-white/20 bg-white/[0.06] p-3 sm:p-3.5">
+          <div className="rounded-xl border border-cyan-500/20 bg-white/[0.06] p-2.5 sm:p-3.5 min-w-0 text-center sm:text-left">
             <div
-              className="font-mono text-[9.5px] font-bold tracking-[0.1em] text-white"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              className="font-mono text-[8px] sm:text-[9.5px] font-bold tracking-wider text-slate-300 uppercase truncate"
+              style={{ color: "#cbd5e1", WebkitTextFillColor: "#cbd5e1" }}
             >
               DELIVERY
             </div>
             <div
-              className="mt-1.5 text-lg sm:text-2xl font-extrabold text-white"
+              className="mt-1 text-sm sm:text-xl md:text-2xl font-extrabold text-white leading-none truncate"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               100%
@@ -531,7 +521,7 @@ export function IntegrationMockup() {
 
         {/* Channel Status */}
         <div className="flex flex-col gap-1.5">
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2">
             <span
               className="font-mono text-[10.5px] font-bold text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -552,7 +542,7 @@ export function IntegrationMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2">
             <span
               className="font-mono text-[10.5px] font-bold text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -573,7 +563,7 @@ export function IntegrationMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2">
             <span
               className="font-mono text-[10.5px] font-bold text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -612,9 +602,9 @@ export function AIMockup() {
       />
 
       {/* Main Glass Console Card */}
-      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-white/20 bg-gradient-to-br from-[#101B2C] to-[#0A1120] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(4,10,22,0.6)] backdrop-blur-md">
+      <div className="relative flex flex-col gap-3.5 sm:gap-4 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-[#101B2C] to-[#0A1120] p-4 sm:p-5 shadow-[0_36px_70px_-24px_rgba(4,10,22,0.6)] backdrop-blur-md">
         {/* Header Bar */}
-        <div className="flex items-center gap-2.5 border-b border-white/15 pb-3 sm:pb-3.5">
+        <div className="flex items-center gap-2.5 border-b border-slate-700/60 pb-3 sm:pb-3.5">
           <span className="h-2 w-2 rounded-full bg-[#008fd3]" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
           <span className="h-2 w-2 rounded-full bg-white/40" />
@@ -629,7 +619,7 @@ export function AIMockup() {
         {/* Analytics & KPI Split Grid */}
         <div className="flex items-stretch gap-3">
           {/* Revenue Chart Card */}
-          <div className="flex-[1.15] rounded-xl border border-white/20 bg-white/[0.06] p-3.5 sm:p-4">
+          <div className="flex-[1.15] rounded-xl border border-cyan-500/20 bg-white/[0.06] p-3.5 sm:p-4">
             <div
               className="font-mono text-[9px] sm:text-[9.5px] font-bold tracking-[0.12em] text-white"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
@@ -689,7 +679,7 @@ export function AIMockup() {
 
         {/* AI Copilot & Anomaly Alerts */}
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5">
             <span className="h-4.5 w-4.5 shrink-0 rounded-md bg-[#008fd3]/30" />
             <span
               className="flex-1 text-xs sm:text-[13px] font-semibold text-white"
@@ -705,7 +695,7 @@ export function AIMockup() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 rounded-lg border border-white/15 bg-white/[0.06] px-3.5 py-2.5">
+          <div className="flex items-center gap-3 rounded-lg border border-slate-700/50 bg-white/[0.06] px-3.5 py-2.5">
             <span className="h-4.5 w-4.5 shrink-0 rounded-md bg-[#8B7CF6]/30" />
             <span
               className="flex-1 text-xs sm:text-[13px] font-semibold text-white"

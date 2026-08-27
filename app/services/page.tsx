@@ -56,22 +56,28 @@ export default function ServicesPage() {
             <div className="mt-9 flex flex-wrap gap-4 relative z-10">
               <a
                 href="#explore-services"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                className="service-hero-cta-btn inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-all duration-200 border-0 border-none shadow-none relative z-10 hover:z-20"
                 style={{
-                  background: "#257ae8d6",
+                  background: "#008fd3",
+                  backgroundColor: "#008fd3",
                   color: "#ffffff",
-                  borderColor: "rgba(255, 255, 255, 0.35)",
+                  border: "none",
+                  borderWidth: "0px",
+                  outline: "none",
                 }}
               >
                 Explore Services <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
+                className="service-hero-cta-btn inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white transition-all duration-200 border-0 border-none shadow-none relative z-10 hover:z-20"
                 style={{
-                  background: "#257ae8d6",
+                  background: "#008fd3",
+                  backgroundColor: "#008fd3",
                   color: "#ffffff",
-                  borderColor: "rgba(255, 255, 255, 0.35)",
+                  border: "none",
+                  borderWidth: "0px",
+                  outline: "none",
                 }}
               >
                 Contact Us

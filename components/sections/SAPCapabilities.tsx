@@ -2,25 +2,51 @@
 
 import Container from "@/components/ui/Container";
 import GradientButton from "@/components/ui/GradientButton";
-import SAPEcosystem from "@/components/three/SAPEcosystem";
 import { Reveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
-import { ArrowRight, Blocks, Database, DatabaseZap, Landmark, LifeBuoy, LineChart } from "lucide-react";
+import {
+  ArrowRight,
+  Blocks,
+  Database,
+  DatabaseZap,
+  Landmark,
+  Layers,
+  LifeBuoy,
+  LineChart,
+  ShieldCheck,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
 
 const nodes = [
-  { icon: Database, label: "S/4HANA", tone: "green" as const },
-  { icon: LineChart, label: "Analytics Cloud", tone: "green" as const },
-  { icon: Blocks, label: "BTP", tone: "amber" as const },
-  { icon: DatabaseZap, label: "Data & Integration", tone: "mix" as const },
-  { icon: Landmark, label: "Finance & Reporting", tone: "green" as const },
-  { icon: LifeBuoy, label: "Support & AMS", tone: "amber" as const },
+  { icon: Database, label: "SAP S/4HANA", desc: "Core cloud & on-premise ERP" },
+  { icon: LineChart, label: "Analytics Cloud", desc: "Enterprise planning & SAC dashboards" },
+  { icon: Blocks, label: "SAP BTP", desc: "Custom apps, extensions & workflows" },
+  { icon: DatabaseZap, label: "Data & Integration", desc: "Automated pipelines & AI workflows" },
+  { icon: Landmark, label: "Finance & Reporting", desc: "Group consolidation & PaPM analytics" },
+  { icon: LifeBuoy, label: "Support & AMS", desc: "24/7 SLA governance & optimization" },
 ];
 
-const capabilities = [
-  "SAP S/4HANA implementation and system conversion",
-  "SAP BPC, Group Reporting & Analytics Cloud",
-  "BTP application development and integrations",
-  "Data migration, integration & AI-assisted insights",
-  "SAP support, AMS and continuous optimization",
+const capabilities: { text: string; icon: LucideIcon }[] = [
+  {
+    text: "SAP S/4HANA implementation and system conversion",
+    icon: Layers,
+  },
+  {
+    text: "SAP BPC, Group Reporting & Analytics Cloud",
+    icon: LineChart,
+  },
+  {
+    text: "BTP application development and integrations",
+    icon: Blocks,
+  },
+  {
+    text: "Data migration, integration & AI-assisted insights",
+    icon: Sparkles,
+  },
+  {
+    text: "SAP support, AMS and continuous optimization",
+    icon: ShieldCheck,
+  },
 ];
 
 export default function SAPCapabilities() {
@@ -42,13 +68,13 @@ export default function SAPCapabilities() {
           </Reveal>
 
           <StaggerReveal className="mt-5 space-y-2.5" stagger={0.06}>
-            {capabilities.map((capability) => (
-              <StaggerRevealItem key={capability}>
+            {capabilities.map(({ text, icon: Icon }) => (
+              <StaggerRevealItem key={text}>
                 <div className="flex items-center gap-3">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-white shadow-sm">
-                    <DatabaseZap className="h-3.5 w-3.5" strokeWidth={2.2} />
+                    <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
                   </span>
-                  <p className="text-xs font-medium leading-snug text-slate-200 sm:text-sm">{capability}</p>
+                  <p className="text-xs font-medium leading-snug text-slate-200 sm:text-sm">{text}</p>
                 </div>
               </StaggerRevealItem>
             ))}
@@ -63,9 +89,26 @@ export default function SAPCapabilities() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.1}>
-          <SAPEcosystem nodes={nodes} />
-        </Reveal>
+        <div>
+          <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 gap-3.5" stagger={0.05}>
+            {nodes.map((node) => {
+              const Icon = node.icon;
+              return (
+                <StaggerRevealItem key={node.label}>
+                  <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-slate-900/60 p-3.5 transition-all duration-300 hover:border-cyan-400/50 hover:bg-slate-900/80">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[linear-gradient(150deg,#22d3ee,#008fd3_60%,#1d4ed8)] text-white shadow-md">
+                      <Icon className="h-4.5 w-4.5" strokeWidth={2.2} />
+                    </span>
+                    <div className="min-w-0">
+                      <h4 className="text-sm font-bold text-white leading-snug">{node.label}</h4>
+                      <p className="mt-0.5 text-xs leading-relaxed text-slate-300">{node.desc}</p>
+                    </div>
+                  </div>
+                </StaggerRevealItem>
+              );
+            })}
+          </StaggerReveal>
+        </div>
       </Container>
     </section>
   );

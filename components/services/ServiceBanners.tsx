@@ -112,7 +112,7 @@ export default function ServiceBanners() {
               id={item.rowId}
               className={`service-banner-row service-row-${item.slug} group relative w-full border-b transition-colors duration-300 ${
                 isDark
-                  ? "bg-[#050817] text-white border-white/10"
+                  ? "bg-[#050817] text-white border-transparent"
                   : "bg-[#ffffff] text-black border-slate-200"
               }`}
             >
@@ -180,7 +180,7 @@ export default function ServiceBanners() {
                   {/* WHAT WE ENABLE */}
                   <div
                     className={`service-enable-wrapper mt-6 border-t pt-5 ${
-                      isDark ? "border-white/10" : "border-slate-200"
+                      isDark ? "border-transparent" : "border-slate-200"
                     }`}
                   >
                     <p
@@ -215,12 +215,14 @@ export default function ServiceBanners() {
                   <div className="service-action-wrapper mt-7">
                     <Link
                       href={`/services/${item.slug}`}
-                      className="hero-btn-blue tri-btn tri-focus inline-flex items-center gap-2 px-6 py-3 text-xs sm:text-sm font-bold !text-white transition-all duration-200"
+                      className="service-banner-cta-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs sm:text-sm font-bold text-white transition-all duration-200 border-0 border-none shadow-none"
                       style={{
-                        backgroundColor: "#257ae8d6",
-                        background: "#257ae8d6",
+                        backgroundColor: "#008fd3",
+                        background: "#008fd3",
                         color: "#ffffff",
-                        borderColor: "rgba(255, 255, 255, 0.35)",
+                        border: "none",
+                        borderWidth: "0px",
+                        outline: "none",
                       }}
                     >
                       Explore Service

@@ -25,7 +25,7 @@ export function detectIntent(message: string, history: ChatHistoryMessage[] = []
 
 export const suggestionsForIntent = (intent: ChatIntent): string[] => ({
   SERVICE: ["SAP Implementation", "SAP Support", "SAP BTP Solutions"], CAREER: ["View career opportunities", "How do I apply?", "Contact the HR team"], CONTACT: ["Open contact page", "Request a consultation", "Explore our services"], PRODUCT: ["Explore products", "Request a demo", "Contact our team"],
-} as Partial<Record<ChatIntent, string[]>>)[intent] || ["Our Services", "About Trijotech", "Career Opportunities", "Contact Our Team"];
+} as Partial<Record<ChatIntent, string[]>>)[intent] || ["Our Services", "About Trijotech", "Careers", "Contact Our Team"];
 
 export const outOfScopeReply = () => "That topic is outside the verified information I can provide. I can help with Trijotech, our SAP and technology services, products, industries, careers, support, and contact information.";
 

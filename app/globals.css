@@ -761,10 +761,26 @@ section.bg-white .tri-overline,
 
 
 
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse 45s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.tri-spin-slow {
+  animation: tri-spin 36s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+
 /* Orbit helpers */
 
-
-.tri-spin-slow { animation: tri-spin 36s linear infinite; }
 
 
 /* Focus visibility for the new components */
@@ -2679,3 +2695,61 @@ main :is(table, pre, code) {
     flex-basis: 100% !important;
   }
 }
+
+/* ──── Chatbot Scrollbar Removal ──── */
+.trijo-chat-window,
+.trijo-chat-messages,
+.trijo-starters,
+.trijo-chat-window textarea,
+.trijo-chat-window * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.trijo-chat-window::-webkit-scrollbar,
+.trijo-chat-messages::-webkit-scrollbar,
+.trijo-starters::-webkit-scrollbar,
+.trijo-chat-window textarea::-webkit-scrollbar,
+.trijo-chat-window *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* ──── Services Page Borderless Blue CTA Buttons ──── */
+.services-page-root .service-banner-cta-btn,
+.services-page-root .service-hero-cta-btn,
+.service-banners-section .service-banner-cta-btn,
+a.service-banner-cta-btn,
+a.service-hero-cta-btn {
+  background: #008fd3 !important;
+  background-color: #008fd3 !important;
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.services-page-root .service-banner-cta-btn:hover,
+.services-page-root .service-hero-cta-btn:hover,
+.service-banners-section .service-banner-cta-btn:hover,
+a.service-banner-cta-btn:hover,
+a.service-hero-cta-btn:hover {
+  background: #007bb8 !important;
+  background-color: #007bb8 !important;
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: 0 4px 14px rgba(0, 143, 211, 0.4) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+
