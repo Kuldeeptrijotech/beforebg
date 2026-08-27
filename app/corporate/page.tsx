@@ -94,15 +94,13 @@ export default function CorporatePage() {
             >
               <a
                 href="#explore"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Explore Corporate <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/about-us"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 About Trijotech
               </Link>
@@ -140,7 +138,7 @@ export default function CorporatePage() {
                 <StaggerRevealItem key={card.href} className="h-full">
                   <motion.article
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                    className="corporate-landing-card group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+                    className="group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
                   >
                     <Link href={card.href} className="relative block aspect-[16/10] overflow-hidden bg-slate-900">
                       <Image

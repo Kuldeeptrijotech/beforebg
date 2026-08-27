@@ -109,15 +109,13 @@ export default function AboutUsPage() {
             >
               <a
                 href="#who-we-are"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Discover our story <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Talk to our team
               </Link>
@@ -147,7 +145,7 @@ export default function AboutUsPage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
-            <p className="tri-overline text-black !text-black">Who we are</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Who we are</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
               Deep expertise, close collaboration
             </h2>
@@ -192,7 +190,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline text-[#38bdf8]">Our direction</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Our direction</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Vision, mission and goals
             </h2>
@@ -231,7 +229,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline text-black !text-black">How we work</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">How we work</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
               Simple principles, consistently applied
             </h2>
@@ -275,7 +273,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline text-[#38bdf8]">Our leadership</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Our leadership</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Leadership that builds trust
             </h2>

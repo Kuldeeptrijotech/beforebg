@@ -44,7 +44,7 @@ export default function CareersCultureShowcase() {
       />
 
       {/* Main Container Card */}
-      <div className="careers-culture-card relative flex h-full flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(150deg,#1a2336_0%,#162032_60%,#121927_100%)] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(150deg,#1a2336_0%,#162032_60%,#121927_100%)] p-6 shadow-2xl backdrop-blur-xl sm:p-8">
         {/* Subtle hex grid pattern */}
         <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-30" />
 
@@ -79,12 +79,12 @@ export default function CareersCultureShowcase() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: idx * 0.08 }}
                 whileHover={{ y: -3, transition: { duration: 0.15 } }}
-                className="careers-perk-card group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4.5 transition-all duration-300 hover:border-white/50 hover:bg-white/[0.06]"
+                className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-4.5 transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/[0.06]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2">
                     <span
-                      className="careers-perk-icon-badge flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-[#38bdf8] shadow-sm transition-transform duration-300 group-hover:scale-110"
+                      className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-[#38bdf8] shadow-sm transition-transform duration-300 group-hover:scale-110"
                     >
                       <Icon className="h-5 w-5 text-[#38bdf8]" strokeWidth={2.2} />
                     </span>
@@ -112,15 +112,15 @@ export default function CareersCultureShowcase() {
 
         {/* Bottom Key Metric Highlights */}
         <div className="relative z-10 mt-6 grid grid-cols-3 gap-3 border-t border-white/10 pt-5 text-center">
-          <div className="careers-metric-card rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
             <p className="text-xl font-extrabold text-white">100%</p>
             <p className="mt-0.5 text-[11px] font-medium text-slate-400">Project Ownership</p>
           </div>
-          <div className="careers-metric-card rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
             <p className="text-xl font-extrabold text-white">Global</p>
             <p className="mt-0.5 text-[11px] font-medium text-slate-400">Enterprise Clients</p>
           </div>
-          <div className="careers-metric-card rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
+          <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2.5">
             <p className="text-xl font-extrabold text-white">5/5</p>
             <p className="mt-0.5 text-[11px] font-medium text-slate-400">Satisfaction</p>
           </div>

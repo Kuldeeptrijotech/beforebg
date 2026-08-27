@@ -87,8 +87,7 @@ export default function ContactPage() {
             >
               <a
                 href="#contact-form"
-                className="hero-btn-blue inline-flex items-center gap-2 tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </a>
@@ -110,7 +109,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline text-black !text-black">Get in touch</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Get in touch</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
               Connect with our team
             </h2>

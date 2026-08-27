@@ -17,7 +17,7 @@ export default function CTA() {
 
       <Container className="relative">
         <Reveal>
-          <div className="tri-border-gradient relative overflow-hidden rounded-2xl bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-5 py-7 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-10 sm:py-9 border border-white/10">
+          <div className="relative overflow-hidden rounded-2xl bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-5 py-7 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-10 sm:py-9 border border-white/10">
             {/* decorative layers (Hexagons preserved) */}
             <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-50" />
             <div aria-hidden className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />

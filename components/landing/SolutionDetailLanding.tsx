@@ -136,15 +136,13 @@ export default function SolutionDetailLanding({
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#capabilities"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-bold !text-white"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Explore capabilities <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/solutions"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 All solutions
               </Link>

@@ -41,9 +41,9 @@ export default function Footer() {
             <div>
               <div className="grid gap-7 sm:grid-cols-2 sm:gap-8">
                 {footer.contact.addresses.map((address) => (
-                  <address key={address.title} className="footer-address-card m-0 not-italic">
+                  <address key={address.title} className="m-0 not-italic">
                     <div className="flex items-center gap-2.5">
-                      <span className="footer-address-icon flex size-9 shrink-0 items-center justify-center rounded-lg border text-cyan-300">
+                      <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-cyan-400/30 bg-cyan-950/40 text-cyan-300">
                         <MapPin className="size-4" />
                       </span>
                       <h2 className="m-0 text-sm font-semibold leading-6 text-white">{address.title}</h2>
@@ -58,11 +58,11 @@ export default function Footer() {
               <div className="mt-6">
                 <h2 className="m-0 text-sm font-semibold text-white">Talk to our team</h2>
                 <div className="mt-3 flex flex-col items-stretch gap-2.5 sm:flex-row sm:flex-wrap sm:items-center">
-                  <a href={`mailto:${footer.contact.email}`} className="footer-team-email inline-flex min-h-10 items-center justify-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold no-underline transition sm:w-fit">
+                  <a href={`mailto:${footer.contact.email}`} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-cyan-400/50 px-4 py-1.5 text-sm font-semibold text-white no-underline transition sm:w-fit">
                     <Mail className="size-4" /> {footer.contact.email}
                   </a>
                   {footer.contact.phones.map((phone) => (
-                    <a key={phone.href} href={phone.href} className="footer-team-phone inline-flex min-h-10 items-center justify-center gap-2 rounded-full border px-4 py-1.5 text-sm font-semibold no-underline transition sm:w-fit">
+                    <a key={phone.href} href={phone.href} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 hover:border-cyan-400/50 px-4 py-1.5 text-sm font-semibold text-white no-underline transition sm:w-fit">
                       <Phone className="size-4" /> {phone.label}
                     </a>
                   ))}

@@ -212,18 +212,10 @@ export default function ServiceBanners() {
                   </div>
 
                   {/* Explore Service Link */}
-                  <div className="service-action-wrapper mt-7">
+                  <div className="mt-7">
                     <Link
                       href={`/services/${item.slug}`}
-                      className="service-banner-cta-btn inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs sm:text-sm font-bold text-white transition-all duration-200 border-0 border-none shadow-none"
-                      style={{
-                        backgroundColor: "#008fd3",
-                        background: "#008fd3",
-                        color: "#ffffff",
-                        border: "none",
-                        borderWidth: "0px",
-                        outline: "none",
-                      }}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#008fd3] hover:bg-[#007bb8] px-6 py-3 text-xs sm:text-sm font-bold text-white transition-all duration-200 border-0 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
                     >
                       Explore Service
                       <ArrowRight className="h-4 w-4" />

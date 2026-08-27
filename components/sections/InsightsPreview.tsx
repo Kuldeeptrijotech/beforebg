@@ -35,7 +35,7 @@ function BlogCard({ blog, index }: { blog: FeaturedBlogItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="insights-preview-card group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
     >
       <Link href={blog.href} className="no-underline relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
         <Image src={blog.image} alt={blog.imageAlt} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover scale-[1.04]" />
@@ -49,8 +49,8 @@ function BlogCard({ blog, index }: { blog: FeaturedBlogItem; index: number }) {
         <h3 className="line-clamp-2 text-sm sm:text-base font-bold leading-snug text-white transition-colors">{blog.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-white/90">{blog.description}</p>
         <div className="mt-auto pt-4">
-          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition group-hover:gap-2">
-            Read blog <span aria-hidden="true">↗</span>
+          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-white transition-all duration-200 group-hover:gap-2 sm:text-sm">
+            Read blog <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
       </div>
@@ -65,12 +65,12 @@ function VideoCard({ video, index }: { video: FeaturedVideoItem; index: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-      className="insights-preview-card group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
     >
       <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="no-underline relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900" aria-label={`Watch ${video.title} on YouTube`}>
         <Image src={getYoutubeThumbnail(video.youtubeId)} alt={`${video.title} video thumbnail`} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover scale-[1.04]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
-        <div className="youtube-play-badge absolute left-1/2 top-1/2 flex h-10 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl bg-[#FF0000] text-white shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#cc0000]">
+        <div className="absolute left-1/2 top-1/2 flex h-10 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl bg-[#FF0000] text-white shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:bg-[#cc0000]">
           <svg className="h-5 w-5 fill-white text-white ml-0.5" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z" fill="#ffffff" />
           </svg>
@@ -81,7 +81,7 @@ function VideoCard({ video, index }: { video: FeaturedVideoItem; index: number }
         <h3 className="line-clamp-2 mt-1 text-sm sm:text-base font-bold leading-snug text-white transition-colors">{video.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-white/90">{video.description}</p>
         <div className="mt-auto pt-4">
-          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition group-hover:gap-2">
+          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-white transition-all duration-200 group-hover:gap-2 sm:text-sm">
             Watch video <ExternalLink className="size-3.5" />
           </a>
         </div>
@@ -100,7 +100,7 @@ export default function InsightsPreview() {
       <Container className="relative">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <span className="tri-overline text-black !text-black">Insights</span>
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Insights</span>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
               Practical SAP thinking in blogs and videos.
             </h2>
@@ -110,7 +110,7 @@ export default function InsightsPreview() {
           </div>
 
           <div className="flex w-full flex-col gap-3 md:w-auto md:items-end">
-            <div role="tablist" aria-label="Insights tabs" className="grid w-full grid-cols-2 rounded-full border border-[#22d3ee] bg-[#ecfeff] p-1 shadow-[inset_0_0_0_1px_#67e8f9] md:w-64">
+            <div role="tablist" aria-label="Insights tabs" className="grid w-full grid-cols-2 rounded-full border border-sky-200 bg-sky-50 p-1 md:w-64">
               {insightTabs.map(({ id, label, Icon }) => {
                 const isActive = activeTab === id;
                 return (
@@ -122,8 +122,8 @@ export default function InsightsPreview() {
                     onClick={() => setActiveTab(id)}
                     className={`inline-flex h-9 min-w-0 items-center justify-center gap-1.5 rounded-full px-3 text-xs font-semibold transition sm:px-4 ${
                       isActive
-                        ? "bg-[#0e7490] text-white shadow-sm"
-                        : "text-black hover:bg-[#cffafe]"
+                        ? "bg-[#008fd3] text-white shadow-sm"
+                        : "text-slate-700 hover:bg-sky-100"
                     }`}
                   >
                     <Icon className="size-3.5 shrink-0" />
@@ -134,9 +134,9 @@ export default function InsightsPreview() {
             </div>
             <Link
               href={activeTab === "blogs" ? "/blogs" : "/videos"}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#008fd3] transition-all duration-200 hover:gap-2.5"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#008fd3] bg-transparent px-4 py-2 text-xs font-semibold text-[#008fd3] transition-all duration-200 hover:bg-[#008fd3] hover:text-white sm:text-sm"
             >
-              {activeTab === "blogs" ? "View all blogs" : "View all videos"} <ArrowRight className="h-3.5 w-3.5" />
+              {activeTab === "blogs" ? "View all blogs" : "View all videos"} <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>

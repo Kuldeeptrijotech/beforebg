@@ -111,13 +111,13 @@ export default function Hero() {
                 className="home-hero-heading max-w-4xl text-4xl font-extrabold leading-[1.04] tracking-[-0.025em] text-white sm:text-5xl lg:text-6xl"
               >
                 {activeSlide.id === "sap-consulting" ? (
-                  <>Plan, implement, and optimize SAP systems <span className="tri-gradient-text">with confidence</span></>
+                  <>Plan, implement, and optimize SAP systems <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">with confidence</span></>
                 ) : activeSlide.id === "sap-support-ams" ? (
-                  <>Keep your SAP systems stable, secure, and <span className="tri-gradient-text">continuously optimized</span></>
+                  <>Keep your SAP systems stable, secure, and <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">continuously optimized</span></>
                 ) : activeSlide.id === "sap-btp-applications" ? (
-                  <>Build scalable SAP extensions, <span className="tri-gradient-text">portals, and workflows</span></>
+                  <>Build scalable SAP extensions, <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">portals, and workflows</span></>
                 ) : activeSlide.id === "sap-data-ai" ? (
-                  <>Turn enterprise data into <span className="tri-gradient-text">smarter decisions</span></>
+                  <>Turn enterprise data into <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">smarter decisions</span></>
                 ) : (
                   activeSlide.title
                 )}
@@ -127,7 +127,7 @@ export default function Hero() {
               <motion.p
                 custom={2}
                 variants={childVariants}
-                className="home-hero-description mt-6 max-w-3xl text-base font-normal leading-[1.75] text-slate-300 sm:text-lg"
+                className="mt-6 max-w-3xl text-base font-normal leading-[1.75] text-slate-300 sm:text-lg"
               >
                 {activeSlide.description}
               </motion.p>
@@ -136,15 +136,13 @@ export default function Hero() {
               <motion.div custom={3} variants={childVariants} className="mt-9 flex flex-wrap gap-4 relative z-10">
                 <Link
                   href={activeSlide.primaryCta.href}
-                  className="home-hero-primary hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                  className="inline-flex items-center justify-center rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
                 >
                   {activeSlide.primaryCta.label}
                 </Link>
                 <Link
                   href={activeSlide.secondaryCta.href}
-                  className="home-hero-secondary hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                  className="inline-flex items-center justify-center rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
                 >
                   {activeSlide.secondaryCta.label}
                 </Link>

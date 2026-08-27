@@ -87,7 +87,7 @@ export default function CareersPage() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 className="max-w-3xl"
               >
-                <p className="tri-overline text-black !text-black">Life at Trijotech</p>
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Life at Trijotech</p>
                 <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl lg:text-3xl">
                   Create impact while building your career
                 </h2>
@@ -105,7 +105,7 @@ export default function CareersPage() {
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                    className="careers-highlight-card flex flex-1 flex-col rounded-2xl border-0 bg-[#008fd3] p-4.5 sm:p-5 text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+                    className="flex flex-1 flex-col rounded-2xl border-0 bg-[#008fd3] p-4.5 sm:p-5 text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
                   >
                     <motion.span
                       whileHover={{ rotate: 10, scale: 1.12 }}

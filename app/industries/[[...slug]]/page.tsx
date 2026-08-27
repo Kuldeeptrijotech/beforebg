@@ -85,15 +85,13 @@ export default async function IndustryDetailPage({ params }: Props) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-bold !text-white"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Schedule consultation <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/services"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Explore services
               </Link>
@@ -109,7 +107,7 @@ export default async function IndustryDetailPage({ params }: Props) {
       <section className="industry-definition-section relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="industry-definition-card mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-7 shadow-lg sm:p-10 text-slate-900">
-            <p className="tri-overline text-black !text-black">Definition</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Definition</p>
             <div className="detail-split-grid mt-4 grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-8">
                 <h2 className="text-2xl font-bold leading-[1.2] text-slate-900 sm:text-3xl">
@@ -133,7 +131,7 @@ export default async function IndustryDetailPage({ params }: Props) {
       <section className="bg-[#030713] py-20 sm:py-24 border-b border-white/5">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
-            <p className="tri-overline text-[#38bdf8]">What we deliver</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">What we deliver</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Capabilities built for your industry
             </h2>
@@ -185,7 +183,7 @@ export default async function IndustryDetailPage({ params }: Props) {
           {/* Left Column: Title & Feature Image Card */}
           <div className="flex flex-col gap-8">
             <div>
-              <p className="tri-overline text-black !text-black">Value created</p>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Value created</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                 Measurable outcomes for {industry.title}
               </h2>
@@ -195,7 +193,7 @@ export default async function IndustryDetailPage({ params }: Props) {
               <div className="mt-6">
                 <Link
                   href="/contact"
-                  className="tri-btn tri-btn-primary tri-focus px-7 py-3.5 text-sm font-bold text-white bg-[#008fd3] hover:bg-[#0077b5]"
+                  className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-md transition-all duration-200"
                 >
                   Start a conversation <ArrowRight className="h-4 w-4" />
                 </Link>

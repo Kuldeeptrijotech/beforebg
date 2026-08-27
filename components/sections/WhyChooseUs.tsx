@@ -1,6 +1,5 @@
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import HexBadge from "@/components/ui/HexBadge";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
 import { Reveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { whyChooseStats, whyChooseUs } from "@/lib/site-data";
@@ -34,7 +33,7 @@ export default function WhyChooseUs() {
 
         {/* stats band */}
         <Reveal delay={0.08}>
-          <div className="home-stats-band mt-6 sm:mt-8 grid gap-4 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] sm:grid-cols-2 lg:grid-cols-4 sm:p-6">
+          <div className="mt-6 sm:mt-8 grid gap-4 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] sm:grid-cols-2 lg:grid-cols-4 sm:p-6">
             {statValues.map((stat) => (
               <div key={stat.label} className="flex flex-col items-center text-center">
                 <p className="text-3xl font-bold sm:text-4xl text-white">
@@ -57,7 +56,7 @@ export default function WhyChooseUs() {
             const Icon = itemIcons[index % itemIcons.length];
             return (
               <StaggerRevealItem key={item.title} className="h-full">
-                <article className="why-choose-card group flex h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]">
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-[#008fd3] hover:shadow-md">
                   <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
                     <OptimizedVideo
                       src={item.image}
@@ -72,8 +71,8 @@ export default function WhyChooseUs() {
                     </div>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors">{item.title}</h3>
-                    <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-white/90">{item.description}</p>
+                    <h3 className="text-base sm:text-lg font-bold leading-snug text-slate-900 transition-colors">{item.title}</h3>
+                    <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-600">{item.description}</p>
                   </div>
                 </article>
               </StaggerRevealItem>
