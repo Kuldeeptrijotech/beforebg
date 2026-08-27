@@ -16,7 +16,7 @@ import { Reveal, SlideReveal, StaggerRevealItem } from "@/components/motion/Reve
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
-import TiltCard from "@/components/ui/TiltCard";
+
 
 type ServiceItem = { title: string; description: string };
 
@@ -148,8 +148,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
               const Icon = c.icon;
               return (
                 <StaggerRevealItem key={c.title} variant="slideRight">
-                  <TiltCard max={5} scale={1.02} className="h-full">
-                    <div className="ai-practice-card service-surface-card h-full p-7 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
+                  <div className="ai-practice-card service-surface-card h-full p-7 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
                       <div className="flex items-start gap-4">
                         <span className="ai-practice-icon-badge flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md">
                           <Icon className="h-6 w-6 text-slate-900" strokeWidth={2.2} stroke="#38bdf8" />
@@ -160,7 +159,6 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                         </div>
                       </div>
                     </div>
-                  </TiltCard>
                 </StaggerRevealItem>
               );
             })}
@@ -185,8 +183,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {offerings.map((o, i) => (
               <StaggerRevealItem key={o.title} variant="scale">
-                <TiltCard max={6} scale={1.02} className="h-full">
-                  <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
+                <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
                       <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-slate-900">
                         {String(i + 1).padStart(2, "0")}
@@ -195,7 +192,6 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                     </div>
                     <p className="mt-4 leading-7 text-slate-300">{o.description}</p>
                   </Glass>
-                </TiltCard>
               </StaggerRevealItem>
             ))}
           </div>

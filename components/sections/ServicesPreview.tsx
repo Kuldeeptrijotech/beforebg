@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import TiltCard from "@/components/ui/TiltCard";
 import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { services } from "@/lib/site-data";
 import { ArrowRight, Blocks, Compass, DatabaseZap, HeartHandshake } from "lucide-react";
@@ -38,25 +37,23 @@ export default function ServicesPreview() {
             const Icon = serviceIcons[i % serviceIcons.length];
             return (
               <StaggerRevealItem key={service.href} className="h-full">
-                <TiltCard className="h-full">
-                  <Link
-                    href={service.href}
-                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-400 hover:shadow-md sm:p-6"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-900 transition-colors group-hover:bg-slate-900 group-hover:text-white">
-                      <Icon className="h-6 w-6" strokeWidth={2.2} />
-                    </div>
-                    <h3 className="mt-4 text-base font-bold leading-snug text-slate-900 sm:text-lg">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 sm:text-sm">{service.description}</p>
-                    <div className="mt-auto pt-5">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 group-hover:text-slate-700 sm:text-sm">
-                        Learn more <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </Link>
-                </TiltCard>
+                <Link
+                  href={service.href}
+                  className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-400 hover:shadow-md sm:p-6"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-900 transition-colors group-hover:bg-slate-900 group-hover:text-white">
+                    <Icon className="h-6 w-6" strokeWidth={2.2} />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold leading-snug text-slate-900 sm:text-lg">
+                    {service.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-600 sm:text-sm">{service.description}</p>
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-900 group-hover:text-slate-700 sm:text-sm">
+                      Learn more <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
               </StaggerRevealItem>
             );
           })}

@@ -13,7 +13,7 @@ import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/compone
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
-import TiltCard from "@/components/ui/TiltCard";
+
 
 type ServiceItem = { title: string; description: string };
 
@@ -120,8 +120,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {offerings.map((o, i) => (
               <StaggerRevealItem key={o.title} variant="scale">
-                <TiltCard max={6} scale={1.02} className="h-full">
-                  <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
+                <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
                       <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-slate-900">
                         {String(i + 1).padStart(2, "0")}
@@ -130,7 +129,6 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                     </div>
                     <p className="mt-4 leading-7 text-slate-300">{o.description}</p>
                   </Glass>
-                </TiltCard>
               </StaggerRevealItem>
             ))}
           </div>

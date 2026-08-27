@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import DeferredChatbot from "./chatbot/DeferredChatbot";
-import ViewportPerformance from "@/components/ui/ViewportPerformance";
 
 export default function PublicChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -32,7 +31,6 @@ export default function PublicChrome({ children }: { children: React.ReactNode }
     pathname.startsWith("/solutions/");
   return (
     <>
-      <ViewportPerformance />
       <Header />
       {pathname === "/" ? children : usesStandaloneTailwind || usesModernDetailTheme ? (
         <div className={`font-sans ${isLandingPage ? "site-landing-theme" : "site-subpage-theme"}`}>{children}</div>

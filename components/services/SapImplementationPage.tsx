@@ -18,7 +18,7 @@ import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/compone
 import ServiceHero from "@/components/services/ServiceHero";
 import { Glass, Metric, SectionLabel } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
-import TiltCard from "@/components/ui/TiltCard";
+
 
 const HEX_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
 
@@ -185,8 +185,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {offerings.map((o, i) => (
               <StaggerRevealItem key={o.title} variant="scale">
-                <TiltCard max={6} scale={1.02} className="h-full">
-                  <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-7">
+                <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-7">
                     <div className="flex items-center gap-3">
                       <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-[11px] font-bold text-white">
                         {String(i + 1).padStart(2, "0")}
@@ -195,7 +194,6 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
                     </div>
                     <p className="mt-4 leading-7 text-white/90">{o.description}</p>
                   </div>
-                </TiltCard>
               </StaggerRevealItem>
             ))}
           </div>
