@@ -33,7 +33,7 @@ export default function IndustriesPreview() {
   const visibleIndustries = industries.filter((industry) => industry.showOnHome);
 
   return (
-    <section className="relative isolate overflow-hidden bg-white py-5 sm:py-6 lg:py-8 text-slate-900 border-t border-slate-200">
+    <section className="relative isolate overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-5 sm:py-6 lg:py-8 text-slate-900 border-t border-slate-200">
       <Container className="relative">
         <StaggerReveal className="flex flex-col gap-2.5 md:flex-row md:items-end md:justify-between">
           <StaggerRevealItem className="max-w-2xl">

@@ -104,7 +104,7 @@ export default async function IndustryDetailPage({ params }: Props) {
       </section>
 
       {/* ──── Definition / Overview ──────────────────────────── */}
-      <section className="industry-definition-section relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200 text-slate-900">
+      <section className="industry-definition-section relative overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-16 sm:py-20 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="industry-definition-card mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-7 shadow-lg sm:p-10 text-slate-900">
             <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Definition</p>
@@ -178,7 +178,7 @@ export default async function IndustryDetailPage({ params }: Props) {
       </section>
 
       {/* ──── Business Value & Measurable Outcomes ────────────────────────────────────────── */}
-      <section className="industry-outcomes-section relative bg-white py-20 sm:py-24 border-b border-slate-200 text-slate-900">
+      <section className="industry-outcomes-section relative bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-20 sm:py-24 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-14 lg:px-12">
           {/* Left Column: Title & Feature Image Card */}
           <div className="flex flex-col gap-8">

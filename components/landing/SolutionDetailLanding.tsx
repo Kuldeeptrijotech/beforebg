@@ -155,7 +155,7 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ──── Overview / Definition ────────────────────────────────────────────────────── */}
-      <section className="solution-definition-section relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200 text-slate-900">
+      <section className="solution-definition-section relative overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-16 sm:py-20 lg:py-24 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -252,7 +252,7 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ──── Capabilities (Pure White) ───────────────────────────────── */}
-      <section id="capabilities" className="relative isolate scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200 text-slate-900">
+      <section id="capabilities" className="relative isolate scroll-mt-24 bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-16 sm:py-20 lg:py-24 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

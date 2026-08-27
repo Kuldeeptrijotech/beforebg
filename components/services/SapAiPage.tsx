@@ -53,7 +53,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
       />
 
       {/* BUSINESS DATA + HERO TAIL */}
-      <section className="relative isolate overflow-hidden bg-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
+      <section className="relative isolate overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen text-slate-900 py-16 sm:py-20 border-b border-slate-200">
         <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
@@ -134,7 +134,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
       </section>
 
       {/* USE CASES */}
-      <section className="relative isolate overflow-hidden bg-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
+      <section className="relative isolate overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen text-slate-900 py-16 sm:py-20 border-b border-slate-200">
         <Container>
           <Reveal className="max-w-2xl">
             <SectionLabel dark={false}>In practice</SectionLabel>

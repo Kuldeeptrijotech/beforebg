@@ -59,7 +59,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
       />
 
       {/* SOURCE SYSTEMS + HERO TAIL */}
-      <section className="relative bg-white text-slate-900 py-16 sm:py-20 border-b border-slate-200">
+      <section className="relative bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen text-slate-900 py-16 sm:py-20 border-b border-slate-200">
         <div className="detail-split-grid mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-12">
           <div>
             <SlideReveal direction="left">
@@ -156,7 +156,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
       </section>
 
       {/* MAPPING & TRANSFORMATION */}
-      <section className="relative overflow-hidden bg-white text-slate-900 py-20 sm:py-28 border-b border-slate-200">
+      <section className="relative overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen text-slate-900 py-20 sm:py-28 border-b border-slate-200">
         <Container className="relative">
           <div className="detail-split-grid grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>

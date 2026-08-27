@@ -137,7 +137,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ──── Who We Are ────────────────────────────────────────────────── */}
-      <section id="who-we-are" className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28 border-b border-slate-200 text-slate-900">
+      <section id="who-we-are" className="relative isolate overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-20 sm:py-24 lg:py-28 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-12">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -220,7 +220,7 @@ export default function AboutUsPage() {
       </section>
 
       {/* ──── Values ────────────────────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28 border-b border-slate-200 text-slate-900">
+      <section className="relative isolate overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-20 sm:py-24 lg:py-28 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

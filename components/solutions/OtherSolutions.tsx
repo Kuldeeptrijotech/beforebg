@@ -9,7 +9,7 @@ export default function OtherSolutions({ currentSlug }: { currentSlug: string })
   if (others.length === 0) return null;
 
   return (
-    <section className="relative isolate overflow-hidden bg-white py-12 sm:py-14 lg:py-16 border-t border-slate-200 text-slate-900">
+    <section className="relative isolate overflow-hidden bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen py-12 sm:py-14 lg:py-16 border-t border-slate-200 text-slate-900">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-black">More from Trijotech</p>
         <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
