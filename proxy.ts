@@ -1,5 +1,6 @@
-﻿import { NextRequest, NextResponse } from "next/server";
-import { SESSION_COOKIE } from "@/app/lib/admin-auth";
+import { NextRequest, NextResponse } from "next/server";
+
+const SESSION_COOKIE = "trijotech_admin_session";
 
 export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname === "/admin/login") return NextResponse.next();
