@@ -41,30 +41,29 @@ function CustomSelect({ name, placeholder, options, required = false, controlCla
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
-                className={`${controlClass} contact-custom-select-trigger flex items-center justify-between text-left cursor-pointer transition-colors !bg-[#f8fafc] !text-black ${
-                    !selected ? "!text-slate-600" : "!text-black font-semibold"
-                } ${isOpen ? "!border-cyan-700 ring-2 ring-cyan-700/20" : "!border-slate-400"}`}
-                style={{ color: "#000000", backgroundColor: "#f8fafc" }}
+                className={`${controlClass} contact-custom-select-trigger flex items-center justify-between text-left cursor-pointer transition-colors !bg-slate-50 !text-slate-900 ${
+                    !selected ? "!text-slate-500" : "!text-slate-900 font-semibold"
+                } ${isOpen ? "!border-slate-900 ring-2 ring-slate-900/10" : "!border-slate-300"}`}
+                style={{ color: "#0f172a", backgroundColor: "#f8fafc" }}
                 aria-haspopup="listbox"
                 aria-expanded={isOpen}
                 aria-required={required}
             >
                 <span
-                    className={`contact-custom-select-value truncate ${selected ? "is-selected !text-black font-semibold" : "is-placeholder !text-slate-600"}`}
-                    style={{ color: selected ? "#000000" : "#475569", fontWeight: selected ? 600 : 400 }}
+                    className={`contact-custom-select-value truncate ${selected ? "is-selected !text-slate-900 font-semibold" : "is-placeholder !text-slate-500"}`}
+                    style={{ color: selected ? "#0f172a" : "#64748b", fontWeight: selected ? 600 : 400 }}
                 >
                     {selected || placeholder}
                 </span>
                 <ChevronDown
                     className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 text-black" : "text-slate-700"
+                        isOpen ? "rotate-180 text-slate-900" : "text-slate-600"
                     }`}
-                    style={{ color: "#000000" }}
                 />
             </button>
 
             {isOpen && (
-                <div className="contact-custom-select-menu absolute left-0 right-0 top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-slate-300 bg-white p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl animate-in fade-in duration-150" style={{ backgroundColor: "#ffffff" }}>
+                <div className="contact-custom-select-menu absolute left-0 right-0 top-[calc(100%+6px)] z-50 overflow-hidden rounded-2xl border border-slate-200 bg-white p-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.15)]" style={{ backgroundColor: "#ffffff" }}>
                     <ul role="listbox" className="max-h-60 overflow-y-auto space-y-1 bg-white" style={{ backgroundColor: "#ffffff" }}>
                         {options.map((option) => {
                             const isSelected = selected === option;
@@ -79,13 +78,13 @@ function CustomSelect({ name, placeholder, options, required = false, controlCla
                                     }}
                                     className={`contact-custom-select-option flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[14px] cursor-pointer transition-all duration-150 ${
                                         isSelected
-                                            ? "bg-slate-200 font-bold text-black"
-                                            : "bg-white text-black hover:bg-slate-100 hover:text-black"
+                                            ? "bg-slate-100 font-bold text-slate-900"
+                                            : "bg-white text-slate-900 hover:bg-slate-50 hover:text-slate-900"
                                     }`}
-                                    style={{ backgroundColor: isSelected ? "#e2e8f0" : "#ffffff", color: "#000000" }}
+                                    style={{ backgroundColor: isSelected ? "#f1f5f9" : "#ffffff", color: "#0f172a" }}
                                 >
-                                    <span style={{ color: "#000000", fontWeight: isSelected ? 700 : 500 }}>{option}</span>
-                                    {isSelected && <Check className="h-4 w-4 text-black" style={{ color: "#000000" }} />}
+                                    <span style={{ color: "#0f172a", fontWeight: isSelected ? 700 : 500 }}>{option}</span>
+                                    {isSelected && <Check className="h-4 w-4 text-slate-900" style={{ color: "#0f172a" }} />}
                                 </li>
                             );
                         })}
@@ -105,10 +104,10 @@ export default function ContactUs({
     hideHeading = false,
 }) {
     const isCareer = variant === "career" || showResume;
-    const sectionClass = "w-full bg-transparent p-0 text-white";
+    const sectionClass = "w-full bg-transparent p-0 text-slate-900";
     const fieldColumn = "w-full px-2 md:w-1/2 md:max-w-1/2 md:basis-1/2";
     const fullColumn = "w-full px-2 md:max-w-full md:basis-full";
-    const controlClass = "contact-form-control m-0 h-[48px] w-full rounded-xl border border-white/12 bg-white/[0.05] px-4 text-[14px] text-white outline-none transition-all duration-200 placeholder:text-slate-400 backdrop-blur-md focus:border-white focus:bg-white/[0.08] focus:shadow-[0_0_0_3px_rgba(255, 255, 255,0.25)]";
+    const controlClass = "contact-form-control m-0 h-[48px] w-full rounded-xl border border-slate-300 bg-slate-50 px-4 text-[14px] font-medium text-slate-900 outline-none transition-all duration-200 placeholder:text-slate-500 focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-900/10 focus:shadow-sm";
     const formRef = useRef(null);
     const fileInputRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
@@ -165,12 +164,12 @@ export default function ContactUs({
                 <div className="m-0 flex flex-wrap">
                     {!hideHeading && (
                         <div className="w-full p-0 mb-8 text-center">
-                            <h2 className="text-3xl font-bold text-white">{heading.split(" ").slice(0, -1).join(" ")} <em className="text-white not-italic">{heading.split(" ").slice(-1)[0]}</em></h2>
-                            {description && <p className="mt-3 text-slate-300 max-w-2xl mx-auto">{description}</p>}
+                            <h2 className="text-3xl font-bold text-slate-900">{heading.split(" ").slice(0, -1).join(" ")} <em className="text-slate-900 not-italic">{heading.split(" ").slice(-1)[0]}</em></h2>
+                            {description && <p className="mt-3 text-slate-600 max-w-2xl mx-auto">{description}</p>}
                         </div>
                     )}
                     <div className="w-full p-0">
-                        <div className="contact-form-panel mx-auto max-w-[920px] rounded-[28px] border border-white/12 bg-white/[0.04] p-[clamp(20px,4vw,40px)] shadow-2xl backdrop-blur-xl">
+                        <div className="contact-form-panel mx-auto max-w-[920px] rounded-[28px] border border-slate-200 bg-white p-[clamp(20px,4vw,40px)] shadow-2xl">
                             <form ref={formRef} id={`contact-${variant}`} onSubmit={handleSubmit} encType="multipart/form-data">
                                 <div className="-mx-2 flex flex-wrap gap-y-4">
                                     <div className={fieldColumn}><fieldset className="m-0"><input name="name" type="text" className={controlClass} placeholder="Full Name" minLength={2} maxLength={100} required /></fieldset></div>
@@ -229,10 +228,10 @@ export default function ContactUs({
                                     {isCareer && (
                                         <div className={fullColumn}>
                                             <fieldset className="m-0">
-                                                <label className="mb-2 block text-[13px] font-semibold text-slate-300" htmlFor="career-resume">
+                                                <label className="mb-2 block text-[13px] font-semibold text-slate-900" htmlFor="career-resume">
                                                     Upload Resume (PDF, DOC or DOCX, max 5 MB)
                                                 </label>
-                                                <div className="career-upload-zone group relative flex min-h-[140px] w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-white/15 bg-white/[0.03] p-6 text-center backdrop-blur-md transition-all duration-200 hover:border-white/60 hover:bg-white/[0.06] focus-within:border-white focus-within:shadow-[0_0_0_3px_rgba(255, 255, 255,0.25)]">
+                                                <div className="career-upload-zone group relative flex min-h-[140px] w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50/80 p-6 text-center transition-all duration-200 hover:border-slate-400 hover:bg-slate-100/80 focus-within:border-slate-900 focus-within:ring-2 focus-within:ring-slate-900/10">
                                                     <input
                                                         ref={fileInputRef}
                                                         id="career-resume"
@@ -247,32 +246,32 @@ export default function ContactUs({
 
                                                     {selectedFile ? (
                                                         <div className="flex flex-col items-center justify-center gap-2">
-                                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-white ring-1 ring-[#ffffff]/40 shadow-inner">
-                                                                <FileText className="h-6 w-6 text-white" />
+                                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-900 ring-1 ring-slate-200 shadow-inner">
+                                                                <FileText className="h-6 w-6 text-slate-900" />
                                                             </div>
                                                             <div className="text-center">
-                                                                <p className="max-w-[260px] truncate text-sm font-semibold text-white sm:max-w-md">
+                                                                <p className="max-w-[260px] truncate text-sm font-semibold text-slate-900 sm:max-w-md">
                                                                     {selectedFile.name}
                                                                 </p>
-                                                                <p className="mt-0.5 text-xs text-white">
+                                                                <p className="mt-0.5 text-xs text-slate-500">
                                                                     {formatFileSize(selectedFile.size)}
                                                                 </p>
                                                             </div>
-                                                            <div className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-white/40 bg-white/20 px-3.5 py-1.5 text-xs font-semibold text-white transition-colors group-hover:bg-white group-hover:text-slate-900">
+                                                            <div className="mt-2 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-900 transition-colors hover:bg-slate-50">
                                                                 <Upload className="h-3.5 w-3.5" />
                                                                 <span>Change File</span>
                                                             </div>
                                                         </div>
                                                     ) : (
                                                         <div className="flex flex-col items-center justify-center gap-2.5">
-                                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-[#ffffff]/30 transition-transform duration-200 group-hover:scale-110">
-                                                                <Upload className="h-5 w-5" />
+                                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-900 ring-1 ring-slate-200 transition-transform duration-200 group-hover:scale-110">
+                                                                <Upload className="h-5 w-5 text-slate-900" />
                                                             </div>
-                                                            <div className="inline-flex items-center justify-center gap-2 rounded-xl bg-white/20 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white ring-1 ring-[#ffffff]/40 shadow-sm transition-all group-hover:bg-white group-hover:text-slate-950">
+                                                            <div className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-2.5 text-xs sm:text-sm font-semibold text-slate-900 border border-slate-300 shadow-sm transition-all group-hover:bg-slate-50">
                                                                 <Upload className="h-4 w-4" />
                                                                 <span>Choose File</span>
                                                             </div>
-                                                            <p className="career-upload-help text-xs text-slate-400">
+                                                            <p className="career-upload-help text-xs text-slate-500">
                                                                 or drag and drop your file here (PDF, DOC or DOCX up to 5 MB)
                                                             </p>
                                                         </div>
@@ -284,22 +283,22 @@ export default function ContactUs({
                                     <div className="pointer-events-none absolute h-px w-px overflow-hidden whitespace-nowrap [clip:rect(0_0_0_0)]" aria-hidden="true"><label>Website<input name="website" type="text" tabIndex={-1} autoComplete="off" /></label></div>
                                     <div className={fullColumn}>
                                         <fieldset className="m-0">
-                                            <label className="contact-consent flex items-start gap-2.5 text-[13px] leading-[1.45] text-slate-300">
-                                                <input className="mt-1 h-4 w-4 rounded border-white/20 bg-white/10 text-white focus:ring-[#ffffff]" name="consent" type="checkbox" value="yes" required />
+                                            <label className="contact-consent flex items-start gap-2.5 text-[13px] leading-[1.45] text-slate-800 font-medium">
+                                                <input className="mt-1 h-4 w-4 rounded border-slate-300 bg-white text-slate-900 accent-slate-900 focus:ring-slate-900" name="consent" type="checkbox" value="yes" required />
                                                 <span>I consent to Trijotech using this information to respond to my {isCareer ? "application" : "enquiry"}.</span>
                                             </label>
                                         </fieldset>
                                     </div>
                                     {status.message && (
                                         <div className={fullColumn}>
-                                            <p className={`rounded-xl px-4 py-3 text-sm font-medium ${status.type === "success" ? "border border-white/40 bg-white/15 text-white" : "border border-rose-500/40 bg-rose-500/15 text-rose-300"}`} role="status" aria-live="polite">
+                                            <p className={`rounded-xl px-4 py-3 text-sm font-medium ${status.type === "success" ? "border border-emerald-300 bg-emerald-50 text-emerald-900" : "border border-rose-300 bg-rose-50 text-rose-900"}`} role="status" aria-live="polite">
                                                 {status.message}
                                             </p>
                                         </div>
                                     )}
                                     <div className={`${fullColumn} flex justify-center mt-2`}>
                                         <fieldset className="m-0">
-                                            <button type="submit" className="inline-flex items-center justify-center min-w-[200px] rounded-full px-8 py-3.5 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200" disabled={submitting}>
+                                            <button type="submit" className="inline-flex items-center justify-center min-w-[200px] rounded-full px-8 py-3.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-lg shadow-slate-900/20 transition-all duration-200" disabled={submitting}>
                                                 {submitting ? "Sending..." : isCareer ? "Submit Application" : "Send Message"}
                                             </button>
                                         </fieldset>
