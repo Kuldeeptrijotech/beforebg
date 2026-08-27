@@ -12,22 +12,22 @@ const contactItems = [
     title: "Call us",
     content: (
       <>
-        <a href="tel:+911203506433" className="text-white hover:underline">+91 120-3506433</a>
-        <a href="tel:+917982531976" className="text-white hover:underline">+91 7982531976</a>
+        <a href="tel:+911203506433" className="text-slate-900 font-semibold hover:underline">+91 120-3506433</a>
+        <a href="tel:+917982531976" className="text-slate-900 font-semibold hover:underline">+91 7982531976</a>
       </>
     ),
   },
   {
     icon: Mail,
     title: "Email us",
-    content: <a href="mailto:sales@trijotech.com" className="text-white hover:underline">sales@trijotech.com</a>,
+    content: <a href="mailto:sales@trijotech.com" className="text-slate-900 font-semibold hover:underline">sales@trijotech.com</a>,
   },
   {
     icon: MapPin,
     title: "Visit us",
     content: (
-      <p className="text-white/90">
-        C56A, Infinity Tecnopark, 501, 16, C Block, Phase 2, Sector 62, Noida,
+      <p className="text-slate-900 font-medium">
+        56A, Infinity Tecnopark, 501, 16, C Block, Phase 2, Sector 62, Noida,
         Uttar Pradesh 201309
       </p>
     ),
@@ -38,7 +38,7 @@ export default function ContactPage() {
   return (
     <main className="public-alternating-page font-sans overflow-hidden bg-[#030713] text-white">
       {/* ──── Hero ────────────────────────────────────────────────────────────── */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-24 sm:pt-28 lg:pt-24 pb-10 sm:pb-12">
+      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] flex-col overflow-hidden bg-[#050817] pt-32 sm:pt-36 lg:pt-40 pb-10 sm:pb-12">
         <Image
           src="/assets/heroes/contact-generated-v2.png"
           alt="Contact Trijotech enterprise consulting team"

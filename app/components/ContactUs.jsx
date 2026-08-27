@@ -284,7 +284,7 @@ export default function ContactUs({
                                     <div className="pointer-events-none absolute h-px w-px overflow-hidden whitespace-nowrap [clip:rect(0_0_0_0)]" aria-hidden="true"><label>Website<input name="website" type="text" tabIndex={-1} autoComplete="off" /></label></div>
                                     <div className={fullColumn}>
                                         <fieldset className="m-0">
-                                            <label className="contact-consent flex items-start gap-2.5 text-[13px] leading-[1.45] text-black">
+                                            <label className="contact-consent flex items-start gap-2.5 text-[13px] leading-[1.45] text-slate-300">
                                                 <input className="mt-1 h-4 w-4 rounded border-white/20 bg-white/10 text-white focus:ring-[#ffffff]" name="consent" type="checkbox" value="yes" required />
                                                 <span>I consent to Trijotech using this information to respond to my {isCareer ? "application" : "enquiry"}.</span>
                                             </label>
