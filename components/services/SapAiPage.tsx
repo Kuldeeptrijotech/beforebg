@@ -150,9 +150,7 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
                 <StaggerRevealItem key={c.title} variant="slideRight">
                   <div className="ai-practice-card service-surface-card h-full p-7 rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
                     <div className="flex items-start gap-4">
-                      <span className="ai-practice-icon-badge flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-sm">
-                        <Icon className="h-6 w-6 text-slate-900" strokeWidth={2.2} />
-                      </span>
+                      <Icon className="h-7 w-7 shrink-0 text-cyan-600 stroke-cyan-600" strokeWidth={2} />
                       <div>
                         <h3 className="text-xl font-bold text-slate-900">{c.title}</h3>
                         <p className="mt-2 leading-7 text-slate-600">{c.desc}</p>

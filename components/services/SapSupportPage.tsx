@@ -72,8 +72,8 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 return (
                   <StaggerRevealItem key={p.label} variant="fadeIn" className="h-full">
                     <div className="service-surface-card flex h-full flex-col p-5 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-transform duration-300">
-                        <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
+                      <div className="flex items-center text-cyan-600">
+                        <Icon className="h-7 w-7 text-cyan-600 stroke-cyan-600" strokeWidth={2} />
                       </div>
                       <h3 className="mt-4 font-bold text-slate-900 text-base sm:text-lg">{p.label}</h3>
                       <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-600">{p.desc}</p>

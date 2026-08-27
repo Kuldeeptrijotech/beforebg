@@ -66,8 +66,8 @@ export default function WhyChooseUs() {
                       }`}
                     />
                     <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
-                    <div className="absolute bottom-3 left-4 z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-900 shadow-md transition-transform duration-300 group-hover:scale-110">
-                      <Icon className="h-5 w-5 text-slate-900" strokeWidth={2} />
+                    <div className="absolute bottom-3 left-4 z-10 flex items-center justify-center text-cyan-200 drop-shadow-md">
+                      <Icon className="h-6 w-6 text-cyan-200 stroke-cyan-200" strokeWidth={2} />
                     </div>
                   </div>
                   <div className="flex flex-1 flex-col p-5">

@@ -283,9 +283,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               </Reveal>
               <Reveal delay={0.1}>
                 <div className="mt-8 flex items-center gap-4 h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-5">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-xs">
-                    <Zap className="h-6 w-6 text-slate-900" />
-                  </span>
+                  <Zap className="h-8 w-8 shrink-0 text-cyan-600 stroke-cyan-600" strokeWidth={2} />
                   <div>
                     <p className="text-2xl font-extrabold text-slate-900">Practical delivery</p>
                     <p className="text-sm text-slate-600">Structured governance, testing, migration, and adoption throughout.</p>

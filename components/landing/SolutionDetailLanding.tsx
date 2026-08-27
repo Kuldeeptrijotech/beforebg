@@ -239,8 +239,8 @@ export default function SolutionDetailLanding({
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
                   className="solution-detail-card group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-md transition-all duration-300 hover:border-white/30 hover:bg-white/[0.06] hover:shadow-xl"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-[#030713]">
-                    <CardIcon className="solution-card-icon h-5.5 w-5.5" strokeWidth={2} />
+                  <span className="flex items-center text-cyan-200">
+                    <CardIcon className="solution-card-icon h-7 w-7 text-cyan-200 stroke-cyan-200" strokeWidth={2} />
                   </span>
                   <h3 className="mt-5 text-base sm:text-lg font-bold text-white">{item.title}</h3>
                   <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>

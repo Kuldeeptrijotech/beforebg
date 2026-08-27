@@ -78,10 +78,10 @@ export default function IndustriesPreview() {
                     <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 rounded-none" />
                     <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.15),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-none" />
 
-                    {/* Top row: 100% circular icon badge */}
+                    {/* Top row: Icon */}
                     <div className="relative z-10 flex items-center justify-between">
-                      <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/95 text-slate-900 shadow-xs backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
-                        <Icon className="h-4 w-4 text-slate-900" strokeWidth={2.2} />
+                      <span className="flex items-center justify-center text-cyan-200 drop-shadow-md">
+                        <Icon className="h-6 w-6 text-cyan-200 stroke-cyan-200" strokeWidth={2} />
                       </span>
                     </div>
 

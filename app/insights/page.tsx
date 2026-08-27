@@ -157,13 +157,9 @@ export default function InsightsPage() {
                         className="object-cover transition duration-700 group-hover:scale-108"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
-                      <motion.span
-                        whileHover={{ scale: 1.12, rotate: 5 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute left-3.5 top-3.5"
-                      >
+                      <span className="absolute left-3.5 top-3.5">
                         <HexBadge icon={Icon} tone={card.tone} size="md" />
-                      </motion.span>
+                      </span>
                     </Link>
 
                     <div className="flex flex-1 flex-col p-5 sm:p-6">

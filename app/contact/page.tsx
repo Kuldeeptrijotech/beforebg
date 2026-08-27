@@ -12,15 +12,15 @@ const contactItems = [
     title: "Call us",
     content: (
       <>
-        <a href="tel:+911203506433" className="text-slate-900 font-semibold hover:underline">+91 120-3506433</a>
-        <a href="tel:+917982531976" className="text-slate-900 font-semibold hover:underline">+91 7982531976</a>
+        <a href="tel:+911203506433" className="inline-flex min-h-6 items-center pt-0.5 !font-normal leading-[1.5] text-slate-900 hover:underline">+91 120-3506433</a>
+        <a href="tel:+917982531976" className="inline-flex min-h-6 items-center pt-0.5 !font-normal leading-[1.5] text-slate-900 hover:underline">+91 7982531976</a>
       </>
     ),
   },
   {
     icon: Mail,
     title: "Email us",
-    content: <a href="mailto:sales@trijotech.com" className="text-slate-900 font-semibold hover:underline">sales@trijotech.com</a>,
+    content: <a href="mailto:sales@trijotech.com" className="inline-flex min-h-6 items-center pt-0.5 !font-normal leading-[1.5] text-slate-900 hover:underline">sales@trijotech.com</a>,
   },
   {
     icon: MapPin,
@@ -133,8 +133,8 @@ export default function ContactPage() {
                 >
                   <Icon className="h-5.5 w-5.5 text-slate-900" strokeWidth={2.2} />
                 </div>
-                <h3 className="mt-4 text-base sm:text-lg font-bold text-slate-900">{title}</h3>
-                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-slate-600 [&_a]:font-semibold [&_a]:text-slate-900 [&_a]:underline">
+                <h3 className={`mt-4 text-base font-bold leading-[1.4] text-slate-900 sm:text-lg ${title === "Email us" ? "pt-0.5" : ""}`}>{title}</h3>
+                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-slate-600 [&_a]:font-normal [&_a]:text-slate-900 [&_a]:underline">
                   {content as ReactNode}
                 </div>
               </motion.article>

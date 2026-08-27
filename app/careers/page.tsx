@@ -107,13 +107,9 @@ export default function CareersPage() {
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
                     className="flex flex-1 flex-col rounded-2xl border border-slate-200 bg-white text-slate-900 p-4.5 sm:p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md"
                   >
-                    <motion.span
-                      whileHover={{ rotate: 10, scale: 1.12 }}
-                      transition={{ duration: 0.25 }}
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-all duration-300"
-                    >
-                      <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
-                    </motion.span>
+                    <span className="flex shrink-0 items-center text-cyan-600">
+                      <Icon className="h-6 w-6 text-cyan-600 stroke-cyan-600" strokeWidth={2} />
+                    </span>
                     <h3 className="mt-3.5 text-base sm:text-lg font-bold text-slate-900">{title}</h3>
                     <p className="mt-1 text-xs sm:text-sm leading-relaxed text-slate-600">{text}</p>
                   </motion.article>

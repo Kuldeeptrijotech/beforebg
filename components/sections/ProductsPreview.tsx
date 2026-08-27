@@ -56,9 +56,7 @@ export default function ProductsPreview() {
                   </div>
                   <div className="flex flex-1 flex-col p-5">
                     <h3 className="flex items-center gap-2.5 text-base sm:text-lg font-bold leading-snug text-white">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-white shadow-md">
-                        <Icon className="h-4 w-4" strokeWidth={1.8} />
-                      </span>
+                      <Icon className="h-5 w-5 shrink-0 text-cyan-200 stroke-cyan-200" strokeWidth={2} />
                       {product.title}
                     </h3>
                     <p className="mt-2.5 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{product.description}</p>

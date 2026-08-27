@@ -79,9 +79,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                 return (
                   <StaggerRevealItem key={s.label} variant="fadeIn">
                     <div className="service-surface-card flex items-center gap-2.5 rounded-xl border-0 bg-white text-slate-900 border border-slate-200 px-3.5 py-3 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 shadow-xs">
-                        <Icon className="h-4.5 w-4.5 text-slate-900" strokeWidth={2.2} />
-                      </span>
+                      <Icon className="h-5 w-5 shrink-0 text-cyan-600 stroke-cyan-600" strokeWidth={2} />
                       <span className="text-[13px] font-bold text-slate-900">{s.label}</span>
                     </div>
                   </StaggerRevealItem>
