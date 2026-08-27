@@ -113,7 +113,7 @@ export default function ServiceBanners() {
               className={`service-banner-row service-row-${item.slug} group relative w-full border-b transition-colors duration-300 ${
                 isDark
                   ? "bg-[#050817] text-white border-transparent"
-                  : "bg-[#ffffff] text-black border-slate-200"
+                  : "bg-[#a8c0f1] bg-[radial-gradient(circle_at_15%_20%,#85a1da_0%,transparent_45%),radial-gradient(circle_at_70%_15%,#9eb6ce_0%,transparent_50%),radial-gradient(circle_at_35%_65%,#9cafda_0%,transparent_55%),radial-gradient(circle_at_85%_70%,#97b3f0_0%,transparent_50%),radial-gradient(circle_at_10%_90%,#c2dbec_0%,transparent_40%)] bg-blend-screen text-black border-slate-200"
               }`}
             >
               <div className="service-banner-inner mx-auto grid w-full max-w-[1600px] grid-cols-1 lg:grid-cols-2 lg:items-stretch">
