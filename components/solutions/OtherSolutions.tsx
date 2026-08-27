@@ -42,7 +42,7 @@ export default function OtherSolutions({ currentSlug }: { currentSlug: string })
               <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">{solution.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{solution.shortDescription}</p>
-                <Link href={solution.href} className="mt-auto inline-flex items-center gap-2 pt-5 font-semibold text-slate-900 transition-all duration-200 group-hover:gap-3 group-hover:text-slate-700">
+                <Link href={solution.href} className="mt-auto inline-flex items-center gap-2 pt-5 font-bold text-cyan-600 transition-all duration-200 group-hover:gap-3 group-hover:text-cyan-700">
                   Explore Solution <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

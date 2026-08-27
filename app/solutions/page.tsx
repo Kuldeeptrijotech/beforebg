@@ -145,7 +145,7 @@ export default function SolutionsPage() {
                   <div className="mt-auto pt-4">
                     <Link
                       href={solution.href}
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-200 group-hover:gap-2.5 group-hover:text-slate-700"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-cyan-600 transition-all duration-200 group-hover:gap-2.5 group-hover:text-cyan-700"
                     >
                       Explore Solution <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
