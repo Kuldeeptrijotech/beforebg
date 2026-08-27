@@ -78,9 +78,9 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                 const Icon = s.icon;
                 return (
                   <StaggerRevealItem key={s.label} variant="fadeIn">
-                    <div className="service-surface-card flex items-center gap-2.5 rounded-xl border-0 bg-[#008fd3] text-white px-3.5 py-3 shadow-[0_8px_20px_rgba(0,143,211,0.2)] transition-all duration-300 hover:bg-[#007bb8]">
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-[#008fd3] shadow-xs">
-                        <Icon className="h-4.5 w-4.5 text-[#008fd3]" strokeWidth={2.2} />
+                    <div className="service-surface-card flex items-center gap-2.5 rounded-xl border-0 bg-white text-slate-900 border border-slate-200 px-3.5 py-3 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 shadow-xs">
+                        <Icon className="h-4.5 w-4.5 text-slate-900" strokeWidth={2.2} />
                       </span>
                       <span className="text-[13px] font-bold text-white">{s.label}</span>
                     </div>
@@ -93,22 +93,22 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={100} suffix="+" label="Interfaces connected" accent="text-[#008fd3]" />
+                <Metric to={100} suffix="+" label="Interfaces connected" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={99.95} suffix="%" label="Sync reliability" accent="text-[#008fd3]" />
+                <Metric to={99.95} suffix="%" label="Sync reliability" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={40} suffix="%" label="Faster data delivery" accent="text-[#008fd3]" />
+                <Metric to={40} suffix="%" label="Faster data delivery" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={0} label="Data silos" accent="text-[#008fd3]" sub="All systems fully unified" />
+                <Metric to={0} label="Data silos" accent="text-slate-900" sub="All systems fully unified" />
               </div>
             </Reveal>
           </div>
@@ -173,9 +173,9 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
               <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
                 {impacts.map((i) => (
                   <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
-                        <CheckCircle2 className="h-4.5 w-4.5 text-[#008fd3]" />
+                    <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 p-4 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
+                        <CheckCircle2 className="h-4.5 w-4.5 text-slate-900" />
                       </span>
                       <div>
                         <p className="font-bold text-white">{i.title}</p>
@@ -189,13 +189,13 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
 
             <Reveal delay={0.15}>
               <div className="service-surface-card relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-md">
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008fd3]">Mapping in motion</p>
+                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-900">Mapping in motion</p>
                 <div className="mt-6 space-y-3">
                   {[
-                    { from: "Legacy ERP", to: "S/4HANA", status: "Validated", tone: "#008fd3" },
-                    { from: "CRM export", to: "SAP Integration Suite", status: "Synchronized", tone: "#008fd3" },
-                    { from: "Raw files", to: "HANA Cloud", status: "Cleansed", tone: "#008fd3" },
-                    { from: "Master data", to: "MDM", status: "Harmonized", tone: "#008fd3" },
+                    { from: "Legacy ERP", to: "S/4HANA", status: "Validated", tone: "#38bdf8" },
+                    { from: "CRM export", to: "SAP Integration Suite", status: "Synchronized", tone: "#38bdf8" },
+                    { from: "Raw files", to: "HANA Cloud", status: "Cleansed", tone: "#38bdf8" },
+                    { from: "Master data", to: "MDM", status: "Harmonized", tone: "#38bdf8" },
                   ].map((r, i) => (
                     <motion.div
                       key={r.from}
@@ -205,7 +205,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                       transition={{ duration: 0.5, delay: i * 0.12 }}
                       className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm"
                     >
-                      <Layers className="h-4 w-4 shrink-0 text-[#008fd3]" />
+                      <Layers className="h-4 w-4 shrink-0 text-slate-900" />
                       <span className="flex-1 truncate text-sm font-semibold text-slate-900">{r.from}</span>
                       <span className="text-slate-400">→</span>
                       <span className="flex-1 truncate text-right text-sm font-semibold text-slate-900">{r.to}</span>
@@ -217,7 +217,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                   ))}
                 </div>
                 <div className="service-surface-card mt-6 flex items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-                  <RefreshCw className="h-5 w-5 shrink-0 text-[#008fd3]" />
+                  <RefreshCw className="h-5 w-5 shrink-0 text-slate-900" />
                   <p className="text-sm text-slate-700">
                     <span className="font-bold text-slate-900">Continuous sync</span> — real-time events keep data current.
                   </p>
@@ -248,7 +248,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-[#008fd3]">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-slate-900">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>

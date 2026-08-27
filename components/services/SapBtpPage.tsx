@@ -65,9 +65,9 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                 const Icon = t.icon;
                 return (
                   <StaggerRevealItem key={t.label} variant="fadeIn" className="h-full">
-                    <div className="service-surface-card flex h-full flex-col p-5 rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-md transition-transform duration-300">
-                        <Icon className="h-5 w-5 text-[#008fd3]" strokeWidth={2.2} />
+                    <div className="service-surface-card flex h-full flex-col p-5 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-transform duration-300">
+                        <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
                       </div>
                       <h3 className="mt-4 font-bold text-white text-base sm:text-lg">{t.label}</h3>
                       <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-white/90">{t.desc}</p>
@@ -81,22 +81,22 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={3} suffix="x" label="Faster delivery" accent="text-[#008fd3]" />
+                <Metric to={3} suffix="x" label="Faster delivery" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={0} label="Core disruption" accent="text-[#008fd3]" sub="extensions live outside the core" />
+                <Metric to={0} label="Core disruption" accent="text-slate-900" sub="extensions live outside the core" />
               </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={100} suffix="%" label="Upgrade readiness" accent="text-[#008fd3]" />
+                <Metric to={100} suffix="%" label="Upgrade readiness" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={60} suffix="%" label="Less custom code" accent="text-[#008fd3]" />
+                <Metric to={60} suffix="%" label="Less custom code" accent="text-slate-900" />
               </div>
             </Reveal>
           </div>
@@ -123,7 +123,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-[#008fd3]">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-slate-900">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
@@ -155,9 +155,9 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
               <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
                 {impacts.slice(0, 4).map((i) => (
                   <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="btp-impact-card flex items-start gap-3 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
-                        <CheckCircle2 className="h-4.5 w-4.5 text-[#008fd3]" />
+                    <div className="btp-impact-card flex items-start gap-3 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 p-4 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
+                        <CheckCircle2 className="h-4.5 w-4.5 text-slate-900" />
                       </span>
                       <div>
                         <p className="font-bold text-white">{i.title}</p>
@@ -189,7 +189,7 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
               return (
                 <StaggerRevealItem key={t.label} variant="fadeIn">
                   <div className="service-surface-card flex h-full flex-col items-center rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-center shadow-xl backdrop-blur-xl">
-                    <span className="btp-connected-icon flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#008fd3] to-[#2563eb] text-white shadow-lg">
+                    <span className="btp-connected-icon flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#38bdf8] to-[#2563eb] text-white shadow-lg">
                       <Icon className="h-7 w-7" strokeWidth={1.8} />
                     </span>
                     <h3 className="mt-5 text-xl font-bold text-white">{t.label}</h3>

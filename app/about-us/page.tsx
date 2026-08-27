@@ -109,13 +109,13 @@ export default function AboutUsPage() {
             >
               <a
                 href="#who-we-are"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Discover our story <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Talk to our team
               </Link>
@@ -145,7 +145,7 @@ export default function AboutUsPage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Who we are</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Who we are</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
               Deep expertise, close collaboration
             </h2>
@@ -159,7 +159,7 @@ export default function AboutUsPage() {
               <motion.span
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#008fd3] text-white shadow-md"
+                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-white shadow-md"
               >
                 <Check className="h-3.5 w-3.5" />
               </motion.span>
@@ -229,7 +229,7 @@ export default function AboutUsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">How we work</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">How we work</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
               Simple principles, consistently applied
             </h2>
@@ -244,10 +244,10 @@ export default function AboutUsPage() {
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="about-card group relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 sm:p-8 shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:border-[#008fd3] hover:shadow-[0_16px_36px_rgba(0,143,211,0.14)]"
+                className="about-card group relative flex h-full min-w-0 flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white p-7 sm:p-8 shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:border-slate-400 hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)]"
               >
                 <motion.span
-                  className="absolute right-4 top-3 text-4xl font-bold text-slate-200 transition-colors group-hover:text-[#008fd3]/30"
+                  className="absolute right-4 top-3 text-4xl font-bold text-slate-200 transition-colors group-hover:text-slate-700/30"
                   animate={{ opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
                 >
@@ -306,7 +306,7 @@ export default function AboutUsPage() {
                   </div>
                 ) : (
                   <div className="pt-6 px-6 sm:pt-7 sm:px-7">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#0a6ed1] to-[#008fd3] text-xl font-bold text-white shadow-lg border border-white/20">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#0a6ed1] to-[#0284c7] text-xl font-bold text-white shadow-lg border border-white/20">
                       {leader.name
                         .split(" ")
                         .map((n) => n[0])
@@ -335,7 +335,7 @@ export default function AboutUsPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
           <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
@@ -350,7 +350,7 @@ export default function AboutUsPage() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </Link>

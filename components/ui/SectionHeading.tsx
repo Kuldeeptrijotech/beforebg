@@ -25,8 +25,8 @@ export default function SectionHeading({
     <div className={`flex flex-col ${alignCls} ${className}`}>
       {eyebrow && (
         <span
-          className={`tri-overline mb-0.5 ${
-            dark ? "text-white !text-white" : "text-black !text-black"
+          className={`font-mono text-xs font-bold uppercase tracking-[0.2em] mb-0.5 ${
+            dark ? "text-[#38bdf8]" : "text-slate-900"
           }`}
         >
           {eyebrow}

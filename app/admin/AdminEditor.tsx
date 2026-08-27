@@ -413,9 +413,9 @@ export default function AdminEditor({
     setNotice({ type: "success", text: "HTML tags removed from text." });
   }
 
-  function handleWrapTag(tag: "bold" | "italic" | "gradient") {
+  function handleWrapTag(tag: "bold" | "italic" | "accent") {
+    if (!textareaRef.current) return;
     const textarea = textareaRef.current;
-    if (!textarea) return;
     const start = textarea.selectionStart;
     const end = textarea.selectionEnd;
     const selectedText = html.slice(start, end);
@@ -427,7 +427,7 @@ export default function AdminEditor({
     let replacement = "";
     if (tag === "bold") replacement = `<strong>${selectedText}</strong>`;
     else if (tag === "italic") replacement = `<em>${selectedText}</em>`;
-    else if (tag === "gradient") replacement = `<span class="tri-gradient-text">${selectedText}</span>`;
+    else if (tag === "accent") replacement = `<span class="text-slate-900">${selectedText}</span>`;
 
     const nextHtml = html.slice(0, start) + replacement + html.slice(end);
     setHtml(nextHtml);
@@ -1102,10 +1102,10 @@ export default function AdminEditor({
                           </button>
                           <button
                             type="button"
-                            onClick={() => handleWrapTag("gradient")}
-                            style={{ padding: "2px 7px", fontSize: "11px", fontWeight: 600, border: "1px solid #cfd8e1", borderRadius: "4px", background: "#fff", color: "#087b71", cursor: "pointer" }}
+                            onClick={() => handleWrapTag("accent")}
+                            style={{ padding: "2px 7px", fontSize: "11px", fontWeight: 600, border: "1px solid #cfd8e1", borderRadius: "4px", background: "#fff", color: "#0284c7", cursor: "pointer" }}
                           >
-                            Gradient
+                            Accent
                           </button>
                         </div>
                       </div>
@@ -1584,7 +1584,7 @@ export default function AdminEditor({
                         rows={5}
                         value={addedContent}
                         onChange={(event) => setAddedContent(event.target.value)}
-                        placeholder={'<h2>New heading</h2>\n<p>New content...</p>\n<a href="/contact" class="tri-btn tri-btn-primary">Learn more</a>'}
+                        placeholder={'<h2>New heading</h2>\n<p>New content...</p>\n<a href="/contact" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-white hover:bg-[#0369a1]">Learn more</a>'}
                       />
                       <small>Supports safe HTML headings, text, links, buttons, lists, and images.</small>
                     </div>
@@ -1604,7 +1604,7 @@ export default function AdminEditor({
                           className="admin-secondary-button"
                           onClick={() =>
                             setNewSection(
-                              '<section class="py-20 bg-[#050817] text-white border-b border-white/10">\n  <div class="max-w-7xl mx-auto px-5">\n    <h2 class="text-3xl font-bold">New Headline</h2>\n    <p class="mt-4 text-slate-300">Add detailed description here.</p>\n    <a href="/contact" class="tri-btn tri-btn-primary mt-6">Contact Us</a>\n  </div>\n</section>'
+                              '<section class="py-20 bg-[#050817] text-white border-b border-white/10">\n  <div class="max-w-7xl mx-auto px-5">\n    <h2 class="text-3xl font-bold">New Headline</h2>\n    <p class="mt-4 text-slate-300">Add detailed description here.</p>\n    <a href="/contact" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-white bg-white hover:bg-[#0369a1] mt-6">Contact Us</a>\n  </div>\n</section>'
                             )
                           }
                         >

@@ -19,7 +19,7 @@ export default function OtherSolutions({ currentSlug }: { currentSlug: string })
           {others.map((solution) => (
             <article
               key={solution.slug}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-[#008fd3] hover:shadow-[0_16px_36px_rgba(0,143,211,0.14)]"
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-400 hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)]"
             >
               <Link href={solution.href} className="no-underline relative block aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">
                 {solution.cardImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
@@ -40,9 +40,9 @@ export default function OtherSolutions({ currentSlug }: { currentSlug: string })
                 <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
               </Link>
               <div className="flex flex-1 flex-col p-6">
-                <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#008fd3] transition-colors">{solution.title}</h3>
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-slate-700 transition-colors">{solution.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-6 text-slate-600">{solution.shortDescription}</p>
-                <Link href={solution.href} className="mt-auto inline-flex items-center gap-2 pt-5 font-semibold text-[#008fd3] transition-all duration-200 group-hover:gap-3">
+                <Link href={solution.href} className="mt-auto inline-flex items-center gap-2 pt-5 font-semibold text-slate-900 transition-all duration-200 group-hover:gap-3 group-hover:text-slate-700">
                   Explore Solution <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

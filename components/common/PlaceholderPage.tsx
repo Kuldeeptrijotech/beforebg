@@ -24,14 +24,14 @@ export default function PlaceholderPage({
       <section className="relative overflow-hidden border-b border-white/10 py-24 md:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.16),transparent_34%)]" />
         <Container className="relative">
-          <p className="tri-overline">{eyebrow}</p>
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">{eyebrow}</p>
           <h1 className="mt-4 max-w-3xl text-2xl font-semibold leading-[1.18] tracking-tight text-white md:text-4xl">{title}</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{description}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 shadow-md transition-all duration-200">
               Talk to our team <ArrowRight className="size-4" />
             </Link>
-            <Link href="/" className="tri-btn tri-btn-ghost px-6 py-3 text-sm font-semibold">
+            <Link href="/" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-200">
               <ArrowLeft className="size-4" /> Back home
             </Link>
           </div>

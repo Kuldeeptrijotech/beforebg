@@ -96,7 +96,7 @@ export default function SAPCapabilities() {
               return (
                 <StaggerRevealItem key={node.label}>
                   <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-slate-900/60 p-3.5 transition-all duration-300 hover:border-cyan-400/50 hover:bg-slate-900/80">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[linear-gradient(150deg,#22d3ee,#008fd3_60%,#1d4ed8)] text-white shadow-md">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-md">
                       <Icon className="h-4.5 w-4.5" strokeWidth={2.2} />
                     </span>
                     <div className="min-w-0">

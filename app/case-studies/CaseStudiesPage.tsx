@@ -119,8 +119,7 @@ export default function CaseStudiesPage() {
             >
               <a
                 href="#case-studies"
-                className="hero-btn-blue mt-9 inline-flex tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="mt-9 inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Explore case studies <ArrowRight className="h-4 w-4" />
               </a>
@@ -158,7 +157,7 @@ export default function CaseStudiesPage() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
-                    className={`tri-overline ${isWhite ? "text-black !text-black" : "text-[#38bdf8]"}`}
+                    className={`font-mono text-xs font-bold uppercase tracking-[0.2em] ${isWhite ? "text-slate-900" : "text-[#38bdf8]"}`}
                   >
                     Case study {String(index + 1).padStart(2, "0")}
                   </motion.p>
@@ -198,7 +197,7 @@ export default function CaseStudiesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
           <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
@@ -215,7 +214,7 @@ export default function CaseStudiesPage() {
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </Link>

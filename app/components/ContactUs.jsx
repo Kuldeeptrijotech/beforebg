@@ -299,7 +299,7 @@ export default function ContactUs({
                                     )}
                                     <div className={`${fullColumn} flex justify-center mt-2`}>
                                         <fieldset className="m-0">
-                                            <button type="submit" className="tri-btn tri-btn-primary min-w-[200px] px-8 py-3.5 text-sm font-semibold tracking-wide" disabled={submitting}>
+                                            <button type="submit" className="inline-flex items-center justify-center min-w-[200px] rounded-full px-8 py-3.5 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200" disabled={submitting}>
                                                 {submitting ? "Sending..." : isCareer ? "Submit Application" : "Send Message"}
                                             </button>
                                         </fieldset>

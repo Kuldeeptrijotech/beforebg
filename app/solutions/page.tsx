@@ -68,15 +68,13 @@ export default function SolutionsPage() {
             >
               <a
                 href="#solutions-list"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Explore Solutions <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Schedule Demo
               </Link>
@@ -98,7 +96,7 @@ export default function SolutionsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline text-black !text-black">Capabilities</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Capabilities</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
               Enterprise solutions engineered for scale
             </h2>
@@ -111,7 +109,7 @@ export default function SolutionsPage() {
             {solutions.map((solution) => (
               <article
                 key={solution.slug}
-                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+                className="group flex min-w-0 h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md"
               >
                 <Link href={solution.href} className="no-underline relative block h-[180px] w-full shrink-0 overflow-hidden bg-slate-900">
                   {solution.cardImage.toLowerCase().match(/\.(mp4|webm)$/) !== null ? (
@@ -137,8 +135,8 @@ export default function SolutionsPage() {
                   <ul className="mt-3.5 space-y-2 border-t border-white/20 pt-3">
                     {solution.featureCards.slice(0, 4).map((item) => (
                       <li key={item.title} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-white">
-                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
-                          <Check className="h-2.5 w-2.5 stroke-[3] text-[#008fd3]" />
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
+                          <Check className="h-2.5 w-2.5 stroke-[3] text-slate-900" />
                         </span>
                         <span className="text-white/95">{item.title}</span>
                       </li>
@@ -169,7 +167,7 @@ export default function SolutionsPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div aria-hidden className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
           <div aria-hidden className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
@@ -184,7 +182,7 @@ export default function SolutionsPage() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200"
               >
                 Talk to Our Experts <ArrowRight className="h-4 w-4" />
               </Link>

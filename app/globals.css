@@ -144,27 +144,6 @@ p, a, span, li, label, div {
   scrollbar-width: none !important;
 }
 
-/* Gradient text utility (now on Trijotech brand gradient) */
-.gradient-text {
-  background: var(--tri-gradient);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 8s ease infinite;
-}
-
-/* Glassmorphism card */
-.glass-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-/* Scroll reveal base state (used with JS) */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
 /* ── Admin Editor Live Preview Outline & Selection Helpers ── */
 .admin-preview-mode .admin-edit-hover {
   outline: 2px dashed #22d3ee !important;

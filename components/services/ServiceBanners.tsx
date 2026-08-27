@@ -152,7 +152,7 @@ export default function ServiceBanners() {
                   <div className="service-num-wrapper flex items-center">
                     <span
                       className={`service-number-badge text-3xl font-black tracking-tight sm:text-4xl ${
-                        isDark ? "text-[#38bdf8]" : "text-[#008fd3]"
+                        isDark ? "text-[#38bdf8]" : "text-slate-900"
                       }`}
                     >
                       {item.number}
@@ -185,7 +185,7 @@ export default function ServiceBanners() {
                   >
                     <p
                       className={`service-enable-heading text-[11px] font-black tracking-[0.24em] uppercase ${
-                        isDark ? "text-[#38bdf8]" : "text-[#008fd3]"
+                        isDark ? "text-[#38bdf8]" : "text-slate-900"
                       }`}
                     >
                       WHAT WE ENABLE
@@ -202,7 +202,7 @@ export default function ServiceBanners() {
                         >
                           <span
                             className={`service-bullet-dot h-2 w-2 shrink-0 rounded-full ${
-                              isDark ? "bg-[#38bdf8]" : "bg-[#008fd3]"
+                              isDark ? "bg-[#38bdf8]" : "bg-slate-900"
                             }`}
                           />
                           <span>{label}</span>
@@ -215,7 +215,9 @@ export default function ServiceBanners() {
                   <div className="mt-7">
                     <Link
                       href={`/services/${item.slug}`}
-                      className="inline-flex items-center gap-2 rounded-full bg-[#008fd3] hover:bg-[#007bb8] px-6 py-3 text-xs sm:text-sm font-bold text-white transition-all duration-200 border-0 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+                      className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-xs sm:text-sm font-bold transition-all duration-200 border-0 shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 ${
+                        isDark ? "bg-white text-slate-950 hover:bg-slate-100" : "bg-slate-900 text-white hover:bg-slate-800"
+                      }`}
                     >
                       Explore Service
                       <ArrowRight className="h-4 w-4" />

@@ -11,7 +11,7 @@ const toneBg: Record<Tone, string> = {
   blue: "linear-gradient(135deg, #0a6ed1 0%, #004b99 100%)",
   green: "linear-gradient(135deg, #0284c7 0%, #035380 100%)",
   amber: "linear-gradient(135deg, #0284c7 0%, #084e8a 100%)",
-  mix: "linear-gradient(135deg, #008fd3 0%, #0a6ed1 100%)",
+  mix: "linear-gradient(135deg, #0284c7 0%, #0a6ed1 100%)",
 };
 
 const toneIconColor: Record<Tone, string> = {
@@ -25,7 +25,7 @@ const toneGlow: Record<Tone, string> = {
   blue: "rgba(10, 110, 209, 0.75)",
   green: "rgba(2, 132, 199, 0.75)",
   amber: "rgba(2, 132, 199, 0.75)",
-  mix: "rgba(0, 143, 211, 0.75)",
+  mix: "rgba(2, 132, 199, 0.75)",
 };
 
 type HexBadgeProps = {

@@ -76,9 +76,9 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             <StaggerReveal className="mt-10 grid max-w-xl gap-3" stagger={0.08}>
               {impacts.slice(0, 2).map((i) => (
                 <StaggerRevealItem key={i.title} variant="fadeIn">
-                  <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]">
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
-                      <CheckCircle2 className="h-4.5 w-4.5 text-[#008fd3]" />
+                  <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 p-4 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
+                      <CheckCircle2 className="h-4.5 w-4.5 text-slate-900" />
                     </span>
                     <div>
                       <p className="font-bold text-white">{i.title}</p>
@@ -92,22 +92,22 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
 
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
-              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
+              <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
                 <Metric to={9} suffix="+" label="Years of SAP expertise" accent="text-white" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
-              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
+              <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
                 <Metric to={100} suffix="+" label="Projects delivered" accent="text-white" />
               </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
-              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
+              <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
                 <Metric to={100} suffix="%" label="Go-live success rate" accent="text-white" />
               </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
-              <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] p-5 shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] sm:p-6">
+              <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
                 <Metric to={30} suffix="+" label="Founder industry expertise" accent="text-white" />
               </div>
             </Reveal>
@@ -186,7 +186,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             {offerings.map((o, i) => (
               <StaggerRevealItem key={o.title} variant="scale">
                 <TiltCard max={6} scale={1.02} className="h-full">
-                  <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] p-7">
+                  <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-7">
                     <div className="flex items-center gap-3">
                       <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-[11px] font-bold text-white">
                         {String(i + 1).padStart(2, "0")}
@@ -284,7 +284,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
-                <div className="mt-8 flex items-center gap-4 h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] p-5">
+                <div className="mt-8 flex items-center gap-4 h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-5">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-white">
                     <Zap className="h-6 w-6" />
                   </span>
@@ -299,7 +299,7 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
             <StaggerReveal className="grid gap-5 sm:grid-cols-2" stagger={0.1}>
               {impacts.map((i) => (
                 <StaggerRevealItem key={i.title} variant="slideRight">
-                  <div className="h-full rounded-2xl border border-[#38bdf8] bg-[#008fd3] shadow-[0_20px_46px_-30px_rgba(10,110,209,0.82),inset_0_0_0_1px_rgba(255,255,255,0.14)] transition-colors duration-300 hover:bg-[#007bb8] p-6">
+                  <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-6">
                     <CheckCircle2 className="h-6 w-6 text-white" />
                     <h3 className="mt-4 text-xl font-bold text-white">{i.title}</h3>
                     <p className="mt-2 text-sm leading-6 text-white/90">{i.description}</p>

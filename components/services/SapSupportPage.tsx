@@ -71,9 +71,9 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 const Icon = p.icon;
                 return (
                   <StaggerRevealItem key={p.label} variant="fadeIn" className="h-full">
-                    <div className="service-surface-card flex h-full flex-col p-5 rounded-2xl border-0 bg-[#008fd3] text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-md transition-transform duration-300">
-                        <Icon className="h-5 w-5 text-[#008fd3]" strokeWidth={2.2} />
+                    <div className="service-surface-card flex h-full flex-col p-5 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-transform duration-300">
+                        <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
                       </div>
                       <h3 className="mt-4 font-bold text-white text-base sm:text-lg">{p.label}</h3>
                       <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-white/90">{p.desc}</p>
@@ -87,22 +87,22 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={99.9} suffix="%" label="Availability target" accent="text-[#008fd3]" />
+                <Metric to={99.9} suffix="%" label="Availability target" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={30} prefix="< " suffix=" min" label="Response SLA" accent="text-[#008fd3]" />
+                <Metric to={30} prefix="< " suffix=" min" label="Response SLA" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={24} suffix="*7" label="Coverage" accent="text-[#008fd3]" />
+                <Metric to={24} suffix="*7" label="Coverage" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-slate-50 shadow-sm">
-                <Metric to={40} suffix="%" label="Incident reduction" accent="text-[#008fd3]" />
+                <Metric to={40} suffix="%" label="Incident reduction" accent="text-slate-900" />
               </div>
             </Reveal>
           </div>
@@ -129,7 +129,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 <TiltCard max={6} scale={1.02} className="h-full">
                   <Glass variant="frosted" tone={i % 2 ? "cyan" : "amber"} className="h-full p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-[#008fd3]">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl text-[11px] font-bold text-white bg-slate-900">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <h3 className="text-xl font-bold text-white">{o.title}</h3>
@@ -161,9 +161,9 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
               <StaggerReveal className="mt-8 grid gap-3 sm:grid-cols-2" stagger={0.08}>
                 {impacts.map((i) => (
                   <StaggerRevealItem key={i.title} variant="fadeIn">
-                    <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-[#008fd3] text-white p-4 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#008fd3] shadow-xs">
-                        <ShieldCheck className="h-4.5 w-4.5 text-[#008fd3]" />
+                    <div className="service-surface-card flex items-start gap-3 rounded-2xl border-0 bg-white text-slate-900 border border-slate-200 p-4 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md">
+                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
+                        <ShieldCheck className="h-4.5 w-4.5 text-slate-900" />
                       </span>
                       <div>
                         <p className="font-bold text-white">{i.title}</p>
@@ -178,23 +178,23 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
             <Reveal delay={0.15}>
               <div className="service-surface-card relative overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 p-6 shadow-md sm:p-8">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#008fd3]">Live operations feed</p>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-2.5 py-1 text-[10px] font-bold text-[#008fd3]">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#008fd3]" /> Monitoring
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-900">Live operations feed</p>
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-2.5 py-1 text-[10px] font-bold text-slate-900">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-slate-900" /> Monitoring
                   </span>
                 </div>
                 <div className="mt-6 space-y-3.5">
                   {[
-                    { t: "S/4HANA job monitoring", s: "Healthy", c: "#008fd3", icon: Activity },
-                    { t: "Interface throughput", s: "Normal", c: "#008fd3", icon: SlidersHorizontal },
-                    { t: "Performance review", s: "Optimizing", c: "#008fd3", icon: TrendingUp },
-                    { t: "Role & access audit", s: "Compliant", c: "#008fd3", icon: ShieldCheck },
+                    { t: "S/4HANA job monitoring", s: "Healthy", c: "#38bdf8", icon: Activity },
+                    { t: "Interface throughput", s: "Normal", c: "#38bdf8", icon: SlidersHorizontal },
+                    { t: "Performance review", s: "Optimizing", c: "#38bdf8", icon: TrendingUp },
+                    { t: "Role & access audit", s: "Compliant", c: "#38bdf8", icon: ShieldCheck },
                   ].map((row) => {
                     const Icon = row.icon;
                     return (
                       <div key={row.t} className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
                         <div className="flex items-center gap-3">
-                          <Icon className="h-4 w-4 text-[#008fd3]" />
+                          <Icon className="h-4 w-4 text-slate-900" />
                           <span className="text-sm font-semibold text-slate-900">{row.t}</span>
                         </div>
                         <span className="flex items-center gap-2 text-xs font-bold" style={{ color: row.c }}>
@@ -206,7 +206,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                   })}
                 </div>
                 <div className="service-surface-card mt-6 flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-                  <AlertTriangle className="h-5 w-5 shrink-0 text-[#008fd3]" />
+                  <AlertTriangle className="h-5 w-5 shrink-0 text-slate-900" />
                   <p className="text-sm text-slate-700">
                     <span className="font-bold text-slate-900">Proactive alerts</span> — we catch degradation before users feel it.
                   </p>
@@ -270,7 +270,7 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
                 <p className="text-lg font-bold text-white">Flexible engagement models</p>
                 <p className="mt-1 text-slate-300">Scale teams and SLAs to match operational demand and service priorities.</p>
               </div>
-              <div className="sap-support-flexible-badge flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[#008fd3] shadow-lg shadow-cyan-950/20">
+              <div className="sap-support-flexible-badge flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-900 shadow-lg shadow-cyan-950/20">
                 <CheckCircle2 className="h-4 w-4" /> Pay for what you need
               </div>
             </div>

@@ -38,7 +38,7 @@ export default function IndustriesPreview() {
       <Container className="relative">
         <StaggerReveal className="flex flex-col gap-2.5 md:flex-row md:items-end md:justify-between">
           <StaggerRevealItem className="max-w-2xl">
-            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Industries</span>
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Industries</span>
             <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
               SAP solutions shaped around industry needs.
             </h2>
@@ -47,9 +47,12 @@ export default function IndustriesPreview() {
             </p>
           </StaggerRevealItem>
           <StaggerRevealItem>
-            <GradientButton href="/industries/retail-supply-chain" variant="outline" size="sm">
+            <Link
+              href="/industries/retail-supply-chain"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-900 shadow-xs hover:bg-slate-50 transition-all"
+            >
               Explore All Industries <ArrowRight className="h-3.5 w-3.5" />
-            </GradientButton>
+            </Link>
           </StaggerRevealItem>
         </StaggerReveal>
 
@@ -60,7 +63,7 @@ export default function IndustriesPreview() {
               <StaggerRevealItem key={industry.title} className="h-full">
                 <Link
                   href={industry.href}
-                  className="group relative block h-full overflow-hidden rounded-none border border-slate-200/80 bg-slate-900 shadow-xs transition-all duration-300 hover:border-[#008fd3] hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="group relative block h-full overflow-hidden rounded-none border border-slate-200/80 bg-slate-900 shadow-xs transition-all duration-300 hover:border-slate-400 hover:shadow-md active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   <div className="relative aspect-[16/10] sm:aspect-[4/5] lg:aspect-[3/4] w-full h-full min-h-[220px] sm:min-h-[240px] lg:min-h-[255px] overflow-hidden flex flex-col justify-between p-3.5 sm:p-4 rounded-none">
                     {/* Full bleed industry photographic background */}
@@ -74,12 +77,12 @@ export default function IndustriesPreview() {
                     
                     {/* Subtle contrast gradient for text clarity without obscuring imagery */}
                     <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 rounded-none" />
-                    <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,143,211,0.25),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-none" />
+                    <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.15),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 rounded-none" />
 
                     {/* Top row: 100% circular icon badge */}
                     <div className="relative z-10 flex items-center justify-between">
-                      <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/95 text-[#008fd3] shadow-xs backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
-                        <Icon className="h-4 w-4 text-[#008fd3]" strokeWidth={2.2} />
+                      <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-white/95 text-slate-900 shadow-xs backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
+                        <Icon className="h-4 w-4 text-slate-900" strokeWidth={2.2} />
                       </span>
                     </div>
 

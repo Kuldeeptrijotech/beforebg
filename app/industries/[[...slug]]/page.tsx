@@ -85,13 +85,13 @@ export default async function IndustryDetailPage({ params }: Props) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Schedule consultation <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.3)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
               >
                 Explore services
               </Link>
@@ -107,7 +107,7 @@ export default async function IndustryDetailPage({ params }: Props) {
       <section className="industry-definition-section relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="industry-definition-card mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-7 shadow-lg sm:p-10 text-slate-900">
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Definition</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Definition</p>
             <div className="detail-split-grid mt-4 grid gap-8 lg:grid-cols-12">
               <div className="lg:col-span-8">
                 <h2 className="text-2xl font-bold leading-[1.2] text-slate-900 sm:text-3xl">
@@ -121,7 +121,7 @@ export default async function IndustryDetailPage({ params }: Props) {
               </div>
             </div>
             <div className="mt-7 flex items-center gap-3 border-t border-slate-200 pt-6 text-sm font-semibold text-slate-900">
-              <CircleCheckBig className="h-5 w-5 text-[#008fd3]" /> SAP expertise shaped around your operation
+              <CircleCheckBig className="h-5 w-5 text-slate-900" /> SAP expertise shaped around your operation
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default async function IndustryDetailPage({ params }: Props) {
           {/* Left Column: Title & Feature Image Card */}
           <div className="flex flex-col gap-8">
             <div>
-              <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Value created</p>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Value created</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                 Measurable outcomes for {industry.title}
               </h2>
@@ -193,7 +193,7 @@ export default async function IndustryDetailPage({ params }: Props) {
               <div className="mt-6">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-md transition-all duration-200"
+                  className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-md font-bold transition-all duration-200"
                 >
                   Start a conversation <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -230,12 +230,12 @@ export default async function IndustryDetailPage({ params }: Props) {
               return (
                 <div
                   key={benefit}
-                  className="industry-detail-card flex min-w-0 items-start gap-4 overflow-hidden rounded-2xl border-0 bg-[#008fd3] text-white p-6 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8]"
+                  className="industry-detail-card flex min-w-0 items-start gap-4 overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 p-6 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md"
                 >
                   <span
-                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-sm"
+                    className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-sm"
                   >
-                    <Check className="h-4.5 w-4.5 stroke-[3] text-[#008fd3]" />
+                    <Check className="h-4.5 w-4.5 stroke-[3] text-slate-900" />
                   </span>
                   <div>
                     <p className="text-base font-bold text-white leading-snug">{benefit}</p>

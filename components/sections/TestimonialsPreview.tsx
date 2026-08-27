@@ -112,10 +112,10 @@ export default function TestimonialsPreview() {
       <Container className="relative">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <span className="tri-overline">Testimonials</span>
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Testimonials</span>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Trusted by teams{" "}
-              <span className="tri-gradient-text">modernizing with SAP.</span>
+              <span className="text-[#38bdf8]">modernizing with SAP.</span>
             </h2>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
               Hear from clients who rely on Trijotech for practical delivery, clear communication,
@@ -128,7 +128,7 @@ export default function TestimonialsPreview() {
               type="button"
               onClick={goPrevious}
               aria-label="Previous testimonial"
-              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(255,255,255,0.6)] hover:bg-white/[0.14] active:scale-95"
+              className="flex size-9 sm:size-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-[rgba(255,255,255,0.6)] hover:bg-white/[0.14] active:scale-95 focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <ArrowLeft className="size-4" />
             </button>
@@ -136,7 +136,7 @@ export default function TestimonialsPreview() {
               type="button"
               onClick={goNext}
               aria-label="Next testimonial"
-              className="tri-focus flex size-9 sm:size-10 items-center justify-center rounded-full bg-[linear-gradient(120deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-cyan-500/25 transition hover:-translate-y-0.5 active:scale-95"
+              className="flex size-9 sm:size-10 items-center justify-center rounded-full bg-white hover:bg-slate-100 text-slate-900 shadow-lg transition hover:-translate-y-0.5 active:scale-95 focus-visible:ring-2 focus-visible:ring-cyan-400"
             >
               <ArrowRight className="size-4" />
             </button>
@@ -159,11 +159,11 @@ export default function TestimonialsPreview() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -16, scale: 0.98 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="tri-glass-card tri-border-gradient flex h-full flex-col justify-between rounded-2xl p-5 sm:p-6 lg:p-7 transition-all duration-300"
+                className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.04] p-5 sm:p-6 lg:p-7 backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-white/[0.07] hover:shadow-xl"
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(160deg,rgba(255,255,255,0.2),rgba(255,255,255,0.08))]">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/10">
                       <Quote className="size-4 text-white" />
                     </span>
                     <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">
@@ -180,7 +180,7 @@ export default function TestimonialsPreview() {
                   <button
                     type="button"
                     onClick={() => setSelectedTestimonial(testimonial)}
-                    className="tri-focus text-xs sm:text-sm font-semibold text-cyan-300 transition hover:text-white"
+                    className="text-xs sm:text-sm font-semibold text-cyan-300 transition hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-400"
                   >
                     Read full review &rarr;
                   </button>
@@ -197,7 +197,7 @@ export default function TestimonialsPreview() {
                         />
                       </div>
                     ) : (
-                      <div className="flex size-10 sm:size-11 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(160deg,#22d3ee,#2563eb)] text-xs sm:text-sm font-bold text-white ring-2 ring-white/15">
+                      <div className="flex size-10 sm:size-11 shrink-0 items-center justify-center rounded-full bg-white text-xs sm:text-sm font-bold text-slate-900 ring-2 ring-white/15">
                         {getInitials(testimonial.writerName)}
                       </div>
                     )}
@@ -225,7 +225,7 @@ export default function TestimonialsPreview() {
                 aria-label={`Go to testimonial ${idx + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   isSelected
-                    ? "w-7 bg-[linear-gradient(120deg,#22d3ee,#2563eb)]"
+                    ? "w-7 bg-white"
                     : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
               />
@@ -247,7 +247,7 @@ export default function TestimonialsPreview() {
             onClick={() => setSelectedTestimonial(null)}
           >
             <motion.div
-              className="tri-glass-card relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-white"
+              className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl sm:rounded-3xl border border-white/15 bg-[#0e1e33] p-6 sm:p-8 text-white shadow-2xl backdrop-blur-xl"
               initial={{ opacity: 0, y: 20, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.96 }}

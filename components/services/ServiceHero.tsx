@@ -105,8 +105,7 @@ export default function ServiceHero({
               {primaryCta && (
                 <Link
                   href={primaryCta.href}
-                  className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-bold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
                 >
                   {primaryCta.label} <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -114,8 +113,7 @@ export default function ServiceHero({
               {secondaryCta && (
                 <Link
                   href={secondaryCta.href}
-                  className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                  style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
                 >
                   {secondaryCta.label}
                 </Link>

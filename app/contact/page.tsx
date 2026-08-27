@@ -87,7 +87,7 @@ export default function ContactPage() {
             >
               <a
                 href="#contact-form"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white bg-[#008fd3] hover:bg-[#007bb8] border-0 shadow-[0_8px_20px_rgba(0,143,211,0.4)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.6)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </a>
@@ -109,7 +109,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Get in touch</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Get in touch</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
               Connect with our team
             </h2>
@@ -126,12 +126,12 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="flex h-full flex-col rounded-2xl border-0 bg-[#008fd3] text-white p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+                className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 sm:p-6 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md"
               >
                 <div
-                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-md transition-transform duration-300"
+                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-transform duration-300"
                 >
-                  <Icon className="h-5.5 w-5.5 text-[#008fd3]" strokeWidth={2.2} />
+                  <Icon className="h-5.5 w-5.5 text-slate-900" strokeWidth={2.2} />
                 </div>
                 <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{title}</h3>
                 <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-white/90 [&_a]:font-semibold [&_a]:text-white [&_a]:underline">
@@ -156,7 +156,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="mb-8 text-center"
           >
-            <p className="tri-overline text-[#38bdf8]">Send an enquiry</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Send an enquiry</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               How can we help you?
             </h2>

@@ -19,10 +19,10 @@ const sizes: Record<Size, string> = {
 };
 
 const variants: Record<Variant, string> = {
-  primary: "bg-[#008fd3] text-white hover:bg-[#007bb8] border-0 border-transparent shadow-[0_8px_20px_rgba(0,143,211,0.35)] hover:shadow-[0_12px_28px_rgba(0,143,211,0.5)]",
-  ghost: "bg-[#008fd3]/85 text-white hover:bg-[#008fd3] border-0 border-transparent shadow-[0_8px_20px_rgba(0,143,211,0.25)]",
+  primary: "bg-white text-slate-950 hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.2)] font-bold",
+  ghost: "bg-white/10 text-white hover:bg-white/20 border border-white/20 shadow-xs",
   outline: "bg-transparent text-white border border-white/35 hover:bg-white/10 hover:border-white",
-  white: "bg-white text-[#008fd3] hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(0,0,0,0.15)]",
+  white: "bg-white text-slate-900 hover:bg-slate-100 border border-slate-200 shadow-md font-bold",
 };
 
 export default function GradientButton({

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useInView, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Wrench } from "lucide-react";
@@ -103,7 +103,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
 
               {/* Content panel */}
               <div className="flex min-h-0 flex-col justify-center overflow-y-auto p-7 sm:p-9 lg:p-10">
-                <p className="tri-overline">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">
                   Service {index + 1} of {cards.length}
                 </p>
                 <h3 className="mt-4 text-2xl font-bold leading-snug text-white sm:text-3xl">{card.title}</h3>

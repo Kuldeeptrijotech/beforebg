@@ -96,15 +96,13 @@ export default function SectionLanding({
             <div className="mt-9 flex flex-wrap gap-4 relative z-10">
               <a
                 href="#explore"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Explore {eyebrow} <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/contact"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white border border-white/20 bg-white/5 hover:bg-white/10 hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Contact Us
               </Link>
@@ -123,7 +121,7 @@ export default function SectionLanding({
       >
         <div className="relative z-30 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="relative z-30 max-w-3xl">
-            <span className="tri-overline service-landing-overline">Explore</span>
+            <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Explore</span>
             <h2 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
               {cardsTitle}
             </h2>
@@ -145,7 +143,7 @@ export default function SectionLanding({
               {cards.map((card) => (
                 <article
                   key={card.href}
-                  className={`group tri-glass-card min-w-0 overflow-hidden rounded-2xl h-full border border-white/10 bg-white/[0.03] ${
+                  className={`group min-w-0 overflow-hidden rounded-2xl h-full border border-white/10 bg-white/[0.03] backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-white/[0.06] hover:shadow-xl ${
                     cardLayout === "rows"
                       ? "grid md:grid-cols-[.85fr_1.15fr] md:items-center"
                       : "flex flex-col"
@@ -171,12 +169,12 @@ export default function SectionLanding({
                         alt={card.imageAlt}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                        className="service-card-image object-cover"
+                        className="object-cover"
                       />
                     )}
                     <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.95)] via-transparent to-transparent" />
                     {showCardIcons && (
-                      <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-[rgba(255, 255, 255,0.4)]">
+                      <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-900 shadow-lg">
                         <Wrench className="h-4.5 w-4.5" aria-hidden="true" />
                       </span>
                     )}
@@ -195,8 +193,8 @@ export default function SectionLanding({
                       <ul className="mt-4 space-y-2 border-t border-white/[0.08] pt-3.5">
                         {card.capabilities.slice(0, 4).map((item) => (
                           <li key={item} className="flex items-start gap-2 text-xs sm:text-sm font-medium text-slate-200">
-                            <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#22d3ee,#2563eb)]">
-                              <Check className="h-2 w-2 text-white" strokeWidth={3} />
+                            <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-white text-slate-900">
+                              <Check className="h-2 w-2 text-slate-900" strokeWidth={3} />
                             </span>
                             {item}
                           </li>
@@ -224,7 +222,7 @@ export default function SectionLanding({
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-45" />
           <div aria-hidden className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
@@ -240,7 +238,7 @@ export default function SectionLanding({
               Let&apos;s turn your next priority into measurable progress.
             </h2>
             <div className="inline-block mt-6">
-              <Link href="/contact" className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold">
+              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 shadow-md transition-all duration-200">
                 Talk to our team <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

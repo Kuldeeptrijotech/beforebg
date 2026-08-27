@@ -66,8 +66,7 @@ export default function VideosPage() {
             >
               <a
                 href="#explore-videos"
-                className="hero-btn-blue tri-btn tri-focus px-7 py-4 text-sm font-semibold !text-white relative z-10 hover:z-20 transition-all duration-200"
-                style={{ backgroundColor: "#257ae8d6", background: "#257ae8d6", color: "#ffffff", borderColor: "rgba(255, 255, 255, 0.35)" }}
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-[0_8px_20px_rgba(255,255,255,0.25)] hover:shadow-[0_12px_28px_rgba(255,255,255,0.4)] hover:-translate-y-0.5 active:translate-y-0 relative z-10 hover:z-20 transition-all duration-200"
               >
                 Explore videos <ArrowRight className="h-4 w-4" />
               </a>
@@ -92,7 +91,7 @@ export default function VideosPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="tri-overline text-black !text-black">
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">
               Watch and learn
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
@@ -125,7 +124,7 @@ export default function VideosPage() {
                     href={youtubeUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="video-library-card group flex h-full min-h-[410px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] sm:min-h-[440px] transition-all duration-300 hover:border-[#008fd3] hover:shadow-[0_16px_36px_rgba(0,143,211,0.14)]"
+                    className="group flex h-full min-h-[410px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_6px_24px_rgba(0,0,0,0.06)] sm:min-h-[440px] transition-all duration-300 hover:border-slate-400 hover:shadow-[0_16px_36px_rgba(0,0,0,0.12)]"
                   >
                     <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-slate-900">
                       {thumbnail ? (
@@ -143,21 +142,21 @@ export default function VideosPage() {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#008fd3] text-white shadow-xl transition-transform duration-300 group-hover:scale-115">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-white shadow-xl transition-transform duration-300 group-hover:scale-115">
                           <Play className="ml-1 h-5 w-5 fill-current" />
                         </span>
                       </div>
                     </div>
 
                     <div className="flex flex-1 flex-col p-5 sm:p-6">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#008fd3]">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900">
                         Trijotech Video
                       </p>
-                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-slate-900 transition-colors group-hover:text-[#008fd3]">
+                      <h3 className="mt-2 flex-1 text-base sm:text-lg font-bold leading-snug text-slate-900 transition-colors group-hover:text-slate-700">
                         {video.title}
                       </h3>
                       <div className="mt-auto pt-4">
-                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#008fd3] transition-all duration-200 group-hover:gap-2.5">
+                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-200 group-hover:gap-2.5">
                           Watch video <ExternalLink className="h-3.5 w-3.5" />
                         </span>
                       </div>
@@ -179,7 +178,7 @@ export default function VideosPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="tri-border-gradient relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
+          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
         >
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
           <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
@@ -196,7 +195,7 @@ export default function VideosPage() {
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
               <Link
                 href="/contact"
-                className="tri-btn tri-btn-primary px-6 py-3 text-sm font-semibold"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200"
               >
                 Start a conversation <ArrowRight className="h-4 w-4" />
               </Link>

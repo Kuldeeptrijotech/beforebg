@@ -44,7 +44,7 @@ export default function ProductsPreview() {
               <StaggerRevealItem key={product.title} className="h-full">
                 <Link
                   href={product.href}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/[0.06] hover:shadow-[0_16px_40px_rgba(0,143,211,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/50 hover:bg-white/[0.06] hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                 >
                   <SpotlightCard glow="rgba(255, 255, 255,0.2)" className="flex h-full flex-col">
                     <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-slate-900">

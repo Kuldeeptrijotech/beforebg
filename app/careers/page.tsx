@@ -87,7 +87,7 @@ export default function CareersPage() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 className="max-w-3xl"
               >
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#008fd3]">Life at Trijotech</p>
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-slate-900">Life at Trijotech</p>
                 <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl lg:text-3xl">
                   Create impact while building your career
                 </h2>
@@ -105,14 +105,14 @@ export default function CareersPage() {
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                     whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                    className="flex flex-1 flex-col rounded-2xl border-0 bg-[#008fd3] p-4.5 sm:p-5 text-white shadow-[0_10px_30px_rgba(0,143,211,0.22)] transition-all duration-300 hover:bg-[#007bb8] hover:shadow-[0_16px_40px_rgba(0,143,211,0.35)]"
+                    className="flex flex-1 flex-col rounded-2xl border border-slate-200 bg-white text-slate-900 p-4.5 sm:p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md"
                   >
                     <motion.span
                       whileHover={{ rotate: 10, scale: 1.12 }}
                       transition={{ duration: 0.25 }}
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-[#008fd3] shadow-md transition-all duration-300"
+                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-all duration-300"
                     >
-                      <Icon className="h-5 w-5 text-[#008fd3]" strokeWidth={2.2} />
+                      <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
                     </motion.span>
                     <h3 className="mt-3.5 text-base sm:text-lg font-bold text-white">{title}</h3>
                     <p className="mt-1 text-xs sm:text-sm leading-relaxed text-white/90">{text}</p>
@@ -151,7 +151,7 @@ export default function CareersPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="mb-8 text-center"
           >
-            <p className="tri-overline text-[#38bdf8]">Join our team</p>
+            <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Join our team</p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Tell us where you want to grow
             </h2>
