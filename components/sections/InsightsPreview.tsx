@@ -3,7 +3,7 @@
 import Container from "@/components/ui/Container";
 import { featuredBlogs, featuredVideos, type FeaturedBlogItem, type FeaturedVideoItem } from "@/lib/site-data";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, CalendarDays, ExternalLink, Newspaper, Play, Video as VideoIcon, type LucideIcon } from "lucide-react";
+import { ArrowRight, CalendarDays, ExternalLink, Newspaper, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";

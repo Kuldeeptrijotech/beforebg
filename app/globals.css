@@ -51,27 +51,6 @@ p, a, span, li, label, div {
   45% { transform: translateY(18px); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
-  50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.16); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 @keyframes tri-spin-slow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -87,21 +66,11 @@ p, a, span, li, label, div {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-@keyframes tri-orb {
-  0%, 100% { transform: rotate(0deg) translateX(var(--orb-r, 140px)) rotate(0deg); }
-  50% { transform: rotate(180deg) translateX(var(--orb-r, 140px)) rotate(-180deg); }
-}
-
-@keyframes tri-orb-reverse {
-  0%, 100% { transform: rotate(360deg) translateX(var(--orb-r, 140px)) rotate(-360deg); }
-  50% { transform: rotate(180deg) translateX(var(--orb-r, 140px)) rotate(-180deg); }
-}
-
 /* ── Animation helper classes ── */
 .animate-float { animation: float 6.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
 .animate-float-slow { animation: float-slow 9s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
 .animate-float-reverse { animation: float-reverse 7.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-.tri-spin-slow { animation: spin-slow 24s linear infinite; }
+.tri-spin-slow { animation: tri-spin-slow 24s linear infinite; }
 
 /* ── Atmospheric background utilities ── */
 .tri-mesh {

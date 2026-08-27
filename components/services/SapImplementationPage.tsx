@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
-import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
+import { Glass, Metric, SectionLabel } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
 
@@ -310,13 +310,6 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
           </div>
         </Container>
       </section>
-
-      {/* CTA */}
-      <ServiceCta
-        accent="violet"
-        title="Ready to transform your SAP landscape?"
-        description="Connect with our team to shape a practical implementation roadmap around your goals, data, and operating model."
-      />
     </main>
   );
 }

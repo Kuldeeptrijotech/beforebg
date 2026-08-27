@@ -56,7 +56,7 @@ export default function SAPCapabilities() {
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-30 tri-grid-bg opacity-25" />
 
       <Container className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-        <div>
+        <div className="space-y-6">
           <Reveal>
             <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">SAP Ecosystem</span>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -89,7 +89,7 @@ export default function SAPCapabilities() {
           </Reveal>
         </div>
 
-        <div>
+        <div className="relative">
           <StaggerReveal className="grid grid-cols-1 sm:grid-cols-2 gap-3.5" stagger={0.05}>
             {nodes.map((node) => {
               const Icon = node.icon;

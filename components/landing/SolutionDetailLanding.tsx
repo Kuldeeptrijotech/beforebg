@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import OtherSolutions from "@/components/solutions/OtherSolutions";
 import type { SolutionItem } from "@/lib/solutions-data";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 function getFeatureCardIcon(title: string, index: number) {
@@ -155,30 +155,27 @@ export default function SolutionDetailLanding({
       </section>
 
       {/* ──── Overview / Definition ────────────────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#0b1d33] py-16 sm:py-20 lg:py-24 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[rgba(255, 255, 255,0.08)] blur-3xl animate-float" />
+      <section className="solution-definition-section relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200 text-slate-900">
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-            className="solution-detail-card min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/90 p-5 sm:p-8 lg:p-10 shadow-2xl"
+            className="solution-detail-card min-w-0 overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-6 sm:p-8 lg:p-10 shadow-lg text-slate-900"
           >
             <div className="grid gap-6 lg:grid-cols-12 items-start">
               {/* Left Column: Definition Tag, Title, and Subtitle */}
               <div className="lg:col-span-6 flex flex-col justify-center">
-                <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
-                  <span className="h-px w-5 bg-white" />
+                <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-slate-900">
+                  <span className="h-px w-5 bg-slate-900" />
                   Definition
                 </p>
-                <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-white">
+                <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-slate-900">
                   {getDefinitionTitle()}
                 </h2>
                 {solution.subtitle && (
-                  <p className="mt-3 text-xs sm:text-sm font-medium text-slate-300/90 leading-relaxed">
+                  <p className="mt-3 text-xs sm:text-sm font-medium text-slate-600 leading-relaxed">
                     {solution.subtitle}
                   </p>
                 )}
@@ -186,19 +183,19 @@ export default function SolutionDetailLanding({
 
               {/* Right Column: Narrative Overview & Highlights */}
               <div className="lg:col-span-6 flex flex-col justify-center">
-                <p className="text-xs sm:text-sm leading-relaxed text-slate-300">
+                <p className="text-xs sm:text-sm leading-relaxed text-slate-600">
                   {solution.overview}
                 </p>
 
                 {/* Streamlined Highlights */}
                 {solution.highlights.length > 0 && (
-                  <div className="mt-4 space-y-2 pt-4 border-t border-white/10">
+                  <div className="mt-4 space-y-2.5 pt-4 border-t border-slate-200">
                     {solution.highlights.map((highlight, i) => (
                       <div key={i} className="flex items-start gap-2.5">
-                        <span className="mt-0.5 flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-[rgba(255, 255, 255,0.2)] text-white">
-                          <Check className="h-3 w-3" />
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
+                          <Check className="h-3 w-3 stroke-[3] text-slate-900" />
                         </span>
-                        <p className="text-xs sm:text-sm font-medium text-slate-200 leading-snug">{highlight}</p>
+                        <p className="text-xs sm:text-sm font-semibold text-slate-800 leading-snug">{highlight}</p>
                       </div>
                     ))}
                   </div>
@@ -209,8 +206,8 @@ export default function SolutionDetailLanding({
         </div>
       </section>
 
-      {/* ──── Feature Cards ──────────────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 lg:py-24 border-b border-white/10">
+      {/* ──── Feature Cards (At a glance) ───────────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-[#030713] py-16 sm:py-20 lg:py-24 border-b border-white/10 text-white">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
@@ -221,8 +218,8 @@ export default function SolutionDetailLanding({
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
-              <span className="h-px w-5 bg-white" />
+            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#38bdf8]">
+              <span className="h-px w-5 bg-[#38bdf8]" />
               At a glance
             </p>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -240,16 +237,12 @@ export default function SolutionDetailLanding({
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                  className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md transition-all duration-300 hover:border-white hover:bg-[#222d42]"
+                  className="solution-detail-card group flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 shadow-md transition-all duration-300 hover:border-white/30 hover:bg-white/[0.06] hover:shadow-xl"
                 >
-                  <motion.span
-                    whileHover={{ rotate: 12, scale: 1.15 }}
-                    transition={{ duration: 0.25 }}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-white shadow-md"
-                  >
-                    <CardIcon className="solution-card-icon h-5 w-5 text-white" strokeWidth={2} />
-                  </motion.span>
-                  <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{item.title}</h3>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-[#030713]">
+                    <CardIcon className="solution-card-icon h-5.5 w-5.5" strokeWidth={2} />
+                  </span>
+                  <h3 className="mt-5 text-base sm:text-lg font-bold text-white">{item.title}</h3>
                   <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
                 </motion.article>
               );
@@ -258,10 +251,8 @@ export default function SolutionDetailLanding({
         </div>
       </section>
 
-      {/* ──── Capabilities ────────────────────────────────────────────── */}
-      <section id="capabilities" className="relative isolate scroll-mt-24 bg-[#0b1d33] py-16 sm:py-20 lg:py-24 border-b border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
+      {/* ──── Capabilities (Pure White) ───────────────────────────────── */}
+      <section id="capabilities" className="relative isolate scroll-mt-24 bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200 text-slate-900">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -270,11 +261,11 @@ export default function SolutionDetailLanding({
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             className="max-w-3xl"
           >
-            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
-              <span className="h-px w-5 bg-white" />
+            <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-slate-900">
+              <span className="h-px w-5 bg-slate-900" />
               Capabilities
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
               Everything needed to move from complexity to control
             </h2>
           </motion.div>
@@ -286,7 +277,7 @@ export default function SolutionDetailLanding({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className="solution-detail-card min-w-0 overflow-hidden rounded-2xl border border-white/10 bg-[#1a2336]/80 p-5 shadow-md sm:p-6"
+                className="solution-detail-card min-w-0 overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 text-slate-900"
               >
                 <div className="detail-split-grid grid gap-6 lg:grid-cols-[.7fr_1.3fr]">
                   <div>
@@ -296,15 +287,15 @@ export default function SolutionDetailLanding({
                         whileInView={{ width: 16 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="h-px bg-white block"
+                        className="h-px bg-slate-900 block"
                       />
-                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-900">
                         Capability {String(sectionIndex + 1).padStart(2, "0")}
                       </p>
                     </div>
-                    <h3 className="mt-2 text-xl font-bold text-white sm:text-2xl">{section.title}</h3>
+                    <h3 className="mt-2 text-xl font-bold text-slate-900 sm:text-2xl">{section.title}</h3>
                     {section.description && (
-                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-300">{section.description}</p>
+                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600">{section.description}</p>
                     )}
                   </div>
                   <div className="grid items-stretch gap-3.5 sm:grid-cols-2">
@@ -315,10 +306,10 @@ export default function SolutionDetailLanding({
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: itemIndex * 0.08 }}
-                        className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-xl border border-white/10 bg-[#222d42]/70 p-4 transition-all duration-300 hover:border-white hover:bg-[#222d42]"
+                        className="solution-detail-card flex h-full min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200 bg-slate-50 p-5 text-slate-900 transition-all duration-300 hover:border-slate-300 hover:bg-slate-100 hover:shadow-xs"
                       >
-                        <h4 className="text-xs sm:text-sm font-bold text-white">{item.title}</h4>
-                        <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-300">{item.description}</p>
+                        <h4 className="text-xs sm:text-sm font-bold text-slate-900">{item.title}</h4>
+                        <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-600">{item.description}</p>
                       </motion.article>
                     ))}
                   </div>
@@ -329,8 +320,8 @@ export default function SolutionDetailLanding({
         </div>
       </section>
 
-      {/* ──── Business Outcomes ──────────────────────────────────── */}
-      <section className="relative isolate overflow-hidden bg-[#18263e] py-16 sm:py-20 lg:py-24 border-b border-white/10">
+      {/* ──── Business Outcomes (Dark / Black) ───────────────────────── */}
+      <section className="relative isolate overflow-hidden bg-[#030713] py-16 sm:py-20 lg:py-24 border-b border-white/10 text-white">
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
         <div className="detail-split-grid mx-auto grid w-full max-w-7xl items-center gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12 lg:px-12">
@@ -342,8 +333,8 @@ export default function SolutionDetailLanding({
             className="flex flex-col gap-6"
           >
             <div>
-              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
-                <span className="h-px w-5 bg-white" />
+              <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#38bdf8]">
+                <span className="h-px w-5 bg-[#38bdf8]" />
                 Business outcomes
               </p>
               <h2 className="mt-1 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -385,11 +376,11 @@ export default function SolutionDetailLanding({
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.1 }}
                 whileHover={{ x: 4, transition: { duration: 0.15 } }}
-                className="solution-detail-card min-w-0 overflow-hidden rounded-xl border border-white/10 bg-[#1a2336]/80 p-4 hover:border-white transition-colors duration-300"
+                className="solution-detail-card min-w-0 overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-5 hover:border-white/30 hover:bg-white/[0.07] transition-all duration-300"
               >
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[rgba(255, 255, 255,0.18)] text-white">
-                    <Check className="solution-card-icon h-3.5 w-3.5" />
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
+                    <Check className="solution-card-icon h-4 w-4 stroke-[2.5]" />
                   </span>
                   <h3 className="text-xs sm:text-sm font-bold leading-relaxed text-white">{benefit}</h3>
                 </div>
@@ -400,41 +391,6 @@ export default function SolutionDetailLanding({
       </section>
 
       <OtherSolutions currentSlug={solution.slug} />
-
-      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
-      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
-        >
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
-          <div className="relative mx-auto max-w-3xl">
-            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white">
-              Let&apos;s work together
-            </p>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Ready to see {solution.title} in your landscape?
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-300 sm:text-base">
-              Talk with our team about your priorities, current systems, and the right path to measurable value.
-            </p>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 shadow-md transition-all duration-200"
-              >
-                Talk to our experts <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
     </main>
   );
 }

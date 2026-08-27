@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
-import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
+import { Glass, Metric, SectionLabel, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
 
@@ -261,13 +261,6 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
           </div>
         </Container>
       </section>
-
-      {/* CTA */}
-      <ServiceCta
-        accent="violet"
-        title="Unify your data, unify your business?"
-        description="Let's map your systems and design an integration foundation that scales with your enterprise."
-      />
     </main>
   );
 }

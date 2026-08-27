@@ -52,7 +52,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
           type="button"
           onClick={() => move(-1)}
           aria-label="Previous service"
-          className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[rgba(255, 255, 255,0.6)] hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] hover:shadow-[0_8px_24px_rgba(255, 255, 255,0.4)] sm:left-5"
+          className="absolute left-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-white/60 hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] hover:shadow-[0_8px_24px_rgba(34,211,238,0.4)] sm:left-5"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
@@ -60,7 +60,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
           type="button"
           onClick={() => move(1)}
           aria-label="Next service"
-          className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-[rgba(255, 255, 255,0.6)] hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] hover:shadow-[0_8px_24px_rgba(255, 255, 255,0.4)] sm:right-5"
+          className="absolute right-4 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-[rgba(3,7,19,0.85)] text-white shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-white/60 hover:bg-[linear-gradient(150deg,#22d3ee,#2563eb)] hover:shadow-[0_8px_24px_rgba(34,211,238,0.4)] sm:right-5"
         >
           <ArrowRight className="h-5 w-5" />
         </button>
@@ -95,7 +95,7 @@ export default function CardsCarousel({ cards, showCardIcons }: { cards: Landing
                 )}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(3,7,19,0.5)] via-transparent to-transparent" />
                 {showCardIcons && (
-                  <span className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-[rgba(255, 255, 255,0.4)]">
+                  <span className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[linear-gradient(150deg,#22d3ee,#2563eb)] text-white shadow-lg shadow-cyan-500/20">
                     <Wrench className="h-5 w-5" aria-hidden="true" />
                   </span>
                 )}

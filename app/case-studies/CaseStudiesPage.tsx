@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import ImageSlider from "../components/common/ImageSlider";
 import { motion } from "framer-motion";
 import CaseStudiesVectorTrails from "@/components/ui/hero-animations/CaseStudiesVectorTrails";
-import CTA from "@/components/sections/CTA";
 import { ReactNode } from "react";
 
 type CaseStudy = {
@@ -187,41 +185,6 @@ export default function CaseStudiesPage() {
           );
         })}
       </div>
-
-      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
-      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
-        >
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
-          <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-white">
-              Let&apos;s work together
-            </p>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              Ready to create your next success story?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-              Talk with our team about your priorities and the right path to measurable business value.
-            </p>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="inline-block mt-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200"
-              >
-                Start a conversation <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
     </main>
   );
 }

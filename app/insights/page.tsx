@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Clapperboard, FileText, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, Clapperboard, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import GradientButton from "@/components/ui/GradientButton";
 import HexBadge from "@/components/ui/HexBadge";
-import { StaggerReveal, StaggerRevealItem, Reveal } from "@/components/motion/Reveal";
+import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 
 const cards = [
   {
@@ -186,68 +186,6 @@ export default function InsightsPage() {
               );
             })}
           </StaggerReveal>
-        </Container>
-      </section>
-
-      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
-      <section className="hidden relative isolate overflow-hidden bg-[#18263e] py-12 sm:py-16 border-t border-white/10">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-        <Container className="relative">
-          <Reveal>
-            <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10">
-              <div className="absolute inset-0 tri-hex-grid opacity-50" />
-              <div className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
-              <div className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
-              <div className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.22), transparent 68%)" }} />
-
-              <div className="relative mx-auto max-w-3xl">
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="inline-flex items-center gap-2.5 text-sm font-bold uppercase tracking-[0.22em] text-white"
-                >
-                  <Sparkles className="h-4 w-4" />
-                  Let&apos;s work together
-                </motion.p>
-
-                <motion.h2
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                  className="mt-3 text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl"
-                >
-                  Ready to turn insight into action?
-                </motion.h2>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.55, delay: 0.28 }}
-                  className="mx-auto mt-4 max-w-2xl text-sm leading-[1.7] text-slate-300 sm:text-base"
-                >
-                  Connect with Trijotech to explore SAP solutions designed around your organization, priorities, and growth plans.
-                </motion.p>
-
-                <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
-                    <GradientButton href="/contact" size="lg" className="w-full sm:w-fit">
-                      Start a conversation <ArrowRight className="h-5 w-5" />
-                    </GradientButton>
-                  </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }}>
-                    <GradientButton href="/blogs" variant="ghost" size="lg" className="w-full sm:w-fit">
-                      Explore blogs
-                    </GradientButton>
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </Container>
       </section>
     </main>

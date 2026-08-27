@@ -130,22 +130,22 @@ export default function SolutionsPage() {
                   <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[rgba(14,26,44,0.7)] via-transparent to-transparent" />
                 </Link>
                 <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-5">
-                  <h3 className="text-base sm:text-lg font-bold leading-snug text-white transition-colors">{solution.title}</h3>
-                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-white/90">{solution.shortDescription}</p>
-                  <ul className="mt-3.5 space-y-2 border-t border-white/20 pt-3">
+                  <h3 className="text-base sm:text-lg font-bold leading-snug text-slate-900 group-hover:text-slate-700 transition-colors">{solution.title}</h3>
+                  <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-600">{solution.shortDescription}</p>
+                  <ul className="mt-3.5 space-y-2 border-t border-slate-200 pt-3">
                     {solution.featureCards.slice(0, 4).map((item) => (
-                      <li key={item.title} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-white">
+                      <li key={item.title} className="flex items-start gap-2.5 text-xs sm:text-sm font-medium text-slate-900">
                         <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-xs">
                           <Check className="h-2.5 w-2.5 stroke-[3] text-slate-900" />
                         </span>
-                        <span className="text-white/95">{item.title}</span>
+                        <span className="text-slate-800">{item.title}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="mt-auto pt-4">
                     <Link
                       href={solution.href}
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white transition-all duration-200 group-hover:gap-2.5"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-200 group-hover:gap-2.5 group-hover:text-slate-700"
                     >
                       Explore Solution <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -155,40 +155,6 @@ export default function SolutionsPage() {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
-      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-hex-grid opacity-45" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-mesh opacity-50" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 tri-hex-grid opacity-30" />
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
-        >
-          <div aria-hidden className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[48px] border-white/5 tri-spin-slow" />
-          <div aria-hidden className="tri-blob h-56 w-56 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
-          <div className="relative mx-auto max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-white">Trijotech</p>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              See which solution fits your landscape
-            </h2>
-            <p className="mt-4 text-sm text-slate-300 sm:text-base">
-              Book a technical demonstration tailored to your enterprise processes and data structure.
-            </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.96 }} className="inline-block mt-6">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-950 bg-white hover:bg-slate-100 shadow-md font-bold transition-all duration-200"
-              >
-                Talk to Our Experts <ArrowRight className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </motion.div>
       </section>
     </main>
   );

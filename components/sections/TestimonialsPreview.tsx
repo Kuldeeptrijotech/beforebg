@@ -114,8 +114,7 @@ export default function TestimonialsPreview() {
           <div className="max-w-2xl">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-[#38bdf8]">Testimonials</span>
             <h2 className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Trusted by teams{" "}
-              <span className="text-[#38bdf8]">modernizing with SAP.</span>
+              Trusted by teams modernizing with SAP.
             </h2>
             <p className="mt-2 max-w-xl text-xs leading-relaxed text-slate-300 sm:text-sm sm:leading-6">
               Hear from clients who rely on Trijotech for practical delivery, clear communication,
@@ -223,11 +222,10 @@ export default function TestimonialsPreview() {
                 type="button"
                 onClick={() => setActiveIndex(idx)}
                 aria-label={`Go to testimonial ${idx + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  isSelected
-                    ? "w-7 bg-white"
-                    : "w-2 bg-white/20 hover:bg-white/40"
-                }`}
+                className={`h-2 rounded-full transition-all duration-300 ${isSelected
+                  ? "w-7 bg-white"
+                  : "w-2 bg-white/20 hover:bg-white/40"
+                  }`}
               />
             );
           })}

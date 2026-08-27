@@ -1,5 +1,4 @@
 import Container from "@/components/ui/Container";
-import GradientButton from "@/components/ui/GradientButton";
 import { StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import { industries } from "@/lib/site-data";
 import {

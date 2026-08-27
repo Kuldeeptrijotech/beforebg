@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
-import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
+import { Glass, Metric, SectionLabel, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
 
@@ -277,12 +277,6 @@ export default function SapSupportPage({ offerings, impacts }: { offerings: Serv
           </Reveal>
         </Container>
       </section>
-
-      <ServiceCta
-        accent="violet"
-        title="Keep your SAP landscape healthy and evolving?"
-        description="Talk to our AMS team about a support model that matches how your business actually runs."
-      />
     </main>
   );
 }

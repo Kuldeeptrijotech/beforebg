@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
-import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
+import { Glass, Metric, SectionLabel, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
 
@@ -211,12 +211,6 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
           </Reveal>
         </Container>
       </section>
-
-      <ServiceCta
-        accent="violet"
-        title="Build your next application on SAP BTP?"
-        description="Work with our full-stack BTP team to design, extend, and ship modern SAP experiences."
-      />
     </main>
   );
 }

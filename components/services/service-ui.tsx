@@ -6,11 +6,8 @@ import {
   useReducedMotion,
   useSpring,
 } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useRef, type ReactNode } from "react";
 import AnimatedCounter from "@/components/motion/AnimatedCounter";
-import Container from "@/components/ui/Container";
-import GradientButton from "@/components/ui/GradientButton";
 
 /* ─────────────────────────────────────────────────────────────
    Shared building blocks for the five premium Service subpages.
@@ -192,90 +189,5 @@ export function Metric({
         {sub && <p className="mt-1 text-[11px] sm:text-xs leading-4 text-white/50">{sub}</p>}
       </div>
     </div>
-  );
-}
-
-/* ── Premium animated CTA (per-page accent) ───────────────── */
-
-const CTA_ACCENT: Record<string, { orbs: [string, string]; line: string }> = {
-  blue: {
-    orbs: ["rgba(10,110,209,0.45)", "rgba(34,211,238,0.28)"],
-    line: "linear-gradient(90deg,#2f8fff,#22d3ee,#ffffff)",
-  },
-  cyan: {
-    orbs: ["rgba(34,211,238,0.4)", "rgba(47,143,255,0.3)"],
-    line: "linear-gradient(90deg,#22d3ee,#2f8fff,#a78bfa)",
-  },
-  violet: {
-    orbs: ["rgba(139,124,246,0.4)", "rgba(34,211,238,0.25)"],
-    line: "linear-gradient(90deg,#8b7cf6,#38bdf8,#67e8f9)",
-  },
-  green: {
-    orbs: ["rgba(255, 255, 255,0.4)", "rgba(10,110,209,0.3)"],
-    line: "linear-gradient(90deg,#ffffff,#2f8fff,#22d3ee)",
-  },
-};
-
-export function ServiceCta({
-  eyebrow = "Let's work together",
-  title,
-  description,
-  accent = "blue",
-  primaryLabel = "Start a conversation",
-  secondaryLabel = "All services",
-}: {
-  eyebrow?: string;
-  title: string;
-  description: string;
-  accent?: "blue" | "cyan" | "violet" | "green";
-  primaryLabel?: string;
-  secondaryLabel?: string;
-}) {
-  const palette = CTA_ACCENT[accent];
-  return (
-    <section className="hidden relative overflow-hidden bg-[#121927] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
-      <div aria-hidden className="absolute inset-0 tri-hex-grid" />
-      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(60%_60%_at_20%_0%,rgba(10,110,209,0.22),transparent_60%),radial-gradient(50%_50%_at_85%_100%,rgba(34,211,238,0.14),transparent_60%)]" />
-      <div aria-hidden className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: `radial-gradient(circle, ${palette.orbs[0]}, transparent 70%)` }} />
-      <div aria-hidden className="tri-blob h-64 w-64 animate-float-reverse" style={{ right: "-8%", top: "6%", background: `radial-gradient(circle, ${palette.orbs[1]}, transparent 70%)` }} />
-
-      <Container className="relative">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={springEase}
-          className="mx-auto max-w-4xl text-center"
-        >
-          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.05] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/60">
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: palette.line }} />
-            {eyebrow}
-          </span>
-          <h2 className="mt-7 text-[clamp(2rem,4.5vw,3.6rem)] font-extrabold leading-[1.08] tracking-tight text-white">
-            {title}
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">{description}</p>
-
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <GradientButton href="/contact" size="lg" className="w-full sm:w-fit">
-                {primaryLabel} <ArrowRight className="h-5 w-5" />
-              </GradientButton>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <GradientButton href="/services" variant="ghost" size="lg" className="w-full sm:w-fit">
-                {secondaryLabel}
-              </GradientButton>
-            </motion.div>
-          </div>
-
-          <div
-            aria-hidden
-            className="mx-auto mt-12 h-px w-40"
-            style={{ background: palette.line, boxShadow: `0 0 18px rgba(56,189,248,0.6)` }}
-          />
-        </motion.div>
-      </Container>
-    </section>
   );
 }

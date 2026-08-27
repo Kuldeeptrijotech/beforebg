@@ -193,7 +193,7 @@ export default async function IndustryDetailPage({ params }: Props) {
               <div className="mt-6">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-md font-bold transition-all duration-200"
+                  className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 border-0 shadow-md transition-all duration-200"
                 >
                   Start a conversation <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -238,8 +238,8 @@ export default async function IndustryDetailPage({ params }: Props) {
                     <Check className="h-4.5 w-4.5 stroke-[3] text-slate-900" />
                   </span>
                   <div>
-                    <p className="text-base font-bold text-white leading-snug">{benefit}</p>
-                    <p className="mt-1 text-xs text-white/90">Delivering reliable, repeatable operational gains.</p>
+                    <p className="text-base font-bold text-slate-900 leading-snug">{benefit}</p>
+                    <p className="mt-1 text-xs text-slate-600">Delivering reliable, repeatable operational gains.</p>
                   </div>
                 </div>
               );

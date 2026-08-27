@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * 01. SAP Consulting Mockup (Transformation Roadmap)
  */
@@ -9,7 +7,7 @@ export function ConsultingMockup() {
       {/* Glow Backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(60%_60%_at_70%_30%,rgba(56, 189, 248, ),transparent_70%),radial-gradient(50%_50%_at_20%_80%,rgba(139,124,246,0.22),transparent_70%)] blur-2xl opacity-90"
+        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(60%_60%_at_70%_30%,rgba(56, 189, 248, 0.3),transparent_70%),radial-gradient(50%_50%_at_20%_80%,rgba(139,124,246,0.22),transparent_70%)] blur-2xl opacity-90"
       />
 
       {/* Main Glass Console Card */}
@@ -134,7 +132,7 @@ export function SupportMockup() {
       {/* Glow Backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(60%_60%_at_30%_30%,rgba(56, 189, 248, ),transparent_70%)] blur-2xl opacity-90"
+        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(60%_60%_at_30%_30%,rgba(56, 189, 248, 0.3),transparent_70%)] blur-2xl opacity-90"
       />
 
       {/* Main Glass Console Card */}
@@ -405,7 +403,7 @@ export function IntegrationMockup() {
       {/* Glow Backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(60%_60%_at_40%_30%,rgba(56,189,248,0.24),transparent_70%),radial-gradient(50%_50%_at_80%_80%,rgba(56, 189, 248, ),transparent_70%)] blur-2xl opacity-90"
+        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(60%_60%_at_40%_30%,rgba(56,189,248,0.24),transparent_70%),radial-gradient(50%_50%_at_80%_80%,rgba(56, 189, 248, 0.3),transparent_70%)] blur-2xl opacity-90"
       />
 
       {/* Main Glass Console Card */}
@@ -598,7 +596,7 @@ export function AIMockup() {
       {/* Glow Backdrop */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(55%_55%_at_70%_30%,rgba(56, 189, 248, ),transparent_70%),radial-gradient(50%_50%_at_25%_85%,rgba(139,124,246,0.22),transparent_70%)] blur-2xl opacity-90"
+        className="pointer-events-none absolute inset-3 sm:inset-6 rounded-3xl bg-[radial-gradient(55%_55%_at_70%_30%,rgba(56, 189, 248, 0.3),transparent_70%),radial-gradient(50%_50%_at_25%_85%,rgba(139,124,246,0.22),transparent_70%)] blur-2xl opacity-90"
       />
 
       {/* Main Glass Console Card */}

@@ -3,12 +3,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Sparkles, Wrench } from "lucide-react";
+import { ArrowRight, Check, Wrench } from "lucide-react";
 import CardsCarousel from "./CardsCarousel";
 import { motion } from "framer-motion";
 import ServicesConduitStream from "@/components/ui/hero-animations/ServicesConduitStream";
-import { Reveal } from "@/components/motion/Reveal";
-import { BlurReveal } from "@/components/motion/Reveal";
 import OptimizedVideo from "@/components/ui/OptimizedVideo";
 
 export type LandingCard = {
@@ -214,35 +212,6 @@ export default function SectionLanding({
               ))}
             </div>
           )}
-        </div>
-      </section>
-
-      {/* ──── CTA Banner ──────────────────────────────────────────────────── */}
-      <section className="hidden relative isolate overflow-hidden bg-[#0b1d33] px-5 py-12 sm:px-8 sm:py-16 lg:px-12 border-t border-white/5">
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 tri-mesh opacity-60" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-20 tri-grid-bg opacity-25" />
-        <div
-          className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(145deg,#1e2a3f,#162236_50%,#111827)] px-6 py-8 text-center shadow-[0_40px_120px_-30px_rgba(0,0,0,0.5)] sm:px-12 sm:py-10"
-        >
-          <div aria-hidden className="absolute inset-0 tri-hex-grid opacity-45" />
-          <div aria-hidden className="absolute -right-16 -top-16 h-80 w-80 rounded-full border-[60px] border-white/[0.03] tri-spin-slow" />
-          <div aria-hidden className="tri-blob h-72 w-72 animate-float-slow" style={{ left: "-6%", bottom: "-8%", background: "radial-gradient(circle, rgba(255, 255, 255,0.28), transparent 68%)" }} />
-          <div aria-hidden className="tri-blob h-60 w-60 animate-float-reverse" style={{ right: "-4%", top: "10%", background: "radial-gradient(circle, rgba(255, 255, 255,0.22), transparent 68%)" }} />
-          <div aria-hidden className="absolute inset-x-0 top-1/2 h-64 -translate-y-1/2 bg-[radial-gradient(ellipse_50%_50%_at_50%_50%,rgba(255, 255, 255,0.08),transparent)]" />
-
-          <div className="relative mx-auto max-w-3xl">
-            <p className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.22em] text-white">
-              <Sparkles className="h-4 w-4" /> Trijotech
-            </p>
-            <h2 className="mt-4 text-2xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Let&apos;s turn your next priority into measurable progress.
-            </h2>
-            <div className="inline-block mt-6">
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 shadow-md transition-all duration-200">
-                Talk to our team <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
     </main>

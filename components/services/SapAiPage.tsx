@@ -12,9 +12,9 @@ import {
   TrendingUp,
   Workflow,
 } from "lucide-react";
-import { Reveal, SlideReveal, StaggerReveal, StaggerRevealItem } from "@/components/motion/Reveal";
+import { Reveal, SlideReveal, StaggerRevealItem } from "@/components/motion/Reveal";
 import ServiceHero from "@/components/services/ServiceHero";
-import { Glass, Metric, SectionLabel, ServiceCta, heroH1, introLead } from "@/components/services/service-ui";
+import { Glass, Metric, SectionLabel, introLead } from "@/components/services/service-ui";
 import Container from "@/components/ui/Container";
 import TiltCard from "@/components/ui/TiltCard";
 
@@ -201,13 +201,6 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
           </div>
         </Container>
       </section>
-
-      {/* CTA */}
-      <ServiceCta
-        accent="violet"
-        title="Turn your data into intelligent action?"
-        description="Talk to our AI and data team about embedding practical intelligence into your SAP landscape."
-      />
     </main>
   );
 }
