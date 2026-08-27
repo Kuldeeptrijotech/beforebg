@@ -251,6 +251,7 @@ export default function Header() {
               width={168}
               height={44}
               priority
+              style={{ width: "auto" }}
               className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 hover:scale-105"
             />
           </Link>
