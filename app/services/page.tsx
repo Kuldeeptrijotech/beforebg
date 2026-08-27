@@ -25,6 +25,7 @@ export default function ServicesPage() {
           alt="Trijotech SAP Services"
           fill
           priority
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center opacity-90"
         />

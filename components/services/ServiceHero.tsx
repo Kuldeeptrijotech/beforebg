@@ -67,6 +67,7 @@ export default function ServiceHero({
             alt={title || "Service Hero"}
             fill
             priority
+            loading="eager"
             sizes="100vw"
             className="h-full w-full object-cover object-center brightness-[0.88] contrast-[1.05]"
           />

@@ -40,6 +40,7 @@ export default function CareersPage() {
           alt="Careers at Trijotech - enterprise consulting team"
           fill
           priority
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-10 object-cover object-center opacity-95"
         />

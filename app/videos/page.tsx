@@ -29,6 +29,7 @@ export default function VideosPage() {
           alt="Trijotech Practitioner Videos and Technical Demos"
           fill
           priority
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />

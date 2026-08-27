@@ -23,6 +23,7 @@ export default function SolutionsPage() {
           alt="In-house SAP solutions and products"
           fill
           priority
+          loading="eager"
           sizes="100vw"
           className="absolute inset-0 -z-20 object-cover object-center opacity-95"
         />
