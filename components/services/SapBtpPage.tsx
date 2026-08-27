@@ -69,8 +69,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                       <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md transition-transform duration-300">
                         <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
                       </div>
-                      <h3 className="mt-4 font-bold text-white text-base sm:text-lg">{t.label}</h3>
-                      <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-white/90">{t.desc}</p>
+                      <h3 className="mt-4 font-bold text-slate-900 text-base sm:text-lg">{t.label}</h3>
+                      <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-slate-600">{t.desc}</p>
                     </div>
                   </StaggerRevealItem>
                 );
@@ -158,8 +158,8 @@ export default function SapBtpPage({ offerings, impacts }: { offerings: ServiceI
                         <CheckCircle2 className="h-4.5 w-4.5 text-slate-900" />
                       </span>
                       <div>
-                        <p className="font-bold text-white">{i.title}</p>
-                        <p className="mt-1 text-xs leading-5 text-white/90">{i.description}</p>
+                        <p className="font-bold text-slate-900">{i.title}</p>
+                        <p className="mt-1 text-xs leading-5 text-slate-600">{i.description}</p>
                       </div>
                     </div>
                   </StaggerRevealItem>

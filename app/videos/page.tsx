@@ -141,7 +141,7 @@ export default function VideosPage() {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-white shadow-xl transition-transform duration-300 group-hover:scale-115">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-slate-900 shadow-xl transition-transform duration-300 group-hover:scale-115">
                           <Play className="ml-1 h-5 w-5 fill-current" />
                         </span>
                       </div>

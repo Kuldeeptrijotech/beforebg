@@ -70,23 +70,23 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
 
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
-              <div className="h-full p-5 sm:p-6 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
-                <Metric to={35} suffix="%" label="Faster decisions" accent="text-white" />
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
+                <Metric to={35} suffix="%" label="Faster decisions" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
-              <div className="h-full p-5 sm:p-6 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
-                <Metric to={60} suffix="%" label="Manual effort reduced" accent="text-white" />
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
+                <Metric to={60} suffix="%" label="Manual effort reduced" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
-              <div className="h-full p-5 sm:p-6 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
-                <Metric to={90} suffix="%" label="Forecast accuracy" accent="text-white" />
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
+                <Metric to={90} suffix="%" label="Forecast accuracy" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
-              <div className="h-full p-5 sm:p-6 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
-                <Metric to={100} suffix="%" label="Governed data" accent="text-white" />
+              <div className="h-full p-5 sm:p-6 rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
+                <Metric to={100} suffix="%" label="Governed data" accent="text-slate-900" />
               </div>
             </Reveal>
           </div>
@@ -148,17 +148,17 @@ export default function SapAiPage({ offerings, impacts }: { offerings: ServiceIt
               const Icon = c.icon;
               return (
                 <StaggerRevealItem key={c.title} variant="slideRight">
-                  <div className="ai-practice-card service-surface-card h-full p-7 rounded-2xl border-0 bg-slate-900 text-white shadow-[0_10px_30px_rgba(56, 189, 248, )] hover:bg-slate-800 transition-all">
-                      <div className="flex items-start gap-4">
-                        <span className="ai-practice-icon-badge flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-md">
-                          <Icon className="h-6 w-6 text-slate-900" strokeWidth={2.2} stroke="#38bdf8" />
-                        </span>
-                        <div>
-                          <h3 className="text-xl font-bold text-white">{c.title}</h3>
-                          <p className="mt-2 leading-7 text-white/90">{c.desc}</p>
-                        </div>
+                  <div className="ai-practice-card service-surface-card h-full p-7 rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
+                    <div className="flex items-start gap-4">
+                      <span className="ai-practice-icon-badge flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-sm">
+                        <Icon className="h-6 w-6 text-slate-900" strokeWidth={2.2} />
+                      </span>
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900">{c.title}</h3>
+                        <p className="mt-2 leading-7 text-slate-600">{c.desc}</p>
                       </div>
                     </div>
+                  </div>
                 </StaggerRevealItem>
               );
             })}

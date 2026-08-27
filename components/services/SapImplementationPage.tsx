@@ -81,8 +81,8 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
                       <CheckCircle2 className="h-4.5 w-4.5 text-slate-900" />
                     </span>
                     <div>
-                      <p className="font-bold text-white">{i.title}</p>
-                      <p className="mt-0.5 text-sm leading-6 text-white/90">{i.description}</p>
+                      <p className="font-bold text-slate-900">{i.title}</p>
+                      <p className="mt-0.5 text-sm leading-6 text-slate-600">{i.description}</p>
                     </div>
                   </div>
                 </StaggerRevealItem>
@@ -93,22 +93,22 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
           <div className="grid grid-cols-2 gap-4 items-stretch">
             <Reveal className="h-full">
               <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
-                <Metric to={9} suffix="+" label="Years of SAP expertise" accent="text-white" />
+                <Metric to={9} suffix="+" label="Years of SAP expertise" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.1} className="h-full">
               <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
-                <Metric to={100} suffix="+" label="Projects delivered" accent="text-white" />
+                <Metric to={100} suffix="+" label="Projects delivered" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.2} className="h-full">
               <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
-                <Metric to={100} suffix="%" label="Go-live success rate" accent="text-white" />
+                <Metric to={100} suffix="%" label="Go-live success rate" accent="text-slate-900" />
               </div>
             </Reveal>
             <Reveal delay={0.3} className="h-full">
               <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 p-5 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md sm:p-6">
-                <Metric to={30} suffix="+" label="Founder industry expertise" accent="text-white" />
+                <Metric to={30} suffix="+" label="Founder industry expertise" accent="text-slate-900" />
               </div>
             </Reveal>
           </div>
@@ -187,12 +187,12 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               <StaggerRevealItem key={o.title} variant="scale">
                 <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-7">
                     <div className="flex items-center gap-3">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-[11px] font-bold text-white">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-[11px] font-bold text-slate-900">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <h3 className="text-xl font-bold text-white">{o.title}</h3>
+                      <h3 className="text-xl font-bold text-slate-900">{o.title}</h3>
                     </div>
-                    <p className="mt-4 leading-7 text-white/90">{o.description}</p>
+                    <p className="mt-4 leading-7 text-slate-600">{o.description}</p>
                   </div>
               </StaggerRevealItem>
             ))}
@@ -283,12 +283,12 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               </Reveal>
               <Reveal delay={0.1}>
                 <div className="mt-8 flex items-center gap-4 h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-5">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/25 bg-white/15 text-white">
-                    <Zap className="h-6 w-6" />
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-900 shadow-xs">
+                    <Zap className="h-6 w-6 text-slate-900" />
                   </span>
                   <div>
-                    <p className="text-2xl font-extrabold text-white">Practical delivery</p>
-                    <p className="text-sm text-white/90">Structured governance, testing, migration, and adoption throughout.</p>
+                    <p className="text-2xl font-extrabold text-slate-900">Practical delivery</p>
+                    <p className="text-sm text-slate-600">Structured governance, testing, migration, and adoption throughout.</p>
                   </div>
                 </div>
               </Reveal>
@@ -298,9 +298,9 @@ export default function SapImplementationPage({ offerings, impacts }: { offering
               {impacts.map((i) => (
                 <StaggerRevealItem key={i.title} variant="slideRight">
                   <div className="h-full rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:border-slate-300 hover:shadow-md p-6">
-                    <CheckCircle2 className="h-6 w-6 text-white" />
-                    <h3 className="mt-4 text-xl font-bold text-white">{i.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-white/90">{i.description}</p>
+                    <CheckCircle2 className="h-6 w-6 text-slate-900" />
+                    <h3 className="mt-4 text-xl font-bold text-slate-900">{i.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{i.description}</p>
                   </div>
                 </StaggerRevealItem>
               ))}

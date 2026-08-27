@@ -175,11 +175,11 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
               ))}
             </div>
           ) : (
-            <div className="mt-14 rounded-3xl border border-white/10 bg-white/[0.04] px-6 py-16 text-center shadow-xl">
-              <h3 className="text-2xl font-bold text-white">
+            <div className="mt-14 rounded-3xl border border-slate-200 bg-slate-50 px-6 py-16 text-center shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900">
                 No articles found
               </h3>
-              <p className="mt-3 text-slate-300">
+              <p className="mt-3 text-slate-600">
                 Try a different keyword to explore our insights.
               </p>
             </div>

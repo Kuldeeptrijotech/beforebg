@@ -82,7 +82,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 shadow-xs">
                         <Icon className="h-4.5 w-4.5 text-slate-900" strokeWidth={2.2} />
                       </span>
-                      <span className="text-[13px] font-bold text-white">{s.label}</span>
+                      <span className="text-[13px] font-bold text-slate-900">{s.label}</span>
                     </div>
                   </StaggerRevealItem>
                 );
@@ -178,8 +178,8 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                         <CheckCircle2 className="h-4.5 w-4.5 text-slate-900" />
                       </span>
                       <div>
-                        <p className="font-bold text-white">{i.title}</p>
-                        <p className="mt-1 text-xs leading-5 text-white/90">{i.description}</p>
+                        <p className="font-bold text-slate-900">{i.title}</p>
+                        <p className="mt-1 text-xs leading-5 text-slate-600">{i.description}</p>
                       </div>
                     </div>
                   </StaggerRevealItem>
@@ -207,7 +207,7 @@ export default function SapDataIntegrationPage({ offerings, impacts }: { offerin
                     >
                       <Layers className="h-4 w-4 shrink-0 text-slate-900" />
                       <span className="flex-1 truncate text-sm font-semibold text-slate-900">{r.from}</span>
-                      <span className="text-slate-400">→</span>
+                      <span className="text-slate-900 font-bold">→</span>
                       <span className="flex-1 truncate text-right text-sm font-semibold text-slate-900">{r.to}</span>
                       <span className="flex items-center gap-1.5 text-[11px] font-bold" style={{ color: r.tone }}>
                         <span className="h-1.5 w-1.5 rounded-full" style={{ background: r.tone, boxShadow: `0 0 8px ${r.tone}` }} />
