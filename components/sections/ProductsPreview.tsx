@@ -63,7 +63,7 @@ export default function ProductsPreview() {
                     </h3>
                     <p className="mt-2.5 flex-1 text-xs sm:text-sm leading-relaxed text-slate-300">{product.description}</p>
                     <div className="mt-auto pt-4">
-                      <span className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-200 group-hover:gap-2.5">
+                      <span className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-bold text-cyan-200 transition-all duration-200 group-hover:gap-2.5 group-hover:text-cyan-100">
                         Explore product <ArrowRight className="h-3.5 w-3.5" />
                       </span>
                     </div>

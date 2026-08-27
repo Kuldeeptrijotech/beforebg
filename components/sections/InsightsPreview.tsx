@@ -49,7 +49,7 @@ function BlogCard({ blog, index }: { blog: FeaturedBlogItem; index: number }) {
         <h3 className="line-clamp-2 text-sm sm:text-base font-bold leading-snug text-slate-900 transition-colors">{blog.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-600">{blog.description}</p>
         <div className="mt-auto pt-4">
-          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-slate-900 transition-all duration-200 group-hover:gap-2 group-hover:text-slate-700 sm:text-sm">
+          <Link href={blog.href} className="inline-flex w-fit items-center gap-1.5 text-xs font-bold text-cyan-600 transition-all duration-200 group-hover:gap-2 group-hover:text-cyan-700 sm:text-sm">
             Read blog <ArrowRight aria-hidden="true" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
         </div>
@@ -81,7 +81,7 @@ function VideoCard({ video, index }: { video: FeaturedVideoItem; index: number }
         <h3 className="line-clamp-2 mt-1 text-sm sm:text-base font-bold leading-snug text-slate-900 transition-colors">{video.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-xs leading-relaxed text-slate-600">{video.description}</p>
         <div className="mt-auto pt-4">
-          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-slate-900 transition-all duration-200 group-hover:gap-2 group-hover:text-slate-700 sm:text-sm">
+          <a href={video.youtubeUrl} target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-1.5 text-xs font-bold text-cyan-600 transition-all duration-200 group-hover:gap-2 group-hover:text-cyan-700 sm:text-sm">
             Watch video <ExternalLink className="size-3.5" />
           </a>
         </div>

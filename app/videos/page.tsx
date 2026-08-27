@@ -155,7 +155,7 @@ export default function VideosPage() {
                         {video.title}
                       </h3>
                       <div className="mt-auto pt-4">
-                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-200 group-hover:gap-2.5">
+                        <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-cyan-600 transition-all duration-200 group-hover:gap-2.5 group-hover:text-cyan-700">
                           Watch video <ExternalLink className="h-3.5 w-3.5" />
                         </span>
                       </div>

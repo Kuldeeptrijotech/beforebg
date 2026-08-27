@@ -94,7 +94,7 @@ export default function IndustriesPreview() {
                         {industry.description}
                       </p>
                       <div className="mt-2">
-                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-white transition-all duration-300 group-hover:gap-2">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-200 transition-all duration-300 group-hover:gap-2 group-hover:text-cyan-100">
                           Explore industry <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>

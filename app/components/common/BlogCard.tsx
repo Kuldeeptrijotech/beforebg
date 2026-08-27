@@ -16,7 +16,7 @@ export default function BlogCard({ blog, variant = "listing" }: BlogCardProps) {
             <Link href={blog.link} className="text-white hover:text-white transition-colors">{blog.title}</Link>
           </h3>
           <p className="mb-[14px] line-clamp-3 max-h-[67px] overflow-hidden text-[14px] leading-[1.6] text-slate-300">{blog.description}</p>
-          <Link href={blog.link} className="mt-auto text-[14px] font-bold text-white hover:text-white transition-colors">Read article →</Link>
+          <Link href={blog.link} className="mt-auto text-[14px] font-bold text-cyan-200 hover:text-cyan-100 transition-colors">Read article →</Link>
         </div>
       </article>
     );
@@ -32,7 +32,7 @@ export default function BlogCard({ blog, variant = "listing" }: BlogCardProps) {
         <div className="text-white text-xs font-bold uppercase"><span>{blog.date}</span></div>
         <h4 className="text-[18px] font-bold leading-[1.4] text-white mt-2">{blog.title}</h4>
         <p className="line-clamp-3 min-h-[4.8em] max-h-[4.8em] text-[14px] leading-[1.6] text-slate-300 mt-2">{blog.description}</p>
-        <Link href={blog.link} className="mt-auto inline-flex w-fit items-center gap-1 text-sm font-bold text-white hover:text-white transition-colors">Read More →</Link>
+        <Link href={blog.link} className="mt-auto inline-flex w-fit items-center gap-1 text-sm font-bold text-cyan-200 hover:text-cyan-100 transition-colors">Read More →</Link>
       </div>
     </article>
   );

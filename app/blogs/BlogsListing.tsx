@@ -165,7 +165,7 @@ export default function BlogsListing({ blogs }: { blogs: Blog[] }) {
                     <div className="mt-auto pt-3.5">
                       <Link
                         href={blog.link}
-                        className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-200 hover:gap-2"
+                        className="inline-flex w-fit items-center gap-1.5 text-xs sm:text-sm font-bold text-cyan-600 transition-all duration-200 hover:gap-2 hover:text-cyan-700"
                       >
                         Read article <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                       </Link>

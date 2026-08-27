@@ -166,7 +166,7 @@ export default function CorporatePage() {
                       <div className="mt-auto pt-4">
                         <Link
                           href={card.href}
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-300 group-hover:gap-2.5 group-hover:text-slate-700"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-cyan-600 transition-all duration-300 group-hover:gap-2.5 group-hover:text-cyan-700"
                         >
                           <span>{card.cta}</span>
                           <span aria-hidden="true" className="text-base font-bold transition-transform duration-300 group-hover:translate-x-1">→</span>
