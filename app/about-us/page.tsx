@@ -159,9 +159,9 @@ export default function AboutUsPage() {
               <motion.span
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-white shadow-md"
+                className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-900 shadow-sm"
               >
-                <Check className="h-3.5 w-3.5" />
+                <Check className="h-3.5 w-3.5 stroke-[3] text-slate-900" />
               </motion.span>
               Expertise shaped around measurable business value
             </div>

@@ -133,8 +133,8 @@ export default function ContactPage() {
                 >
                   <Icon className="h-5.5 w-5.5 text-slate-900" strokeWidth={2.2} />
                 </div>
-                <h3 className="mt-4 text-base sm:text-lg font-bold text-white">{title}</h3>
-                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-white/90 [&_a]:font-semibold [&_a]:text-white [&_a]:underline">
+                <h3 className="mt-4 text-base sm:text-lg font-bold text-slate-900">{title}</h3>
+                <div className="mt-2 flex flex-1 flex-col gap-1.5 text-xs sm:text-sm leading-relaxed text-slate-600 [&_a]:font-semibold [&_a]:text-slate-900 [&_a]:underline">
                   {content as ReactNode}
                 </div>
               </motion.article>

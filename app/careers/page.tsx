@@ -114,8 +114,8 @@ export default function CareersPage() {
                     >
                       <Icon className="h-5 w-5 text-slate-900" strokeWidth={2.2} />
                     </motion.span>
-                    <h3 className="mt-3.5 text-base sm:text-lg font-bold text-white">{title}</h3>
-                    <p className="mt-1 text-xs sm:text-sm leading-relaxed text-white/90">{text}</p>
+                    <h3 className="mt-3.5 text-base sm:text-lg font-bold text-slate-900">{title}</h3>
+                    <p className="mt-1 text-xs sm:text-sm leading-relaxed text-slate-600">{text}</p>
                   </motion.article>
                 ))}
               </div>

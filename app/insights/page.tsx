@@ -167,14 +167,14 @@ export default function InsightsPage() {
                     </Link>
 
                     <div className="flex flex-1 flex-col p-5 sm:p-6">
-                      <h3 className="text-base sm:text-lg font-bold leading-snug text-white">
+                      <h3 className="text-base sm:text-lg font-bold leading-snug text-slate-900 group-hover:text-slate-700 transition-colors">
                         {card.title}
                       </h3>
-                      <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-white/90">{card.description}</p>
+                      <p className="mt-2 flex-1 text-xs sm:text-sm leading-relaxed text-slate-600">{card.description}</p>
                       <div className="mt-auto pt-4">
                         <Link
                           href={card.href}
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:gap-2.5"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-900 transition-all duration-300 group-hover:gap-2.5 group-hover:text-slate-700"
                         >
                           <span>{card.cta}</span>
                           <span aria-hidden="true" className="text-base font-bold transition-transform duration-300 group-hover:translate-x-1">→</span>
