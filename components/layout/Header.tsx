@@ -251,7 +251,6 @@ export default function Header() {
               width={168}
               height={44}
               priority
-              style={{ width: "auto", height: "auto" }}
               className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 hover:scale-105"
             />
           </Link>
@@ -475,7 +474,7 @@ export default function Header() {
                   onClick={closeSearch}
                 >
                   <span className="relative block">
-                    <span className="relative block h-14 w-36"><Image src="/brand/favicon.svg" alt="" width={48} height={48} priority style={{ width: "auto", height: "auto" }} className="absolute left-0 top-0 h-12 w-12 object-contain" /><span className="absolute left-[1.95rem] top-[2.3rem] whitespace-nowrap text-base font-medium uppercase leading-none tracking-[0.08em] text-white">Trijo<span className={isPastHero ? "text-[#F5A623]" : "text-white"}>tech</span></span></span>
+                    <span className="relative block h-14 w-36"><Image src="/brand/favicon.svg" alt="" width={48} height={48} priority className="absolute left-0 top-0 h-12 w-12 object-contain" /><span className="absolute left-[1.95rem] top-[2.3rem] whitespace-nowrap text-base font-medium uppercase leading-none tracking-[0.08em] text-white">Trijo<span className={isPastHero ? "text-[#F5A623]" : "text-white"}>tech</span></span></span>
                   </span>
                 </Link>
 
